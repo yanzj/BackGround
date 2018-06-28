@@ -2,6 +2,7 @@
 using Lte.MySqlFramework.Entities;
 using System.Data.Entity;
 using Abp.EntityFramework.Entities;
+using MySql.Data.Entity;
 
 namespace Lte.MySqlFramework.Concrete
 {
@@ -90,8 +91,6 @@ namespace Lte.MySqlFramework.Concrete
 
         public DbSet<ConstructionInformation> Construction_Informations { get; set; }
 
-        public DbSet<BluePrint> BluePrints { get; set; }
-
         public DbSet<MicroItem> MicroItems { get; set; }
 
         public DbSet<MicroAddress> MicroAddresses { get; set; }
@@ -179,5 +178,8 @@ namespace Lte.MySqlFramework.Concrete
         public DbSet<StationAntenna> StationAntennas { get; set; }
 
         public DbSet<AlarmWorkItem> AlarmWorkItems { get; set; }
+
+        public DbSet<ZhangshangyouQuality> ZhangshangyouQualities { get; set; }
+
     }
 }

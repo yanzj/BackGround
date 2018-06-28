@@ -163,7 +163,6 @@
     <Compile Include="Entities\AlarmWorkItem.cs" />
     <Compile Include="Entities\AreaTestDate.cs" />
     <Compile Include="Entities\AreaTestInfo.cs" />
-    <Compile Include="Entities\BluePrint.cs" />
     <Compile Include="Entities\BranchDemand.cs" />
     <Compile Include="Entities\BranchDemandDto.cs" />
     <Compile Include="Entities\BranchDemandExcel.cs" />

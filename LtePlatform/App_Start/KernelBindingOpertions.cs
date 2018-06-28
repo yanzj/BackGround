@@ -1,5 +1,4 @@
 ﻿using Abp.EntityFramework;
-using Lte.Evaluations.DataService;
 using Lte.Evaluations.DataService.Basic;
 using Lte.Evaluations.DataService.College;
 using Lte.Evaluations.DataService.Dt;
@@ -237,9 +236,7 @@ namespace LtePlatform
             ninjectKernel.Bind<ILteRruRepository>().To<LteRruRepository>();
 
             ninjectKernel.Bind<ITownBoundaryRepository>().To<TownBoundaryRepository>();
-
-            ninjectKernel.Bind<IBluePrintRepository>().To<BluePrintRepository>();
-
+            
             ninjectKernel.Bind<ITelecomAgpsRepository>().To<TelecomAgpsRepository>();
 
             ninjectKernel.Bind<IMobileAgpsRepository>().To<MobileAgpsRepository>();
@@ -276,14 +273,14 @@ namespace LtePlatform
 
             ninjectKernel.Bind<IAlarmWorkItemRepository>().To<AlarmWorkItemRepository>();
 
+            ninjectKernel.Bind<IZhangshangyouQualityRepository>().To<ZhangshangyouQualityRepository>();
+
             ninjectKernel.Bind<CdmaRegionStatService>().ToSelf();
 
             ninjectKernel.Bind<CollegeStatService>().ToSelf();
 
             ninjectKernel.Bind<ENodebQueryService>().ToSelf();
-
-            ninjectKernel.Bind<BluePrintService>().ToSelf();
-
+            
             ninjectKernel.Bind<BtsConstructionService>().ToSelf();
 
             ninjectKernel.Bind<BtsQueryService>().ToSelf();

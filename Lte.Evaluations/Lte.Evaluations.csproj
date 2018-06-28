@@ -121,7 +121,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataService\Basic\BluePrintService.cs" />
     <Compile Include="DataService\Basic\BtsConstructionService.cs" />
     <Compile Include="DataService\Basic\BtsQueryService.cs" />
     <Compile Include="DataService\Basic\ConstructionInformationService.cs" />

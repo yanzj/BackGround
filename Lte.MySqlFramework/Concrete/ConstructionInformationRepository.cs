@@ -16,7 +16,7 @@ namespace Lte.MySqlFramework.Concrete
 
         public ConstructionInformation Match(ConstructionExcel stat)
         {
-            return FirstOrDefault(x => x.ENodebId == stat.ENodebId && x.SectorId == stat.SectorId);
+            return FirstOrDefault(x => x.CellSerialNum == stat.CellSerialNum);
         }
     }
 }

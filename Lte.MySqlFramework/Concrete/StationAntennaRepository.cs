@@ -14,7 +14,7 @@ namespace Lte.MySqlFramework.Concrete
 
         public StationAntenna Match(StationAntennaExcel stat)
         {
-            return FirstOrDefault(x => x.AntennaNum == stat.AntennaNum && x.StationNum == stat.StationNum);
+            return FirstOrDefault(x => x.AntennaNum == stat.AntennaNum);
         }
     }
 }

@@ -6,14 +6,14 @@ namespace Lte.MySqlFramework.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Alarm_Work_Item1 : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
+    public sealed partial class Zhangshangyou_Quality : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Alarm_Work_Item1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Zhangshangyou_Quality));
         
         string IMigrationMetadata.Id
         {
-            get { return "201806111539253_Alarm_Work_Item1"; }
+            get { return "201806281335078_Zhangshangyou_Quality"; }
         }
         
         string IMigrationMetadata.Source

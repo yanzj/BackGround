@@ -14,7 +14,7 @@ namespace Lte.MySqlFramework.Concrete
 
         public StationRru Match(StationRruExcel stat)
         {
-            return FirstOrDefault(x => x.ENodebId == stat.ENodebId && x.CellSerialNum == stat.CellSerialNum);
+            return FirstOrDefault(x => x.RruSerialNum == stat.RruSerialNum);
         }
     }
 }

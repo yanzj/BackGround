@@ -161,7 +161,6 @@
     <Compile Include="Abstract\IAlarmWorkItemRepository.cs" />
     <Compile Include="Abstract\IAreaTestDateRepository.cs" />
     <Compile Include="Abstract\IAreaTestInfoRepository.cs" />
-    <Compile Include="Abstract\IBluePrintRepository.cs" />
     <Compile Include="Abstract\IBranchDemandRepository.cs" />
     <Compile Include="Abstract\IBtsRepository.cs" />
     <Compile Include="Abstract\ICdmaCellRepository.cs" />
@@ -231,11 +230,11 @@
     <Compile Include="Abstract\IVipProcessRepository.cs" />
     <Compile Include="Abstract\IWorkItemRepository.cs" />
     <Compile Include="Abstract\IFlowHuaweiRepository.cs" />
+    <Compile Include="Abstract\IZhangshangyouQualityRepository.cs" />
     <Compile Include="Abstract\TownBoundaryQuery.cs" />
     <Compile Include="Abstract\TownQueries.cs" />
     <Compile Include="Concrete\AlarmWorkItemRepository.cs" />
     <Compile Include="Concrete\AreaTestInfoRepository.cs" />
-    <Compile Include="Concrete\BluePrintRepository.cs" />
     <Compile Include="Concrete\BranchDemandRepository.cs" />
     <Compile Include="Concrete\BtsRepository.cs" />
     <Compile Include="Concrete\CdmaCellRepository.cs" />
@@ -293,6 +292,7 @@
     <Compile Include="Concrete\VipDemandRepository.cs" />
     <Compile Include="Concrete\VipProcessRepository.cs" />
     <Compile Include="Concrete\WorkItemRepository.cs" />
+    <Compile Include="Concrete\ZhangshangyouQualityRepository.cs" />
     <Compile Include="Entities\AggregateFlowView.cs" />
     <Compile Include="Entities\AlarmWorkItemGroup.cs" />
     <Compile Include="Entities\AlarmWorkItemView.cs" />
@@ -366,13 +366,13 @@
     <Compile Include="Entities\TownRectangle.cs" />
     <Compile Include="Entities\TownRrcView.cs" />
     <Compile Include="Entities\VipDemandDto.cs" />
-    <Compile Include="Migrations\201806111539253_Alarm_Work_Item1.cs" />
-    <Compile Include="Migrations\201806111539253_Alarm_Work_Item1.Designer.cs">
-      <DependentUpon>201806111539253_Alarm_Work_Item1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201806122050446_Update_Indoor_Distribution.cs" />
     <Compile Include="Migrations\201806122050446_Update_Indoor_Distribution.Designer.cs">
       <DependentUpon>201806122050446_Update_Indoor_Distribution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806281335078_Zhangshangyou_Quality.cs" />
+    <Compile Include="Migrations\201806281335078_Zhangshangyou_Quality.Designer.cs">
+      <DependentUpon>201806281335078_Zhangshangyou_Quality.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -383,11 +383,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806111539253_Alarm_Work_Item1.resx">
-      <DependentUpon>201806111539253_Alarm_Work_Item1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806122050446_Update_Indoor_Distribution.resx">
       <DependentUpon>201806122050446_Update_Indoor_Distribution.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806281335078_Zhangshangyou_Quality.resx">
+      <DependentUpon>201806281335078_Zhangshangyou_Quality.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

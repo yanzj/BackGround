@@ -14,7 +14,7 @@ namespace Lte.MySqlFramework.Concrete
 
         public IndoorDistribution Match(IndoorDistributionExcel stat)
         {
-            return FirstOrDefault(x => x.IndoorSerialNum == stat.IndoorSerialNum && x.BuildingName == stat.BuildingName);
+            return FirstOrDefault(x => x.IndoorSerialNum == stat.IndoorSerialNum);
         }
     }
 }
