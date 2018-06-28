@@ -275,6 +275,8 @@ namespace LtePlatform
 
             ninjectKernel.Bind<IZhangshangyouQualityRepository>().To<ZhangshangyouQualityRepository>();
 
+            ninjectKernel.Bind<IZhangshangyouCoverageRepository>().To<ZhangshangyouCoverageRepository>();
+
             ninjectKernel.Bind<CdmaRegionStatService>().ToSelf();
 
             ninjectKernel.Bind<CollegeStatService>().ToSelf();

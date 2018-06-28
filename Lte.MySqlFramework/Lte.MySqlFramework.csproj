@@ -230,6 +230,7 @@
     <Compile Include="Abstract\IVipProcessRepository.cs" />
     <Compile Include="Abstract\IWorkItemRepository.cs" />
     <Compile Include="Abstract\IFlowHuaweiRepository.cs" />
+    <Compile Include="Abstract\IZhangshangyouCoverageRepository.cs" />
     <Compile Include="Abstract\IZhangshangyouQualityRepository.cs" />
     <Compile Include="Abstract\TownBoundaryQuery.cs" />
     <Compile Include="Abstract\TownQueries.cs" />
@@ -292,6 +293,7 @@
     <Compile Include="Concrete\VipDemandRepository.cs" />
     <Compile Include="Concrete\VipProcessRepository.cs" />
     <Compile Include="Concrete\WorkItemRepository.cs" />
+    <Compile Include="Concrete\ZhangshangyouCoverageRepository.cs" />
     <Compile Include="Concrete\ZhangshangyouQualityRepository.cs" />
     <Compile Include="Entities\AggregateFlowView.cs" />
     <Compile Include="Entities\AlarmWorkItemGroup.cs" />
@@ -366,13 +368,13 @@
     <Compile Include="Entities\TownRectangle.cs" />
     <Compile Include="Entities\TownRrcView.cs" />
     <Compile Include="Entities\VipDemandDto.cs" />
-    <Compile Include="Migrations\201806122050446_Update_Indoor_Distribution.cs" />
-    <Compile Include="Migrations\201806122050446_Update_Indoor_Distribution.Designer.cs">
-      <DependentUpon>201806122050446_Update_Indoor_Distribution.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201806281335078_Zhangshangyou_Quality.cs" />
     <Compile Include="Migrations\201806281335078_Zhangshangyou_Quality.Designer.cs">
       <DependentUpon>201806281335078_Zhangshangyou_Quality.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806282028341_Zhangshangyou_Coverage.cs" />
+    <Compile Include="Migrations\201806282028341_Zhangshangyou_Coverage.Designer.cs">
+      <DependentUpon>201806282028341_Zhangshangyou_Coverage.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -383,11 +385,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806122050446_Update_Indoor_Distribution.resx">
-      <DependentUpon>201806122050446_Update_Indoor_Distribution.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806281335078_Zhangshangyou_Quality.resx">
       <DependentUpon>201806281335078_Zhangshangyou_Quality.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806282028341_Zhangshangyou_Coverage.resx">
+      <DependentUpon>201806282028341_Zhangshangyou_Coverage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

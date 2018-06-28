@@ -263,6 +263,7 @@
     <Compile Include="Entities\VipProcess.cs" />
     <Compile Include="Entities\VipProcessDto.cs" />
     <Compile Include="Entities\WorkItem.cs" />
+    <Compile Include="Entities\ZhangshangyouCoverage.cs" />
     <Compile Include="Entities\ZhangshangyouQuality.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AutoRepositoryTypesAttribute.cs" />
