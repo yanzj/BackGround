@@ -212,6 +212,8 @@
     <Compile Include="Entities\Dt\FileRecordCoverage4G.cs" />
     <Compile Include="Entities\Dt\FileRecordVolte.cs" />
     <Compile Include="Entities\Dt\FileRecordVolteCsv.cs" />
+    <Compile Include="Entities\Kpi\AlarmHistory.cs" />
+    <Compile Include="Entities\Kpi\AlarmView.cs" />
     <Compile Include="Entities\Kpi\DistrictPreciseView.cs" />
     <Compile Include="Entities\Kpi\FlowHistory.cs" />
     <Compile Include="Entities\Kpi\InterferenceMatrixMongo.cs" />

@@ -40,7 +40,7 @@ namespace Lte.Evaluations.DataService.Kpi
         public bool DumpOneStat()
         {
             var stat = CoverageStats.Pop();
-            if (stat == null) throw new NullReferenceException("alarm stat is null!");
+            if (stat == null) throw new NullReferenceException("coverage stat is null!");
             return _repository.ImportOne(stat) != null;
         }
 

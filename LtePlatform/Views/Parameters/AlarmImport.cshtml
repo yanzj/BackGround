@@ -16,50 +16,80 @@
 <div class="row">
     <div class="col-md-4">
         @using (Html.BeginForm("ZteAlarmPost", "Parameters",
-        FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
-        {
-            <label>中兴4G告警导入：</label>
-            <div class="form-group">
-                <div class="col-md-8">
-                    <input name="alarmZte" class="form-control" type="file" multiple accept=".csv" />
-                </div>
-                <div class="col-md-4">
-                    <button type="submit" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-save"></span>导入
-                    </button>
-                </div>
+    FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+    {
+        <label>中兴4G告警导入：</label>
+        <div class="form-group">
+            <div class="col-md-8">
+                <input name="alarmZte" class="form-control" type="file" multiple accept=".csv" />
             </div>
-        }
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-save"></span>导入
+                </button>
+            </div>
+        </div>
+}
         @using (Html.BeginForm("HwAlarmPost", "Parameters",
-        FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
-        {
-            <label>华为4G告警导入：</label>
-            <div class="form-group">
-                <div class="col-md-8">
-                    <input name="alarmHw" class="form-control" type="file" multiple accept=".csv" />
-                </div>
-                <div class="col-md-4">
-                    <button type="submit" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-save"></span>导入
-                    </button>
-                </div>
+    FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+    {
+        <label>华为4G告警导入：</label>
+        <div class="form-group">
+            <div class="col-md-8">
+                <input name="alarmHw" class="form-control" type="file" multiple accept=".csv" />
             </div>
-        }
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-save"></span>导入
+                </button>
+            </div>
+        </div>
+}
+        @using (Html.BeginForm("CoveragePost", "Parameters",
+    FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+    {
+        <label>三网覆盖小区导入：</label>
+        <div class="form-group">
+            <div class="col-md-8">
+                <input name="coverage" class="form-control" type="file" accept=".xlsx" />
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-save"></span>导入
+                </button>
+            </div>
+        </div>
+}
+        @using (Html.BeginForm("ZhangshangyouQualityPost", "Parameters",
+    FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+    {
+        <label>掌上优测试详单导入：</label>
+        <div class="form-group">
+            <div class="col-md-8">
+                <input name="zhangshangyouQuality" class="form-control" type="file" multiple accept=".csv" />
+            </div>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-save"></span>导入
+                </button>
+            </div>
+        </div>
+}
         @using (Html.BeginForm("CoveragePost", "Parameters",
         FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
-        {
-            <label>三网覆盖小区导入：</label>
-            <div class="form-group">
-                <div class="col-md-8">
-                    <input name="coverage" class="form-control" type="file" accept=".xlsx" />
-                </div>
-                <div class="col-md-4">
-                    <button type="submit" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-save"></span>导入
-                    </button>
-                </div>
+    {
+        <label>掌上优信号详单导入：</label>
+        <div class="form-group">
+            <div class="col-md-8">
+                <input name="zhangshangyouCoverage" class="form-control" type="file" multiple accept=".csv" />
             </div>
-        }
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-save"></span>导入
+                </button>
+            </div>
+        </div>
+}
     </div>
     <div class="col-md-8" ng-controller="alarm.import">
         <div class="panel panel-info">
@@ -99,24 +129,6 @@
                         </div>
                     </div>
                 </div>
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>日期</th>
-                            <th>告警数量</th>
-                            <th>覆盖指标数量</th>
-                            <th>镇区指标数量</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="stat in dumpHistory">
-                            <td>{{stat.dateString}}</td>
-                            <td>{{stat.alarms}}</td>
-                            <td>{{stat.coverageStats}}</td>
-                            <td>{{stat.townCoverageStats}}</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
         <div class="panel panel-info">
@@ -126,6 +138,7 @@
                 </h3>
             </div>
             <div class="panel-body">
+
                 <p>
                     <h4>告警数据</h4>
                     <button class="btn btn-primary" ng-click="dumpItems()">一键导入</button>
@@ -146,8 +159,51 @@
                         </span>
                     </div>
                 </div>
+
                 <p>
                     <h4>覆盖指标</h4>
+                    <button class="btn btn-primary" ng-click="dumpCoverageItems()">一键导入</button>
+                    <button class="btn btn-warning" ng-click="clearCoverageItems()">清除缓存</button>
+                    总数：{{progressInfo.totalCoverageDumpItems}}&nbsp;
+                    成功数：{{progressInfo.totalCoverageSuccessItems}}&nbsp;
+                    失败数：{{progressInfo.totalCoverageFailItems}}
+                </p>
+                <div uib-progress>
+                    <div uib-bar value="100*progressInfo.totalCoverageSuccessItems / progressInfo.totalCoverageDumpItems" type="success">
+                        <span ng-show="100*progressInfo.totalCoverageSuccessItems / progressInfo.totalCoverageDumpItems > 5">
+                            {{100*progressInfo.totalCoverageSuccessItems / progressInfo.totalCoverageDumpItems | number: 2}}%
+                        </span>
+                    </div>
+                    <div uib-bar value="100*progressInfo.totalCoverageFailItems / progressInfo.totalCoverageDumpItems" type="erroe">
+                        <span ng-show="100*progressInfo.totalCoverageFailItems / progressInfo.totalCoverageDumpItems > 5">
+                            {{100*progressInfo.totalCoverageFailItems / progressInfo.totalCoverageDumpItems | number: 2}}%
+                        </span>
+                    </div>
+                </div>
+
+                <p>
+                    <h4>掌上优测试详单</h4>
+                    <button class="btn btn-primary" ng-click="dumpCoverageItems()">一键导入</button>
+                    <button class="btn btn-warning" ng-click="clearCoverageItems()">清除缓存</button>
+                    总数：{{progressInfo.totalCoverageDumpItems}}&nbsp;
+                    成功数：{{progressInfo.totalCoverageSuccessItems}}&nbsp;
+                    失败数：{{progressInfo.totalCoverageFailItems}}
+                </p>
+                <div uib-progress>
+                    <div uib-bar value="100*progressInfo.totalCoverageSuccessItems / progressInfo.totalCoverageDumpItems" type="success">
+                        <span ng-show="100*progressInfo.totalCoverageSuccessItems / progressInfo.totalCoverageDumpItems > 5">
+                            {{100*progressInfo.totalCoverageSuccessItems / progressInfo.totalCoverageDumpItems | number: 2}}%
+                        </span>
+                    </div>
+                    <div uib-bar value="100*progressInfo.totalCoverageFailItems / progressInfo.totalCoverageDumpItems" type="erroe">
+                        <span ng-show="100*progressInfo.totalCoverageFailItems / progressInfo.totalCoverageDumpItems > 5">
+                            {{100*progressInfo.totalCoverageFailItems / progressInfo.totalCoverageDumpItems | number: 2}}%
+                        </span>
+                    </div>
+                </div>
+
+                <p>
+                    <h4>掌上优信号详单</h4>
                     <button class="btn btn-primary" ng-click="dumpCoverageItems()">一键导入</button>
                     <button class="btn btn-warning" ng-click="clearCoverageItems()">清除缓存</button>
                     总数：{{progressInfo.totalCoverageDumpItems}}&nbsp;
@@ -170,6 +226,29 @@
         </div>
     </div>
 </div>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>日期</th>
+        <th>告警数量</th>
+        <th>MR覆盖指标数量</th>
+        <th>MR覆盖镇区指标数量</th>
+        <th>掌上优测试记录数</th>
+        <th>掌上优信号记录数</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="stat in dumpHistory">
+        <td>{{stat.dateString}}</td>
+        <td>{{stat.alarms}}</td>
+        <td>{{stat.coverageStats}}</td>
+        <td>{{stat.townCoverageStats}}</td>
+        <td>{{stat.zhangshangyouQualities}}</td>
+        <td>{{stat.zhangshangyouCoverages}}</td>
+    </tr>
+    </tbody>
+</table>
 
 @section Scripts{
     <script src="~/Scripts/parameters/alarmimport.controller.js"></script>

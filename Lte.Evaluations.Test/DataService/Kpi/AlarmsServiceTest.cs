@@ -33,7 +33,7 @@ namespace Lte.Evaluations.DataService.Kpi
             var module = new AbpAutoMapperModule(_typeFinder);
             module.PostInitialize();
             _repository.MockOperations();
-            _service = new AlarmsService(_repository.Object, null, null);
+            _service = new AlarmsService(_repository.Object, null, null, null, null);
         }
 
         [TestCase(1, "aaieqwigiowi", "2015-1-1 12:33", "2015-1-1 0:05", "2015-1-1 13:45", true)]

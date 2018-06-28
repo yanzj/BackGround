@@ -451,6 +451,10 @@ namespace LtePlatform
 
             ninjectKernel.Bind<StationAntennaService>().ToSelf();
 
+            ninjectKernel.Bind<ZhangshangyouQualityRepository>().ToSelf();
+
+            ninjectKernel.Bind<ZhangshangyouCoverageRepository>().ToSelf();
+
         }
     }
 }

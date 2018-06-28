@@ -18,13 +18,18 @@ namespace Lte.Evaluations.DataService.Basic
         private readonly IAlarmRepository _repository;
         private readonly ICoverageStatRepository _coverageStatRepository;
         private readonly ITownCoverageRepository _townCoverageRepository;
+        private readonly IZhangshangyouQualityRepository _zhangshangyouQualityRepository;
+        private readonly IZhangshangyouCoverageRepository _zhangshangyouCoverageRepository;
 
         public AlarmsService(IAlarmRepository repository, ICoverageStatRepository coverageStatRepository,
-            ITownCoverageRepository townCoverageRepository)
+            ITownCoverageRepository townCoverageRepository, IZhangshangyouQualityRepository zhangshangyouQualityRepository,
+            IZhangshangyouCoverageRepository zhangshangyouCoverageRepository)
         {
             _repository = repository;
             _coverageStatRepository = coverageStatRepository;
             _townCoverageRepository = townCoverageRepository;
+            _zhangshangyouQualityRepository = zhangshangyouQualityRepository;
+            _zhangshangyouCoverageRepository = zhangshangyouCoverageRepository;
             if (AlarmStats == null)
                 AlarmStats = new Stack<AlarmStat>();
         }
@@ -157,7 +162,12 @@ namespace Lte.Evaluations.DataService.Basic
                     DateString = beginDate.ToShortDateString(),
                     Alarms = _repository.Count(x => x.HappenTime >= beginDate && x.HappenTime < endDate),
                     CoverageStats = _coverageStatRepository.Count(x => x.StatDate >= beginDate && x.StatDate < endDate),
-                    TownCoverageStats = _townCoverageRepository.Count(x => x.StatDate >= beginDate && x.StatDate < endDate)
+                    TownCoverageStats =
+                        _townCoverageRepository.Count(x => x.StatDate >= beginDate && x.StatDate < endDate),
+                    ZhangshangyouQualities =
+                        _zhangshangyouQualityRepository.Count(x => x.StatTime >= beginDate && x.StatTime < endDate),
+                    ZhangshangyouCoverages =
+                        _zhangshangyouCoverageRepository.Count(x => x.StatTime >= beginDate && x.StatTime < endDate)
                 });
                 begin = begin.AddDays(1);
             }

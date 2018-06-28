@@ -159,6 +159,8 @@
     <Compile Include="DataService\Dt\AreaTestInfoVolteQuery.cs" />
     <Compile Include="DataService\Dt\CsvFileInfoService.cs" />
     <Compile Include="DataService\Dt\DtFileReaderQuery.cs" />
+    <Compile Include="DataService\Dt\ZhangshangyouCoverageService.cs" />
+    <Compile Include="DataService\Dt\ZhangshangyouQualityService.cs" />
     <Compile Include="DataService\Dump\AlarmWorkItemService.cs" />
     <Compile Include="DataService\Dump\CdmaCellDumpService.cs" />
     <Compile Include="DataService\Dump\LteProblemService.cs" />

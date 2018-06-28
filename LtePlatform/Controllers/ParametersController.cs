@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Lte.Evaluations.DataService.Dt;
 
 namespace LtePlatform.Controllers
 {
@@ -18,15 +19,20 @@ namespace LtePlatform.Controllers
         private readonly NearestPciCellService _neighborService;
         private readonly FlowService _flowService;
         private readonly CoverageStatService _coverageService;
+        private readonly ZhangshangyouQualityService _zhangshangyouQualityService;
+        private readonly ZhangshangyouCoverageService _zhangshangyouCoverageService;
 
         public ParametersController(BasicImportService basicImportService, AlarmsService alarmsService,
-            NearestPciCellService neighborService, FlowService flowService, CoverageStatService coverageService)
+            NearestPciCellService neighborService, FlowService flowService, CoverageStatService coverageService,
+            ZhangshangyouQualityService zhangshangyouQualityService, ZhangshangyouCoverageService zhangshangyouCoverageService)
         {
             _basicImportService = basicImportService;
             _alarmsService = alarmsService;
             _neighborService = neighborService;
             _flowService = flowService;
             _coverageService = coverageService;
+            _zhangshangyouQualityService = zhangshangyouQualityService;
+            _zhangshangyouCoverageService = zhangshangyouCoverageService;
         }
         
         public ActionResult AlarmImport()
@@ -74,6 +80,21 @@ namespace LtePlatform.Controllers
                 var path = httpPostedFileBase.UploadKpiFile();
                 _coverageService.UploadStats(path, httpPostedFileBase.FileName.Split('.')[0]);
             }
+            return View("AlarmImport");
+        }
+
+        [HttpPost]
+        public ActionResult ZhangshangyouQualityPost(HttpPostedFileBase[] zhangshangyouQuality)
+        {
+            if (zhangshangyouQuality == null || zhangshangyouQuality.Length <= 0 ||
+                string.IsNullOrEmpty(zhangshangyouQuality[0]?.FileName))
+                return View("AlarmImport");
+            ViewBag.Message = "共上传掌上优信号详单文件" + zhangshangyouQuality.Length + "个！";
+            foreach (var file in zhangshangyouQuality)
+            {
+                _alarmsService.UploadHwAlarms(new StreamReader(file.InputStream, Encoding.GetEncoding("GB2312")));
+            }
+
             return View("AlarmImport");
         }
 
