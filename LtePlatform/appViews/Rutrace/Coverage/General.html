@@ -1,0 +1,44 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body">
+    <div date-span-row begin-date="beginDate" end-date="endDate">
+        <div class="input-group">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-warning" ng-click="showCoverage()">
+                    <i class="glyphicon glyphicon-search" title="统计覆盖"></i>
+                </button>
+            </span>
+        </div>
+    </div>
+    <div uib-tabset active="active">
+        <div uib-tab index="0" heading="一维覆盖情况">
+            <div id="coverage-chart"></div>
+            <div id="ta-chart"></div>            
+        </div>
+        <div uib-tab index="1" heading="RSRP-TA覆盖分析">
+            <div id="rsrp-ta-0"></div>
+            <div id="rsrp-ta-1"></div>
+            <div id="rsrp-ta-2"></div>
+            <div id="rsrp-ta-3"></div>
+            <div id="rsrp-ta-4"></div>
+            <div id="rsrp-ta-5"></div>
+            <div id="rsrp-ta-6"></div>
+            <div id="rsrp-ta-7"></div>
+            <div id="rsrp-ta-8"></div>
+            <div id="rsrp-ta-9"></div>
+            <div id="rsrp-ta-10"></div>
+            <div id="rsrp-ta-11"></div>
+        </div>
+        <div uib-tab index="2" heading="RSRP-SINRUL覆盖分析">
+            
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="ok()">OK</button>
+    <button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
+</div>

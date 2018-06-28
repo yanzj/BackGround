@@ -1,0 +1,97 @@
+﻿<div class="btn-group-sm col-md-4" uib-dropdown dropdown-append-to-body>
+    <button id="status-button" type="button" class="btn btn-sm btn-default"
+            uib-dropdown-toggle ng-disabled="disabled">
+        <strong>状态-{{status}}</strong>
+        <span class="caret"></span>
+    </button>
+    <ul uib-dropdown-menu role="menu" aria-labelledby="view-button">
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="changeStatus(0)">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+                很紧急
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="changeStatus(1)">
+                <i class="glyphicon glyphicon-tree-conifer"></i>
+                紧急
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="changeStatus(2)">
+                <i class="glyphicon glyphicon-flag"></i>
+                极重要
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="changeStatus(3)">
+                <i class="glyphicon glyphicon-flag"></i>
+                重要
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="changeStatus(4)">
+                <i class="glyphicon glyphicon-flag"></i>
+                一般
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="changeStatus(5)">
+                <i class="glyphicon glyphicon-flag"></i>
+                整治完成
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="changeStatus(6)">
+                <i class="glyphicon glyphicon-flag"></i>
+                全部
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="btn-group-sm col-md-4" uib-dropdown dropdown-append-to-body>
+    <button id="view-button" type="button" class="btn btn-sm btn-default"
+            uib-dropdown-toggle ng-disabled="disabled">
+        <strong>区域-{{distinct}}</strong>
+        <span class="caret"></span>
+    </button>
+    <ul uib-dropdown-menu role="menu" aria-labelledby="view-button">
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="changeDistinct(1)">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+                顺德区
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="changeDistinct(2)">
+                <i class="glyphicon glyphicon-tree-conifer"></i>
+                南海区
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="changeDistinct(3)">
+                <i class="glyphicon glyphicon-flag"></i>
+                禅城区
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="changeDistinct(4)">
+                <i class="glyphicon glyphicon-flag"></i>
+                三水区
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="changeDistinct(5)">
+                <i class="glyphicon glyphicon-flag"></i>
+                高明区
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="changeDistinct(0)">
+                <i class="glyphicon glyphicon-flag"></i>
+                佛山市
+            </a>
+        </li>
+    </ul>
+</div>

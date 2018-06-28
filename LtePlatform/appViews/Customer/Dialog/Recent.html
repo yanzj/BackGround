@@ -1,0 +1,22 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title text-primary">
+        {{city}}{{beginDate.value | date: 'yyyy-MM-dd'}}-{{endDate.value | date: 'yyyy-MM-dd'}}后端投诉需求工单
+    </h4>
+</div>
+
+<div class="modal-body">
+    <div date-span-row begin-date="beginDate" end-date="endDate">
+        <button class="btn btn-primary" ng-click="query()">
+            <i class="glyphicon glyphicon-search"></i>
+        </button>
+    </div>
+    <div complain-span-count-table stats="districtStats" begin-date="beginDate" end-date="endDate" data="data"></div>
+    <div complain-list items="data.complainList"></div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

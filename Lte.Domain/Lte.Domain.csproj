@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ADEEF82D-6389-47C4-8F7C-D7F85C01D64E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Lte.Domain</RootNamespace>
+    <AssemblyName>Lte.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Remotion.Data.Linq, Version=1.13.52.2, Culture=neutral, PublicKeyToken=8c59a1bf3e8d42c1, processorArchitecture=MSIL">
+      <HintPath>..\packages\Remotion.Data.Linq.1.0.0\lib\NET40\Remotion.Data.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\Types\BigEndianBinaryReader.cs" />
+    <Compile Include="Common\Wireless\TestTypeTuples.cs" />
+    <Compile Include="Common\ZhangshangyouQualityCsv.cs" />
+    <Compile Include="Excel\AlarmWorkItemExcel.cs" />
+    <Compile Include="Excel\BtsExcel.cs" />
+    <Compile Include="Common\Types\BitArrayInputStream.cs" />
+    <Compile Include="Common\Types\BtsExcelWithTownIdContainer.cs" />
+    <Compile Include="Excel\CdmaCellExcel.cs" />
+    <Compile Include="Excel\CdmaRegionStatExcel.cs" />
+    <Compile Include="Excel\CellExcel.cs" />
+    <Compile Include="Excel\ChoiceProblemExcel.cs" />
+    <Compile Include="Excel\ComplainExcel.cs" />
+    <Compile Include="Excel\ConstructionExcel.cs" />
+    <Compile Include="Common\Types\DwgDeleteView.cs" />
+    <Compile Include="Common\Types\BitMaskStream.cs" />
+    <Compile Include="Excel\CoverageStatExcel.cs" />
+    <Compile Include="Common\CqiHuaweiCsv.cs" />
+    <Compile Include="Excel\ENodebBaseExcel.cs" />
+    <Compile Include="Excel\ENodebExcel.cs" />
+    <Compile Include="Common\Types\DwgInfo.cs" />
+    <Compile Include="Common\Types\ENodebExcelWithTownIdContainer.cs" />
+    <Compile Include="Common\FlowHuaweiCsv.cs" />
+    <Compile Include="Common\FlowZteCsv.cs" />
+    <Compile Include="Common\Geo\GeoMath.cs" />
+    <Compile Include="Common\Geo\GeoPoint.cs" />
+    <Compile Include="Common\Geo\IGeoPoint.cs" />
+    <Compile Include="Common\Types\IBitArrayReader.cs" />
+    <Compile Include="Common\Types\NeighborCellZteCsv.cs" />
+    <Compile Include="Excel\HotSpotCellExcel.cs" />
+    <Compile Include="Common\Types\ICellAntenna.cs" />
+    <Compile Include="Excel\IndoorDistributionExcel.cs" />
+    <Compile Include="Common\NeighborCellHwCsv.cs" />
+    <Compile Include="Excel\OnlineSustainExcel.cs" />
+    <Compile Include="Excel\PlanningSiteExcel.cs" />
+    <Compile Include="Excel\PreciseCoverage4GCsv.cs" />
+    <Compile Include="Excel\StandarProblemExcel.cs" />
+    <Compile Include="Excel\StationAntennaExcel.cs" />
+    <Compile Include="Excel\StationDictionaryExcel.cs" />
+    <Compile Include="Excel\StationRruExcel.cs" />
+    <Compile Include="Common\Types\NewBtsListContainer.cs" />
+    <Compile Include="Common\Types\NewCdmaCellListContainer.cs" />
+    <Compile Include="Common\Types\NewCellListContainer.cs" />
+    <Compile Include="Common\Types\NewENodebListContainer.cs" />
+    <Compile Include="Common\Types\TextOperations.cs" />
+    <Compile Include="Excel\TopConnection2GExcel.cs" />
+    <Compile Include="Excel\TopConnection3GCellExcel.cs" />
+    <Compile Include="Excel\TopDrop2GCellExcel.cs" />
+    <Compile Include="Common\Types\TypeOperations.cs" />
+    <Compile Include="Common\Types\IBeginDate.cs" />
+    <Compile Include="Common\Types\SharedBtsIdTransform.cs" />
+    <Compile Include="Excel\VipDemandExcel.cs" />
+    <Compile Include="Common\Wireless\AlarmCategoryTuples.cs" />
+    <Compile Include="Common\Wireless\AlarmLevelTuples.cs" />
+    <Compile Include="Common\Wireless\AlarmTypeTuples.cs" />
+    <Compile Include="Common\Wireless\AntennaBeautyTuples.cs" />
+    <Compile Include="Common\Wireless\AntennaDefs.cs" />
+    <Compile Include="Common\Wireless\AntennaDirectionTuples.cs" />
+    <Compile Include="Common\Wireless\AntennaFactoryTuples.cs" />
+    <Compile Include="Common\Wireless\AntennaPolarTuples.cs" />
+    <Compile Include="Common\Wireless\AntennaPortsConfigureTuples.cs" />
+    <Compile Include="Common\Wireless\AntennaTypeTuples.cs" />
+    <Compile Include="Common\Wireless\BatteryTypeTuples.cs" />
+    <Compile Include="Common\Wireless\BondaryTypeTuples.cs" />
+    <Compile Include="Common\Wireless\CellCoverageTuples.cs" />
+    <Compile Include="Common\Wireless\CityDistrictQueries.cs" />
+    <Compile Include="Common\Wireless\CombinerFunctionTuples.cs" />
+    <Compile Include="Common\Wireless\ComplainCategoryTuples.cs" />
+    <Compile Include="Common\Wireless\ComplainReasonTuples.cs" />
+    <Compile Include="Common\Wireless\ComplainSceneTuples.cs" />
+    <Compile Include="Common\Wireless\ComplainSourceTuples.cs" />
+    <Compile Include="Common\Wireless\ComplainStateTuples.cs" />
+    <Compile Include="Common\Wireless\ComplainSubReasonTuples.cs" />
+    <Compile Include="Common\Wireless\CoverageAreaTuples.cs" />
+    <Compile Include="Common\Wireless\CoverageHotspotTuples.cs" />
+    <Compile Include="Common\Wireless\CoverageRoadTuples.cs" />
+    <Compile Include="Common\Wireless\CustomerDefs.cs" />
+    <Compile Include="Common\Wireless\CustomerTypeTuples.cs" />
+    <Compile Include="Common\Wireless\DemandLevelTuples.cs" />
+    <Compile Include="Common\Wireless\DistributionChannelTuples.cs" />
+    <Compile Include="Common\Wireless\DuplexingTuples.cs" />
+    <Compile Include="Common\Wireless\ElectricFunctionTuples.cs" />
+    <Compile Include="Common\Wireless\ElectricSourceTuples.cs" />
+    <Compile Include="Common\Wireless\ElectricTypeTuples.cs" />
+    <Compile Include="Common\Wireless\EmergencyStateTuples.cs" />
+    <Compile Include="Common\Wireless\ENodebClassTuples.cs" />
+    <Compile Include="Common\Wireless\ENodebFactoryTuples.cs" />
+    <Compile Include="Common\Wireless\ENodebTypeTuples.cs" />
+    <Compile Include="Common\Wireless\FrequencyBandQueries.cs" />
+    <Compile Include="Common\Wireless\CommonStructures.cs" />
+    <Compile Include="Common\Wireless\HotspotTypeTuples.cs" />
+    <Compile Include="Common\Wireless\ILteCellParameters.cs" />
+    <Compile Include="Common\Wireless\IndoorCategoryTuples.cs" />
+    <Compile Include="Common\Wireless\IndoorNetworkTuples.cs" />
+    <Compile Include="Common\Wireless\InfrastructureTypeTuples.cs" />
+    <Compile Include="Common\Wireless\MarketThemeTuples.cs" />
+    <Compile Include="Common\Wireless\NetworkTypeTuples.cs" />
+    <Compile Include="Common\Wireless\OldCombinerTuples.cs" />
+    <Compile Include="Common\Wireless\OmcStateTuples.cs" />
+    <Compile Include="Common\Wireless\OperatorTuples.cs" />
+    <Compile Include="Common\Wireless\OperatorUsageTuples.cs" />
+    <Compile Include="Common\Wireless\OrderCqiPolicy.cs" />
+    <Compile Include="Common\Wireless\OrderDownSwitchPolicy.cs" />
+    <Compile Include="Common\Wireless\OrderMrsRsrpPolicy.cs" />
+    <Compile Include="Common\Wireless\OrderPrbStatPolicy.cs" />
+    <Compile Include="Common\Wireless\OrderPreciseStatPolicy.cs" />
+    <Compile Include="Common\Wireless\OrderTopConnection3GPolicy.cs" />
+    <Compile Include="Common\Wireless\OrderTopDrop2GPolicy.cs" />
+    <Compile Include="Common\Wireless\OrderTopFlowPolicy.cs" />
+    <Compile Include="Common\Wireless\RemoteTypeTuples.cs" />
+    <Compile Include="Common\Wireless\ShareFunctionTuples.cs" />
+    <Compile Include="Common\Wireless\SolveFunctionTuples.cs" />
+    <Compile Include="Common\Wireless\TopCellContainer.cs" />
+    <Compile Include="Common\Wireless\TowerTypeTuples.cs" />
+    <Compile Include="Common\Wireless\VehicleTypeTuples.cs" />
+    <Compile Include="Common\Wireless\VipStateTuples.cs" />
+    <Compile Include="Common\Wireless\WirelessConstants.cs" />
+    <Compile Include="Common\Wireless\WirelessPublic.cs" />
+    <Compile Include="Common\Wireless\WorkItemCause.cs" />
+    <Compile Include="Common\Wireless\WorkItemState.cs" />
+    <Compile Include="Common\Wireless\WorkItemSubtype.cs" />
+    <Compile Include="Common\Wireless\WorkItemType.cs" />
+    <Compile Include="Excel\WorkItemExcel.cs" />
+    <Compile Include="LinqToCsv\AggregatedException.cs" />
+    <Compile Include="LinqToCsv\BadStreamException.cs" />
+    <Compile Include="LinqToCsv\Context\CsvContext.cs" />
+    <Compile Include="LinqToCsv\Context\FileDataAccess.cs" />
+    <Compile Include="LinqToCsv\Context\RowReader.cs" />
+    <Compile Include="LinqToCsv\CsvColumnAttribute.cs" />
+    <Compile Include="LinqToCsv\CsvColumnAttributeRequiredException.cs" />
+    <Compile Include="LinqToCsv\Description\DataRowItem.cs" />
+    <Compile Include="LinqToCsv\Description\IDataRow.cs" />
+    <Compile Include="LinqToCsv\DuplicateFieldIndexException.cs" />
+    <Compile Include="LinqToCsv\LinqToCsvException.cs" />
+    <Compile Include="LinqToCsv\MissingCsvColumnAttributeException.cs" />
+    <Compile Include="LinqToCsv\MissingFieldIndexException.cs" />
+    <Compile Include="LinqToCsv\MissingRequiredFieldException.cs" />
+    <Compile Include="LinqToCsv\NameNotInTypeException.cs" />
+    <Compile Include="LinqToCsv\RequiredButMissingFieldIndexException.cs" />
+    <Compile Include="LinqToCsv\StreamDef\CsvStream.cs" />
+    <Compile Include="LinqToCsv\StreamDef\CsvStreamBuffer.cs" />
+    <Compile Include="LinqToCsv\StreamDef\CsvStreamLine.cs" />
+    <Compile Include="LinqToCsv\Description\CsvFileDescription.cs" />
+    <Compile Include="LinqToCsv\Description\DataRow.cs" />
+    <Compile Include="LinqToCsv\Mapper\FieldIndexInfo.cs" />
+    <Compile Include="LinqToCsv\Mapper\FieldMapper.cs" />
+    <Compile Include="LinqToCsv\Mapper\FieldMapperReading.cs" />
+    <Compile Include="LinqToCsv\Mapper\TypeFieldInfo.cs" />
+    <Compile Include="LinqToCsv\ToBeWrittenButMissingFieldIndexException.cs" />
+    <Compile Include="LinqToCsv\TooManyDataFieldsException.cs" />
+    <Compile Include="LinqToCsv\TooManyNonCsvColumnDataFieldsException.cs" />
+    <Compile Include="LinqToCsv\WrongDataFormatException.cs" />
+    <Compile Include="LinqToCsv\WrongFieldIndexException.cs" />
+    <Compile Include="LinqToExcel\Entities\ExcelCell.cs" />
+    <Compile Include="LinqToExcel\Entities\ExcelQueryable.cs" />
+    <Compile Include="LinqToExcel\Entities\ExcelQueryConstructorArgs.cs" />
+    <Compile Include="LinqToExcel\Entities\ExcelRow.cs" />
+    <Compile Include="LinqToExcel\Entities\ExcelRowNoHeader.cs" />
+    <Compile Include="LinqToExcel\Entities\ProjectorBuildingExpressionTreeVisitor.cs" />
+    <Compile Include="LinqToExcel\Entities\ResultObjectMapping.cs" />
+    <Compile Include="LinqToExcel\Entities\SqlParts.cs" />
+    <Compile Include="LinqToExcel\Entities\StrictMappingException.cs" />
+    <Compile Include="LinqToExcel\Entities\StrictMappingType.cs" />
+    <Compile Include="LinqToExcel\Entities\TrimSpacesType.cs" />
+    <Compile Include="LinqToExcel\Service\CastService.cs" />
+    <Compile Include="LinqToExcel\Service\ExcelAttributesService.cs" />
+    <Compile Include="Lz4Net\Lz4CompressionStreamBase.cs" />
+    <Compile Include="Lz4Net\Lz4DecompressionStreamBase.cs" />
+    <Compile Include="Regular\AreaBoundaryView.cs" />
+    <Compile Include="Regular\Attributes\ArrayAverageAttribute.cs" />
+    <Compile Include="Regular\Attributes\ArrayMaxAttribute.cs" />
+    <Compile Include="Regular\Attributes\ArrayMinAttribute.cs" />
+    <Compile Include="Regular\Attributes\ArraySumProtectionAttribute.cs" />
+    <Compile Include="Regular\Attributes\CanBeNullAttribute.cs" />
+    <Compile Include="Regular\Attributes\ImplicitUseKindFlags.cs" />
+    <Compile Include="Regular\Attributes\ImplicitUseTargetFlags.cs" />
+    <Compile Include="Regular\Attributes\IncreaseNumberKpiAttribute.cs" />
+    <Compile Include="Regular\Attributes\MeansImplicitUseAttribute.cs" />
+    <Compile Include="Regular\Attributes\MemberDocAttribute.cs" />
+    <Compile Include="Regular\Attributes\NotNullAttribute.cs" />
+    <Compile Include="Regular\Attributes\TransformEnum.cs" />
+    <Compile Include="Regular\Attributes\UsedImplicitlyAttribute.cs" />
+    <Compile Include="Regular\IIpAddress.cs" />
+    <Compile Include="Regular\IOOperations.cs" />
+    <Compile Include="Regular\IpAddressOperations.cs" />
+    <Compile Include="Common\Types\IStatTime.cs" />
+    <Compile Include="Regular\RegexService.cs" />
+    <Compile Include="Regular\IpAddress.cs" />
+    <Compile Include="Lz4Net\Core\CoreHandlers.cs" />
+    <Compile Include="Lz4Net\Core\DirectoryEventArgs.cs" />
+    <Compile Include="Lz4Net\Core\ExtendedPathFilter.cs" />
+    <Compile Include="Lz4Net\Core\FileSystemScanner.cs" />
+    <Compile Include="Lz4Net\Core\INameTransform.cs" />
+    <Compile Include="Lz4Net\Core\IScanFilter.cs" />
+    <Compile Include="Lz4Net\Core\NameAndSizeFilter.cs" />
+    <Compile Include="Lz4Net\Core\NameFilter.cs" />
+    <Compile Include="Lz4Net\Core\PathFilter.cs" />
+    <Compile Include="Lz4Net\Core\ProgressEventArgs.cs" />
+    <Compile Include="Lz4Net\Core\ScanEventArgs.cs" />
+    <Compile Include="Lz4Net\Core\ScanFailureEventArgs.cs" />
+    <Compile Include="Lz4Net\Core\StreamUtils.cs" />
+    <Compile Include="Lz4Net\Core\WindowsPathUtils.cs" />
+    <Compile Include="Lz4Net\Encryption\ZipAESStream.cs" />
+    <Compile Include="Lz4Net\Encryption\ZipAESTransform.cs" />
+    <Compile Include="Lz4Net\ExtraZip\ExtraCompressStream.cs" />
+    <Compile Include="Lz4Net\ExtraZip\ExtraDecompressStream.cs" />
+    <Compile Include="Lz4Net\ExtraZip\Lz4File.cs" />
+    <Compile Include="Lz4Net\ExtraZip\Lz4Package.cs" />
+    <Compile Include="Lz4Net\ExtraZip\Lz4PackageEntry.cs" />
+    <Compile Include="Lz4Net\ExtraZip\LzEntryOutputStream.cs" />
+    <Compile Include="Lz4Net\Lz4.cs" />
+    <Compile Include="Lz4Net\Lz4CompressionStream.cs" />
+    <Compile Include="Lz4Net\Lz4DecompressionStream.cs" />
+    <Compile Include="Lz4Net\Lz4Mode.cs" />
+    <Compile Include="Regular\BigEndianBitConverter.cs" />
+    <Compile Include="Regular\Attributes\ColumnAttribute.cs" />
+    <Compile Include="Regular\Attributes\ExcelColumnAttribute.cs" />
+    <Compile Include="LinqToExcel\Entities\ExcelDatabaseEngine.cs" />
+    <Compile Include="LinqToExcel\Entities\ExcelQueryArgs.cs" />
+    <Compile Include="LinqToExcel\Entities\SqlGeneratorQueryModelVisitor.cs" />
+    <Compile Include="LinqToExcel\Entities\WhereClauseExpressionTreeVisitor.cs" />
+    <Compile Include="LinqToExcel\ExcelQueryFactory.cs" />
+    <Compile Include="LinqToExcel\IExcelQueryFactory.cs" />
+    <Compile Include="LinqToExcel\Service\ExcelCommonExtensions.cs" />
+    <Compile Include="LinqToExcel\Service\ExcelQueryExecutor.cs" />
+    <Compile Include="LinqToExcel\Service\ExcelUtilities.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Regular\HexOperations.cs" />
+    <Compile Include="Regular\LittleEndianBitConverter.cs" />
+    <Compile Include="Regular\SecureConversion.cs" />
+    <Compile Include="Regular\SecureValue.cs" />
+    <Compile Include="Regular\Attributes\TypeDocAttribute.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

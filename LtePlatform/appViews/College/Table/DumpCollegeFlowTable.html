@@ -1,0 +1,43 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body">
+    <div date-span-row begin-date="beginDate" end-date="endDate">
+        <button class="btn btn-success" ng-click="query()">
+            <i class="glyphicon glyphicon-search"></i>
+        </button>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>日期</th>
+                    <th>记录数</th>
+                    <th>详情</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="stat in stats">
+                    <td>{{stat.date | date: 'yyyy-MM-dd'}}</td>
+                    <td>{{stat.items.length}}</td>
+                    <td>
+                        <button class="btn btn-default" ng-disabled="!stat.items.length" 
+                                ng-click="showChart(stat.items)">流量分布</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-7">
+            <div id="collegeFlowChart" style="min-height: 600px"></div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

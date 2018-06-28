@@ -1,0 +1,15 @@
+﻿using System.Collections.Generic;
+using Abp.Domain.Repositories;
+using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Repositories;
+
+namespace Lte.MySqlFramework.Abstract
+{
+    public interface IEmergencyProcessRepository
+        : IRepository<EmergencyProcess>,
+            IMatchRepository<EmergencyProcess, EmergencyProcessDto>,
+            ISaveChanges
+    {
+        List<EmergencyProcess> GetAllList(int emergencyId);
+    }
+}

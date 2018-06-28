@@ -1,0 +1,75 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body">
+    <div class="row infoBoxContent">
+        <div class="col-md-4">
+            <div class="title">
+                <strong>CDMA基站基本信息: </strong>
+            </div>
+            <div class="list">
+                <ul>
+                    <li>
+                        <div class="left">基站编号</div>
+                        <div class="rmb">{{bts.btsId}}</div>
+                    </li>
+                    <li>
+                        <div class="left">基站名称</div>
+                        <div class="rmb">{{bts.name}}</div>
+                    </li>
+                    <li>
+                        <div class="left">经度</div>
+                        <div class="rmb">{{bts.longtitute}}</div>
+                    </li>
+                    <li>
+                        <div class="left">纬度</div>
+                        <div class="rmb">{{bts.lattitute}}</div>
+                    </li>
+                    <li>
+                        <div class="left">BSC</div>
+                        <div class="rmb">{{bts.bscId}}</div>
+                    </li>
+                    <li>
+                        <p>{{bts.address}}</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <table class="table table-hover">
+                <tbody>
+                <tr>
+                    <td>基站名称</td>
+                    <td>{{btsDetails.name}}</td>
+                    <td>基站编号</td>
+                    <td>{{btsDetails.btsId}}</td>
+                    <td>BSC编号</td>
+                    <td>{{btsDetails.bscId}}</td>
+                </tr>
+                <tr>
+                    <td>经度</td>
+                    <td>{{btsDetails.longtitute}}</td>
+                    <td>纬度</td>
+                    <td>{{btsDetails.lattitute}}</td>
+                    <td>区域</td>
+                    <td>{{btsDetails.districtName}}</td>
+                </tr>
+                <tr>
+                    <td>基站地址</td>
+                    <td colspan="4">{{btsDetails.address}}</td>
+                    <td ng-show="btsDetails.isInUse" style="color: green">在用</td>
+                    <td ng-show="!btsDetails.isInUse" style="color: gray">已消亡</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div cdma-cell-table items="cdmaCellList"></div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

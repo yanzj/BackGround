@@ -1,0 +1,60 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body ">
+    <form name="signup_form" novalidate class="form-horizontal">
+        <div class="form-group">
+            <label for="tester" class="col-sm-2 control-label">测试人员</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="tester" ng-model="item.tester" ng-required="true" form-field-error/>
+            </div>
+            <label for="place" class="col-sm-2 control-label">测试地点：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="place" ng-model="item.place" ng-required="true" form-field-error/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="downloadRate" class="col-sm-2 control-label">下载速率（kbps）：</label>
+            <div class="col-sm-4">
+                <input type="number" class="form-control" id="downloadRate" ng-model="item.downloadRate" ng-required="true" form-field-error/>
+            </div>
+            <label for="uploadRate" class="col-sm-2 control-label">上传速率（kbps）：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="uploadRate" ng-model="item.uploadRate" ng-required="true" form-field-error/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="accessUsers" class="col-sm-2 control-label">接入用户数：</label>
+            <div class="col-sm-2">
+                <input type="number" class="form-control" id="accessUsers" ng-model="item.accessUsers" ng-required="true" form-field-error/>
+            </div>
+            <label for="rsrp" class="col-sm-2 control-label">RSRP(dBm)：</label>
+            <div class="col-sm-2">
+                <input type="number" class="form-control" id="rsrp" ng-model="item.rsrp" ng-required="true" form-field-error/>
+            </div>
+            <label for="sinr" class="col-sm-2 control-label">SINR(dBm)：</label>
+            <div class="col-sm-2">
+                <input type="number" class="form-control" id="sinr" ng-model="item.sinr" ng-required="true" form-field-error/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="cellName" class="col-sm-2 control-label">小区选择：</label>
+            <div class="col-sm-4">
+                <select class="form-control" id="cellName" ng-model="cellName.selected" ng-options="c for c in cellName.options"></select>
+            </div>
+            <label class="col-sm-2 control-label">RRU信息：</label>
+            <div class="col-sm-4">
+                <span class="form-control" >{{rru.rruName}}({{rru.antennaModel}})</span>
+            </div>
+        </div>
+    </form>
+    <div date-span-row begin-date="beginDate" end-date="endDate"></div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" ng-click="matchCoverage()">匹配DT数据</button>
+    <button class="btn btn-warning" ng-click="ok()" ng-disabled="signup_form.$invalid">保存信息</button>
+    <button class="btn btn-default" type="button" ng-click="cancel()">放弃保存</button>
+</div>

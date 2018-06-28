@@ -1,0 +1,24 @@
+﻿<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>日期</th>
+            <th>下行PDCP层流量（MB）</th>
+            <th>上行行PDCP层流量（MB）</th>
+            <th>下行用户感知速率（Mbit/s）</th>
+            <th>上行用户感知速率（Mbit/s）</th>
+            <th>双流比（%）</th>
+            <th>下切3G次数</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="flow in feelingList | orderBy: 'statTime'">
+            <td>{{flow.statTime | date: 'yyyy-MM-dd'}}</td>
+            <td>{{(flow.pdcpDownlinkFlow / 8) | number: 2}}</td>
+            <td>{{(flow.pdcpUplinkFlow / 8) | number: 2}}</td>
+            <td>{{flow.downlinkFeelingRate | number: 2}}</td>
+            <td>{{flow.uplinkFeelingRate | number: 2}}</td>
+            <td>{{flow.rank2Rate | number: 2}}</td>
+            <td>{{flow.redirectCdma2000}}</td>
+        </tr>
+    </tbody>
+</table>

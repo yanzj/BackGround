@@ -1,0 +1,117 @@
+using System.Collections.Generic;
+using System.Linq;
+using Abp.EntityFramework.AutoMapper;
+using Abp.EntityFramework.Entities;
+using Lte.Domain.Common.Geo;
+using Lte.Domain.Regular;
+using Lte.MySqlFramework.Abstract;
+
+namespace Lte.Evaluations.DataService.Mr
+{
+    public class GridClusterService
+    {
+        private readonly IGridClusterRepository _repository;
+        private readonly IMrGridKpiRepository _kpiRepository;
+
+        public GridClusterService(IGridClusterRepository repository, IMrGridKpiRepository kpiRepository)
+        {
+            _repository = repository;
+            _kpiRepository = kpiRepository;
+        }
+
+        public IEnumerable<GridClusterView> QueryClusterViews(string theme)
+        {
+            return
+                _repository.GetAllList(x => x.Theme == theme)
+                    .GroupBy(x => x.ClusterNumber)
+                    .Select(g => new GridClusterView
+                    {
+                        ClusterNumber = g.Key,
+                        Theme = theme,
+                        GridPoints = g.Select(x => new GeoGridPoint
+                        {
+                            X = x.X,
+                            Y = x.Y
+                        })
+                    });
+        }
+
+        public IEnumerable<GridClusterView> QueryClusterViews(string theme, double west, double east, double south, double north)
+        {
+            var westX = (int) ((west - 112)/0.00049);
+            var eastX = (int) ((east - 112)/0.00049);
+            var southY = (int) ((south - 22)/0.00045);
+            var northY = (int) ((north - 22)/0.00045);
+            return
+                _repository.GetAllList(x => x.Theme == theme
+                                            && x.X >= westX && x.X < eastX && x.Y >= southY && x.Y < northY)
+                    .GroupBy(x => x.ClusterNumber)
+                    .Where(g => g.Count() > 4)
+                    .Select(g => new GridClusterView
+                    {
+                        ClusterNumber = g.Key,
+                        Theme = theme,
+                        GridPoints = g.Select(x => new GeoGridPoint
+                        {
+                            X = x.X,
+                            Y = x.Y
+                        })
+                    });
+        } 
+
+        public IEnumerable<MrGridKpiDto> QueryKpiDtos(IEnumerable<GeoGridPoint> points)
+        {
+            var stats =
+                points.Select(point => _kpiRepository.FirstOrDefault(t => t.X == point.X && t.Y == point.Y))
+                    .Where(stat => stat != null)
+                    .ToList();
+            return stats.MapTo<IEnumerable<MrGridKpiDto>>();
+        }
+
+        public MrGridKpiDto QueryClusterKpi(IEnumerable<GeoGridPoint> points)
+        {
+            var stats =
+                points.Select(point => _kpiRepository.FirstOrDefault(t => t.X == point.X && t.Y == point.Y))
+                    .Where(stat => stat != null)
+                    .ToList();
+            var result = stats.Average().MapTo<MrGridKpiDto>();
+            var filter = stats.Where(x => x.Rsrp < -110).ToList();
+            if (filter.Any())
+            {
+                var distance = filter.Max(x => x.ShortestDistance);
+                var candidate = filter.FirstOrDefault(x => x.ShortestDistance == distance);
+                if (candidate != null)
+                {
+                    result.X = candidate.X;
+                    result.Y = candidate.Y;
+                    return result;
+                }
+            }
+            filter = stats.Where(x => x.Rsrp < -105).ToList();
+            if (filter.Any())
+            {
+                var distance = filter.Max(x => x.ShortestDistance);
+                var candidate = filter.FirstOrDefault(x => x.ShortestDistance == distance);
+                if (candidate != null)
+                {
+                    result.X = candidate.X;
+                    result.Y = candidate.Y;
+                    return result;
+                }
+            }
+            filter = stats;
+            if (filter.Any())
+            {
+                var distance = filter.Max(x => x.ShortestDistance);
+                var candidate = filter.FirstOrDefault(x => x.ShortestDistance == distance);
+                if (candidate != null)
+                {
+                    result.X = candidate.X;
+                    result.Y = candidate.Y;
+                    return result;
+                }
+            }
+            return result;
+        }
+    }
+}

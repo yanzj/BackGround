@@ -1,0 +1,36 @@
+﻿<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>邻区PCI</th>
+			<th>0&le;TA<br />&lt;2</th>
+			<th>2&le;TA<br />&lt;4</th>
+			<th>4&le;TA<br />&lt;6</th>
+			<th>6&le;TA<br />&lt;8</th>
+			<th>8&le;TA<br />&lt;10</th>
+			<th>10&le;TA<br />&lt;13</th>
+			<th>13&le;TA<br />&lt;16</th>
+			<th>16&le;TA<br />&lt;20</th>
+			<th>20&le;TA<br />&lt;25</th>
+			<th>25&le;TA<br />&lt;30</th>
+			<th>30&le;TA<br />&lt;40</th>
+			<th>TA&ge;40</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="detail in currentDetails">
+			<td>{{detail.neighborPci}}</td>
+			<td>{{detail.ta0or1}}</td>
+			<td>{{detail.ta2or3}}</td>
+			<td>{{detail.ta4or5}}</td>
+			<td>{{detail.ta6or7}}</td>
+			<td>{{detail.ta8or9}}</td>
+			<td>{{detail.ta10to12}}</td>
+			<td>{{detail.ta13to15}}</td>
+			<td>{{detail.ta16to19}}</td>
+			<td>{{detail.ta20to24}}</td>
+			<td>{{detail.ta25to29}}</td>
+			<td>{{detail.ta30to39}}</td>
+			<td>{{detail.taAbove40}}</td>
+		</tr>
+	</tbody>
+</table>

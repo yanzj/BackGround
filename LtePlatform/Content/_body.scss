@@ -1,0 +1,45 @@
+﻿@import "themes/_colors.scss";
+
+body {
+    padding-top: 70px;
+    padding-bottom: 20px;
+    font-size: 12px;
+
+    .content{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+.navbar-blue-azure {
+    background-color: $color-blue-azure;
+    border-color: $color-blue-azure;
+    background-image: linear-gradient(to bottom,$color-half-gray 0,$color-blue-azure 100%);
+    background-repeat: repeat-x;    
+}
+
+.nav-navbar-list>li>a {
+    color: $color-all-white;
+    &:hover {
+        background-color: $color-dark-gray;
+    }
+}
+
+ul {
+    &.nav-navbar-list .open>a.dropdown-toggle {
+        background-color: $color-dark-gray;
+    }
+}
+
+.dropdown-menu-blue-azure {
+    background-color: $color-blue-azure;
+    border-color: $color-blue-azure;
+    li>a {
+        color: $color-all-white;
+    }    
+}
+
+.modal-content .form-horizontal{
+    padding-left: 5px;
+    padding-right: 5px;
+}

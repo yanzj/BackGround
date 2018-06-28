@@ -1,0 +1,33 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body form-horizontal">
+    <div uib-tabset>
+        <div uib-tab index="0" heading="RRC指标">
+            <div plan-site-details item-groups="rrcGroups"></div>
+        </div>
+        <div uib-tab index="1" heading="流量指标">
+            <div plan-site-details item-groups="itemGroups"></div>
+        </div>
+    </div>
+
+    <div uib-tabset>
+        <div uib-tab index="2" heading="RRC连接请求次数">
+            <div id="rrcRequestChart"></div>
+        </div>
+        <div uib-tab index="3" heading="RRC连接失败次数">
+            <div id="rrcFailChart"></div>
+        </div>
+        <div uib-tab index="4" heading="RRC连接成功率">
+            <div id="rrcRateChart"></div>
+        </div>
+        <div uib-tab index="5" heading="流量统计">
+            <div id="flowChart"></div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="ok()">保存信息</button>
+    <button class="btn btn-default" type="button" ng-click="cancel()">放弃保存</button>
+</div>

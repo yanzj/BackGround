@@ -1,0 +1,48 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body">
+    <div style="min-height: 400px" id="rightChart">
+        <img ng-click="hidePic()" id="oImg" src="{{url}}" style="display:none;position:absolute;top:10%;left:0;width:100%" />
+        <select ng-init="selectDistinct=distincts[0]" ng-model="selectDistinct" ng-options="distinct for distinct in distincts"></select>
+        <button ng-click="search()">查询</button>
+        <button ng-click="addAssessment()">添加评分</button>
+        <br>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>服务区域</td>
+                    <td>考核周期</td>
+                    <td>考核日期</td>
+                    <td>服务商</td>
+                    <td coslpan ="7">操作</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="assessment in assessmentList">
+                    <td>{{assessment.areaname}}</td>
+                    <td>{{assessment.cycle}}</td>
+                    <td>{{assessment.markdate}}</td>
+                    <td>{{assessment.service}}</td>
+                    <td><a href="javascript:void(0);" ng-click="details(assessment.id)">查看</a></td>
+                    <td><a href="javascript:void(0);" ng-click="edit(assessment.id)">编辑</a></td>
+                    <td><a href="javascript:void(0);" ng-click="download(assessment.id)">下载</a></td>
+                    <td><input type="file" ng-file-select="onFileSelect($files)" accept="image/*"></td>
+                    <td><a href="javascript:void(0);" ng-click="upload(assessment.id)">上传附件</a></td>
+                    <td><a href="javascript:void(0);" ng-click="showPic(assessment.path)">查看附件</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <button ng-click="firstPage()">首页</button>
+        <button ng-click="prevPage()">上一页</button>
+        当前页：<input min="1" step="1" ng-model="page" type="number">
+        <button ng-click="jumpPage(page)">跳转</button>
+        <button ng-click="nextPage()">下一页</button>
+        <button ng-click="lastPage()">尾页</button>
+        共 {{totolPage}} 页 {{records}} 条记录
+    </div>
+</div>

@@ -1,0 +1,18 @@
+﻿<div class="btn-group" uib-dropdown dropdown-append-to-body>
+    <button id="single-button" type="button" class="btn btn-default"
+            uib-dropdown-toggle ng-disabled="disabled">
+        <strong>{{menuItem.displayName}}</strong> 
+        <span class="caret"></span>
+    </button>
+    <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
+        <li role="menuitem" ng-repeat="subItem in menuItem.subItems">
+            <a ng-show="!subItem.tooltip" ng-href="{{subItem.url}}">
+                {{subItem.displayName}}
+            </a>
+            <a ng-show="subItem.tooltip" ng-href="{{subItem.url}}"
+               uib-tooltip="{{subItem.tooltip}}" tooltip-class="customClass" tooltip-placement="bottom">
+                {{subItem.displayName}}
+            </a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,91 @@
+﻿<div class="btn-group-sm col-md-4" uib-dropdown dropdown-append-to-body>
+    <button id="single-button" type="button" class="btn btn-sm btn-default"
+            uib-dropdown-toggle ng-disabled="disabled">
+        <strong>流量经营</strong>
+        <span class="caret"></span>
+    </button>
+    <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showFlow()">
+                <i class="glyphicon glyphicon-flag"></i>
+                流量分布
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showFlowTrend()">
+                <i class="glyphicon glyphicon-apple"></i>
+                流量趋势
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showUsersTrend()">
+                <i class="glyphicon glyphicon-barcode"></i>
+                用户数趋势
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showFeelingRateTrend()">
+                <i class="glyphicon glyphicon-barcode"></i>
+                感知速率趋势
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showDownSwitchTrend()">
+                <i class="glyphicon glyphicon-barcode"></i>
+                下切次数趋势
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showRank2RateTrend()">
+                <i class="glyphicon glyphicon-barcode"></i>
+                双流比趋势
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="btn-group-sm col-md-4" uib-dropdown dropdown-append-to-body>
+    <button id="view-button" type="button" class="btn btn-sm btn-default"
+            uib-dropdown-toggle ng-disabled="disabled">
+        <strong>{{frequencyOption=='all'?'全部':frequencyOption+'M'}}-{{currentView}}</strong>
+        <span class="caret"></span>
+    </button>
+    <ul uib-dropdown-menu role="menu" aria-labelledby="view-button">
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showFeelingRate()" ng-disabled="calculating">
+                <i class="glyphicon glyphicon-download"></i>
+                下行感知速率
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showUplinkFeelingRate()" ng-disabled="calculating">
+                <i class="glyphicon glyphicon-upload"></i>
+                上行感知速率
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-default" ng-click="displayAllFrequency()" ng-disabled="calculating">
+                全部频点
+                <i class="glyphicon glyphicon-check" ng-if="frequencyOption==='all'"></i>
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-default" ng-click="display1800Frequency()" ng-disabled="calculating">
+                1800频段
+                <i class="glyphicon glyphicon-check" ng-if="frequencyOption==='1800'"></i>
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-default" ng-click="display2100Frequency()" ng-disabled="calculating">
+                2100频段
+                <i class="glyphicon glyphicon-check" ng-if="frequencyOption==='2100'"></i>
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-default" ng-click="display800Frequency()" ng-disabled="calculating">
+                800M频段（不含NB-IoT）
+                <i class="glyphicon glyphicon-check" ng-if="frequencyOption==='800'"></i>
+            </a>
+        </li>
+    </ul>
+</div>

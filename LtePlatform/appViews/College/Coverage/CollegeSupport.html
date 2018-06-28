@@ -1,0 +1,38 @@
+﻿<h3 class="text-primary">支撑保障项目名称：{{item.projectName}}</h3>
+<div vip-demand-info item="item"></div>
+<div class="panel panel-teal">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            处理记录
+        </h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <label>当前状态：</label>
+                    <div vip-process-state state="item.currentStateDescription"></div>
+                    <label>下一状态：</label>
+                    <div vip-process-state state="item.nextStateDescription"></div>
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-default" ng-click="construct3GTest()">安排3G测试</button>
+                    <button class="btn btn-default" ng-click="construct4GTest()">安排4G测试</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label>处理信息：</label>
+                <div class="input-group">
+                    <input type="text" ng-model="processInfo" class="form-control" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary" ng-click="createProcess()" 
+                                ng-disabled="!item.nextStateDescription || ((!processItems[processItems.length - 1].processInfo) && processItems.length > 0)">
+                            生成流程
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div vip-process-list items="processItems" college-name="item.area" query="queryProcessList()"></div>
+    </div>
+</div>

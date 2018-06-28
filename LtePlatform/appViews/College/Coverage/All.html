@@ -1,0 +1,16 @@
+﻿<div class="modal-header modal-header-orange-dark">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div date-span-row begin-date="beginDate" end-date="endDate">
+    <button type="button" class="btn btn-primary" ng-click="query()">
+        <i class="glyphicon glyphicon-search" title="统计干扰"></i>查询
+    </button>
+</div>
+<div college-dt-list colleges="dtInfos"></div>
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

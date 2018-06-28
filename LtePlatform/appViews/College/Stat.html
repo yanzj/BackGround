@@ -1,0 +1,36 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body">
+    <div class="input-group">
+        <select ng-model="collegeName" ng-options="c as c for c in collegeInfo.names" class="form-control"></select>
+        <div class="input-group-btn">
+            <button class="btn btn-primary" ng-click="addOneCollegeMarkerInfo()" ng-disabled="collegeExisted">添加信息</button>
+            <button class="btn btn-success" ng-click="createNewCollege()">增加新校园</button>
+        </div>
+    </div>
+    <div class="panel panel-blue">
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-stats"></span>
+            基本信息
+        </div>
+        <div class="panel-body">
+            <div college-info-list colleges="collegeYearList"></div>
+        </div>
+    </div>
+    <div class="panel panel-orange">
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-apple"></span>
+            基础统计信息
+        </div>
+        <div class="panel-body">
+            <div college-stat-table college-list="collegeList"></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="ok()">保存信息</button>
+    <button class="btn btn-default" type="button" ng-click="cancel()">放弃保存</button>
+</div>

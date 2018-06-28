@@ -1,0 +1,19 @@
+﻿<div class="row">
+    <div class="col-md-6">
+        <div date-span-column begin-date="beginDate" end-date="endDate"></div>
+    </div>
+    <div class="col-md-6">
+        <div city-district-selection city="city" district="district"></div>
+        <label>类型选择：</label>
+        <div class="input-group">
+            <select class="form-control" ng-model="type.selected" ng-options="c as c for c in type.options"></select>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-success" ng-click="query()">
+                    <i class="glyphicon glyphicon-stats" title="统计数据"></i>
+                    统计数据
+                </button>
+            </span>
+        </div>
+    </div>
+</div>
+<div online-list items="items" root-path="rootPath"></div>

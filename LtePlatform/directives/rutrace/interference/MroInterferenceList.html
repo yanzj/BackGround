@@ -1,0 +1,30 @@
+﻿<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>邻区PCI</th>
+            <th>邻区频点</th>
+            <th>强干扰</th>
+            <th>0-3dB干扰数</th>
+            <th>3-6dB干扰数</th>
+            <th>6-9dB干扰数</th>
+            <th>9-12dB干扰数</th>
+            <th>弱干扰</th>
+            <th>模3干扰</th>
+            <th>模6干扰</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="detail in currentDetails">
+            <td>{{detail.neighborPci}}</td>
+            <td>{{detail.neighborEarfcn}}</td>
+            <td>{{detail.diff0}}</td>
+            <td>{{detail.diff3}}</td>
+            <td>{{detail.diff6}}</td>
+            <td>{{detail.diff9}}</td>
+            <td>{{detail.diff12}}</td>
+            <td>{{detail.diffLarge}}</td>
+            <td>{{detail.pci%3==detail.neighborPci%3?"是":"否"}}</td>
+            <td>{{detail.pci%6==detail.neighborPci%6?"是":"否"}}</td>
+        </tr>
+    </tbody>
+</table>

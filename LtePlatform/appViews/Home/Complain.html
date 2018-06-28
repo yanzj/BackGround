@@ -1,0 +1,61 @@
+﻿<div class="btn-group-sm col-md-4" uib-dropdown dropdown-append-to-body>
+	<button id="single-button" type="button" class="btn btn-sm btn-default"
+			uib-dropdown-toggle ng-disabled="disabled">
+		<strong>后端工单统计</strong>
+		<span class="caret"></span>
+	</button>
+	<ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
+		<li role="menuitem">
+			<a class="btn btn-sm btn-warning" ng-click="showYesterdayItems()">
+				<i class="glyphicon glyphicon-fullscreen"></i>
+				昨日指标
+			</a>
+		</li>
+		<li role="menuitem">
+			<a class="btn btn-sm btn-warning" ng-click="showRecentTrend()">
+				<i class="glyphicon glyphicon-fullscreen"></i>
+				近日趋势
+			</a>
+		</li>
+		<li role="menuitem">
+			<a class="btn btn-sm btn-success" ng-click="showMonthlyTrend()">
+				<i class="glyphicon glyphicon-tree-conifer"></i>
+				月度统计
+			</a>
+		</li>
+		<li role="menuitem">
+			<a class="btn btn-sm btn-success" ng-click="positionModify()">
+				<i class="glyphicon glyphicon-flag"></i>
+				经纬度规整
+			</a>
+		</li>
+	</ul>
+</div>
+
+<div class="btn-group-sm col-md-4" uib-dropdown dropdown-append-to-body>
+	<button id="view-button" type="button" class="btn btn-sm btn-default"
+			uib-dropdown-toggle ng-disabled="disabled">
+		<strong>视图-{{currentView}}</strong>
+		<span class="caret"></span>
+	</button>
+	<ul uib-dropdown-menu role="menu" aria-labelledby="view-button">
+		<li role="menuitem">
+			<a class="btn btn-sm btn-success" href="" ng-click="showOssWorkItem()">
+				<i class="glyphicon glyphicon-fullscreen"></i>
+				电子运维工单
+			</a>
+		</li>
+		<li role="menuitem">
+			<a class="btn btn-sm btn-success" href="" ng-click="showDangerousWorkItem()">
+				<i class="glyphicon glyphicon-tree-conifer"></i>
+				越级投诉
+			</a>
+		</li>
+		<li role="menuitem">
+			<a class="btn btn-sm btn-success" href="" ng-click="showBackWorkItem()">
+				<i class="glyphicon glyphicon-flag"></i>
+				后端工单
+			</a>
+		</li>
+	</ul>
+</div>

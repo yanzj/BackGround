@@ -1,0 +1,1500 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A8BDC65F-5637-4C4E-8530-FCB7B97CDE48}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LtePlatform</RootNamespace>
+    <AssemblyName>LtePlatform</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
+    <IsCompassProject>True</IsCompassProject>
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Abp, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Abp.2.3.0\lib\net46\Abp.dll</HintPath>
+    </Reference>
+    <Reference Include="Abp.EntityFramework, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Abp.EntityFramework.2.3.0\lib\net46\Abp.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Abp.EntityFramework.Common, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Abp.EntityFramework.Common.2.3.0\lib\net46\Abp.EntityFramework.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.Logging, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.LoggingFacility.4.0.0\lib\net45\Castle.Facilities.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Windsor.4.0.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="dotMemory.Unit, Version=109.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.dotMemoryUnit.2.4.20170830.172630\lib\dotMemory.Unit.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.DynamicFilters, Version=2.10.0.0, Culture=neutral, PublicKeyToken=146423a1b8d60775, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.DynamicFilters.2.10.0\lib\net40\EntityFramework.DynamicFilters.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Annotations, Version=11.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.11.0.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Edm.5.7.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.OData.5.7.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.10.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.10.7\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.10.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.10.7\lib\net452\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nito.AsyncEx, Version=4.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nito.AsyncEx.4.0.1\lib\net45\Nito.AsyncEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Concurrent, Version=4.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nito.AsyncEx.4.0.1\lib\net45\Nito.AsyncEx.Concurrent.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Enlightenment, Version=4.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nito.AsyncEx.4.0.1\lib\net45\Nito.AsyncEx.Enlightenment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Data.Linq, Version=1.13.52.2, Culture=neutral, PublicKeyToken=8c59a1bf3e8d42c1, processorArchitecture=MSIL">
+      <HintPath>..\packages\Remotion.Data.Linq.1.0.0\lib\NET40\Remotion.Data.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Collections.Immutable.1.5.0\lib\netstandard1.3\System.Collections.Immutable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Linq.Dynamic.Core, Version=0.0.0.0, Culture=neutral, PublicKeyToken=0f07ec44de6ac832, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.Core.1.0.7.6\lib\net46\System.Linq.Dynamic.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Spatial, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Spatial.5.7.0\lib\net40\System.Spatial.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.OData, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.5.7.0\lib\net45\System.Web.Http.OData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\ApplicationRoleManager.cs" />
+    <Compile Include="App_Start\ApplicationUserManager.cs" />
+    <Compile Include="App_Start\AutoMapperWebConfiguration.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\KernelBindingOpertions.cs" />
+    <Compile Include="App_Start\NinjectControllerFactory.cs" />
+    <Compile Include="App_Start\NinjectDependencyResolver.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\UserContextConfiguration.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
+    <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
+    <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
+    <Compile Include="Controllers\Kpi\AlarmWorkItemController.cs" />
+    <Compile Include="Controllers\Kpi\CellAlarmWorkItemController.cs" />
+    <Compile Include="Controllers\Kpi\ENodebAlarmWorkItemController.cs" />
+    <Compile Include="Controllers\Kpi\MonthAlarmProcessTrendController.cs" />
+    <Compile Include="Controllers\Kpi\MonthAlarmWorkTrendController.cs" />
+    <Compile Include="Controllers\Kpi\MonthAverageAlarmsTrendController.cs" />
+    <Compile Include="Controllers\Kpi\MonthComplainsTrendController.cs" />
+    <Compile Include="Controllers\Kpi\MonthDropTrendController.cs" />
+    <Compile Include="Controllers\Kpi\MonthFlow4GTo3GTrendController.cs" />
+    <Compile Include="Controllers\Kpi\MonthGongxinTrendController.cs" />
+    <Compile Include="Controllers\Kpi\MonthMaintainProjectTrendController.cs" />
+    <Compile Include="Controllers\Kpi\MonthPreciseTrendController.cs" />
+    <Compile Include="Controllers\Kpi\MonthYuejiTrendController.cs" />
+    <Compile Include="Controllers\Mongo\UplinkOpenLoopPowerControlController.cs" />
+    <Compile Include="Controllers\Parameters\StationAntennaQueryController.cs" />
+    <Compile Include="Controllers\Parameters\StationCellController.cs" />
+    <Compile Include="Controllers\Parameters\StationDistributionQueryController.cs" />
+    <Compile Include="Controllers\Parameters\StationENodebQueryController.cs" />
+    <Compile Include="Controllers\Parameters\StationInfoQueryController.cs" />
+    <Compile Include="Controllers\Parameters\StationRruQueryController.cs" />
+    <Compile Include="Models\CollectionModelDescription.cs" />
+    <Compile Include="Models\CollectionModelProvider.cs" />
+    <Compile Include="Models\ComplexModelProvider.cs" />
+    <Compile Include="Models\ComplexTypeModelDescription.cs" />
+    <Compile Include="Models\EnumModelProvider.cs" />
+    <Compile Include="Models\EnumTypeModelDescription.cs" />
+    <Compile Include="Models\EnumValueDescription.cs" />
+    <Compile Include="Models\IModelDocumentationProvider.cs" />
+    <Compile Include="Models\KeyValuePairModelDescription.cs" />
+    <Compile Include="Models\ModelDescription.cs" />
+    <Compile Include="Models\ModelDescriptionGenerator.cs" />
+    <Compile Include="Models\ModelNameAttribute.cs" />
+    <Compile Include="Models\ModelNameHelper.cs" />
+    <Compile Include="Models\ParameterAnnotation.cs" />
+    <Compile Include="Models\ParameterDescription.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleKey.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ImageSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\InvalidSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ObjectGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
+    <Compile Include="Areas\TestPage\Controllers\AngularTestController.cs" />
+    <Compile Include="Areas\TestPage\Controllers\SimpleTypeTestSumController.cs" />
+    <Compile Include="Areas\TestPage\Controllers\TestPostOriginENodebsController.cs" />
+    <Compile Include="Areas\TestPage\Models\SimpleTypeClass.cs" />
+    <Compile Include="Areas\TestPage\TestPageAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Account\ApplicationRolesController.cs" />
+    <Compile Include="Controllers\Account\ApplicationUsersController.cs" />
+    <Compile Include="Controllers\Account\CreateRoleController.cs" />
+    <Compile Include="Controllers\Account\CurrentUserNameController.cs" />
+    <Compile Include="Controllers\Account\DeleteRoleController.cs" />
+    <Compile Include="Controllers\Account\ManageRolesController.cs" />
+    <Compile Include="Controllers\Account\ManageUsersController.cs" />
+    <Compile Include="Controllers\Account\CurrentUserController.cs" />
+    <Compile Include="Controllers\Account\UserRecordController.cs" />
+    <Compile Include="Controllers\AdminitrativeRegion\AreaBoundaryController.cs" />
+    <Compile Include="Controllers\AdminitrativeRegion\CityListController.cs" />
+    <Compile Include="Controllers\AdminitrativeRegion\DistrictBandCellsController.cs" />
+    <Compile Include="Controllers\AdminitrativeRegion\DistrictIndoorCellsController.cs" />
+    <Compile Include="Controllers\AdminitrativeRegion\LteProblemController.cs" />
+    <Compile Include="Controllers\AdminitrativeRegion\RegionStatsController.cs" />
+    <Compile Include="Controllers\AdminitrativeRegion\TownBoundaryController.cs" />
+    <Compile Include="Controllers\AdminitrativeRegion\TownController.cs" />
+    <Compile Include="Controllers\College\BranchDemandController.cs" />
+    <Compile Include="Controllers\College\College4GTestController.cs" />
+    <Compile Include="Controllers\College\CollegeAlarmController.cs" />
+    <Compile Include="Controllers\College\CollegeBtssController.cs" />
+    <Compile Include="Controllers\College\CollegeCdmaCellContainerController.cs" />
+    <Compile Include="Controllers\College\CollegeCdmaCellsController.cs" />
+    <Compile Include="Controllers\College\CollegeCdmaDistributionsController.cs" />
+    <Compile Include="Controllers\College\CollegeCellContainerController.cs" />
+    <Compile Include="Controllers\College\CollegeCellsController.cs" />
+    <Compile Include="Controllers\College\CollegeENodebController.cs" />
+    <Compile Include="Controllers\College\CollegeLteDistributionsController.cs" />
+    <Compile Include="Controllers\College\CollegeNameController.cs" />
+    <Compile Include="Controllers\College\CollegeNamesController.cs" />
+    <Compile Include="Controllers\College\CollegePreciseController.cs" />
+    <Compile Include="Controllers\College\CollegeRangeController.cs" />
+    <Compile Include="Controllers\College\CollegeRegionController.cs" />
+    <Compile Include="Controllers\College\CollegeStatController.cs" />
+    <Compile Include="Controllers\College\College3GTestController.cs" />
+    <Compile Include="Controllers\College\CollegeYearController.cs" />
+    <Compile Include="Controllers\College\ComplainDateController.cs" />
+    <Compile Include="Controllers\College\ComplainPositionController.cs" />
+    <Compile Include="Controllers\College\ComplainQueryController.cs" />
+    <Compile Include="Controllers\College\ComplainTrendController.cs" />
+    <Compile Include="Controllers\College\EmergencyCommunicationController.cs" />
+    <Compile Include="Controllers\College\EmergencyFiberController.cs" />
+    <Compile Include="Controllers\College\EmergencyProcessController.cs" />
+    <Compile Include="Controllers\College\HotSpotCellsController.cs" />
+    <Compile Include="Controllers\College\HotSpotSectorsController.cs" />
+    <Compile Include="Controllers\College\HotSpotController.cs" />
+    <Compile Include="Controllers\College\CollegeQueryController.cs" />
+    <Compile Include="Controllers\College\MicroAmplifierController.cs" />
+    <Compile Include="Controllers\College\OnlineSustainController.cs" />
+    <Compile Include="Controllers\College\SustainCountController.cs" />
+    <Compile Include="Controllers\College\VipDemandController.cs" />
+    <Compile Include="Controllers\College\VipProcessController.cs" />
+    <Compile Include="Controllers\Dt\AreaTestDateController.cs" />
+    <Compile Include="Controllers\Dt\CsvFileInfoController.cs" />
+    <Compile Include="Controllers\Dt\RasterFileController.cs" />
+    <Compile Include="Controllers\Dt\Record2GController.cs" />
+    <Compile Include="Controllers\Dt\Record2GDetailsController.cs" />
+    <Compile Include="Controllers\Dt\Record3GController.cs" />
+    <Compile Include="Controllers\Dt\Record3GDetailsController.cs" />
+    <Compile Include="Controllers\Dt\Record4GController.cs" />
+    <Compile Include="Controllers\Dt\Record4GDetailsController.cs" />
+    <Compile Include="Controllers\Dt\AgisDtPointsController.cs" />
+    <Compile Include="Controllers\Dt\RecordVolteController.cs" />
+    <Compile Include="Controllers\Dt\RoadTestInfoController.cs" />
+    <Compile Include="Controllers\Dt\TownTestInfoController.cs" />
+    <Compile Include="Controllers\Dt\TownTypeTestInfoController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JasmineController.cs" />
+    <Compile Include="Controllers\KpiController.cs" />
+    <Compile Include="Controllers\Kpi\AlarmCountController.cs" />
+    <Compile Include="Controllers\Kpi\AlarmsController.cs" />
+    <Compile Include="Controllers\Kpi\CellFlowController.cs" />
+    <Compile Include="Controllers\Kpi\CollegeFlowController.cs" />
+    <Compile Include="Controllers\Kpi\CoverageRegionController.cs" />
+    <Compile Include="Controllers\Kpi\CqiQueryController.cs" />
+    <Compile Include="Controllers\Kpi\CqiRegionController.cs" />
+    <Compile Include="Controllers\Kpi\CqiReportController.cs" />
+    <Compile Include="Controllers\Kpi\DumpFlowController.cs" />
+    <Compile Include="Controllers\Kpi\DumpHuaweiCqiController.cs" />
+    <Compile Include="Controllers\Kpi\DumpHuaweiFlowController.cs" />
+    <Compile Include="Controllers\Kpi\DumpWorkItemController.cs" />
+    <Compile Include="Controllers\Kpi\DumpZteFlowController.cs" />
+    <Compile Include="Controllers\Kpi\ENodebFlowController.cs" />
+    <Compile Include="Controllers\Kpi\FlowRegionController.cs" />
+    <Compile Include="Controllers\Kpi\MonthKpiController.cs" />
+    <Compile Include="Controllers\Kpi\MrsRegionController.cs" />
+    <Compile Include="Controllers\Kpi\PrbQueryController.cs" />
+    <Compile Include="Controllers\Kpi\PrbRegionController.cs" />
+    <Compile Include="Controllers\Kpi\PreciseMongoController.cs" />
+    <Compile Include="Controllers\Kpi\PreciseRegionController.cs" />
+    <Compile Include="Controllers\Kpi\RrcQueryController.cs" />
+    <Compile Include="Controllers\Kpi\FlowQueryController.cs" />
+    <Compile Include="Controllers\Kpi\HotSpotFlowController.cs" />
+    <Compile Include="Controllers\Kpi\KpiDataListController.cs" />
+    <Compile Include="Controllers\Kpi\KpiOptionsController.cs" />
+    <Compile Include="Controllers\Kpi\PreciseImportController.cs" />
+    <Compile Include="Controllers\Kpi\PreciseStatController.cs" />
+    <Compile Include="Controllers\Kpi\RrcRegionController.cs" />
+    <Compile Include="Controllers\Kpi\TopConnection3GController.cs" />
+    <Compile Include="Controllers\Kpi\TopCqiController.cs" />
+    <Compile Include="Controllers\Kpi\TopCqiReportController.cs" />
+    <Compile Include="Controllers\Kpi\TopDownSwitchController.cs" />
+    <Compile Include="Controllers\Kpi\TopDrop2GController.cs" />
+    <Compile Include="Controllers\Kpi\TopFlowController.cs" />
+    <Compile Include="Controllers\Kpi\TopMrsRsrpController.cs" />
+    <Compile Include="Controllers\Kpi\TopPrbController.cs" />
+    <Compile Include="Controllers\Kpi\TopRank2Controller.cs" />
+    <Compile Include="Controllers\Kpi\TopRrcFailController.cs" />
+    <Compile Include="Controllers\Kpi\TownFlowController.cs" />
+    <Compile Include="Controllers\Kpi\TownPreciseImportController.cs" />
+    <Compile Include="Controllers\Kpi\WorkItemController.cs" />
+    <Compile Include="Controllers\Kpi\WorkItemCurrentMonthController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\Mongo\CellHuaweiMongoController.cs" />
+    <Compile Include="Controllers\Mongo\CellPowerController.cs" />
+    <Compile Include="Controllers\Mongo\InterFreqHoController.cs" />
+    <Compile Include="Controllers\Mongo\IntraFreqHoController.cs" />
+    <Compile Include="Controllers\Mongo\NeighborCellMongoController.cs" />
+    <Compile Include="Controllers\Mr\InterferenceControllers.cs" />
+    <Compile Include="Controllers\Mr\MrGridController.cs" />
+    <Compile Include="Controllers\Mr\MroRsrpController.cs" />
+    <Compile Include="Controllers\Mr\MrsControllers.cs" />
+    <Compile Include="Controllers\Mr\MrsRsrpController.cs" />
+    <Compile Include="Controllers\Mr\PreciseWorkItemController.cs" />
+    <Compile Include="Controllers\Mr\TopCoverageStatController.cs" />
+    <Compile Include="Controllers\ParametersController.cs" />
+    <Compile Include="Controllers\Parameters\BtsController.cs" />
+    <Compile Include="Controllers\Parameters\BtsQueryController.cs" />
+    <Compile Include="Controllers\Parameters\CdmaCellController.cs" />
+    <Compile Include="Controllers\Parameters\CellControllers.cs" />
+    <Compile Include="Controllers\Parameters\CellInUseController.cs" />
+    <Compile Include="Controllers\Parameters\CellStationController.cs" />
+    <Compile Include="Controllers\Parameters\ConstructionController.cs" />
+    <Compile Include="Controllers\Parameters\DistributionController.cs" />
+    <Compile Include="Controllers\Parameters\DumpAlarmController.cs" />
+    <Compile Include="Controllers\Parameters\DumpCdmaCellExcelController.cs" />
+    <Compile Include="Controllers\Parameters\DumpCdmaRruController.cs" />
+    <Compile Include="Controllers\Parameters\DumpCellExcelController.cs" />
+    <Compile Include="Controllers\Parameters\DumpCoverageController.cs" />
+    <Compile Include="Controllers\Parameters\DumpENodebExcelController.cs" />
+    <Compile Include="Controllers\Parameters\DumpExcelControllers.cs" />
+    <Compile Include="Controllers\Parameters\DumpLteRruController.cs" />
+    <Compile Include="Controllers\Parameters\ENodebControllers.cs" />
+    <Compile Include="Controllers\Parameters\ENodebInUseController.cs" />
+    <Compile Include="Controllers\Parameters\ENodebQueryController.cs" />
+    <Compile Include="Controllers\Parameters\IndoorCellSiteController.cs" />
+    <Compile Include="Controllers\Parameters\LteNeighborCellController.cs" />
+    <Compile Include="Controllers\Parameters\LteRruCellController.cs" />
+    <Compile Include="Controllers\Parameters\LteRruController.cs" />
+    <Compile Include="Controllers\Parameters\NbIotCellSiteController.cs" />
+    <Compile Include="Controllers\Parameters\NearestPciCellController.cs" />
+    <Compile Include="Controllers\Parameters\NewBtsExcelsController.cs" />
+    <Compile Include="Controllers\Parameters\NewCdmaCellExcelsController.cs" />
+    <Compile Include="Controllers\Parameters\NewCellExcelsController.cs" />
+    <Compile Include="Controllers\Parameters\NewENodebExcelsController.cs" />
+    <Compile Include="Controllers\Parameters\OpennedSiteController.cs" />
+    <Compile Include="Controllers\Parameters\OpenningSiteController.cs" />
+    <Compile Include="Controllers\Parameters\OutdoorCellSiteController.cs" />
+    <Compile Include="Controllers\Parameters\PlanningSiteController.cs" />
+    <Compile Include="Controllers\Parameters\PlanningSiteRangeController.cs" />
+    <Compile Include="Controllers\Parameters\SectorViewController.cs" />
+    <Compile Include="Controllers\Parameters\StationInfoUpdateController.cs" />
+    <Compile Include="Controllers\Parameters\VoLteCellSiteController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601170936073_Update_ApplicationDbContext_20160117.cs" />
+    <Compile Include="Migrations\201601170936073_Update_ApplicationDbContext_20160117.Designer.cs">
+      <DependentUpon>201601170936073_Update_ApplicationDbContext_20160117.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712032239102_Expand_User.cs" />
+    <Compile Include="Migrations\201712032239102_Expand_User.Designer.cs">
+      <DependentUpon>201712032239102_Expand_User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ApiControlAttribute.cs" />
+    <Compile Include="Models\ApiGroupAttribute.cs" />
+    <Compile Include="Models\ApiParameterDocAttribute.cs" />
+    <Compile Include="Models\ApiResponseAttribute.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\IModelGeneratorProvider.cs" />
+    <Compile Include="Models\KeyValueModelProvider.cs" />
+    <Compile Include="Models\ModelProviderFactory.cs" />
+    <Compile Include="Models\SimpleModelProvider.cs" />
+    <Compile Include="Models\SimpleTypeModelDescription.cs" />
+    <Compile Include="Models\UserRecordService.cs" />
+    <Compile Include="Models\ViewModels.cs" />
+    <Compile Include="Models\ApiDocAttribute.cs" />
+    <Compile Include="Models\DocProvider.cs" />
+    <Compile Include="Models\HttpFileUploadService.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\ApplicationOAuthProvider.cs" />
+    <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="Results\SignInManagerExtension.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="appViews\BasicKpi\ClusterPoint.html" />
+    <Content Include="appViews\BasicKpi\Common.html" />
+    <Content Include="appViews\BasicKpi\CommonMenu.html" />
+    <Content Include="appViews\BasicKpi\CommonStationAdd.html" />
+    <Content Include="appViews\BasicKpi\Construction.html" />
+    <Content Include="appViews\BasicKpi\CsvDtDialog.html" />
+    <Content Include="appViews\BasicKpi\HotspotDtDialog.html" />
+    <Content Include="appViews\College\Table\DumpCollegeFlowTable.html" />
+    <Content Include="appViews\Customer\Dialog\Recent.html" />
+    <Content Include="appViews\Evaluation\Dialog\AssessmentAddDialog.html" />
+    <Content Include="appViews\Evaluation\Dialog\AssessmentDialog.html" />
+    <Content Include="appViews\Evaluation\Dialog\AssessmentEditDialog.html" />
+    <Content Include="appViews\Evaluation\Dialog\AssessmentListDialog.html" />
+    <Content Include="appViews\Evaluation\Dialog\CheckDetails.html" />
+    <Content Include="appViews\Evaluation\Dialog\CheckIndoorDetails.html" />
+    <Content Include="appViews\Evaluation\Dialog\CheckPlanListDialog.html" />
+    <Content Include="appViews\Evaluation\Dialog\CheckResultsStationAdd.html" />
+    <Content Include="appViews\Evaluation\Dialog\ResoureDetails.html" />
+    <Content Include="appViews\Evaluation\Resource.html" />
+    <Content Include="appViews\Home\Assessment.html" />
+    <Content Include="appViews\Home\Common.html" />
+    <Content Include="appViews\Home\CommonStationEdit.html" />
+    <Content Include="appViews\Home\DT.html" />
+    <Content Include="appViews\BasicKpi\GridApp.html" />
+    <Content Include="appViews\BasicKpi\GridClusterDialog.html" />
+    <Content Include="appViews\BasicKpi\Resource.html" />
+    <Content Include="appViews\BasicKpi\TopConnection3GTrend.html" />
+    <Content Include="appViews\BasicKpi\TopDrop2GTrend.html" />
+    <Content Include="appViews\BasicKpi\Trend.html" />
+    <Content Include="appViews\College\Coverage\Index.html" />
+    <Content Include="appViews\College\Coverage\TownMap.html" />
+    <Content Include="appViews\College\Infrastructure\BtsSupplementDialog.html" />
+    <Content Include="appViews\College\Infrastructure\ENodebSupplementDialog.html" />
+    <Content Include="appViews\College\Root.html" />
+    <Content Include="appViews\College\CollegeMap.html" />
+    <Content Include="appViews\College\Coverage\CollegeSupport.html" />
+    <Content Include="appViews\College\Coverage\Support.html" />
+    <Content Include="appViews\College\Coverage\SupportMenu.html" />
+    <Content Include="appViews\College\Infrastructure\BtsDialog.html" />
+    <Content Include="appViews\College\Infrastructure\CdmaCellDialog.html" />
+    <Content Include="appViews\College\Infrastructure\CellSupplementDialog.html" />
+    <Content Include="appViews\College\Infrastructure\CollegeQuery.html" />
+    <Content Include="appViews\College\Infrastructure\ENodebDialog.html" />
+    <Content Include="appViews\College\Infrastructure\LteCellDialog.html" />
+    <Content Include="appViews\College\Infrastructure\NewCollegeDialog.html" />
+    <Content Include="appViews\College\Infrastructure\YearInfoDialog.html" />
+    <Content Include="appViews\College\Stat.html" />
+    <Content Include="appViews\College\Table\CollegeCellBasicInfo.html" />
+    <Content Include="appViews\College\Test\CollegeFlow.html" />
+    <Content Include="appViews\College\Test\Flow.html" />
+    <Content Include="appViews\College\Test\Planning.html" />
+    <Content Include="appViews\College\Test\Process.html" />
+    <Content Include="appViews\Customer\Complain\Adjust.html" />
+    <Content Include="appViews\Customer\Complain\Branch.html" />
+    <Content Include="appViews\Customer\Complain\Details.html" />
+    <Content Include="appViews\Customer\Complain\List.html" />
+    <Content Include="appViews\Customer\Complain\Online.html" />
+    <Content Include="appViews\Customer\Complain\OnlineList.html" />
+    <Content Include="appViews\Customer\Complain\Stat.html" />
+    <Content Include="appViews\Customer\Dialog\CollegeSupplement.html" />
+    <Content Include="appViews\Customer\Dialog\Complain.html" />
+    <Content Include="appViews\Customer\Dialog\Fiber.html" />
+    <Content Include="appViews\Customer\Dialog\Micro.html" />
+    <Content Include="appViews\Customer\Dialog\VipSupplement.html" />
+    <Content Include="appViews\Customer\Dialog\Yesterday.html" />
+    <Content Include="appViews\Customer\EmergencyList.html" />
+    <Content Include="appViews\Customer\Dialog\Emergency.html" />
+    <Content Include="appViews\Customer\Index.html" />
+    <Content Include="appViews\Customer\Process\Complain.html" />
+    <Content Include="appViews\Customer\Process\Emergency.html" />
+    <Content Include="appViews\Customer\Process\Vip.html" />
+    <Content Include="appViews\Customer\VipList.html" />
+    <Content Include="appViews\Evaluation\Alarm.html" />
+    <Content Include="appViews\Evaluation\AlarmFilter.html" />
+    <Content Include="appViews\Evaluation\AlarmSearchMenu.html" />
+    <Content Include="appViews\Evaluation\Checking.html" />
+    <Content Include="appViews\Evaluation\ClearZero.html" />
+    <Content Include="appViews\Evaluation\Dialog\AgpsSearchCondition.html" />
+    <Content Include="appViews\Evaluation\Dialog\AlarmHistoryListDialog.html" />
+    <Content Include="appViews\Evaluation\Dialog\BtsSearchCondition.html" />
+    <Content Include="appViews\Evaluation\Dialog\BuildingInfoBox.html" />
+    <Content Include="appViews\Evaluation\Dialog\CommonStationDetails.html" />
+    <Content Include="appViews\Evaluation\Dialog\CommonStationListDialog.html" />
+    <Content Include="appViews\Evaluation\Dialog\SpecialStationDetails.html" />
+    <Content Include="appViews\Evaluation\FaultStation.html" />
+    <Content Include="appViews\Evaluation\Fixing.html" />
+    <Content Include="appViews\Evaluation\HighValue.html" />
+    <Content Include="appViews\Evaluation\Highway.html" />
+    <Content Include="appViews\Evaluation\SpecialStation.html" />
+    <Content Include="appViews\Evaluation\Subway.html" />
+    <Content Include="appViews\HeaderMenu.html" />
+    <Content Include="appViews\Home\Analysis.html" />
+    <Content Include="appViews\Home\ButtonMenu.html" />
+    <Content Include="appViews\Home\Complain.html" />
+    <Content Include="appViews\Home\DatePopoverInput.html" />
+    <Content Include="appViews\Home\Flow.html" />
+    <Content Include="appViews\Home\FourChartDialog.html" />
+    <Content Include="appViews\Home\GeneralTableDetails.html" />
+    <Content Include="appViews\Home\Menu\Cdma.html" />
+    <Content Include="appViews\Home\Micro.html" />
+    <Content Include="appViews\Home\Mr.html" />
+    <Content Include="appViews\Home\MrGrid.html" />
+    <Content Include="appViews\Home\Network.html" />
+    <Content Include="appViews\Home\Menu\Plan.html" />
+    <Content Include="appViews\Home\PlanningDetails.html" />
+    <Content Include="appViews\Home\Query.html" />
+    <Content Include="appViews\Home\SingleChartDialog.html" />
+    <Content Include="appViews\Import\ImportProgress.html" />
+    <Content Include="appViews\Import\Precise\WorkItem.html" />
+    <Content Include="appViews\Import\ResoureDetails.html" />
+    <Content Include="appViews\Manage\AllUsers.html" />
+    <Content Include="appViews\Manage\CurrentUser.html" />
+    <Content Include="appViews\Manage\ForgotPassword.html" />
+    <Content Include="appViews\Manage\ResetPassword.html" />
+    <Content Include="appViews\Manage\Roles.html" />
+    <Content Include="appViews\Manage\RoleUser.html" />
+    <Content Include="appViews\Manage\UserRolesDialog.html" />
+    <Content Include="appViews\Parameters\Import\HotSpot.html" />
+    <Content Include="appViews\Parameters\Import\HotSpotCell.html" />
+    <Content Include="appViews\Parameters\Map\CellsMapInfoBox.html" />
+    <Content Include="appViews\Parameters\Map\HotSpotInfoBox.html" />
+    <Content Include="appViews\Parameters\Region\ArrangeInfo.html" />
+    <Content Include="appViews\Parameters\Region\ENodebFlow.html" />
+    <Content Include="appViews\Parameters\Region\FlowKpiInfo.html" />
+    <Content Include="appViews\Parameters\Region\RrcKpiInfo.html" />
+    <Content Include="appViews\Parameters\Region\TopicCells.html" />
+    <Content Include="appViews\Parameters\Region\TownENodebInfo.html" />
+    <Content Include="appViews\Parameters\Topic.html" />
+    <Content Include="appViews\Rutrace\Coverage\DetailsChartDialog.html" />
+    <Content Include="appViews\Rutrace\Coverage\General.html" />
+    <Content Include="appViews\Rutrace\Coverage\Trend.html" />
+    <Content Include="appViews\Rutrace\Map\SourceMapInfoBox.html" />
+    <Content Include="appViews\Rutrace\Interference\VictimDialog.html" />
+    <Content Include="appViews\Rutrace\Map\VictimMapInfoBox.html" />
+    <Content Include="appViews\Rutrace\WorkItem\CellTrend.html" />
+    <Content Include="appViews\Rutrace\WorkItem\ForCell.html" />
+    <Content Include="appViews\Test\Simple\CellClass.html" />
+    <Content Include="appViews\Test\Simple\GridBinding.html" />
+    <Content Include="appViews\Test\Simple\GridFilter.html" />
+    <Content Include="appViews\Test\Simple\GridFooter.html" />
+    <Content Include="appViews\Test\Simple\GridMenu.html" />
+    <Content Include="appViews\Test\Simple\GridTooltip.html" />
+    <Content Include="Areas\TestPage\Scripts\angular\route.js" />
+    <Content Include="Areas\TestPage\Scripts\qunit.route.js" />
+    <Content Include="Content\angular-busy.css" />
+    <Content Include="Content\angular-busy.min.css" />
+    <Content Include="Content\angular-toggle-switch-bootstrap.css" />
+    <Content Include="Content\angular-toggle-switch.css" />
+    <Content Include="appViews\bootstrap-fileinput\css\fileinput.css" />
+    <Content Include="appViews\bootstrap-fileinput\css\fileinput.min.css" />
+    <Content Include="appViews\bootstrap-fileinput\img\loading-sm.gif" />
+    <Content Include="appViews\bootstrap-fileinput\img\loading.gif" />
+    <Content Include="appViews\bootstrap-fileinput\themes\explorer\theme.css" />
+    <Content Include="appViews\bootstrap-fileinput\themes\explorer\theme.js" />
+    <Content Include="appViews\bootstrap-fileinput\themes\explorer\theme.min.css" />
+    <Content Include="appViews\bootstrap-fileinput\themes\explorer\theme.min.js" />
+    <Content Include="appViews\bootstrap-fileinput\themes\fa\theme.js" />
+    <Content Include="appViews\bootstrap-fileinput\themes\fa\theme.min.js" />
+    <Content Include="appViews\bootstrap-fileinput\themes\gly\theme.js" />
+    <Content Include="appViews\bootstrap-fileinput\themes\gly\theme.min.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\BtsIcons\alarm_blue.png" />
+    <Content Include="Content\Images\BtsIcons\alarm_green.png" />
+    <Content Include="Content\Images\BtsIcons\alarm_lightblue.png" />
+    <Content Include="Content\Images\BtsIcons\alarm_lightyellow.png" />
+    <Content Include="Content\Images\BtsIcons\alarm_purple.png" />
+    <Content Include="Content\Images\BtsIcons\alarm_red.png" />
+    <Content Include="Content\Images\BtsIcons\alarm_yellow.png" />
+    <Content Include="Content\Images\BtsIcons\btsicon_003300.png" />
+    <Content Include="Content\Images\BtsIcons\btsicon_3366D0.png" />
+    <Content Include="Content\Images\BtsIcons\btsicon_99CC00.png" />
+    <Content Include="Content\Images\BtsIcons\btsicon_CC3333.png" />
+    <Content Include="Content\Images\BtsIcons\btsicon_CC6699.png" />
+    <Content Include="Content\Images\BtsIcons\btsicon_CC9966.png" />
+    <Content Include="Content\Images\BtsIcons\btsicon_FF9966.png" />
+    <Content Include="Content\Images\BtsIcons\btsicon_0.png" />
+    <Content Include="Content\Images\BtsIcons\btsicon_1.png" />
+    <Content Include="Content\Images\BtsIcons\btsicon_2.png" />
+    <Content Include="Content\Images\BtsIcons\btsicon_3.png" />
+    <Content Include="Content\Images\BtsIcons\btsicon_4.png" />
+    <Content Include="Content\Images\BtsIcons\btsicon_5.png" />
+    <Content Include="Content\Images\BtsIcons\btsicon_6.png" />
+    <Content Include="Content\Images\BtsIcons\icon.png" />
+    <Content Include="Content\Images\BtsIcons\m_2_end.png" />
+    <Content Include="Content\Images\BtsIcons\m_6_end.png" />
+    <Content Include="Content\Images\BtsIcons\m_8_end.png" />
+    <Content Include="Content\Images\Hotmap\icon_search.png" />
+    <Content Include="Content\Images\Hotmap\marker.png" />
+    <Content Include="Content\Images\Hotmap\markers.png" />
+    <Content Include="Content\Images\icon_down.jpg" />
+    <Content Include="Content\Images\icon_down.png" />
+    <Content Include="Content\Images\icon_right.jpg" />
+    <Content Include="Content\Images\icon_right.png" />
+    <Content Include="Content\jasmine\jasmine.css" />
+    <Content Include="Content\jasmine\jasmine_favicon.png" />
+    <Content Include="Content\Site.css">
+      <DependentUpon>Site.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.min.css">
+      <DependentUpon>Site.css</DependentUpon>
+    </Content>
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="appViews\bootstrap-fileinput\sass\fileinput.scss" />
+    <None Include="Content\themes\base\accordion.scss" />
+    <None Include="Content\themes\base\autocomplete.scss" />
+    <None Include="Content\themes\base\button.scss" />
+    <None Include="Content\themes\base\core.scss" />
+    <None Include="Content\themes\base\datepicker.scss" />
+    <None Include="Content\themes\base\dialog.scss" />
+    <None Include="Content\themes\base\draggable.scss" />
+    <Content Include="Content\themes\baidu\address.png" />
+    <Content Include="Content\themes\baidu\box.css">
+      <DependentUpon>box.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\themes\baidu\label.png" />
+    <Content Include="Content\themes\base\accordion.css">
+      <DependentUpon>accordion.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\themes\base\button.css">
+      <DependentUpon>button.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <None Include="Content\themes\base\menu.scss" />
+    <None Include="Content\themes\base\progressbar.scss" />
+    <None Include="Content\themes\base\resizable.scss" />
+    <Content Include="Content\themes\base\resizable.css">
+      <DependentUpon>resizable.scss</DependentUpon>
+    </Content>
+    <None Include="Content\themes\base\selectable.scss" />
+    <None Include="Content\themes\base\selectmenu.scss" />
+    <Content Include="Content\themes\base\selectmenu.css">
+      <DependentUpon>selectmenu.scss</DependentUpon>
+    </Content>
+    <None Include="Content\themes\base\slider.scss" />
+    <Content Include="Content\themes\base\slider.css">
+      <DependentUpon>slider.scss</DependentUpon>
+    </Content>
+    <None Include="Content\themes\base\sortable.scss" />
+    <None Include="Content\themes\base\spinner.scss" />
+    <Content Include="Content\themes\base\spinner.css">
+      <DependentUpon>spinner.scss</DependentUpon>
+    </Content>
+    <None Include="Content\themes\base\tabs.scss" />
+    <Content Include="Content\themes\base\tabs.css">
+      <DependentUpon>tabs.scss</DependentUpon>
+    </Content>
+    <None Include="Content\themes\base\theme.scss" />
+    <Content Include="Content\themes\base\theme.css">
+      <DependentUpon>theme.scss</DependentUpon>
+    </Content>
+    <None Include="Content\themes\base\tooltip.scss" />
+    <Content Include="Content\themes\HelpPage.css">
+      <DependentUpon>HelpPage.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\themes\map\cloudmap.css">
+      <DependentUpon>cloudmap.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\themes\map\timecontrol.css">
+      <DependentUpon>timecontrol.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\themes\test\ui-grid.css" />
+    <Content Include="Content\ui-bootstrap-csp.css" />
+    <Content Include="Content\ui-grid.css" />
+    <Content Include="Content\ui-grid.min.css" />
+    <Content Include="Content\ui-grid.svg" />
+    <Content Include="directives\app\CityDistrictSelection.Tpl.html" />
+    <Content Include="directives\app\CitySelection.Tpl.html" />
+    <Content Include="directives\app\DateSelection.Tpl.html" />
+    <Content Include="directives\app\DistrictTownPlain.Tpl.html" />
+    <Content Include="directives\app\DistrictTownSelection.Tpl.html" />
+    <Content Include="directives\app\dump\FileSelector.html" />
+    <Content Include="directives\app\dump\MultipleSelector.html" />
+    <Content Include="directives\college\college.module.js" />
+    <Content Include="directives\customer\Complain.Tpl.html" />
+    <Content Include="directives\customer\customer.module.js" />
+    <Content Include="directives\customer\vip\DemandList.html" />
+    <Content Include="directives\customer\vip\VipInfo.html" />
+    <Content Include="directives\parameters\cell\CellIntraFreqTable.html" />
+    <Content Include="directives\parameters\cell\Power.html" />
+    <Content Include="directives\parameters\cell\CellInterFreq.html" />
+    <Content Include="directives\parameters\cell\CellIntraFreq.html" />
+    <Content Include="directives\app\app.module.js" />
+    <Content Include="directives\app\DateSpan.Tpl.html" />
+    <Content Include="directives\app\DateSpanRow.Tpl.html" />
+    <Content Include="directives\parameters\cell\UlOpenLoopPowerControl.html" />
+    <Content Include="directives\parameters\eNodeb\ENodebInterFreq.html" />
+    <Content Include="directives\parameters\eNodeb\ENodebIntraFreq.html" />
+    <Content Include="appViews\Parameters\Import\BtsInfos.html" />
+    <Content Include="appViews\Parameters\Import\CdmaCellInfos.html" />
+    <Content Include="appViews\Parameters\Import\CellInfos.html" />
+    <Content Include="appViews\Parameters\Import\CellLonLatTable.html" />
+    <Content Include="appViews\Parameters\Import\ENodebInfos.html" />
+    <Content Include="appViews\Parameters\Import\VanishedBtss.html" />
+    <Content Include="appViews\Parameters\Import\VanishedCdmaCellInfos.html" />
+    <Content Include="appViews\Parameters\Import\VanishedCellInfos.html" />
+    <Content Include="appViews\Parameters\Import\VanishedENodebs.html" />
+    <Content Include="directives\parameters\cell\A1InterFreq.html" />
+    <Content Include="directives\parameters\cell\A2InterFreq.html" />
+    <Content Include="directives\parameters\cell\A3InterFreq.html" />
+    <Content Include="directives\parameters\cell\A4InterFreq.html" />
+    <Content Include="directives\parameters\cell\A5InterFreq.html" />
+    <Content Include="appViews\Parameters\Map\CdmaCellInfoBox.html" />
+    <Content Include="appViews\Parameters\Map\DistributionMapInfoBox.html" />
+    <Content Include="directives\parameters\cell\BasicInfo.html" />
+    <Content Include="appViews\Parameters\Region\CellInfo.html" />
+    <Content Include="directives\parameters\CityInfrastructure.Tpl.html" />
+    <Content Include="directives\parameters\DistrictInfrastructure.Tpl.html" />
+    <Content Include="appViews\Rutrace\Coverage\Index.html" />
+    <Content Include="directives\parameters\kpi\AlarmTable.html" />
+    <Content Include="directives\parameters\kpi\FeelingTable.html" />
+    <Content Include="directives\parameters\kpi\FlowTable.html" />
+    <Content Include="directives\parameters\parameters.module.js" />
+    <Content Include="directives\rutrace\AnalyzeTable.Tpl.html" />
+    <Content Include="directives\rutrace\coverage\InterferenceSourceList.html" />
+    <Content Include="directives\rutrace\coverage\InterferenceVictimList.html" />
+    <Content Include="directives\rutrace\import\BackwardNeighbors.html" />
+    <Content Include="directives\rutrace\import\ForwardNeighbors.html" />
+    <Content Include="appViews\Rutrace\Interference\DumpCellMongoDialog.html" />
+    <Content Include="appViews\Rutrace\Interference\Index.html" />
+    <Content Include="appViews\Rutrace\Interference\CoverageDialog.html" />
+    <Content Include="directives\rutrace\interference\MongoNeighbors.html" />
+    <Content Include="directives\rutrace\interference\MroInterferenceList.html" />
+    <Content Include="directives\rutrace\interference\MroRsrpList.html" />
+    <Content Include="directives\rutrace\interference\MroTaList.html" />
+    <Content Include="directives\rutrace\interference\MrsRsrpList.html" />
+    <Content Include="directives\rutrace\interference\MrsTaList.html" />
+    <Content Include="directives\rutrace\interference\SourceDialogList.html" />
+    <Content Include="directives\rutrace\interference\SourceList.html" />
+    <Content Include="appViews\Rutrace\Interference\SourceDbChartDialog.html" />
+    <Content Include="appViews\Rutrace\Interference\SourceDialog.html" />
+    <Content Include="appViews\Home\DoubleChartDialog.html" />
+    <Content Include="appViews\Rutrace\Interference\SourceStrengthChartDialog.html" />
+    <Content Include="directives\rutrace\interference\VictimDialogList.html" />
+    <Content Include="directives\rutrace\interference\VictimList.html" />
+    <Content Include="appViews\Rutrace\Map\Index.html" />
+    <Content Include="appViews\Rutrace\WorkItem\AnalyticDetails.html" />
+    <Content Include="appViews\Rutrace\WorkItem\ForCity.html" />
+    <Content Include="directives\workitem\PlatformAndFeedbackInfo.html" />
+    <Content Include="appViews\Test\Chapter10\demo.accordion.html" />
+    <Content Include="appViews\Test\Chapter10\demo.alert.html" />
+    <Content Include="appViews\Test\Chapter10\demo.buttons.html" />
+    <Content Include="appViews\Test\Chapter10\demo.carousel.html" />
+    <Content Include="appViews\Test\Chapter10\demo.collapse.html" />
+    <Content Include="appViews\Test\Chapter10\demo.datepicker.html" />
+    <Content Include="appViews\Test\Chapter10\demo.dropdown.html" />
+    <Content Include="appViews\Test\Chapter10\demo.typeahead.html" />
+    <Content Include="appViews\Test\Chapter10\demo.tooltip.html" />
+    <Content Include="appViews\Test\Chapter10\demo.timepicker.html" />
+    <Content Include="appViews\Test\Chapter10\demo.tabs.html" />
+    <Content Include="appViews\Test\Chapter10\demo.rating.html" />
+    <Content Include="appViews\Test\Chapter10\demo.progress.html" />
+    <Content Include="appViews\Test\Chapter10\demo.popover.html" />
+    <Content Include="appViews\Test\Chapter10\demo.pager.html" />
+    <Content Include="appViews\Test\Chapter10\demo.pagination.html" />
+    <Content Include="appViews\Test\Chapter10\demo.modal.html" />
+    <Content Include="appViews\Test\Chapter10\Links.html" />
+    <Content Include="appViews\Test\Help\ApiMethod.html" />
+    <Content Include="appViews\Test\Simple\Add.html" />
+    <Content Include="appViews\Test\Simple\Clock.html" />
+    <Content Include="appViews\Test\Simple\Index.html" />
+    <Content Include="appViews\Test\Simple\Interpolate.html" />
+    <Content Include="appViews\Test\Simple\Parse.html" />
+    <Content Include="appViews\Test\Simple\SimpleType.html" />
+    <Content Include="appViews\WorkItem\BtsInfo.html" />
+    <Content Include="appViews\WorkItem\CdmaCellInfo.html" />
+    <Content Include="appViews\WorkItem\CellInfo.html" />
+    <Content Include="appViews\WorkItem\Charts.html" />
+    <Content Include="appViews\WorkItem\Details.html" />
+    <Content Include="appViews\WorkItem\DetailsDialog.html" />
+    <Content Include="directives\workitem\precise\DetailsTable.html" />
+    <Content Include="appViews\WorkItem\ENodebInfo.html" />
+    <Content Include="appViews\WorkItem\FeedbackDialog.html" />
+    <Content Include="directives\workitem\precise\Cell.html" />
+    <Content Include="directives\workitem\precise\CoverageCell.html" />
+    <Content Include="directives\workitem\WorkItem.Details.html" />
+    <None Include="Content\themes\HelpPage.scss" />
+    <Content Include="Areas\HelpPage\Scripts\route.js" />
+    <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\TestPage\Scripts\5ch5\Dictionary.js">
+      <DependentUpon>Dictionary.coffee</DependentUpon>
+    </Content>
+    <Content Include="Areas\TestPage\Scripts\5ch5\Grid.js">
+      <DependentUpon>Grid.coffee</DependentUpon>
+    </Content>
+    <Content Include="Areas\TestPage\Scripts\5ch5\jq5x5.js">
+      <DependentUpon>jq5x5.coffee</DependentUpon>
+    </Content>
+    <Content Include="Areas\TestPage\Scripts\5ch5\OWL2.js" />
+    <Content Include="Areas\TestPage\Scripts\5ch5\Player.js">
+      <DependentUpon>Player.coffee</DependentUpon>
+    </Content>
+    <Content Include="directives\rutrace\rutrace.module.js" />
+    <Content Include="directives\workitem\workitem.module.js" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Scripts\angular-animate.js" />
+    <Content Include="Scripts\angular-animate.min.js" />
+    <Content Include="Scripts\angular-avatar.js" />
+    <Content Include="Scripts\angular-avatar.min.js" />
+    <Content Include="Scripts\angular-busy.js" />
+    <Content Include="Scripts\angular-busy.min.js" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-route.js" />
+    <Content Include="Scripts\angular-route.min.js" />
+    <Content Include="Scripts\angular-scenario.js" />
+    <Content Include="Areas\TestPage\Scripts\angular\chap10.viewmodel.js" />
+    <Content Include="Areas\TestPage\Scripts\angular\root.js" />
+    <Content Include="Areas\TestPage\Scripts\autostart.js" />
+    <Content Include="Areas\TestPage\Scripts\basicpost.viewmodel.js" />
+    <Content Include="Areas\TestPage\Scripts\html5csv\qtestcsv.js" />
+    <Content Include="Areas\TestPage\Scripts\html5csv\qtestcsv.post.js" />
+    <Content Include="Areas\TestPage\Scripts\html5csv\random.data.js" />
+    <Content Include="Areas\TestPage\Scripts\only.js" />
+    <Content Include="Areas\TestPage\Scripts\setTimeout.js" />
+    <Content Include="Areas\TestPage\Scripts\single-testid.js" />
+    <Content Include="Areas\TestPage\Scripts\stack-errors.js" />
+    <Content Include="Areas\TestPage\Scripts\startError.js" />
+    <Content Include="Content\Images\Hotmap\site_bl.png" />
+    <Content Include="Content\Images\Hotmap\site_or.png" />
+    <Content Include="Content\Images\Logo_new_version.png" />
+    <Content Include="Content\Images\TimeControl\tick.png" />
+    <Content Include="Content\Images\TimeControl\time-btn-pause.png" />
+    <Content Include="Content\Images\TimeControl\time-btn-play.png" />
+    <Content Include="Content\Images\TimeControl\time-progress.png" />
+    <Content Include="Content\_todolist.scss" />
+    <Content Include="Content\themes\baidu\box.scss" />
+    <Content Include="Content\themes\_colors.scss" />
+    <Content Include="Content\ui-grid.woff" />
+    <Content Include="Content\ui-grid.ttf" />
+    <Content Include="Content\ui-grid.eot" />
+    <None Include="Content\_components.scss" />
+    <Content Include="Content\themes\baidu\close.png" />
+    <Content Include="Content\themes\baidu\tipbox.jpg" />
+    <Content Include="Content\themes\coffee\style.css" />
+    <None Include="Content\themes\map\cloudmap.scss" />
+    <None Include="Content\themes\map\timecontrol.scss" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\angular-spinner.js" />
+    <Content Include="Scripts\angular-spinner.min.js" />
+    <Content Include="Scripts\angular-toggle-switch.js" />
+    <Content Include="Scripts\angular-toggle-switch.min.js" />
+    <Content Include="Scripts\angular-touch.js" />
+    <Content Include="Scripts\angular-touch.min.js" />
+    <Content Include="Scripts\angular-ui-router.js" />
+    <Content Include="Scripts\angular-ui-router.min.js" />
+    <Content Include="Scripts\angular-ui\csv.js" />
+    <Content Include="Scripts\angular-ui\customize\directive.public.js" />
+    <Content Include="Scripts\angular-ui\pdfmake.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
+    <Content Include="Scripts\angular-ui\vfs_fonts.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\app\Gruntfile.js" />
+    <Content Include="Scripts\app\home.alarm.menu.js" />
+    <Content Include="Scripts\app\home.college.js" />
+    <Content Include="Scripts\app\home.combined.js" />
+    <Content Include="Scripts\app\home.complain.js" />
+    <Content Include="Scripts\app\home.kpi.js" />
+    <Content Include="Scripts\app\home.menu.js" />
+    <Content Include="Scripts\app\home.mr.js" />
+    <Content Include="Scripts\app\home.network.js" />
+    <Content Include="Scripts\app\home.root.js" />
+    <Content Include="Scripts\app\home.route.js" />
+    <Content Include="Scripts\app\home.station.js" />
+    <Content Include="Scripts\app\network.theme.js" />
+    <Content Include="Scripts\app\station.checking.js" />
+    <Content Include="Scripts\app\station.common.js" />
+    <Content Include="Scripts\app\station.fixing.js" />
+    <Content Include="Scripts\baidu\plugins\ComplexCustomOverlay.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\customer\index.controller.js" />
+    <Content Include="Scripts\fileinput.js" />
+    <Content Include="Scripts\fileinput.min.js" />
+    <Content Include="Scripts\highcharts\highcharts.css" />
+    <Content Include="Scripts\jasmine\boot.js" />
+    <Content Include="Scripts\jasmine\console.js" />
+    <Content Include="Scripts\jasmine\jasmine-html.js" />
+    <Content Include="Scripts\jasmine\jasmine-jquery.js" />
+    <Content Include="Scripts\jasmine\jasmine.js" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <Content Include="Content\Site.scss" />
+    <Content Include="Content\_body.scss" />
+    <Content Include="Content\_glyphicon.scss" />
+    <Content Include="Content\_panel.scss" />
+    <Content Include="Content\_widget.scss" />
+    <Content Include="Content\themes\_mixins.scss" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Scripts\app\package.json" />
+    <Content Include="Scripts\angular-spinner.js.map" />
+    <None Include="Scripts\jquery-3.1.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.1.0.js" />
+    <Content Include="Scripts\jquery-3.1.0.min.js" />
+    <Content Include="Scripts\jquery-3.1.0.slim.js" />
+    <Content Include="Scripts\jquery-3.1.0.slim.min.js" />
+    <Content Include="Scripts\jquery-ui-1.12.0.js" />
+    <Content Include="Scripts\jquery-ui-1.12.0.min.js" />
+    <Content Include="Scripts\kpi\workitem.import.js" />
+    <Content Include="Scripts\college\route.controller.js" />
+    <Content Include="Scripts\kpi\precise.import.js" />
+    <Content Include="Scripts\laydate\laydate.js" />
+    <Content Include="Scripts\laydate\need\laydate.css" />
+    <Content Include="Scripts\laydate\skins\dahong\icon.png" />
+    <Content Include="Scripts\laydate\skins\dahong\laydate.css" />
+    <Content Include="Scripts\laydate\skins\default\icon.png" />
+    <Content Include="Scripts\laydate\skins\default\laydate.css" />
+    <Content Include="Scripts\laydate\skins\molv\icon.png" />
+    <Content Include="Scripts\laydate\skins\molv\laydate.css" />
+    <Content Include="Scripts\locales\ar.js" />
+    <Content Include="Scripts\locales\bg.js" />
+    <Content Include="Scripts\locales\ca.js" />
+    <Content Include="Scripts\locales\cr.js" />
+    <Content Include="Scripts\locales\cz.js" />
+    <Content Include="Scripts\locales\da.js" />
+    <Content Include="Scripts\locales\de.js" />
+    <Content Include="Scripts\locales\el.js" />
+    <Content Include="Scripts\locales\es.js" />
+    <Content Include="Scripts\locales\et.js" />
+    <Content Include="Scripts\locales\fa.js" />
+    <Content Include="Scripts\locales\fi.js" />
+    <Content Include="Scripts\locales\fr.js" />
+    <Content Include="Scripts\locales\gl.js" />
+    <Content Include="Scripts\locales\hu.js" />
+    <Content Include="Scripts\locales\id.js" />
+    <Content Include="Scripts\locales\it.js" />
+    <Content Include="Scripts\locales\ja.js" />
+    <Content Include="Scripts\locales\kr.js" />
+    <Content Include="Scripts\locales\kz.js" />
+    <Content Include="Scripts\locales\LANG.js" />
+    <Content Include="Scripts\locales\nl.js" />
+    <Content Include="Scripts\locales\no.js" />
+    <Content Include="Scripts\locales\pl.js" />
+    <Content Include="Scripts\locales\pt-BR.js" />
+    <Content Include="Scripts\locales\pt.js" />
+    <Content Include="Scripts\locales\ro.js" />
+    <Content Include="Scripts\locales\ru.js" />
+    <Content Include="Scripts\locales\sk.js" />
+    <Content Include="Scripts\locales\sl.js" />
+    <Content Include="Scripts\locales\sv.js" />
+    <Content Include="Scripts\locales\th.js" />
+    <Content Include="Scripts\locales\tr.js" />
+    <Content Include="Scripts\locales\uk.js" />
+    <Content Include="Scripts\locales\vi.js" />
+    <Content Include="Scripts\locales\zh-TW.js" />
+    <Content Include="Scripts\locales\zh.js" />
+    <Content Include="Scripts\MarkerClusterer.js" />
+    <Content Include="Scripts\mycharts\combo-examples.js" />
+    <Content Include="Scripts\parameters\import\index.controller.js" />
+    <Content Include="Scripts\parameters\neighbor\import.controller.js" />
+    <Content Include="Scripts\plugins\canvas-to-blob.js" />
+    <Content Include="Scripts\plugins\canvas-to-blob.min.js" />
+    <Content Include="Scripts\plugins\purify.js" />
+    <Content Include="Scripts\plugins\purify.min.js" />
+    <Content Include="Scripts\plugins\sortable.js" />
+    <Content Include="Scripts\plugins\sortable.min.js" />
+    <Content Include="Scripts\r.js" />
+    <Content Include="Scripts\require.js" />
+    <Content Include="Scripts\rutrace\index.controller.js" />
+    <Content Include="Scripts\service\app\filters.js" />
+    <Content Include="Scripts\service\app\kpi.js" />
+    <Content Include="Scripts\service\filters\combined.js" />
+    <Content Include="Scripts\service\Gruntfile.es5.js">
+      <DependentUpon>Gruntfile.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\service\Gruntfile.es5.min.js">
+      <DependentUpon>Gruntfile.es5.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\service\kpi\app.kpi.js" />
+    <Content Include="Scripts\service\app\region.js" />
+    <Content Include="Scripts\service\app\url.js" />
+    <Content Include="Scripts\service\kpi\college.basic.js" />
+    <Content Include="Scripts\service\kpi\college.flow.js" />
+    <Content Include="Scripts\service\kpi\college.infrastructure.js" />
+    <Content Include="Scripts\service\kpi\college.js" />
+    <Content Include="Scripts\service\kpi\college.maintain.js" />
+    <Content Include="Scripts\service\kpi\college.work.js" />
+    <Content Include="Scripts\service\kpi\core.js" />
+    <Content Include="Scripts\service\kpi\coverage.flow.js" />
+    <Content Include="Scripts\service\kpi\coverage.interference.js" />
+    <Content Include="Scripts\service\kpi\coverage.js" />
+    <Content Include="Scripts\service\kpi\coverage.mr.js" />
+    <Content Include="Scripts\service\kpi\coverage.stats.js" />
+    <Content Include="Scripts\service\kpi\customer.complain.js" />
+    <Content Include="Scripts\service\kpi\customer.js" />
+    <Content Include="Scripts\service\kpi\customer.sustain.js" />
+    <Content Include="Scripts\service\kpi\parameter.dump.js" />
+    <Content Include="Scripts\service\kpi\parameter.js" />
+    <Content Include="Scripts\service\kpi\parameter.query.js" />
+    <Content Include="Scripts\service\kpi\parameter.rutrace.js" />
+    <Content Include="Scripts\service\kpi\work.chart.js" />
+    <Content Include="Scripts\service\kpi\work.dialog.js" />
+    <Content Include="Scripts\service\kpi\work.flow.js" />
+    <Content Include="Scripts\service\kpi\work.js" />
+    <Content Include="Scripts\service\kpi\work.trend.js" />
+    <Content Include="Scripts\service\region\authorize.js" />
+    <Content Include="Scripts\service\region\basic.js" />
+    <Content Include="Scripts\service\region\college.js" />
+    <Content Include="Scripts\service\region\import.js" />
+    <Content Include="Scripts\service\region\kpi.js" />
+    <Content Include="Scripts\service\region\mongo.js" />
+    <Content Include="Scripts\service\region\network.js" />
+    <Content Include="Scripts\service\region\precise.js" />
+    <Content Include="Scripts\service\topic\basic.js" />
+    <Content Include="Scripts\service\topic\college.js" />
+    <Content Include="Scripts\service\topic\dialog.alarm.js" />
+    <Content Include="Scripts\service\topic\dialog.college.js" />
+    <Content Include="Scripts\service\topic\dialog.customer.js" />
+    <Content Include="Scripts\service\topic\dialog.js" />
+    <Content Include="Scripts\service\topic\dialog.kpi.js" />
+    <Content Include="Scripts\service\topic\dialog.parameters.js" />
+    <Content Include="Scripts\service\topic\dialog.top.js" />
+    <Content Include="Scripts\service\topic\parameters.basic.js" />
+    <Content Include="Scripts\service\topic\parameters.coverage.js" />
+    <Content Include="Scripts\service\topic\parameters.js" />
+    <Content Include="Scripts\service\topic\dialog.station.js" />
+    <Content Include="Scripts\service\topic\parameters.station.js" />
+    <Content Include="Scripts\service\url\app.url.es5.js">
+      <DependentUpon>app.url.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\service\url\app.url.es5.min.js">
+      <DependentUpon>app.url.es5.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\service\url\app.url.js" />
+    <Content Include="Scripts\service\filters\basic.js" />
+    <Content Include="Scripts\service\filters\cell.js" />
+    <Content Include="Scripts\service\filters\handoff.js" />
+    <Content Include="Scripts\service\Gruntfile.js" />
+    <Content Include="Scripts\service\url\calculation.js" />
+    <Content Include="Scripts\service\url\chart.js" />
+    <Content Include="Scripts\service\url\core.js" />
+    <Content Include="Scripts\service\url\format.js" />
+    <Content Include="Scripts\service\url\geometry.js" />
+    <Content Include="Scripts\service\url\kpi.chart.js" />
+    <Content Include="Scripts\service\url\menu.js" />
+    <Content Include="Scripts\spin.js" />
+    <Content Include="Scripts\spin.min.js" />
+    <Content Include="Scripts\angular-ui\ui-utils-ieshiv.js" />
+    <Content Include="Scripts\angular-ui\ui-utils-ieshiv.min.js" />
+    <Content Include="Scripts\angular-ui\ui-utils.js" />
+    <Content Include="Scripts\angular-ui\ui-utils.min.js" />
+    <Content Include="Scripts\baidu\plugins\baidu.tangram.js" />
+    <Content Include="Scripts\baidu\plugins\InfoBox.js" />
+    <Content Include="Areas\HelpPage\Views\Web.config" />
+    <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\EnumTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\DictionaryModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ComplexTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
+    <Content Include="appViews\Test\Help\ApiGroup.html" />
+    <Content Include="appViews\Test\Help\Api.html" />
+    <Content Include="Areas\TestPage\Views\web.config" />
+    <Content Include="Areas\TestPage\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\TestPage\Views\QUnitTest\Index.cshtml" />
+    <Content Include="appViews\Test\Simple\LegacyMarkup.html" />
+    <Content Include="appViews\Test\Simple\Main.html" />
+    <Content Include="Areas\TestPage\Views\CoffeeScript\Hotseat.cshtml" />
+    <Content Include="Areas\TestPage\Scripts\5ch5\Dictionary.coffee">
+      <Compile>True</Compile>
+      <Minify>True</Minify>
+      <IgnoreWarnings>True</IgnoreWarnings>
+      <IgnoreErrors>True</IgnoreErrors>
+      <Bare>True</Bare>
+      <Iced>False</Iced>
+    </Content>
+    <Content Include="Areas\TestPage\Scripts\5ch5\Grid.coffee">
+      <Compile>True</Compile>
+      <Minify>True</Minify>
+      <IgnoreWarnings>True</IgnoreWarnings>
+      <IgnoreErrors>True</IgnoreErrors>
+      <Bare>True</Bare>
+      <Iced>False</Iced>
+    </Content>
+    <Content Include="Areas\TestPage\Scripts\5ch5\jq5x5.coffee">
+      <Compile>True</Compile>
+      <Minify>True</Minify>
+      <IgnoreWarnings>True</IgnoreWarnings>
+      <IgnoreErrors>True</IgnoreErrors>
+      <Bare>True</Bare>
+      <Iced>False</Iced>
+    </Content>
+    <Content Include="Areas\TestPage\Scripts\5ch5\Player.coffee">
+      <Compile>True</Compile>
+      <Minify>True</Minify>
+      <IgnoreWarnings>True</IgnoreWarnings>
+      <IgnoreErrors>True</IgnoreErrors>
+      <Bare>True</Bare>
+      <Iced>False</Iced>
+    </Content>
+    <Content Include="appViews\Test\Angular\SubmitForm.html" />
+    <Content Include="appViews\Test\Angular\RootProperty.html" />
+    <Content Include="appViews\Test\Angular\Chapter9Ari.html" />
+    <Content Include="appViews\Test\Chapter10\demo.dateparser.html" />
+    <Content Include="Areas\HelpPage\Web.config" />
+    <Content Include="Areas\HelpPage\_ViewStart.cshtml" />
+    <None Include="Areas\TestPage\Views\AngularTest\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\Lte-ftp-219.pubxml" />
+    <None Include="Properties\PublishProfiles\Lte2.pubxml" />
+    <Content Include="Scripts\coffee-script.js" />
+    <Content Include="Scripts\kpi\interference.import.controller.js" />
+    <Content Include="Scripts\kpi\workitem\index.controller.js" />
+    <Content Include="Scripts\manage\index.viewmodel.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\mycharts\comboChart.js" />
+    <Content Include="Scripts\mycharts\drilldown.chart.js" />
+    <Content Include="Scripts\numeric\documentation.html" />
+    <Content Include="Scripts\numeric\numeric.js" />
+    <Content Include="Scripts\numeric\quadprog.js" />
+    <Content Include="Scripts\numeric\seedrandom.js" />
+    <Content Include="Scripts\numeric\sparse2.js" />
+    <Content Include="Scripts\numeric\svd.js" />
+    <Content Include="Scripts\parameters\alarmimport.controller.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\ui-grid.js" />
+    <Content Include="Scripts\ui-grid.min.js" />
+    <Content Include="Scripts\underscore.js" />
+    <Content Include="Scripts\underscore.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Scripts\app\common.js" />
+    <Content Include="Scripts\app\home.viewmodel.js" />
+    <Content Include="appViews\Rutrace\FromMongo.html" />
+    <Content Include="appViews\DropDownMenu.html" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="appViews\Manage\AddPhoneNumber.html" />
+    <Content Include="appViews\Manage\ChangePassword.html" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Scripts\service\topic\baidu.map.js" />
+    <Content Include="Scripts\jquery-3.1.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.0.min.map" />
+    <Content Include="Views\Jasmine\SpecRunner.cshtml" />
+    <Content Include="Scripts\underscore.min.map" />
+    <Content Include="Views\Kpi\Import.cshtml" />
+    <Content Include="appViews\BasicKpi\Index.html" />
+    <Content Include="appViews\College\CollegeMenu.html" />
+    <Content Include="appViews\College\Test\Construct3GTest.html" />
+    <Content Include="appViews\College\Test\Construct4GTest.html" />
+    <Content Include="appViews\College\Table\CollegeMapInfoBox.html" />
+    <Content Include="appViews\College\Table\DistributionMapInfoBox.html" />
+    <Content Include="appViews\College\Coverage\All.html" />
+    <Content Include="appViews\College\Coverage\CollegeMap.html" />
+    <Content Include="Scripts\service\region\app.region.js" />
+    <Content Include="Scripts\service\package.json" />
+    <None Include="Views\Kpi\PreciseImport.cshtml" />
+    <Content Include="Views\Kpi\WorkItemImport.cshtml" />
+    <Content Include="appViews\Rutrace\Map\NeighborMapInfoBox.html" />
+    <Content Include="appViews\BasicKpi\TopDrop2G.html" />
+    <Content Include="appViews\WorkItem\List.html" />
+    <None Include="Views\Parameters\AlarmImport.cshtml" />
+    <Content Include="Views\Shared\_AlertPanel.cshtml" />
+    <Content Include="appViews\College\Infrastructure\DistributionDialog.html" />
+    <None Include="Views\Parameters\BasicImport.cshtml" />
+    <None Include="Views\Parameters\NeighborImport.cshtml" />
+    <Content Include="appViews\Parameters\Import\Index.html" />
+    <Content Include="appViews\Parameters\Import\ENodebLonLatTable.html" />
+    <Content Include="appViews\Parameters\Import\BtsLonLatTable.html" />
+    <Content Include="appViews\Parameters\Import\CdmaCellLonLatTable.html" />
+    <Content Include="appViews\Parameters\Import\EditENodebDialog.html" />
+    <Content Include="appViews\Parameters\Import\EditCellDialog.html" />
+    <Content Include="appViews\Parameters\Import\EditBtsDialog.html" />
+    <Content Include="appViews\Parameters\Import\EditCdmaCellDialog.html" />
+    <Content Include="appViews\Parameters\Map\ENodebMapInfoBox.html" />
+    <Content Include="appViews\Parameters\Map\BtsMapInfoBox.html" />
+    <Content Include="appViews\Parameters\List.html" />
+    <Content Include="appViews\Parameters\QueryMap.html" />
+    <Content Include="appViews\GeneralMenu.html" />
+    <Content Include="appViews\Rutrace\Interference\MatchCellDialog.html" />
+    <None Include="Web.20170818.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\HelpPage\Views\Shared\" />
+    <Folder Include="Areas\TestPage\Views\Shared\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201601170936073_Update_ApplicationDbContext_20160117.resx">
+      <DependentUpon>201601170936073_Update_ApplicationDbContext_20160117.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712032239102_Expand_User.resx">
+      <DependentUpon>201712032239102_Expand_User.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Abp.EntityFramework\Abp.EntityFramework.Customize.csproj">
+      <Project>{79f4f2b7-d8e2-4ec7-bd18-6a0741ae9a9c}</Project>
+      <Name>Abp.EntityFramework.Customize</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lte.Domain\Lte.Domain.csproj">
+      <Project>{adeef82d-6389-47c4-8f7c-d7f85c01d64e}</Project>
+      <Name>Lte.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lte.Evaluations\Lte.Evaluations.csproj">
+      <Project>{c166940a-6bd2-4f42-8156-8024d9e320c9}</Project>
+      <Name>Lte.Evaluations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lte.MySqlFramework\Lte.MySqlFramework.csproj">
+      <Project>{8ccf960a-1969-4df2-b81b-d3e46f0cd3d7}</Project>
+      <Name>Lte.MySqlFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lte.Parameters\Lte.Parameters.csproj">
+      <Project>{25b6ccb6-4b12-4df2-b4c9-2d30ae6bd254}</Project>
+      <Name>Lte.Parameters</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2938</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:2938/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>此项目引用这台计算机上缺少的 NuGet 程序包。使用 NuGet 程序包还原可下载这些程序包。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
+  <Target Name="BeforeBuild">
+  </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

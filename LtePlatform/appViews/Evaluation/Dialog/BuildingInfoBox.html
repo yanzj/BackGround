@@ -1,0 +1,41 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body">
+    <div class="infoBoxContent">
+        <div class="title">
+            <strong>楼宇基本信息: </strong>
+        </div>
+        <div class="list">
+            <ul>
+                <li>
+                    <div class="left">楼宇名称</div>
+                    <div class="rmb">{{building.name}}</div>
+                </li>
+                <li>
+                    <div class="left">楼宇类型</div>
+                    <div class="rmb">{{building.type}}</div>
+                </li>
+                <li>
+                    <div class="left">是否有5米精度地图</div>
+                    <div class="rmb">{{building.isInFiveMeter}}</div>
+                </li>
+                <li>
+                    <div class="left">评估结果</div>
+                    <div class="rmb">{{building.evaluationResult}}</div>
+                </li>
+                <li>
+                    <div class="left">RSRP覆盖率</div>
+                    <div class="rmb">{{building.rsrpCoverage | percentage | number: 2}}%</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

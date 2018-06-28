@@ -1,0 +1,87 @@
+﻿@import "../_colors.scss";
+
+.infoBoxContent {
+	font-size:12px;
+	.title {
+		height:42px;
+		width:272px;
+		strong {
+			font-size:14px;
+			line-height:42px;
+			padding:0 10px 0 5px;
+		}
+		.price {
+			color: $color-purple;
+		}
+	}
+	.list {
+		border:solid 1px $color-light-orange;
+		border-top:none;
+		background:$color-all-white;
+		ul {
+			margin:0;
+			padding:5px;
+			list-style:none;
+			li {
+				border-bottom:solid 1px $color-light-orange;
+				padding:2px 0;
+				height: 26px;
+			}
+			.last {
+				border:none;
+			}
+			img {
+				width:53px;
+				height:42px;
+				margin-right:5px;
+			}
+			p {
+				padding:0;
+				margin:0;
+			}
+		}
+	}
+	.left {
+		float:left;
+	}
+	.rmb {
+		float:right;
+		color: $color-baidu-rmb;
+		font-size:14px;
+		font-weight:bold;
+	}
+	a {
+		color: $color-baidu-a;
+		text-decoration:none;
+	}
+}  
+
+.baidu-label-body{
+	position: absolute;
+	border: 1px solid;
+	color: white;
+	padding: 2px;
+	line-height: 18px;
+	white-space: nowrap;
+	-moz-user-select: none;
+	font-size: 12px;
+}
+
+.baidu-label-red{
+	background-color: $color-baidu-red-background;
+	border-color: $color-baidu-red-border;
+}
+
+.baidu-label-blue{
+	background-color: $color-baidu-blue-background;
+	border-color: $color-baidu-blue-border;
+}
+
+.baidu-label-arrow{
+	position: absolute;
+	width: 11px;
+	height: 10px;
+	left: 10px;
+	overflow: hidden;
+	background: url(/Content/themes/baidu/label.png)
+}

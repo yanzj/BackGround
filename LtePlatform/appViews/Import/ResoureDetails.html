@@ -1,0 +1,195 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body form-horizontal">
+    <section ng-init="tab = 0">
+        <ul class="nav nav-pills">
+            <li ng-class="{ active:isSelectTab(0)}">
+                <a href ng-click="selectTab(0)">站址</a>
+            </li>
+            <li ng-class="{ active:isSelectTab(1)}">
+                <a href ng-click="selectTab(1)">BTS</a>
+            </li>
+            <li ng-class="{ active:isSelectTab(2)}">
+                <a href ng-click="selectTab(2)">Enodeb</a>
+            </li>
+            <li ng-class="{ active:isSelectTab(3)}">
+                <a href ng-click="selectTab(3)">RRU</a>
+            </li>
+            <li ng-class="{ active:isSelectTab(4)}">
+                <a href ng-click="selectTab(4)">LRRU</a>
+            </li>
+            <li ng-class="{ active:isSelectTab(5)}">
+                <a href ng-click="selectTab(5)">室分站</a>
+            </li>
+            <li ng-class="{ active:isSelectTab(6)}">
+                <a href ng-click="selectTab(6)">直放站</a>
+            </li>
+            <li ng-class="{ active:isSelectTab(7)}">
+                <a href ng-click="selectTab(7)">资产</a>
+            </li>
+        </ul>
+        <div class="panel" ng-show="isSelectTab(0)">
+            <table class="table table-striped">
+                <thead>
+                    <tr><td>资源</td><td>BTS</td><td>ENODEB</td><td>RRU</td><td>LRRU</td><td>室分站</td><td>直放站</td></tr>
+                </thead>
+                <tbody>
+                    <tr><td>数量</td><td>{{counter.bts}}</td><td>{{counter.enodeb}}</td><td>{{counter.rru}}</td><td>{{counter.lrru}}</td><td>{{counter.sfz}}</td><td>{{counter.zfz}}</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel" ng-show="isSelectTab(1)">
+            <table class="table table-striped">
+                <thead>
+                    <tr><td>1X基站站型</td><td>EV-DO基站站型</td><td>父网元种类</td><td>所属本地网</td><td>名称</td><td>编码</td><td>拼装名称</td><td>拼装编码</td><td>所属机房</td></tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="res in resourceList">
+                        <td>{{res.X1BTSMODEL}}</td>
+                        <td>{{res.EVDOBTSMODEL}}</td>
+                        <td>{{res.PARENT_METACATEGORY}}</td>
+                        <td>{{res.NE2MAPREGION_AREANAME}}</td>
+                        <td>{{res.NAME}}</td>
+                        <td>{{res.CODE}}</td>
+                        <td>{{res.ASSEMBLENAME}}</td>
+                        <td>{{res.ASSEMBLECODE}}</td>
+                        <td>{{res.ME2ROOM_NAME}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+        <div class="panel" ng-show="isSelectTab(2)">
+            <table class="table table-striped">
+                <thead>
+                    <tr><td>父网元种类</td><td>所属本地网</td><td>所属行政区域</td><td>所属站点</td><td>所属机房</td><td>安装点</td><td>名称</td><td>编码</td><td>设备标识</td></tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="res in resourceList">
+                        <td>{{res.PARENT_METACATEGORY}}</td>
+                        <td>{{res.NE2MAPREGION_AREANAME}}</td>
+                        <td>{{res.ME2MANAGEMENTAREA_NAME}}</td>
+                        <td>{{res.ME2SITE_NAME}}</td>
+                        <td>{{res.ME2ROOM_NAME}}</td>
+                        <td>{{res.ME2OUTDOORADDR_NAME}}</td>
+                        <td>{{res.NAME}}</td>
+                        <td>{{res.CODE}}</td>
+                        <td>{{res.NEMARK}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="panel" ng-show="isSelectTab(3)">
+            <table class="table table-striped">
+                <thead>
+                    <tr><td>父网元种类</td><td>CellID</td><td>接入服务器IP(163域)</td><td>所属本地网</td><td>所属行政区域</td><td>所属站点</td><td>所属机房</td><td>安装点</td><td>名称</td></tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="res in resourceList">
+                        <td>{{res.PARENT_METACATEGORY}}</td>
+                        <td>{{res.LTECELL2LTEENODEB_IDSUFFIX}}</td>
+                        <td>{{res.BASSERVERIPADDR}}</td>
+                        <td>{{res.NE2MAPREGION_AREANAME}}</td>
+                        <td>{{res.ME2MANAGEMENTAREA_NAME}}</td>
+                        <td>{{res.ME2SITE_NAME}}</td>
+                        <td>{{res.ME2ROOM_NAME}}</td>
+                        <td>{{res.ME2OUTDOORADDR_NAME}}</td>
+                        <td>{{res.NAME}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="panel" ng-show="isSelectTab(4)">
+            <table class="table table-striped">
+                <thead>
+                    <tr><td>父网元种类</td><td>所属本地网</td><td>名称</td><td>编码</td><td>拼装名称</td><td>拼装编码</td><td>所属机房</td><td>安装点</td><td>种类</td></tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="res in resourceList">
+                        <td>{{res.PARENT_METACATEGORY}}</td>
+                        <td>{{res.NE2MAPREGION_AREANAME}}</td>
+                        <td>{{res.NAME}}</td>
+                        <td>{{res.CODE}}</td>
+                        <td>{{res.ASSEMBLENAME}}</td>
+                        <td>{{res.ASSEMBLECODE}}</td>
+                        <td>{{res.ME2ROOM_NAME}}</td>
+                        <td>{{res.ME2OUTDOORADDR_NAME}}</td>
+                        <td>{{res.METACATEGORY}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="panel" ng-show="isSelectTab(5)">
+            <table class="table table-striped">
+                <thead>
+                    <tr><td>父网元种类</td><td>所属本地网</td><td>名称</td><td>编码</td><td>拼装编码</td><td>拼装名称</td><td>所属机房</td><td>安装点</td><td>种类</td></tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="res in resourceList">
+                        <td>{{res.PARENT_METACATEGORY}}</td>
+                        <td>{{res.NE2MAPREGION_AREANAME}}</td>
+                        <td>{{res.NAME}}</td>
+                        <td>{{res.CODE}}</td>
+                        <td>{{res.ASSEMBLECODE}}</td>
+                        <td>{{res.ASSEMBLENAME}}</td>
+                        <td>{{res.ME2ROOM_NAME}}</td>
+                        <td>{{res.ME2OUTDOORADDR_NAME}}</td>
+                        <td>{{res.METACATEGORY}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="panel" ng-show="isSelectTab(6)">
+            <table class="table table-striped">
+                <thead>
+                    <tr><td>父网元种类</td><td>所属本地网</td><td>名称</td><td>编码</td><td>拼装名称</td><td>拼装编码</td><td>所属机房</td><td>安装点</td><td>种类</td></tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="res in resourceList">
+                        <td>{{res.PARENT_METACATEGORY}}</td>
+                        <td>{{res.NE2MAPREGION_AREANAME}}</td>
+                        <td>{{res.NAME}}</td>
+                        <td>{{res.CODE}}</td>
+                        <td>{{res.ASSEMBLENAME}}</td>
+                        <td>{{res.ASSEMBLECODE}}</td>
+                        <td>{{res.ME2ROOM_NAME}}</td>
+                        <td>{{res.ME2OUTDOORADDR_NAME}}</td>
+                        <td>{{res.METACATEGORY}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="panel" ng-show="isSelectTab(7)">
+            <table class="table table-striped">
+                <thead>
+                    <tr><td>客户端</td><td>年度</td><td>公司代码</td><td>利润中心</td><td>公司名称</td><td>主资产号</td><td>次级资产编码</td><td>资产分类</td><td>技术资产号</td></tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="res in resourceList">
+                        <td>{{res.KHD001}}</td>
+                        <td>{{res.ND002}}</td>
+                        <td>{{res.GSDM003}}</td>
+                        <td>{{res.LRZX004}}</td>
+                        <td>{{res.GSMC005}}</td>
+                        <td>{{res.ZZCH006}}</td>
+                        <td>{{res.CJZCBM007}}</td>
+                        <td>{{res.ZCFL008}}</td>
+                        <td>{{res.JSZCH009}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+<div class="modal-footer">
+
+    <button class="btn btn-default" type="button" ng-click="cancel()">关闭</button>
+</div>

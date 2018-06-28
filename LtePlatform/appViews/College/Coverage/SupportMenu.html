@@ -1,0 +1,15 @@
+﻿<label>年份</label>
+<select class="form-control" ng-model="collegeInfo.year.selected" ng-options="p as p for p in collegeInfo.year.options"></select>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            校园支撑列表
+        </h4>
+    </div>
+    <div class="panel-collapse collapse in">
+        <div class="list-group">
+            <a ng-repeat="info in collegeInfo.supportInfos" class="list-group-item" ng-class="{active: page.projectName === info.projectName}"
+               ng-href="{{collegeInfo.url}}/{{info.serialNumber}}">{{info.projectName}}</a>
+        </div>
+    </div>
+</div>

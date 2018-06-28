@@ -1,0 +1,15 @@
+﻿<Properties StartupConfiguration="{A8BDC65F-5637-4C4E-8530-FCB7B97CDE48}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="LtePlatform/Scripts/app/home.kpi.js">
+    <Files>
+      <File FileName="LtePlatform/appViews/DropDownMenu.html" Line="1" Column="1" />
+      <File FileName="LtePlatform/Scripts/app/home.kpi.js" Line="33" Column="30" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|Android" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.LtePlatform PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>

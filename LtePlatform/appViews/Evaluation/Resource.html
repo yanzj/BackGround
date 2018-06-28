@@ -1,0 +1,16 @@
+﻿
+<div class="btn-group-sm col-md-4" uib-dropdown dropdown-append-to-body>
+    <button id="view-button" type="button" class="btn btn-sm btn-default"
+            uib-dropdown-toggle ng-disabled="disabled">
+        <strong>区域-{{distinct}}</strong>
+        <span class="caret"></span>
+    </button>
+    <ul uib-dropdown-menu role="menu" aria-labelledby="view-button">
+        <li role="menuitem" ng-repeat="distinctName in distincts">
+            <a class="btn btn-sm btn-success" ng-click="reflashMap($index)">
+                <i class="glyphicon glyphicon-flag"></i>
+                {{distinctName}}
+            </a>
+        </li>
+    </ul>
+</div>

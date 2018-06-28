@@ -1,0 +1,43 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-4">
+            <label>网络类型</label>
+            <select class="form-control" ng-model="network.selected" ng-options="n as n for n in network.options"></select>
+        </div>
+        <div class="col-md-8">
+            <div date-span-row begin-date="beginDate" end-date="endDate">
+                <button type="button" class="btn btn-primary" ng-click="query()">
+                    <i class="glyphicon glyphicon-search"></i>查询文件
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="cloudmap-wrapper">
+        <div class="cloudmap-tools">
+            <span class="cloudmap-city-name">测试数据文件</span>
+            <select class="cloudmap-select-city" ng-disabled="includeAllFiles"
+                    ng-model="dataFile.selected" ng-options="c.csvFileName for c in dataFile.options"></select>
+            <input type="checkbox" ng-model="includeAllFiles" />
+            <span class="cloudmap-city-name">展示全部数据</span>
+            <span class="cloudmap-city-name">&nbsp;指标选择：</span>
+            <select class="cloudmap-select-city" ng-model="kpi.selected" ng-options="c as c for c in kpi.options"></select>
+            <button class="btn btn-sm btn-warning" ng-disabled="!dataFile.options.length" ng-click="showStat()">统计数据</button>
+            <span class="cloudmap-city-name">&nbsp;覆盖率：</span>
+            <span class="cloudmap-city-name">{{coverageRate | number: 2}}</span>
+            <span class="cloudmap-city-name">%</span>
+        </div>
+        <div dt-file-list items="dtList" type="network.selected"></div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>
+

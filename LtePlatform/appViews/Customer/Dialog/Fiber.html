@@ -1,0 +1,31 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body form-horizontal">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">工单编号</label>
+        <div class="col-sm-4">
+            <span>{{item.workItemNumber}}</span>
+        </div>
+        <label class="col-sm-2 control-label">建立时间</label>
+        <div class="col-sm-4">
+            <span>{{item.beginDate | date: 'yyyy-MM-dd HH:mm:ss'}}</span>
+        </div>
+    </div>
+    <form name="signup_form" novalidate class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">联系人</label>
+            <div class="col-sm-10">
+                <input ng-model="item.person" class="form-control" ng-required="true"
+                       form-field-error="{required: '联系人是必须填的！'}" />
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="ok()" ng-disabled="signup_form.$invalid">保存信息</button>
+    <button class="btn btn-default" type="button" ng-click="cancel()">放弃保存</button>
+</div>

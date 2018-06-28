@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "指标文件导入";
+}
+
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            <strong>@ViewBag.Title</strong>
+        </h2>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <h4>指标文件选择</h4>
+                @using (Html.BeginForm("KpiImport", "Kpi",
+                    FormMethod.Post, new {enctype = "multipart/form-data", @class = "form-horizontal", role = "form"}))
+                {
+                    <div dump-file-selector file-title="每日KPI Excel文件选择：" tag="dailyKpi" file-type=".xls, .xlsx"></div>
+                }
+                @using (Html.BeginForm("PlanningImport", "Kpi",
+                    FormMethod.Post, new {enctype = "multipart/form-data", @class = "form-horizontal", role = "form"}))
+                {
+                    <div dump-file-selector file-title="规划信息文件选择：" tag="planning" file-type=".xls, .xlsx"></div>
+                }
+                <h4>DT数据文件导入</h4>
+                @using (Html.BeginForm("Dt2GImport", "Kpi",
+                FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    <div dump-file-selector file-title="2G测试文件选择：" tag="dt2G" file-type=".csv"></div>
+                }
+                @using (Html.BeginForm("Dt3GImport", "Kpi",
+                    FormMethod.Post, new {enctype = "multipart/form-data", @class = "form-horizontal", role = "form"}))
+                {
+                    <div dump-file-selector file-title="3G测试文件选择：" tag="dt3G" file-type=".csv"></div>
+                }
+                @using (Html.BeginForm("Dt4GImport", "Kpi",
+                    FormMethod.Post, new {enctype = "multipart/form-data", @class = "form-horizontal", role = "form"}))
+                {
+                    <div dump-file-selector file-title="4G测试文件选择：" tag="dt4G" file-type=".csv"></div>
+                }
+                @using (Html.BeginForm("Dt4GDingliImport", "Kpi",
+                FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    <div dump-file-selector file-title="4G测试文件选择（鼎利格式）：" tag="dt4GDingli" file-type=".csv"></div>
+                }
+                @using (Html.BeginForm("DtVolteImport", "Kpi",
+                FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    <div dump-file-selector file-title="VoLTE测试文件选择（鼎利格式）：" tag="dtVolte" file-type=".csv"></div>
+                }
+            </div>
+            <div class="col-md-5">
+                @{Html.RenderPartial("_AlertPanel");}
+            </div>
+            <div class="col-md-6">
+                <h4>客服有关文件导入</h4>
+                @using (Html.BeginForm("ComplainImport", "Kpi",
+                    FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    <div dump-file-selector file-title="抱怨量工单文件选择：" tag="complain" file-type=".xls, .xlsx"></div>
+                }
+                @using (Html.BeginForm("VipDemandImport", "Kpi",
+                    FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    <div dump-file-selector file-title="在线求助文件选择：" tag="vipDemand" file-type=".xls, .xlsx"></div>
+                }
+                @using (Html.BeginForm("BranchImport", "Kpi",
+                    FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    <div dump-file-selector file-title="分公司需求文件选择：" tag="branch" file-type=".xls, .xlsx"></div>
+                }
+                @using (Html.BeginForm("OnlineImport", "Kpi",
+                    FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    <div dump-file-selector file-title="在线支撑文件选择：" tag="online" file-type=".xls, .xlsx"></div>
+                }
+            </div>
+            <div class="col-md-6">
+                <h4>考试题目导入</h4>
+                @using (Html.BeginForm("StandarProblemImport", "Kpi",
+                FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    <div dump-file-selector file-title="标准考试题目选择：" tag="standardProblem" file-type=".xls, .xlsx"></div>
+                }
+                @using (Html.BeginForm("ChoiceProblemImport", "Kpi",
+                FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    <div dump-file-selector file-title="不定项选择题目选择：" tag="choiceProblem" file-type=".xls, .xlsx"></div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        angular.module("myApp", ['app.common']);
+    </script>
+}

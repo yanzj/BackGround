@@ -1,0 +1,63 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body form-horizontal">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        全市基站小区统计
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>城市：</label>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <select class="form-control" ng-model="city.selected" ng-options="c as c for c in city.options"></select>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-success" ng-click="showCityStats()">
+                                        <i class="glyphicon glyphicon-search"></i>统计
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div city-infrastructure district-stats="districtStats" current-district="currentDistrict"></div>
+                    <div style="min-height: 300px" id="cityLteENodebConfig"></div>
+                    <div style="min-height: 300px" id="cityLteCellConfig"></div>
+                    <div style="min-height: 300px" id="cityNbIotCellConfig"></div>
+                    <div style="min-height: 300px" id="cityCdmaENodebConfig"></div>
+                    <div style="min-height: 300px" id="cityCdmaCellConfig"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        {{currentDistrict}}基站小区统计
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div district-infrastructure town-stats="townStats" root-path="rootPath" city="city" current-district="currentDistrict"></div>
+                    <div style="min-height: 300px" id="districtLteENodebConfig"></div>
+                    <div style="min-height: 300px" id="districtLteCellConfig"></div>
+                    <div style="min-height: 300px" id="districtNbIotCellConfig"></div>
+                    <div style="min-height: 300px" id="districtCdmaENodebConfig"></div>
+                    <div style="min-height: 300px" id="districtCdmaCellConfig"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="ok()">保存信息</button>
+    <button class="btn btn-default" type="button" ng-click="cancel()">放弃保存</button>
+</div>
+
+

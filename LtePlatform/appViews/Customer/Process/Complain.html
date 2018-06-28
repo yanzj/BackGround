@@ -1,0 +1,58 @@
+﻿<h3 class="text-primary">项目编号：{{item.serialNumber}}</h3>
+<table class="table table-bordered">
+    <tbody>
+        <tr>
+            <td>楼宇名称</td>
+            <td>{{item.buildingName}}</td>
+            <td>开始时间</td>
+            <td>{{item.beginTime | date: 'yyyy-MM-dd'}}</td>
+            <td>投诉类型</td>
+            <td>{{item.complainCategoryDescription}}</td>
+        </tr>
+        <tr>
+            <td>投诉来源</td>
+            <td>{{item.complainSourceDescription}}</td>
+            <td>室内外</td>
+            <td>{{item.isIndoorDescription}}</td>
+            <td>网络类型</td>
+            <td>{{item.networkTypeDescription}}</td>
+        </tr>
+        <tr>
+            <td>附近道路</td>
+            <td>{{item.roadName}}</td>
+            <td>站点判断位置</td>
+            <td>{{item.sitePosition}}</td>
+            <td>现场判断原因</td>
+            <td>{{item.complainSceneDescription}}</td>
+        </tr>
+    </tbody>
+</table>
+<div class="row">
+    <div class="col-md-5">
+        当前状态：
+        <div complain-process-state state="item.currentStateDescription"></div>
+        下一状态：
+        <div complain-process-state state="item.nextStateDescription"></div>
+    </div>
+    <div class="col-md-7">
+        <div class="input-group">
+            处理信息：
+            <input type="text" ng-model="processInfo" class="form-control" />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-primary" ng-click="createProcess()" ng-disabled="!item.nextStateDescription">
+                    流程处理
+                </button>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            处理记录
+        </h3>
+    </div>
+    <div class="panel-body">
+        <div complain-process-list items="processItems"></div>
+    </div>
+</div>

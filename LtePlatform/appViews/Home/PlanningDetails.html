@@ -1,0 +1,28 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body form-horizontal">
+    <div plan-site-details item-groups="itemGroups"></div>
+    <div lte-cell-table items="cellList" begin-date="beginDate" end-date="endDate" ng-show="eNodeb"></div>
+</div>
+<div uib-tabset active="active">
+    <div uib-tab index="0" heading="详细信息">
+        <div plan-site-details item-groups="detailsGroups"></div>
+    </div>
+    <div uib-tab index="1" heading="基站小区信息">
+        <div plan-site-details item-groups="eNodebGroups" ng-show="eNodeb"></div>
+    </div>
+    <div uib-tab index="2" heading="小区列表">
+        <div ng-repeat="group in cellGroups">
+            <h5>{{group.cellName}}</h5>
+            <div plan-site-details item-groups="group.cellGroup"></div>
+            <div plan-site-details item-groups="group.rruGroup"></div>
+        </div>
+        
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="ok()">保存信息</button>
+    <button class="btn btn-default" type="button" ng-click="cancel()">放弃保存</button>
+</div>

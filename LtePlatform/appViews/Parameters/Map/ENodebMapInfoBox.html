@@ -1,0 +1,50 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div plan-site-details item-groups="eNodebGroups"></div>
+    </div>
+    <div uib-tabset active="active">
+        <div uib-tab index="0" heading="小区列表">
+            <div lte-cell-table items="cellList" begin-date="beginDate" end-date="endDate"></div>
+        </div>
+        <div uib-tab index="1" heading="切换参数">
+            <h4 class="text-primary">同频切换参数</h4>
+            <div e-nodeb-intra-freq intra-freq-ho="intraFreqHo"></div>
+            <h4 class="text-primary">公共异频切换参数</h4>
+            <div e-nodeb-inter-freq inter-freq-ho="interFreqHo"></div>
+        </div>
+        <div uib-tab index="2" heading="告警信息">
+            <div class="row">
+                <div class="col-md-6">
+                    <div date-span-column begin-date="beginDate" end-date="endDate"></div>
+                </div>
+                <div class="col-md-6">
+                    <label>告警等级：</label>
+                    <div class="input-group">
+                        <select ng-model="alarmLevel.selected" class="form-control" ng-options="level for level in alarmLevel.options"></select>
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" ng-click="searchAlarms()">
+                                <i class="glyphicon glyphicon-search"></i>
+                                查询
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div alarm-table alarms="alarms"></div>
+        </div>
+        <div uib-tab index="3" heading="站址信息">
+            <div plan-site-details item-groups="stationGroups"></div>
+        </div>
+    </div>
+    
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

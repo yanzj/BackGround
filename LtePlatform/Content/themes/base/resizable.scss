@@ -1,0 +1,48 @@
+@import "../_mixins.scss";
+
+/*!
+ * jQuery UI Resizable 1.11.4
+ * http://jqueryui.com
+ *
+ * Copyright jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ */
+.ui-resizable {
+	position: relative;
+}
+.ui-resizable-handle {
+	position: absolute;
+	font-size: 0.1px;
+	display: block;
+	-ms-touch-action: none;
+	touch-action: none;
+}
+.ui-resizable-disabled .ui-resizable-handle,
+.ui-resizable-autohide .ui-resizable-handle {
+	display: none;
+}
+.ui-resizable-n {
+	@include ui-resizable-def(n-resize);
+}
+.ui-resizable-s {
+	@include ui-resizable-def(s-resize);
+}
+.ui-resizable-e {
+	@include ui-resizable-def(e-resize);
+}
+.ui-resizable-w {
+	@include ui-resizable-def(w-resize);
+}
+.ui-resizable-se {
+	@include ui-resizable-def(se-resize);
+}
+.ui-resizable-sw {
+	@include ui-resizable-def(sw-resize);
+}
+.ui-resizable-nw {
+	@include ui-resizable-def(nw-resize);
+}
+.ui-resizable-ne {
+	@include ui-resizable-def(ne-resize);
+}

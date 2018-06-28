@@ -1,0 +1,42 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body ">
+    <div date-span-row begin-date="beginDate" end-date="endDate">
+        <button class="btn btn-primary" ng-click="query()">
+            <i class="glyphicon glyphicon-search"></i>
+        </button>
+    </div>
+    <div uib-accordion>
+        <div uib-accordion-group class="panel-primary" is-open="true">
+            <div uib-accordion-heading>
+                3G测试记录
+                <div class="badge">{{items3G.length}}</div>
+            </div>
+            <div college-test3-list items="items3G"></div>
+        </div>
+        <div uib-accordion-group class="panel-success">
+            <div uib-accordion-heading>
+                4G测试记录
+                <div class="badge">{{items4G.length}}</div>
+            </div>
+            <div college-test4-list items="items4G"></div>
+        </div>
+        <div uib-accordion-group class="panel-warning">
+            <div uib-accordion-heading>
+                测试总结
+            </div>
+            <pre class="alert alert-info" id="reports">
+在{{beginDate.value | date: 'yyyy-MM-dd'}}-{{endDate.value | date: 'yyyy-MM-dd'}}期间，共完成3G测试{{items3G.length}}次，4G测试{{items4G.length}}次。
+其中4G平均下载速率{{averageDownloadRate | number: 2}}kbit/s，平均上传速率{{averageUploadRate | number: 2}}kbit/s，平均RSRP{{averageRsrp | number: 2}}dBm，平均SINR{{averageSinr | number: 2}}dB。
+            </pre>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="ok()" ng-disabled="items3G.length<3 || items4G.length<3">保存信息</button>
+    <button class="btn btn-default" type="button" ng-click="cancel()">放弃保存</button>
+</div>

@@ -1,0 +1,49 @@
+﻿<div class="btn-group-sm col-md-4" uib-dropdown dropdown-append-to-body>
+    <button id="single-button" type="button" class="btn btn-sm btn-default"
+            uib-dropdown-toggle ng-disabled="disabled">
+        <strong>信息维护</strong>
+        <span class="caret"></span>
+    </button>
+    <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
+        <li role="menuitem">
+            <a class="btn btn-sm btn-warning" ng-click="manageCsvFiles()">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+                CSV文件维护
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showCdmaTownStats()">
+                <i class="glyphicon glyphicon-tree-conifer"></i>
+                CDMA统计
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="btn-group-sm col-md-4" uib-dropdown dropdown-append-to-body>
+    <button id="view-button" type="button" class="btn btn-sm btn-default"
+            uib-dropdown-toggle ng-disabled="disabled">
+        <strong>视图-{{currentView}}</strong>
+        <span class="caret"></span>
+    </button>
+    <ul uib-dropdown-menu role="menu" aria-labelledby="view-button">
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showLteENodebs()">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+                LTE基站
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showOutdoorSites()">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+                室外小区
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showIndoorSites()">
+                <i class="glyphicon glyphicon-tree-conifer"></i>
+                室内小区
+            </a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,43 @@
+﻿[
+  {
+    
+    "typeDescription": "楼宇",
+    "hotspotName": "信息大厦",
+    "address": "佛山市禅城区汾江南路35号",
+    "sourceName": "信息大厦重点保障",
+    "longtitute": 113.1026556405406,
+    "lattitute": 23.0000522108108
+  },
+  {
+    "typeDescription": "楼宇",
+    "hotspotName": "魁奇电信",
+    "address": "佛山市禅城区魁奇一路33号",
+    "sourceName": "佛山市分公司网络运营部和禅城分公司",
+    "longtitute": 113.11666981481483,
+    "lattitute": 22.995777037037033
+  },
+  {
+    "typeDescription": "楼宇",
+    "hotspotName": "平洲电信",
+    "address": "佛山市南海区平洲南港路7号",
+    "sourceName": "佛山无线中心",
+    "longtitute": 113.1894444,
+    "lattitute": 23.0389583
+  },
+  {
+    "typeDescription": "医院",
+    "hotspotName": "第一人民医院",
+    "address": "佛山市第一人民医院",
+    "sourceName": "佛山市第一人民医院",
+    "longtitute": 113.11727282926826,
+    "lattitute": 23.010205463414639
+  },
+  {
+    "typeDescription": "商场",
+    "hotspotName": "东方广场",
+    "address": "佛山市禅城区锦华路81号",
+    "sourceName": "东方广场银州城、金山街、钻石称、明珠城等",
+    "longtitute": 113.11558655675678,
+    "lattitute": 23.040148221621624
+  }
+]

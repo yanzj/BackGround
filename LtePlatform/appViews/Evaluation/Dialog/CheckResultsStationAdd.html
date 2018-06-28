@@ -1,0 +1,280 @@
+﻿<style>
+    td {
+        text-align: center;
+        border: 1px solid #000000;
+    }
+
+    .col-tab {
+        width: 100%;
+    }
+</style>
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body form-horizontal">
+    <section ng-init="tab = 0">
+        <ul class="nav nav-pills">
+            <li ng-class="{ active:isSelectTab(0)}">
+                <a href ng-click="selectTab(0)">基础信息</a>
+            </li>
+            <li ng-class="{ active:isSelectTab(1)}">
+                <a href ng-click="selectTab(1)">机房外</a>
+            </li>
+            <li ng-class="{ active:isSelectTab(2)}">
+                <a href ng-click="selectTab(2)">机房上</a>
+            </li>
+            <li ng-class="{ active:isSelectTab(3)}">
+                <a href ng-click="selectTab(3)">机房内</a>
+            </li>
+        </ul>
+
+        <div class="panel" ng-show="isSelectTab(0)">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">网元名称</label>
+                <div class="col-sm-2">
+                    <span class="form-control">{{station.WYMC003}}</span>
+                </div>
+                <label class="col-sm-2 control-label">是否需求整治</label>
+                <div class="col-sm-2">
+                    <input class="form-control" ng-model="station.SFXQZZ004"/>
+                </div>
+                <label class="col-sm-2 control-label">巡检单位</label>
+                <div class="col-sm-2">
+                    <span class="form-control">{{station.XJDW005}}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">巡检人</label>
+                <div class="col-sm-2">
+                    <input class="form-control" ng-model="station.XJR006" />
+                </div>
+                <label class="col-sm-2 control-label">网格名称</label>
+                <div class="col-sm-2">
+                    <span class="form-control">{{station.WGMC007}}</span>
+                </div>
+                <label class="col-sm-2 control-label">开始时间</label>
+                <div class="col-sm-2">
+                    <span class="form-control">{{station.KSSJ008}}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">基站经度</label>
+                <div class="col-sm-2">
+                    <input class="form-control" ng-model="station.JZJD010" />
+                </div>
+                <label class="col-sm-2 control-label">基站纬度</label>
+                <div class="col-sm-2">
+                    <input class="form-control" ng-model="station.JZWD011" />
+                </div>
+                <label class="col-sm-2 control-label">结束时间</label>
+                <div class="col-sm-2">
+                    <span class="form-control">{{station.JSSJ009}}</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">巡检经度</label>
+                <div class="col-sm-2">
+                    <input class="form-control" ng-model="station.XJJD012" />
+                </div>
+                <label class="col-sm-2 control-label">巡检纬度</label>
+                <div class="col-sm-2">
+                    <input class="form-control" ng-model="station.XJWD013" />
+                </div>
+                <label class="col-sm-2 control-label">巡检距离</label>
+                <div class="col-sm-2">
+                    <input class="form-control" ng-model="station.XJJL014" />
+                </div>
+            </div>
+        </div>
+
+        <div class="panel" ng-show="isSelectTab(1)">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">周边环境</label>
+                <div class="col-sm-3">
+                    <input class="form-control" ng-model="station.ZT001" />
+                </div>
+                <label class="col-sm-3 control-label">拨打测试</label>
+                <div class="col-sm-3">
+                    <input class="form-control" ng-model="station.ZT002" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">电表读数</label>
+                <div class="col-sm-3">
+                    <input class="form-control" ng-model="station.ZT003" />
+                </div>
+                <label class="col-sm-3 control-label">变_稳压器</label>
+                <div class="col-sm-3">
+                    <input class="form-control" ng-model="station.ZT004" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">空调室外机</label>
+                <div class="col-sm-3">
+                    <input class="form-control" ng-model="station.ZT005" />
+                </div>
+                <label class="col-sm-3 control-label">电光线缆</label>
+                <div class="col-sm-3">
+                    <input class="form-control" ng-model="station.ZT006" />
+                </div>
+            </div>
+        </div>
+
+        <div class="panel" ng-show="isSelectTab(2)">
+            <div uib-accordion close-others="false">
+                <div uib-accordion-group>
+                    <div uib-accordion-heading>
+                        内部环境
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">环境卫生</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" ng-model="station.ZT007" />
+                        </div>
+                        <label class="col-sm-3 control-label">环控核查</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" ng-model="station.ZT008" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">机房土建</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" ng-model="station.ZT009" />
+                        </div>
+                        <label class="col-sm-3 control-label">基站消防</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" ng-model="station.ZT010" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">维护标识</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" ng-model="station.ZT011" />
+                        </div>
+                        <label class="col-sm-3 control-label">温湿度</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" ng-model="station.ZT012" />
+                        </div>
+                    </div>
+                </div>
+                <div uib-accordion-group>
+                    <div uib-accordion-heading>
+                        主设备
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">CDMA机框</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" ng-model="station.ZT013" />
+                        </div>
+                        <label class="col-sm-3 control-label">LTE机框</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" ng-model="station.ZT014" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">板卡状态</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" ng-model="station.ZT015" />
+                        </div>
+                        <label class="col-sm-3 control-label">设备风扇</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" ng-model="station.ZT016" />
+                        </div>
+                    </div>
+                </div>
+                <div uib-accordion-group>
+                    <div uib-accordion-heading>
+                        动力配套
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">UPS</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" ng-model="station.ZT017" />
+                        </div>
+                        <label class="col-sm-3 control-label">低压配电</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" ng-model="station.ZT018" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">防雷与接地</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" ng-model="station.ZT019" />
+                        </div>
+                        <label class="col-sm-3 control-label">固定式油机</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" ng-model="station.ZT020" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">开关电源</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" ng-model="station.ZT021" />
+                        </div>
+                        <label class="col-sm-3 control-label">蓄电池</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" ng-model="station.ZT022" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">照明与插座</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" ng-model="station.ZT023" />
+                        </div>
+                    </div>
+                </div>
+                <div uib-accordion-group>
+                    <div uib-accordion-heading>
+                        其他<span class="icon_right"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">空调</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" ng-model="station.ZT024" />
+                        </div>
+                        <label class="col-sm-3 control-label">传输配套</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" ng-model="station.ZT025" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">走线架</label>
+                        <div class="col-sm-3">
+                            <input class="form-control" ng-model="station.ZT026" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="panel" ng-show="isSelectTab(3)">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">馈线质量</label>
+                <div class="col-sm-3">
+                    <input class="form-control" ng-model="station.ZT027" />
+                </div>
+                <label class="col-sm-3 control-label">天线测量</label>
+                <div class="col-sm-3">
+                    <input class="form-control" ng-model="station.ZT028" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">GPS及性能</label>
+                <div class="col-sm-3">
+                    <input class="form-control" ng-model="station.ZT029" />
+                </div>
+                <label class="col-sm-3 control-label">上塔RRU</label>
+                <div class="col-sm-3">
+                    <input class="form-control" ng-model="station.ZT030" />
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="ok()">提交</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

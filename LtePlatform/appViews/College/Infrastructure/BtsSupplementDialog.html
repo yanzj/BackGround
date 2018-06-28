@@ -1,0 +1,13 @@
+﻿<div class="modal-header modal-header-teal">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body">
+    <div bts-selection-table items="supplementBts" grid-api="gridApi"></div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="ok()" ng-disabled="!supplementBts.length">补充信息</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">退出</button>
+</div>

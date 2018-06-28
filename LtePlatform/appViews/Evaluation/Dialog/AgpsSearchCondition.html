@@ -1,0 +1,41 @@
+﻿<div style="width: 300px">
+    <div class="form-group" style="float: left; line-height: 22px; margin-right: 15px;">
+        <label>区县：</label>
+        <select ng-model="district.selected" ng-options="c as c for c in district.options"></select>
+        <label>镇区：</label>
+        <select ng-model="town.selected" ng-options="t as t for t in town.options"></select>
+    </div>
+    <div class="form-group" style="float: left">
+        <label>开始日期：</label>
+        {{beginDate.value | date: "yyyy-MM-dd"}}
+        <br/>
+        <label>结束日期：</label>
+        {{endDate.value | date: "yyyy-MM-dd"}}
+        <br/>
+        <label>类别</label>
+        <select ng-model="type.selected" ng-options="t as t for t in type.options"></select>
+        <span ng-show="type.selected === '电信'">{{telecomAgps.length}}</span>
+        <span ng-show="type.selected === '移动'">{{mobileAgps.length}}</span>
+        <span ng-show="type.selected === '联通'">{{unicomAgps.length}}</span>
+        <button type="submit" class="btn btn-sm btn-primary" ng-click="queryAgps()">
+            查询
+        </button>
+        <button class="btn btn-sm btn-default" ng-click="showInfrasturcture()">
+            基站小区
+        </button>
+        <br/>
+        <div ng-show="type.selected === '电信'">
+            <button ng-disabled="!telecomAgps.length" ng-click="updateTelecomAgps()" class="btn btn-sm btn-warning">更新</button>
+            <button ng-disabled="!telecomAgps.length" ng-click="displayTelecomAgps()" class="btn btn-sm btn-default">显示</button>
+            <button ng-click="queryAndDisplayTelecom()" class="btn btn-sm btn-success">读库并显示</button>
+        </div>
+        <div ng-show="type.selected === '移动'">
+            <button ng-disabled="!mobileAgps.length" ng-click="updateMobileAgps()" class="btn btn-sm btn-warning">更新</button>
+            <button ng-disabled="!mobileAgps.length" ng-click="displayMobileAgps()" class="btn btn-sm btn-default">显示</button>
+        </div>
+        <div ng-show="type.selected === '联通'">
+            <button ng-disabled="!unicomAgps.length" ng-click="updateUnicomAgps()" class="btn btn-sm btn-warning">更新</button>
+            <button ng-disabled="!unicomAgps.length" ng-click="displayUnicomAgps()" class="btn btn-sm btn-default">显示</button>
+        </div>
+    </div>
+</div>

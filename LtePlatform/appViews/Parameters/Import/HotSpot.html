@@ -1,0 +1,64 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body form-horizontal">
+
+    <form name="signup_form" novalidate class="form-horizontal row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-md-2 control-label">热点名称</label>
+                <div class="col-md-10">
+                    <input ng-disabled="modify" ng-model="dto.hotspotName" class="form-control" ng-required="true"
+                           form-field-error="{required: '热点名称是必须填的！'}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">热点地址</label>
+                <div class="col-md-10">
+                    <input ng-model="dto.address" class="form-control" ng-required="true"
+                           form-field-error="{required: '热点地址是必须填的！'}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">热点描述</label>
+                <div class="col-md-10">
+                    <input ng-model="dto.sourceName" class="form-control" ng-required="true"
+                           form-field-error="{required: '热点描述是必须填的！'}" />
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-md-2 control-label">热点类型</label>
+                <div class="col-md-10">
+                    <select class="form-control" ng-model="spotType.selected" ng-options="c as c for c in spotType.options"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">经度</label>
+                <div class="col-md-10">
+                    <input disabled ng-model="dto.longtitute" class="form-control" ng-required="true"
+                           form-field-error="{required: '经度是必须填的！'}" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">纬度</label>
+                <div class="col-md-10">
+                    <input disabled ng-model="dto.lattitute" class="form-control" ng-required="true"
+                           form-field-error="{required: '纬度是必须填的！'}" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="cloudmap-baiduwrapper">
+    <div id="hot-map" style="width: 100%;height: 600px;overflow: hidden;margin:0;"></div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="ok()" ng-disabled="signup_form.$invalid">保存信息</button>
+    <button class="btn btn-default" type="button" ng-click="cancel()">放弃保存</button>
+</div>

@@ -1,0 +1,155 @@
+@import "_colors.scss";
+@import "_mixins.scss";
+
+%help-page-font {
+    font-family: "Segoe UI Light", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+%help-page-table-pre-p {
+    margin: 0px;
+    padding: 0px;
+    font-family: inherit;
+    font-size: 100%;
+}
+
+#body.help-page {
+    @extend %help-page-font;
+    font-size: 14px;
+    line-height: 143%;
+    color: #333;
+}
+
+.help-page {
+    pre.wrapped {
+        white-space: -moz-pre-wrap;
+        white-space: -pre-wrap;
+        white-space: -o-pre-wrap;
+        white-space: pre-wrap;
+    }
+    .warning-message-container {
+        margin-top: 20px;
+        padding: 0 10px;
+        color: #525252;
+        background: #EFDCA9; 
+        border: 1px solid #CCCCCC;
+    }
+    h1, .h1 {
+        @extend %help-page-font;
+        font-size: 36px;
+        line-height: normal;
+    } 
+    h2, .h2 {
+        @extend %help-page-font;
+        font-size: 24px;
+    } 
+    h3, .h3{
+        @extend %help-page-font;
+        font-size: 20px;
+    }
+    a {
+        color: #0000EE;
+        text-decoration: none;
+        &:hover {
+            background-color: transparent;
+        }
+    }
+
+    .sample-header {
+        border: 2px solid #D4D4D4;
+        background: $color-light-yellow;
+        color: #FFFFFF;
+        padding: 8px 15px;
+        border-bottom: none;
+        display: inline-block;
+        margin: 10px 0px 0px 0px;
+    }
+    .sample-content {
+        display: block;
+        border-width: 0;
+        padding: 15px 20px;
+        background: #FFFFFF;
+        border: 2px solid #D4D4D4;
+        margin: 0px 0px 10px 0px;
+    }
+    .api-name {
+        width: 40%;
+    }
+    .api-documentation {
+        width: 60%;
+    }
+    .parameter-name {
+        width: 20%;
+    }
+    .parameter-documentation {
+        width: 40%;
+    }
+    .parameter-type {
+        width: 20%;
+    }
+    .parameter-annotations {
+        width: 20%;
+    }
+    section {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        &.featured {
+            background-color: $color-light-yellow;
+            color: #fff;
+            padding-left: 10px;
+            padding-right: 10px;
+            p {
+                padding-left: 20px;
+            }
+        }
+    }
+}
+
+%help-page-table-border-bottom {
+    border-bottom: 1px solid #D4D4D4;
+}
+
+.help-page-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    margin: 0px 0px 20px 0px;
+    border-top: 1px solid #D4D4D4;
+    th {
+        @extend %help-page-font;
+        font-weight: bold;
+        @extend %help-page-table-border-bottom;
+        padding: 5px 6px 5px 6px;
+    }
+    
+    pre {
+        @extend %help-page-font;
+        @extend %help-page-table-pre-p;
+    }
+    p {
+        @extend %help-page-font;
+        @extend %help-page-table-pre-p;
+    }
+    td {
+        @extend %help-page-table-border-bottom;
+        padding: 10px 8px 10px 8px;
+        vertical-align: top;
+    }
+    tbody tr:hover td {
+        background-color: $color-light-gray;
+    }
+    thead.thead-blue {
+        @include thead-def($color-blue);
+    }
+    thead.thead-teal {
+        @include thead-def($color-teal);
+    }
+    thead.thead-teal-lighten {
+        @include thead-def($color-teal-lighten90)
+    }
+    thead.thead-orange {
+        @include thead-def($color-orange);
+    }
+    thead.thead-red {
+        @include thead-def($color-red);
+    }
+}

@@ -1,0 +1,111 @@
+﻿@import "_colors.scss";
+
+@mixin panel-def($color) {
+	background: $color; 
+	color: $color-all-white; 
+	.panel-body {
+		color: $color-all-black;
+		p {
+			@extend %panel-body-p-common;
+		}
+	} 
+	.panel-heading{
+		@extend %panel-heading-common
+	}
+	.text-muted {
+		@extend %text-muted-common
+	}
+}
+
+@mixin modal-header-def($color) {
+	background-color: $color;
+	.modal-title {
+		color: $color-all-white;
+	}
+	button.close {
+		color: $color-all-white;
+	}
+}
+
+@mixin thead-def($color) {
+	background-color: $color;
+	color: $color-all-white;
+	font-weight: bold;
+}
+
+@mixin border-thread-def($color,$background-color: $color-all-white,$font-weight:normal,$border-color:$color-white-gray){
+	border: 1px solid $border-color;
+	background: $background-color;
+	color: $color;
+	font-weight: $font-weight;
+}
+
+@function top-or-bottom-tag($cursor){
+	@if $cursor==se-resize or $cursor==sw-resize {
+		@return bottom;
+	} @else {
+		  @return top;
+	  }
+}
+
+@function top-or-bottom-value($cursor){
+	@if $cursor==se-resize {
+		@return 1px;
+	} @else if $cursor==e-resize or $cursor==w-resize {
+		  @return 0;
+	  } @else {
+			@return -5px;
+		}
+}
+
+@function left-or-right-tag($cursor){
+	@if $cursor==e-resize or $cursor==se-resize or $cursor==ne-resize{
+		@return right;
+	} @else {
+		  @return left;
+	  }
+}
+
+@function left-or-right-value($cursor){
+	@if $cursor==se-resize{
+		@return 1px;
+	} @else if $cursor==n-resize or $cursor==s-resize{
+			@return 0;
+		} @else {
+			  @return -5px;
+		  }
+}
+
+@function height-value($cursor){
+	@if $cursor==n-resize or $cursor==s-resize{
+		@return 7px;
+	} @else if $cursor==e-resize or $cursor==w-resize{
+		  @return 100%;
+	  } @else if $cursor==se-resize{
+			@return 12px;
+		} @else {
+			  @return 9px;
+		  }
+}
+
+@function width-value($cursor){
+	@if $cursor==n-resize or $cursor==s-resize{
+		@return 100%;
+	} @else if $cursor==e-resize or $cursor==w-resize{
+		  @return 7px;
+	  } @else if $cursor==se-resize{
+			@return 12px;
+		} @else {
+			  @return 9px;
+		  }
+}
+
+@mixin ui-resizable-def($cursor){
+	$left-or-right: left-or-right-tag($cursor);
+	$top-or-bottom: top-or-bottom-tag($cursor);
+	cursor: $cursor;
+	height: height-value($cursor);
+	width: width-value($cursor);
+	#{$top-or-bottom}: top-or-bottom-value($cursor);
+	#{$left-or-right}: left-or-right-value($cursor);
+}

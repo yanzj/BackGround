@@ -1,0 +1,52 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body ">
+    <form name="signup_form" novalidate class="form-horizontal">
+        <div class="form-group">
+            <label for="tester" class="col-sm-2 control-label">测试人员</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="tester" ng-model="item.tester" ng-required="true" form-field-error/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="place" class="col-sm-2 control-label">测试地点：</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="place" ng-model="item.place" ng-required="true" form-field-error />
+            </div>
+            <label for="downloadRate" class="col-sm-2 control-label">下载速率（kbps）：</label>
+            <div class="col-sm-4">
+                <input type="number" class="form-control" id="downloadRate" ng-model="item.downloadRate" ng-required="true" form-field-error />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="accessUsers" class="col-sm-2 control-label">接入用户数：</label>
+            <div class="col-sm-4">
+                <input type="number" class="form-control" id="accessUsers" ng-model="item.accessUsers" ng-required="true" form-field-error/>
+            </div>
+            <label for="minRssi" class="col-sm-2 control-label">RSSI最小值：</label>
+            <div class="col-sm-4">
+                <input type="number" class="form-control" id="minRssi" ng-model="item.minRssi" ng-required="true" form-field-error/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="maxRssi" class="col-sm-2 control-label">RSSI最大值：</label>
+            <div class="col-sm-4">
+                <input type="number" class="form-control" id="maxRssi" ng-model="item.maxRssi" ng-required="true" form-field-error/>
+            </div>
+            <label for="vswr" class="col-sm-2 control-label">驻波比：</label>
+            <div class="col-sm-4">
+                <input type="number" class="form-control" id="vswr" ng-model="item.vswr" ng-required="true" form-field-error/>
+            </div>
+        </div>
+    </form>
+    <div date-span-row begin-date="beginDate" end-date="endDate"></div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" ng-click="matchCoverage()">匹配DT数据</button>
+    <button class="btn btn-warning" ng-click="ok()" ng-disabled="signup_form.$invalid">保存信息</button>
+    <button class="btn btn-default" type="button" ng-click="cancel()">放弃保存</button>
+</div>

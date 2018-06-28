@@ -1,0 +1,28 @@
+﻿<table class="table table-hover">
+    <tbody>
+        <tr>
+            <td>PUCCH标称P0值</td>
+            <td>{{item.p0NominalPUCCH}}dBm</td>
+            <td>PUSCH标称P0值</td>
+            <td>{{item.p0NominalPUSCH}}dBm</td>
+            <td>路径损耗因子</td>
+            <td>{{item.passLossCoeff | pathLoss}}</td>
+        </tr>
+    <tr>
+        <td>PUCCH格式1的偏置</td>
+        <td>{{item.deltaFPUCCHFormat1 | deltaFPucch: '1'}}dB</td>
+        <td>PUCCH格式1b的偏置</td>
+        <td>{{item.deltaFPUCCHFormat1b | deltaFPucch: '1b'}}dB</td>
+        <td>PUCCH格式2的偏置</td>
+        <td>{{item.deltaFPUCCHFormat2 | deltaFPucch: '2'}}dB</td>
+    </tr>
+        <tr>
+            <td>PUCCH格式2a的偏置</td>
+            <td>{{item.deltaFPUCCHFormat2a | deltaFPucch: '2a'}}dB</td>
+            <td>PUCCH格式2b的偏置</td>
+            <td>{{item.deltaFPUCCHFormat2b | deltaFPucch: '2b'}}dB</td>
+            <td>消息3相对前导的功率偏置</td>
+            <td>{{item.deltaPreambleMsg3 | doubleDb}}dB</td>
+        </tr>
+    </tbody>
+</table>

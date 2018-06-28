@@ -1,0 +1,97 @@
+﻿
+<table class="table table-hover">
+    <tbody>
+    <tr>
+        <td>参考信号功率</td>
+        <td>{{cellPower.rsPower | number: 2}}dB</td>
+        <td>Pb</td>
+        <td>{{cellPower.pb}}</td>
+        <td>PDSCH的Pa</td>
+        <td>{{cellPower.pa | powerStep8}}dB</td>
+    </tr>
+    <tr>
+        <td>信道名称</td>
+        <td>通道0功率偏置（dB）</td>
+        <td>通道1功率偏置（dB）</td>
+        <td>通道2功率偏置（dB）</td>
+        <td>通道3功率偏置（dB）</td>
+    </tr>
+    <tr ng-if="cellPower.txPowerOffsetAnt0">
+        <td>PDSCH（仅华为有效）</td>
+        <td>{{cellPower.txPowerOffsetAnt0}}</td>
+        <td>{{cellPower.txPowerOffsetAnt1}}</td>
+        <td>{{cellPower.txPowerOffsetAnt2}}</td>
+        <td>{{cellPower.txPowerOffsetAnt3}}</td>
+    </tr>
+    <tr ng-if="cellPower.dci0PowerOffsets">
+        <td>PDCCH DCI0</td>
+        <td>{{cellPower.dci0PowerOffsets[0]}}</td>
+        <td>{{cellPower.dci0PowerOffsets[1]}}</td>
+        <td>{{cellPower.dci0PowerOffsets[2]}}</td>
+        <td>{{cellPower.dci0PowerOffsets[3]}}</td>
+    </tr>
+    <tr ng-if="cellPower.dci1PowerOffsets">
+        <td>PDCCH DCI1</td>
+        <td>{{cellPower.dci1PowerOffsets[0]}}</td>
+        <td>{{cellPower.dci1PowerOffsets[1]}}</td>
+        <td>{{cellPower.dci1PowerOffsets[2]}}</td>
+        <td>{{cellPower.dci1PowerOffsets[3]}}</td>
+    </tr>
+    <tr ng-if="cellPower.dci1APowerOffsets">
+        <td>PDCCH DCI1A</td>
+        <td>{{cellPower.dci1APowerOffsets[0]}}</td>
+        <td>{{cellPower.dci1APowerOffsets[1]}}</td>
+        <td>{{cellPower.dci1APowerOffsets[2]}}</td>
+        <td>{{cellPower.dci1APowerOffsets[3]}}</td>
+    </tr>
+    <tr ng-if="cellPower.dci1BPowerOffsets">
+        <td>PDCCH DCI1B</td>
+        <td>{{cellPower.dci1BPowerOffsets[0]}}</td>
+        <td>{{cellPower.dci1BPowerOffsets[1]}}</td>
+        <td>{{cellPower.dci1BPowerOffsets[2]}}</td>
+        <td>{{cellPower.dci1BPowerOffsets[3]}}</td>
+    </tr>
+    <tr ng-if="cellPower.dci1CPowerOffsets">
+        <td>PDCCH DCI1C</td>
+        <td>{{cellPower.dci1CPowerOffsets[0]}}</td>
+        <td>{{cellPower.dci1CPowerOffsets[1]}}</td>
+        <td>{{cellPower.dci1CPowerOffsets[2]}}</td>
+        <td>{{cellPower.dci1CPowerOffsets[3]}}</td>
+    </tr>
+    <tr ng-if="cellPower.dci1DPowerOffsets">
+        <td>PDCCH DCI1D</td>
+        <td>{{cellPower.dci1DPowerOffsets[0]}}</td>
+        <td>{{cellPower.dci1DPowerOffsets[1]}}</td>
+        <td>{{cellPower.dci1DPowerOffsets[2]}}</td>
+        <td>{{cellPower.dci1DPowerOffsets[3]}}</td>
+    </tr>
+    <tr ng-if="cellPower.dci2PowerOffsets">
+        <td>PDCCH DCI2</td>
+        <td>{{cellPower.dci2PowerOffsets[0]}}</td>
+        <td>{{cellPower.dci2PowerOffsets[1]}}</td>
+        <td>{{cellPower.dci2PowerOffsets[2]}}</td>
+        <td>{{cellPower.dci2PowerOffsets[3]}}</td>
+    </tr>
+    <tr ng-if="cellPower.dci2APowerOffsets">
+        <td>PDCCH DCI2A</td>
+        <td>{{cellPower.dci2APowerOffsets[0]}}</td>
+        <td>{{cellPower.dci2APowerOffsets[1]}}</td>
+        <td>{{cellPower.dci2APowerOffsets[2]}}</td>
+        <td>{{cellPower.dci2APowerOffsets[3]}}</td>
+    </tr>
+    <tr ng-if="cellPower.dci3PowerOffsets">
+        <td>PDCCH DCI3</td>
+        <td>{{cellPower.dci3PowerOffsets[0]}}</td>
+        <td>{{cellPower.dci3PowerOffsets[1]}}</td>
+        <td>{{cellPower.dci3PowerOffsets[2]}}</td>
+        <td>{{cellPower.dci3PowerOffsets[3]}}</td>
+    </tr>
+    <tr ng-if="cellPower.dci3APowerOffsets">
+        <td>PDCCH DCI3A</td>
+        <td>{{cellPower.dci3APowerOffsets[0]}}</td>
+        <td>{{cellPower.dci3APowerOffsets[1]}}</td>
+        <td>{{cellPower.dci3APowerOffsets[2]}}</td>
+        <td>{{cellPower.dci3APowerOffsets[3]}}</td>
+    </tr>
+    </tbody>
+</table>

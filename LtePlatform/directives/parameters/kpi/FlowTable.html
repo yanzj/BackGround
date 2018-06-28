@@ -1,0 +1,24 @@
+﻿<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>日期</th>
+            <th>下行PDCP层流量（MB）</th>
+            <th>上行行PDCP层流量（MB）</th>
+            <th>平均连接用户数</th>
+            <th>最大连接用户数</th>
+            <th>平均激活用户数</th>
+            <th>最大激活用户数</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="flow in flowList | orderBy: 'statTime'">
+            <td>{{flow.statTime | date: 'yyyy-MM-dd'}}</td>
+            <td>{{(flow.pdcpDownlinkFlow / 8) | number: 2}}</td>
+            <td>{{(flow.pdcpUplinkFlow / 8) | number: 2}}</td>
+            <td>{{flow.averageUsers}}</td>
+            <td>{{flow.maxUsers}}</td>
+            <td>{{flow.averageActiveUsers}}</td>
+            <td>{{flow.maxActiveUsers}}</td>
+        </tr>
+    </tbody>
+</table>

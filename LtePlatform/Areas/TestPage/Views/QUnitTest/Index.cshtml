@@ -1,0 +1,15 @@
+﻿<div class="row">
+    <div class="col-md-3" ng-show="sideBarShown">
+        <div ng-include="'/appViews/GeneralMenu.html'"></div>
+    </div>
+    <div ng-class="{'col-md-9': sideBarShown, 'col-md-12': !sideBarShown}">
+        <h3>{{page.title}}</h3>
+        <div ng-view></div>
+    </div>
+</div>
+
+@section Scripts{
+    <link href="~/Content/themes/test/ui-grid.css" rel="stylesheet"/>
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script src="~/Areas/TestPage/Scripts/qunit.route.js"></script>
+}

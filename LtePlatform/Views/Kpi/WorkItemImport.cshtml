@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "工单文件导入";
+}
+
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            <strong>@ViewBag.Title</strong>
+        </h2>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            @{Html.RenderPartial("_AlertPanel");}
+            <div class="col-md-6">
+                @using (Html.BeginForm("WorkItemPost", "Kpi",
+FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+        {
+            <div class="form-group">
+                <label class="col-md-4 control-label">工单文件选择：</label>
+                <div class="col-md-6">
+                    <input name="workItem" class="form-control" type="file" accept=".xls, .xlsx" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-save"></span>导入文件
+                    </button>
+                </div>
+            </div>
+}
+                @using (Html.BeginForm("AlarmWorkItemPost", "Kpi",
+FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+        {
+            <div class="form-group">
+                <label class="col-md-4 control-label">故障工单文件选择：</label>
+                <div class="col-md-6">
+                    <input name="alarmWorkItem" class="form-control" type="file" accept=".xls, .xlsx" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-save"></span>导入文件
+                    </button>
+                </div>
+            </div>
+}
+            </div>
+            <div class="col-md-6" ng-controller="workitem.import">
+                <div ng-include="'/appViews/Import/Precise/WorkItem.html'"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+    <script src="~/Scripts/kpi/workitem.import.js"></script>
+}

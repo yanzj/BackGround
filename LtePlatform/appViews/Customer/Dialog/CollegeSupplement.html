@@ -1,0 +1,76 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body form-horizontal">
+    <div district-town-plain city="city" district="district" town="town"></div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">项目级别</label>
+        <div class="col-sm-4">
+            <div class="form-control">{{view.demandLevelDescription}}</div>
+        </div>
+        <label class="col-sm-2 control-label">网络类型</label>
+        <div class="col-sm-4">
+            <div class="form-control">{{view.networkTypeDescription}}</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">项目名称</label>
+        <div class="col-sm-4">
+            <div class="form-control">{{view.projectName}}</div>
+        </div>
+        <label class="col-sm-2 control-label">营销主题</label>
+        <div class="col-sm-4">
+            <div class="form-control">{{view.marketThemeDescription}}</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">需求部门</label>
+        <div class="col-sm-4">
+            <input ng-model="view.department" class="form-control" ng-required="true"
+                   form-field-error="{required: '需求部门是必须填的！'}" />
+        </div>
+        <label class="col-sm-2 control-label">责任人</label>
+        <div class="col-sm-4">
+            <input ng-model="view.sustainPerson" class="form-control" ng-required="true"
+                   form-field-error="{required: '责任人是必须填的！'}" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">项目内容</label>
+        <div class="col-sm-10">
+            <input ng-model="view.projectContents" class="form-control" ng-required="true"
+                   form-field-error="{required: '项目内容是必须填的！'}" />
+        </div>
+    </div>
+    <form name="signup_form" novalidate class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">保障区域</label>
+            <div class="col-sm-4">
+                <div class="form-control">{{view.area}}</div>
+            </div>
+            <label class="col-sm-2 control-label">预计放号</label>
+            <div class="col-sm-4">
+                <div class="form-control">{{view.subscriberGotten}}</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">需求联系人</label>
+            <div class="col-sm-4">
+                <input ng-model="view.contactPerson" class="form-control" ng-required="true"
+                       form-field-error="{required: '需求联系人是必须填的！'}" />
+            </div>
+            <label class="col-sm-2 control-label">联系人电话</label>
+            <div class="col-sm-4">
+                <input ng-model="view.phoneNumber" class="form-control" ng-required="true"
+                       form-field-error="{required: '联系人电话是必须填的！'}" />
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="ok()" ng-disabled="signup_form.$invalid">保存信息</button>
+    <button class="btn btn-default" type="button" ng-click="cancel()">放弃保存</button>
+</div>

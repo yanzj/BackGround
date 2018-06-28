@@ -1,0 +1,32 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-8">
+            <div date-span-row begin-date="beginDate" end-date="endDate"></div>
+        </div>
+        <div class="col-md-4">
+            <label>指标选择:</label>
+            <div class="input-group">
+                <select class="form-control" ng-model="kpi.selected" ng-options="k as k for k in kpi.options"></select>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-success" ng-click="showTrend()">
+                        <i class="glyphicon glyphicon-search" title="统计数据"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div ng-repeat="k in kpi.options">
+        <div id="kpi-{{$index}}" ng-show="k === kpi.selected"></div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="ok()">调整建议</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

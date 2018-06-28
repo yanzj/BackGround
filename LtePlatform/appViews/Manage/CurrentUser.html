@@ -1,0 +1,53 @@
+﻿<div panel-info panel-title="page.title">
+    <table class="table table-responsive">
+        <tbody>
+        <tr>
+            <td><label>密码:</label></td>
+            <td>
+                <a class="btn btn-default" ng-show="currentUser.hasPassword" ng-href="{{rootPath}}changePassword">更改密码</a>
+                <a class="btn btn-default" ng-show="!currentUser.hasPassword" ng-href="{{rootPath}}setPassword">创建密码</a>
+            </td>
+        </tr>
+        <tr>
+            <td><label>电子邮箱：</label></td>
+            <td>
+                {{currentUser.email}}
+                <span ng-show="currentUser.emailHasBeenConfirmed">（已确认）</span>
+                <button class="btn btn-primary" ng-show="!currentUser.emailHasBeenConfirmed" ng-click="confirmEmail()">确认邮箱</button>
+            </td>
+        </tr>
+        <tr>
+            <td><label>外部登录名:</label></td>
+            <td>
+                {{currentUser.logins.length}}
+                <a class="btn btn-default" ng-href="{{rootPath}}manageLogins">管理</a>
+            </td>
+        </tr>
+        <tr>
+            <td><label>电话号码:</label></td>
+            <td>
+                <span ng-show="currentUser.phoneNumber !== null">{{currentUser.phoneNumber}}</span>
+                <div class="btn-group" ng-show="currentUser.phoneNumber !== null">
+                    <a class="btn btn-default" ng-href="{{rootPath}}modifyPhoneNumber/{{currentUser.phoneNumber}}">更改</a>
+                    <button class="btn btn-warning" ng-click="removePhoneNumber()">删除</button>
+                </div>
+                <span ng-show="currentUser.phoneNumber === null">无</span>
+                <a class="btn btn-default" ng-href="{{rootPath}}addPhoneNumber" ng-show="currentUser.phoneNumber === null">新增</a>
+            </td>
+        </tr>
+        <tr>
+            <td><label>双因素身份验证:</label></td>
+            <td>
+                <div class="text-info" ng-show="currentUser.twoFactor">
+                    已启用
+                    <a class="btn btn-default" ng-href="{{rootPath}}disableTwoFactorAuthentication">更改</a>
+                </div>
+                <div class="text-info" ng-show="!currentUser.twoFactor">
+                    已禁用
+                    <a class="btn btn-default" ng-href="{{rootPath}}enableTwoFactorAuthentication">启用</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

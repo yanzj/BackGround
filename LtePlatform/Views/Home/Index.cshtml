@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "优化工作";
+}
+
+<div class="cloudmap-baiduwrapper">
+    <div id="map" style="width: 100%;height: 600px;overflow: hidden;margin:0;"></div>
+    <div class="map-top-right row">
+        <div ui-view="contents"></div>
+        <div class="btn-group-sm col-md-4">
+            <button uib-popover-template="'/appViews/Home/DatePopoverInput.html'" popover-title="日期设定" popover-placement="bottom-right"
+                    type="button" class="btn btn-success btn-sm">
+                日期设定
+            </button>
+        </div>
+    </div>
+    <div class="map-middle-right">
+        <div ui-view="filter"></div>
+    </div>
+    <div class="map-top-left">
+        <div cg-busy="page.myPromise"></div>
+        <div ui-view="menu"></div>
+    </div>
+    <div ng-show="legend.criteria.length" coverage-legend legend-title="legend.title" criteria="legend.criteria" sign="legend.sign"></div>
+    <div ng-show="legend.intervals.length" simple-legend legend-title="legend.title" criteria="legend.intervals"></div>
+</div>
+
+@section Scripts{
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=LlMnTd7NcCWI1ibhDAdKeVlG"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+<script type="text/javascript" src="~/Scripts/MarkerClusterer.js"></script>
+<script type="text/javascript" src="~/Scripts/laydate/laydate.js"></script>
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=OeWDTDlnolWHBNP1GSkDph34"></script>
+    <script src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+    <link rel="stylesheet" href="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css" />
+    <script src="~/Scripts/baidu/plugins/baidu.tangram.js"></script>
+    <script src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
+    <script src="http://api.map.baidu.com/library/GeoUtils/1.2/src/GeoUtils_min.js"></script>
+    <script src="~/Scripts/baidu/plugins/ComplexCustomOverlay.js"></script>
+    <script src="~/Scripts/app/home.viewmodel.js"></script>
+}

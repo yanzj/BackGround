@@ -1,0 +1,10 @@
+﻿<div class="modal-header modal-header-orange">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">{{dialogTitle}}</h4>
+</div>
+<div work-item-details-table current-view="currentView" goback-path="gobackPath" goback-title="gobackTitle"
+     root-path="rootPath" prevent-change-parent-view="preventChangeParentView" platform-infos="platformInfos" feedback-infos="feedbackInfos"></div>
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="ok()">保存信息</button>
+    <button class="btn btn-default" type="button" ng-click="cancel()">放弃保存</button>
+</div>

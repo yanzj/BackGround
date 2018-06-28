@@ -1,0 +1,37 @@
+﻿<div class="left-panel">
+    <div class="cloudmap-search-tools">
+        <div class="cloudmap-search-station">
+            <input class="cloudmap-search-station-input" ng-model="stationName" placeholder="站点查询" />
+        </div>
+        <button class="cloudmap-search-station-b" ng-click="search()"></button>
+    </div>
+    <div id="cardlist" class="cardlist">
+        <div class="card">
+            <ul class="poilist">
+
+                <li class="search-item" ng-click="showStationInfo(station.index)" ng-repeat="station in stations">
+                    <div class="cf">
+                        <div class="col-l">
+                            <a class="no-1">{{station.index}}</a>
+                        </div>
+                        <div class="col-r"></div>
+                        <div class="mr_90 ml_30">
+                            <div class="row">
+                                <span><a class="n-blue">{{station.StationName}}</a></span>
+                                <span></span>
+                            </div>
+                            <div class="row addr">
+                                <span class="n-grey">{{station.InstallAddr}}</span>
+                            </div>
+                            <div class="row children-container"></div>
+                        </div>
+
+                    </div>
+
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+</div>

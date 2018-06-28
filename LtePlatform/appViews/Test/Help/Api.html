@@ -1,0 +1,58 @@
+<a class="btn btn-default" ng-href="{{rootPath}}">返回总表</a>
+<a class="btn btn-default" ng-href="{{rootPath}}method/{{method}}">返回{{method}}</a>
+<h4>输入参数</h4>
+<table class="help-page-table">
+    <thead class="thead-blue">
+    <tr>
+        <th>Parameter Name</th>
+        <th>Parameter Description</th>
+        <th>Type Name</th>
+        <th>Type Description</th>
+        <th>Additional information</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="parameter in parameters">
+        <td class="parameter-name">{{parameter.Name}}</td>
+        <td class="parameter-documentation">{{parameter.Documentation}}</td>
+        <td class="parameter-name">{{parameter.TypeName}}</td>
+        <td class="parameter-documentation">{{parameter.TypeDocumentation}}</td>
+        <td class="parameter-annotations">
+            <p ng-show="!parameter.AnnotationDoc.length">无</p>
+            <p ng-repeat="doc in parameter.AnnotationDoc">{{doc}}</p>
+        </td>
+    </tr>
+    <tr ng-if="bodyModel">
+        <td class="parameter-name">{{bodyModel.Name}}</td>
+        <td class="parameter-documentation">{{bodyModel.ParameterDocumentation}}</td>
+        <td class="parameter-name">{{bodyModel.Type}}</td>
+        <td class="parameter-documentation">{{bodyModel.Documentation}}</td>
+        <td class="parameter-annotations">
+        </td>
+    </tr>
+    </tbody>
+</table>
+<h4>输出参数({{responseModel.Documentation}})</h4>
+<label>{{responseModel.Name}}</label>
+<span class="text-info">{{responseModel.ModelDescription}}</span>
+<table class="help-page-table">
+    <thead class="thead-teal-lighten">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Type Description</th>
+        <th>Annotations</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="description in responseModel.Descriptions">
+        <td>{{description.Name}}</td>
+        <td>{{description.Documentation}}</td>
+        <td>{{description.TypeDescription}}</td>
+        <td>
+            <p ng-show="!description.AnnotationDoc.length">无</p>
+            <p ng-repeat="doc in description.AnnotationDoc">{{doc}}</p>
+        </td>
+    </tr>
+    </tbody>
+</table>

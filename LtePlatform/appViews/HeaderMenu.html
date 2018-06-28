@@ -1,0 +1,238 @@
+﻿<ul class="nav navbar-nav nav-navbar-list">
+    <li class="dropdown">
+        <a href="" id="infrastructure" class="dropdown-toggle" data-toggle="dropdown" ng-disabled="disabled">
+            基础数据 <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-blue-azure" role="menu" aria-labelledby="infrastructure">
+            <li role="presentation">
+                <a role="menuitem" href="" ng-mouseover="commonMenu.$folded = !commonMenu.$folded">
+                    <i ng-if="commonMenu.$folded" class="glyphicon glyphicon-chevron-down"></i>
+                    <i ng-if="!commonMenu.$folded" class="glyphicon glyphicon-chevron-up"></i>
+                    标准站址
+                </a>
+            </li>
+            <li role="presentation" ng-if="!commonMenu.$folded">
+                <a role="menuitem" ng-href="/#/common-station" style="padding-left: 50px">
+                    基站
+                    <i class="glyphicon glyphicon-apple"></i>
+                </a>
+            </li>
+            <li role="presentation" ng-if="!commonMenu.$folded">
+                <a role="menuitem" ng-href="/#/common-indoor" style="padding-left: 50px">
+                    室分
+                    <i class="glyphicon glyphicon-apple"></i>
+                </a>
+            </li>
+
+            <li role="presentation">
+                <a role="menuitem" ng-href="/#/cells">
+                    网优信息
+                    <i class="glyphicon glyphicon-heart"></i>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a href="" id="optimize" class="dropdown-toggle" data-toggle="dropdown" ng-disabled="disabled">
+            网络优化 <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-blue-azure" role="menu" aria-labelledby="optimize">
+            <li role="presentation">
+                <a role="menuitem" ng-href="/#/dt">
+                    路测管理
+                    <i class="glyphicon glyphicon-star"></i>
+                </a>
+            </li>
+            <li role="presentation">
+                <a role="menuitem" ng-href="/#/collegeMap">
+                    五高一地两美一场
+                    <i class="glyphicon glyphicon-apple"></i>
+                </a>
+            </li>
+            <li role="presentation">
+                <a role="menuitem" ng-href="/#/plan">
+                    规划支撑
+                    <i class="glyphicon glyphicon-apple"></i>
+                </a>
+            </li>
+            <li role="presentation">
+                <a role="menuitem" ng-href="/#/cdma">
+                    2G优化
+                    <i class="glyphicon glyphicon-apple"></i>
+                </a>
+            </li>
+            <li role="presentation">
+                <a role="menuitem" ng-href="/#/mr">
+                    MR分析
+                    <i class="glyphicon glyphicon-star"></i>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a href="" id="service" class="dropdown-toggle" data-toggle="dropdown" ng-disabled="disabled">
+            客户服务 <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-blue-azure" role="menu" aria-labelledby="service">
+            <li role="presentation">
+                <a ng-href="/#/complain">
+                    投诉管理
+                    <i class="glyphicon glyphicon-star"></i>
+                </a>
+            </li>
+            <li role="presentation">
+                <a role="menuitem" ng-href="/#/micro">
+                    手机伴侣
+                    <i class="glyphicon glyphicon-star"></i>
+                </a>
+            </li>
+            <li role="presentation">
+                <a role="menuitem" ng-href="/#/topic">
+                    专题优化
+                    <i class="glyphicon glyphicon-star"></i>
+                </a>
+            </li>
+            <li role="presentation">
+                <a role="menuitem" ng-href="/#/college">
+                    校园网优化
+                    <i class="glyphicon glyphicon-heart"></i>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a href="" id="maintain" class="dropdown-toggle" data-toggle="dropdown" ng-disabled="disabled">
+            运营维护 <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-blue-azure" role="menu" aria-labelledby="maintain">
+            <li role="presentation">
+                <a role="menuitem" href="" ng-mouseover="checkMenu.$folded = !checkMenu.$folded">
+                    <i ng-if="checkMenu.$folded" class="glyphicon glyphicon-chevron-down"></i>
+                    <i ng-if="!checkMenu.$folded" class="glyphicon glyphicon-chevron-up"></i>
+                    网络巡检
+                </a>
+            </li>
+
+            <li role="presentation" ng-if="!checkMenu.$folded">
+                <a role="menuitem" ng-href="/#/checking-station" style="padding-left: 50px">
+                    基站
+                    <i class="glyphicon glyphicon-apple"></i>
+                </a>
+            </li>
+            <li role="presentation" ng-if="!checkMenu.$folded">
+                <a role="menuitem" ng-href="/#/checking-indoor" style="padding-left: 50px">
+                    室分
+                    <i class="glyphicon glyphicon-apple"></i>
+                </a>
+            </li>
+
+
+            <li role="presentation">
+                <a role="menuitem" href="" ng-mouseover="fixingMenu.$folded = !fixingMenu.$folded">
+                    <i ng-if="fixingMenu.$folded" class="glyphicon glyphicon-chevron-down"></i>
+                    <i ng-if="!fixingMenu.$folded" class="glyphicon glyphicon-chevron-up"></i>
+                    网络整治
+                </a>
+            </li>
+
+            <li role="presentation" ng-if="!fixingMenu.$folded">
+                <a role="menuitem" ng-href="/#/fixing-station" style="padding-left: 50px">
+                    基站
+                    <i class="glyphicon glyphicon-apple"></i>
+                </a>
+            </li>
+            <li role="presentation" ng-if="!fixingMenu.$folded">
+                <a role="menuitem" ng-href="/#/fixing-indoor" style="padding-left: 50px">
+                    室分
+                    <i class="glyphicon glyphicon-apple"></i>
+                </a>
+            </li>
+
+            <li role="presentation">
+                <a role="menuitem" href="" ng-mouseover="resourceMenu.$folded = !resourceMenu.$folded">
+                    <i ng-if="resourceMenu.$folded" class="glyphicon glyphicon-chevron-down"></i>
+                    <i ng-if="!resourceMenu.$folded" class="glyphicon glyphicon-chevron-up"></i>
+                    资源资产
+                </a>
+            </li>
+
+            <li role="presentation" ng-if="!resourceMenu.$folded">
+                <a role="menuitem" ng-href="/#/resource-station" style="padding-left: 50px">
+                    基站
+                    <i class="glyphicon glyphicon-apple"></i>
+                </a>
+            </li>
+            <li role="presentation" ng-if="!resourceMenu.$folded">
+                <a role="menuitem" ng-href="/#/resource-indoor" style="padding-left: 50px">
+                    室分
+                    <i class="glyphicon glyphicon-apple"></i>
+                </a>
+            </li>
+            <li role="presentation">
+                <a ng-href="/#/assessment">考核评分</a>
+            </li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a href="" id="dump-button" class="dropdown-toggle" data-toggle="dropdown" ng-disabled="disabled">
+            导入功能 <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-blue-azure" role="menu" aria-labelledby="dump-button">
+            <li role="presentation">
+                <a role="menuitem" ng-href="/Kpi/PreciseImport">
+                    精确覆盖率
+                    <i class="glyphicon glyphicon-ok-circle"></i>
+                </a>
+            </li>
+            <li role="presentation">
+                <a role="menuitem" ng-href="/Kpi/WorkItemImport">工单导入</a>
+            </li>
+            <li class="divider"></li>
+            <li role="presentation">
+                <a role="menuitem" ng-href="/Parameters/BasicImport">
+                    工参导入
+                    <i class="glyphicon glyphicon-ok-circle"></i>
+                </a>
+            </li>
+            <li role="presentation">
+                <a role="menuitem" ng-href="/Parameters/NeighborImport">
+                    流量导入
+                    <i class="glyphicon glyphicon-ok-circle"></i>
+                </a>
+            </li>
+            <li role="presentation">
+                <a role="menuitem" ng-href="/Parameters/AlarmImport">
+                    告警导入
+                    <i class="glyphicon glyphicon-ok-circle"></i>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li role="presentation">
+                <a role="menuitem" ng-href="/Kpi/Import">
+                    2G指标及投诉数据
+                    <i class="glyphicon glyphicon-ok-circle"></i>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a href="" id="single-button" class="dropdown-toggle" data-toggle="dropdown" ng-disabled="disabled">
+            帮助说明 <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-blue-azure" role="menu" aria-labelledby="single-button">
+            <li role="presentation">
+                <a role="menuitem" ng-href="/Help">
+                    使用说明
+                    <i class="glyphicon glyphicon-ok-circle"></i>
+                </a>
+            </li>
+            <li role="presentation">
+                <a role="menuitem" ng-href="/TestPage/QUnitTest">脚本测试</a>
+            </li>
+            <li class="divider"></li>
+            <li role="presentation">
+                <a role="menuitem" ng-href="/TestPage/AngularTest">AngularJS</a>
+            </li>
+        </ul>
+    </li>
+</ul>

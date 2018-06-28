@@ -1,0 +1,192 @@
+﻿@{
+    ViewBag.Title = "基本工程参数信息导入";
+}
+
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            <strong>@ViewBag.Title</strong>
+        </h2>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-4">
+                <h4>工参文件选择</h4>
+                @using (Html.BeginForm("LteImportPost", "Parameters",
+FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+    {
+            <p>
+                <label class="control-label">LTE Excel文件选择：</label>
+            </p>
+            <div class="form-group">
+                <div class="col-md-8">
+                    <input name="lteExcel" class="form-control" type="file" accept=".xlsx" />
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-save"></span>保存
+                    </button>
+                </div>
+            </div>
+}
+                @using (Html.BeginForm("CdmaImportPost", "Parameters",
+FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+    {
+            <p>
+                <label class="control-label">CDMA Excel文件选择：</label>
+            </p>
+            <div class="form-group">
+                <div class="col-md-8">
+                    <input name="cdmaExcel" class="form-control" type="file" accept=".xls" />
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-save"></span>保存
+                    </button>
+                </div>
+            </div>
+
+}
+                @using (Html.BeginForm("StationDictionaryPost", "Parameters",
+FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+    {
+            <p>
+                <label class="control-label">集团站址信息文件选择：</label>
+            </p>
+            <div class="form-group">
+                <div class="col-md-8">
+                    <input name="stationDictionary" class="form-control" type="file" accept=".xlsx" />
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-save"></span>保存
+                    </button>
+                </div>
+            </div>
+}
+                @using (Html.BeginForm("ENodebBasePost", "Parameters",
+FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+    {
+            <p>
+                <label class="control-label">集团基站信息文件选择：</label>
+            </p>
+            <div class="form-group">
+                <div class="col-md-8">
+                    <input name="eNodebBase" class="form-control" type="file" accept=".xlsx" />
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-save"></span>保存
+                    </button>
+                </div>
+            </div>
+}
+                @using (Html.BeginForm("ConstructionPost", "Parameters",
+FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+    {
+            <p>
+                <label class="control-label">集团小区信息文件选择：</label>
+            </p>
+            <div class="form-group">
+                <div class="col-md-8">
+                    <input name="construction" class="form-control" type="file" accept=".xlsx" />
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-save"></span>保存
+                    </button>
+                </div>
+            </div>
+}
+                @using (Html.BeginForm("StationRruPost", "Parameters",
+FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+    {
+            <p>
+                <label class="control-label">集团RRU信息文件选择：</label>
+            </p>
+            <div class="form-group">
+                <div class="col-md-8">
+                    <input name="stationRru" class="form-control" type="file" accept=".xlsx" />
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-save"></span>保存
+                    </button>
+                </div>
+            </div>
+}
+                @using (Html.BeginForm("StationAntennaPost", "Parameters",
+FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+    {
+            <p>
+                <label class="control-label">集团天线信息文件选择：</label>
+            </p>
+            <div class="form-group">
+                <div class="col-md-8">
+                    <input name="stationAntenna" class="form-control" type="file" accept=".xlsx" />
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-save"></span>保存
+                    </button>
+                </div>
+            </div>
+}
+                @using (Html.BeginForm("DistributionPost", "Parameters",
+FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+    {
+            <p>
+                <label class="control-label">室内分布信息文件选择：</label>
+            </p>
+            <div class="form-group">
+                <div class="col-md-8">
+                    <input name="distribution" class="form-control" type="file" accept=".xlsx" />
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-save"></span>保存
+                    </button>
+                </div>
+            </div>
+}
+                @using (Html.BeginForm("HotSpotPost", "Parameters",
+FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+    {
+            <p>
+                <label class="control-label">热点基础信息文件选择：</label>
+            </p>
+            <div class="form-group">
+                <div class="col-md-8">
+                    <input name="hotSpot" class="form-control" type="file" accept=".xlsx" />
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-save"></span>保存
+                    </button>
+                </div>
+            </div>
+}
+            </div>
+            <div class="col-md-8">
+                <div uib-alert ng-repeat="message in importData.updateMessages" type="{{message.type}}" dismiss-on-timeout="2000" close="closeAlert($index)">
+                    {{message.contents}}
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            工参读取结果及操作平台
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div ng-view></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/parameters/import/index.controller.js"></script>
+}

@@ -1,0 +1,64 @@
+﻿
+<h2>第 9 章　内置指令</h2>
+<div ng-controller="Chap9Controller">
+    <h3>在指令中使用子作用域 ng-controller</h3>
+    <span>由于原型继承的关系，修改父级对象中的someBareValue会同时修改子对象中的值，但反之则不行。</span>
+    <div ng-controller="SomeController">
+        {{ someBareValue }}
+        {{ someModel.someValue }}
+        <button ng-click="someAction()">Communicate to child</button>
+        <div ng-controller="ChildController">
+            {{ someBareValue }}
+            {{ someModel.someValue }}
+            <button ng-click="childAction()">Communicate to parent</button>
+        </div>
+    </div>
+    <h3>在指令中使用子作用域 ng-controller 正确的做法</h3>
+    <span>
+        如果将模型对象的某个属性设置为字符串，它会通过引用进行共享，因此在子$scope中修改属性也会修改
+        父$scope中的这个属性。下面的例子展示了正确的做法
+    </span>
+    <div ng-controller="OtherController">
+        {{ someModel.someValue }}
+        <button ng-click="someAction()">Communicate to child</button>
+        <div ng-controller="OtherChildController">
+            {{ someModel.someValue }}
+            <button ng-click="childAction()">Communicate to parent</button>
+        </div>
+        <br />
+        <input type="text" ng-model="person.name" />
+        <div ng-switch on="person.name">
+            <p ng-switch-default>And the winner is</p>
+            <h1 ng-switch-when="Ari">{{ person.name }}</h1>
+        </div>
+    </div>
+    <ul ng-controller="PeopleController">
+        <li ng-repeat="person in people" ng-class="{even: !$even, odd: !$odd}">
+            {{person.name}} lives in {{person.city}}
+        </li>
+    </ul>
+    <form name="signup_form"
+          ng-controller="FormController"
+          ng-submit="submitForm()" novalidate>
+        <div ng-repeat="field in fields"
+             ng-form="signup_form_input">
+            <input type="text"
+                   name="dynamic_input"
+                   ng-required="field.isRequired"
+                   ng-model="field.name"
+                   placeholder="{{field.placeholder}}" />
+            <div ng-show="signup_form_input.dynamic_input.$dirty && signup_form_input.dynamic_input.$invalid">
+                <span class="error"
+                      ng-show="signup_form_input.dynamic_input.$error.required">
+                    The field is required.
+                </span>
+            </div>
+        </div>
+        <button type="submit"
+                ng-disabled="signup_form.$invalid">
+            Submit All
+        </button>
+    </form>
+</div>
+
+

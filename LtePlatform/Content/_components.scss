@@ -1,0 +1,113 @@
+﻿@import "themes/_colors.scss";
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+	white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+	max-width: 280px;
+}
+
+.large {
+	font-size: 2em;
+}
+
+/* Set padding to display errors that occur during databinding */
+.padding-error {
+	padding-top: 20px;
+}
+
+%map-common {
+	position: absolute;
+	z-index: 1001;
+}
+
+.map-control-group {
+	@extend %map-common;
+	bottom: auto;
+	right: 30px;
+	top: 150px;
+	left: auto;
+}
+
+.map-top-right {
+	@extend %map-common;
+	bottom: auto;
+	right: 30px;
+	top: 10px;
+	left: auto;
+}
+
+.map-middle-right {
+  bottom: auto;
+  right: 0px;
+  top: 200px;
+  left: auto; 
+  position: absolute;
+  z-index: 1001;
+}
+
+.map-top-left{
+	@extend %map-common;
+	bottom: auto;
+	right: auto;
+	top: 10px;
+	left: 170px;
+}
+
+.tooltip.customClass .tooltip-inner {
+	color: $color-dark-red;
+	background-color: $color-yellow;
+	box-shadow: 0 6px 12px rgba(0,0,0,.175);
+	ul {
+		list-style: none;
+		text-align: left;
+	}
+}
+
+
+.text-muted {
+	color: $color-light-gray-blue;
+}
+
+.bg-primary .glyphicon-remove { color: $color-gray;}
+.bg-primary .glyphicon-remove:hover { color: $color-light-red;}
+
+.no-padding {
+	padding: 0; margin: 0;
+}
+
+.dark-overlay {
+	background: rgba(0, 0, 0, .05);
+	text-align: center;
+}
+
+
+.bts_info_dwg_table {
+	width:95%;
+	margin:0 auto;
+	margin-top:10px;
+	a {
+		cursor:pointer;
+		padding-right:5px;
+		font-size:15px;
+	}
+}
+
+.bts_info_dwg_upload{
+	width: 100%;
+	text-align: right;
+	padding-right: 30px;
+	margin-top: 5px;
+}
+
+.bts_info_content {
+	width: 100%;
+	position: relative;
+}

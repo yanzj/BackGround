@@ -1,0 +1,66 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body form-horizontal">
+    <div class="row">
+        <div class="col-md-3">
+            <label>选择网络：</label>
+            <div class="input-group">
+                <select class="form-control" ng-model="network.selected" ng-options="n as n for n in network.options"></select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label>城市：</label>
+            <div class="input-group">
+                <select class="form-control" ng-model="city.selected" ng-options="c as c for c in city.options" ng-change="updateDistricts()"></select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label>区域：</label>
+            <div class="input-group">
+                <select class="form-control" ng-model="district.selected" ng-options="d as d for d in district.options" ng-change="updateTowns()"></select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label>镇区：</label>
+            <div class="input-group">
+                <select class="form-control" ng-model="town.selected" ng-options="t as t for t in town.options"></select>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <label>模糊查询条件：</label>
+            <div class="input-group">
+                <input class="form-control" ng-model="queryText"/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="queryItems()">
+                        <i class="glyphicon glyphicon-search"></i>
+                        查询信息
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<div uib-accordion>
+    <div uib-accordion-group class="panel panel-primary" is-open="true">
+        <div uib-accordion-heading>
+            LTE基站列表
+            <div class="badge">{{eNodebList.length}}</div>
+        </div>
+        <div e-nodeb-plain-table items="eNodebList" begin-date="beginDate" end-date="endDate"></div>
+    </div>
+    <div uib-accordion-group class="panel panel-success">
+        <div uib-accordion-heading>
+            CDMA基站列表
+            <div class="badge">{{btsList.length}}</div>
+        </div>
+        <div bts-plain-table items="btsList"></div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-warning" ng-click="ok()">地图显示</button>
+    <button class="btn btn-default" type="button" ng-click="cancel()">放弃保存</button>
+</div>
+

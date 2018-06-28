@@ -1,0 +1,87 @@
+﻿<div class="btn-group-sm col-md-4" uib-dropdown dropdown-append-to-body>
+    <button id="single-button" type="button" class="btn btn-sm btn-default"
+            uib-dropdown-toggle ng-disabled="disabled">
+        <strong>查询操作</strong>
+        <span class="caret"></span>
+    </button>
+    <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showCluster500List()">
+                <i class="glyphicon glyphicon-tree-conifer"></i>
+                500分簇查询
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showCluster1000List()">
+                <i class="glyphicon glyphicon-flag"></i>
+                1000分簇查询
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showClusterAdvance()">
+                <i class="glyphicon glyphicon-apple"></i>
+                改进分簇查询
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+
+<div class="btn-group-sm col-md-4" uib-dropdown dropdown-append-to-body>
+    <button id="view-button" type="button" class="btn btn-sm btn-default"
+            uib-dropdown-toggle ng-disabled="disabled">
+        <strong>图层显示</strong>
+        <span class="caret"></span>
+    </button>
+    <ul uib-dropdown-menu role="menu" aria-labelledby="view-button">
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showCurrentCluster()" ng-disabled="!currentCluster.list.length">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+                当前簇显示
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showRange500Cluster()">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+                周边500分簇
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showRange1000Cluster()">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+                周边1000分簇
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showRangeAdvanceCluster()">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+                周边改进分簇
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showInfrasturcture()" ng-disabled="!currentCluster.list.length">
+                <i class="glyphicon glyphicon-tree-conifer"></i>
+                周边基站小区
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-default" ng-click="showCluster500Points()" ng-disabled="!cluster500List.length">
+                <i class="glyphicon glyphicon-tree-conifer"></i>
+                500分簇显示
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-default" ng-click="showCluster1000Points()" ng-disabled="!cluster1000List.length">
+                <i class="glyphicon glyphicon-tree-conifer"></i>
+                1000分簇显示
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-default" ng-click="showClusterAdvancePoints()" ng-disabled="!clusterAdvanceList.length">
+                <i class="glyphicon glyphicon-tree-conifer"></i>
+                改进分簇显示
+            </a>
+        </li>
+    </ul>
+</div>

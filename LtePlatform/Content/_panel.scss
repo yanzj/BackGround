@@ -1,0 +1,102 @@
+﻿@import "themes/_mixins.scss";
+@import "themes/_colors.scss";
+
+.panel-widget {
+	padding: 0;
+	position: relative;
+
+	.panel-footer{
+		border: 0;
+		text-align: center;
+
+		a {
+			color: #999;
+		}
+		a:hover {
+			color: #666;
+			text-decoration: none;
+		}
+	}
+}
+
+%panel-body-p-common {
+	color: rgba(255, 255, 255, .8);
+}
+
+%panel-heading-common {
+	border-bottom: 1px solid rgba(255, 255, 255, .2);
+}
+
+%text-muted-common {
+	color: rgba(255, 255, 255, .5);
+}
+
+.color-gray { 
+	color: $color-gray; 
+}
+
+.color-blue { 
+	color: $color-blue;
+}
+
+.color-teal { 
+	color: $color-teal;
+}
+
+.color-orange { 
+	color: $color-orange; 
+}
+
+.color-red { 
+	color: $color-red; 
+}
+
+.panel-blue { 
+	@include panel-def($color-blue);
+}
+
+.modal-header-blue {
+	@include modal-header-def($color-blue);
+}
+
+.panel-teal { 
+	@include panel-def($color-teal);
+}
+
+.modal-header-teal {
+	@include modal-header-def($color-teal);
+}
+
+.panel-orange { 
+	@include panel-def($color-orange);
+}
+
+.panel-orange-dark {
+	@include panel-def($color-orange-dark110);
+}
+
+.modal-header-orange {
+	@include modal-header-def($color-orange);
+}
+
+.modal-header-orange-dark {
+	@include modal-header-def($color-orange-dark110);
+}
+
+.panel-red { 
+	@include panel-def($color-red);
+}
+
+.modal-header-red {
+	@include modal-header-def($color-red);
+}
+
+.panel-widget {
+	margin: 0;
+}
+
+.panel-body input[type=checkbox]:checked + label { 
+	text-decoration: line-through;
+	color: #777; 
+}
+

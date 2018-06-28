@@ -1,0 +1,32 @@
+﻿<style>
+    li {
+        list-style-type: none;
+    }
+
+    option {
+        width: 100px;
+    }
+</style>
+<ul>
+    <li>
+        <select ng-model="selectedGrade" ng-options="x.name for x in grades" ng-init="selectedGrade = grades[0]" ng-change="change()"></select>
+    </li>
+    <li>
+        <select ng-model="selectedRoomAttribution" ng-options="x.name for x in roomAttributions" ng-init="selectedRoomAttribution = roomAttributions[0]" ng-change="change()"></select>
+    </li>
+    <li>
+        <select ng-model="selectedTowerAttribution" ng-options="x.name for x in towerAttributions" ng-init="selectedTowerAttribution = towerAttributions[0]" ng-change="change()"></select>
+    </li>
+    <li>
+        <select ng-model="selectedIsBBU" ng-options="x.name for x in isBBUs" ng-init="selectedIsBBU = isBBUs[0]" ng-change="change()"></select>
+    </li>
+    <li>
+        <select ng-model="selectedNetType" ng-options="x.name for x in netTypes" ng-init="selectedNetType = netTypes[0]" ng-change="change()"></select>
+    </li>
+    <li>
+        <select ng-model="selectedIsPower" ng-options="x.name for x in isPowers" ng-init="selectedIsPower = isPowers[0]" ng-change="change()"></select>
+    </li>
+
+
+
+</ul>

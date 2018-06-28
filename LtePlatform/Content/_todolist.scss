@@ -1,0 +1,80 @@
+﻿%margin-right{
+	margin-right:5px;
+}
+
+.todo-list { 
+	padding: 0;
+	margin: -15px;
+	background: #fff;
+	color: #5f6468;
+	.checkbox { 
+		display:inline-block; 
+		margin: 0px;
+	}
+}
+
+.todo-list-item {
+	list-style: none;
+	line-height: 0.9;
+	padding: 14px 15px 8px 15px;
+	a.trash .glyphicon:hover {
+		color: #ef4040;
+	}
+	.glyphicon { 
+		@extend %margin-right; 
+		color: #9fadbb; 
+	}
+	.glyphicon:hover { 
+		@extend %margin-right; 
+		color: #1b3548; 
+	}
+}
+
+.todo-list-item:hover, a.todo-list-item:focus {
+	text-decoration: none;
+	background-color: #f6f6f6;
+}
+
+#checkbox {
+	margin: 0;
+}
+
+.icon_right {
+    background:url(/Content/Images/icon_right.jpg) no-repeat center center;
+    width:28px;
+    height:28px;
+    float:left;
+    left:60px;
+    position:absolute;
+}
+
+.icon_down {
+    background:url(/Content/Images/icon_down.jpg) no-repeat center center;
+    width:28px;
+    height:28px;
+    float:left;
+    left:60px;
+    position:absolute;
+}
+/**
+ *********************************************
+ * Prototype of styles for horizontal CSS-menu
+ * @data 30.06.2017 øwww.16sucai.com
+ * @Modified by Ouyang Hui
+ *********************************************
+ * (X)HTML-scheme:
+ *  <div id="menu">
+ *      <ul class="menu">
+ *          <li><a href="#" class="parent"><span>level 1</span></a>
+ *              <ul>
+ *                  <li><a href="#" class="parent"><span>level 2</span></a>
+ *                      <ul><li><a href="#"><span>level 3</span></a></li></ul>
+ *                  </li>
+ *              </ul>
+ *          </li>
+ *          <li class="last"><a href="#"><span>level 1</span></a></li>
+ *      </ul>
+ *  </div>
+ *********************************************
+ */
+

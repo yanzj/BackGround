@@ -1,0 +1,53 @@
+<div>
+    <div class="title">
+        <strong>A4异频切换参数: </strong>
+    </div>
+    <div class="list" ng-show="interFreqHo[0].earfcn===0">
+        <ul>
+            <li>
+                <div class="left">判决迟滞</div>
+                <div class="rmb">{{interFreqHo[0].interFreqEventA4.hysteresis | halfDb}}dB</div>
+            </li>
+            <li>
+                <div class="left">事件上报延迟</div>
+                <div class="rmb">{{interFreqHo[0].interFreqEventA4.timeToTrigger | timeToTrigger}}毫秒</div>
+            </li>
+            <li>
+                <div class="left">RSRP门限</div>
+                <div class="rmb">{{interFreqHo[0].interFreqEventA4.thresholdOfRsrp}}dB</div>
+            </li>
+            <li>
+                <div class="left">RSRQ门限</div>
+                <div class="rmb">{{interFreqHo[0].interFreqEventA4.thresholdOfRsrq | halfDb}}dB</div>
+            </li>
+        </ul>
+    </div>
+    <div uib-accordion ng-show="interFreqHo[0].earfcn>0">
+        <div uib-accordion-group class="panel panel-primary" ng-repeat="ho in interFreqHo">
+            <div uib-accordion-heading>
+                频点号
+                <div class="badge">{{ho.earfcn>0?ho.earfcn:'中兴小区'}}</div>
+            </div>
+            <div class="list">
+                <ul>
+                    <li>
+                        <div class="left">判决迟滞</div>
+                        <div class="rmb">{{ho.interFreqEventA4.hysteresis | halfDb}}dB</div>
+                    </li>
+                    <li>
+                        <div class="left">事件上报延迟</div>
+                        <div class="rmb">{{ho.interFreqEventA4.timeToTrigger | timeToTrigger}}毫秒</div>
+                    </li>
+                    <li>
+                        <div class="left">RSRP门限</div>
+                        <div class="rmb">{{ho.interFreqEventA4.thresholdOfRsrp}}dB</div>
+                    </li>
+                    <li>
+                        <div class="left">RSRQ门限</div>
+                        <div class="rmb">{{ho.interFreqEventA4.thresholdOfRsrq | halfDb}}dB</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

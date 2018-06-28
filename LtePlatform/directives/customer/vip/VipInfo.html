@@ -1,0 +1,36 @@
+﻿<table class="table table-bordered">
+    <tbody>
+        <tr>
+            <td>项目编号</td>
+            <td>{{item.serialNumber}}</td>
+            <td>项目级别</td>
+            <td>{{item.demandLevelDescription}}</td>
+            <td>涉及网络</td>
+            <td>{{item.networkTypeDescription}}</td>
+        </tr>
+        <tr>
+            <td>营销主题</td>
+            <td>{{item.marketThemeDescription}}</td>
+            <td>需求部门</td>
+            <td>{{item.department}}</td>
+            <td>保障区域</td>
+            <td>{{item.area}}</td>
+        </tr>
+        <tr>
+            <td>需求联系人</td>
+            <td>{{item.contactPerson}}</td>
+            <td>联系人电话</td>
+            <td>{{item.phoneNumber}}</td>
+            <td>受理时间</td>
+            <td>{{item.beginDate | date: 'yyyy-MM-dd'}}</td>
+        </tr>
+        <tr>
+            <td>计划完成时间</td>
+            <td>{{item.planDate | date: 'yyyy-MM-dd'}}</td>
+            <td>区域</td>
+            <td>{{item.district}}</td>
+            <td>镇区</td>
+            <td>{{item.town}}</td>
+        </tr>
+    </tbody>
+</table>

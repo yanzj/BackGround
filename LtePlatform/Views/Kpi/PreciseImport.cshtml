@@ -1,0 +1,163 @@
+﻿@{
+    ViewBag.Title = "精确覆盖率导入";
+}
+<div class="panel panel-warning" ng-controller="precise.import">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            <strong>@ViewBag.Title</strong>
+        </h2>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                @{
+                    Html.RenderPartial("_AlertPanel");
+                    using (Html.BeginForm("PrecisePost", "Kpi",
+                        FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                    {
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">指标文件导入：</label>
+                            <div class="col-md-6">
+                                <input name="preciseFile" class="form-control" type="file" accept=".csv" />
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-save"></span>导入
+                                </button>
+                            </div>
+                        </div>
+                    }
+                }
+                <p>
+                    <button class="btn btn-primary" ng-click="dumpItems()">一键导入</button>
+                    <button class="btn btn-info" ng-disabled="townPreciseViews.length === 0 && townMrsStats.length === 0 && topMrsStats.length === 0" 
+                            ng-click="dumpTownItems()">
+                        导入镇区指标
+                        <div class="badge">TOP小区{{topMrsStats.length}}</div>
+                    </button>
+                    <button class="btn btn-danger" ng-disabled="totalDumpItems.length === 0" ng-click="clearItems()">
+                        清除导入
+                    </button>
+                </p>
+                <div ng-include="'/appViews/Import/ImportProgress.html'"></div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>镇区</th>
+                            <th>&lt;-120</th>
+                            <th>-120&le;RSRP&lt;-115</th>
+                            <th>-115&le;RSRP&lt;-110</th>
+                            <th>-110&le;RSRP&lt;-105</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="view in townMrsStats">
+                            <td>{{view.townId}}</td>
+                            <td>{{view.rsrpBelow120}}</td>
+                            <td>{{view.rsrp120To115}}</td>
+                            <td>{{view.rsrp115To110}}</td>
+                            <td>{{view.rsrp110To105}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            精确覆盖率数据库历史统计
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div date-span-row begin-date="beginDate" end-date="endDate">
+                            <div class="btn-group">
+                                <button class="btn btn-primary" ng-click="updateHistory()">更新</button>
+                            </div>
+                        </div>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>日期</th>
+                                    <th>小区统计数量</th>
+                                    <th>镇区-精确覆盖</th>
+                                    <th>镇区-MRS覆盖</th>
+                                    <th>TOP-MRS覆盖</th>
+                                    <th style="width:150px">精确覆盖率数据</th>
+                                    <th style="width:140px">MRS数据</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="stat in dumpHistory">
+                                    <td>{{stat.dateString}}</td>
+                                    <td>{{stat.preciseStats}}</td>
+                                    <td>{{stat.townPreciseStats}}</td>
+                                    <td>{{stat.townMrsStats}}</td>
+                                    <td>{{stat.topMrsStats}}</td>
+                                    <td>
+                                        <div class="btn-group-sm">
+                                            <button type="button" class="btn btn-sm btn-success" ng-click="updateMongoItems(stat.statDate)">
+                                                Mongo
+                                            </button>
+                                            <button class="btn btn-sm btn-default" ng-click="updateTownItems(stat.statDate)">
+                                                镇区
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group-sm">
+                                            <button class="btn btn-sm btn-success" ng-click="updateTopMrsItems(stat.statDate)">
+                                                TOP
+                                            </button>
+                                            <button class="btn btn-sm btn-default" ng-click="updateTownMrsItems(stat.statDate)">
+                                                镇区
+                                            </button>
+                                        </div>
+                                            
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>城市</th>
+                        <th>区域</th>
+                        <th>镇区</th>
+                        <th>MR总数</th>
+                        <th>第一邻区数</th>
+                        <th>第二邻区数</th>
+                        <th>第三邻区数</th>
+                        <th>全部第一邻区数</th>
+                        <th>全部第二邻区数</th>
+                        <th>全部第三邻区数</th>
+                        <th>全部第四邻区数</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="view in townPreciseViews">
+                        <td>{{view.city}}</td>
+                        <td>{{view.district}}</td>
+                        <td>{{view.town}}</td>
+                        <td>{{view.totalMrs}}</td>
+                        <td>{{view.firstNeighbors}}</td>
+                        <td>{{view.secondNeighbors}}</td>
+                        <td>{{view.thirdNeighbors}}</td>
+                        <td>{{view.interFirstNeighbors}}</td>
+                        <td>{{view.interSecondNeighbors}}</td>
+                        <td>{{view.interThirdNeighbors}}</td>
+                        <td>{{view.neighborsMore}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/kpi/precise.import.js"></script>
+}

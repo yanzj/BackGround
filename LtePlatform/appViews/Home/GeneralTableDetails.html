@@ -1,0 +1,12 @@
+﻿<table class="table table-hover">
+    <tbody>
+        <tr ng-repeat="itemGroup in itemGroups">
+            <td style="min-width: 70px" ng-repeat-start="item in itemGroup.items">{{item.key}}</td>
+            <td ng-repeat-end colspan="{{item.span || 1}}">
+                <span ng-show="!item.format" ng-style="{color: item.color || 'black'}">{{item.value}}</span>
+                <span ng-show="item.format === 'date'">{{item.value | date: 'yyyy-MM-dd'}}</span>
+                <span ng-show="item.format === 'percentage'">{{item.value | number: 2}}%</span>
+            </td>
+        </tr>
+    </tbody>
+</table>

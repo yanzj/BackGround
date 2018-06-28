@@ -1,0 +1,62 @@
+﻿
+<div class="btn-group-sm col-sm-4" uib-dropdown dropdown-append-to-body>
+    <button id="single-button" type="button" class="btn btn-sm btn-default"
+            uib-dropdown-toggle ng-disabled="disabled">
+        <strong>{{currentView}}-{{currentDistrict}}</strong>
+        <span class="caret"></span>
+    </button>
+    <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showTelecomCoverage()">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+                自身覆盖
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showMobileCompete()">
+                <i class="glyphicon glyphicon-tree-conifer"></i>
+                移动竞对
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showUnicomCompete()">
+                <i class="glyphicon glyphicon-flag"></i>
+                联通竞对
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showOverallCompete()">
+                <i class="glyphicon glyphicon-tree-conifer"></i>
+                竞对总体
+            </a>
+        </li>
+        <li role="menuitem" ng-repeat="district in districts">
+            <a class="btn btn-sm btn-default" ng-click="showDistrictMrGrid(district)">
+                <i class="glyphicon glyphicon-ok-circle" ng-show="district.name === currentDistrict"></i>
+                {{district.name}}
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="btn-group-sm col-sm-4" uib-dropdown dropdown-append-to-body ng-repeat="district in districts"
+     ng-show="district.name === currentDistrict">
+    <button id="button-" type="button" class="btn btn-sm" uib-dropdown-toggle ng-disabled="disabled">
+        <strong>视图-{{currentTown}}</strong>
+        <span class="caret"></span>
+    </button>
+    <ul uib-dropdown-menu role="menu" aria-labelledby="button-{{district.name}}">
+        <li role="menuitem">
+            <a class="btn btn-sm btn-warning" ng-click="showGridStats()">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+                指标分析
+            </a>
+        </li>
+        <li role="menuitem" ng-repeat="town in district.towns">
+            <a class="btn btn-sm btn-success" ng-click="showMrGrid(district.name, town)">
+                <i class="glyphicon glyphicon-ok-circle" ng-show="town === currentTown"></i>
+                {{town}}
+            </a>
+        </li>
+    </ul>
+</div>

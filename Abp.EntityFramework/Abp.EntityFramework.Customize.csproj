@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{79F4F2B7-D8E2-4EC7-BD18-6A0741AE9A9C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Abp.EntityFramework</RootNamespace>
+    <AssemblyName>Abp.EntityFramework.Customize</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Abp, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Abp.2.3.0\lib\net46\Abp.dll</HintPath>
+    </Reference>
+    <Reference Include="Abp.EntityFramework, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Abp.EntityFramework.2.3.0\lib\net46\Abp.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Abp.EntityFramework.Common, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Abp.EntityFramework.Common.2.3.0\lib\net46\Abp.EntityFramework.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.Logging, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.LoggingFacility.4.0.0\lib\net45\Castle.Facilities.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Windsor.4.0.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.DynamicFilters, Version=2.10.0.0, Culture=neutral, PublicKeyToken=146423a1b8d60775, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.DynamicFilters.2.10.0\lib\net40\EntityFramework.DynamicFilters.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Annotations, Version=11.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.11.0.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Bson, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Bson.2.4.4\lib\net45\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.2.4.4\lib\net45\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.4.4\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Legacy, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\mongocsharpdriver.2.4.4\lib\net45\MongoDB.Driver.Legacy.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Nito.AsyncEx, Version=4.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nito.AsyncEx.4.0.1\lib\net45\Nito.AsyncEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Concurrent, Version=4.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nito.AsyncEx.4.0.1\lib\net45\Nito.AsyncEx.Concurrent.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Enlightenment, Version=4.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nito.AsyncEx.4.0.1\lib\net45\Nito.AsyncEx.Enlightenment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.5.0\lib\netstandard1.3\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Linq.Dynamic.Core, Version=0.0.0.0, Culture=neutral, PublicKeyToken=0f07ec44de6ac832, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.Core.1.0.7.6\lib\net46\System.Linq.Dynamic.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoMapper\AbpAutoMapperModule.cs" />
+    <Compile Include="AutoMapper\AutoMapAttribute.cs" />
+    <Compile Include="AutoMapper\AutoMapDirection.cs" />
+    <Compile Include="AutoMapper\AutoMapExtensions.cs" />
+    <Compile Include="AutoMapper\AutoMapFromAttribute.cs" />
+    <Compile Include="AutoMapper\AutoMapperHelper.cs" />
+    <Compile Include="AutoMapper\AutoMapToAttribute.cs" />
+    <Compile Include="AutoMapper\ENodebExcelTransform.cs" />
+    <Compile Include="Dependency\HuaweiRepositoryQueries.cs" />
+    <Compile Include="Dependency\IHuaweiCellMongo.cs" />
+    <Compile Include="Dependency\IHuaweiMongo.cs" />
+    <Compile Include="Dependency\IHuaweiNeighborMongo.cs" />
+    <Compile Include="Dependency\IMongoDatabaseProvider.cs" />
+    <Compile Include="Dependency\IRasterNum.cs" />
+    <Compile Include="Dependency\IRegionDateSpanView.cs" />
+    <Compile Include="Dependency\IStatDate.cs" />
+    <Compile Include="Dependency\IStatDateCell.cs" />
+    <Compile Include="Dependency\IStatDateCellRepository.cs" />
+    <Compile Include="Dependency\IZteMongo.cs" />
+    <Compile Include="Dependency\QueryableExtensions.cs" />
+    <Compile Include="Dependency\StatDateCellQueries.cs" />
+    <Compile Include="Dependency\ZteRepositoryQueries.cs" />
+    <Compile Include="Entities\AlarmWorkItem.cs" />
+    <Compile Include="Entities\AreaTestDate.cs" />
+    <Compile Include="Entities\AreaTestInfo.cs" />
+    <Compile Include="Entities\BluePrint.cs" />
+    <Compile Include="Entities\BranchDemand.cs" />
+    <Compile Include="Entities\BranchDemandDto.cs" />
+    <Compile Include="Entities\BranchDemandExcel.cs" />
+    <Compile Include="Entities\BtsWithTownIdContainer.cs" />
+    <Compile Include="Entities\CdmaBts.cs" />
+    <Compile Include="Entities\CdmaBtsTransform.cs" />
+    <Compile Include="Entities\CdmaCell.cs" />
+    <Compile Include="Entities\CdmaRegionStat.cs" />
+    <Compile Include="Entities\CdmaRru.cs" />
+    <Compile Include="Entities\Cell.cs" />
+    <Compile Include="Entities\College3GTestResults.cs" />
+    <Compile Include="Entities\College3GTestView.cs" />
+    <Compile Include="Entities\College4GTestResults.cs" />
+    <Compile Include="Entities\College4GTestView.cs" />
+    <Compile Include="Entities\CollegeInfo.cs" />
+    <Compile Include="Entities\CollegeRegion.cs" />
+    <Compile Include="Entities\CollegeYearInfo.cs" />
+    <Compile Include="Entities\ComplainDto.cs" />
+    <Compile Include="Entities\ComplainItem.cs" />
+    <Compile Include="Entities\ComplainPositionDto.cs" />
+    <Compile Include="Entities\ComplainProcess.cs" />
+    <Compile Include="Entities\ConstructionInformation.cs" />
+    <Compile Include="Entities\CoverageStat.cs" />
+    <Compile Include="Entities\CqiHuawei.cs" />
+    <Compile Include="Entities\CqiZte.cs" />
+    <Compile Include="Entities\CsvFilesInfo.cs" />
+    <Compile Include="Entities\DistributionSystem.cs" />
+    <Compile Include="Entities\DoubleFlowHuawei.cs" />
+    <Compile Include="Entities\DoubleFlowZte.cs" />
+    <Compile Include="Entities\DownSwitchFlow.cs" />
+    <Compile Include="Entities\DpiGridKpi.cs" />
+    <Compile Include="Entities\DpiGridKpiDto.cs" />
+    <Compile Include="Entities\EmergencyCommunication.cs" />
+    <Compile Include="Entities\EmergencyCommunicationDto.cs" />
+    <Compile Include="Entities\EmergencyFiberWorkItem.cs" />
+    <Compile Include="Entities\EmergencyProcess.cs" />
+    <Compile Include="Entities\EmergencyProcessDto.cs" />
+    <Compile Include="Entities\ENodeb.cs" />
+    <Compile Include="Entities\ENodebBase.cs" />
+    <Compile Include="Entities\ENodebBtsIdPair.cs" />
+    <Compile Include="Entities\ENodebWithTownIdContainer.cs" />
+    <Compile Include="Entities\FlowHuawei.cs" />
+    <Compile Include="Entities\FlowView.cs" />
+    <Compile Include="Entities\FlowZte.cs" />
+    <Compile Include="Entities\GridCluster.cs" />
+    <Compile Include="Entities\GridClusterView.cs" />
+    <Compile Include="Entities\HotSpotBtsId.cs" />
+    <Compile Include="Entities\HotSpotCdmaCellId.cs" />
+    <Compile Include="Entities\HotSpotCellId.cs" />
+    <Compile Include="Entities\HotSpotENodebId.cs" />
+    <Compile Include="Entities\HotSpotView.cs" />
+    <Compile Include="Entities\IndoorDistribution.cs" />
+    <Compile Include="Entities\InfrastructureInfo.cs" />
+    <Compile Include="Dependency\ITopKpiContainer.cs" />
+    <Compile Include="Entities\LteNeighborCell.cs" />
+    <Compile Include="Entities\LteProblem.cs" />
+    <Compile Include="Entities\LteRru.cs" />
+    <Compile Include="Entities\MicroAddress.cs" />
+    <Compile Include="Entities\MicroItem.cs" />
+    <Compile Include="Entities\MonthKpiStat.cs" />
+    <Compile Include="Entities\MrGridKpi.cs" />
+    <Compile Include="Entities\MrGridKpiDto.cs" />
+    <Compile Include="Entities\NearestPciCell.cs" />
+    <Compile Include="Entities\NearestPciCellView.cs" />
+    <Compile Include="Entities\OnlineSustain.cs" />
+    <Compile Include="Entities\OnlineSustainDto.cs" />
+    <Compile Include="Entities\OptimizeRegion.cs" />
+    <Compile Include="Entities\PlanningSite.cs" />
+    <Compile Include="Entities\PlanningSiteView.cs" />
+    <Compile Include="Entities\PrbHuawei.cs" />
+    <Compile Include="Entities\PrbZte.cs" />
+    <Compile Include="Entities\PreciseCoverageDto.cs" />
+    <Compile Include="Entities\PreciseInterferenceNeighborDto.cs" />
+    <Compile Include="Entities\PreciseInterferenceVictimDto.cs" />
+    <Compile Include="Entities\PreciseWorkItemCell.cs" />
+    <Compile Include="Entities\QciHuawei.cs" />
+    <Compile Include="Entities\QciZte.cs" />
+    <Compile Include="Entities\RasterInfo.cs" />
+    <Compile Include="Entities\RasterTestInfo.cs" />
+    <Compile Include="Entities\RrcHuawei.cs" />
+    <Compile Include="Entities\RrcZte.cs" />
+    <Compile Include="Entities\StationAntenna.cs" />
+    <Compile Include="Entities\StationDictionary.cs" />
+    <Compile Include="Entities\StationRru.cs" />
+    <Compile Include="Entities\TopConnection2GCell.cs" />
+    <Compile Include="Entities\TopConnection3GCell.cs" />
+    <Compile Include="Entities\TopDrop2GCell.cs" />
+    <Compile Include="Entities\TopMrsRsrp.cs" />
+    <Compile Include="Entities\Town.cs" />
+    <Compile Include="Entities\TownBoundary.cs" />
+    <Compile Include="Entities\TownCoverageStat.cs" />
+    <Compile Include="Entities\TownFlow.cs" />
+    <Compile Include="Entities\TownPrbStat.cs" />
+    <Compile Include="Entities\TownQciStat.cs" />
+    <Compile Include="Entities\TownRrcStat.cs" />
+    <Compile Include="Entities\UserLoginSessionInfo.cs" />
+    <Compile Include="Entities\VipDemand.cs" />
+    <Compile Include="Entities\VipProcess.cs" />
+    <Compile Include="Entities\VipProcessDto.cs" />
+    <Compile Include="Entities\WorkItem.cs" />
+    <Compile Include="Entities\ZhangshangyouQuality.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AutoRepositoryTypesAttribute.cs" />
+    <Compile Include="Repositories\EfRepositoryBaseOfTEntity.cs" />
+    <Compile Include="Repositories\IMatchRepository.cs" />
+    <Compile Include="Repositories\MongoDbRepositoryBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lte.Domain\Lte.Domain.csproj">
+      <Project>{adeef82d-6389-47c4-8f7c-d7f85c01d64e}</Project>
+      <Name>Lte.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

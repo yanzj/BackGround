@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "4G流量导入";
+}
+
+<h3 class="text text-primary"><strong>@ViewBag.Title</strong></h3>
+<div class="row" ng-controller="neighbor.import">
+    <div class="col-md-6">
+        @{
+            Html.RenderPartial("_AlertPanel");
+            using (Html.BeginForm("HwFlowPost", "Parameters",
+                FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+            {
+                <div multiple-file-selector file-title="华为流量统计导入：" tag="flowHw" file-type=".csv"></div>
+            }
+            using (Html.BeginForm("ZteFlowPost", "Parameters",
+                FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+            {
+                <div multiple-file-selector file-title="中兴流量统计导入：" tag="flowZte" file-type=".csv"></div>
+            }
+            using (Html.BeginForm("HwCqiPost", "Parameters",
+                FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+            {
+                <div multiple-file-selector file-title="华为CQI统计导入：" tag="cqiHw" file-type=".csv"></div>
+            }
+            using (Html.BeginForm("ZteNeighborPost", "Parameters",
+                FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+            {
+                <div multiple-file-selector file-title="MR栅格指标导入：" tag="neighborZte" file-type=".csv"></div>
+            }
+            using (Html.BeginForm("HwNeighborPost", "Parameters",
+                FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+            {
+                <div multiple-file-selector file-title="MR栅格数据导入：" tag="neighborHw" file-type=".csv"></div>
+            }
+        }
+    </div>
+    <div class="col-md-6">
+        <h4>华为流量</h4>
+        <button class="btn btn-primary" ng-click="dumpHuaweiItems()" ng-disabled="huaweiInfo.totalDumpItems === 0">
+            一键导入
+        </button>
+        <button class="btn btn-danger" ng-click="clearHuaweiItems()" ng-disabled="huaweiInfo.totalDumpItems === 0">
+            清除导入
+        </button>
+        总数：{{huaweiInfo.totalDumpItems}}&nbsp;
+        成功数：{{huaweiInfo.totalSuccessItems}}&nbsp;
+        失败数：{{huaweiInfo.totalFailItems}}
+        <div uib-progress>
+            <div uib-bar value="100*huaweiInfo.totalSuccessItems / huaweiInfo.totalDumpItems" type="success">
+                <span ng-show="100*huaweiInfo.totalSuccessItems / huaweiInfo.totalDumpItems > 5">
+                    {{100*huaweiInfo.totalSuccessItems / huaweiInfo.totalDumpItems | number: 2}}%
+                </span>
+            </div>
+            <div uib-bar value="100*huaweiInfo.totalFailItems / huaweiInfo.totalDumpItems" type="erroe">
+                <span ng-show="100*huaweiInfo.totalFailItems / huaweiInfo.totalDumpItems > 5">
+                    {{100*huaweiInfo.totalFailItems / huaweiInfo.totalDumpItems | number: 2}}%
+                </span>
+            </div>
+        </div>
+        <h4>中兴流量</h4>
+        <button class="btn btn-primary" ng-click="dumpZteItems()" ng-disabled="zteInfo.totalDumpItems === 0">
+            一键导入
+        </button>
+        <button class="btn btn-danger" ng-click="clearZteItems()" ng-disabled="zteInfo.totalDumpItems === 0">
+            清除导入
+        </button>
+        总数：{{zteInfo.totalDumpItems}}&nbsp;
+        成功数：{{zteInfo.totalSuccessItems}}&nbsp;
+        失败数：{{zteInfo.totalFailItems}}
+        <div uib-progress>
+            <div uib-bar value="100*zteInfo.totalSuccessItems / zteInfo.totalDumpItems" type="success">
+                <span ng-show="100*zteInfo.totalSuccessItems / zteInfo.totalDumpItems > 5">
+                    {{100*zteInfo.totalSuccessItems / zteInfo.totalDumpItems | number: 2}}%
+                </span>
+            </div>
+            <div uib-bar value="100*zteInfo.totalFailItems / zteInfo.totalDumpItems" type="erroe">
+                <span ng-show="100*zteInfo.totalFailItems / zteInfo.totalDumpItems > 5">
+                    {{100*zteInfo.totalFailItems / zteInfo.totalDumpItems | number: 2}}%
+                </span>
+            </div>
+        </div>
+        <h4>华为CQI</h4>
+        <button class="btn btn-primary" ng-click="dumpCqiHuaweiItems()" ng-disabled="huaweiCqiInfo.totalDumpItems === 0">
+            一键导入
+        </button>
+        <button class="btn btn-danger" ng-click="clearCqiHuaweiItems()" ng-disabled="huaweiCqiInfo.totalDumpItems === 0">
+            清除导入
+        </button>
+        总数：{{huaweiCqiInfo.totalDumpItems}}&nbsp;
+        成功数：{{huaweiCqiInfo.totalSuccessItems}}&nbsp;
+        失败数：{{huaweiCqiInfo.totalFailItems}}
+        <div uib-progress>
+            <div uib-bar value="100*huaweiCqiInfo.totalSuccessItems / huaweiCqiInfo.totalDumpItems" type="success">
+                <span ng-show="100*huaweiCqiInfo.totalSuccessItems / huaweiCqiInfo.totalDumpItems > 5">
+                    {{100*huaweiCqiInfo.totalSuccessItems / huaweiCqiInfo.totalDumpItems | number: 2}}%
+                </span>
+            </div>
+            <div uib-bar value="100*huaweiCqiInfo.totalFailItems / huaweiCqiInfo.totalDumpItems" type="erroe">
+                <span ng-show="100*huaweiCqiInfo.totalFailItems / huaweiCqiInfo.totalDumpItems > 5">
+                    {{100*huaweiCqiInfo.totalFailItems / huaweiCqiInfo.totalDumpItems | number: 2}}%
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div date-span-row begin-date="beginDate" end-date="endDate">
+            <button class="btn btn-primary" ng-click="updateDumpHistory()">更新</button>
+            <button class="btn btn-success" ng-click="dumpCollegeFlows()">校园网流量</button>
+        </div>
+        <div flow-dump-history-table items="dumpHistory"></div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/parameters/neighbor/import.controller.js"></script>
+}

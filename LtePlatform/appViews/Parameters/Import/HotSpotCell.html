@@ -1,0 +1,32 @@
+﻿<div class="modal-header">
+	<button type="button" class="close" ng-click="cancel()" aria-hidden="true">
+		&times;
+	</button>
+	<h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body form-horizontal">
+	<h5><i>热点地址：{{address}}</i></h5>
+	<button class="btn btn-success" ng-click="importCells()">批量导入小区</button>
+	<div class="panel panel-teal">
+		<div class="panel-heading">热点名称匹配小区</div>
+		<div class="panel-body">
+			<div cell-selection-table items="candidateIndoorCells" grid-api="gridApi"></div>
+		</div>
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">热点位置匹配小区</div>
+		<div class="panel-body">
+			<div cell-rru-selection-table items="positionCells" grid-api="gridApi2"></div>
+		</div>
+	</div>
+	<div class="panel panel-orange-dark">
+		<div class="panel-heading">热点目前包含小区</div>
+		<div class="panel-body">
+			<div cell-rru-table items="existedCells"></div>
+		</div>
+	</div>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-warning" ng-click="ok()">保存信息</button>
+	<button class="btn btn-default" type="button" ng-click="cancel()">放弃保存</button>
+</div>

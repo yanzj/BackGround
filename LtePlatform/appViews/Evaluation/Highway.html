@@ -1,0 +1,49 @@
+﻿<div class="btn-group-sm col-md-4" uib-dropdown dropdown-append-to-body>
+    <button id="single-button" type="button" class="btn btn-sm btn-default"
+            uib-dropdown-toggle ng-disabled="disabled">
+        <strong>高速/高铁专题</strong>
+        <span class="caret"></span>
+    </button>
+    <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showFlow()">
+                <i class="glyphicon glyphicon-apple"></i>
+                流量分布
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showFlowTrend()">
+                <i class="glyphicon glyphicon-barcode"></i>
+                {{currentView}}流量用户数趋势
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showFeelingRateTrend()">
+                <i class="glyphicon glyphicon-barcode"></i>
+                {{currentView}}感知速率趋势
+            </a>
+        </li>
+        <li role="menuitem">
+            <a class="btn btn-sm btn-success" ng-click="showCoverageDt()">
+                <i class="glyphicon glyphicon-barcode"></i>
+                {{currentView}}路测覆盖情况
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="btn-group-sm col-md-4" uib-dropdown dropdown-append-to-body>
+    <button id="view-button" type="button" class="btn btn-sm btn-default"
+            uib-dropdown-toggle ng-disabled="disabled">
+        <strong>视图-{{currentView}}</strong>
+        <span class="caret"></span>
+    </button>
+    <ul uib-dropdown-menu role="menu" aria-labelledby="view-button">
+        <li role="menuitem" ng-repeat="hotSpot in hotSpots">
+            <a class="btn btn-sm btn-default" ng-click="showView(hotSpot)">
+                <i class="glyphicon glyphicon-flag" ng-if="currentView === hotSpot.hotspotName"></i>
+                {{hotSpot.hotspotName}}小区分布
+            </a>
+        </li>
+    </ul>
+</div>

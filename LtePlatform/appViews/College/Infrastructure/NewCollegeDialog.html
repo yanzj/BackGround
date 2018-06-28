@@ -1,0 +1,29 @@
+﻿<div class="modal-header modal-header-blue">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body">    
+    <form name="signup_form" novalidate class="form-horizontal">
+        <div class="col-md-8">
+            <div district-town-plain city="city" district="district" town="town"></div>
+        </div>
+        <div class="col-md-4">
+            <label class="control-label">新建校园名称</label>
+            <input ng-model="collegeName" class="form-control" ng-required="true"
+                   ng-minlength="6"
+                   form-field-error="{required: '校园名称是必须填的！'}" />
+        </div>
+    </form>
+
+    <div id="map" style="height:550px;width:100%;transition: all 0.5s ease-in-out;"></div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" ng-disabled="signup_form.$invalid" ng-click="matchPlace()">
+        <i class="glyphicon glyphicon-map-marker"></i>
+        地理匹配
+    </button>
+    <button class="btn btn-warning" ng-click="ok()" ng-disabled="signup_form.$invalid">保存信息</button>
+    <button class="btn btn-default" type="button" ng-click="cancel()">放弃保存</button>
+</div>

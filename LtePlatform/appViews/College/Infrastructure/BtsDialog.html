@@ -1,0 +1,17 @@
+﻿<div class="modal-header modal-header-orange-dark">
+    <button type="button" class="close" ng-click="cancel()" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title text-primary">{{dialogTitle}}</h4>
+</div>
+<div class="modal-body">
+    <div uib-alert ng-repeat="message in page.messages" class="alert-{{message.type}}" dismiss-on-timeout="2000" close="closeAlert(page.messages, $index)">
+        {{message.contents}}
+    </div>
+    <div bts-table items="btsList"></div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-sm btn-primary" ng-click="addBts()">新增基站</button>
+    <button class="btn btn-warning" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

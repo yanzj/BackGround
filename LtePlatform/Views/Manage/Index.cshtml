@@ -1,0 +1,19 @@
+﻿
+<div class="row">
+    <div class="col-md-3" ng-show="sideBarShown">
+        <div ng-include="'/appViews/GeneralMenu.html'"></div>
+    </div>
+    <div ng-class="{'col-md-9': sideBarShown, 'col-md-12': !sideBarShown}">
+        <div uib-alert ng-repeat="message in page.messages" type="{{message.type}}" 
+             dismiss-on-timeout="5000" close="closeAlert($index)">
+            {{message.contents}}
+        </div>
+        <div ng-view></div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/Scripts/manage/index.viewmodel.js"></script>
+}
+

@@ -1,0 +1,26 @@
+﻿<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>小区名称</th>
+            <th>6DB干扰份额</th>
+            <th>10DB干扰份额</th>
+            <th>过覆盖率</th>
+            <th>弱覆盖率</th>
+        </tr>
+    </thead>
+    <tbody ng-repeat="cell in cells">
+        <tr>
+            <td>{{cell.cellName}}</td>
+            <td>
+                前向：{{cell.db6Share | number: 2}}%<br />
+                反向：{{cell.backwardDb6Share | number: 2}}%
+            </td>
+            <td>
+                前向：{{cell.db10Share | number: 2}}%<br />
+                反向：{{cell.backwardDb10Share | number: 2}}%
+            </td>
+            <td>{{cell.overCoverageRate | number: 2}}%</td>
+            <td>{{cell.weakCoverageRate | number: 2}}%</td>
+        </tr>
+    </tbody>
+</table>

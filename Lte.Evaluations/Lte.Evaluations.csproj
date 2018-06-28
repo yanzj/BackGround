@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C166940A-6BD2-4F42-8156-8024D9E320C9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Lte.Evaluations</RootNamespace>
+    <AssemblyName>Lte.Evaluations</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Abp, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Abp.2.3.0\lib\net46\Abp.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Diagram">
+      <HintPath>..\packages\Aspose.Diagram.17.5.0.0\lib\net40\Aspose.Diagram.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.Logging, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.LoggingFacility.4.0.0\lib\net45\Castle.Facilities.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Windsor.4.0.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Annotations, Version=11.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.11.0.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MongoDB.Bson, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Bson.2.4.4\lib\net45\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq, Version=4.7.46.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.7.46\lib\net45\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Nito.AsyncEx, Version=4.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nito.AsyncEx.4.0.1\lib\net45\Nito.AsyncEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Concurrent, Version=4.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nito.AsyncEx.4.0.1\lib\net45\Nito.AsyncEx.Concurrent.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Enlightenment, Version=4.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nito.AsyncEx.4.0.1\lib\net45\Nito.AsyncEx.Enlightenment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Remotion.Data.Linq, Version=1.13.52.2, Culture=neutral, PublicKeyToken=8c59a1bf3e8d42c1, processorArchitecture=MSIL">
+      <HintPath>..\packages\Remotion.Data.Linq.1.0.0\lib\NET40\Remotion.Data.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.5.0\lib\netstandard1.3\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Linq.Dynamic.Core, Version=0.0.0.0, Culture=neutral, PublicKeyToken=0f07ec44de6ac832, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.Core.1.0.7.6\lib\net46\System.Linq.Dynamic.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataService\Basic\BluePrintService.cs" />
+    <Compile Include="DataService\Basic\BtsConstructionService.cs" />
+    <Compile Include="DataService\Basic\BtsQueryService.cs" />
+    <Compile Include="DataService\Basic\ConstructionInformationService.cs" />
+    <Compile Include="DataService\Basic\ENodebBaseService.cs" />
+    <Compile Include="DataService\Basic\IndoorDistributionService.cs" />
+    <Compile Include="DataService\Basic\PlanningQueryService.cs" />
+    <Compile Include="DataService\Basic\StationAntennaService.cs" />
+    <Compile Include="DataService\Basic\StationInfoService.cs" />
+    <Compile Include="DataService\Basic\StationRruService.cs" />
+    <Compile Include="DataService\College\EmergencyCommunicationService.cs" />
+    <Compile Include="DataService\College\VipDemandService.cs" />
+    <Compile Include="DataService\Dt\AreaTestDateService.cs" />
+    <Compile Include="DataService\Basic\AlarmsService.cs" />
+    <Compile Include="DataService\Basic\BandCellService.cs" />
+    <Compile Include="DataService\Basic\BasicImportContainer.cs" />
+    <Compile Include="DataService\Basic\BasicImportService.cs" />
+    <Compile Include="DataService\Basic\TownBoundaryService.cs" />
+    <Compile Include="DataService\Basic\CdmaCellService.cs" />
+    <Compile Include="DataService\Basic\CellHuaweiMongoService.cs" />
+    <Compile Include="DataService\Basic\CellPowerService.cs" />
+    <Compile Include="DataService\Basic\CellQueries.cs" />
+    <Compile Include="DataService\Basic\CellRruService.cs" />
+    <Compile Include="DataService\Basic\HuaweiCellPowerQuery.cs" />
+    <Compile Include="DataService\Basic\HuaweiCellQuery.cs" />
+    <Compile Include="DataService\Basic\HuaweiLocalCellDef.cs" />
+    <Compile Include="DataService\Basic\ICellPowerService.cs" />
+    <Compile Include="DataService\Basic\TownQueryService.cs" />
+    <Compile Include="DataService\Basic\ZteCellPowerQuery.cs" />
+    <Compile Include="DataService\Basic\ZteCellQuery.cs" />
+    <Compile Include="DataService\College\CollegeAlarmService.cs" />
+    <Compile Include="DataService\College\CustomerServices.cs" />
+    <Compile Include="DataService\College\HotSpotService.cs" />
+    <Compile Include="DataService\Dt\AreaTestInfo2GQuery.cs" />
+    <Compile Include="DataService\Dt\AreaTestInfo3GQuery.cs" />
+    <Compile Include="DataService\Dt\AreaTestInfo4GQuery.cs" />
+    <Compile Include="DataService\Dt\AreaTestInfoVolteQuery.cs" />
+    <Compile Include="DataService\Dt\CsvFileInfoService.cs" />
+    <Compile Include="DataService\Dt\DtFileReaderQuery.cs" />
+    <Compile Include="DataService\Dump\AlarmWorkItemService.cs" />
+    <Compile Include="DataService\Dump\CdmaCellDumpService.cs" />
+    <Compile Include="DataService\Dump\LteProblemService.cs" />
+    <Compile Include="DataService\Kpi\CdmaRegionStatService.cs" />
+    <Compile Include="DataService\Basic\CellService.cs" />
+    <Compile Include="DataService\College\InfrastructureServices.cs" />
+    <Compile Include="DataService\College\CollegeStatService.cs" />
+    <Compile Include="DataService\Dump\CellDumpService.cs" />
+    <Compile Include="DataService\Dump\ENodebDumpService.cs" />
+    <Compile Include="DataService\Basic\ENodebQueryService.cs" />
+    <Compile Include="DataService\Kpi\CoverageRegionStatService.cs" />
+    <Compile Include="DataService\Kpi\CoverageStatService.cs" />
+    <Compile Include="DataService\Kpi\CqiQueryService.cs" />
+    <Compile Include="DataService\Kpi\CqiRegionStatService.cs" />
+    <Compile Include="DataService\Kpi\CqiReportService.cs" />
+    <Compile Include="DataService\Kpi\DtQuery.cs" />
+    <Compile Include="DataService\Kpi\ENodebFlowService.cs" />
+    <Compile Include="DataService\Kpi\FlowQueryService.cs" />
+    <Compile Include="DataService\Kpi\FlowService.cs" />
+    <Compile Include="DataService\Kpi\HuaweiFlowQuery.cs" />
+    <Compile Include="DataService\Kpi\HuaweiPrbQuery.cs" />
+    <Compile Include="DataService\Kpi\HuaweiQciQuery.cs" />
+    <Compile Include="DataService\Kpi\HuaweiRrcQuery.cs" />
+    <Compile Include="DataService\Kpi\MrsRegionStatService.cs" />
+    <Compile Include="DataService\Kpi\PrbQueryService.cs" />
+    <Compile Include="DataService\Kpi\PrbRegionStatService.cs" />
+    <Compile Include="DataService\Kpi\RrcQueryService.cs" />
+    <Compile Include="DataService\Kpi\RrcRegionStatService.cs" />
+    <Compile Include="DataService\Kpi\TopMrsRsrpService.cs" />
+    <Compile Include="DataService\Kpi\TownCoverageService.cs" />
+    <Compile Include="DataService\Kpi\TownFlowService.cs" />
+    <Compile Include="DataService\Kpi\TownKpiService.cs" />
+    <Compile Include="DataService\Kpi\TownStatQueries.cs" />
+    <Compile Include="DataService\Kpi\ZteCqiQuery.cs" />
+    <Compile Include="DataService\Kpi\ZteFlowQuery.cs" />
+    <Compile Include="DataService\Kpi\ZtePrbQuery.cs" />
+    <Compile Include="DataService\Kpi\ZteQciQuery.cs" />
+    <Compile Include="DataService\Kpi\ZteRrcQuery.cs" />
+    <Compile Include="DataService\Mr\AgpsService.cs" />
+    <Compile Include="DataService\Mr\AgpsTownView.cs" />
+    <Compile Include="DataService\Mr\DpiGridKpiService.cs" />
+    <Compile Include="DataService\Mr\TopCoverageStatService.cs" />
+    <Compile Include="DataService\Mr\GridClusterService.cs" />
+    <Compile Include="DataService\Mr\InterferenceMatrixService.cs" />
+    <Compile Include="DataService\Mr\LteNeighborCellService.cs" />
+    <Compile Include="DataService\Mr\MonthKpiService.cs" />
+    <Compile Include="DataService\Mr\MrGridService.cs" />
+    <Compile Include="DataService\Mr\MrsService.cs" />
+    <Compile Include="DataService\Mr\NeighborCellMongoService.cs" />
+    <Compile Include="DataService\Mr\PreciseWorkItemService.cs" />
+    <Compile Include="DataService\Mr\TownSupportService.cs" />
+    <Compile Include="DataService\Dt\RasterInfoService.cs" />
+    <Compile Include="DataService\Switch\DateSpanQuery.cs" />
+    <Compile Include="DataService\Switch\GeneralFlowQuery.cs" />
+    <Compile Include="DataService\Switch\HuaweiCellMongoQuery.cs" />
+    <Compile Include="DataService\Switch\HuaweiENodebMongoQuery.cs" />
+    <Compile Include="DataService\Switch\IMongoQuery.cs" />
+    <Compile Include="DataService\Switch\InterFreqHoService.cs" />
+    <Compile Include="DataService\Switch\IntraFreqHoService.cs" />
+    <Compile Include="DataService\Switch\UlOpenLoopPcService.cs" />
+    <Compile Include="DataService\Switch\ZteGeneralENodebQuery.cs" />
+    <Compile Include="DataService\Dt\TownTestInfoService.cs" />
+    <Compile Include="MapperSerive\TopCellQueriesService.cs" />
+    <Compile Include="Policy\MyAssemblyFinder.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\College\CollegeStat.cs" />
+    <Compile Include="DataService\Kpi\KpiImportService.cs" />
+    <Compile Include="DataService\Mr\NearestPciCellService.cs" />
+    <Compile Include="DataService\Kpi\PreciseImportService.cs" />
+    <Compile Include="DataService\Kpi\PreciseRegionStatService.cs" />
+    <Compile Include="DataService\Kpi\PreciseStatService.cs" />
+    <Compile Include="DataService\Kpi\Top2GServices.cs" />
+    <Compile Include="DataService\Dump\WorkItemService.cs" />
+    <Compile Include="MapperSerive\EvalutaionMapperProfile.cs" />
+    <Compile Include="Policy\FilterWorkItemService.cs" />
+    <Compile Include="Policy\OrderService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Precise\CellMrsRsrpDto.cs" />
+    <Compile Include="ViewModels\Precise\CellPreciseKpiView.cs" />
+    <Compile Include="ViewModels\Precise\CellView.cs" />
+    <Compile Include="ViewModels\Precise\IPreciseWorkItemDto.cs" />
+    <Compile Include="ViewModels\Precise\Precise4GSector.cs" />
+    <Compile Include="ViewModels\Precise\PreciseCoveragesContainer.cs" />
+    <Compile Include="ViewModels\Precise\PreciseHistory.cs" />
+    <Compile Include="ViewModels\Precise\PreciseImportView.cs" />
+    <Compile Include="ViewModels\Precise\PreciseInterferenceNeighborsContainer.cs" />
+    <Compile Include="ViewModels\Precise\PreciseInterferenceVictimsContainer.cs" />
+    <Compile Include="ViewModels\Precise\PreciseViews.cs" />
+    <Compile Include="ViewModels\Precise\TopPreciseViewContainer.cs" />
+    <Compile Include="ViewModels\Precise\TownMrsRsrpView.cs" />
+    <Compile Include="ViewModels\RegionKpi\CoverageRegionDateView.cs" />
+    <Compile Include="ViewModels\RegionKpi\DistrictComplainDateView.cs" />
+    <Compile Include="ViewModels\RegionKpi\DistrictComplainView.cs" />
+    <Compile Include="ViewModels\RegionKpi\ENodebView.cs" />
+    <Compile Include="ViewModels\RegionKpi\FlowRegionDateView.cs" />
+    <Compile Include="ViewModels\RegionKpi\MrsRegionDateView.cs" />
+    <Compile Include="ViewModels\RegionKpi\PrbRegionDateView.cs" />
+    <Compile Include="ViewModels\RegionKpi\PreciseRegion.cs" />
+    <Compile Include="ViewModels\RegionKpi\QciRegionDateView.cs" />
+    <Compile Include="ViewModels\RegionKpi\RrcRegionDateView.cs" />
+    <Compile Include="ViewModels\RegionKpi\StatViews.cs" />
+    <Compile Include="ViewModels\RegionKpi\TownPreciseViewContainer.cs" />
+    <Compile Include="ViewModels\RegionKpi\WorkItemChartView.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Abp.EntityFramework\Abp.EntityFramework.Customize.csproj">
+      <Project>{79f4f2b7-d8e2-4ec7-bd18-6a0741ae9a9c}</Project>
+      <Name>Abp.EntityFramework.Customize</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lte.Domain\Lte.Domain.csproj">
+      <Project>{adeef82d-6389-47c4-8f7c-d7f85c01d64e}</Project>
+      <Name>Lte.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lte.MySqlFramework\Lte.MySqlFramework.csproj">
+      <Project>{8ccf960a-1969-4df2-b81b-d3e46f0cd3d7}</Project>
+      <Name>Lte.MySqlFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lte.Parameters\Lte.Parameters.csproj">
+      <Project>{25b6ccb6-4b12-4df2-b4c9-2d30ae6bd254}</Project>
+      <Name>Lte.Parameters</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
