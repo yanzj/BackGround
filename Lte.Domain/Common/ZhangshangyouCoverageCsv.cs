@@ -10,10 +10,10 @@ using Lte.Domain.LinqToCsv;
 
 namespace Lte.Domain.Common
 {
-    public class ZhangshangyouCoverageCsv : IStatTime, IGeoPoint<double>, IENodebName
+    public class ZhangshangyouCoverageCsv : IGeoPoint<double>, IENodebName
     {
         [CsvColumn(Name = "时间")]
-        public DateTime StatTime { get; set; }
+        public string StatTimeString { get; set; }
 
         [CsvColumn(Name = "楼宇名称")]
         public string BuildingName { get; set; }

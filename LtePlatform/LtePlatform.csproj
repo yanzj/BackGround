@@ -309,6 +309,8 @@
     <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
     <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
     <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
+    <Compile Include="Controllers\Dt\DumpZhangshangyouCoverageController.cs" />
+    <Compile Include="Controllers\Dt\DumpZhangshangyouQualityController.cs" />
     <Compile Include="Controllers\Kpi\AlarmWorkItemController.cs" />
     <Compile Include="Controllers\Kpi\CellAlarmWorkItemController.cs" />
     <Compile Include="Controllers\Kpi\ENodebAlarmWorkItemController.cs" />

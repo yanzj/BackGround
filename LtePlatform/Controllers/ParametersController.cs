@@ -89,10 +89,25 @@ namespace LtePlatform.Controllers
             if (zhangshangyouQuality == null || zhangshangyouQuality.Length <= 0 ||
                 string.IsNullOrEmpty(zhangshangyouQuality[0]?.FileName))
                 return View("AlarmImport");
-            ViewBag.Message = "共上传掌上优信号详单文件" + zhangshangyouQuality.Length + "个！";
+            ViewBag.Message = "共上传掌上优测试详单文件" + zhangshangyouQuality.Length + "个！";
             foreach (var file in zhangshangyouQuality)
             {
-                _alarmsService.UploadHwAlarms(new StreamReader(file.InputStream, Encoding.GetEncoding("GB2312")));
+                _zhangshangyouQualityService.UploadStats(new StreamReader(file.InputStream, Encoding.GetEncoding("GB2312")));
+            }
+
+            return View("AlarmImport");
+        }
+
+        [HttpPost]
+        public ActionResult ZhangshangyouCoveragePost(HttpPostedFileBase[] zhangshangyouCoverage)
+        {
+            if (zhangshangyouCoverage == null || zhangshangyouCoverage.Length <= 0 ||
+                string.IsNullOrEmpty(zhangshangyouCoverage[0]?.FileName))
+                return View("AlarmImport");
+            ViewBag.Message = "共上传掌上优信号详单文件" + zhangshangyouCoverage.Length + "个！";
+            foreach (var file in zhangshangyouCoverage)
+            {
+                _zhangshangyouCoverageService.UploadStats(new StreamReader(file.InputStream, Encoding.GetEncoding("GB2312")));
             }
 
             return View("AlarmImport");

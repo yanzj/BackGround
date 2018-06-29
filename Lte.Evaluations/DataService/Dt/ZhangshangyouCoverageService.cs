@@ -11,6 +11,7 @@ using Lte.Domain.Common;
 using Lte.Domain.LinqToCsv.Context;
 using Lte.Domain.LinqToCsv.Description;
 using Lte.MySqlFramework.Abstract;
+using Remotion.Data.Linq.Utilities;
 
 namespace Lte.Evaluations.DataService.Dt
 {
@@ -21,32 +22,33 @@ namespace Lte.Evaluations.DataService.Dt
         public ZhangshangyouCoverageService(IZhangshangyouCoverageRepository repository)
         {
             _repository = repository;
+            if (Stats == null)
+            {
+                Stats = new Stack<ZhangshangyouCoverageCsv>();
+            }
         }
 
-        private Stack<ZhangshangyouCoverage> Stats { get; set; }
+        private static Stack<ZhangshangyouCoverageCsv> Stats { get; set; }
 
         public void UploadStats(StreamReader reader)
         {
-            try
+            var stats = CsvContext.Read<ZhangshangyouCoverageCsv>(reader, CsvFileDescription.CommaDescription)
+                .ToList();
+            foreach (var stat in stats)
             {
-                var stats = CsvContext.Read<ZhangshangyouCoverageCsv>(reader, CsvFileDescription.CommaDescription)
-                    .ToList();
-                foreach (var stat in stats)
-                {
-                    Stats.Push(stat.MapTo<ZhangshangyouCoverage>());
-                }
+                Stats.Push(stat);
             }
-            catch
-            {
-                // ignored
-            }
+            if (Stats.Count == 0)
+                throw new ArgumentEmptyException("aaaa");
         }
 
-        public bool DumpOneStat()
+        public async Task<bool> DumpOneStat()
         {
             var stat = Stats.Pop();
             if (stat == null) throw new NullReferenceException("coverage stat is null!");
-            return _repository.ImportOne(stat) != null;
+            await _repository
+                .UpdateOne<IZhangshangyouCoverageRepository, ZhangshangyouCoverage, ZhangshangyouCoverageCsv>(stat);
+            return true;
         }
 
         public int GetStatsToBeDump()

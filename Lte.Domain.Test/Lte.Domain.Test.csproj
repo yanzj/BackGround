@@ -92,6 +92,7 @@
     <Compile Include="Regex\NumberRegexTests.cs" />
     <Compile Include="Regular\ContainsStringTest.cs" />
     <Compile Include="Regex\DateTimeRegexTest.cs" />
+    <Compile Include="Regular\DateTimeConvertTest.cs" />
     <Compile Include="Regular\EmailAndUrlTest.cs" />
     <Compile Include="Regular\EnumTypeConstructorTest.cs" />
     <Compile Include="Regular\NumberRegexTest.cs" />

@@ -10,6 +10,7 @@ using Lte.Evaluations.DataService.Basic;
 namespace LtePlatform.Controllers.Parameters
 {
     [ApiControl("导入告警信息处理器")]
+    [ApiGroup("导入")]
     public class DumpAlarmController : ApiController
     {
         private readonly AlarmsService _service;

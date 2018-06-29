@@ -268,7 +268,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AutoRepositoryTypesAttribute.cs" />
     <Compile Include="Repositories\EfRepositoryBaseOfTEntity.cs" />
+    <Compile Include="Repositories\IConstructDto.cs" />
+    <Compile Include="Repositories\IDateSpanQuery.cs" />
     <Compile Include="Repositories\IMatchRepository.cs" />
+    <Compile Include="Repositories\ISaveChanges.cs" />
+    <Compile Include="Repositories\IStateChange.cs" />
+    <Compile Include="Repositories\MatchRepositoryOperation.cs" />
     <Compile Include="Repositories\MongoDbRepositoryBase.cs" />
   </ItemGroup>
   <ItemGroup>

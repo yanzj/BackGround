@@ -4,15 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Repositories;
-using AutoMapper;
 using Lte.Domain.Common;
 using Lte.Domain.LinqToCsv.Context;
 using Lte.Domain.LinqToCsv.Description;
 using Lte.MySqlFramework.Abstract;
-using Lte.Parameters.Entities.Kpi;
 
 namespace Lte.Evaluations.DataService.Dt
 {
@@ -23,32 +20,31 @@ namespace Lte.Evaluations.DataService.Dt
         public ZhangshangyouQualityService(IZhangshangyouQualityRepository repository)
         {
             _repository = repository;
+            if (Stats == null)
+            {
+                Stats = new Stack<ZhangshangyouQualityCsv>();
+            }
         }
 
-        private Stack<ZhangshangyouQuality> Stats { get; set; }
+        private static Stack<ZhangshangyouQualityCsv> Stats { get; set; }
 
         public void UploadStats(StreamReader reader)
         {
-            try
+            var stats = CsvContext.Read<ZhangshangyouQualityCsv>(reader, CsvFileDescription.CommaDescription)
+                .ToList();
+            foreach (var stat in stats)
             {
-                var stats = CsvContext.Read<ZhangshangyouQualityCsv>(reader, CsvFileDescription.CommaDescription)
-                    .ToList();
-                foreach (var stat in stats)
-                {
-                    Stats.Push(stat.MapTo<ZhangshangyouQuality>());
-                }
-            }
-            catch
-            {
-                // ignored
+                Stats.Push(stat);
             }
         }
 
-        public bool DumpOneStat()
+        public async Task<bool> DumpOneStat()
         {
             var stat = Stats.Pop();
             if (stat == null) throw new NullReferenceException("coverage stat is null!");
-            return _repository.ImportOne(stat) != null;
+            await _repository
+                .UpdateOne<IZhangshangyouQualityRepository, ZhangshangyouQuality, ZhangshangyouQualityCsv>(stat);
+            return true;
         }
 
         public int GetStatsToBeDump()

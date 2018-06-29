@@ -298,17 +298,35 @@
                 queryCoverageDumpItems: function () {
                     return generalHttpService.getApiData('DumpCoverage', {});
                 },
+                queryZhangshangyouQualityDumpItems: function () {
+                    return generalHttpService.getApiData('DumpZhangshangyouQuality', {});
+                },
+                queryZhangshangyouCoverageDumpItems: function () {
+                    return generalHttpService.getApiData('DumpZhangshangyouCoverage', {});
+                },
                 dumpSingleItem: function() {
                     return generalHttpService.putApiData('DumpAlarm', {});
                 },
                 dumpSingleCoverageItem: function () {
                     return generalHttpService.putApiData('DumpCoverage', {});
                 },
+                dumpSingleZhangshangyouQualityItem: function () {
+                    return generalHttpService.putApiData('DumpZhangshangyouQuality', {});
+                },
+                dumpSingleZhangshangyouCoverageItem: function () {
+                    return generalHttpService.putApiData('DumpZhangshangyouCoverage', {});
+                },
                 clearImportItems: function() {
                     return generalHttpService.deleteApiData('DumpAlarm');
                 },
                 clearCoverageImportItems: function () {
                     return generalHttpService.deleteApiData('DumpCoverage');
+                },
+                clearZhangshangyouQualityImportItems: function () {
+                    return generalHttpService.deleteApiData('DumpZhangshangyouQuality');
+                },
+                clearZhangshangyouCoverageItems: function () {
+                    return generalHttpService.deleteApiData('DumpZhangshangyouCoverage');
                 },
                 updateHuaweiAlarmInfos: function(cellDef) {
                     return generalHttpService.postApiData('Alarms', cellDef);

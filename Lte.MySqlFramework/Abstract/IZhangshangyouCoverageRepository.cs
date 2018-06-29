@@ -11,7 +11,7 @@ using Lte.Domain.Common;
 namespace Lte.MySqlFramework.Abstract
 {
     public interface IZhangshangyouCoverageRepository : IRepository<ZhangshangyouCoverage>, ISaveChanges,
-        IMatchRepository<ZhangshangyouCoverage>
+        IMatchRepository<ZhangshangyouCoverage, ZhangshangyouCoverageCsv>
     {
     }
 }

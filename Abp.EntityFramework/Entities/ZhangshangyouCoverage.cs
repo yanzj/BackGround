@@ -18,6 +18,7 @@ namespace Abp.EntityFramework.Entities
     public class ZhangshangyouCoverage : Entity, IStatTime, IGeoPoint<double>, ILteCellQuery, IENodebName
     {
         [MemberDoc("时间")]
+        [AutoMapPropertyResolve("StatTimeString", typeof(ZhangshangyouCoverageCsv), typeof(StringToDateTimeMillisecondTransform))]
         public DateTime StatTime { get; set; }
 
         [MemberDoc("楼宇名称")]
@@ -39,7 +40,7 @@ namespace Abp.EntityFramework.Entities
         public string Terminal { get; set; }
 
         [MemberDoc("数据回传网络")]
-        [AutoMapPropertyResolve("BackhaulNetworkDescription", typeof(ZhangshangyouQualityCsv), typeof(NetworkTypeTransform))]
+        [AutoMapPropertyResolve("BackhaulNetworkDescription", typeof(ZhangshangyouCoverageCsv), typeof(NetworkTypeTransform))]
         public NetworkType BackhaulNetwork { get; set; }
 
         [MemberDoc("百度经度")]
@@ -61,11 +62,11 @@ namespace Abp.EntityFramework.Entities
         public string LteCity { get; set; }
 
         [MemberDoc("LTE基站编号")]
-        [AutoMapPropertyResolve("ENodebIdString", typeof(ZhangshangyouQualityCsv), typeof(StringToIntTransform))]
+        [AutoMapPropertyResolve("ENodebIdString", typeof(ZhangshangyouCoverageCsv), typeof(StringToIntTransform))]
         public int ENodebId { get; set; }
 
         [MemberDoc("LTE扇区号")]
-        [AutoMapPropertyResolve("SectorIdString", typeof(ZhangshangyouQualityCsv), typeof(StringToByteTransform))]
+        [AutoMapPropertyResolve("SectorIdString", typeof(ZhangshangyouCoverageCsv), typeof(StringToByteTransform))]
         public byte SectorId { get; set; }
 
         [MemberDoc("LTE基站名称")]
@@ -75,11 +76,11 @@ namespace Abp.EntityFramework.Entities
         public string Ci { get; set; }
 
         [MemberDoc("PCI")]
-        [AutoMapPropertyResolve("PciString", typeof(ZhangshangyouQualityCsv), typeof(StringToIntTransform))]
+        [AutoMapPropertyResolve("PciString", typeof(ZhangshangyouCoverageCsv), typeof(StringToIntTransformMinusOne))]
         public int Pci { get; set; }
 
         [MemberDoc("TAC")]
-        [AutoMapPropertyResolve("TacString", typeof(ZhangshangyouQualityCsv), typeof(StringToIntTransform))]
+        [AutoMapPropertyResolve("TacString", typeof(ZhangshangyouCoverageCsv), typeof(StringToIntTransform))]
         public int Tac { get; set; }
 
         [MemberDoc("RSRP")]
@@ -98,22 +99,22 @@ namespace Abp.EntityFramework.Entities
         public string CdmaCity { get; set; }
 
         [MemberDoc("BSC")]
-        [AutoMapPropertyResolve("CdmaBscString", typeof(ZhangshangyouQualityCsv), typeof(StringToByteTransform))]
+        [AutoMapPropertyResolve("CdmaBscString", typeof(ZhangshangyouCoverageCsv), typeof(StringToByteTransform))]
         public byte CdmaBsc { get; set; }
 
         [MemberDoc("CDMA基站编号")]
-        [AutoMapPropertyResolve("BtsIdString", typeof(ZhangshangyouQualityCsv), typeof(StringToIntTransform))]
+        [AutoMapPropertyResolve("BtsIdString", typeof(ZhangshangyouCoverageCsv), typeof(StringToIntTransform))]
         public int BtsId { get; set; }
 
         [MemberDoc("CDMA基站名称")]
         public string BtsName { get; set; }
 
         [MemberDoc("CDMA扇区号")]
-        [AutoMapPropertyResolve("CdmaSectorIdString", typeof(ZhangshangyouQualityCsv), typeof(StringToByteTransform))]
+        [AutoMapPropertyResolve("CdmaSectorIdString", typeof(ZhangshangyouCoverageCsv), typeof(StringToByteTransform))]
         public byte CdmaSectorId { get; set; }
 
         [MemberDoc("CID")]
-        [AutoMapPropertyResolve("CidString", typeof(ZhangshangyouQualityCsv), typeof(StringToIntTransform))]
+        [AutoMapPropertyResolve("CidString", typeof(ZhangshangyouCoverageCsv), typeof(StringToIntTransform))]
         public int Cid { get; set; }
 
         [MemberDoc("3GRX")]

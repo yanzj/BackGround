@@ -19,7 +19,7 @@ namespace Lte.MySqlFramework.Concrete
         {
         }
 
-        public ZhangshangyouQuality Match(ZhangshangyouQuality stat)
+        public ZhangshangyouQuality Match(ZhangshangyouQualityCsv stat)
         {
             return FirstOrDefault(x => x.SerialNumber == stat.SerialNumber);
         }

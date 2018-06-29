@@ -10,4 +10,12 @@ namespace Lte.Domain.Common.Types
             return source.ConvertToInt(0);
         }
     }
+
+    public class StringToIntTransformMinusOne : ValueResolver<string, int>
+    {
+        protected override int ResolveCore(string source)
+        {
+            return source.ConvertToInt(-1);
+        }
+    }
 }
