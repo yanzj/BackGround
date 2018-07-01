@@ -9,7 +9,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="api in apiDescription | orderBy: 'GroupDoc'">
+    <tr ng-repeat="api in apiDescription | orderBy: 'ControllerName' | orderBy: 'GroupDoc'">
         <td>{{api.GroupDoc}}</td>
         <td>{{api.ControllerName}}</td>
         <td>{{api.ControllerType}}</td>

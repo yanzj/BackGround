@@ -24,7 +24,7 @@ namespace Lte.Evaluations.DataService.Mr
         }
 
         private IEnumerable<TopCoverageStatView> GetTopViews(DateTime begin, DateTime end, int topCount,
-            OrderMrsRsrpPolicy policy, Func<DateTime, DateTime, List<CoverageStat>> queryFunc)
+            OrderMrsRsrpPolicy policy, IEnumerable<ENodeb> eNodebs, Func<DateTime, DateTime, List<CoverageStat>> queryFunc)
         {
             if (topCount <= 0) return new List<TopCoverageStatView>();
             var orderResult = new List<CoverageStat>();
@@ -35,7 +35,9 @@ namespace Lte.Evaluations.DataService.Mr
                 var stats = queryFunc(beginDate, endDate);
                 if (stats.Any())
                 {
-                    orderResult.AddRange(stats.Where(x => (double)x.TelecomAbove110 / x.TelecomMrs < 0.8 && x.TelecomMrs > 1000).Order(policy, topCount));
+                    orderResult.AddRange(stats
+                        .Where(x => (double) x.TelecomAbove110 / x.TelecomMrs < 0.8 && x.TelecomMrs > 10000)
+                        .Order(policy, topCount));
                 }
                 beginDate = beginDate.AddDays(1);
                 endDate = beginDate.AddDays(1);
@@ -43,7 +45,7 @@ namespace Lte.Evaluations.DataService.Mr
             var containers = orderResult.GenerateContainers<CoverageStat, TopCoverageStatContainer>();
             return containers.Select(x =>
             {
-                var view = TopCoverageStatView.ConstructView(x.TopStat, _eNodebRepository);
+                var view = TopCoverageStatView.ConstructView(x.TopStat, eNodebs);
                 view.TopDates = x.TopDates;
                 return view;
             });
@@ -52,15 +54,15 @@ namespace Lte.Evaluations.DataService.Mr
         public IEnumerable<TopCoverageStatView> GetAllTopViews(DateTime begin, DateTime end, int topCount,
             OrderMrsRsrpPolicy policy)
         {
-            return GetTopViews(begin, end, topCount, policy,
+            return GetTopViews(begin, end, topCount, policy, _eNodebRepository.GetAllList(),
                 (beginDate, endDate) =>
                     _repository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate));
         }
 
         public IEnumerable<TopCoverageStatView> GetPartialTopViews(DateTime begin, DateTime end, int topCount,
-            OrderMrsRsrpPolicy policy, IEnumerable<ENodeb> eNodebs)
+            OrderMrsRsrpPolicy policy, List<ENodeb> eNodebs)
         {
-            return GetTopViews(begin, end, topCount, policy,
+            return GetTopViews(begin, end, topCount, policy, eNodebs,
                 (beginDate, endDate) =>
                 {
                     var stats = _repository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);

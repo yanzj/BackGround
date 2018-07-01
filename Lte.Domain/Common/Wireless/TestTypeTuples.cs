@@ -15,7 +15,9 @@ namespace Lte.Domain.Common.Wireless
         VoLte,
         WebPage,
         Stream,
-        Others
+        Others,
+        Silence,
+        Explosion
     }
 
     public class TestTypeDescriptionTransform : DescriptionTransform<TestType>
@@ -41,7 +43,9 @@ namespace Lte.Domain.Common.Wireless
                 new Tuple<object, string>(TestType.VoLte, "VoLte"),
                 new Tuple<object, string>(TestType.WebPage, "网页测试（大众版）"),
                 new Tuple<object, string>(TestType.Stream, "视频测试（大众版）"),
-                new Tuple<object, string>(TestType.Others, "其他")
+                new Tuple<object, string>(TestType.Others, "其他"),
+                new Tuple<object, string>(TestType.Silence, "静默测试"), 
+                new Tuple<object, string>(TestType.Explosion, "定点引爆"), 
             };
         }
     }

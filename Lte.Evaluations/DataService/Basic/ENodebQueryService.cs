@@ -76,12 +76,12 @@ namespace Lte.Evaluations.DataService.Basic
             return GetByTownNames(city, district, town).Where(x => x.IsInUse);
         }
 
-        public IEnumerable<ENodeb> GetENodebsByDistrict(string city, string district)
+        public List<ENodeb> GetENodebsByDistrict(string city, string district)
         {
             var towns = _townRepository.GetAllList().Where(x => x.CityName == city && x.DistrictName == district);
-            return from town in towns
+            return (from town in towns
                 join eNodeb in _eNodebRepository.GetAllList() on town.Id equals eNodeb.TownId
-                select eNodeb;
+                select eNodeb).ToList();
         }
 
         public IEnumerable<ENodebView> GetByDistrictNames(string city, string district)

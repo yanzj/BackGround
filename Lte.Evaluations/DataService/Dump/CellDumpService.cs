@@ -56,7 +56,7 @@ namespace Lte.Evaluations.DataService.Dump
             var idPairs =
                 Mapper.Map<IEnumerable<CellExcel>, IEnumerable<ENodebBtsIdPair>>(infos)
                     .Where(x => x.BtsId != -1)
-                    .Distinct()
+                    .Distinct(new ENodebBtsIdPairEquator())
                     .ToList();
             if (!idPairs.Any()) return;
             idPairs.ForEach(x =>

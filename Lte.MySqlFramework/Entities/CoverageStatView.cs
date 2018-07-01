@@ -232,18 +232,4 @@ namespace Lte.MySqlFramework.Entities
         }
 
     }
-
-    public class TopCoverageStatView : CoverageStatView
-    {
-        public int TopDates { get; set; }
-
-        public static TopCoverageStatView ConstructView(CoverageStat stat, IENodebRepository repository)
-        {
-            var view = Mapper.Map<CoverageStat, TopCoverageStatView>(stat);
-            var eNodeb = repository.FirstOrDefault(x => x.ENodebId == stat.ENodebId);
-            view.ENodebName = eNodeb?.Name;
-            return view;
-        }
-
-    }
 }

@@ -346,6 +346,7 @@
     <Compile Include="Entities\TopConnection3GTrendView.cs" />
     <Compile Include="Entities\TopConnection3GTrendViewContainer.cs" />
     <Compile Include="Entities\TopCoverageStatContainer.cs" />
+    <Compile Include="Entities\TopCoverageStatView.cs" />
     <Compile Include="Entities\TopDrop2GCellView.cs" />
     <Compile Include="Entities\TopDrop2GCellViewContainer.cs" />
     <Compile Include="Entities\TopDrop2GDateView.cs" />
@@ -368,6 +369,8 @@
     <Compile Include="Entities\TownRectangle.cs" />
     <Compile Include="Entities\TownRrcView.cs" />
     <Compile Include="Entities\VipDemandDto.cs" />
+    <Compile Include="Entities\ZhangshangyouCoverageView.cs" />
+    <Compile Include="Entities\ZhangshangyouQualityView.cs" />
     <Compile Include="Migrations\201806281335078_Zhangshangyou_Quality.cs" />
     <Compile Include="Migrations\201806281335078_Zhangshangyou_Quality.Designer.cs">
       <DependentUpon>201806281335078_Zhangshangyou_Quality.cs</DependentUpon>

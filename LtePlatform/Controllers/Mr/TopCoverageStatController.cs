@@ -12,6 +12,7 @@ using LtePlatform.Models;
 namespace LtePlatform.Controllers.Mr
 {
     [ApiControl("TOP MR覆盖率（省公司口径）查询控制器")]
+    [ApiGroup("KPI")]
     public class TopCoverageStatController : ApiController
     {
         private readonly TopCoverageStatService _service;
@@ -48,7 +49,8 @@ namespace LtePlatform.Controllers.Mr
             string city, string district)
         {
             var eNodebs = _eNodebQueryService.GetENodebsByDistrict(city, district);
-            return _service.GetPartialTopViews(begin, end, topCount, orderSelection.GetEnumType<OrderMrsRsrpPolicy>(), eNodebs);
+            return _service.GetPartialTopViews(begin, end, topCount, orderSelection.GetEnumType<OrderMrsRsrpPolicy>(),
+                eNodebs);
         }
     }
 }
