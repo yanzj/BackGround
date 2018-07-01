@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
+using Lte.Domain.Common.Types;
+using Lte.Domain.Common.Wireless;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Entities;
 
@@ -25,6 +27,41 @@ namespace Lte.Evaluations.DataService.Basic
             item.Longtitute = longtitute;
             item.Lattitute = lattitute;
             item.Address = address;
+            _repository.SaveChanges();
+            return true;
+        }
+
+        public bool UpdateStationBbuBasicInfo(string serialNum, string bbuHeapStation, string cAndLCoExist,
+            string rruBufang, string electricFunctionDescription, string electricTypeDescription,
+            string batteryTypeDescription)
+        {
+            var item = _repository.FirstOrDefault(x => x.StationNum == serialNum);
+            if (item == null) return false;
+            item.IsBbuHeapStation = bbuHeapStation == "是";
+            item.IsCAndLCoExist = cAndLCoExist == "是";
+            item.IsRruBufang = rruBufang == "是";
+            item.ElectricFunction = electricFunctionDescription.GetEnumType<ElectricFunction>();
+            item.ElectricType = electricTypeDescription.GetEnumType<ElectricType>();
+            item.BatteryType = batteryTypeDescription.GetEnumType<BatteryType>();
+            _repository.SaveChanges();
+            return true;
+        }
+
+        public bool UpdateStationRoomAndTowerInfo(string serialNum, string operatorUsageDescription,
+            string stationRoomBelongDescription, string stationTowerBelongDescription,
+            string stationSupplyBelongDescription, string towerTypeDescription, int totalPlatforms, double towerHeight)
+        {
+
+            var item = _repository.FirstOrDefault(x => x.StationNum == serialNum);
+            if (item == null) return false;
+            item.OperatorUsage = operatorUsageDescription.GetEnumType<OperatorUsage>();
+            item.StationRoomBelong = stationRoomBelongDescription.GetEnumType<Operator>();
+            item.StationTowerBelong = stationTowerBelongDescription.GetEnumType<Operator>();
+            item.StationSupplyBelong = stationSupplyBelongDescription.GetEnumType<Operator>();
+            item.TowerType = towerTypeDescription.GetEnumType<TowerType>();
+            item.TotalPlatforms = totalPlatforms;
+            item.TowerHeight = towerHeight;
+            _repository.SaveChanges();
             return true;
         }
 
