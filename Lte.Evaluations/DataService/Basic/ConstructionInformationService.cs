@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Lte.Domain.Common.Types;
+using Lte.Domain.Common.Wireless;
 
 namespace Lte.Evaluations.DataService.Basic
 {
@@ -44,6 +46,22 @@ namespace Lte.Evaluations.DataService.Basic
         {
             var item = _repository.FirstOrDefault(x => x.CellSerialNum == cellNum);
             return item == null ? null : item.MapTo<ConstructionView>();
+        }
+
+        public bool Update(string serialNumber, string eNodebFactoryDescription, string duplexingDescription,
+            string cellCoverageDescription, string remoteTypeDescription, string antennaTypeDescription,
+            string coAntennaWithOtherCells)
+        {
+            var item = _repository.FirstOrDefault(x => x.CellSerialNum == serialNumber);
+            if (item == null) return false;
+            item.ENodebFactory = eNodebFactoryDescription.GetEnumType<ENodebFactory>();
+            item.Duplexing = duplexingDescription.GetEnumType<Duplexing>();
+            item.CellCoverage = cellCoverageDescription.GetEnumType<CellCoverage>();
+            item.RemoteType = remoteTypeDescription.GetEnumType<RemoteType>();
+            item.AntennaType = antennaTypeDescription.GetEnumType<AntennaType>();
+            item.IsCoAntennaWithOtherCells = coAntennaWithOtherCells == "是";
+            _repository.SaveChanges();
+            return true;
         }
     }
 }

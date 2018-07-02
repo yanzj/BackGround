@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Lte.Domain.Common.Types;
+using Lte.Domain.Common.Wireless;
 
 namespace Lte.Evaluations.DataService.Basic
 {
@@ -48,6 +50,66 @@ namespace Lte.Evaluations.DataService.Basic
             var item =
                 _repository.FirstOrDefault(x => x.RruSerialNum == rruNum);
             return item == null ? null : item.MapTo<StationRruView>();
+        }
+
+        public bool UpdateBasicInfo(string rruNum, string eNodebFactoryDescription, string duplexingDescription,
+            string electricSourceDescription, string antiThunder, int transmitPorts, int receivePorts)
+        {
+            var item =
+                _repository.FirstOrDefault(x => x.RruSerialNum == rruNum);
+            if (item == null) return false;
+            item.ENodebFactory = eNodebFactoryDescription.GetEnumType<ENodebFactory>();
+            item.Duplexing = duplexingDescription.GetEnumType<Duplexing>();
+            item.ElectricSource = electricSourceDescription.GetEnumType<ElectricSource>();
+            item.IsAntiThunder = antiThunder == "是";
+            item.TransmitPorts = transmitPorts;
+            item.ReceivePorts = receivePorts;
+            _repository.SaveChanges();
+            return true;
+        }
+
+        public bool UpdateSourceInfo(string rruNum, string eNodebClassDescription, string indoorDistributionSerial,
+            string indoorSource)
+        {
+
+            var item =
+                _repository.FirstOrDefault(x => x.RruSerialNum == rruNum);
+            if (item == null) return false;
+            var isIndoorSource = indoorSource == "是";
+            if (isIndoorSource && string.IsNullOrWhiteSpace(indoorDistributionSerial)) return false;
+            item.ENodebClass = eNodebClassDescription.GetEnumType<ENodebClass>();
+            item.IndoorDistributionSerial = indoorDistributionSerial;
+            item.IsIndoorSource = isIndoorSource;
+            _repository.SaveChanges();
+            return true;
+        }
+
+        public bool UpdatePositionInfo(string rruNum, double longtitute, double lattitute, string address,
+            string position)
+        {
+            var item =
+                _repository.FirstOrDefault(x => x.RruSerialNum == rruNum);
+            if (item == null) return false;
+            item.Longtitute = longtitute;
+            item.Lattitute = lattitute;
+            item.Address = address;
+            item.Position = position;
+            _repository.SaveChanges();
+            return true;
+        }
+
+        public bool UpdateShareInfo(string rruNum, string operatorUsageDescription, string shareFunctionDescription,
+            string virtualRru)
+        {
+
+            var item =
+                _repository.FirstOrDefault(x => x.RruSerialNum == rruNum);
+            if (item == null) return false;
+            item.OperatorUsage = operatorUsageDescription.GetEnumType<OperatorUsage>();
+            item.ShareFunction = shareFunctionDescription.GetEnumType<ShareFunction>();
+            item.IsVirtualRru = virtualRru == "是";
+            _repository.SaveChanges();
+            return true;
         }
     }
 }

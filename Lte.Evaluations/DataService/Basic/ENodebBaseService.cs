@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
+using Lte.Domain.Common.Types;
+using Lte.Domain.Common.Wireless;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Entities;
 
@@ -47,6 +49,33 @@ namespace Lte.Evaluations.DataService.Basic
                 _repository.GetAllList(
                         x => x.Longtitute >= west && x.Longtitute < east && x.Lattitute >= south && x.Lattitute < north)
                     .MapTo<IEnumerable<ENodebBaseView>>();
+        }
+
+        public bool UpdateENodebBasicInfo(int eNodebId, string eNodebFactoryDescription, string duplexingDescription,
+            int totalCells, string omcStateDescription, string eNodebTypeDescription)
+        {
+            var item = _repository.FirstOrDefault(x => x.ENodebId == eNodebId);
+            if (item == null) return false;
+            item.ENodebFactory = eNodebFactoryDescription.GetEnumType<ENodebFactory>();
+            item.Duplexing = duplexingDescription.GetEnumType<Duplexing>();
+            item.TotalCells = totalCells;
+            item.OmcState = omcStateDescription.GetEnumType<OmcState>();
+            item.ENodebType = eNodebTypeDescription.GetEnumType<ENodebType>();
+            _repository.SaveChanges();
+            return true;
+        }
+
+        public bool UpdateENodebPositionInfo(int eNodebId, double longtitute, double lattitute, string eNodebShared,
+            string omcIp)
+        {
+            var item = _repository.FirstOrDefault(x => x.ENodebId == eNodebId);
+            if (item == null) return false;
+            item.Longtitute = longtitute;
+            item.Lattitute = lattitute;
+            item.IsENodebShared = eNodebShared == "是";
+            item.OmcIp = omcIp;
+            _repository.SaveChanges();
+            return true;
         }
     }
 }

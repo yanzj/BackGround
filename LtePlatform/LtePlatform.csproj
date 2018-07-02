@@ -328,11 +328,15 @@
     <Compile Include="Controllers\Kpi\MonthYuejiTrendController.cs" />
     <Compile Include="Controllers\Mongo\UplinkOpenLoopPowerControlController.cs" />
     <Compile Include="Controllers\Parameters\StationAntennaQueryController.cs" />
-    <Compile Include="Controllers\Parameters\StationCellController.cs" />
+    <Compile Include="Controllers\Parameters\StationAntennaUpdateController.cs" />
+    <Compile Include="Controllers\Parameters\StationCellQueryController.cs" />
+    <Compile Include="Controllers\Parameters\StationCellUpdateController.cs" />
     <Compile Include="Controllers\Parameters\StationDistributionQueryController.cs" />
     <Compile Include="Controllers\Parameters\StationENodebQueryController.cs" />
+    <Compile Include="Controllers\Parameters\StationENodebUpdateController.cs" />
     <Compile Include="Controllers\Parameters\StationInfoQueryController.cs" />
     <Compile Include="Controllers\Parameters\StationRruQueryController.cs" />
+    <Compile Include="Controllers\Parameters\StationRruUpdateController.cs" />
     <Compile Include="Models\CollectionModelDescription.cs" />
     <Compile Include="Models\CollectionModelProvider.cs" />
     <Compile Include="Models\ComplexModelProvider.cs" />
