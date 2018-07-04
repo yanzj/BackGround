@@ -47,6 +47,12 @@ namespace Lte.MySqlFramework.Entities
         [MemberDoc("百度纬度")]
         public double Lattitute { get; set; }
 
+        [MemberDoc("真实经度")]
+        public double RealLongtitute { get; set; }
+
+        [MemberDoc("真实纬度")]
+        public double RealLattitute { get; set; }
+
         [MemberDoc("行政区")]
         public string District { get; set; }
 

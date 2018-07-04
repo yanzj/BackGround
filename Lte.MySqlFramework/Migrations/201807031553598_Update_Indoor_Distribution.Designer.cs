@@ -7,13 +7,13 @@ namespace Lte.MySqlFramework.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Zhangshangyou_Coverage : IMigrationMetadata
+    public sealed partial class Update_Indoor_Distribution : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Zhangshangyou_Coverage));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Update_Indoor_Distribution));
         
         string IMigrationMetadata.Id
         {
-            get { return "201806282028341_Zhangshangyou_Coverage"; }
+            get { return "201807031553598_Update_Indoor_Distribution"; }
         }
         
         string IMigrationMetadata.Source

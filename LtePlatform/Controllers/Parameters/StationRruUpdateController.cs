@@ -21,7 +21,7 @@ namespace LtePlatform.Controllers.Parameters
 
         [HttpGet]
         [ApiDoc("更新RRU基本信息")]
-        [ApiParameterDoc("rruNum", "需要更新的小区序列号")]
+        [ApiParameterDoc("rruNum", "需要更新的RRU序列号")]
         [ApiParameterDoc("factoryDescription", "厂家，华为、中兴、贝尔、爱立信、诺基亚、大唐、烽火")]
         [ApiParameterDoc("duplexingDescription", "双工模式，FDD、TDD、FT双模")]
         [ApiParameterDoc("electricSourceDescription", "电源状态，直流|交流")]
@@ -39,7 +39,7 @@ namespace LtePlatform.Controllers.Parameters
 
         [HttpGet]
         [ApiDoc("更新RRU信源信息")]
-        [ApiParameterDoc("rruNum", "需要更新的小区序列号")]
+        [ApiParameterDoc("rruNum", "需要更新的RRU序列号")]
         [ApiParameterDoc("classDescription", "RRU等级，系统根据对站址维护管理等级关联计算得出")]
         [ApiParameterDoc("indoorDistributionSerial", "室分编码，当是否信源RRU为“是”，此字段为必填")]
         [ApiParameterDoc("indoorSource", "是否室分信源RRU")]
@@ -52,7 +52,7 @@ namespace LtePlatform.Controllers.Parameters
 
         [HttpGet]
         [ApiDoc("更新RRU位置信息")]
-        [ApiParameterDoc("rruNum", "需要更新的小区序列号")]
+        [ApiParameterDoc("rruNum", "需要更新的RRU序列号")]
         [ApiParameterDoc("longtitute", "RRU经度")]
         [ApiParameterDoc("lattitute", "RRU纬度")]
         [ApiParameterDoc("address", "RRU地址，RRU所在地址的详细信息，室分、室外RRU通过站址地址关联")]
@@ -66,7 +66,7 @@ namespace LtePlatform.Controllers.Parameters
 
         [HttpGet]
         [ApiDoc("更新RRU共享信息")]
-        [ApiParameterDoc("rruNum", "需要更新的小区序列号")]
+        [ApiParameterDoc("rruNum", "需要更新的小区RRU号")]
         [ApiParameterDoc("operatorUsageDescription", "共享属性，电信产权独有|联通产权电信共享|电信产权联通共享")]
         [ApiParameterDoc("shareFunctionDescription", "共享方式，共享载波|独立载波")]
         [ApiParameterDoc("virtualRru", "是否虚拟RRU")]

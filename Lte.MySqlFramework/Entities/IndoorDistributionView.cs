@@ -69,6 +69,20 @@ namespace Lte.MySqlFramework.Entities
         [MemberDoc("L网信源数量")]
         public byte LteSources { get; set; }
 
+        [MemberDoc("合路集成商")]
+        public string CombinerIntegrator { get; set; }
+
+        [MemberDoc("级别")]
+        [AutoMapPropertyResolve("DistributionClass", typeof(IndoorDistribution), typeof(ENodebClassDescriptionTransform))]
+        public string DistributionClassDescription { get; set; }
+
+        [MemberDoc("巡检详细位置")]
+        public string CheckingAddress { get; set; }
+
+        [MemberDoc("是否与其他运营商合路")]
+        [AutoMapPropertyResolve("IsCombinedWithOtherOperator", typeof(IndoorDistribution), typeof(YesNoTransform))]
+        public string CombinedWithOtherOperator { get; set; }
+
         [MemberDoc("L网开通时间")]
         public DateTime? LteOpenDate { get; set; }
 

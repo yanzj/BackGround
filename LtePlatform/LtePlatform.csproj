@@ -332,6 +332,7 @@
     <Compile Include="Controllers\Parameters\StationCellQueryController.cs" />
     <Compile Include="Controllers\Parameters\StationCellUpdateController.cs" />
     <Compile Include="Controllers\Parameters\StationDistributionQueryController.cs" />
+    <Compile Include="Controllers\Parameters\StationDistributionUpdateController.cs" />
     <Compile Include="Controllers\Parameters\StationENodebQueryController.cs" />
     <Compile Include="Controllers\Parameters\StationENodebUpdateController.cs" />
     <Compile Include="Controllers\Parameters\StationInfoQueryController.cs" />

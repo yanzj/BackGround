@@ -54,6 +54,18 @@ namespace Lte.Domain.Excel
         [ExcelColumn("L网信源数量")]
         public byte LteSources { get; set; }
 
+        [ExcelColumn("合路集成商")]
+        public string CombinerIntegrator { get; set; }
+
+        [ExcelColumn("级别")]
+        public string DistributionClassDescription { get; set; }
+
+        [ExcelColumn("巡检详细位置")]
+        public string CheckingAddress { get; set; }
+
+        [ExcelColumn("是否与其他运营商合路")]
+        public string CombinedWithOtherOperator { get; set; }
+
         [ExcelColumn("L网开通时间")]
         public DateTime? LteOpenDate { get; set; }
 

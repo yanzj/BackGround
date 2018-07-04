@@ -66,6 +66,20 @@ namespace Abp.EntityFramework.Entities
         [MemberDoc("L网信源数量")]
         public byte LteSources { get; set; }
 
+        [MemberDoc("合路集成商")]
+        public string CombinerIntegrator { get; set; }
+
+        [MemberDoc("级别")]
+        [AutoMapPropertyResolve("DistributionClassDescription", typeof(IndoorDistributionExcel), typeof(ENodebClassTransform))]
+        public ENodebClass DistributionClass { get; set; }
+
+        [MemberDoc("巡检详细位置")]
+        public string CheckingAddress { get; set; }
+
+        [MemberDoc("是否与其他运营商合路")]
+        [AutoMapPropertyResolve("CombinedWithOtherOperator", typeof(IndoorDistributionExcel), typeof(YesToBoolTransform))]
+        public bool IsCombinedWithOtherOperator { get; set; }
+
         [MemberDoc("L网开通时间")]
         public DateTime? LteOpenDate { get; set; }
 

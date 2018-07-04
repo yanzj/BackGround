@@ -70,5 +70,33 @@ namespace Lte.Evaluations.DataService.Basic
             _repository.SaveChanges();
             return true;
         }
+
+        public bool UpdatePositionInfo(string serialNumber, double longtitute, double lattitute, string antennaAddress,
+            string antennaBeautyDescription, string hasTowerAmplifier)
+        {
+            var item = _repository.FirstOrDefault(x => x.AntennaNum == serialNumber);
+            if (item == null) return false;
+            item.Longtitute = longtitute;
+            item.Lattitute = lattitute;
+            item.AntennaAddress = antennaAddress;
+            item.AntennaBeauty = antennaBeautyDescription.GetEnumType<AntennaBeauty>();
+            item.IsHasTowerAmplifier= hasTowerAmplifier == "是";
+            _repository.SaveChanges();
+            return true;
+        }
+
+        public bool UpdateCoverageInfo(string serialNumber, string coverageAreaDescription,
+            string coverageRoadDescription,
+            string coverageHotspotDescription, string boundaryTypeDescription)
+        {
+            var item = _repository.FirstOrDefault(x => x.AntennaNum == serialNumber);
+            if (item == null) return false;
+            item.CoverageArea = coverageAreaDescription.GetEnumType<CoverageArea>();
+            item.CoverageRoad = coverageRoadDescription.GetEnumType<CoverageRoad>();
+            item.CoverageHotspot = coverageHotspotDescription.GetEnumType<CoverageHotspot>();
+            item.BoundaryType = boundaryTypeDescription.GetEnumType<BoundaryType>();
+            _repository.SaveChanges();
+            return true;
+        }
     }
 }

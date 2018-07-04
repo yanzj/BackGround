@@ -49,6 +49,14 @@ namespace Abp.EntityFramework.Entities
         [MemberDoc("百度纬度")]
         public double Lattitute { get; set; }
 
+        public double XOffset { get; set; }
+
+        public double YOffset { get; set; }
+
+        public double RealLongtitute => Longtitute - XOffset;
+
+        public double RealLattitute => Lattitute - YOffset;
+
         [MemberDoc("行政区")]
         public string District { get; set; }
 

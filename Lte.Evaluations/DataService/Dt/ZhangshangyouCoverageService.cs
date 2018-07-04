@@ -65,28 +65,49 @@ namespace Lte.Evaluations.DataService.Dt
         public IEnumerable<ZhangshangyouCoverageView> QueryByDateSpanAndRange(DateTime begin, DateTime end,
             double west, double east, double south, double north, double xOffset, double yOffset)
         {
-            return _repository.GetAllList(
+            var results = _repository.GetAll().Where(
                     x => x.Longtitute >= west + xOffset && x.Longtitute < east + xOffset
                                                         && x.Lattitute >= south + yOffset &&
                                                         x.Lattitute < north + yOffset
-                                                        && x.StatTime >= begin && x.StatTime < end)
-                .MapTo<IEnumerable<ZhangshangyouCoverageView>>();
+                                                        && x.StatTime >= begin && x.StatTime < end);
+            foreach (var item in results)
+            {
+                item.XOffset = xOffset;
+                item.YOffset = yOffset;
+            }
+
+            _repository.SaveChanges();
+            return results.ToList().MapTo<IEnumerable<ZhangshangyouCoverageView>>();
         }
 
         public IEnumerable<ZhangshangyouCoverageView> QueryLteRecordsByDateSpan(DateTime begin, DateTime end,
             int eNodebId, byte sectorId)
         {
-            return _repository.GetAllList(
-                    x => x.StatTime >= begin && x.StatTime < end && x.ENodebId == eNodebId && x.SectorId == sectorId)
-                .MapTo<IEnumerable<ZhangshangyouCoverageView>>();
+            var items = _repository.GetAll().Where(
+                    x => x.StatTime >= begin && x.StatTime < end && x.ENodebId == eNodebId && x.SectorId == sectorId);
+            foreach (var item in items)
+            {
+                if (Math.Abs(item.XOffset) < 1e-6) item.XOffset = 0.03;
+                if (Math.Abs(item.YOffset) < 1e-6) item.YOffset = 0.01;
+            }
+
+            _repository.SaveChanges();
+            return items.ToList().MapTo<IEnumerable<ZhangshangyouCoverageView>>();
         }
 
         public IEnumerable<ZhangshangyouCoverageView> QueryCdmaRecordsByDateSpan(DateTime begin, DateTime end,
             int btsId, byte cdmaSectorId)
         {
-            return _repository.GetAllList(
-                    x => x.StatTime >= begin && x.StatTime < end && x.BtsId == btsId && x.CdmaSectorId == cdmaSectorId)
-                .MapTo<IEnumerable<ZhangshangyouCoverageView>>();
+            var items = _repository.GetAll().Where(
+                    x => x.StatTime >= begin && x.StatTime < end && x.BtsId == btsId && x.CdmaSectorId == cdmaSectorId);
+            foreach (var item in items)
+            {
+                if (Math.Abs(item.XOffset) < 1e-6) item.XOffset = 0.03;
+                if (Math.Abs(item.YOffset) < 1e-6) item.YOffset = 0.01;
+            }
+
+            _repository.SaveChanges();
+            return items.ToList().MapTo<IEnumerable<ZhangshangyouCoverageView>>();
         }
 
     }
