@@ -766,14 +766,6 @@ angular.module('region.basic', ['app.core'])
                         "id": id
                     });
                 },
-               getAssessmentById: function (id) {
-                   return generalHttpService
-                       .postPhpUrlData(appUrlService.getPhpHost() +
-                       'LtePlatForm/lte/index.php/Assessment/single',
-                       {
-                           "id": id
-                       });
-               },
                 getStationByStationId: function (id) {
                     return generalHttpService
                         .postPhpUrlData(appUrlService.getPhpHost() +
@@ -1022,31 +1014,6 @@ angular.module('region.basic', ['app.core'])
                             "type": type
                         });
                 },
-                getResource: function(table, id) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() + 'LtePlatForm/lte/index.php/Resource/single',
-                        {
-                            "table": table,
-                            "id": id
-                        });
-                },
-                getResourceCounter: function(id) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() + 'LtePlatForm/lte/index.php/Resource/counter',
-                        {
-                            "id": id
-                        });
-                },
-                getAssessmentListByAreaName: function (cycle, distinct, page, pageSize) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() + 'LtePlatForm/lte/index.php/Assessment/search',
-                        {
-                            "cycle": cycle,
-                            "areaName": distinct,
-                            "curr_page": page,
-                            "page_size": pageSize
-                        });
-                },
                 getStationCnt: function (distinct,cycle) {
                     return generalHttpService.postPhpUrlData(appUrlService.getPhpHost() +
                         'LtePlatForm/lte/index.php/Assessment/stationCnt',
@@ -1054,16 +1021,6 @@ angular.module('region.basic', ['app.core'])
                             "areaName": distinct,
                             "cycle": cycle
                         });
-                },
-                addAssessment: function (assessment) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/Assessment/add', assessment);
-                },
-                updateAssessment: function (assessment) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/Assessment/update', assessment);
                 },
                 queryDwgList: function(btsId) {
                     return generalHttpService.getApiData('DwgQuery',

@@ -1,4 +1,4 @@
-﻿angular.module('home.alarm.menu', ['app.common', 'home.station'])
+﻿angular.module('home.alarm.menu', ['app.common'])
     .controller("menu.resource-station",
         function($scope,
             downSwitchService,

@@ -507,16 +507,6 @@
                     }
                 },
                 url: "/clear-voice"
-            })
-            .state('assessment',
-            {
-                views: {                
-                    'menu': {
-                        templateUrl: "/appViews/Home/Assessment.html",
-                        controller: "menu.assessment"
-                    }
-                },
-                url: "/assessment"
             });
         $urlRouterProvider.otherwise('/cells');
     })

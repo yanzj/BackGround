@@ -618,57 +618,10 @@ angular.module('home.route', ['app.common'])
                     }
                 },
                 url: "/clear-voice"
-            })
-            .state('assessment',
-            {
-                views: {                
-                    'menu': {
-                        templateUrl: "/appViews/Home/Assessment.html",
-                        controller: "menu.assessment"
-                    }
-                },
-                url: "/assessment"
             });
         $urlRouterProvider.otherwise('/cells');
     })
-angular.module('home.station', ['app.common'])
-    .value("myValue",
-    {
-        "distinctIndex": 0,
-        "stationGrade": "",
-        "indoorGrade": "",
-        "netType": "",
-        "indoorNetType": "",
-        "roomAttribution": "",
-        "towerAttribution": "",
-        "isPower": "",
-        "isBBU": "",
-        "isNew": "",
-        "indoortype": "",
-        "coverage": ""
-    })
-    .controller("menu.assessment",
-    function ($scope,
-        downSwitchService,
-        myValue,
-        baiduMapService,
-        geometryService,
-        parametersDialogService,
-        collegeMapService,
-        dumpPreciseService,
-        appUrlService,
-        generalMapService) {
-        $scope.assessment = function () {
-            parametersDialogService.showAssessmentListDialog();
-        };
-        $scope.assessment();
-
-    })
-   
-
-
-
-angular.module('home.alarm.menu', ['app.common', 'home.station'])
+angular.module('home.alarm.menu', ['app.common'])
     .controller("menu.resource-station",
         function($scope,
             downSwitchService,
@@ -897,7 +850,7 @@ angular.module('home.alarm.menu', ['app.common', 'home.station'])
         });
    
 
-angular.module('station.checking', ['app.common', 'home.station'])
+angular.module('station.checking', ['app.common'])
     .controller("menu.checking-station",
     function ($scope, downSwitchService, baiduMapService, parametersDialogService, baiduQueryService, mapDialogService) {
 
@@ -1206,7 +1159,7 @@ angular.module('station.checking', ['app.common', 'home.station'])
             };
             $scope.reflashMap();
         });
-angular.module('station.fixing', ['app.common', 'home.station'])
+angular.module('station.fixing', ['app.common'])
     .controller("menu.fixing-station",
     function ($scope, downSwitchService, baiduMapService, parametersDialogService, baiduQueryService, mapDialogService) {
 
@@ -1714,7 +1667,7 @@ angular.module('station.fixing', ['app.common', 'home.station'])
             $scope.initializeSolveLegend($scope.colorFault);
             $scope.reflashMap();
         });
-angular.module('station.common', ['app.common', 'home.station'])
+angular.module('station.common', ['app.common'])
     .controller("menu.common-station",
     function ($scope, downSwitchService, myValue, baiduMapService, mapDialogService, baiduQueryService) {
 
@@ -3701,7 +3654,7 @@ angular.module('network.theme', ['app.common'])
         });
 angular.module("myApp",
 [
-    'home.root', 'home.route', 'home.station', 'home.alarm.menu',
+    'home.root', 'home.route', 'home.alarm.menu',
     'station.checking', 'station.fixing', 'station.common',
     'home.menu', 'home.complain', 'home.network', 'home.mr', 'home.kpi',
     'home.college', 'network.theme'

@@ -573,10 +573,6 @@
     <Content Include="appViews\BasicKpi\HotspotDtDialog.html" />
     <Content Include="appViews\College\Table\DumpCollegeFlowTable.html" />
     <Content Include="appViews\Customer\Dialog\Recent.html" />
-    <Content Include="appViews\Evaluation\Dialog\AssessmentAddDialog.html" />
-    <Content Include="appViews\Evaluation\Dialog\AssessmentDialog.html" />
-    <Content Include="appViews\Evaluation\Dialog\AssessmentEditDialog.html" />
-    <Content Include="appViews\Evaluation\Dialog\AssessmentListDialog.html" />
     <Content Include="appViews\Evaluation\Dialog\CheckDetails.html" />
     <Content Include="appViews\Evaluation\Dialog\CheckIndoorDetails.html" />
     <Content Include="appViews\Evaluation\Dialog\CheckPlanListDialog.html" />
@@ -1057,7 +1053,6 @@
     <Content Include="Scripts\app\home.network.js" />
     <Content Include="Scripts\app\home.root.js" />
     <Content Include="Scripts\app\home.route.js" />
-    <Content Include="Scripts\app\home.station.js" />
     <Content Include="Scripts\app\network.theme.js" />
     <Content Include="Scripts\app\station.checking.js" />
     <Content Include="Scripts\app\station.common.js" />

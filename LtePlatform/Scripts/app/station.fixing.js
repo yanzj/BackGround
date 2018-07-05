@@ -1,4 +1,4 @@
-﻿angular.module('station.fixing', ['app.common', 'home.station'])
+﻿angular.module('station.fixing', ['app.common'])
     .controller("menu.fixing-station",
     function ($scope, downSwitchService, baiduMapService, parametersDialogService, baiduQueryService, mapDialogService) {
 

@@ -180,56 +180,6 @@
                         }
                     });
                 },
-                showAssessmentAdd: function () {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/Evaluation/Dialog/AssessmentAddDialog.html',
-                        controller: 'map.assessmentAdd.dialog',
-                        resolve: {
-                            dialogTitle: function() {
-                                return "考核评分";
-                            }
-                        }
-                    });
-                },
-                showAssessmentEdit: function (assessment) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/Evaluation/Dialog/AssessmentEditDialog.html',
-                        controller: 'map.assessmentEdit.dialog',
-                        resolve: {
-                            dialogTitle: function () {
-                                return "修改评分";
-                            },
-                            assessment: function () {
-                                return assessment;
-                            }
-                        }
-                    });
-                },
-                showAssessmentDialog: function (assessment) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/Evaluation/Dialog/AssessmentDialog.html',
-                        controller: 'map.assessmentDetails.dialog',
-                        resolve: {
-                            dialogTitle: function () {
-                                return "考核明细";
-                            },
-                            assessment: function () {
-                                return assessment;
-                            }
-                        }
-                    });
-                },
-                showAssessmentListDialog: function () {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/Evaluation/Dialog/AssessmentListDialog.html',
-                        controller: 'map.assessmentList.dialog',
-                        resolve: {
-                            dialogTitle: function () {
-                                return "考核列表";
-                            }
-                        }
-                    });
-                },
                 showConstructionInfo: function(site) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/BasicKpi/Construction.html',

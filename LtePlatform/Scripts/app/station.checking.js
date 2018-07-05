@@ -1,4 +1,4 @@
-﻿angular.module('station.checking', ['app.common', 'home.station'])
+﻿angular.module('station.checking', ['app.common'])
     .controller("menu.checking-station",
     function ($scope, downSwitchService, baiduMapService, parametersDialogService, baiduQueryService, mapDialogService) {
 
