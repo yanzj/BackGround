@@ -371,13 +371,13 @@
     <Compile Include="Entities\VipDemandDto.cs" />
     <Compile Include="Entities\ZhangshangyouCoverageView.cs" />
     <Compile Include="Entities\ZhangshangyouQualityView.cs" />
-    <Compile Include="Migrations\201807031553598_Update_Indoor_Distribution.cs" />
-    <Compile Include="Migrations\201807031553598_Update_Indoor_Distribution.Designer.cs">
-      <DependentUpon>201807031553598_Update_Indoor_Distribution.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201807041507455_Update.cs" />
     <Compile Include="Migrations\201807041507455_Update.Designer.cs">
       <DependentUpon>201807041507455_Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807060633392_Update1.cs" />
+    <Compile Include="Migrations\201807060633392_Update1.Designer.cs">
+      <DependentUpon>201807060633392_Update1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -388,11 +388,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807031553598_Update_Indoor_Distribution.resx">
-      <DependentUpon>201807031553598_Update_Indoor_Distribution.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807041507455_Update.resx">
       <DependentUpon>201807041507455_Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807060633392_Update1.resx">
+      <DependentUpon>201807060633392_Update1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

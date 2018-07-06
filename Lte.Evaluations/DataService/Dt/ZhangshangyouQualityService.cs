@@ -19,12 +19,14 @@ namespace Lte.Evaluations.DataService.Dt
     {
         private readonly IZhangshangyouQualityRepository _repository;
         private readonly IZhangshangyouCoverageRepository _coverageRepository;
+        private readonly ICellRepository _cellRepository;
 
         public ZhangshangyouQualityService(IZhangshangyouQualityRepository repository,
-            IZhangshangyouCoverageRepository coverageRepository)
+            IZhangshangyouCoverageRepository coverageRepository, ICellRepository cellRepository)
         {
             _repository = repository;
             _coverageRepository = coverageRepository;
+            _cellRepository = cellRepository;
             if (Stats == null)
             {
                 Stats = new Stack<ZhangshangyouQualityCsv>();
@@ -72,6 +74,39 @@ namespace Lte.Evaluations.DataService.Dt
                                                         && x.StatTime >= begin && x.StatTime < end);
             var dateSpanItems = _repository.GetAllList(x => x.StatTime >= begin && x.StatTime < end);
             return (from c in coverageItems join q in dateSpanItems on c.SerialNumber equals q.SerialNumber select q)
+                .Distinct(new ZhangshangyouQualityEquator())
+                .MapTo<IEnumerable<ZhangshangyouQualityView>>();
+        }
+
+        public IEnumerable<ZhangshangyouQualityView> QueryByDateSpanAndGeneralRange(DateTime begin, DateTime end,
+            double generalWest, double generalEast, double generalSouth, double generalNorth,
+            double xOffset, double yOffset)
+        {
+            var coverageItems = _coverageRepository.GetAllList(
+                x => x.Longtitute >= generalWest + xOffset
+                     && x.Longtitute < generalEast + xOffset
+                     && x.Lattitute >= generalSouth + yOffset &&
+                     x.Lattitute < generalNorth + yOffset
+                     && x.StatTime >= begin && x.StatTime < end);
+            var cells = _cellRepository.GetAllList(x => x.Longtitute >= generalWest && x.Longtitute < generalEast
+                                                                                    && x.Lattitute >= generalSouth &&
+                                                                                    x.Lattitute < generalNorth);
+
+            foreach (var cell in cells)
+            {
+                var items = _coverageRepository.GetAllList(x =>
+                    x.StatTime >= begin && x.StatTime < end && x.ENodebId == cell.ENodebId &&
+                    x.SectorId == cell.SectorId);
+                if (items.Any())
+                {
+                    coverageItems.AddRange(items);
+                }
+            }
+
+            var dateSpanItems = _repository.GetAllList(x => x.StatTime >= begin && x.StatTime < end);
+            return (from c in coverageItems.Distinct(new ZhangshangyouCoverageEquator())
+                    join q in dateSpanItems on c.SerialNumber equals q.SerialNumber
+                    select q)
                 .Distinct(new ZhangshangyouQualityEquator())
                 .MapTo<IEnumerable<ZhangshangyouQualityView>>();
         }

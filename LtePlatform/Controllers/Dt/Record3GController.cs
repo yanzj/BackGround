@@ -9,6 +9,7 @@ using LtePlatform.Models;
 namespace LtePlatform.Controllers.Dt
 {
     [ApiControl("3G测试数据查询控制器")]
+    [ApiGroup("测试")]
     public class Record3GController : ApiController
     {
         private readonly CsvFileInfoService _service;

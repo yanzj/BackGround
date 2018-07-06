@@ -8,6 +8,7 @@ using LtePlatform.Models;
 namespace LtePlatform.Controllers.Dt
 {
     [ApiControl("4G测试详细数据查询控制器")]
+    [ApiGroup("测试")]
     public class Record4GDetailsController : ApiController
     {
         private readonly CsvFileInfoService _service;

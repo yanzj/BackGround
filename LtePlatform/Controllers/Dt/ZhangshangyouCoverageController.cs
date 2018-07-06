@@ -37,6 +37,25 @@ namespace LtePlatform.Controllers.Dt
             return _service.QueryByDateSpanAndRange(begin, end, west, east, south, north, xOffset, yOffset);
         }
 
+        [ApiDoc("查询日期范围和地理范围（匹配测试点和小区）内的记录")]
+        [ApiParameterDoc("begin", "开始日期")]
+        [ApiParameterDoc("end", "结束日期")]
+        [ApiParameterDoc("generalWest", "西边经度")]
+        [ApiParameterDoc("generalEast", "东边经度")]
+        [ApiParameterDoc("generalSouth", "南边纬度")]
+        [ApiParameterDoc("generalNorth", "北边纬度")]
+        [ApiParameterDoc("xOffset", "百度坐标经度偏移")]
+        [ApiParameterDoc("yOffset", "百度坐标纬度偏移")]
+        [ApiResponse("经纬度和日期范围内的记录")]
+        [HttpGet]
+        public IEnumerable<ZhangshangyouCoverageView> GetGeneral(DateTime begin, DateTime end,
+            double generalWest, double generalEast, double generalSouth, double generalNorth, 
+            double xOffset, double yOffset)
+        {
+            return _service.QueryByDateSpanAndGeneralRange(begin, end, generalWest, generalEast, generalSouth,
+                generalNorth, xOffset, yOffset);
+        }
+
         [ApiDoc("查询日期范围内的指定LTE小区记录")]
         [ApiParameterDoc("begin", "开始日期")]
         [ApiParameterDoc("end", "结束日期")]

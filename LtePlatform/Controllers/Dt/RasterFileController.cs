@@ -9,6 +9,7 @@ using LtePlatform.Models;
 namespace LtePlatform.Controllers.Dt
 {
     [ApiControl("网格测试文件信息查询控制器")]
+    [ApiGroup("测试")]
     public class RasterFileController : ApiController
     {
         private readonly RasterInfoService _service;

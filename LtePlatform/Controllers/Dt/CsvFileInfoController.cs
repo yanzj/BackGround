@@ -8,6 +8,7 @@ using LtePlatform.Models;
 namespace LtePlatform.Controllers.Dt
 {
     [ApiControl("DT测试数据文件查询控制器")]
+    [ApiGroup("测试")]
     public class CsvFileInfoController : ApiController
     {
         private readonly CsvFileInfoService _service;

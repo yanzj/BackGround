@@ -19,10 +19,13 @@ namespace Lte.Evaluations.DataService.Dt
     public class ZhangshangyouCoverageService
     {
         private readonly IZhangshangyouCoverageRepository _repository;
+        private readonly ICellRepository _cellRepository;
 
-        public ZhangshangyouCoverageService(IZhangshangyouCoverageRepository repository)
+        public ZhangshangyouCoverageService(IZhangshangyouCoverageRepository repository,
+            ICellRepository cellRepository)
         {
             _repository = repository;
+            _cellRepository = cellRepository;
             if (Stats == null)
             {
                 Stats = new Stack<ZhangshangyouCoverageCsv>();
@@ -78,6 +81,45 @@ namespace Lte.Evaluations.DataService.Dt
 
             _repository.SaveChanges();
             return results.ToList().MapTo<IEnumerable<ZhangshangyouCoverageView>>();
+        }
+
+        public IEnumerable<ZhangshangyouCoverageView> QueryByDateSpanAndGeneralRange(DateTime begin, DateTime end,
+            double generalWest, double generalEast, double generalSouth, double generalNorth, 
+            double xOffset, double yOffset)
+        {
+            var results = _repository.GetAll().Where(
+                x => x.Longtitute >= generalWest + xOffset 
+                     && x.Longtitute < generalEast + xOffset
+                                                    && x.Lattitute >= generalSouth + yOffset &&
+                                                    x.Lattitute < generalNorth + yOffset
+                                                    && x.StatTime >= begin && x.StatTime < end);
+            foreach (var item in results)
+            {
+                item.XOffset = xOffset;
+                item.YOffset = yOffset;
+            }
+
+            _repository.SaveChanges();
+
+            var list = results.ToList();
+            var cells = _cellRepository.GetAllList(x => x.Longtitute >= generalWest && x.Longtitute < generalEast
+                                                                                    && x.Lattitute >= generalSouth &&
+                                                                                    x.Lattitute < generalNorth);
+            foreach (var cell in cells)
+            {
+                var items = _repository.GetAll().Where(
+                    x => x.StatTime >= begin && x.StatTime < end && x.ENodebId == cell.ENodebId && x.SectorId == cell.SectorId);
+                
+                foreach (var zhangshangyouCoverage in items)
+                {
+                    zhangshangyouCoverage.XOffset = xOffset;
+                    zhangshangyouCoverage.YOffset = yOffset;
+                }
+                _repository.SaveChanges();
+                list.AddRange(items.ToList());
+            }
+            
+            return list.Distinct(new ZhangshangyouCoverageEquator()).MapTo<IEnumerable<ZhangshangyouCoverageView>>();
         }
 
         public IEnumerable<ZhangshangyouCoverageView> QueryLteRecordsByDateSpan(DateTime begin, DateTime end,

@@ -11,6 +11,7 @@ using System.Web.Http;
 namespace LtePlatform.Controllers.Dt
 {
     [ApiControl("VoLTE测试数据查询控制器")]
+    [ApiGroup("测试")]
     public class RecordVolteController : ApiController
     {
         private readonly CsvFileInfoService _service;

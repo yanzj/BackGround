@@ -39,8 +39,11 @@ namespace Lte.Evaluations.DataService.Dt
                 case "3G":
                     if (testDate > item.LatestDate3G) item.LatestDate3G = testDate;
                     break;
-                default:
+                case "4G":
                     if (testDate > item.LatestDate4G) item.LatestDate4G = testDate;
+                    break;
+                default:
+                    if (testDate > item.LatestDateVolte) item.LatestDateVolte = testDate;
                     break;
             }
             return _repository.SaveChanges();

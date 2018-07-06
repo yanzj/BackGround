@@ -150,4 +150,17 @@ namespace Abp.EntityFramework.Entities
         public double GsmRx { get; set; }
 
     }
+
+    public class ZhangshangyouCoverageEquator : IEqualityComparer<ZhangshangyouCoverage>
+    {
+        public bool Equals(ZhangshangyouCoverage x, ZhangshangyouCoverage y)
+        {
+            return x!=null && y != null && x.Id == y.Id;
+        }
+
+        public int GetHashCode(ZhangshangyouCoverage obj)
+        {
+            return obj.Id.GetHashCode();
+        }
+    }
 }
