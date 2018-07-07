@@ -7,6 +7,7 @@ using LtePlatform.Models;
 namespace LtePlatform.Controllers.Mongo
 {
     [ApiControl("系统邻区查询控制器")]
+    [ApiGroup("网管参数")]
     public class NeighborCellMongoController : ApiController
     {
         private readonly NeighborCellMongoService _service;

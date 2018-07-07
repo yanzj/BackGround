@@ -31,10 +31,11 @@ namespace Lte.Evaluations.DataService.Kpi
         {
             var zteStats =
                 ZteRepository.GetAllList(
-                    x => x.StatTime >= begin && x.StatTime < end 
+                    x => x.StatTime >= begin && x.StatTime < end && x.DownlinkPrbSubframe > 1000
                     && (x.DownlinkPrbSubframe < 7 * x.PdschPrbs || x.UplinkPrbSubframe < 7 * x.PuschPrbs));
             var huaweiStats =
                 HuaweiRepository.GetAllList(x => x.StatTime >= begin && x.StatTime < end
+                                                                     && x.DownlinkPrbSubframe > 1000
                     && (x.DownlinkPrbSubframe < 7 * x.PdschPrbs || x.UplinkPrbSubframe < 7 * x.PuschPrbs));
             var results = HuaweiCellRepository.QueryDistrictFlowViews<PrbView, PrbZte, PrbHuawei>(city, district,
                 zteStats,
@@ -75,10 +76,11 @@ namespace Lte.Evaluations.DataService.Kpi
         {
             var zteStats =
                 ZteRepository.GetAllList(
-                    x => x.StatTime >= begin && x.StatTime < end
+                    x => x.StatTime >= begin && x.StatTime < end && x.DownlinkPrbSubframe > 1000
                          && (x.DownlinkPrbSubframe < 7 * x.PdschPrbs || x.UplinkPrbSubframe < 7 * x.PuschPrbs));
             var huaweiStats =
                 HuaweiRepository.GetAllList(x => x.StatTime >= begin && x.StatTime < end
+                                                                     && x.DownlinkPrbSubframe > 1000
                     && (x.DownlinkPrbSubframe < 7 * x.PdschPrbs || x.UplinkPrbSubframe < 7 * x.PuschPrbs));
             var joinViews = HuaweiCellRepository.QueryAllFlowViews<PrbView, PrbZte, PrbHuawei>(zteStats, huaweiStats).ToList();
             var days = (joinViews.Max(x => x.StatTime) - joinViews.Min(x => x.StatTime)).Days + 1;
