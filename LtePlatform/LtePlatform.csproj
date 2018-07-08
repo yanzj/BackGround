@@ -326,6 +326,7 @@
     <Compile Include="Controllers\Kpi\MonthMaintainProjectTrendController.cs" />
     <Compile Include="Controllers\Kpi\MonthPreciseTrendController.cs" />
     <Compile Include="Controllers\Kpi\MonthYuejiTrendController.cs" />
+    <Compile Include="Controllers\Kpi\TopFeelingRateController.cs" />
     <Compile Include="Controllers\Mongo\UplinkOpenLoopPowerControlController.cs" />
     <Compile Include="Controllers\Parameters\StationAntennaQueryController.cs" />
     <Compile Include="Controllers\Parameters\StationAntennaUpdateController.cs" />

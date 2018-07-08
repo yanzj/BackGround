@@ -5,36 +5,29 @@ using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.Entities;
 using Lte.Domain.Common.Wireless;
+using Lte.MySqlFramework.Support;
 
 namespace Lte.Evaluations.DataService.Kpi
 {
     public class FlowQueryService : DateSpanQuery<FlowView, IFlowHuaweiRepository, IFlowZteRepository>
     {
+        private const int DownSwitchThreshold = 200;
+
         private IEnumerable<FlowView> QueryDistrictDownSwitchViews(string city, string district, DateTime begin, DateTime end)
         {
-            var zteStats =
-                ZteRepository.GetAllList(
-                    x => x.StatTime >= begin && x.StatTime < end && x.RedirectA2 + x.RedirectB2 > 2000);
-            var huaweiStats =
-                HuaweiRepository.GetAllList(
-                    x => x.StatTime >= begin && x.StatTime < end && x.RedirectCdma2000 > 2000);
+            var zteStats = ZteRepository.GetHighDownSwitchList(begin, end, DownSwitchThreshold);
+            var huaweiStats = HuaweiRepository.GetHighDownSwitchList(begin, end, DownSwitchThreshold);
             var results = HuaweiCellRepository.QueryDistrictFlowViews<FlowView, FlowZte, FlowHuawei>(city, district,
                 zteStats,
                 huaweiStats,
                 TownRepository, ENodebRepository);
             return results;
         }
-
+        
         private IEnumerable<FlowView> QueryDistrictViews(string city, string district, DateTime begin, DateTime end)
         {
-            var zteStats =
-                ZteRepository.GetAllList(
-                    x =>
-                        x.StatTime >= begin && x.StatTime < end && x.DownlinkPdcpFlow + x.PdcpUplinkDuration > 200000 &&
-                        x.MaxRrcUsers > 10);
-            var huaweiStats =
-                HuaweiRepository.GetAllList(
-                    x => x.StatTime >= begin && x.PdcpDownlinkFlow + x.PdcpUplinkFlow > 200000 && x.MaxUsers > 10);
+            var zteStats = ZteRepository.GetBusyList(begin, end);
+            var huaweiStats = HuaweiRepository.GetBusyList(begin, end);
             var results = HuaweiCellRepository.QueryDistrictFlowViews<FlowView, FlowZte, FlowHuawei>(city, district,
                 zteStats,
                 huaweiStats,
@@ -55,91 +48,67 @@ namespace Lte.Evaluations.DataService.Kpi
             return results;
         }
 
-        private List<FlowView> QueryTopViewsByPolicy(List<FlowView> source, int topCount,
-            OrderDownSwitchPolicy policy)
+        public List<FlowView> QueryTopDownSwitchViews(string city, string district, DateTime begin, DateTime end,
+            int topCount)
         {
-            var minDate = source.Min(x => x.StatTime);
-            var maxDate = source.Max(x => x.StatTime);
-            topCount *= (maxDate - minDate).Days + 1;
-            switch (policy)
-            {
-                case OrderDownSwitchPolicy.OrderByDownSwitchCountsDescendings:
-                    return source.OrderByDescending(x => x.RedirectCdma2000).Take(topCount).ToList();
-                case OrderDownSwitchPolicy.OrderByDownSwitchRateDescending:
-                    return source.OrderByDescending(x => x.DownSwitchRate).Take(topCount).ToList();
-                default:
-                    return new List<FlowView>();
-            }
-            
-        }
-
-        private List<FlowView> QueryTopViewsByPolicy(List<FlowView> source, int topCount,
-            OrderTopFlowPolicy policy)
-        {
-            var minDate = source.Min(x => x.StatTime);
-            var maxDate = source.Max(x => x.StatTime);
-            topCount *= (maxDate - minDate).Days + 1;
-            switch (policy)
-            {
-                case OrderTopFlowPolicy.OrderByDownlinkFlowDescending:
-                    return source.OrderByDescending(x => x.PdcpDownlinkFlow).Take(topCount).ToList();
-                case OrderTopFlowPolicy.OrderByUplinkFlowDescending:
-                    return source.OrderByDescending(x => x.PdcpUplinkFlow).Take(topCount).ToList();
-                case OrderTopFlowPolicy.OrderByTotalFlowDescending:
-                    return source.OrderByDescending(x => x.PdcpDownlinkFlow + x.PdcpUplinkFlow).Take(topCount).ToList();
-                case OrderTopFlowPolicy.OrderByMaxUsersDescending:
-                    return source.OrderByDescending(x => x.MaxUsers).Take(topCount).ToList();
-                case OrderTopFlowPolicy.OrderByMaxActiveUsersDescending:
-                    return source.OrderByDescending(x => x.MaxActiveUsers).Take(topCount).ToList();
-                default:
-                    return new List<FlowView>();
-            }
-            
-        }
-
-        public List<FlowView> QueryTopDownSwitchViews(string city, string district, DateTime begin, DateTime end, int topCount)
-        {
-            var results = QueryDistrictViews(city, district, begin, end);
+            var results = QueryDistrictDownSwitchViews(city, district, begin, end);
             return results.OrderByDescending(x => x.RedirectCdma2000).Take(topCount).ToList();
         }
 
-        public List<FlowView> QueryTopDownSwitchViews(DateTime begin, DateTime end, int topCount, OrderDownSwitchPolicy policy)
+        public List<FlowView> QueryTopFeelingRateViews(string city, string district, DateTime begin, DateTime end,
+            int topCount)
         {
-            var zteStats =
-                ZteRepository.GetAllList(
-                        x => x.StatTime >= begin && x.StatTime < end && x.RedirectA2 + x.RedirectB2 > 2000);
-            var huaweiStats =
-                HuaweiRepository.GetAllList(x => x.StatTime >= begin && x.StatTime < end && x.RedirectCdma2000 > 2000);
-            var joinViews = HuaweiCellRepository.QueryAllFlowViews<FlowView, FlowZte, FlowHuawei>(zteStats, huaweiStats);
-            return QueryTopViewsByPolicy(joinViews.ToList(), topCount, policy);
+            var results = QueryDistrictViews(city, district, begin, end);
+            return results.OrderBy(x => x.DownlinkFeelingRate).Take(topCount).ToList();
+        }
+
+        public List<FlowView> QueryTopDownSwitchViews(DateTime begin, DateTime end, int topCount,
+            OrderDownSwitchPolicy policy)
+        {
+            var zteStats = ZteRepository.GetHighDownSwitchList(begin, end, DownSwitchThreshold);
+            var huaweiStats = HuaweiRepository.GetHighDownSwitchList(begin, end, DownSwitchThreshold);
+            var joinViews =
+                HuaweiCellRepository.QueryAllFlowViews<FlowView, FlowZte, FlowHuawei>(zteStats, huaweiStats);
+            return joinViews.ToList().QueryTopViewsByPolicy(topCount, policy);
+        }
+
+        public List<FlowView> QueryTopFeelingRateViews(DateTime begin, DateTime end, int topCount,
+            OrderFeelingRatePolicy policy)
+        {
+            var zteStats = ZteRepository.GetBusyList(begin, end);
+            var huaweiStats = HuaweiRepository.GetBusyList(begin, end);
+            var joinViews =
+                HuaweiCellRepository.QueryAllFlowViews<FlowView, FlowZte, FlowHuawei>(zteStats, huaweiStats);
+            return joinViews.ToList().QueryTopViewsByPolicy(topCount, policy);
         }
 
         public List<FlowView> QueryTopFlowViews(DateTime begin, DateTime end, int topCount, OrderTopFlowPolicy policy)
         {
-            var zteStats =
-                ZteRepository.GetAllList(
-                    x =>
-                        x.StatTime >= begin && x.StatTime < end && x.DownlinkPdcpFlow + x.PdcpUplinkDuration > 200000 &&
-                        x.MaxRrcUsers > 10);
-            var huaweiStats =
-                HuaweiRepository.GetAllList(
-                    x => x.StatTime >= begin && x.PdcpDownlinkFlow + x.PdcpUplinkFlow > 200000 && x.MaxUsers > 10);
+            var zteStats = ZteRepository.GetBusyList(begin, end);
+            var huaweiStats = HuaweiRepository.GetBusyList(begin, end);
             var joinViews = HuaweiCellRepository.QueryAllFlowViews<FlowView, FlowZte, FlowHuawei>(zteStats, huaweiStats);
-            return QueryTopViewsByPolicy(joinViews.ToList(), topCount, policy);
+            return joinViews.ToList().QueryTopViewsByPolicy(topCount, policy);
         }
 
         public List<FlowView> QueryTopDownSwitchViews(string city, string district, DateTime begin, DateTime end,
             int topCount, OrderDownSwitchPolicy policy)
         {
             var joinViews = QueryDistrictDownSwitchViews(city, district, begin, end);
-            return QueryTopViewsByPolicy(joinViews.ToList(), topCount, policy);
+            return joinViews.ToList().QueryTopViewsByPolicy(topCount, policy);
+        }
+
+        public List<FlowView> QueryTopFeelingRateViews(string city, string district, DateTime begin, DateTime end,
+            int topCount, OrderFeelingRatePolicy policy)
+        {
+            var joinViews = QueryDistrictViews(city, district, begin, end);
+            return joinViews.ToList().QueryTopViewsByPolicy(topCount, policy);
         }
 
         public List<FlowView> QueryTopFlowViews(string city, string district, DateTime begin, DateTime end,
             int topCount, OrderTopFlowPolicy policy)
         {
             var joinViews = QueryDistrictViews(city, district, begin, end);
-            return QueryTopViewsByPolicy(joinViews.ToList(), topCount, policy);
+            return joinViews.ToList().QueryTopViewsByPolicy(topCount, policy);
         }
 
         public IEnumerable<FlowView> QueryTopRank2Views(string city, string district, DateTime begin, DateTime end,

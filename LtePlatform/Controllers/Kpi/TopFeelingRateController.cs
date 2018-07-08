@@ -1,5 +1,7 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.Http;
 using Abp.EntityFramework.Entities;
 using Lte.Domain.Common.Types;
@@ -10,30 +12,30 @@ using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.Kpi
 {
-    [ApiControl("TOPÏÂÇĞĞ¡Çø²éÑ¯¿ØÖÆÆ÷")]
+    [ApiControl("TOPæ„ŸçŸ¥é€Ÿç‡æŸ¥è¯¢æ§åˆ¶å™¨")]
     [ApiGroup("KPI")]
-    public class TopDownSwitchController : ApiController
+    public class TopFeelingRateController : ApiController
     {
         private readonly FlowQueryService _service;
         private readonly ENodebQueryService _eNodebQueryService;
 
-        public TopDownSwitchController(FlowQueryService service, ENodebQueryService eNodebQueryService)
+        public TopFeelingRateController(FlowQueryService service, ENodebQueryService eNodebQueryService)
         {
             _service = service;
             _eNodebQueryService = eNodebQueryService;
         }
 
         [HttpGet]
-        [ApiDoc("²éÑ¯Ö¸¶¨ÇøÓòÖ¸¶¨Ê±¼ä·¶Î§ÄÚTOPÏÂÇĞĞ¡ÇøÖ¸±êÍ³¼Æ")]
-        [ApiParameterDoc("city", "³ÇÊĞ")]
-        [ApiParameterDoc("district", "ÇøÓò")]
-        [ApiParameterDoc("begin", "¿ªÊ¼ÈÕÆÚ")]
-        [ApiParameterDoc("end", "½áÊøÈÕÆÚ")]
-        [ApiParameterDoc("topCount", "TOP¸öÊı")]
-        [ApiResponse("TOPÏÂÇĞĞ¡ÇøÖ¸±êÍ³¼Æ£¬°´Ğ¡ÇøÅÅÁĞ")]
+        [ApiDoc("æŸ¥è¯¢æŒ‡å®šåŒºåŸŸæŒ‡å®šæ—¶é—´èŒƒå›´å†…TOPæ„ŸçŸ¥é€Ÿç‡å°åŒºæŒ‡æ ‡ç»Ÿè®¡")]
+        [ApiParameterDoc("city", "åŸå¸‚")]
+        [ApiParameterDoc("district", "åŒºåŸŸ")]
+        [ApiParameterDoc("begin", "å¼€å§‹æ—¥æœŸ")]
+        [ApiParameterDoc("end", "ç»“æŸæ—¥æœŸ")]
+        [ApiParameterDoc("topCount", "TOPä¸ªæ•°")]
+        [ApiResponse("TOPæ„ŸçŸ¥é€Ÿç‡å°åŒºæŒ‡æ ‡ç»Ÿè®¡ï¼ŒæŒ‰å°åŒºæ’åˆ—")]
         public IEnumerable<FlowView> Get(string city, string district, DateTime begin, DateTime end, int topCount)
         {
-            var results = _service.QueryTopDownSwitchViews(city, district, begin, end, topCount);
+            var results = _service.QueryTopFeelingRateViews(city, district, begin, end, topCount);
             results.ForEach(x =>
             {
                 var view = _eNodebQueryService.GetByENodebId(x.ENodebId);
@@ -46,16 +48,16 @@ namespace LtePlatform.Controllers.Kpi
         }
 
         [HttpGet]
-        [ApiDoc("Ö¸¶¨ÈÕÆÚ·¶Î§¡¢TOP¸öÊıºÍÅÅĞò±ê×¼£¬»ñµÃTOPÏÂÇĞĞ¡ÇøÁĞ±í")]
-        [ApiParameterDoc("begin", "¿ªÊ¼ÈÕÆÚ")]
-        [ApiParameterDoc("end", "½áÊøÈÕÆÚ")]
-        [ApiParameterDoc("topCount", "TOP¸öÊı")]
-        [ApiParameterDoc("orderSelection", "ÅÅĞò±ê×¼")]
-        [ApiResponse("TOPÏÂÇĞĞ¡ÇøÁĞ±í")]
+        [ApiDoc("æŒ‡å®šæ—¥æœŸèŒƒå›´ã€TOPä¸ªæ•°å’Œæ’åºæ ‡å‡†ï¼Œè·å¾—TOPæ„ŸçŸ¥é€Ÿç‡å°åŒºåˆ—è¡¨")]
+        [ApiParameterDoc("begin", "å¼€å§‹æ—¥æœŸ")]
+        [ApiParameterDoc("end", "ç»“æŸæ—¥æœŸ")]
+        [ApiParameterDoc("topCount", "TOPä¸ªæ•°")]
+        [ApiParameterDoc("orderSelection", "æ’åºæ ‡å‡†")]
+        [ApiResponse("TOPæ„ŸçŸ¥é€Ÿç‡å°åŒºåˆ—è¡¨")]
         public IEnumerable<FlowView> Get(DateTime begin, DateTime end, int topCount, string orderSelection)
         {
-            var results = _service.QueryTopDownSwitchViews(begin, end, topCount,
-                orderSelection.GetEnumType<OrderDownSwitchPolicy>());
+            var results = _service.QueryTopFeelingRateViews(begin, end, topCount,
+                orderSelection.GetEnumType<OrderFeelingRatePolicy>());
             results.ForEach(x =>
             {
                 var view = _eNodebQueryService.GetByENodebId(x.ENodebId);
@@ -68,19 +70,19 @@ namespace LtePlatform.Controllers.Kpi
         }
 
         [HttpGet]
-        [ApiDoc("Ö¸¶¨ÈÕÆÚ·¶Î§¡¢TOP¸öÊıºÍÅÅĞò±ê×¼£¬»ñµÃÖ¸¶¨ÇøÓòTOPÏÂÇĞĞ¡ÇøÁĞ±í")]
-        [ApiParameterDoc("begin", "¿ªÊ¼ÈÕÆÚ")]
-        [ApiParameterDoc("end", "½áÊøÈÕÆÚ")]
-        [ApiParameterDoc("topCount", "TOP¸öÊı")]
-        [ApiParameterDoc("orderSelection", "ÅÅĞò±ê×¼")]
-        [ApiParameterDoc("city", "³ÇÊĞ")]
-        [ApiParameterDoc("district", "ÇøÓò")]
-        [ApiResponse("Ö¸¶¨ÇøÓòTOPÏÂÇĞĞ¡ÇøÁĞ±í")]
+        [ApiDoc("æŒ‡å®šæ—¥æœŸèŒƒå›´ã€TOPä¸ªæ•°å’Œæ’åºæ ‡å‡†ï¼Œè·å¾—æŒ‡å®šåŒºåŸŸTOPæ„ŸçŸ¥é€Ÿç‡å°åŒºåˆ—è¡¨")]
+        [ApiParameterDoc("begin", "å¼€å§‹æ—¥æœŸ")]
+        [ApiParameterDoc("end", "ç»“æŸæ—¥æœŸ")]
+        [ApiParameterDoc("topCount", "TOPä¸ªæ•°")]
+        [ApiParameterDoc("orderSelection", "æ’åºæ ‡å‡†")]
+        [ApiParameterDoc("city", "åŸå¸‚")]
+        [ApiParameterDoc("district", "åŒºåŸŸ")]
+        [ApiResponse("æŒ‡å®šåŒºåŸŸTOPæ„ŸçŸ¥é€Ÿç‡å°åŒºåˆ—è¡¨")]
         public IEnumerable<FlowView> Get(DateTime begin, DateTime end, int topCount, string orderSelection, string city,
             string district)
         {
-            var results = _service.QueryTopDownSwitchViews(city, district, begin, end, topCount,
-                orderSelection.GetEnumType<OrderDownSwitchPolicy>());
+            var results = _service.QueryTopFeelingRateViews(city, district, begin, end, topCount,
+                orderSelection.GetEnumType<OrderFeelingRatePolicy>());
             results.ForEach(x =>
             {
                 var view = _eNodebQueryService.GetByENodebId(x.ENodebId);

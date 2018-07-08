@@ -257,15 +257,18 @@
     <Compile Include="Concrete\DoubleFlowZteRepository.cs" />
     <Compile Include="Concrete\DpiGridKpiRepository.cs" />
     <Compile Include="Concrete\DtFileInfoRepository.cs" />
+    <Compile Include="Concrete\EFIndoorDistributionRepository.cs" />
     <Compile Include="Concrete\EmergencyFiberWorkItemRepository.cs" />
     <Compile Include="Concrete\EmergencyProcessRepository.cs" />
     <Compile Include="Concrete\ENodebBaseRepository.cs" />
     <Compile Include="Concrete\ENodebRepository.cs" />
+    <Compile Include="Concrete\FlowHuaweiRepository.cs" />
     <Compile Include="Concrete\GridClusterRepository.cs" />
     <Compile Include="Concrete\HotSpotBtsRepository.cs" />
     <Compile Include="Concrete\HotSpotCdmaCellRepository.cs" />
     <Compile Include="Concrete\HotSpotCellRepository.cs" />
     <Compile Include="Concrete\HotSpotENodebRepository.cs" />
+    <Compile Include="Concrete\InfrastructureRepository.cs" />
     <Compile Include="Concrete\LteProblemRepository.cs" />
     <Compile Include="Concrete\MicroAddressRepository.cs" />
     <Compile Include="Concrete\MicroItemRepository.cs" />
@@ -275,6 +278,8 @@
     <Compile Include="Concrete\OnlineSustainRepository.cs" />
     <Compile Include="Concrete\PagingRepositoryBase.cs" />
     <Compile Include="Concrete\PlanningSiteRepository.cs" />
+    <Compile Include="Concrete\PrbHuaweiRepository.cs" />
+    <Compile Include="Concrete\PrbZteRepository.cs" />
     <Compile Include="Concrete\PreciseWorkItemCellRepositroy.cs" />
     <Compile Include="Concrete\QciHuaweiRepository.cs" />
     <Compile Include="Concrete\QciZteRepository.cs" />
@@ -283,8 +288,10 @@
     <Compile Include="Concrete\RegionRepositories.cs" />
     <Compile Include="Concrete\CollegeRepositories.cs" />
     <Compile Include="Concrete\EmergencyCommunicationRepository.cs" />
-    <Compile Include="Concrete\FlowRepository.cs" />
+    <Compile Include="Concrete\FlowZteRepository.cs" />
     <Compile Include="Concrete\MySqlContext.cs" />
+    <Compile Include="Concrete\RrcHuaweiRepository.cs" />
+    <Compile Include="Concrete\RrcZteRepository.cs" />
     <Compile Include="Concrete\StationAntennaRepository.cs" />
     <Compile Include="Concrete\StationDictionaryRepository.cs" />
     <Compile Include="Concrete\StationRruRepository.cs" />
@@ -294,8 +301,11 @@
     <Compile Include="Concrete\TownCoverageRepository.cs" />
     <Compile Include="Concrete\TownCqiRepository.cs" />
     <Compile Include="Concrete\TownDoubleFlowRepository.cs" />
+    <Compile Include="Concrete\TownFlowRepository.cs" />
     <Compile Include="Concrete\TownMrsRsrpRepository.cs" />
+    <Compile Include="Concrete\TownPrbRepository.cs" />
     <Compile Include="Concrete\TownQciRepository.cs" />
+    <Compile Include="Concrete\TownRrcRepository.cs" />
     <Compile Include="Concrete\VipDemandRepository.cs" />
     <Compile Include="Concrete\VipProcessRepository.cs" />
     <Compile Include="Concrete\WorkItemRepository.cs" />
@@ -387,6 +397,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Support\FlowQuerySupport.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Abstract\OldHotSpots.json" />

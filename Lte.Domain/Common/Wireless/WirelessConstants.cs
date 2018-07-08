@@ -51,6 +51,9 @@ namespace Lte.Domain.Common.Wireless
                     "OrderTopFlowPolicy", OrderTopFlowPolicyTuples.GetTuples()
                 },
                 {
+                    "OrderFeelingRatePolicy", OrderFeelingRatePolicyTuples.GetTuples()
+                },
+                {
                     "NetworkType", NetworkTypeTuples.GetTuples()
                 },
                 {
