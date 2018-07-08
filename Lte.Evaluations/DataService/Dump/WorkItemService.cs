@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities;
@@ -25,15 +26,23 @@ namespace Lte.Evaluations.DataService.Dump
         private readonly IBtsRepository _btsRepository;
         private readonly ITownRepository _townRepository;
         private readonly IAlarmWorkItemRepository _alarmWorkItemRepository;
+        private readonly ICheckingProjectRepository _checkingProjectRepository;
+        private readonly ICheckingBasicRepository _checkingBasicRepository;
+        private readonly ICheckingDetailsRepository _checkingDetailsRepository;
 
         public WorkItemService(IWorkItemRepository repository, IENodebRepository eNodebRepository,
-            IBtsRepository btsRepository, ITownRepository townRepository, IAlarmWorkItemRepository alarmWorkItemRepository)
+            IBtsRepository btsRepository, ITownRepository townRepository, IAlarmWorkItemRepository alarmWorkItemRepository,
+            ICheckingProjectRepository checkingProjectRepository, ICheckingBasicRepository checkingBasicRepository,
+            ICheckingDetailsRepository checkingDetailsRepository)
         {
             _repository = repository;
             _eNodebRepository = eNodebRepository;
             _btsRepository = btsRepository;
             _townRepository = townRepository;
             _alarmWorkItemRepository = alarmWorkItemRepository;
+            _checkingProjectRepository = checkingProjectRepository;
+            _checkingBasicRepository = checkingBasicRepository;
+            _checkingDetailsRepository = checkingDetailsRepository;
         }
 
         public WorkItemView Query(string serialNumber)
@@ -72,11 +81,74 @@ namespace Lte.Evaluations.DataService.Dump
             var factory = new ExcelQueryFactory { FileName = path };
             const string sheetName = "数据页1";
             var infos = (from c in factory.Worksheet<AlarmWorkItemExcel>(sheetName)
-                         select c).ToList();
+                select c).ToList();
             var count =
                 _alarmWorkItemRepository.Import<IAlarmWorkItemRepository, AlarmWorkItem, AlarmWorkItemExcel>(infos);
 
             return "完成故障工单读取：" + count + "条";
+        }
+
+        public string ImportCheckingProjectExcelFiles(string path)
+        {
+            var factory = new ExcelQueryFactory { FileName = path };
+            const string sheetName = "sheet1";
+            var infos = (from c in factory.Worksheet<CheckingProjectExcel>(sheetName)
+                         select c).ToList();
+            var count =
+                _checkingProjectRepository.Import<ICheckingProjectRepository, CheckingProject, CheckingProjectExcel>(infos);
+
+            return "完成巡检计划读取：" + count + "条";
+        }
+
+        public string ImportCheckingResultExcelFiles(string path)
+        {
+            var factory = new ExcelQueryFactory { FileName = path };
+            const string sheetName = "基本信息";
+            var infos = (from c in factory.Worksheet<CheckingBasicExcel>(sheetName)
+                select c).ToList();
+            var count =
+                _checkingBasicRepository.Import<ICheckingBasicRepository, CheckingBasic, CheckingBasicExcel>(infos);
+            var keys = new[]
+            {
+                "机房上_上塔RRU_上塔RRU",
+                "机房上_天馈线_GPS及性能",
+                "机房上_天馈线_天线测量",
+                "机房上_天馈线_馈线质量",
+                "机房上_天馈线_馈线质量",
+                "机房内_传输配套_传输配套",
+                "机房内_空调_空调",
+                "机房内_动力配套_照明与插座",
+                "机房内_动力配套_蓄电池",
+                "机房内_动力配套_开关电源",
+                "机房内_动力配套_固定式油机",
+                "机房内_动力配套_防雷与接地",
+                "机房内_动力配套_低压配电",
+                "机房内_动力配套_UPS",
+                "机房内_主设备_设备风扇",
+                "机房内_主设备_板卡状态",
+                "机房内_主设备_LTE机框",
+                "机房内_内部环境_温湿度",
+                "机房内_内部环境_维护标识",
+                "机房内_内部环境_基站消防",
+                "机房内_内部环境_机房土建",
+                "机房内_内部环境_环控核查",
+                "机房内_内部环境_环控核查",
+                "机房外_电光线缆_电光线缆",
+                "机房外_空调室外机_空调室外机",
+                "机房外_变_稳压器_变_稳压器",
+                "机房外_电表读数_电表读数",
+                "机房外_信号测试_信号测试",
+                "机房外_周边环境_周边环境"
+            };
+            foreach (var key in keys)
+            {
+                var detailses = (from c in factory.Worksheet<CheckingDetailsExcel>(key)
+                    select c).ToList();
+                _checkingDetailsRepository.Import<ICheckingDetailsRepository, CheckingDetails, CheckingDetailsExcel>(
+                    detailses, key, (item, k) => { item.CheckingTheme = k; });
+            }
+
+            return "完成巡检结果读取：" + count + "条";
         }
 
         public async Task<bool> DumpOne()

@@ -369,5 +369,37 @@ namespace LtePlatform.Controllers
             return View("WorkItemImport");
         }
 
+        [HttpPost]
+        public ActionResult CheckingProjectPost()
+        {
+            var httpPostedFileBase = Request.Files["checkingProject"];
+            if (httpPostedFileBase == null || httpPostedFileBase.FileName == "")
+            {
+                ViewBag.ErrorMessage = "上传文件为空！请先上传文件。";
+            }
+            else
+            {
+                var path = httpPostedFileBase.UploadKpiFile();
+                ViewBag.Message = _workItemService.ImportCheckingProjectExcelFiles(path);
+            }
+            return View("WorkItemImport");
+        }
+
+        [HttpPost]
+        public ActionResult CheckingResultPost()
+        {
+            var httpPostedFileBase = Request.Files["checkingResult"];
+            if (httpPostedFileBase == null || httpPostedFileBase.FileName == "")
+            {
+                ViewBag.ErrorMessage = "上传文件为空！请先上传文件。";
+            }
+            else
+            {
+                var path = httpPostedFileBase.UploadKpiFile();
+                ViewBag.Message = _workItemService.ImportCheckingResultExcelFiles(path);
+            }
+            return View("WorkItemImport");
+        }
+
     }
 }

@@ -31,6 +31,28 @@ namespace Abp.EntityFramework.Repositories
             return repository.SaveChanges();
         }
 
+        public static int Import<TRepository, TEntity, TExcel>(this TRepository repository, IEnumerable<TExcel> stats, 
+            string key, Action<TEntity, string> setValueAction)
+            where TRepository : IRepository<TEntity>, IMatchKeyRepository<TEntity, TExcel>, ISaveChanges
+            where TEntity : Entity
+        {
+            foreach (var stat in stats)
+            {
+                var info = repository.Match(stat, key);
+                if (info == null)
+                {
+                    var entity = stat.MapTo<TEntity>();
+                    setValueAction(entity, key);
+                    repository.Insert(entity);
+                }
+                else
+                {
+                    Mapper.Map(stat, info);
+                }
+            }
+            return repository.SaveChanges();
+        }
+
         public static int Import<TRepository, TEntity, TExcel, TTown>(this TRepository repository, IEnumerable<TExcel> stats,
             List<TTown> towns, Func<IEnumerable<TTown>, TExcel, int> townIdFunc)
             where TRepository : IRepository<TEntity>, IMatchRepository<TEntity, TExcel>, ISaveChanges

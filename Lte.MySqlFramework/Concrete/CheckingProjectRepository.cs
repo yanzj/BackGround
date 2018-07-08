@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Abp.EntityFramework;
 using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Repositories;
+using Lte.Domain.Excel;
 using Lte.MySqlFramework.Abstract;
 
 namespace Lte.MySqlFramework.Concrete
@@ -14,6 +15,11 @@ namespace Lte.MySqlFramework.Concrete
     {
         public CheckingProjectRepository(IDbContextProvider<MySqlContext> dbContextProvider) : base(dbContextProvider)
         {
+        }
+
+        public CheckingProject Match(CheckingProjectExcel stat)
+        {
+            return FirstOrDefault(x => x.CheckingFlowNumber == stat.CheckingFlowNumber);
         }
     }
 }

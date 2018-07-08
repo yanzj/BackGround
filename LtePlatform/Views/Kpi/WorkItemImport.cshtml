@@ -13,35 +13,65 @@
             @{Html.RenderPartial("_AlertPanel");}
             <div class="col-md-6">
                 @using (Html.BeginForm("WorkItemPost", "Kpi",
-FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
-        {
-            <div class="form-group">
-                <label class="col-md-3 control-label">工单文件选择：</label>
-                <div class="col-md-6">
-                    <input name="workItem" class="form-control" type="file" accept=".xls, .xlsx" />
-                </div>
-                <div class="col-md-3">
-                    <button type="submit" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-save"></span>导入文件
-                    </button>
-                </div>
-            </div>
-}
+                    FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">工单文件选择：</label>
+                        <div class="col-md-6">
+                            <input name="workItem" class="form-control" type="file" accept=".xls, .xlsx" />
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-save"></span>导入文件
+                            </button>
+                        </div>
+                    </div>
+                }
                 @using (Html.BeginForm("AlarmWorkItemPost", "Kpi",
-FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
-        {
-            <div class="form-group">
-                <label class="col-md-3 control-label">故障工单文件选择：</label>
-                <div class="col-md-6">
-                    <input name="alarmWorkItem" class="form-control" type="file" accept=".xls, .xlsx" />
-                </div>
-                <div class="col-md-3">
-                    <button type="submit" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-save"></span>导入文件
-                    </button>
-                </div>
-            </div>
-}
+                    FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">故障工单文件选择：</label>
+                        <div class="col-md-6">
+                            <input name="alarmWorkItem" class="form-control" type="file" accept=".xls, .xlsx" />
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-save"></span>导入文件
+                            </button>
+                        </div>
+                    </div>
+                }
+                @using (Html.BeginForm("CheckingProjectPost", "Kpi",
+                    FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">巡检计划文件选择：</label>
+                        <div class="col-md-6">
+                            <input name="checkingProject" class="form-control" type="file" accept=".xls, .xlsx" />
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-save"></span>导入文件
+                            </button>
+                        </div>
+                    </div>
+                }
+                @using (Html.BeginForm("CheckingResultPost", "Kpi",
+                    FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">巡检结果文件选择：</label>
+                        <div class="col-md-6">
+                            <input name="checkingResult" class="form-control" type="file" accept=".xls, .xlsx" />
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-save"></span>导入文件
+                            </button>
+                        </div>
+                    </div>
+                }
             </div>
             <div class="col-md-6" ng-controller="workitem.import">
                 <div class="panel panel-info">

@@ -7,7 +7,13 @@ namespace Abp.EntityFramework.Repositories
     {
         TEntity Match(TExcel stat);
     }
-    
+
+    public interface IMatchKeyRepository<out TEntity, in TExcel>
+        where TEntity : Entity
+    {
+        TEntity Match(TExcel stat, string key);
+    }
+
     public interface IMatchRepository<TEntity>
         where TEntity : Entity
     {
