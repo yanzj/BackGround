@@ -97,12 +97,7 @@
         basicImportService.queryCdmaCellCount().then(function(data) {
             $rootScope.importData.cdmaCellCount = data;
         });
-        basicImportService.queryVanishedENodebs().then(function(data) {
-            $rootScope.importData.vanishedENodebIds = data;
-        });
-        basicImportService.queryVanishedCells().then(function(data) {
-            $rootScope.importData.vanishedCellIds = data;
-        });
+        
         basicImportService.queryVanishedBtss().then(function(data) {
             $rootScope.importData.vanishedBtsIds = data;
         });
@@ -127,6 +122,13 @@
                         type: 'success'
                     });
                     $scope.importData.newENodebs = [];
+                    basicImportService.queryVanishedENodebs().then(function(data) {
+                        $rootScope.importData.vanishedENodebIds = data;
+                    });
+                });
+            } else {
+                basicImportService.queryVanishedENodebs().then(function (data) {
+                    $rootScope.importData.vanishedENodebIds = data;
                 });
             }
         };
@@ -151,6 +153,13 @@
                         type: 'success'
                     });
                     $scope.importData.newCells = [];
+                    basicImportService.queryVanishedCells().then(function(data) {
+                        $rootScope.importData.vanishedCellIds = data;
+                    });
+                });
+            } else {
+                basicImportService.queryVanishedCells().then(function (data) {
+                    $rootScope.importData.vanishedCellIds = data;
                 });
             }
         };

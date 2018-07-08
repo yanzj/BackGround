@@ -42,8 +42,10 @@ namespace Lte.Evaluations.DataService.Dump
                 else
                 {
                     item.Pci = cell.Pci;
+                    item.Frequency = cell.Frequency;
+                    item.BandClass = cell.BandClass;
                     item.IsInUse = true;
-                    _cellRepository.Update(item);
+                    _cellRepository.SaveChanges();
                     count++;
                 }
             }
@@ -98,8 +100,9 @@ namespace Lte.Evaluations.DataService.Dump
                 return true;
             }
             cell.Pci = info.Pci;
+            cell.BandClass = info.BandClass;
+            cell.Frequency = info.Frequency;
             cell.IsInUse = true;
-            _cellRepository.Update(cell);
             _cellRepository.SaveChanges();
             return true;
         }

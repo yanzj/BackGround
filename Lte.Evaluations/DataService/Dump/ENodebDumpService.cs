@@ -52,7 +52,10 @@ namespace Lte.Evaluations.DataService.Dump
                 else
                 {
                     item.IsInUse = true;
-                    _eNodebRepository.Update(item);
+                    item.Name = eNodeb.Name;
+                    item.Address = eNodeb.Address;
+                    item.Factory = eNodeb.Factory;
+                    _eNodebRepository.SaveChanges();
                 }
             }
             _eNodebRepository.SaveChanges();

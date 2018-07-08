@@ -147,6 +147,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\ICheckingBasicRepository.cs" />
+    <Compile Include="Abstract\ICheckingDetailsRepository.cs" />
+    <Compile Include="Abstract\ICheckingProjectRepository.cs" />
     <Compile Include="Abstract\ICollegeRepository.cs" />
     <Compile Include="Abstract\ICdmaRegionStatRepository.cs" />
     <Compile Include="Abstract\ICollege3GTestRepository.cs" />
@@ -240,6 +243,9 @@
     <Compile Include="Concrete\BtsRepository.cs" />
     <Compile Include="Concrete\CdmaCellRepository.cs" />
     <Compile Include="Concrete\CellRepository.cs" />
+    <Compile Include="Concrete\CheckingBasicRepository.cs" />
+    <Compile Include="Concrete\CheckingDetailsRepository.cs" />
+    <Compile Include="Concrete\CheckingProjectRepository.cs" />
     <Compile Include="Concrete\ComplainItemRepository.cs" />
     <Compile Include="Concrete\ComplainProcessRepository.cs" />
     <Compile Include="Concrete\ConstructionInformationRepository.cs" />
@@ -371,13 +377,13 @@
     <Compile Include="Entities\VipDemandDto.cs" />
     <Compile Include="Entities\ZhangshangyouCoverageView.cs" />
     <Compile Include="Entities\ZhangshangyouQualityView.cs" />
-    <Compile Include="Migrations\201807041507455_Update.cs" />
-    <Compile Include="Migrations\201807041507455_Update.Designer.cs">
-      <DependentUpon>201807041507455_Update.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201807060633392_Update1.cs" />
     <Compile Include="Migrations\201807060633392_Update1.Designer.cs">
       <DependentUpon>201807060633392_Update1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807080300374_Add_Checking.cs" />
+    <Compile Include="Migrations\201807080300374_Add_Checking.Designer.cs">
+      <DependentUpon>201807080300374_Add_Checking.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -388,11 +394,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807041507455_Update.resx">
-      <DependentUpon>201807041507455_Update.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807060633392_Update1.resx">
       <DependentUpon>201807060633392_Update1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807080300374_Add_Checking.resx">
+      <DependentUpon>201807080300374_Add_Checking.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

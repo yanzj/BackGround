@@ -668,7 +668,6 @@
     <Content Include="appViews\Home\Query.html" />
     <Content Include="appViews\Home\SingleChartDialog.html" />
     <Content Include="appViews\Import\ImportProgress.html" />
-    <Content Include="appViews\Import\Precise\WorkItem.html" />
     <Content Include="appViews\Import\ResoureDetails.html" />
     <Content Include="appViews\Manage\AllUsers.html" />
     <Content Include="appViews\Manage\CurrentUser.html" />

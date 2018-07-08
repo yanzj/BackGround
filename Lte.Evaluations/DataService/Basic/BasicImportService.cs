@@ -129,7 +129,7 @@ namespace Lte.Evaluations.DataService.Basic
             if (!BasicImportContainer.ENodebExcels.Any()) return new List<ENodebExcel>();
             return from info in BasicImportContainer.ENodebExcels
                 join eNodeb in _eNodebRepository.GetAllInUseList()
-                    on info.ENodebId equals eNodeb.ENodebId into eNodebQuery
+                    on new {info.ENodebId, info.Name} equals new {eNodeb.ENodebId, eNodeb.Name} into eNodebQuery
                 from eq in eNodebQuery.DefaultIfEmpty()
                 where eq == null
                 select info;
@@ -140,7 +140,7 @@ namespace Lte.Evaluations.DataService.Basic
             if (!BasicImportContainer.ENodebExcels.Any()) return new List<int>();
             return from eNodeb in _eNodebRepository.GetAllInUseList()
                 join info in BasicImportContainer.ENodebExcels
-                    on eNodeb.ENodebId equals info.ENodebId into eNodebQuery
+                    on new { eNodeb.ENodebId, eNodeb.Name } equals new { info.ENodebId, info.Name } into eNodebQuery
                 from eq in eNodebQuery.DefaultIfEmpty()
                 where eq == null
                 select eNodeb.ENodebId;

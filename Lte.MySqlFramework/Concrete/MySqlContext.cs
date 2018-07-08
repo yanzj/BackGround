@@ -183,5 +183,11 @@ namespace Lte.MySqlFramework.Concrete
 
         public DbSet<ZhangshangyouCoverage> ZhangshangyouCoverages { get; set; }
 
+        public DbSet<CheckingProject> CheckingProjects { get; set; }
+
+        public DbSet<CheckingBasic> CheckingBasics { get; set; }
+
+        public DbSet<CheckingDetails> CheckingDetailses { get; set; }
+
     }
 }

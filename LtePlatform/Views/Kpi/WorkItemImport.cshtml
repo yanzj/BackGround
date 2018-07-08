@@ -16,13 +16,11 @@
 FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
         {
             <div class="form-group">
-                <label class="col-md-4 control-label">工单文件选择：</label>
+                <label class="col-md-3 control-label">工单文件选择：</label>
                 <div class="col-md-6">
                     <input name="workItem" class="form-control" type="file" accept=".xls, .xlsx" />
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
+                <div class="col-md-3">
                     <button type="submit" class="btn btn-primary">
                         <span class="glyphicon glyphicon-save"></span>导入文件
                     </button>
@@ -33,13 +31,11 @@ FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizonta
 FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
         {
             <div class="form-group">
-                <label class="col-md-4 control-label">故障工单文件选择：</label>
+                <label class="col-md-3 control-label">故障工单文件选择：</label>
                 <div class="col-md-6">
                     <input name="alarmWorkItem" class="form-control" type="file" accept=".xls, .xlsx" />
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
+                <div class="col-md-3">
                     <button type="submit" class="btn btn-primary">
                         <span class="glyphicon glyphicon-save"></span>导入文件
                     </button>
@@ -48,7 +44,20 @@ FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizonta
 }
             </div>
             <div class="col-md-6" ng-controller="workitem.import">
-                <div ng-include="'/appViews/Import/Precise/WorkItem.html'"></div>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            数据导入进度
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>
+                            <button class="btn btn-primary" ng-click="dumpItems()">一键导入</button>
+                            <button class="btn btn-danger" ng-disabled="totalDumpItems.length === 0" ng-click="clearItems()">清除导入</button>
+                        </p>
+                        <div ng-include="'/appViews/Import/ImportProgress.html'"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

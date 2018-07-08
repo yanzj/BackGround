@@ -10,6 +10,7 @@ using Lte.Domain.Excel;
 namespace LtePlatform.Controllers.Parameters
 {
     [ApiControl("新LTE Excel信息查询数据库")]
+    [ApiGroup("导入")]
     public class NewCellExcelsController : ApiController
     {
         private readonly BasicImportService _service;

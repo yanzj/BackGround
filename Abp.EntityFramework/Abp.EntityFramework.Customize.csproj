@@ -173,6 +173,9 @@
     <Compile Include="Entities\CdmaRegionStat.cs" />
     <Compile Include="Entities\CdmaRru.cs" />
     <Compile Include="Entities\Cell.cs" />
+    <Compile Include="Entities\CheckingBasic.cs" />
+    <Compile Include="Entities\CheckingDetails.cs" />
+    <Compile Include="Entities\CheckingProject.cs" />
     <Compile Include="Entities\College3GTestResults.cs" />
     <Compile Include="Entities\College3GTestView.cs" />
     <Compile Include="Entities\College4GTestResults.cs" />

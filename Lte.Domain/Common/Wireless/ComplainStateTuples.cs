@@ -19,7 +19,10 @@ namespace Lte.Domain.Common.Wireless
         Archive,
         Resolved,
         Resolving,
-        NoResolve
+        NoResolve,
+        Normal,
+        Abnormal,
+        NoAppliance
     }
 
     public class ComplainStateDescriptionTransform : DescriptionTransform<ComplainState>
@@ -50,6 +53,9 @@ namespace Lte.Domain.Common.Wireless
                 new Tuple<object, string>(ComplainState.Resolved, "已解决"),
                 new Tuple<object, string>(ComplainState.Resolving, "处理中"),
                 new Tuple<object, string>(ComplainState.NoResolve, "无法解决"),
+                new Tuple<object, string>(ComplainState.Normal, "正常"),
+                new Tuple<object, string>(ComplainState.Abnormal, "异常"),
+                new Tuple<object, string>(ComplainState.NoAppliance, "无此设备"), 
             };
         }
     }
