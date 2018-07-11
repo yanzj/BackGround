@@ -316,7 +316,13 @@
     <Compile Include="Entities\AlarmWorkItemView.cs" />
     <Compile Include="Entities\AreaTestDateView.cs" />
     <Compile Include="Entities\AreaTestFileView.cs" />
-    <Compile Include="Entities\AreaTestInfoQuery.cs" />
+    <Compile Include="Entities\CheckingDetailsView.cs" />
+    <Compile Include="Entities\CheckingResultView.cs" />
+    <Compile Include="Migrations\201807110840367_Update_ComplainItem.cs" />
+    <Compile Include="Migrations\201807110840367_Update_ComplainItem.Designer.cs">
+      <DependentUpon>201807110840367_Update_ComplainItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Support\AreaTestInfoQuery.cs" />
     <Compile Include="Entities\CdmaCellView.cs" />
     <Compile Include="Entities\CdmaCompoundCellView.cs" />
     <Compile Include="Entities\CdmaRegionDateView.cs" />
@@ -387,10 +393,6 @@
     <Compile Include="Entities\VipDemandDto.cs" />
     <Compile Include="Entities\ZhangshangyouCoverageView.cs" />
     <Compile Include="Entities\ZhangshangyouQualityView.cs" />
-    <Compile Include="Migrations\201807060633392_Update1.cs" />
-    <Compile Include="Migrations\201807060633392_Update1.Designer.cs">
-      <DependentUpon>201807060633392_Update1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201807080300374_Add_Checking.cs" />
     <Compile Include="Migrations\201807080300374_Add_Checking.Designer.cs">
       <DependentUpon>201807080300374_Add_Checking.cs</DependentUpon>
@@ -405,11 +407,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807060633392_Update1.resx">
-      <DependentUpon>201807060633392_Update1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807080300374_Add_Checking.resx">
       <DependentUpon>201807080300374_Add_Checking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807110840367_Update_ComplainItem.resx">
+      <DependentUpon>201807110840367_Update_ComplainItem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

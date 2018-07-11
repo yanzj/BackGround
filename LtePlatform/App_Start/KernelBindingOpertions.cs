@@ -461,6 +461,8 @@ namespace LtePlatform
 
             ninjectKernel.Bind<ZhangshangyouCoverageRepository>().ToSelf();
 
+            ninjectKernel.Bind<CheckingService>().ToSelf();
+
         }
     }
 }

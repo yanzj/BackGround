@@ -1,17 +1,20 @@
 ﻿using System;
 using Abp.Domain.Entities;
 using Abp.EntityFramework.AutoMapper;
+using Lte.Domain.Common.Geo;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Excel;
+using Lte.Domain.Regular.Attributes;
 
 namespace Abp.EntityFramework.Entities
 {
-    [AutoMapFrom(typeof(ComplainDto), typeof(ComplainExcel))]
-    public class ComplainItem : Entity, IBeginDate, ITownId
+    [AutoMapFrom(typeof(ComplainDto), typeof(ComplainExcel), typeof(ComplainSupplyExcel))]
+    public class ComplainItem : Entity, IBeginDate, ITownId, IGeoPoint<double>
     {
         public string SerialNumber { get; set; }
 
+        [MemberDoc("客户电话")]
         public string SubscriberPhone { get; set; }
         
         public byte RepeatTimes { get; set; }
@@ -49,6 +52,7 @@ namespace Abp.EntityFramework.Entities
 
         [AutoMapPropertyResolve("ComplainSourceDescription", typeof(ComplainDto), typeof(ComplainSourceTransform))]
         [AutoMapPropertyResolve("SourceDescription", typeof(ComplainExcel), typeof(ComplainSourceTransform))]
+        [AutoMapPropertyResolve("SourceDescription", typeof(ComplainSupplyExcel), typeof(ComplainSourceTransform))]
         public ComplainSource ComplainSource { get; set; }
 
         public DateTime BeginTime { get; set; }
@@ -60,6 +64,8 @@ namespace Abp.EntityFramework.Entities
         public string RoadName { get; set; }
         
         public string BuildingName { get; set; }
+
+        public string FinishContents { get; set; }
 
         public string CauseLocation { get; set; }
 
@@ -85,14 +91,14 @@ namespace Abp.EntityFramework.Entities
         
         [AutoMapPropertyResolve("NetworkTypeDescription", typeof(ComplainDto), typeof(NetworkTypeTransform))]
         [AutoMapPropertyResolve("NetworkDescription", typeof(ComplainExcel), typeof(NetworkTypeTransform))]
+        [AutoMapPropertyResolve("NetworkDescription", typeof(ComplainSupplyExcel), typeof(NetworkTypeTransform))]
         public NetworkType NetworkType { get; set; }
 
         public string SitePosition { get; set; }
 
         [AutoMapPropertyResolve("IsIndoorDescription", typeof(ComplainDto), typeof(IndoorBoolTransform))]
+        [AutoMapPropertyResolve("IndoorDescription", typeof(ComplainSupplyExcel), typeof(IndoorBoolTransform))]
         public bool IsIndoor { get; set; }
-
-        public string IndoorDescription { get; set; }
 
         [AutoMapPropertyResolve("ComplainSceneDescription", typeof(ComplainDto), typeof(ComplainSceneTransform))]
         [AutoMapPropertyResolve("Scene", typeof(ComplainExcel), typeof(ComplainSceneTransform))]
@@ -100,9 +106,14 @@ namespace Abp.EntityFramework.Entities
 
         [AutoMapPropertyResolve("ComplainCategoryDescription", typeof(ComplainDto), typeof(ComplainCategoryTransform))]
         [AutoMapPropertyResolve("CategoryDescription", typeof(ComplainExcel), typeof(ComplainCategoryTransform))]
+        [AutoMapPropertyResolve("CategoryDescription", typeof(ComplainSupplyExcel), typeof(ComplainCategoryTransform))]
         public ComplainCategory ComplainCategory { get; set; }
 
         [AutoMapPropertyResolve("CurrentStateDescription", typeof(ComplainDto), typeof(ComplainStateTransform))]
+        [AutoMapPropertyResolve("CurrentStateDescription", typeof(ComplainSupplyExcel), typeof(ComplainStateTransform))]
         public ComplainState ComplainState { get; set; }
+
+        [AutoMapPropertyResolve("BaiduOffsetDescription", typeof(ComplainSupplyExcel), typeof(YesToBoolTransform))]
+        public bool IsBaiduOffset { get; set; }
     }
 }

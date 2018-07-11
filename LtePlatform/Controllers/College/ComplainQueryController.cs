@@ -9,6 +9,7 @@ using LtePlatform.Models;
 namespace LtePlatform.Controllers.College
 {
     [ApiControl("后端投诉工单基本查询控制器")]
+    [ApiGroup("投诉")]
     public class ComplainQueryController : ApiController
     {
         private readonly ComplainService _service;

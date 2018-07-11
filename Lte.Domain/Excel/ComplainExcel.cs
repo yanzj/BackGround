@@ -1,10 +1,12 @@
 using System;
+using Lte.Domain.Common.Geo;
 using Lte.Domain.Common.Types;
+using Lte.Domain.Common.Wireless;
 using Lte.Domain.Regular.Attributes;
 
 namespace Lte.Domain.Excel
 {
-    public class ComplainExcel : IBeginDate
+    public class ComplainExcel : IBeginDate, IGeoPoint<double>, ITownId
     {
         [ExcelColumn("工单编号")]
         public string SerialNumber { get; set; }
@@ -65,6 +67,9 @@ namespace Lte.Domain.Excel
 
         [ExcelColumn("联系地址")]
         public string ContactAddress { get; set; }
+
+        [ExcelColumn("归档内容")]
+        public string FinishContents { get; set; }
 
         [ExcelColumn("受理内容")]
         public string ComplainContents { get; set; }

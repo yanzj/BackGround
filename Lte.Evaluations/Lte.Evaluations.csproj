@@ -130,6 +130,7 @@
     <Compile Include="DataService\Basic\StationAntennaService.cs" />
     <Compile Include="DataService\Basic\StationInfoService.cs" />
     <Compile Include="DataService\Basic\StationRruService.cs" />
+    <Compile Include="DataService\College\CheckingService.cs" />
     <Compile Include="DataService\College\EmergencyCommunicationService.cs" />
     <Compile Include="DataService\College\VipDemandService.cs" />
     <Compile Include="DataService\Dt\AreaTestDateService.cs" />

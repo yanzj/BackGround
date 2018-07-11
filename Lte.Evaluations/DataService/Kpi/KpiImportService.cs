@@ -180,7 +180,7 @@ namespace Lte.Evaluations.DataService.Kpi
                     });
             var count2 =
                 _processRepository.Import<IComplainProcessRepository, ComplainProcess, OnlineSustainExcel>(stats);
-            return "完成在线支撑信息导入" + count + "条; " + "处理记录" + count2 + "条";
+            return "完成电子运维投诉信息导入" + count + "条; " + "处理记录" + count2 + "条";
         }
 
         public string ImportPlanningSite(string path)
