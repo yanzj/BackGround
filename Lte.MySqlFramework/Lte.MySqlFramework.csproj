@@ -318,13 +318,13 @@
     <Compile Include="Entities\AreaTestFileView.cs" />
     <Compile Include="Entities\CheckingDetailsView.cs" />
     <Compile Include="Entities\CheckingResultView.cs" />
-    <Compile Include="Migrations\201807110840367_Update_ComplainItem.cs" />
-    <Compile Include="Migrations\201807110840367_Update_ComplainItem.Designer.cs">
-      <DependentUpon>201807110840367_Update_ComplainItem.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201807111358386_Update_Vip.cs" />
     <Compile Include="Migrations\201807111358386_Update_Vip.Designer.cs">
       <DependentUpon>201807111358386_Update_Vip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807112224205_Update_Complain_Process.cs" />
+    <Compile Include="Migrations\201807112224205_Update_Complain_Process.Designer.cs">
+      <DependentUpon>201807112224205_Update_Complain_Process.cs</DependentUpon>
     </Compile>
     <Compile Include="Support\AreaTestInfoQuery.cs" />
     <Compile Include="Entities\CdmaCellView.cs" />
@@ -407,11 +407,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807110840367_Update_ComplainItem.resx">
-      <DependentUpon>201807110840367_Update_ComplainItem.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807111358386_Update_Vip.resx">
       <DependentUpon>201807111358386_Update_Vip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807112224205_Update_Complain_Process.resx">
+      <DependentUpon>201807112224205_Update_Complain_Process.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

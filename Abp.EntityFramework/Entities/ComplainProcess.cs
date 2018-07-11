@@ -64,5 +64,7 @@ namespace Abp.EntityFramework.Entities
         public string PlanSite { get; set; }
         
         public DateTime? ResolveDate { get; set; }
+
+        public string ContactInfo { get; set; }
     }
 }

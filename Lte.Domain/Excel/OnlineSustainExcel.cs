@@ -60,6 +60,9 @@ namespace Lte.Domain.Excel
         [ExcelColumn("联系电话")]
         public string ContactPhone { get; set; }
 
+        [ExcelColumn("联系信息")]
+        public string ContactInfo { get; set; }
+
         [ExcelColumn("协查单信息")]
         public string WorkItemNumber { get; set; }
         
