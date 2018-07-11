@@ -55,6 +55,7 @@ namespace Abp.EntityFramework.Entities
 
         [MemberDoc("用户是否接受")]
         [AutoMapPropertyResolve("UserAccept", typeof(VipProcessDto), typeof(YesToBoolTransform))]
+        [AutoMapPropertyResolve("UserAccept", typeof(VipDemandExcel), typeof(YesToBoolTransform))]
         public bool IsUserAccept { get; set; }
 
         [MemberDoc("未能联系用户，是否发短信给用户")]
@@ -72,7 +73,7 @@ namespace Abp.EntityFramework.Entities
 
         public string PicturePath { get; set; }
 
-        [MemberDoc("处理结果")]
+        [MemberDoc("现场人员反馈信息")]
         public string ProcessResult { get; set; }
 
         [MemberDoc("是否闭环")]

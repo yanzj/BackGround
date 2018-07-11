@@ -10,6 +10,9 @@ namespace Lte.Domain.Excel
         [ExcelColumn("日期")]
         public DateTime BeginDate { get; set; }
 
+        [ExcelColumn("工单编号")]
+        public string WorkItemNumber { get; set; }
+
         [ExcelColumn("是否录音")]
         public string Recording { get; set; }
 
@@ -48,6 +51,7 @@ namespace Lte.Domain.Excel
         [ExcelColumn("工号")]
         public string StaffId { get; set; }
 
+        [ExcelColumn("类型")]
         public string ComplainCategoryDescription { get; set; }
 
         [ExcelColumn("投诉地址")]
@@ -71,12 +75,27 @@ namespace Lte.Domain.Excel
         [ExcelColumn("后续跟进")]
         public string ProcessStageInfo { get; set; }
 
+        [ExcelColumn("联系用户的电话号码（我方）")]
+        public string ContactStaffPhoneNumber { get; set; }
+
+        [ExcelColumn("联系用户时间")]
+        public DateTime? ContactUserTime { get; set; }
+
+        [ExcelColumn("联系用户的人员（我方人员）")]
+        public string ContactStaffName { get; set; }
+        
         [ExcelColumn("未能联系用户，是否发短信给用户")]
         public string ShortMessageInfo { get; set; }
 
         public bool ShouldSendMessage => !string.IsNullOrEmpty(ShortMessageInfo) && ShortMessageInfo != "否";
 
-        [ExcelColumn("处理结果")]
+        [ExcelColumn("现场人员反馈信息")]
         public string ProcessResult { get; set; }
+
+        [ExcelColumn("用户是否接受")]
+        public string UserAccept { get; set; }
+
+        [ExcelColumn("短信格式（已做格式）")]
+        public string ShortMessageFormat { get; set; }
     }
 }

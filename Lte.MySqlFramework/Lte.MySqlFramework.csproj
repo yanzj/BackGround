@@ -322,6 +322,10 @@
     <Compile Include="Migrations\201807110840367_Update_ComplainItem.Designer.cs">
       <DependentUpon>201807110840367_Update_ComplainItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807111358386_Update_Vip.cs" />
+    <Compile Include="Migrations\201807111358386_Update_Vip.Designer.cs">
+      <DependentUpon>201807111358386_Update_Vip.cs</DependentUpon>
+    </Compile>
     <Compile Include="Support\AreaTestInfoQuery.cs" />
     <Compile Include="Entities\CdmaCellView.cs" />
     <Compile Include="Entities\CdmaCompoundCellView.cs" />
@@ -393,10 +397,6 @@
     <Compile Include="Entities\VipDemandDto.cs" />
     <Compile Include="Entities\ZhangshangyouCoverageView.cs" />
     <Compile Include="Entities\ZhangshangyouQualityView.cs" />
-    <Compile Include="Migrations\201807080300374_Add_Checking.cs" />
-    <Compile Include="Migrations\201807080300374_Add_Checking.Designer.cs">
-      <DependentUpon>201807080300374_Add_Checking.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\FlowQuerySupport.cs" />
@@ -407,11 +407,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807080300374_Add_Checking.resx">
-      <DependentUpon>201807080300374_Add_Checking.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807110840367_Update_ComplainItem.resx">
       <DependentUpon>201807110840367_Update_ComplainItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807111358386_Update_Vip.resx">
+      <DependentUpon>201807111358386_Update_Vip.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

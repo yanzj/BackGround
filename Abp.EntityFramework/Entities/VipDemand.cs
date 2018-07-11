@@ -12,6 +12,8 @@ namespace Abp.EntityFramework.Entities
     {
         public DateTime BeginDate { get; set; }
 
+        public string WorkItemNumber { get; set; }
+
         public bool IsRecording { get; set; }
 
         public string PhoneNumber { get; set; }
