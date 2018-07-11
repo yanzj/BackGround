@@ -59,6 +59,11 @@
                 {
                     <div dump-file-selector file-title="抱怨量工单文件选择：" tag="complain" file-type=".xls, .xlsx"></div>
                 }
+                @using (Html.BeginForm("ComplainSupportImport", "Kpi",
+                    FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    <div dump-file-selector file-title="抱怨量补充文件选择：" tag="complainSupply" file-type=".xls, .xlsx"></div>
+                }
                 @using (Html.BeginForm("VipDemandImport", "Kpi",
                     FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
                 {

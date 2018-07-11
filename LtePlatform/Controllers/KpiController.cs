@@ -97,6 +97,22 @@ namespace LtePlatform.Controllers
         }
 
         [HttpPost]
+        public ViewResult ComplainSupportImport()
+        {
+            var httpPostedFileBase = Request.Files["complainSupply"];
+            if (httpPostedFileBase == null || httpPostedFileBase.FileName == "")
+            {
+                ViewBag.ErrorMessage = "上传文件为空！请先上传文件。";
+            }
+            else
+            {
+                var path = httpPostedFileBase.UploadKpiFile();
+                ViewBag.Message = _importService.ImportComplainSupport(path);
+            }
+            return View("Import");
+        }
+
+        [HttpPost]
         public ViewResult BranchImport()
         {
             var httpPostedFileBase = Request.Files["branch"];

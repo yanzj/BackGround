@@ -137,6 +137,17 @@ namespace Lte.Evaluations.DataService.Kpi
             return "完成抱怨量信息导入" + count + "条";
         }
 
+        public string ImportComplainSupport(string path)
+        {
+            var factory = new ExcelQueryFactory { FileName = path };
+            var stats = (from c in factory.Worksheet<ComplainSupplyExcel>("Sheet1")
+                select c).ToList();
+            var count =
+                _complainItemRepository.UpdateOnlyMany<IComplainItemRepository, ComplainItem, ComplainSupplyExcel, Town>(
+                    stats, _towns);
+            return "完成抱怨量补充信息导入" + count + "条";
+        }
+
         public string ImportBranchDemand(string path)
         {
             var factory = new ExcelQueryFactory {FileName = path};

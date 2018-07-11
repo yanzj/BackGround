@@ -39,5 +39,10 @@ namespace Lte.MySqlFramework.Concrete
         {
             return FirstOrDefault(x => x.SerialNumber == stat.SerialNumber);
         }
+
+        public ComplainItem Match(ComplainSupplyExcel stat)
+        {
+            return FirstOrDefault(x => x.SerialNumber == stat.SerialNumber);
+        }
     }
 }

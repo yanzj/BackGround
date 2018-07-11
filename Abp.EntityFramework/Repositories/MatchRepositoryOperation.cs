@@ -105,6 +105,28 @@ namespace Abp.EntityFramework.Repositories
             return repository.SaveChanges();
         }
 
+        public static int UpdateOnlyMany<TRepository, TEntity, TExcel, TTown>(
+            this TRepository repository, IEnumerable<TExcel> stats, List<TTown> towns)
+            where TRepository : IRepository<TEntity>, IMatchRepository<TEntity, TExcel>, ISaveChanges
+            where TEntity : Entity, ITownId
+            where TTown : Entity, ITown
+            where TExcel : IDistrictTown
+        {
+            var count = 0;
+            foreach (var stat in stats)
+            {
+                var info = repository.Match(stat);
+                var town = towns.FirstOrDefault(x => x.DistrictName == stat.District && x.TownName == stat.Town);
+                var townId = town?.Id ?? -1;
+                if (info == null) continue;
+                info.TownId = townId;
+                Mapper.Map(stat, info);
+                count++;
+            }
+            repository.SaveChanges();
+            return count;
+        }
+
         public static int ImportOne<TRepository, TEntity, TDto>(this TRepository repository, TDto stat)
             where TRepository : IRepository<TEntity>, IMatchRepository<TEntity, TDto>, ISaveChanges
             where TEntity : Entity
