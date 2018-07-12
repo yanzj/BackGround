@@ -23,14 +23,10 @@ namespace Lte.Evaluations.DataService.Mr
       
         private readonly IMrGridKpiRepository _mrGridKpiRepository;
 
-        private readonly ITownRepository _townRepository;
-        private readonly MrGridService _mrGridService;
-
         private static Stack<NearestPciCell> NearestCells { get; set; }
 
         public NearestPciCellService(INearestPciCellRepository repository, ICellRepository cellRepository,
             IENodebRepository eNodebRepository, IAgisDtPointRepository agisRepository,
-            ITownRepository townRepository, IMrGridRepository mrGridRepository,
             IMrGridKpiRepository mrGridKpiRepository)
         {
             _repository = repository;
@@ -39,9 +35,6 @@ namespace Lte.Evaluations.DataService.Mr
             _agisRepository = agisRepository;
           
             _mrGridKpiRepository = mrGridKpiRepository;
-
-            _townRepository = townRepository;
-            _mrGridService = new MrGridService(mrGridRepository);
             
             if (NearestCells == null)
                 NearestCells = new Stack<NearestPciCell>();
@@ -53,7 +46,7 @@ namespace Lte.Evaluations.DataService.Mr
                 _repository.GetAllList(cellId, sectorId)
                     .Select(
                         x =>
-                            ((NearestPciCell) x).ConstructView(_eNodebRepository))
+                            x.ConstructView(_eNodebRepository))
                     .ToList();
         }
 
@@ -112,15 +105,6 @@ namespace Lte.Evaluations.DataService.Mr
 
         }
 
-        public void UploadMrGrids(StreamReader reader, string fileName)
-        {
-            var xml = new XmlDocument();
-            xml.Load(reader);
-            var districts = _townRepository.GetAllList().Select(x => x.DistrictName).Distinct();
-            var district = districts.FirstOrDefault(fileName.Contains);
-            _mrGridService.UploadMrGrids(xml, district, fileName);
-        }
-        
         public IEnumerable<AgisDtPoint> QueryAgisDtPoints(DateTime begin, DateTime end)
         {
             var points = _agisRepository.GetAllList(x => x.StatDate > begin && x.StatDate <= end);
@@ -169,19 +153,5 @@ namespace Lte.Evaluations.DataService.Mr
             return points;
         }
 
-        public IEnumerable<MrCoverageGridView> QueryCoverageGridViews(DateTime initialDate, string district)
-        {
-            return _mrGridService.QueryCoverageGridViews(initialDate, district);
-        }
-        
-        public IEnumerable<MrCompeteGridView> QueryCompeteGridViews(DateTime initialDate, string district,
-            string competeDescription)
-        {
-            var competeTuple =
-                WirelessConstants.EnumDictionary["AlarmCategory"].FirstOrDefault(x => x.Item2 == competeDescription);
-            var compete = (AlarmCategory?)competeTuple?.Item1;
-
-            return _mrGridService.QueryCompeteGridViews(initialDate, district, compete);
-        }
     }
 }

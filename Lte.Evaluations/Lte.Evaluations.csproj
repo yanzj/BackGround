@@ -203,6 +203,7 @@
     <Compile Include="DataService\Mr\AgpsService.cs" />
     <Compile Include="DataService\Mr\AgpsTownView.cs" />
     <Compile Include="DataService\Mr\DpiGridKpiService.cs" />
+    <Compile Include="DataService\Mr\MrGridKpiService.cs" />
     <Compile Include="DataService\Mr\TopCoverageStatService.cs" />
     <Compile Include="DataService\Mr\GridClusterService.cs" />
     <Compile Include="DataService\Mr\InterferenceMatrixService.cs" />

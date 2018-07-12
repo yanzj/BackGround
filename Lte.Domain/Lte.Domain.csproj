@@ -60,6 +60,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Geo\CdmaCellIdPair.cs" />
+    <Compile Include="Common\Geo\CdmaCellIdsContainer.cs" />
+    <Compile Include="Common\Geo\CellIdPair.cs" />
+    <Compile Include="Common\Geo\CellIdsContainer.cs" />
+    <Compile Include="Common\Geo\CollegeBtsIdsContainer.cs" />
+    <Compile Include="Common\Geo\CollegeCellNamesContainer.cs" />
+    <Compile Include="Common\Geo\CollegeENodebIdsContainer.cs" />
+    <Compile Include="Common\Geo\ENodebIdsContainer.cs" />
+    <Compile Include="Common\Geo\ENodebRangeContainer.cs" />
+    <Compile Include="Common\Geo\GeoGridPoint.cs" />
+    <Compile Include="Common\Geo\IGeoPointList.cs" />
+    <Compile Include="Common\Geo\IntRangeContainer.cs" />
+    <Compile Include="Common\Geo\SectorRangeContainer.cs" />
     <Compile Include="Common\Types\AutoMapConverterAttribute.cs" />
     <Compile Include="Common\Types\AutoMapPropertyResolveAttribute.cs" />
     <Compile Include="Common\Types\BigEndianBinaryReader.cs" />

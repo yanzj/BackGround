@@ -17,18 +17,21 @@ namespace LtePlatform.Controllers
         private readonly BasicImportService _basicImportService;
         private readonly AlarmsService _alarmsService;
         private readonly NearestPciCellService _neighborService;
+        private readonly MrGridService _mrGridService;
         private readonly FlowService _flowService;
         private readonly CoverageStatService _coverageService;
         private readonly ZhangshangyouQualityService _zhangshangyouQualityService;
         private readonly ZhangshangyouCoverageService _zhangshangyouCoverageService;
 
         public ParametersController(BasicImportService basicImportService, AlarmsService alarmsService,
-            NearestPciCellService neighborService, FlowService flowService, CoverageStatService coverageService,
+            NearestPciCellService neighborService, MrGridService mrGridService,
+            FlowService flowService, CoverageStatService coverageService,
             ZhangshangyouQualityService zhangshangyouQualityService, ZhangshangyouCoverageService zhangshangyouCoverageService)
         {
             _basicImportService = basicImportService;
             _alarmsService = alarmsService;
             _neighborService = neighborService;
+            _mrGridService = mrGridService;
             _flowService = flowService;
             _coverageService = coverageService;
             _zhangshangyouQualityService = zhangshangyouQualityService;
@@ -267,7 +270,7 @@ namespace LtePlatform.Controllers
                 ViewBag.Message = "共上传MR栅格信息文件" + neighborHw.Length + "个！";
                 foreach (var file in neighborHw)
                 {
-                    _neighborService.UploadMrGrids(new StreamReader(file.InputStream), file.FileName);
+                    _mrGridService.UploadMrGrids(new StreamReader(file.InputStream), file.FileName);
                 }
             }
             return View("NeighborImport");

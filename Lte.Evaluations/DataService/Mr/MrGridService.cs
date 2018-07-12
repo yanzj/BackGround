@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Xml;
 using Abp.EntityFramework.AutoMapper;
@@ -16,10 +17,12 @@ namespace Lte.Evaluations.DataService.Mr
     public class MrGridService
     {
         private readonly IMrGridRepository _repository;
+        private readonly ITownRepository _townRepository;
 
-        public MrGridService(IMrGridRepository repository)
+        public MrGridService(IMrGridRepository repository, ITownRepository townRepository)
         {
             _repository = repository;
+            _townRepository = townRepository;
         }
 
         public void UploadMrGrids(XmlDocument xml, string district, string fileName)
@@ -34,6 +37,15 @@ namespace Lte.Evaluations.DataService.Mr
                 _repository.Insert(item.MapTo<MrGrid>());
             }
             _repository.SaveChanges();
+        }
+
+        public void UploadMrGrids(StreamReader reader, string fileName)
+        {
+            var xml = new XmlDocument();
+            xml.Load(reader);
+            var districts = _townRepository.GetAllList().Select(x => x.DistrictName).Distinct();
+            var district = districts.FirstOrDefault(fileName.Contains);
+            UploadMrGrids(xml, district, fileName);
         }
 
         public IEnumerable<MrCoverageGridView> QueryCoverageGridViews(DateTime initialDate, string district)
@@ -87,6 +99,16 @@ namespace Lte.Evaluations.DataService.Mr
                     return boundaries.Aggregate(false, (current, boundary) => current || GeoMath.IsInPolygon(point, boundary));
                 });
             return stats.MapTo<IEnumerable<MrCompeteGridView>>();
+        }
+        
+        public IEnumerable<MrCompeteGridView> QueryCompeteGridViews(DateTime initialDate, string district,
+            string competeDescription)
+        {
+            var competeTuple =
+                WirelessConstants.EnumDictionary["AlarmCategory"].FirstOrDefault(x => x.Item2 == competeDescription);
+            var compete = (AlarmCategory?)competeTuple?.Item1;
+
+            return QueryCompeteGridViews(initialDate, district, compete);
         }
     }
 }

@@ -36,6 +36,11 @@ namespace Lte.Evaluations.DataService.Basic
                 : new List<ConstructionView>();
         }
 
+        public IEnumerable<ConstructionView> QueryByAntennaNum(string antennaNum)
+        {
+            return _repository.GetAllList(x => x.AntennaSerial == antennaNum).MapTo<IEnumerable<ConstructionView>>();
+        }
+
         public ConstructionView QueryByCellName(string cellName)
         {
             var item = _repository.FirstOrDefault(x => x.CellName == cellName);

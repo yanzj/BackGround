@@ -463,6 +463,8 @@ namespace LtePlatform
 
             ninjectKernel.Bind<CheckingService>().ToSelf();
 
+            ninjectKernel.Bind<MrGridKpiService>().ToSelf();
+
         }
     }
 }

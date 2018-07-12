@@ -47,6 +47,15 @@ namespace LtePlatform.Controllers.Parameters
         }
 
         [HttpGet]
+        [ApiDoc("根据天线编号查询记录")]
+        [ApiParameterDoc("antennaNum", "天线编号")]
+        [ApiResponse("符合条件的记录")]
+        public IEnumerable<ConstructionView> QueryByAntennaNum(string antennaNum)
+        {
+            return _service.QueryByAntennaNum(antennaNum);
+        }
+
+        [HttpGet]
         [ApiDoc("根据小区标识查询小区记录")]
         [ApiParameterDoc("cellName", "小区标识")]
         [ApiResponse("小区记录")]

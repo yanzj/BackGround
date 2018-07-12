@@ -328,6 +328,13 @@
     <Compile Include="Controllers\Kpi\MonthYuejiTrendController.cs" />
     <Compile Include="Controllers\Kpi\TopFeelingRateController.cs" />
     <Compile Include="Controllers\Mongo\UplinkOpenLoopPowerControlController.cs" />
+    <Compile Include="Controllers\Mr\AgpsMobileController.cs" />
+    <Compile Include="Controllers\Mr\AgpsTelecomController.cs" />
+    <Compile Include="Controllers\Mr\AgpsUnicomController.cs" />
+    <Compile Include="Controllers\Mr\DpiGridKpiController.cs" />
+    <Compile Include="Controllers\Mr\GridClusterController.cs" />
+    <Compile Include="Controllers\Mr\MrGridKpiController.cs" />
+    <Compile Include="Controllers\Mr\TownMrGridController.cs" />
     <Compile Include="Controllers\Parameters\CheckingResultController.cs" />
     <Compile Include="Controllers\Parameters\StationAntennaQueryController.cs" />
     <Compile Include="Controllers\Parameters\StationAntennaUpdateController.cs" />
