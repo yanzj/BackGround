@@ -8,10 +8,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Web;
 using System.Web.Mvc;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Regular;
 using Lte.Evaluations.DataService.Dump;
+using Lte.Parameters.Entities.Dt;
 
 namespace LtePlatform.Controllers
 {
@@ -230,28 +232,32 @@ namespace LtePlatform.Controllers
         }
 
         [HttpPost]
-        public ViewResult Dt4GImport()
+        public ViewResult Dt4GImport(HttpPostedFileBase[] dt4G)
         {
-            var httpPostedFileBase = Request.Files["dt4G"];
-            if (httpPostedFileBase == null || httpPostedFileBase.FileName == "")
+            if (dt4G == null || dt4G.Length <= 0 || string.IsNullOrEmpty(dt4G[0]?.FileName))
             {
                 ViewBag.ErrorMessage = "上传文件为空！请先上传文件。";
+                return View("Import");
             }
-            else
+
+            var date = DateTime.Today;
+            var paths = new List<string>();
+            var infos = new List<FileRecord4GCsv>();
+            foreach (var fileBase in dt4G)
             {
-                try
-                {
-                    var path = httpPostedFileBase.UploadKpiFile();
-                    var fields = path.GetSplittedFields('\\');
-                    var dir = fields[fields.Length - 1];
-                    var date = dir.GetDateFromFileName() ?? DateTime.Today;
-                    ViewBag.Message = _importService.ImportDt4GFile(path, date);
-                }
-                catch (Exception e)
-                {
-                    ViewBag.ErrorMessage = "读取文件出错，信息为：" + e.Message;
-                }
+                var path = fileBase.UploadKpiFile();
+                paths.Add(path);
+                var fields = path.GetSplittedFields('\\');
+                var dir = fields[fields.Length - 1];
+                var dirDate = dir.GetDateFromFileName();
+                if (date == DateTime.Today && dirDate != null)
+                    date = (DateTime) dirDate;
+                var data = _importService.ReadFileRecord4GCsvs(path);
+                if (data.Any())
+                    infos.AddRange(data);
             }
+            
+            ViewBag.Message = _importService.ImportDt4GFile(infos, paths, date);
             return View("Import");
         }
 
@@ -327,25 +333,6 @@ namespace LtePlatform.Controllers
         public ActionResult PreciseImport()
         {
             return View();
-        }
-
-        [HttpPost]
-        public ViewResult PrecisePost()
-        {
-            var message = new List<string>();
-            var httpPostedFileBase = Request.Files["preciseFile"];
-            if (httpPostedFileBase == null || httpPostedFileBase.FileName == "")
-            {
-                ViewBag.ErrorMessage = "上传文件为空！请先上传文件。";
-            }
-            else
-            {
-                var reader = new StreamReader(httpPostedFileBase.InputStream, Encoding.GetEncoding("GB2312"));
-                _preciseImportService.UploadItems(reader);
-                ViewBag.Message = "成功上传精确覆盖率文件" + httpPostedFileBase.FileName;
-            }
-            ViewBag.Message = message;
-            return View("PreciseImport");
         }
         
         public ActionResult WorkItemImport()

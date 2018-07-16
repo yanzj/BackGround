@@ -279,13 +279,12 @@ namespace LtePlatform.Controllers
         [HttpPost]
         public ActionResult HwFlowPost(HttpPostedFileBase[] flowHw)
         {
-            if (flowHw != null && flowHw.Length > 0 && !string.IsNullOrEmpty(flowHw[0]?.FileName))
+            if (flowHw == null || flowHw.Length <= 0 || string.IsNullOrEmpty(flowHw[0]?.FileName))
+                return View("NeighborImport");
+            ViewBag.Message = "共上传华为流量信息文件" + flowHw.Length + "个！";
+            foreach (var file in flowHw)
             {
-                ViewBag.Message = "共上传华为流量信息文件" + flowHw.Length + "个！";
-                foreach (var file in flowHw)
-                {
-                    _flowService.UploadFlowHuaweis(new StreamReader(file.InputStream, Encoding.GetEncoding("GB2312")));
-                }
+                _flowService.UploadFlowHuaweis(new StreamReader(file.InputStream, Encoding.GetEncoding("GB2312")));
             }
             return View("NeighborImport");
         }

@@ -150,7 +150,6 @@
     <Compile Include="Common\NeighborCellHwCsv.cs" />
     <Compile Include="Excel\OnlineSustainExcel.cs" />
     <Compile Include="Excel\PlanningSiteExcel.cs" />
-    <Compile Include="Excel\PreciseCoverage4GCsv.cs" />
     <Compile Include="Excel\StandarProblemExcel.cs" />
     <Compile Include="Excel\StationAntennaExcel.cs" />
     <Compile Include="Excel\StationDictionaryExcel.cs" />

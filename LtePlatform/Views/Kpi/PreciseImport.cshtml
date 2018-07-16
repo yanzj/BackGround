@@ -10,24 +10,6 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-md-6">
-                @{
-                    Html.RenderPartial("_AlertPanel");
-                    using (Html.BeginForm("PrecisePost", "Kpi",
-                        FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
-                    {
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">指标文件导入：</label>
-                            <div class="col-md-6">
-                                <input name="preciseFile" class="form-control" type="file" accept=".csv" />
-                            </div>
-                            <div class="col-md-2">
-                                <button type="submit" class="btn btn-primary">
-                                    <span class="glyphicon glyphicon-save"></span>导入
-                                </button>
-                            </div>
-                        </div>
-                    }
-                }
                 <p>
                     <button class="btn btn-primary" ng-click="dumpItems()">一键导入</button>
                     <button class="btn btn-info" ng-disabled="townPreciseViews.length === 0 && townMrsStats.length === 0 && topMrsStats.length === 0" 

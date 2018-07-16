@@ -36,7 +36,7 @@
                 @using (Html.BeginForm("Dt4GImport", "Kpi",
                     FormMethod.Post, new {enctype = "multipart/form-data", @class = "form-horizontal", role = "form"}))
                 {
-                    <div dump-file-selector file-title="4G测试文件选择：" tag="dt4G" file-type=".csv"></div>
+                    <div multiple-file-selector file-title="4G测试文件选择：" tag="dt4G" file-type=".csv"></div>
                 }
                 @using (Html.BeginForm("Dt4GDingliImport", "Kpi",
                 FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))

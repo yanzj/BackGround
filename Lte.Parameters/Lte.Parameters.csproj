@@ -234,6 +234,7 @@
     <Compile Include="Entities\Kpi\MrsTadvStat.cs" />
     <Compile Include="Entities\Kpi\NeighborRsrpView.cs" />
     <Compile Include="Entities\Kpi\PreciseMongo.cs" />
+    <Compile Include="Entities\Kpi\TopPrecise4GContainer.cs" />
     <Compile Include="Entities\Kpi\TownPreciseCoverage4GStat.cs" />
     <Compile Include="Entities\Kpi\TownPreciseView.cs" />
     <Compile Include="Entities\Neighbor\EutranInterFreqNCell.cs" />

@@ -48,24 +48,6 @@ namespace Lte.Evaluations.DataService.Kpi
                 PreciseCoverage4Gs = new Stack<PreciseCoverage4G>();
         }
 
-        public void UploadItems(StreamReader reader)
-        {
-            try
-            {
-                var items = CsvContext.Read<PreciseCoverage4GCsv>(reader, CsvFileDescription.CommaDescription).ToList();
-                var stats = Mapper.Map<List<PreciseCoverage4GCsv>, List<PreciseCoverage4G>>(items);
-                PreciseCoverage4Gs = new Stack<PreciseCoverage4G>();
-                foreach (var stat in stats)
-                {
-                    PreciseCoverage4Gs.Push(stat);
-                }
-            }
-            catch
-            {
-                // ignored
-            }
-        }
-
         public int UpdateItems(DateTime statDate)
         {
             var stats = _mongoRepository.GetAllList(statDate.Date);

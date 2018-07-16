@@ -562,55 +562,6 @@ namespace Lte.Evaluations.MapperService
             var statList = Mapper.Map<IEnumerable<AlarmStatHuawei>, List<AlarmStat>>(stats);
             Assert.AreEqual(statList.Count, count);
         }
-
-        [Test]
-        public void Test_PreciseCoverage4G()
-        {
-            var csv = new PreciseCoverage4GCsv
-            {
-                CellId = 12345,
-                SectorId = 23,
-                TotalMrs = 1000,
-                StatTime = new DateTime(2016, 7, 9),
-                FirstNeighborRate = 12.3,
-                SecondNeighborRate = 34.5,
-                ThirdNeighborRate = 56.7
-            };
-            var info = csv.MapTo<PreciseCoverage4G>();
-            info.CellId.ShouldBe(12345);
-            info.SectorId.ShouldBe((byte)23);
-            info.StatTime.ShouldBe(new DateTime(2016, 7, 9));
-            info.FirstRate.ShouldBe(12.3);
-            info.SecondRate.ShouldBe(34.5);
-            info.ThirdRate.ShouldBe(56.7);
-        }
-        
-        [TestCase("2015-2-2", 1, 2, 100, 0.33, 0.27, 0.19)]
-        [TestCase("2015-5-2", 11, 2, 1000, 0.43, 0.27, 0.19)]
-        [TestCase("2015-2-5", 1231, 2, 1001, 0.331, 0.227, 0.139)]
-        [TestCase("2015-4-21", 1855, 2, 1002, 0.33, 0.217, 0.119)]
-        public void Test_PreciseCoverage4G_Constructor(string statTime, int cellId, byte sectorId, int totalMrs, double firstRate,
-            double secondRate, double thirdRate)
-        {
-            var info = new PreciseCoverage4GCsv
-            {
-                StatTime = DateTime.Parse(statTime),
-                CellId = cellId,
-                SectorId = sectorId,
-                TotalMrs = totalMrs,
-                FirstNeighborRate = firstRate,
-                SecondNeighborRate = secondRate,
-                ThirdNeighborRate = thirdRate
-            };
-            var stat = Mapper.Map<PreciseCoverage4GCsv, PreciseCoverage4G>(info);
-            Assert.AreEqual(stat.StatTime, DateTime.Parse(statTime));
-            Assert.AreEqual(stat.CellId, cellId);
-            Assert.AreEqual(stat.SectorId, sectorId);
-            Assert.AreEqual(stat.TotalMrs, totalMrs);
-            Assert.AreEqual(stat.FirstNeighbors, (int)(totalMrs * firstRate) / 100);
-            Assert.AreEqual(stat.SecondNeighbors, (int)(totalMrs * secondRate) / 100);
-            Assert.AreEqual(stat.ThirdNeighbors, (int)(totalMrs * thirdRate) / 100);
-        }
         
     }
 

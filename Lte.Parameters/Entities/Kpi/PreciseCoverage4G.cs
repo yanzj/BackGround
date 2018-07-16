@@ -7,7 +7,6 @@ using Lte.Domain.Regular.Attributes;
 
 namespace Lte.Parameters.Entities.Kpi
 {
-    [AutoMapFrom(typeof(PreciseCoverage4GCsv))]
     public class PreciseCoverage4G : Entity
     {
         [ArraySumProtection]
@@ -56,12 +55,5 @@ namespace Lte.Parameters.Entities.Kpi
         public double ThirdRate => 100 * (double)ThirdNeighbors / TotalMrs;
 
         public double ThirdPreciseRate => 100 - ThirdRate;
-    }
-
-    public class TopPrecise4GContainer
-    {
-        public PreciseCoverage4G PreciseCoverage4G { get; set; }
-
-        public int TopDates { get; set; }
     }
 }

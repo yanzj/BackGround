@@ -265,11 +265,8 @@ namespace Lte.Evaluations.DataService.Kpi
             return "完成VoLTE路测文件导入：" + path + "(" + tableName + ")" + count + "条";
         }
 
-        public string ImportDt4GFile(string path, DateTime statDate)
+        public List<FileRecord4GCsv> ReadFileRecord4GCsvs(string path)
         {
-            bool fileExisted;
-            var tableName = _fileRecordRepository.GetFileNameExisted(path, out fileExisted);
-            if (fileExisted) return "数据文件已存在于数据库中。请确认是否正确。";
             var reader = new StreamReader(path, Encoding.GetEncoding("GB2312"));
             var infos = reader.GetFileRecord4GCsvs();
             if (infos == null)
@@ -278,20 +275,36 @@ namespace Lte.Evaluations.DataService.Kpi
                 if (infos == null)
                 {
                     infos = reader.GetFileRecord4GByHuawei();
-                    if (infos == null)
-                        throw new Exception("不是有效的4G数据文件！");
+                        
                 }
             }
             reader.Close();
-            var filterInfos =
-                infos.GetFoshanGeoPoints().ToList();
+            return infos != null ? infos.GetFoshanGeoPoints().ToList() : new List<FileRecord4GCsv>();
+        }
+
+        public string ImportDt4GFile(List<FileRecord4GCsv> filterInfos, List<string> paths, DateTime statDate)
+        {
             if (!filterInfos.Any()) return "无数据或格式错误！";
+            var filePath = string.Empty;
+            var tableName = "";
+            foreach (var path in paths)
+            {
+                tableName = _fileRecordRepository.GetFileNameExisted(path, out var fileExisted);
+                if (!fileExisted)
+                {
+                    filePath = path;
+                    break;
+                }
+            }
+
+            if (string.IsNullOrEmpty(filePath)) return "所有表格均存在于数据库中";
+            
             var statTime = filterInfos[0].StatTime.AddDays((statDate - DateTime.Today).Days);
             _dtFileInfoRepository.UpdateCsvFileInfo(tableName, statTime);
             var stats = filterInfos.MergeRecords();
             _rasterTestInfoRepository.UpdateRasterInfo(stats, tableName, "4G");
             var count = _fileRecordRepository.InsertFileRecord4Gs(stats, tableName);
-            return "完成4G路测文件导入：" + path + "(" + tableName + ")" + count + "条";
+            return "完成4G路测文件导入：" + filePath + "(" + tableName + ")" + count + "条";
         }
 
         public string ImportDt4GDingli(string path)
