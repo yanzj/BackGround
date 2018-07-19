@@ -10,8 +10,12 @@ namespace Lte.Domain.Common.Wireless
     [EnumTypeDescription(typeof(ENodebFactory), ENodebFactory.Others)]
     public enum ENodebFactory : byte
     {
-        PbO3,
-        FeAl,
+        Huawei,
+        Zte,
+        Bell,
+        Erisson,
+        Nokia,
+        Datang,
         Others
     }
 
@@ -33,8 +37,12 @@ namespace Lte.Domain.Common.Wireless
         {
             return new[]
             {
-                new Tuple<object, string>(ENodebFactory.PbO3, "铅酸电池"),
-                new Tuple<object, string>(ENodebFactory.FeAl, "铁铝电池")
+                new Tuple<object, string>(ENodebFactory.Huawei, "华为"),
+                new Tuple<object, string>(ENodebFactory.Zte, "中兴"),
+                new Tuple<object, string>(ENodebFactory.Bell, "贝尔"),
+                new Tuple<object, string>(ENodebFactory.Erisson, "爱立信"),
+                new Tuple<object, string>(ENodebFactory.Nokia, "诺基亚"),
+                new Tuple<object, string>(ENodebFactory.Datang, "大唐")
             };
         }
     }

@@ -16,6 +16,12 @@ namespace Lte.Domain.Excel
         [ExcelColumn("所属站址名称")]
         public string StationName { get; set; }
 
+        [ExcelColumn("所属铁塔站址编码")]
+        public string TowerStationNum { get; set; }
+
+        [ExcelColumn("所属铁塔站址名称")]
+        public string TowerStationName { get; set; }
+
         [ExcelColumn("区/市/县/旗")]
         public string StationDistrict { get; set; }
 
@@ -108,6 +114,12 @@ namespace Lte.Domain.Excel
 
         [ExcelColumn("启用日期")]
         public DateTime? OpenTime { get; set; }
+
+        [ExcelColumn("频段标识")]
+        public string BandClass { get; set; }
+
+        [ExcelColumn("业务类型")]
+        public string ServiceType { get; set; }
 
         [ExcelColumn("启用日期维护方式")]
         public string OpenTimeUpdateFunction { get; set; }

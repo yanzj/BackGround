@@ -83,29 +83,6 @@ namespace Lte.Domain.Regular
             return DateTime.ParseExact(dateTimeString, "yyyyMMdd", System.Globalization.CultureInfo.CurrentCulture);
         }
         
-        public static bool CheckContainsByReg(string source, string reg)
-        {
-            return Regex.Match(source, reg).Success;
-        }
-        
-        public static bool CheckStringByReg(string source, string reg)
-        {
-            var rg = new Regex(reg, RegexOptions.IgnoreCase);
-            return rg.IsMatch(source);
-        }
-        
-        public static string GetFirstStringByReg(string source, string reg)
-        {
-            return Regex.Match(source, reg).Groups[0].Value;
-        }
-        
-        public static List<string> GetStringByReg(string source, string reg)
-        {
-            var regex = Regex.Matches(source, reg);
-
-            return (from Match item in regex select item.Value).ToList();
-        }
-        
         public static string GetFirstNumberByString(string source)
         {
             return Regex.Match(source, @"\d+").Groups[0].Value;
@@ -241,7 +218,7 @@ namespace Lte.Domain.Regular
         /// <returns>手机号码合法返回true,反之不合法</returns>
         public static bool CheckMobilephoneByString(string source)
         {
-            var rg = new Regex(@"^[1]+[3,5,7,8]+\d{9}$");
+            var rg = new Regex(@"^[1]+[3,5,7,8,9]+\d{9}$");
             return rg.IsMatch(source);
         }
 
@@ -252,7 +229,7 @@ namespace Lte.Domain.Regular
         /// <returns>源字符串中手机号码</returns>
         public static string GetMobilephoneByString(string source)
         {
-            return Regex.Match(source, @"[1]+[3,5,7,8]+\d{9}").Groups[0].Value;
+            return Regex.Match(source, @"[1]+[3,5,7,8,9]+\d{9}").Groups[0].Value;
         }
 
         /// <summary>
@@ -260,7 +237,7 @@ namespace Lte.Domain.Regular
         /// </summary>
         /// <param name="source">待匹配字符串</param>
         /// <returns>身份证号码合法返回true,反之不合法</returns>
-        public static bool CheckIDCardByString(string source)
+        public static bool CheckIdCardByString(string source)
         {
             var rg = new Regex(@"^(^\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$");
             return rg.IsMatch(source);
@@ -271,7 +248,7 @@ namespace Lte.Domain.Regular
         /// </summary>
         /// <param name="source">源字符串</param>
         /// <returns>源字符串中身份证号码</returns>
-        public static string GetIDCardByString(string source)
+        public static string GetIdCardByString(string source)
         {
             return Regex.Match(source, @"(^\d{15}$|^\d{18}$|^\d{17}(\d|X|x))").Groups[0].Value;
         }

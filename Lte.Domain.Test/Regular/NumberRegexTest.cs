@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Lte.Domain.Common.Types;
+using Lte.Domain.Common.Wireless;
 using Lte.Domain.Regular;
 using NUnit.Framework;
 
@@ -13,9 +15,10 @@ namespace Lte.Domain.Test.Regular
     {
         [TestCase("440602197807150616", "440602197807150616")]
         [TestCase("44060219780715061X", "44060219780715061X")]
-        public void GetIDCardByStringTest(string source, string result)
+        [TestCase("12345", "")]
+        public void GetIdCardByStringTest(string source, string result)
         {
-            Assert.AreEqual(RegexService.GetIDCardByString(source), result);
+            Assert.AreEqual(RegexService.GetIdCardByString(source), result);
         }
 
         [TestCase("", 0)]
@@ -33,6 +36,15 @@ namespace Lte.Domain.Test.Regular
         public void TypeTest()
         {
             Assert.AreEqual(typeof(string), Type.GetType("System.String"));
+        }
+
+        [TestCase("OMC_4407.ENB_868575.RRU_51-1-1", "中兴", 51)]
+        [TestCase("OMC_4405.ENB_501642.RRU_1", "大唐", 1)]
+        [TestCase("OMC_4412.ENB_870204.RRU_0-60-0", "华为", 60)]
+        public void RackIdTest(string rruNumber, string factory, int rackId)
+        {
+            var resultId = rruNumber.GetRruRackId(factory.GetEnumType<ENodebFactory>());
+            Assert.AreEqual(rackId, resultId);
         }
     }
 }

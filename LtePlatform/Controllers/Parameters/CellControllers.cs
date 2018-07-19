@@ -8,6 +8,7 @@ using Lte.Evaluations.ViewModels.Precise;
 namespace LtePlatform.Controllers.Parameters
 {
     [ApiControl("LTE小区有关的控制器")]
+    [ApiGroup("基础信息")]
     public class CellController : ApiController
     {
         private readonly CellService _service;

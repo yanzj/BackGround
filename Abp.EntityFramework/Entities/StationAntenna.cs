@@ -29,6 +29,12 @@ namespace Abp.EntityFramework.Entities
         [MemberDoc("站内天线编号")]
         public int LocalAntennaId { get; set; }
 
+        [MemberDoc("所属铁塔站址编码")]
+        public string TowerStationNum { get; set; }
+
+        [MemberDoc("所属铁塔站址名称")]
+        public string TowerStationName { get; set; }
+
         [MemberDoc("区/市/县/旗")]
         public string StationDistrict { get; set; }
 

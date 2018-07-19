@@ -5,6 +5,7 @@ using Lte.Domain.Common.Geo;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Excel;
+using Lte.Domain.Regular;
 using Lte.Domain.Regular.Attributes;
 
 namespace Abp.EntityFramework.Entities
@@ -16,11 +17,19 @@ namespace Abp.EntityFramework.Entities
         [MemberDoc("RRU标识")]
         public string RruSerialNum { get; set; }
 
+        public int RackId => RruSerialNum.GetRruRackId(ENodebFactory);
+
         [MemberDoc("所属站址编码")]
         public string StationNum { get; set; }
 
         [MemberDoc("所属站址名称")]
         public string StationName { get; set; }
+
+        [MemberDoc("所属铁塔站址编码")]
+        public string TowerStationNum { get; set; }
+
+        [MemberDoc("所属铁塔站址名称")]
+        public string TowerStationName { get; set; }
 
         [MemberDoc("所属eNBID")]
         public int ENodebId { get; set; }
@@ -48,6 +57,9 @@ namespace Abp.EntityFramework.Entities
 
         [MemberDoc("网格")]
         public string Grid { get; set; }
+
+        [MemberDoc("RRU名称")]
+        public string RruName { get; set; }
 
         [MemberDoc("厂家")]
         [AutoMapPropertyResolve("ENodebFactoryDescription", typeof(StationRruExcel), typeof(ENodebFactoryTransform))]
@@ -133,6 +145,8 @@ namespace Abp.EntityFramework.Entities
 
         [MemberDoc("启用日期")]
         public DateTime? UsingDate { get; set; }
+
+        public FrequencyBandType FrequencyBandType { get; set; }
 
         [MemberDoc("备注")]
         public string Comments { get; set; }

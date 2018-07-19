@@ -76,6 +76,8 @@ namespace Lte.Evaluations.ViewModels.Precise
             => "PCI: " + Pci + "; PRACH: " + Prach + "; RS Power(dBm): " + RsPower + "; TAC: " +
                Tac + "; ENodebId: " + ENodebId;
 
+        [MemberDoc(" «∑Ò‘⁄”√")]
+        public bool IsInUse { get; set; }
 
         public static CellView ConstructView(Cell cell, IENodebRepository repository)
         {

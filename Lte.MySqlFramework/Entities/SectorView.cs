@@ -45,5 +45,9 @@ namespace Lte.MySqlFramework.Entities
 
         [MemberDoc("其他信息")]
         public string OtherInfos { get; set; }
+
+        [MemberDoc("是否在用")]
+        public bool IsInUse { get; set; }
+
     }
 }

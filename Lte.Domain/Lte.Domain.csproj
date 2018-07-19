@@ -111,7 +111,10 @@
     <Compile Include="Common\Types\YesNoTransform.cs" />
     <Compile Include="Common\Types\YesToBoolTransform.cs" />
     <Compile Include="Common\Types\ZeroBoolTransform.cs" />
+    <Compile Include="Common\Wireless\FrequencyBandType.cs" />
     <Compile Include="Common\Wireless\OrderFeelingRatePolicy.cs" />
+    <Compile Include="Common\Wireless\RectangleRange.cs" />
+    <Compile Include="Common\Wireless\RegionType.cs" />
     <Compile Include="Common\Wireless\TestTypeTuples.cs" />
     <Compile Include="Common\ZhangshangyouCoverageCsv.cs" />
     <Compile Include="Common\ZhangshangyouQualityCsv.cs" />
@@ -170,7 +173,7 @@
     <Compile Include="Common\Wireless\AlarmLevelTuples.cs" />
     <Compile Include="Common\Wireless\AlarmTypeTuples.cs" />
     <Compile Include="Common\Wireless\AntennaBeautyTuples.cs" />
-    <Compile Include="Common\Wireless\AntennaDefs.cs" />
+    <Compile Include="Common\Wireless\FrequencyBandDef.cs" />
     <Compile Include="Common\Wireless\AntennaDirectionTuples.cs" />
     <Compile Include="Common\Wireless\AntennaFactoryTuples.cs" />
     <Compile Include="Common\Wireless\AntennaPolarTuples.cs" />

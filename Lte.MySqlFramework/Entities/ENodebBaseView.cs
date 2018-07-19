@@ -25,6 +25,12 @@ namespace Lte.MySqlFramework.Entities
         [MemberDoc("所属站址名称")]
         public string StationName { get; set; }
 
+        [MemberDoc("所属铁塔站址编码")]
+        public string TowerStationNum { get; set; }
+
+        [MemberDoc("所属铁塔站址名称")]
+        public string TowerStationName { get; set; }
+
         [MemberDoc("区/市/县/旗")]
         public string StationDistrict { get; set; }
 
@@ -111,6 +117,12 @@ namespace Lte.MySqlFramework.Entities
 
         [MemberDoc("启用日期维护方式")]
         public string OpenTimeUpdateFunction { get; set; }
-        
+
+        [MemberDoc("频段标识")]
+        public string BandClass { get; set; }
+
+        [MemberDoc("业务类型")]
+        public string ServiceType { get; set; }
+
     }
 }

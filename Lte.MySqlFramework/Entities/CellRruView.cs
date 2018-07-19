@@ -89,5 +89,7 @@ namespace Lte.MySqlFramework.Entities
         [MemberDoc("天线型号")]
         public string AntennaModel { get; set; }
 
+        [MemberDoc("是否在用")]
+        public bool IsInUse { get; set; } = true;
     }
 }

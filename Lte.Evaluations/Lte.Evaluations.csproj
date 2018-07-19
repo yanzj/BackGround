@@ -219,12 +219,14 @@
     <Compile Include="DataService\Switch\GeneralFlowQuery.cs" />
     <Compile Include="DataService\Switch\HuaweiCellMongoQuery.cs" />
     <Compile Include="DataService\Switch\HuaweiENodebMongoQuery.cs" />
+    <Compile Include="DataService\Switch\HuaweiIntraFreqCellQuery.cs" />
     <Compile Include="DataService\Switch\IMongoQuery.cs" />
     <Compile Include="DataService\Switch\InterFreqHoService.cs" />
     <Compile Include="DataService\Switch\IntraFreqHoService.cs" />
     <Compile Include="DataService\Switch\UlOpenLoopPcService.cs" />
     <Compile Include="DataService\Switch\ZteGeneralENodebQuery.cs" />
     <Compile Include="DataService\Dt\TownTestInfoService.cs" />
+    <Compile Include="DataService\Switch\ZteIntraFreqCellQuery.cs" />
     <Compile Include="MapperSerive\TopCellQueriesService.cs" />
     <Compile Include="Policy\MyAssemblyFinder.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

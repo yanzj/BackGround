@@ -50,6 +50,15 @@ namespace LtePlatform.Controllers.Parameters
         }
 
         [HttpGet]
+        [ApiDoc("根据小区标识查询对应的记录")]
+        [ApiParameterDoc("cellNum", "所属小区标识")]
+        [ApiResponse("所属小区标识对应的记录")]
+        public IndoorDistributionView QueryByCellNum(string cellNum)
+        {
+            return _service.QueryByCellNum(cellNum);
+        }
+
+        [HttpGet]
         [ApiDoc("根据站点编号查询记录")]
         [ApiParameterDoc("stationNum", "站点编号")]
         [ApiResponse("符合条件的记录")]

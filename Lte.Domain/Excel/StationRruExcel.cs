@@ -16,6 +16,12 @@ namespace Lte.Domain.Excel
         [ExcelColumn("所属站址名称")]
         public string StationName { get; set; }
 
+        [ExcelColumn("所属铁塔站址编码")]
+        public string TowerStationNum { get; set; }
+
+        [ExcelColumn("所属铁塔站址名称")]
+        public string TowerStationName { get; set; }
+
         [ExcelColumn("所属eNBID")]
         public int ENodebId { get; set; }
 
@@ -42,6 +48,9 @@ namespace Lte.Domain.Excel
 
         [ExcelColumn("网格")]
         public string Grid { get; set; }
+
+        [ExcelColumn("RRU名称")]
+        public string RruName { get; set; }
 
         [ExcelColumn("厂家")]
         public string ENodebFactoryDescription { get; set; }
@@ -117,6 +126,40 @@ namespace Lte.Domain.Excel
 
         [ExcelColumn("启用日期")]
         public DateTime? UsingDate { get; set; }
+
+        [ExcelColumn("频段标识")]
+        public string BandClass { get; set; }
+
+        [ExcelColumn("业务类型")]
+        public string ServiceType { get; set; }
+
+        public FrequencyBandType FrequencyBandType
+        {
+            get
+            {
+                switch (BandClass)
+                {
+                    case "1.8G":
+                        return FrequencyBandType.Band1800;
+                    case "2.1G":
+                        return FrequencyBandType.Band2100;
+                    case "2.6G":
+                        return FrequencyBandType.Tdd2600;
+                    case "800M":
+                        switch (ServiceType)
+                        {
+                            case "LTE":
+                                return FrequencyBandType.Band800VoLte;
+                            case "NB-IoT":
+                                return FrequencyBandType.Band800NbIot;
+                            default:
+                                return FrequencyBandType.Undefined;
+                        }
+                    default:
+                        return FrequencyBandType.Undefined;
+                }
+            }
+        }
 
         [ExcelColumn("备注")]
         public string Comments { get; set; }

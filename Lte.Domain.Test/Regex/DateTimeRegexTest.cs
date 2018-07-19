@@ -68,6 +68,7 @@ namespace Lte.Domain.Test.Regex
 
         [TestCase("20160110221500小区干扰矩阵.txt", "2016/1/10 0:00:00")]
         [TestCase("20180307_757_499712_1", "2018/3/7 0:00:00")]
+        [TestCase("20180718", "2018/7/18 0:00:00")]
         public void Test_GetDateFromFileName(string source, string result)
         {
             Assert.AreEqual(source.GetDateFromFileName().ToString(), result);

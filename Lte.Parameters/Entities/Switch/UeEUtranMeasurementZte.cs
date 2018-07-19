@@ -1,5 +1,7 @@
-﻿using Abp.Domain.Entities;
+﻿using System;
+using Abp.Domain.Entities;
 using Abp.EntityFramework.Dependency;
+using Lte.Domain.Regular;
 using MongoDB.Bson;
 
 namespace Lte.Parameters.Entities.Switch
@@ -20,6 +22,8 @@ namespace Lte.Parameters.Entities.Switch
         public string lastModifedTime { get; set; }
 
         public string iDate { get; set; }
+
+        public DateTime? UpdateDate => iDate.GetDateFromFileName();
 
         public string parentLDN { get; set; }
 

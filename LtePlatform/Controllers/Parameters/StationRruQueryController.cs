@@ -53,7 +53,7 @@ namespace LtePlatform.Controllers.Parameters
         [ApiDoc("根据所属小区标识查询对应的记录")]
         [ApiParameterDoc("serialNum", "所属小区标识")]
         [ApiResponse("所属小区标识对应的记录")]
-        public StationRruView GetBySerial(string serialNum)
+        public IEnumerable<StationRruView> GetBySerial(string serialNum)
         {
             return _service.QueryBySerialNum(serialNum);
         }
@@ -65,6 +65,16 @@ namespace LtePlatform.Controllers.Parameters
         public StationRruView GetByRruName(string rruNum)
         {
             return _service.QueryByRruNum(rruNum);
+        }
+
+        [HttpGet]
+        [ApiDoc("根据基站编号和机框编号查询对应的记录")]
+        [ApiParameterDoc("eNodebId", "基站编号")]
+        [ApiParameterDoc("rackId", "机框编号")]
+        [ApiResponse("所属标识对应的记录")]
+        public StationRruView QueryByENodebIdAndRackId(int eNodebId, int rackId)
+        {
+            return _service.QueryByENodebIdAndRackId(eNodebId, rackId);
         }
     }
 }

@@ -161,7 +161,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\Basic\MongoRepositories.cs" />
+    <Compile Include="Abstract\Basic\ICellDlpcPdschPaRepository.cs" />
+    <Compile Include="Abstract\Basic\ICellUlpcCommRepository.cs" />
+    <Compile Include="Abstract\Basic\IEUtranCellFDDZteRepository.cs" />
+    <Compile Include="Abstract\Basic\IPDSCHCfgRepository.cs" />
+    <Compile Include="Abstract\Basic\IPowerControlDLZteRepository.cs" />
+    <Compile Include="Abstract\Basic\IPowerControlULZteRepository.cs" />
+    <Compile Include="Abstract\Basic\IPrachFDDZteRepository.cs" />
+    <Compile Include="Abstract\Basic\ICellHuaweiMongoRepository.cs" />
     <Compile Include="Abstract\Infrastructure\IExternalEUtranCellFDDZteRepository.cs" />
     <Compile Include="Abstract\Infrastructure\RegionRepositories.cs" />
     <Compile Include="Abstract\Kpi\MrMongoInterfaces.cs" />
@@ -241,12 +248,23 @@
     <Compile Include="Entities\Neighbor\EutranInterNFreq.cs" />
     <Compile Include="Entities\Neighbor\NearestPciCell.cs" />
     <Compile Include="Entities\Kpi\PreciseCoverage4G.cs" />
+    <Compile Include="Entities\Switch\CellInterFreqHoView.cs" />
+    <Compile Include="Entities\Switch\CellIntraFreqHoView.cs" />
     <Compile Include="Entities\Switch\CellMeasGroupZte.cs" />
+    <Compile Include="Entities\Switch\ENodebInterFreqHoView.cs" />
+    <Compile Include="Entities\Switch\ENodebIntraFreqHoView.cs" />
     <Compile Include="Entities\Switch\EUtranCellMeasurementZte.cs" />
+    <Compile Include="Entities\Switch\IHoEventView.cs" />
+    <Compile Include="Entities\Switch\InterFreqEventA1.cs" />
+    <Compile Include="Entities\Switch\InterFreqEventA2.cs" />
+    <Compile Include="Entities\Switch\InterFreqEventA3.cs" />
+    <Compile Include="Entities\Switch\InterFreqEventA4.cs" />
+    <Compile Include="Entities\Switch\InterFreqEventA5.cs" />
     <Compile Include="Entities\Switch\InterFreqHoGroup.cs" />
+    <Compile Include="Entities\Switch\InterRatHoComm.cs" />
     <Compile Include="Entities\Switch\IntraFreqHoGroup.cs" />
     <Compile Include="Entities\Switch\IZteMeasGroup.cs" />
-    <Compile Include="Entities\Switch\HoEntities.cs" />
+    <Compile Include="Entities\Switch\IntraRatHoComm.cs" />
     <Compile Include="Entities\Switch\UeEUtranMeasurementZte.cs" />
     <Compile Include="Migrations\201708250351322_Infrastructure_Change.cs" />
     <Compile Include="Migrations\201708250351322_Infrastructure_Change.Designer.cs">

@@ -38,18 +38,25 @@ namespace Lte.Evaluations.DataService.Basic
                     .MapTo<IEnumerable<StationRruView>>();
         }
 
-        public StationRruView QueryBySerialNum(string serialNum)
+        public IEnumerable<StationRruView> QueryBySerialNum(string serialNum)
         {
-            var item =
-                _repository.FirstOrDefault(x => x.CellSerialNum == serialNum);
-            return item == null ? null : item .MapTo<StationRruView>();
+            var items =
+                _repository.GetAllList(x => x.CellSerialNum.Contains(serialNum));
+            return items.MapTo<IEnumerable<StationRruView>>();
         }
 
         public StationRruView QueryByRruNum(string rruNum)
         {
             var item =
                 _repository.FirstOrDefault(x => x.RruSerialNum == rruNum);
-            return item == null ? null : item.MapTo<StationRruView>();
+            return item?.MapTo<StationRruView>();
+        }
+
+        public StationRruView QueryByENodebIdAndRackId(int eNodebId, int rackId)
+        {
+            var items = _repository.GetAllList(x => x.ENodebId == eNodebId);
+            var item = items.FirstOrDefault(x => x.RackId == rackId);
+            return item?.MapTo<StationRruView>();
         }
 
         public bool UpdateBasicInfo(string rruNum, string eNodebFactoryDescription, string duplexingDescription,

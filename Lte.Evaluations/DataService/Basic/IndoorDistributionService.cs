@@ -41,8 +41,15 @@ namespace Lte.Evaluations.DataService.Basic
         public IndoorDistributionView QueryByRruNum(string rruNum)
         {
             var item =
-                _repository.FirstOrDefault(x => x.RruSerialNum == rruNum);
-            return item == null ? null : item.MapTo<IndoorDistributionView>();
+                _repository.FirstOrDefault(x => x.RruSerialNum.Contains(rruNum));
+            return item?.MapTo<IndoorDistributionView>();
+        }
+
+        public IndoorDistributionView QueryByCellNum(string cellNum)
+        {
+            var item =
+                _repository.FirstOrDefault(x => x.CellSerialNum.Contains(cellNum));
+            return item?.MapTo<IndoorDistributionView>();
         }
 
         public IEnumerable<IndoorDistributionView> QueryByStationNum(string stationNum)
@@ -57,7 +64,7 @@ namespace Lte.Evaluations.DataService.Basic
                     .Aggregate((a, b) => a.Concat(b).ToList()).MapTo<IEnumerable<IndoorDistributionView>>()
                 : new List<IndoorDistributionView>();
         }
-
+        
         public bool UpdatePositionInfo(string serialNumber, string address, double longtitute, double lattitute,
             string indoorCategoryDescription, string checkingAddress)
         {

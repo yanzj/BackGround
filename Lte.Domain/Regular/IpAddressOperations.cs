@@ -1,5 +1,6 @@
 ﻿using System;
 using Lte.Domain.Common.Types;
+using Lte.Domain.Common.Wireless;
 
 namespace Lte.Domain.Regular
 {
@@ -20,6 +21,26 @@ namespace Lte.Domain.Regular
             address.IpByte3 = Convert.ToByte(parts[2]);
             address.IpByte4 = Convert.ToByte(parts[3]);
             return true;
+        }
+
+        public static int GetRruRackId(this string rruNumber, ENodebFactory factory)
+        {
+            var fields = rruNumber.GetSplittedFields('_');
+            if (fields.Length == 0) return 0;
+            var rackField = fields[fields.Length - 1];
+            switch (factory)
+            {
+                case ENodebFactory.Datang:
+                    return rackField.ConvertToInt(0);
+                case ENodebFactory.Zte:
+                    var zteFields = rackField.GetSplittedFields('-');
+                    return zteFields.Length == 0 ? 0 : zteFields[0].ConvertToInt(0);
+                case ENodebFactory.Huawei:
+                    var huaweiFields = rackField.GetSplittedFields('-');
+                    return huaweiFields.Length < 2 ? 0 : huaweiFields[1].ConvertToInt(0);
+                default:
+                    return 0;
+            }
         }
     }
 }

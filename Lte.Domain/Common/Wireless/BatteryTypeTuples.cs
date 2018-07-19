@@ -10,12 +10,8 @@ namespace Lte.Domain.Common.Wireless
     [EnumTypeDescription(typeof(BatteryType), BatteryType.Others)]
     public enum BatteryType : byte
     {
-        Huawei,
-        Zte,
-        Bell,
-        Erisson,
-        Nokia,
-        Datang,
+        PbO3,
+        FeAl,
         Others
     }
 
@@ -37,12 +33,8 @@ namespace Lte.Domain.Common.Wireless
         {
             return new[]
             {
-                new Tuple<object, string>(BatteryType.Huawei, "华为"),
-                new Tuple<object, string>(BatteryType.Zte, "中兴"),
-                new Tuple<object, string>(BatteryType.Bell, "贝尔"),
-                new Tuple<object, string>(BatteryType.Erisson, "爱立信"),
-                new Tuple<object, string>(BatteryType.Nokia, "诺基亚"),
-                new Tuple<object, string>(BatteryType.Datang, "大唐")
+                new Tuple<object, string>(BatteryType.PbO3, "铅酸电池"),
+                new Tuple<object, string>(BatteryType.FeAl, "铁铝电池")
             };
         }
     }

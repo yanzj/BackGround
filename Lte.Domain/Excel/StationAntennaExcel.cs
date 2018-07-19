@@ -19,6 +19,12 @@ namespace Lte.Domain.Excel
         [ExcelColumn("站内天线编号")]
         public int LocalAntennaId { get; set; }
 
+        [ExcelColumn("所属铁塔站址编码")]
+        public string TowerStationNum { get; set; }
+
+        [ExcelColumn("所属铁塔站址名称")]
+        public string TowerStationName { get; set; }
+
         [ExcelColumn("区/市/县/旗")]
         public string StationDistrict { get; set; }
 

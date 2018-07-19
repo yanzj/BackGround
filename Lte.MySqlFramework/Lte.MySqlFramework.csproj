@@ -326,6 +326,10 @@
     <Compile Include="Migrations\201807112224205_Update_Complain_Process.Designer.cs">
       <DependentUpon>201807112224205_Update_Complain_Process.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807190903562_Update_Station.cs" />
+    <Compile Include="Migrations\201807190903562_Update_Station.Designer.cs">
+      <DependentUpon>201807190903562_Update_Station.cs</DependentUpon>
+    </Compile>
     <Compile Include="Support\AreaTestInfoQuery.cs" />
     <Compile Include="Entities\CdmaCellView.cs" />
     <Compile Include="Entities\CdmaCompoundCellView.cs" />
@@ -412,6 +416,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807112224205_Update_Complain_Process.resx">
       <DependentUpon>201807112224205_Update_Complain_Process.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807190903562_Update_Station.resx">
+      <DependentUpon>201807190903562_Update_Station.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

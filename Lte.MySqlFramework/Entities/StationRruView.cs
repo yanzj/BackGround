@@ -19,11 +19,20 @@ namespace Lte.MySqlFramework.Entities
         [MemberDoc("RRU标识")]
         public string RruSerialNum { get; set; }
 
+        [MemberDoc("框号")]
+        public int RackId { get; set; }
+
         [MemberDoc("所属站址编码")]
         public string StationNum { get; set; }
 
         [MemberDoc("所属站址名称")]
         public string StationName { get; set; }
+
+        [MemberDoc("所属铁塔站址编码")]
+        public string TowerStationNum { get; set; }
+
+        [MemberDoc("所属铁塔站址名称")]
+        public string TowerStationName { get; set; }
 
         [MemberDoc("所属eNBID")]
         public int ENodebId { get; set; }
@@ -36,7 +45,10 @@ namespace Lte.MySqlFramework.Entities
 
         [MemberDoc("乡/镇/街道")]
         public string StationTown { get; set; }
-        
+
+        [MemberDoc("RRU名称")]
+        public string RruName { get; set; }
+
         [MemberDoc("厂家")]
         [AutoMapPropertyResolve("ENodebFactory", typeof(StationRru), typeof(ENodebFactoryDescriptionTransform))]
         public string ENodebFactoryDescription { get; set; }
@@ -121,6 +133,8 @@ namespace Lte.MySqlFramework.Entities
 
         [MemberDoc("启用日期")]
         public DateTime? UsingDate { get; set; }
+
+        public FrequencyBandType FrequencyBandType { get; set; }
 
     }
 }
