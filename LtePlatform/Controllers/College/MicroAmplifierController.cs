@@ -1,5 +1,4 @@
 ﻿using Lte.Evaluations.DataService.College;
-using Lte.Evaluations.ViewModels.College;
 using Lte.MySqlFramework.Entities;
 using LtePlatform.Models;
 using System.Collections.Generic;

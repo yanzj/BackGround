@@ -1,6 +1,5 @@
 ﻿using Abp.EntityFramework.AutoMapper;
 using AutoMapper;
-using Lte.Evaluations.ViewModels.College;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Entities;
 using Lte.Parameters.Abstract.Kpi;
@@ -13,6 +12,7 @@ using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Regular;
 using Lte.Evaluations.ViewModels.Precise;
+using Lte.MySqlFramework.Support;
 
 namespace Lte.Evaluations.DataService.College
 {

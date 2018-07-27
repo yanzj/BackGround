@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Abp.EntityFramework.Entities;
 using Lte.Evaluations.DataService.College;
-using Lte.Evaluations.ViewModels.College;
+using Lte.MySqlFramework.Support;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.College

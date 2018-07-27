@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Lte.Parameters.Entities.Channel;
+using Abp.EntityFramework.Channel;
 
-namespace Lte.Evaluations.DataService.Mr
+namespace Lte.Parameters.Entities.Channel
 {
     public class AgpsTownView
     {

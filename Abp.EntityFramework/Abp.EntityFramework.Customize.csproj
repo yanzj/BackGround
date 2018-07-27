@@ -146,6 +146,10 @@
     <Compile Include="AutoMapper\AutoMapperHelper.cs" />
     <Compile Include="AutoMapper\AutoMapToAttribute.cs" />
     <Compile Include="AutoMapper\ENodebExcelTransform.cs" />
+    <Compile Include="Channel\AgpsMongo.cs" />
+    <Compile Include="Channel\CellUlpcComm.cs" />
+    <Compile Include="Channel\Pdsch.cs" />
+    <Compile Include="Channel\PDSCHCfg.cs" />
     <Compile Include="Dependency\HuaweiRepositoryQueries.cs" />
     <Compile Include="Dependency\IHuaweiCellMongo.cs" />
     <Compile Include="Dependency\IHuaweiMongo.cs" />

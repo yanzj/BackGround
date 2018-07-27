@@ -318,10 +318,6 @@
     <Compile Include="Entities\AreaTestFileView.cs" />
     <Compile Include="Entities\CheckingDetailsView.cs" />
     <Compile Include="Entities\CheckingResultView.cs" />
-    <Compile Include="Migrations\201807111358386_Update_Vip.cs" />
-    <Compile Include="Migrations\201807111358386_Update_Vip.Designer.cs">
-      <DependentUpon>201807111358386_Update_Vip.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201807112224205_Update_Complain_Process.cs" />
     <Compile Include="Migrations\201807112224205_Update_Complain_Process.Designer.cs">
       <DependentUpon>201807112224205_Update_Complain_Process.cs</DependentUpon>
@@ -403,6 +399,7 @@
     <Compile Include="Entities\ZhangshangyouQualityView.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Support\CollegeStat.cs" />
     <Compile Include="Support\FlowQuerySupport.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -411,9 +408,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807111358386_Update_Vip.resx">
-      <DependentUpon>201807111358386_Update_Vip.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807112224205_Update_Complain_Process.resx">
       <DependentUpon>201807112224205_Update_Complain_Process.cs</DependentUpon>
     </EmbeddedResource>

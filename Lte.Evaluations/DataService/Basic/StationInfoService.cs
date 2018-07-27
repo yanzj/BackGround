@@ -14,10 +14,13 @@ namespace Lte.Evaluations.DataService.Basic
     public class StationInfoService
     {
         private readonly IStationDictionaryRepository _repository;
+        private readonly IENodebBaseRepository _eNodebBaseRepository;
 
-        public StationInfoService(IStationDictionaryRepository repository)
+        public StationInfoService(IStationDictionaryRepository repository,
+            IENodebBaseRepository eNodebBaseRepository)
         {
             _repository = repository;
+            _eNodebBaseRepository = eNodebBaseRepository;
         }
 
         public bool UpdateStationPosition(string serialNum, double longtitute, double lattitute, string address)
@@ -87,6 +90,14 @@ namespace Lte.Evaluations.DataService.Basic
         public StationDictionaryView QueryOneByStationName(string stationName)
         {
             return _repository.FirstOrDefault(x => x.ElementName.Contains(stationName)).MapTo<StationDictionaryView>();
+        }
+
+        public StationDictionaryView QueryOneByENodebId(int eNodebId)
+        {
+            var eNodeb = _eNodebBaseRepository.FirstOrDefault(x => x.ENodebId == eNodebId);
+            return eNodeb == null
+                ? null
+                : _repository.FirstOrDefault(x => x.StationNum == eNodeb.StationNum).MapTo<StationDictionaryView>();
         }
     }
 }

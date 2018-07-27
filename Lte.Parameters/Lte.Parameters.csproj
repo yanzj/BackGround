@@ -181,8 +181,11 @@
     <Compile Include="Abstract\Switch\IUeEUtranMeasurementRepository.cs" />
     <Compile Include="Concrete\Basic\CellHuaweiMongoRepository.cs" />
     <Compile Include="Concrete\Basic\EUtranCellFDDZteRepository.cs" />
-    <Compile Include="Concrete\Channel\CellPcRepositories.cs" />
+    <Compile Include="Concrete\Channel\CellDlpcPdschPaRepository.cs" />
+    <Compile Include="Concrete\Channel\CellUlpcCommRepository.cs" />
     <Compile Include="Concrete\Channel\PDSCHCfgRepository.cs" />
+    <Compile Include="Concrete\Channel\PowerControlDLZteRepository.cs" />
+    <Compile Include="Concrete\Channel\PowerControlULZteRepository.cs" />
     <Compile Include="Concrete\College\EFCollegeRepository.cs" />
     <Compile Include="Concrete\Kpi\EFInterferenceMatrixRepository.cs" />
     <Compile Include="Concrete\Kpi\MrsRepositories.cs" />
@@ -197,11 +200,10 @@
     <Compile Include="Concrete\Neighbor\ExternalEUtranCellFDDZteRepository.cs" />
     <Compile Include="Concrete\Switch\EUtranCellMeasurementZteRepository.cs" />
     <Compile Include="Entities\Basic\CellPower.cs" />
-    <Compile Include="Entities\Channel\AgpsMongo.cs" />
+    <Compile Include="Entities\Channel\AgpsCoverageView.cs" />
+    <Compile Include="Entities\Channel\AgpsTownView.cs" />
     <Compile Include="Entities\Channel\CellOpenLoopPcView.cs" />
-    <Compile Include="Entities\Channel\CellUlpcComm.cs" />
     <Compile Include="Entities\Channel\ECellEquipmentFunctionZte.cs" />
-    <Compile Include="Entities\Channel\Pdsch.cs" />
     <Compile Include="Entities\Channel\PowerControlDLZte.cs" />
     <Compile Include="Entities\Channel\PowerControlULZte.cs" />
     <Compile Include="Entities\Dt\FileRecord2G.cs" />

@@ -3,7 +3,7 @@ using Abp.EntityFramework.Dependency;
 using Lte.Domain.Regular.Attributes;
 using MongoDB.Bson;
 
-namespace Lte.Parameters.Entities.Channel
+namespace Abp.EntityFramework.Channel
 {
     [TypeDoc("华为上行控制参数")]
     public class CellUlpcComm : IEntity<ObjectId>, IHuaweiCellMongo

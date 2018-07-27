@@ -57,5 +57,14 @@ namespace LtePlatform.Controllers.Parameters
         {
             return _service.QueryOneByStationName(name);
         }
+
+        [HttpGet]
+        [ApiDoc("按照基站编号匹配查询站址信息")]
+        [ApiParameterDoc("eNodebId", "基站编号")]
+        [ApiResponse("站址信息")]
+        public StationDictionaryView QueryOneByENodebId(int eNodebId)
+        {
+            return _service.QueryOneByENodebId(eNodebId);
+        }
     }
 }

@@ -5,6 +5,7 @@ using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Abp.EntityFramework.Channel;
 using Lte.Parameters.Entities.Channel;
 
 namespace Lte.Parameters.Abstract.Kpi

@@ -1,5 +1,7 @@
-﻿using Abp.EntityFramework.AutoMapper;
+﻿using System;
+using Abp.EntityFramework.AutoMapper;
 using Lte.Domain.Common.Types;
+using Lte.Domain.Regular.Attributes;
 
 namespace Lte.Parameters.Entities.Switch
 {
@@ -8,6 +10,9 @@ namespace Lte.Parameters.Entities.Switch
     {
         [AutoMapPropertyResolve("eNodeB_Id", typeof(IntraRatHoComm))]
         public int ENodebId { get; set; }
+
+        [MemberDoc("更新日期")]
+        public DateTime? UpdateDate { get; set; }
 
         public int InterFreqHoA4RprtQuan { get; set; }
 

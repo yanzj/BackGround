@@ -1,4 +1,5 @@
 using Abp.EntityFramework.AutoMapper;
+using Abp.EntityFramework.Channel;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
 
