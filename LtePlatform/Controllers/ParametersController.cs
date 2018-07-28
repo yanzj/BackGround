@@ -193,15 +193,18 @@ namespace LtePlatform.Controllers
         }
 
         [HttpPost]
-        public ActionResult StationRruPost()
+        public ActionResult StationRruPost(HttpPostedFileBase[] stationRru)
         {
-            var dictFile = Request.Files["stationRru"];
-            if (dictFile != null && dictFile.FileName != "")
+            if (stationRru == null || stationRru.Length <= 0 ||
+                string.IsNullOrEmpty(stationRru[0]?.FileName))
+                return View("BasicImport");
+            var count = 0;
+            foreach (var dictFile in stationRru)
             {
                 var dictPath = dictFile.UploadParametersFile();
-                var count = _basicImportService.ImportStationRrus(dictPath);
-                ViewBag.Message = "共上传集团RRU记录" + count + "条";
+                count = _basicImportService.ImportStationRrus(dictPath);
             }
+            ViewBag.Message = "共上传集团RRU记录" + count + "条";
             return View("BasicImport");
         }
 

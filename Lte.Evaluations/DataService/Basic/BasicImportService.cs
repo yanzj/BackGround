@@ -47,6 +47,7 @@ namespace Lte.Evaluations.DataService.Basic
             if (Stations == null) Stations = new Stack<StationDictionaryExcel>();
             if (ENodebBases == null) ENodebBases = new Stack<ENodebBaseExcel>();
             if (StationCells == null) StationCells = new Stack<ConstructionExcel>();
+            if (StationRrus == null) StationRrus = new Stack<StationRruExcel>();
         }
 
         public static List<BtsExcel> BtsExcels { get; set; } = new List<BtsExcel>();
@@ -62,6 +63,10 @@ namespace Lte.Evaluations.DataService.Basic
         private static Stack<ConstructionExcel> StationCells { get; set; }
 
         public int StationCellCount => StationCells.Count;
+
+        private static Stack<StationRruExcel> StationRrus { get; set; }
+
+        public int StationRruCount => StationRrus.Count;
         
         public List<ENodebExcel> ImportENodebExcels(string path)
         {
@@ -151,9 +156,21 @@ namespace Lte.Evaluations.DataService.Basic
         {
             var repo = new ExcelQueryFactory { FileName = path };
             var excels = (from c in repo.Worksheet<StationRruExcel>("Sheet1") select c).ToList();
-            return
-                _stationRruRepository
-                    .Import<IStationRruRepository, StationRru, StationRruExcel>(excels);
+            foreach (var stationRruExcel in excels)
+            {
+                StationRrus.Push(stationRruExcel);
+            }
+
+            return StationRrus.Count;
+        }
+
+        public async Task<bool> DumpOneStationRru()
+        {
+            var stat = StationRrus.Pop();
+            if (stat == null) throw new NullReferenceException("stat is null!");
+            await _stationRruRepository
+                .UpdateOne<IStationRruRepository, StationRru, StationRruExcel>(stat);
+            return true;
         }
 
         public int ImportStationAntennas(string path)

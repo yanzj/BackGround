@@ -147,6 +147,9 @@
             basicImportService.queryStationCells().then(function (result) {
                 $rootScope.cellInfo.totalDumpItems = result;
             });
+            basicImportService.queryStationRrus().then(function (result) {
+                $rootScope.rruInfo.totalDumpItems = result;
+            });
         };
 
         $rootScope.dumpStationItems = function() {
@@ -179,6 +182,17 @@
                 },
                 function () {
                     neighborImportService.updateFailProgress($rootScope.cellInfo, $rootScope.dumpCellItems);
+                });
+        };
+
+        $rootScope.dumpRruItems = function () {
+            basicImportService.dumpStationRru().then(function (result) {
+                    neighborImportService.updateSuccessProgress(result,
+                        $rootScope.rruInfo,
+                        $rootScope.dumpRruItems);
+                },
+                function () {
+                    neighborImportService.updateFailProgress($rootScope.rruInfo, $rootScope.dumpRruItems);
                 });
         };
 

@@ -1428,6 +1428,12 @@ angular.module('region.import', ['app.core'])
                 },
                 dumpStationCell: function () {
                     return generalHttpService.putApiData('DumpStationCell', {});
+                },
+                queryStationRrus: function () {
+                    return generalHttpService.getApiData('DumpStationRru', {});
+                },
+                dumpStationRru: function () {
+                    return generalHttpService.putApiData('DumpStationRru', {});
                 }
             };
         })

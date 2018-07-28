@@ -335,6 +335,7 @@
     <Compile Include="Controllers\Mr\DumpStationCellController.cs" />
     <Compile Include="Controllers\Mr\DumpStationENodebController.cs" />
     <Compile Include="Controllers\Mr\DumpStationInfoController.cs" />
+    <Compile Include="Controllers\Mr\DumpStationRruController.cs" />
     <Compile Include="Controllers\Mr\GridClusterController.cs" />
     <Compile Include="Controllers\Mr\MrGridKpiController.cs" />
     <Compile Include="Controllers\Mr\TownMrGridController.cs" />
