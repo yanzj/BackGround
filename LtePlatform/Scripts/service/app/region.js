@@ -1422,6 +1422,12 @@ angular.module('region.import', ['app.core'])
                 },
                 dumpStationENodeb: function () {
                     return generalHttpService.putApiData('DumpStationENodeb', {});
+                },
+                queryStationCells: function () {
+                    return generalHttpService.getApiData('DumpStationCell', {});
+                },
+                dumpStationCell: function () {
+                    return generalHttpService.putApiData('DumpStationCell', {});
                 }
             };
         })

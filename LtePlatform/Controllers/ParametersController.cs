@@ -176,15 +176,19 @@ namespace LtePlatform.Controllers
         }
 
         [HttpPost]
-        public ActionResult ConstructionPost()
+        public ActionResult ConstructionPost(HttpPostedFileBase[] construction)
         {
-            var dictFile = Request.Files["construction"];
-            if (dictFile != null && dictFile.FileName != "")
+            if (construction == null || construction.Length <= 0 ||
+                string.IsNullOrEmpty(construction[0]?.FileName))
+                return View("BasicImport");
+            var count = 0;
+            foreach (var dictFile in construction)
             {
                 var dictPath = dictFile.UploadParametersFile();
-                var count = _basicImportService.ImportConstructions(dictPath);
-                ViewBag.Message = "共上传集团小区记录" + count + "条";
+                count = _basicImportService.ImportConstructions(dictPath);
             }
+            
+            ViewBag.Message = "共上传集团小区记录" + count + "条";
             return View("BasicImport");
         }
 

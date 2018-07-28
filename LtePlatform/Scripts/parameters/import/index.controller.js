@@ -144,6 +144,9 @@
             basicImportService.queryStationENodebs().then(function (result) {
                 $rootScope.eNodebInfo.totalDumpItems = result;
             });
+            basicImportService.queryStationCells().then(function (result) {
+                $rootScope.cellInfo.totalDumpItems = result;
+            });
         };
 
         $rootScope.dumpStationItems = function() {
@@ -165,6 +168,17 @@
                 },
                 function () {
                     neighborImportService.updateFailProgress($rootScope.eNodebInfo, $rootScope.dumpENodebItems);
+                });
+        };
+
+        $rootScope.dumpCellItems = function () {
+            basicImportService.dumpStationCell().then(function (result) {
+                    neighborImportService.updateSuccessProgress(result,
+                        $rootScope.cellInfo,
+                        $rootScope.dumpCellItems);
+                },
+                function () {
+                    neighborImportService.updateFailProgress($rootScope.cellInfo, $rootScope.dumpCellItems);
                 });
         };
 
