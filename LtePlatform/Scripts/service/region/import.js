@@ -124,6 +124,9 @@
                 },
                 queryStationInfos: function() {
                     return generalHttpService.getApiData('DumpStationInfo', {});
+                },
+                dumpStationInfo: function () {
+                    return generalHttpService.putApiData('DumpStationInfo', {});
                 }
             };
         })

@@ -1413,6 +1413,9 @@ angular.module('region.import', ['app.core'])
                 },
                 queryStationInfos: function() {
                     return generalHttpService.getApiData('DumpStationInfo', {});
+                },
+                dumpStationInfo: function () {
+                    return generalHttpService.putApiData('DumpStationInfo', {});
                 }
             };
         })

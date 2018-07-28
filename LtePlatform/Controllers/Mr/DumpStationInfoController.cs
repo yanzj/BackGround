@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using Lte.Evaluations.DataService.Basic;
@@ -17,6 +18,14 @@ namespace LtePlatform.Controllers.Mr
         public DumpStationInfoController(BasicImportService service)
         {
             _service = service;
+        }
+
+        [HttpPut]
+        [ApiDoc("导入一条信息")]
+        [ApiResponse("导入结果")]
+        public async Task<bool> Put()
+        {
+            return await _service.DumpOneStationInfo();
         }
 
         [HttpGet]

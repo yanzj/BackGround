@@ -1,6 +1,8 @@
-﻿using Lte.Domain.LinqToExcel;
+﻿using System;
+using Lte.Domain.LinqToExcel;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Abp.EntityFramework.Entities;
 using Lte.Domain.Common.Geo;
 using Lte.MySqlFramework.Abstract;
@@ -81,6 +83,15 @@ namespace Lte.Evaluations.DataService.Basic
                 Stations.Push(stationDictionaryExcel);
             }
             return Stations.Count;
+        }
+
+        public async Task<bool> DumpOneStationInfo()
+        {
+            var stat = Stations.Pop();
+            if (stat == null) throw new NullReferenceException("stat is null!");
+            await _stationDictionary
+                .UpdateOne<IStationDictionaryRepository, StationDictionary, StationDictionaryExcel>(stat);
+            return true;
         }
 
         public int ImportStationENodebs(string path)

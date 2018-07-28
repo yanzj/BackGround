@@ -61,7 +61,7 @@
                 });
         }
     ])
-    .run(function($rootScope, basicImportService) {
+    .run(function ($rootScope, basicImportService, neighborImportService) {
         $rootScope.rootPath = "/Parameters/BasicImport#/";
         $rootScope.importData = {
             newENodebs: [],
@@ -130,17 +130,29 @@
             basicImportService.queryCdmaCellCount().then(function(data) {
                 $rootScope.importData.cdmaCellCount = data;
             });
-            
+
             basicImportService.queryVanishedBtss().then(function(data) {
                 $rootScope.importData.vanishedBtsIds = data;
             });
             basicImportService.queryVanishedCdmaCells().then(function(data) {
                 $rootScope.importData.vanishedCdmaCellIds = data;
             });
+
             basicImportService.queryStationInfos().then(function(result) {
                 $rootScope.stationInfo.totalDumpItems = result;
             });
-        }
+        };
+
+        $rootScope.dumpStationItems = function() {
+            basicImportService.dumpStationInfo().then(function(result) {
+                    neighborImportService.updateSuccessProgress(result,
+                        $rootScope.stationInfo,
+                        $rootScope.dumpStationItems);
+                },
+                function() {
+                    neighborImportService.updateFailProgress($rootScope.stationInfo, $rootScope.dumpStationItems);
+                });
+        };
 
         $rootScope.closeAlert = function(index) {
             $rootScope.importData.updateMessages.splice(index, 1);
