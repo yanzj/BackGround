@@ -110,26 +110,27 @@
                 </div>
             </p>
         </div>
-            @using (Html.BeginForm("ENodebBasePost", "Parameters",
-FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
-    {
         <div class="form-group col-md-4">
-            <p>
-                <label class="control-label">集团基站信息文件选择：</label>
-                <input name="eNodebBase" class="form-control" type="file" accept=".xlsx" />
-                <div class="btn-group">
-                    <button type="submit" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-save"></span>保存
-                    </button>
-                    <button class="btn btn-primary" ng-click="dumpENodebItems()" ng-disabled="eNodebInfo.totalDumpItems === 0">
-                        一键导入
-                    </button>
-                </div>
-            </p>
+            @using (Html.BeginForm("ENodebBasePost", "Parameters",
+            FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+            {
+                <p>
+                    <label class="control-label">集团基站信息文件选择：</label>
+                    <input name="eNodebBase" class="form-control" type="file" accept=".xlsx" />
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>保存
+                        </button>
+                    </div>
+                </p>
+            }
             <p>
                 总数：{{eNodebInfo.totalDumpItems}}&nbsp;
                 成功数：{{eNodebInfo.totalSuccessItems}}&nbsp;
                 失败数：{{eNodebInfo.totalFailItems}}
+                <button class="btn btn-primary" ng-click="dumpENodebItems()" ng-disabled="eNodebInfo.totalDumpItems === 0">
+                    一键导入
+                </button>
                 <div uib-progress>
                     <div uib-bar value="100*eNodebInfo.totalSuccessItems / eNodebInfo.totalDumpItems" type="success">
                         <span ng-show="100*eNodebInfo.totalSuccessItems / eNodebInfo.totalDumpItems > 5">
@@ -144,7 +145,6 @@ FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizonta
                 </div>
             </p>
         </div>
-}
             @using (Html.BeginForm("ConstructionPost", "Parameters",
 FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
     {

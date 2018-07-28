@@ -1416,6 +1416,12 @@ angular.module('region.import', ['app.core'])
                 },
                 dumpStationInfo: function () {
                     return generalHttpService.putApiData('DumpStationInfo', {});
+                },
+                queryStationENodebs: function () {
+                    return generalHttpService.getApiData('DumpStationENodeb', {});
+                },
+                dumpStationENodeb: function () {
+                    return generalHttpService.putApiData('DumpStationENodeb', {});
                 }
             };
         })
