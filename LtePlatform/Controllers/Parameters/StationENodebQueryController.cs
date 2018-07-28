@@ -38,9 +38,18 @@ namespace LtePlatform.Controllers.Parameters
         }
 
         [HttpGet]
+        [ApiDoc("根据基站名称查询记录")]
+        [ApiParameterDoc("eNodebName", "基站名称")]
+        [ApiResponse("符合条件的记录")]
+        public ENodebBaseView QueryByENodebName(string eNodebName)
+        {
+            return _service.QueryByENodebName(eNodebName);
+        }
+
+        [HttpGet]
         [ApiDoc("根据站点编号查询记录")]
         [ApiParameterDoc("stationNum", "站点编号")]
-        [ApiResponse("符合条件的记录")]
+        [ApiResponse("符合条件的记录列表")]
         public IEnumerable<ENodebBaseView> GetByStationNum(string stationNum)
         {
             return _service.QueryByStationNum(stationNum);

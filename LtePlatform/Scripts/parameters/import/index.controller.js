@@ -75,35 +75,79 @@
             updateMessages: []
         };
 
+        $rootScope.stationInfo = {
+            totalSuccessItems: 0,
+            totalFailItems: 0,
+            totalDumpItems: 0
+        };
+
+        $rootScope.eNodebInfo = {
+            totalSuccessItems: 0,
+            totalFailItems: 0,
+            totalDumpItems: 0
+        };
+
+        $rootScope.cellInfo = {
+            totalSuccessItems: 0,
+            totalFailItems: 0,
+            totalDumpItems: 0
+        };
+
+        $rootScope.rruInfo = {
+            totalSuccessItems: 0,
+            totalFailItems: 0,
+            totalDumpItems: 0
+        };
+
+        $rootScope.antennaInfo = {
+            totalSuccessItems: 0,
+            totalFailItems: 0,
+            totalDumpItems: 0
+        };
+
+        $rootScope.distributionInfo = {
+            totalSuccessItems: 0,
+            totalFailItems: 0,
+            totalDumpItems: 0
+        };
+
+        $rootScope.updateDumpHistory = function() {
+            basicImportService.queryENodebExcels().then(function(data) {
+                $rootScope.importData.newENodebs = data;
+            });
+            basicImportService.queryCellExcels().then(function(data) {
+                $rootScope.importData.newCells = data;
+            });
+            basicImportService.queryBtsExcels().then(function(data) {
+                $rootScope.importData.newBtss = data;
+            });
+            basicImportService.queryCdmaCellExcels().then(function(data) {
+                $rootScope.importData.newCdmaCells = data;
+            });
+            basicImportService.queryCellCount().then(function(data) {
+                $rootScope.importData.cellCount = data;
+            });
+            basicImportService.queryCdmaCellCount().then(function(data) {
+                $rootScope.importData.cdmaCellCount = data;
+            });
+            
+            basicImportService.queryVanishedBtss().then(function(data) {
+                $rootScope.importData.vanishedBtsIds = data;
+            });
+            basicImportService.queryVanishedCdmaCells().then(function(data) {
+                $rootScope.importData.vanishedCdmaCellIds = data;
+            });
+            basicImportService.queryStationInfos().then(function(result) {
+                $rootScope.stationInfo.totalDumpItems = result;
+            });
+        }
+
         $rootScope.closeAlert = function(index) {
             $rootScope.importData.updateMessages.splice(index, 1);
         };
 
-        basicImportService.queryENodebExcels().then(function(data) {
-            $rootScope.importData.newENodebs = data;
-        });
-        basicImportService.queryCellExcels().then(function(data) {
-            $rootScope.importData.newCells = data;
-        });
-        basicImportService.queryBtsExcels().then(function(data) {
-            $rootScope.importData.newBtss = data;
-        });
-        basicImportService.queryCdmaCellExcels().then(function(data) {
-            $rootScope.importData.newCdmaCells = data;
-        });
-        basicImportService.queryCellCount().then(function(data) {
-            $rootScope.importData.cellCount = data;
-        });
-        basicImportService.queryCdmaCellCount().then(function(data) {
-            $rootScope.importData.cdmaCellCount = data;
-        });
-        
-        basicImportService.queryVanishedBtss().then(function(data) {
-            $rootScope.importData.vanishedBtsIds = data;
-        });
-        basicImportService.queryVanishedCdmaCells().then(function(data) {
-            $rootScope.importData.vanishedCdmaCellIds = data;
-        });
+        $rootScope.updateDumpHistory();
+
     })
     .controller("import.index", function($scope, basicImportService) {
         $scope.newENodebsImport = true;

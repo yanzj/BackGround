@@ -332,6 +332,7 @@
     <Compile Include="Controllers\Mr\AgpsTelecomController.cs" />
     <Compile Include="Controllers\Mr\AgpsUnicomController.cs" />
     <Compile Include="Controllers\Mr\DpiGridKpiController.cs" />
+    <Compile Include="Controllers\Mr\DumpStationInfoController.cs" />
     <Compile Include="Controllers\Mr\GridClusterController.cs" />
     <Compile Include="Controllers\Mr\MrGridKpiController.cs" />
     <Compile Include="Controllers\Mr\TownMrGridController.cs" />

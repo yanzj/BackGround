@@ -9,181 +9,284 @@
         </h2>
     </div>
     <div class="panel-body">
-        <div class="row">
-            <div class="col-md-4">
-                <h4>工参文件选择</h4>
-                @using (Html.BeginForm("LteImportPost", "Parameters",
-FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
-    {
-            <p>
-                <label class="control-label">LTE Excel文件选择：</label>
-            </p>
-            <div class="form-group">
-                <div class="col-md-8">
-                    <input name="lteExcel" class="form-control" type="file" accept=".xlsx" />
+    <div class="row">
+        <div class="col-md-4">
+            <h4>工参文件选择</h4>
+            @using (Html.BeginForm("LteImportPost", "Parameters",
+                FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+            {
+                <p>
+                    <label class="control-label">LTE Excel文件选择：</label>
+                </p>
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <input name="lteExcel" class="form-control" type="file" accept=".xlsx" />
+                    </div>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>保存
+                        </button>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <button type="submit" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-save"></span>保存
-                    </button>
+            }
+            @using (Html.BeginForm("CdmaImportPost", "Parameters",
+                FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+            {
+                <p>
+                    <label class="control-label">CDMA Excel文件选择：</label>
+                </p>
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <input name="cdmaExcel" class="form-control" type="file" accept=".xls" />
+                    </div>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>保存
+                        </button>
+                    </div>
                 </div>
-            </div>
-}
-                @using (Html.BeginForm("CdmaImportPost", "Parameters",
-FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
-    {
-            <p>
-                <label class="control-label">CDMA Excel文件选择：</label>
-            </p>
-            <div class="form-group">
-                <div class="col-md-8">
-                    <input name="cdmaExcel" class="form-control" type="file" accept=".xls" />
-                </div>
-                <div class="col-md-4">
-                    <button type="submit" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-save"></span>保存
-                    </button>
-                </div>
-            </div>
 
-}
-                @using (Html.BeginForm("StationDictionaryPost", "Parameters",
+            }
+            @using (Html.BeginForm("HotSpotPost", "Parameters",
+                FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+            {
+                <p>
+                    <label class="control-label">热点基础信息文件选择：</label>
+                </p>
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <input name="hotSpot" class="form-control" type="file" accept=".xlsx" />
+                    </div>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>保存
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-md-8">
+            <div uib-alert ng-repeat="message in importData.updateMessages" type="{{message.type}}" dismiss-on-timeout="2000" close="closeAlert($index)">
+                {{message.contents}}
+            </div>
+            <div ng-view></div>
+        </div>
+    </div>
+    
+
+    <div class="row">
+            @using (Html.BeginForm("StationDictionaryPost", "Parameters",
 FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
     {
+        <div class="form-group col-md-4">
             <p>
                 <label class="control-label">集团站址信息文件选择：</label>
-            </p>
-            <div class="form-group">
-                <div class="col-md-8">
-                    <input name="stationDictionary" class="form-control" type="file" accept=".xlsx" />
-                </div>
-                <div class="col-md-4">
+                <input name="stationDictionary" class="form-control" type="file" accept=".xlsx" />
+                <div class="btn-group">
                     <button type="submit" class="btn btn-primary">
                         <span class="glyphicon glyphicon-save"></span>保存
                     </button>
+                    <button class="btn btn-primary" ng-click="dumpStationItems()" ng-disabled="stationInfo.totalDumpItems === 0">
+                        一键导入
+                    </button>
                 </div>
-            </div>
+            </p>
+            <p>
+                总数：{{stationInfo.totalDumpItems}}&nbsp;
+                成功数：{{stationInfo.totalSuccessItems}}&nbsp;
+                失败数：{{stationInfo.totalFailItems}}
+                <div uib-progress>
+                    <div uib-bar value="100*stationInfo.totalSuccessItems / stationInfo.totalDumpItems" type="success">
+                        <span ng-show="100*stationInfo.totalSuccessItems / stationInfo.totalDumpItems > 5">
+                            {{100*stationInfo.totalSuccessItems / stationInfo.totalDumpItems | number: 2}}%
+                        </span>
+                    </div>
+                    <div uib-bar value="100*stationInfo.totalFailItems / stationInfo.totalDumpItems" type="erroe">
+                        <span ng-show="100*stationInfo.totalFailItems / stationInfo.totalDumpItems > 5">
+                            {{100*stationInfo.totalFailItems / stationInfo.totalDumpItems | number: 2}}%
+                        </span>
+                    </div>
+                </div>
+            </p>
+        </div>
 }
-                @using (Html.BeginForm("ENodebBasePost", "Parameters",
+            @using (Html.BeginForm("ENodebBasePost", "Parameters",
 FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
     {
+        <div class="form-group col-md-4">
             <p>
                 <label class="control-label">集团基站信息文件选择：</label>
-            </p>
-            <div class="form-group">
-                <div class="col-md-8">
-                    <input name="eNodebBase" class="form-control" type="file" accept=".xlsx" />
-                </div>
-                <div class="col-md-4">
+                <input name="eNodebBase" class="form-control" type="file" accept=".xlsx" />
+                <div class="btn-group">
                     <button type="submit" class="btn btn-primary">
                         <span class="glyphicon glyphicon-save"></span>保存
                     </button>
+                    <button class="btn btn-primary" ng-click="dumpENodebItems()" ng-disabled="eNodebInfo.totalDumpItems === 0">
+                        一键导入
+                    </button>
                 </div>
-            </div>
+            </p>
+            <p>
+                总数：{{eNodebInfo.totalDumpItems}}&nbsp;
+                成功数：{{eNodebInfo.totalSuccessItems}}&nbsp;
+                失败数：{{eNodebInfo.totalFailItems}}
+                <div uib-progress>
+                    <div uib-bar value="100*eNodebInfo.totalSuccessItems / eNodebInfo.totalDumpItems" type="success">
+                        <span ng-show="100*eNodebInfo.totalSuccessItems / eNodebInfo.totalDumpItems > 5">
+                            {{100*eNodebInfo.totalSuccessItems / eNodebInfo.totalDumpItems | number: 2}}%
+                        </span>
+                    </div>
+                    <div uib-bar value="100*eNodebInfo.totalFailItems / eNodebInfo.totalDumpItems" type="erroe">
+                        <span ng-show="100*eNodebInfo.totalFailItems / eNodebInfo.totalDumpItems > 5">
+                            {{100*eNodebInfo.totalFailItems / eNodebInfo.totalDumpItems | number: 2}}%
+                        </span>
+                    </div>
+                </div>
+            </p>
+        </div>
 }
-                @using (Html.BeginForm("ConstructionPost", "Parameters",
+            @using (Html.BeginForm("ConstructionPost", "Parameters",
 FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
     {
+        <div class="form-group col-md-4">
             <p>
                 <label class="control-label">集团小区信息文件选择：</label>
-            </p>
-            <div class="form-group">
-                <div class="col-md-8">
-                    <input name="construction" class="form-control" type="file" accept=".xlsx" />
-                </div>
-                <div class="col-md-4">
+                <input name="construction" class="form-control" type="file" accept=".xlsx" multiple="multiple" />
+                <div class="btn-group">
                     <button type="submit" class="btn btn-primary">
                         <span class="glyphicon glyphicon-save"></span>保存
                     </button>
+                    <button class="btn btn-primary" ng-click="dumpCellItems()" ng-disabled="cellInfo.totalDumpItems === 0">
+                        一键导入
+                    </button>
                 </div>
-            </div>
+            </p>
+            <p>
+                总数：{{cellInfo.totalDumpItems}}&nbsp;
+                成功数：{{cellInfo.totalSuccessItems}}&nbsp;
+                失败数：{{cellInfo.totalFailItems}}
+                <div uib-progress>
+                    <div uib-bar value="100*cellInfo.totalSuccessItems / cellInfo.totalDumpItems" type="success">
+                        <span ng-show="100*cellInfo.totalSuccessItems / cellInfo.totalDumpItems > 5">
+                            {{100*cellInfo.totalSuccessItems / cellInfo.totalDumpItems | number: 2}}%
+                        </span>
+                    </div>
+                    <div uib-bar value="100*cellInfo.totalFailItems / cellInfo.totalDumpItems" type="erroe">
+                        <span ng-show="100*cellInfo.totalFailItems / cellInfo.totalDumpItems > 5">
+                            {{100*cellInfo.totalFailItems / cellInfo.totalDumpItems | number: 2}}%
+                        </span>
+                    </div>
+                </div>
+            </p>
+        </div>
 }
-                @using (Html.BeginForm("StationRruPost", "Parameters",
+            @using (Html.BeginForm("StationRruPost", "Parameters",
 FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
     {
+        <div class="form-group col-md-4">
             <p>
                 <label class="control-label">集团RRU信息文件选择：</label>
-            </p>
-            <div class="form-group">
-                <div class="col-md-8">
-                    <input name="stationRru" class="form-control" type="file" accept=".xlsx" />
-                </div>
-                <div class="col-md-4">
+                <input name="stationRru" class="form-control" type="file" accept=".xlsx" multiple="multiple" />
+                <div class="btn-group">
                     <button type="submit" class="btn btn-primary">
                         <span class="glyphicon glyphicon-save"></span>保存
                     </button>
+                    <button class="btn btn-primary" ng-click="dumpRruItems()" ng-disabled="rruInfo.totalDumpItems === 0">
+                        一键导入
+                    </button>
                 </div>
-            </div>
+            </p>
+            <p>
+                总数：{{rruInfo.totalDumpItems}}&nbsp;
+                成功数：{{rruInfo.totalSuccessItems}}&nbsp;
+                失败数：{{rruInfo.totalFailItems}}
+                <div uib-progress>
+                    <div uib-bar value="100*rruInfo.totalSuccessItems / rruInfo.totalDumpItems" type="success">
+                        <span ng-show="100*rruInfo.totalSuccessItems / rruInfo.totalDumpItems > 5">
+                            {{100*rruInfo.totalSuccessItems / rruInfo.totalDumpItems | number: 2}}%
+                        </span>
+                    </div>
+                    <div uib-bar value="100*rruInfo.totalFailItems / rruInfo.totalDumpItems" type="erroe">
+                        <span ng-show="100*rruInfo.totalFailItems / rruInfo.totalDumpItems > 5">
+                            {{100*rruInfo.totalFailItems / rruInfo.totalDumpItems | number: 2}}%
+                        </span>
+                    </div>
+                </div>
+            </p>
+        </div>
 }
-                @using (Html.BeginForm("StationAntennaPost", "Parameters",
+            @using (Html.BeginForm("StationAntennaPost", "Parameters",
 FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
     {
+        <div class="form-group col-md-4">
             <p>
                 <label class="control-label">集团天线信息文件选择：</label>
-            </p>
-            <div class="form-group">
-                <div class="col-md-8">
-                    <input name="stationAntenna" class="form-control" type="file" accept=".xlsx" />
-                </div>
-                <div class="col-md-4">
+                <input name="stationAntenna" class="form-control" type="file" accept=".xlsx" multiple="multiple" />
+                <div class="btn-group">
                     <button type="submit" class="btn btn-primary">
                         <span class="glyphicon glyphicon-save"></span>保存
                     </button>
+                    <button class="btn btn-primary" ng-click="dumpAntennaItems()" ng-disabled="antennaInfo.totalDumpItems === 0">
+                        一键导入
+                    </button>
                 </div>
-            </div>
+            </p>
+            <p>
+                总数：{{antennaInfo.totalDumpItems}}&nbsp;
+                成功数：{{antennaInfo.totalSuccessItems}}&nbsp;
+                失败数：{{antennaInfo.totalFailItems}}
+                <div uib-progress>
+                    <div uib-bar value="100*antennaInfo.totalSuccessItems / antennaInfo.totalDumpItems" type="success">
+                        <span ng-show="100*antennaInfo.totalSuccessItems / antennaInfo.totalDumpItems > 5">
+                            {{100*antennaInfo.totalSuccessItems / antennaInfo.totalDumpItems | number: 2}}%
+                        </span>
+                    </div>
+                    <div uib-bar value="100*antennaInfo.totalFailItems / antennaInfo.totalDumpItems" type="erroe">
+                        <span ng-show="100*antennaInfo.totalFailItems / antennaInfo.totalDumpItems > 5">
+                            {{100*antennaInfo.totalFailItems / antennaInfo.totalDumpItems | number: 2}}%
+                        </span>
+                    </div>
+                </div>
+            </p>
+        </div>
 }
-                @using (Html.BeginForm("DistributionPost", "Parameters",
+            @using (Html.BeginForm("DistributionPost", "Parameters",
 FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
     {
+        <div class="form-group col-md-4">
             <p>
                 <label class="control-label">室内分布信息文件选择：</label>
-            </p>
-            <div class="form-group">
-                <div class="col-md-8">
-                    <input name="distribution" class="form-control" type="file" accept=".xlsx" />
-                </div>
-                <div class="col-md-4">
+                <input name="distribution" class="form-control" type="file" accept=".xlsx" />
+                <div class="btn-group">
                     <button type="submit" class="btn btn-primary">
                         <span class="glyphicon glyphicon-save"></span>保存
                     </button>
+                    <button class="btn btn-primary" ng-click="dumpDistributionItems()" ng-disabled="distributionInfo.totalDumpItems === 0">
+                        一键导入
+                    </button>
                 </div>
-            </div>
-}
-                @using (Html.BeginForm("HotSpotPost", "Parameters",
-FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
-    {
+            </p>
             <p>
-                <label class="control-label">热点基础信息文件选择：</label>
+                总数：{{distributionInfo.totalDumpItems}}&nbsp;
+                成功数：{{distributionInfo.totalSuccessItems}}&nbsp;
+                失败数：{{distributionInfo.totalFailItems}}
+                <div uib-progress>
+                    <div uib-bar value="100*distributionInfo.totalSuccessItems / distributionInfo.totalDumpItems" type="success">
+                        <span ng-show="100*distributionInfo.totalSuccessItems / distributionInfo.totalDumpItems > 5">
+                            {{100*distributionInfo.totalSuccessItems / distributionInfo.totalDumpItems | number: 2}}%
+                        </span>
+                    </div>
+                    <div uib-bar value="100*distributionInfo.totalFailItems / distributionInfo.totalDumpItems" type="erroe">
+                        <span ng-show="100*distributionInfo.totalFailItems / distributionInfo.totalDumpItems > 5">
+                            {{100*distributionInfo.totalFailItems / distributionInfo.totalDumpItems | number: 2}}%
+                        </span>
+                    </div>
+                </div>
             </p>
-            <div class="form-group">
-                <div class="col-md-8">
-                    <input name="hotSpot" class="form-control" type="file" accept=".xlsx" />
-                </div>
-                <div class="col-md-4">
-                    <button type="submit" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-save"></span>保存
-                    </button>
-                </div>
-            </div>
-}
-            </div>
-            <div class="col-md-8">
-                <div uib-alert ng-repeat="message in importData.updateMessages" type="{{message.type}}" dismiss-on-timeout="2000" close="closeAlert($index)">
-                    {{message.contents}}
-                </div>
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            工参读取结果及操作平台
-                        </h3>
-                    </div>
-                    <div class="panel-body">
-                        <div ng-view></div>
-                    </div>
-                </div>
-            </div>
         </div>
-
+}
+        </div>
+        
     </div>
 </div>
 

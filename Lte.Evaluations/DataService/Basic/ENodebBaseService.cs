@@ -43,6 +43,11 @@ namespace Lte.Evaluations.DataService.Basic
             return _repository.GetAllList(x => x.StationNum == stationNum).MapTo<IEnumerable<ENodebBaseView>>();
         }
 
+        public ENodebBaseView QueryByENodebName(string eNodebName)
+        {
+            return _repository.FirstOrDefault(x => x.ENodebFormalName == eNodebName)?.MapTo<ENodebBaseView>();
+        }
+
         public IEnumerable<ENodebBaseView> QueryRange(double west, double east, double south, double north)
         {
             return

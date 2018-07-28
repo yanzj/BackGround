@@ -42,9 +42,14 @@ namespace Lte.Evaluations.DataService.Basic
             _constructionInformation = constructionInformation;
             _stationRruRepository = stationRruRepository;
             _stationAntennaRepository = stationAntennaRepository;
+            if (Stations == null) Stations = new Stack<StationDictionaryExcel>();
         }
 
         public static List<BtsExcel> BtsExcels { get; set; } = new List<BtsExcel>();
+
+        private static Stack<StationDictionaryExcel> Stations { get; set; }
+
+        public int StationsCount => Stations.Count;
         
         public List<ENodebExcel> ImportENodebExcels(string path)
         {
@@ -71,7 +76,11 @@ namespace Lte.Evaluations.DataService.Basic
         {
             var repo = new ExcelQueryFactory { FileName = path };
             var excels = (from c in repo.Worksheet<StationDictionaryExcel>("Sheet1") select c).ToList();
-            return _stationDictionary.Import<IStationDictionaryRepository, StationDictionary, StationDictionaryExcel>(excels);
+            foreach (var stationDictionaryExcel in excels)
+            {
+                Stations.Push(stationDictionaryExcel);
+            }
+            return Stations.Count;
         }
 
         public int ImportStationENodebs(string path)
