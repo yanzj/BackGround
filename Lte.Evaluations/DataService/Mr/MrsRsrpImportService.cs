@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Repositories;
 using AutoMapper;
 using Lte.Evaluations.ViewModels.Precise;
 using Lte.MySqlFramework.Abstract;
@@ -18,14 +19,16 @@ namespace Lte.Evaluations.DataService.Mr
     {
         private readonly IMrsRsrpRepository _mrsRsrpRepository;
         private readonly IENodebRepository _eNodebRepository;
+        private readonly ITopMrsRsrpRepository _topMrsRsrpRepository;
 
         private static Stack<TopMrsRsrp> TopStats { get; set; }
 
         public MrsRsrpImportService(IMrsRsrpRepository mrsRsrpRepository,
-            IENodebRepository eNodebRepository)
+            IENodebRepository eNodebRepository, ITopMrsRsrpRepository topRepository)
         {
             _mrsRsrpRepository = mrsRsrpRepository;
             _eNodebRepository = eNodebRepository;
+            _topMrsRsrpRepository = topRepository;
             if (TopStats == null) TopStats = new Stack<TopMrsRsrp>();
         }
 
@@ -88,6 +91,24 @@ namespace Lte.Evaluations.DataService.Mr
             }
 
             return TopStats.Count;
+        }
+
+        public int GetStatsToBeDump()
+        {
+            return TopStats.Count;
+        }
+
+        public void ClearStats()
+        {
+            TopStats.Clear();
+        }
+
+        public bool DumpOneStat()
+        {
+            var stat = TopStats.Pop();
+            if (stat == null) return false;
+            _topMrsRsrpRepository.ImportOne(stat);
+            return true;
         }
 
     }

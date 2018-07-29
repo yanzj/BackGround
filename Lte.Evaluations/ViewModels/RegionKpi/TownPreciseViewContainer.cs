@@ -10,7 +10,5 @@ namespace Lte.Evaluations.ViewModels.RegionKpi
         public IEnumerable<TownPreciseView> Views { get; set; }
 
         public IEnumerable<TownMrsRsrp> MrsRsrps { get; set; }
-
-        public IEnumerable<TopMrsRsrp> TopMrsRsrps { get; set; }
     }
 }

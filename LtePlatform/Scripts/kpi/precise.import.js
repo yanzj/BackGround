@@ -32,6 +32,29 @@
                 $scope.progressInfo.totalFailItems = 0;
             });
         };
+        $scope.clearRsrpItems = function () {
+            preciseImportService.clearMrsRsrpItems().then(function () {
+                $scope.rsrpInfo.totalDumpItems = 0;
+                $scope.rsrpInfo.totalSuccessItems = 0;
+                $scope.rsrpInfo.totalFailItems = 0;
+            });
+        };
+
+        $scope.dumpItems = function() {
+            preciseImportService.dumpSingleItem().then(function(result) {
+                neighborImportService.updateSuccessProgress(result, $scope.progressInfo, $scope.dumpItems);
+            }, function() {
+                neighborImportService.updateFailProgress($scope.progressInfo, $scope.dumpItems);
+            });
+        };
+        $scope.dumpRsrpItems = function () {
+            preciseImportService.dumpSingleMrsRsrpItem().then(function (result) {
+                neighborImportService.updateSuccessProgress(result, $scope.rsrpInfo, $scope.dumpRsrpItems);
+            }, function () {
+                neighborImportService.updateFailProgress($scope.rsrpInfo, $scope.dumpRsrpItems);
+            });
+        };
+
         $scope.dumpTownItems = function() {
             preciseImportService.dumpTownItems($scope.townPreciseViews, $scope.townMrsStats, $scope.topMrsStats).then(function() {
                 $scope.townPreciseViews = [];
@@ -43,13 +66,6 @@
         $scope.updateHistory = function() {
             preciseImportService.queryDumpHistroy($scope.beginDate.value, $scope.endDate.value).then(function(result) {
                 $scope.dumpHistory = result;
-            });
-        };
-        $scope.dumpItems = function() {
-            preciseImportService.dumpSingleItem().then(function(result) {
-                neighborImportService.updateSuccessProgress(result, $scope.progressInfo, $scope.dumpItems);
-            }, function() {
-                neighborImportService.updateFailProgress($scope.progressInfo, $scope.dumpItems);
             });
         };
         $scope.updateTownItems = function(date) {
@@ -77,6 +93,9 @@
 
         preciseImportService.queryTotalDumpItems().then(function(result) {
             $scope.progressInfo.totalDumpItems = result;
+        });
+        preciseImportService.queryTotalMrsRsrpItems().then(function (result) {
+            $scope.rsrpInfo.totalDumpItems = result;
         });
 
     });

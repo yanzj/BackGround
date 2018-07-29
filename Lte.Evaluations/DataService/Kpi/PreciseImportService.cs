@@ -132,26 +132,7 @@ namespace Lte.Evaluations.DataService.Kpi
                 }
             }
             _townMrsRsrpRepository.SaveChanges();
-
-            var topMrsStats = container.TopMrsRsrps;
-            foreach (var stat in topMrsStats)
-            {
-                var endTime = stat.StatDate.AddDays(1);
-                var item =
-                    _topMrsRsrpRepository.FirstOrDefault(
-                        x =>
-                            x.ENodebId == stat.ENodebId && x.SectorId == stat.SectorId && x.StatDate >= stat.StatDate &&
-                            x.StatDate < endTime);
-                if (item == null)
-                {
-                    _topMrsRsrpRepository.Insert(stat);
-                }
-                else
-                {
-                    stat.MapTo(item);
-                }
-            }
-            _topMrsRsrpRepository.SaveChanges();
+            
         }
 
         public bool DumpOneStat()

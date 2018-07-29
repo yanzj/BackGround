@@ -15,7 +15,9 @@
                 成功数：{{progressInfo.totalSuccessItems}}&nbsp;
                 失败数：{{progressInfo.totalFailItems}}
                 <div class="btn-group">
-                    <button class="btn btn-primary" ng-click="dumpItems()">一键导入</button>
+                    <button class="btn btn-primary" ng-disabled="progressInfo.totalDumpItems === 0" ng-click="dumpItems()">
+                        一键导入
+                    </button>
                     <button class="btn btn-danger" ng-disabled="progressInfo.totalDumpItems === 0" ng-click="clearItems()">
                         清除导入
                     </button>
@@ -39,7 +41,9 @@
                 成功数：{{rsrpInfo.totalSuccessItems}}&nbsp;
                 失败数：{{rsrpInfo.totalFailItems}}
                 <div class="btn-group">
-                    <button class="btn btn-primary" ng-click="dumpRsrpItems()">一键导入</button>
+                    <button class="btn btn-primary" ng-disabled="rsrpInfo.totalDumpItems === 0" ng-click="dumpRsrpItems()">
+                        一键导入
+                    </button>
                     <button class="btn btn-danger" ng-disabled="rsrpInfo.totalDumpItems === 0" ng-click="clearRsrpItems()">
                         清除导入
                     </button>

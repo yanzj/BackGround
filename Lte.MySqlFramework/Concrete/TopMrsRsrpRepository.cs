@@ -10,5 +10,14 @@ namespace Lte.MySqlFramework.Concrete
         public TopMrsRsrpRepository(IDbContextProvider<MySqlContext> dbContextProvider) : base(dbContextProvider)
         {
         }
+
+        public TopMrsRsrp Match(TopMrsRsrp stat)
+        {
+            var nextDate = stat.StatDate.Date.AddDays(1);
+            return FirstOrDefault(
+                x =>
+                    x.StatDate >= stat.StatDate.Date && x.StatDate < nextDate && x.ENodebId == stat.ENodebId &&
+                    x.SectorId == stat.SectorId);
+        }
     }
 }

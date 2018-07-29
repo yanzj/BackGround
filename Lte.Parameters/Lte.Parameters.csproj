@@ -171,6 +171,7 @@
     <Compile Include="Abstract\Basic\ICellHuaweiMongoRepository.cs" />
     <Compile Include="Abstract\Infrastructure\IExternalEUtranCellFDDZteRepository.cs" />
     <Compile Include="Abstract\Infrastructure\RegionRepositories.cs" />
+    <Compile Include="Abstract\Kpi\IMrsRsrpRepository.cs" />
     <Compile Include="Abstract\Kpi\MrMongoInterfaces.cs" />
     <Compile Include="Abstract\Kpi\PreciseInterfaces.cs" />
     <Compile Include="Abstract\Switch\ICellMeasGroupZteRepository.cs" />
