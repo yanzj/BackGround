@@ -159,13 +159,13 @@
                     });
                 },
                 queryTownMrsStats: function (statTime) {
-                    return generalHttpService.getApiData('TownPreciseImport',
+                    return generalHttpService.getApiData('MrsRsrpImport',
                         {
                             statDate: statTime
                         });
                 },
                 queryTopMrsStats: function (statTime) {
-                    return generalHttpService.getApiData('TownPreciseImport',
+                    return generalHttpService.getApiData('MrsRsrpImport',
                         {
                             topDate: statTime
                         });

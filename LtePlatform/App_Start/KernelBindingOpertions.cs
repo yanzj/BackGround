@@ -465,6 +465,8 @@ namespace LtePlatform
 
             ninjectKernel.Bind<MrGridKpiService>().ToSelf();
 
+            ninjectKernel.Bind<MrsRsrpImportService>().ToSelf();
+
         }
     }
 }

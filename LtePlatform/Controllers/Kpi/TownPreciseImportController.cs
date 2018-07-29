@@ -30,18 +30,6 @@ namespace LtePlatform.Controllers.Kpi
             return _service.GetMergeStats(statTime);
         }
 
-        [HttpGet]
-        public IEnumerable<TownMrsRsrp> GetMrs(DateTime statDate)
-        {
-            return _service.GetMergeMrsStats(statDate);
-        }
-
-        [HttpGet]
-        public IEnumerable<TopMrsRsrp> GetTopMrs(DateTime topDate)
-        {
-            return _service.GetTopMrsRsrps(topDate);
-        }
-
         [HttpPost]
         [ApiDoc("导入镇区精确覆盖率")]
         [ApiParameterDoc("container", "等待导入数据库的记录")]
