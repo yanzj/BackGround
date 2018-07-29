@@ -327,6 +327,7 @@
     <Compile Include="Controllers\Kpi\MonthPreciseTrendController.cs" />
     <Compile Include="Controllers\Kpi\MonthYuejiTrendController.cs" />
     <Compile Include="Controllers\Kpi\TopFeelingRateController.cs" />
+    <Compile Include="Controllers\Mongo\MrsRsrpImportController.cs" />
     <Compile Include="Controllers\Mongo\UplinkOpenLoopPowerControlController.cs" />
     <Compile Include="Controllers\Mr\AgpsMobileController.cs" />
     <Compile Include="Controllers\Mr\AgpsTelecomController.cs" />
@@ -469,7 +470,7 @@
     <Compile Include="Controllers\Kpi\MrsRegionController.cs" />
     <Compile Include="Controllers\Kpi\PrbQueryController.cs" />
     <Compile Include="Controllers\Kpi\PrbRegionController.cs" />
-    <Compile Include="Controllers\Kpi\PreciseMongoController.cs" />
+    <Compile Include="Controllers\Mongo\PreciseMongoController.cs" />
     <Compile Include="Controllers\Kpi\PreciseRegionController.cs" />
     <Compile Include="Controllers\Kpi\RrcQueryController.cs" />
     <Compile Include="Controllers\Kpi\FlowQueryController.cs" />

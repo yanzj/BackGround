@@ -3,7 +3,7 @@ using System.Web.Http;
 using Lte.Evaluations.DataService.Kpi;
 using LtePlatform.Models;
 
-namespace LtePlatform.Controllers.Kpi
+namespace LtePlatform.Controllers.Mongo
 {
     [ApiGroup("导入")]
     [ApiControl("从MongoDB导入精确覆盖率指标控制器")]

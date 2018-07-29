@@ -1,5 +1,5 @@
 ﻿angular.module("myApp", ['app.common'])
-    .controller("precise.import", function($scope, preciseImportService) {
+    .controller("precise.import", function ($scope, preciseImportService, neighborImportService) {
         var lastWeek = new Date();
         lastWeek.setDate(lastWeek.getDate() - 7);
         $scope.beginDate = {
@@ -15,6 +15,11 @@
             totalSuccessItems: 0,
             totalFailItems: 0
         };
+        $scope.rsrpInfo = {
+            totalDumpItems: 0,
+            totalSuccessItems: 0,
+            totalFailItems: 0
+        };
         $scope.dumpHistory = [];
         $scope.townPreciseViews = [];
         $scope.townMrsStats = [];
@@ -25,7 +30,6 @@
                 $scope.progressInfo.totalDumpItems = 0;
                 $scope.progressInfo.totalSuccessItems = 0;
                 $scope.progressInfo.totalFailItems = 0;
-                $scope.townPreciseViews = [];
             });
         };
         $scope.dumpTownItems = function() {
@@ -43,31 +47,9 @@
         };
         $scope.dumpItems = function() {
             preciseImportService.dumpSingleItem().then(function(result) {
-                if (result) {
-                    $scope.progressInfo.totalSuccessItems = $scope.progressInfo.totalSuccessItems + 1;
-                } else {
-                    $scope.progressInfo.totalFailItems = $scope.progressInfo.totalFailItems + 1;
-                }
-                if ($scope.progressInfo.totalSuccessItems + $scope.progressInfo.totalFailItems < $scope.progressInfo.totalDumpItems) {
-                    $scope.dumpItems();
-                } else {
-                    $scope.updateHistory();
-
-                    $scope.progressInfo.totalDumpItems = 0;
-                    $scope.progressInfo.totalSuccessItems = 0;
-                    $scope.progressInfo.totalFailItems = 0;
-                }
+                neighborImportService.updateSuccessProgress(result, $scope.progressInfo, $scope.dumpItems);
             }, function() {
-                $scope.progressInfo.totalFailItems = $scope.progressInfo.totalFailItems + 1;
-                if ($scope.progressInfo.totalSuccessItems + $scope.progressInfo.totalFailItems < $scope.progressInfo.totalDumpItems) {
-                    $scope.dumpItems();
-                } else {
-                    $scope.updateHistory();
-
-                    $scope.progressInfo.totalDumpItems = 0;
-                    $scope.progressInfo.totalSuccessItems = 0;
-                    $scope.progressInfo.totalFailItems = 0;
-                }
+                neighborImportService.updateFailProgress($scope.progressInfo, $scope.dumpItems);
             });
         };
         $scope.updateTownItems = function(date) {
@@ -82,7 +64,7 @@
         };
         $scope.updateTopMrsItems = function(date) {
             preciseImportService.queryTopMrsStats(date).then(function (result) {
-                $scope.topMrsStats = result;
+                $scope.rsrpInfo.totalDumpItems = result;
             });
         };
         $scope.updateMongoItems = function(date) {
