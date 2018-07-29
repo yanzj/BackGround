@@ -49,6 +49,7 @@ namespace Lte.Evaluations.DataService.Basic
             if (StationCells == null) StationCells = new Stack<ConstructionExcel>();
             if (StationRrus == null) StationRrus = new Stack<StationRruExcel>();
             if (StationAntennas == null) StationAntennas = new Stack<StationAntennaExcel>();
+            if (StationDistributions == null) StationDistributions = new Stack<IndoorDistributionExcel>();
         }
 
         public static List<BtsExcel> BtsExcels { get; set; } = new List<BtsExcel>();
@@ -72,6 +73,10 @@ namespace Lte.Evaluations.DataService.Basic
         private static Stack<StationAntennaExcel> StationAntennas { get; set; }
 
         public int StationAntennaCount => StationAntennas.Count;
+
+        private static Stack<IndoorDistributionExcel> StationDistributions { get; set; }
+
+        public int StationDistributionCount => StationDistributions.Count;
         
         public List<ENodebExcel> ImportENodebExcels(string path)
         {
@@ -203,9 +208,21 @@ namespace Lte.Evaluations.DataService.Basic
         {
             var repo = new ExcelQueryFactory { FileName = path };
             var excels = (from c in repo.Worksheet<IndoorDistributionExcel>("Sheet1") select c).ToList();
-            return
-                _distributionRepository.Import<IDistributionRepository, IndoorDistribution, IndoorDistributionExcel>(
-                    excels);
+            foreach (var indoorDistributionExcel in excels)
+            {
+                StationDistributions.Push(indoorDistributionExcel);
+            }
+
+            return StationDistributions.Count;
+        }
+
+        public async Task<bool> DumpOneStationDistribution()
+        {
+            var stat = StationDistributions.Pop();
+            if (stat == null) throw new NullReferenceException("stat is null!");
+            await _distributionRepository
+                .UpdateOne<IDistributionRepository, IndoorDistribution, IndoorDistributionExcel>(stat);
+            return true;
         }
 
         public int ImportHotSpots(string path)

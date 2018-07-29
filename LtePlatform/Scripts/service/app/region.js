@@ -1440,6 +1440,12 @@ angular.module('region.import', ['app.core'])
                 },
                 dumpStationAntenna: function () {
                     return generalHttpService.putApiData('DumpStationAntenna', {});
+                },
+                queryStationDistributions: function () {
+                    return generalHttpService.getApiData('DumpStationDistribution', {});
+                },
+                dumpStationDistribution: function () {
+                    return generalHttpService.putApiData('DumpStationDistribution', {});
                 }
             };
         })

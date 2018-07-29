@@ -334,6 +334,7 @@
     <Compile Include="Controllers\Mr\DpiGridKpiController.cs" />
     <Compile Include="Controllers\Mr\DumpStationAntennaController.cs" />
     <Compile Include="Controllers\Mr\DumpStationCellController.cs" />
+    <Compile Include="Controllers\Mr\DumpStationDistributionController.cs" />
     <Compile Include="Controllers\Mr\DumpStationENodebController.cs" />
     <Compile Include="Controllers\Mr\DumpStationInfoController.cs" />
     <Compile Include="Controllers\Mr\DumpStationRruController.cs" />

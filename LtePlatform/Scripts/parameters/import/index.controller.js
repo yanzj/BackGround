@@ -153,6 +153,9 @@
             basicImportService.queryStationAntennas().then(function (result) {
                 $rootScope.antennaInfo.totalDumpItems = result;
             });
+            basicImportService.queryStationDistributions().then(function (result) {
+                $rootScope.distributionInfo.totalDumpItems = result;
+            });
         };
 
         $rootScope.dumpStationItems = function() {
@@ -207,6 +210,17 @@
                 },
                 function () {
                     neighborImportService.updateFailProgress($rootScope.antennaInfo, $rootScope.dumpAntennaItems);
+                });
+        };
+
+        $rootScope.dumpDistributionItems = function () {
+            basicImportService.dumpStationDistribution().then(function (result) {
+                    neighborImportService.updateSuccessProgress(result,
+                        $rootScope.distributionInfo,
+                        $rootScope.dumpDistributionItems);
+                },
+                function () {
+                    neighborImportService.updateFailProgress($rootScope.distributionInfo, $rootScope.dumpDistributionItems);
                 });
         };
 
