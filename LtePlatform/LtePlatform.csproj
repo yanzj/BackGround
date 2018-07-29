@@ -592,8 +592,6 @@
     <Content Include="appViews\Evaluation\Dialog\CheckIndoorDetails.html" />
     <Content Include="appViews\Evaluation\Dialog\CheckPlanListDialog.html" />
     <Content Include="appViews\Evaluation\Dialog\CheckResultsStationAdd.html" />
-    <Content Include="appViews\Evaluation\Dialog\ResoureDetails.html" />
-    <Content Include="appViews\Evaluation\Resource.html" />
     <Content Include="appViews\Home\Assessment.html" />
     <Content Include="appViews\Home\Common.html" />
     <Content Include="appViews\Home\CommonStationEdit.html" />
@@ -656,7 +654,6 @@
     <Content Include="appViews\Evaluation\Dialog\AlarmHistoryListDialog.html" />
     <Content Include="appViews\Evaluation\Dialog\BtsSearchCondition.html" />
     <Content Include="appViews\Evaluation\Dialog\BuildingInfoBox.html" />
-    <Content Include="appViews\Evaluation\Dialog\CommonStationDetails.html" />
     <Content Include="appViews\Evaluation\Dialog\CommonStationListDialog.html" />
     <Content Include="appViews\Evaluation\Dialog\SpecialStationDetails.html" />
     <Content Include="appViews\Evaluation\FaultStation.html" />
@@ -1057,7 +1054,6 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app\Gruntfile.js" />
-    <Content Include="Scripts\app\home.alarm.menu.js" />
     <Content Include="Scripts\app\home.college.js" />
     <Content Include="Scripts\app\home.combined.js" />
     <Content Include="Scripts\app\home.complain.js" />

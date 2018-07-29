@@ -891,18 +891,6 @@
                         });
                 },
                 
-                getCommonStations: function (name, type, areaName, page, pageSize) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/StationCommon/search',
-                        {
-                            "curr_page": page,
-                            "page_size": pageSize,
-                            "stationName": name,
-                            "type": type,
-                            "areaName": areaName
-                        });
-                },
                 getCommonStationIdAdd: function (distinct, type) {
                     return generalHttpService.postPhpUrlData(appUrlService.getPhpHost() +
                         'LtePlatForm/lte/index.php/StationCommon/generateId',
@@ -1002,16 +990,6 @@
                             "curr_page": page,
                             "page_size": pageSize,
                             "isSolve": isSolve
-                        });
-                },
-                getResourceStations: function(areaName, type, page, pageSize) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() + 'LtePlatForm/lte/index.php/Resource/search',
-                        {
-                            "curr_page": page,
-                            "page_size": pageSize,
-                            "areaName": areaName,
-                            "type": type
                         });
                 },
                 getStationCnt: function (distinct,cycle) {

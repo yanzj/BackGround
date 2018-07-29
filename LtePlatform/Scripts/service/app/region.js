@@ -891,18 +891,6 @@ angular.module('region.basic', ['app.core'])
                         });
                 },
                 
-                getCommonStations: function (name, type, areaName, page, pageSize) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/StationCommon/search',
-                        {
-                            "curr_page": page,
-                            "page_size": pageSize,
-                            "stationName": name,
-                            "type": type,
-                            "areaName": areaName
-                        });
-                },
                 getCommonStationIdAdd: function (distinct, type) {
                     return generalHttpService.postPhpUrlData(appUrlService.getPhpHost() +
                         'LtePlatForm/lte/index.php/StationCommon/generateId',
@@ -1002,16 +990,6 @@ angular.module('region.basic', ['app.core'])
                             "curr_page": page,
                             "page_size": pageSize,
                             "isSolve": isSolve
-                        });
-                },
-                getResourceStations: function(areaName, type, page, pageSize) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() + 'LtePlatForm/lte/index.php/Resource/search',
-                        {
-                            "curr_page": page,
-                            "page_size": pageSize,
-                            "areaName": areaName,
-                            "type": type
                         });
                 },
                 getStationCnt: function (distinct,cycle) {
@@ -2994,16 +2972,6 @@ angular.module('region.network', ['app.core'])
                     });
                 });
             }
-        };
-        serviceInstance.getDistrictIndex = function(areaName) {
-            var dictionary = {
-                "FS顺德": 1,
-                "FS南海": 2,
-                "FS禅城": 3,
-                "FS三水": 4,
-                "FS高明": 5
-            };
-            return dictionary[areaName];
         };
 
         return serviceInstance;

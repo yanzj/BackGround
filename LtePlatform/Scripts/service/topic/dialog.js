@@ -160,34 +160,6 @@
                         }
                     });
                 },
-                showResourceStationInfo: function (station) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews//Evaluation/Dialog/ResoureDetails.html',
-                        controller: 'map.resourceStation.dialog',
-                        resolve: {
-                            dialogTitle: function () {
-                                return "资源资产:" + station.name;
-                            },
-                            station: function () {
-                                return station;
-                            }
-                        }
-                    });
-                },
-                showCommonStationInfo: function(station) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/Evaluation/Dialog/CommonStationDetails.html',
-                        controller: 'map.common-station.dialog',
-                        resolve: {
-                            dialogTitle: function() {
-                                return "站点信息:" + station.name;
-                            },
-                            station: function() {
-                                return station;
-                            }
-                        }
-                    });
-                },
                 showCommonStationList: function(type) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/Evaluation/Dialog/CommonStationListDialog.html',

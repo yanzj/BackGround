@@ -408,34 +408,6 @@
                 },
                 url: "/fixing-indoor"
             })
-            .state('resource-station', {
-                views: {
-                    'menu': {
-                        templateUrl: viewDir + "StationSearchMenu.html",
-                        controller: "menu.resource-station"
-                    },
-                    "contents": {
-                        templateUrl: "/appViews/Evaluation/Resource.html",
-                        controller: "resource-station.network"
-                    }
-
-                },
-                url: "/resource-station"
-            })
-            .state('resource-indoor', {
-                views: {
-                    'menu': {
-                        templateUrl: viewDir + "StationSearchMenu.html",
-                        controller: "menu.resource-indoor"
-                    },
-                    "contents": {
-                        templateUrl: "/appViews/Evaluation/Resource.html",
-                        controller: "resource-indoor.network"
-                    }
-
-                },
-                url: "/resource-indoor"
-            })
             .state('special-station',
             {
                 views: {

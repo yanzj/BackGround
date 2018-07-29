@@ -90,116 +90,6 @@
         }
         $scope.selectTab(0);
     })
-    .controller('map.resourceStation.dialog', function ($scope, $uibModalInstance, station, dialogTitle, downSwitchService,
-        appFormatService, networkElementService) {
-        $scope.station = station;
-        $scope.dialogTitle = dialogTitle;
-        $scope.bool = {};
-        $scope.bool.crru = false;
-        $scope.bool.cjz = false;
-        $scope.bool.csf = false;
-        $scope.bool.czf = false;
-        $scope.bool.lrru = false;
-        $scope.bool.ljz = false;
-        $scope.cancel = function () {
-            $uibModalInstance.dismiss('cancel');
-        };
-
-        $scope.tab = 1;
-
-        $scope.selectTab = function (setTab) {
-            $scope.tab = setTab;
-            if (0 == setTab) {
-                downSwitchService.getResourceCounter(station.id).then(function (response) {
-                    $scope.counter = response.result;
-                    if ($scope.counter.crru == '0') {
-                        document.getElementById('crru').style.color = 'gray';
-                        $scope.bool.crru = true;
-                    }
-                    else {
-                        $scope.bool.crru = false;
-                        document.getElementById('crru').style.color = 'blue';
-                    }
-
-                    if ($scope.counter.cjz == '0') {
-                        $scope.bool.cjz = true;
-                        document.getElementById('cjz').style.color = 'gray';
-                    }
-                    else {
-                        $scope.bool.cjz = false;
-                        document.getElementById('cjz').style.color = 'blue';
-                    }
-
-                    if ($scope.counter.csf == '0') {
-                        $scope.bool.csf = true;
-                        document.getElementById('csf').style.color = 'gray';
-                    }
-                    else {
-                        $scope.bool.csf = false;
-                        document.getElementById('csf').style.color = 'blue';
-                    }
-
-                    if ($scope.counter.czf == '0') {
-                        $scope.bool.czf = true;
-                        document.getElementById('czf').style.color = 'gray';
-                    }
-                    else {
-                        $scope.bool.czf = false;
-                        document.getElementById('czf').style.color = 'blue';
-                    }
-                    if ($scope.counter.lrru == '0') {
-                        $scope.bool.lrru = true;
-                        document.getElementById('lrru').style.color = 'gray';
-                    }
-                    else {
-                        $scope.bool.lrru = false;
-                        document.getElementById('lrru').style.color = 'blue';
-                    }
-                    if ($scope.counter.ljz == '0') {
-                        $scope.bool.ljz = true;
-                        document.getElementById('ljz').style.color = 'gray';
-                    }
-                    else {
-                        $scope.bool.ljz = false;
-                        document.getElementById('ljz').style.color = 'blue';
-                    }
-                    if ($scope.counter.asset == '0') {
-                        $scope.bool.asset = true;
-                        document.getElementById('asset').style.color = 'gray';
-                    }
-                    else {
-                        $scope.bool.asset = false;
-                        document.getElementById('asset').style.color = 'blue';
-                    }
-                });
-            } else if (1 == setTab) {
-                $scope.table = "crru";
-            } else if (2 == setTab) {
-                $scope.table = "cjz";
-            } else if (3 == setTab) {
-                $scope.table = "csf";
-            } else if (4 == setTab) {
-                $scope.table = "czf";
-            } else if (5 == setTab) {
-                $scope.table = "lrru";
-            } else if (6 == setTab) {
-                $scope.table = "ljz";
-            } else if (7 == setTab) {
-                $scope.table = "asset";
-            }
-            if (0 != setTab) {
-                downSwitchService.getResource($scope.table, station.id).then(function (response) {
-                    $scope.resourceList = response.result;
-                });
-            }
-        }
-
-        $scope.isSelectTab = function (checkTab) {
-            return $scope.tab === checkTab
-        }
-        $scope.selectTab(0);
-    })
-
     .controller('map.fixingStation.dialog',
         function($scope,
             $uibModalInstance,
@@ -216,14 +106,6 @@
             });
             $scope.dialogTitle = dialogTitle;
 
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            };
-        })
-    .controller('map.common-station.dialog',
-        function($scope, $uibModalInstance, station, dialogTitle) {
-            $scope.station = station;
-            $scope.dialogTitle = dialogTitle;
             $scope.cancel = function() {
                 $uibModalInstance.dismiss('cancel');
             };
