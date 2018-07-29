@@ -205,19 +205,24 @@ namespace LtePlatform.Controllers
                 count = _basicImportService.ImportStationRrus(dictPath);
             }
             ViewBag.Message = "共上传集团RRU记录" + count + "条";
+
             return View("BasicImport");
         }
 
         [HttpPost]
-        public ActionResult StationAntennaPost()
+        public ActionResult StationAntennaPost(HttpPostedFileBase[] stationAntenna)
         {
-            var dictFile = Request.Files["stationAntenna"];
-            if (dictFile != null && dictFile.FileName != "")
+            if (stationAntenna == null || stationAntenna.Length <= 0 ||
+                string.IsNullOrEmpty(stationAntenna[0]?.FileName))
+                return View("BasicImport");
+            var count = 0;
+            foreach (var dictFile in stationAntenna)
             {
                 var dictPath = dictFile.UploadParametersFile();
-                var count = _basicImportService.ImportStationAntennas(dictPath);
-                ViewBag.Message = "共上传集团天线记录" + count + "条";
+                count = _basicImportService.ImportStationAntennas(dictPath);
             }
+            ViewBag.Message = "共上传集团天线记录" + count + "条";
+
             return View("BasicImport");
         }
 

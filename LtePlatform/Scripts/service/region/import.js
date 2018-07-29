@@ -145,6 +145,12 @@
                 },
                 dumpStationRru: function () {
                     return generalHttpService.putApiData('DumpStationRru', {});
+                },
+                queryStationAntennas: function () {
+                    return generalHttpService.getApiData('DumpStationAntenna', {});
+                },
+                dumpStationAntenna: function () {
+                    return generalHttpService.putApiData('DumpStationAntenna', {});
                 }
             };
         })
