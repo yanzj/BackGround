@@ -318,13 +318,13 @@
     <Compile Include="Entities\AreaTestFileView.cs" />
     <Compile Include="Entities\CheckingDetailsView.cs" />
     <Compile Include="Entities\CheckingResultView.cs" />
-    <Compile Include="Migrations\201807112224205_Update_Complain_Process.cs" />
-    <Compile Include="Migrations\201807112224205_Update_Complain_Process.Designer.cs">
-      <DependentUpon>201807112224205_Update_Complain_Process.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201807190903562_Update_Station.cs" />
     <Compile Include="Migrations\201807190903562_Update_Station.Designer.cs">
       <DependentUpon>201807190903562_Update_Station.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807301629158_Add_SinrUl.cs" />
+    <Compile Include="Migrations\201807301629158_Add_SinrUl.Designer.cs">
+      <DependentUpon>201807301629158_Add_SinrUl.cs</DependentUpon>
     </Compile>
     <Compile Include="Support\AreaTestInfoQuery.cs" />
     <Compile Include="Entities\CdmaCellView.cs" />
@@ -385,10 +385,8 @@
     <Compile Include="Entities\TownBoundariesView.cs" />
     <Compile Include="Entities\TownBoundaryView.cs" />
     <Compile Include="Entities\TownCoverageView.cs" />
-    <Compile Include="Entities\TownCqiStat.cs" />
     <Compile Include="Entities\TownDoubleFlow.cs" />
     <Compile Include="Entities\TownFlowView.cs" />
-    <Compile Include="Entities\TownMrsRsrp.cs" />
     <Compile Include="Entities\TownMrsRsrpView.cs" />
     <Compile Include="Entities\TownPrbView.cs" />
     <Compile Include="Entities\TownQciView.cs" />
@@ -408,11 +406,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807112224205_Update_Complain_Process.resx">
-      <DependentUpon>201807112224205_Update_Complain_Process.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807190903562_Update_Station.resx">
       <DependentUpon>201807190903562_Update_Station.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807301629158_Add_SinrUl.resx">
+      <DependentUpon>201807301629158_Add_SinrUl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

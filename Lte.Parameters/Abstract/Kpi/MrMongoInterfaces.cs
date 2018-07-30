@@ -28,11 +28,6 @@ namespace Lte.Parameters.Abstract.Kpi
         
     }
 
-    public interface IMrsSinrUlRepository : IRepository<MrsSinrUlStat, ObjectId>, IStatDateCellRepository<MrsSinrUlStat>
-    {
-        
-    }
-
     public interface IMrsTadvRsrpRepository : IRepository<MrsTadvRsrpStat, ObjectId>,
         IStatDateCellRepository<MrsTadvRsrpStat>
     {

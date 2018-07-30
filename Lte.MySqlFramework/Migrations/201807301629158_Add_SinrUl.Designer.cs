@@ -7,13 +7,13 @@ namespace Lte.MySqlFramework.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Update_Complain_Process : IMigrationMetadata
+    public sealed partial class Add_SinrUl : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Update_Complain_Process));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Add_SinrUl));
         
         string IMigrationMetadata.Id
         {
-            get { return "201807112224205_Update_Complain_Process"; }
+            get { return "201807301629158_Add_SinrUl"; }
         }
         
         string IMigrationMetadata.Source

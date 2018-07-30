@@ -1,11 +1,10 @@
 using System;
 using Abp.Domain.Entities;
 using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Entities;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
 
-namespace Lte.MySqlFramework.Entities
+namespace Abp.EntityFramework.Entities
 {
     [AutoMapFrom(typeof(CqiHuawei), typeof(CqiZte))]
     public class TownCqiStat : Entity, ITownId, IStatTime

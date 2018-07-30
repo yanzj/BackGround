@@ -157,6 +157,10 @@ namespace Lte.MySqlFramework.Concrete
 
         public DbSet<TopMrsRsrp> TopMrsRsrps { get; set; }
 
+        public DbSet<TownMrsSinrUl> TownMrsSinrUls { get; set; }
+
+        public DbSet<TopMrsSinrUl> TopMrsSinrUls { get; set; }
+
         public DbSet<LteProblem> LteProblems { get; set; }
 
         public DbSet<CoverageStat> CoverageStats { get; set; }

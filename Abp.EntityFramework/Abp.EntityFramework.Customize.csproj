@@ -258,10 +258,14 @@
     <Compile Include="Entities\TopConnection3GCell.cs" />
     <Compile Include="Entities\TopDrop2GCell.cs" />
     <Compile Include="Entities\TopMrsRsrp.cs" />
+    <Compile Include="Entities\TopMrsSinrUl.cs" />
     <Compile Include="Entities\Town.cs" />
     <Compile Include="Entities\TownBoundary.cs" />
     <Compile Include="Entities\TownCoverageStat.cs" />
+    <Compile Include="Entities\TownCqiStat.cs" />
     <Compile Include="Entities\TownFlow.cs" />
+    <Compile Include="Entities\TownMrsRsrp.cs" />
+    <Compile Include="Entities\TownMrsSinrUl.cs" />
     <Compile Include="Entities\TownPrbStat.cs" />
     <Compile Include="Entities\TownQciStat.cs" />
     <Compile Include="Entities\TownRrcStat.cs" />

@@ -249,6 +249,7 @@
     <Compile Include="Policy\OrderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Precise\CellMrsRsrpDto.cs" />
+    <Compile Include="ViewModels\Precise\CellMrsSinrUlDto.cs" />
     <Compile Include="ViewModels\Precise\CellPreciseKpiView.cs" />
     <Compile Include="ViewModels\Precise\CellView.cs" />
     <Compile Include="ViewModels\Precise\IPreciseWorkItemDto.cs" />

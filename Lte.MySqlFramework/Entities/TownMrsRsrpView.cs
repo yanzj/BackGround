@@ -1,6 +1,7 @@
 using System;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Dependency;
+using Abp.EntityFramework.Entities;
 using Lte.Domain.Common.Wireless;
 
 namespace Lte.MySqlFramework.Entities
