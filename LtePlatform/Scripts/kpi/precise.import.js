@@ -20,10 +20,15 @@
             totalSuccessItems: 0,
             totalFailItems: 0
         };
+        $scope.sinrUlInfo = {
+            totalDumpItems: 0,
+            totalSuccessItems: 0,
+            totalFailItems: 0
+        };
         $scope.dumpHistory = [];
         $scope.townPreciseViews = [];
         $scope.townMrsStats = [];
-        $scope.topMrsStats = [];
+        $scope.townSinrUlStats = [];
 
         $scope.clearItems = function() {
             preciseImportService.clearImportItems().then(function() {
@@ -56,10 +61,9 @@
         };
 
         $scope.dumpTownItems = function() {
-            preciseImportService.dumpTownItems($scope.townPreciseViews, $scope.townMrsStats, $scope.topMrsStats).then(function() {
+            preciseImportService.dumpTownItems($scope.townPreciseViews, $scope.townMrsStats).then(function() {
                 $scope.townPreciseViews = [];
                 $scope.townMrsStats = [];
-                $scope.topMrsStats = [];
                 $scope.updateHistory();
             });
         };

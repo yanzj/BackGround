@@ -257,7 +257,11 @@ namespace LtePlatform
             
             ninjectKernel.Bind<ITopMrsRsrpRepository>().To<TopMrsRsrpRepository>();
 
+            ninjectKernel.Bind<ITopMrsSinrUlRepository>().To<TopMrsSinrUlRepository>();
+
             ninjectKernel.Bind<ILteProblemRepository>().To<LteProblemRepository>();
+
+            ninjectKernel.Bind<ITownMrsSinrUlRepository>().To<TownMrsSinrUlRepository>();
 
             ninjectKernel.Bind<ICoverageStatRepository>().To<CoverageStatRepository>();
 

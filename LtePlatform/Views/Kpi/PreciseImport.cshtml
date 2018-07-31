@@ -3,11 +3,12 @@
     <div class="row">
         <div class="col-md-4">
             <button class="btn btn-info"
-                    ng-disabled="townPreciseViews.length === 0 && townMrsStats.length === 0"
+                    ng-disabled="townPreciseViews.length === 0 && townMrsStats.length === 0 && townSinrUlStats.length === 0"
                     ng-click="dumpTownItems()">
                 导入镇区指标
                 <div class="badge">精确覆盖{{townPreciseViews.length}}</div>
                 <div class="badge">RSRP覆盖{{townMrsStats.length}}</div>
+                <div class="badge">上行SINR{{townSinrUlStats.length}}</div>
             </button>
             <h4>精确覆盖率小区导入</h4>
             <p>
@@ -61,6 +62,32 @@
                     </span>
                 </div>
             </div>
+            <h4>MRS-SinrUL小区导入</h4>
+            <p>
+                总数：{{sinrUlInfo.totalDumpItems}}&nbsp;
+                成功数：{{sinrUlInfo.totalSuccessItems}}&nbsp;
+                失败数：{{sinrUlInfo.totalFailItems}}
+                <div class="btn-group">
+                    <button class="btn btn-primary" ng-disabled="sinrUlInfo.totalDumpItems === 0" ng-click="dumpSinrUlItems()">
+                        一键导入
+                    </button>
+                    <button class="btn btn-danger" ng-disabled="sinrUlInfo.totalDumpItems === 0" ng-click="clearSinrUlItems()">
+                        清除导入
+                    </button>
+                </div>
+            </p>
+            <div uib-progress>
+                <div uib-bar value="100*sinrUlInfo.totalSuccessItems / sinrUlInfo.totalDumpItems" type="success">
+                    <span ng-show="100*sinrUlInfo.totalSuccessItems / sinrUlInfo.totalDumpItems > 5">
+                        {{100*sinrUlInfo.totalSuccessItems / sinrUlInfo.totalDumpItems | number: 2}}%
+                    </span>
+                </div>
+                <div uib-bar value="100*sinrUlInfo.totalFailItems / sinrUlInfo.totalDumpItems" type="erroe">
+                    <span ng-show="100*sinrUlInfo.totalFailItems / sinrUlInfo.totalDumpItems > 5">
+                        {{100*sinrUlInfo.totalFailItems / sinrUlInfo.totalDumpItems | number: 2}}%
+                    </span>
+                </div>
+            </div>
         </div>
         <div class="col-md-8">
             <div class="panel panel-info">
@@ -83,8 +110,10 @@
                                 <th>镇区-精确覆盖</th>
                                 <th>镇区-MRS覆盖</th>
                                 <th>TOP-MRS覆盖</th>
+                                <th>TOP-SinrUL覆盖</th>
                                 <th style="width:150px">精确覆盖率数据</th>
-                                <th style="width:140px">MRS数据</th>
+                                <th style="width:140px">MRS-RSRP数据</th>
+                                <th style="width:140px">MRS-SinrUL数据</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -113,7 +142,16 @@
                                             镇区
                                         </button>
                                     </div>
-
+                                </td>
+                                <td>
+                                    <div class="btn-group-sm">
+                                        <button class="btn btn-sm btn-success" ng-click="updateTopSinrUlItems(stat.statDate)">
+                                            TOP
+                                        </button>
+                                        <button class="btn btn-sm btn-default" ng-click="updateTownSinrUlItems(stat.statDate)">
+                                            镇区
+                                        </button>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>

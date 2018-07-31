@@ -179,12 +179,11 @@
                 clearMrsRsrpItems: function () {
                     return generalHttpService.deleteApiData('MrsRsrpImport', {});
                 },
-                dumpTownItems: function(views, mrsStats, topMrsStats) {
+                dumpTownItems: function(views, mrsStats) {
                     return generalHttpService.postApiData('TownPreciseImport',
                     {
                         views: views,
-                        mrsRsrps: mrsStats,
-                        topMrsRsrps: topMrsStats
+                        mrsRsrps: mrsStats
                     });
                 },
                 dumpTownAgpsItems: function(views) {
