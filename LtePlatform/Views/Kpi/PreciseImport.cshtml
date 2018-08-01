@@ -109,6 +109,7 @@
                                 <th>小区统计数量</th>
                                 <th>镇区-精确覆盖</th>
                                 <th>镇区-MRS覆盖</th>
+                                <th>镇区-SinrUL覆盖</th>
                                 <th>TOP-MRS覆盖</th>
                                 <th>TOP-SinrUL覆盖</th>
                                 <th style="width:150px">精确覆盖率数据</th>
@@ -122,7 +123,9 @@
                                 <td>{{stat.preciseStats}}</td>
                                 <td>{{stat.townPreciseStats}}</td>
                                 <td>{{stat.townMrsStats}}</td>
+                                <td>{{stat.townSinrUlStats}}</td>
                                 <td>{{stat.topMrsStats}}</td>
+                                <td>{{stat.topSinrUlStats}}</td>
                                 <td>
                                     <div class="btn-group-sm">
                                         <button type="button" class="btn btn-sm btn-success" ng-click="updateMongoItems(stat.statDate)">

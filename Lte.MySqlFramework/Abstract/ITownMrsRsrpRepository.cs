@@ -4,7 +4,7 @@ using Abp.EntityFramework.Repositories;
 
 namespace Lte.MySqlFramework.Abstract
 {
-    public interface ITownMrsRsrpRepository : IRepository<TownMrsRsrp>, ISaveChanges
+    public interface ITownMrsRsrpRepository : IRepository<TownMrsRsrp>, ISaveChanges, IMatchRepository<TownMrsRsrp>
     {
         
     }

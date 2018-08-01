@@ -15,5 +15,11 @@ namespace Lte.MySqlFramework.Concrete
         public TownMrsSinrUlRepository(IDbContextProvider<MySqlContext> dbContextProvider) : base(dbContextProvider)
         {
         }
+
+        public TownMrsSinrUl Match(TownMrsSinrUl stat)
+        {
+            var end = stat.StatDate.AddDays(1).Date;
+            return FirstOrDefault(x => x.TownId == stat.TownId && x.StatDate >= stat.StatDate.Date && x.StatDate < end);
+        }
     }
 }

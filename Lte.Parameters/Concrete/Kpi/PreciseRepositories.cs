@@ -29,14 +29,6 @@ namespace Lte.Parameters.Concrete.Kpi
         }
     }
 
-    public class EFTownPreciseCoverage4GStatRepository : EfRepositorySave<EFParametersContext, TownPreciseCoverage4GStat>,
-        ITownPreciseCoverage4GStatRepository
-    {
-        public EFTownPreciseCoverage4GStatRepository(IDbContextProvider<EFParametersContext> dbContextProvider) : base(dbContextProvider)
-        {
-        }
-    }
-
     public class PreciseMongoRepository : MongoDbRepositoryBase<PreciseMongo, ObjectId>, IPreciseMongoRepository
     {
         public PreciseMongoRepository(IMongoDatabaseProvider databaseProvider) : base(databaseProvider)

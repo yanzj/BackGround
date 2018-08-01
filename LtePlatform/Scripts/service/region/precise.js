@@ -155,6 +155,9 @@
                 queryTotalMrsRsrpItems: function () {
                     return generalHttpService.getApiData('MrsRsrpImport', {});
                 },
+                queryTotalMrsSinrUlItems: function () {
+                    return generalHttpService.getApiData('MrsSinrUlImport', {});
+                },
                 queryTownPreciseViews: function(statTime) {
                     return generalHttpService.getApiData('TownPreciseImport',
                     {
@@ -167,8 +170,20 @@
                             statDate: statTime
                         });
                 },
+                queryTownSinrUlStats: function (statTime) {
+                    return generalHttpService.getApiData('MrsSinrUlImport',
+                        {
+                            statDate: statTime
+                        });
+                },
                 queryTopMrsStats: function (statTime) {
                     return generalHttpService.getApiData('MrsRsrpImport',
+                        {
+                            topDate: statTime
+                        });
+                },
+                queryTopMrsSinrUlStats: function (statTime) {
+                    return generalHttpService.getApiData('MrsSinrUlImport',
                         {
                             topDate: statTime
                         });
@@ -179,11 +194,15 @@
                 clearMrsRsrpItems: function () {
                     return generalHttpService.deleteApiData('MrsRsrpImport', {});
                 },
-                dumpTownItems: function(views, mrsStats) {
+                clearMrsSinrUlItems: function () {
+                    return generalHttpService.deleteApiData('MrsSinrUlImport', {});
+                },
+                dumpTownItems: function(views, mrsStats, mrsSinrUls) {
                     return generalHttpService.postApiData('TownPreciseImport',
                     {
                         views: views,
-                        mrsRsrps: mrsStats
+                        mrsRsrps: mrsStats,
+                        mrsSinrUls: mrsSinrUls
                     });
                 },
                 dumpTownAgpsItems: function(views) {
@@ -197,6 +216,9 @@
                 },
                 dumpSingleMrsRsrpItem: function () {
                     return generalHttpService.putApiData('MrsRsrpImport', {});
+                },
+                dumpSingleMrsSinrUlItem: function () {
+                    return generalHttpService.putApiData('MrsSinrUlImport', {});
                 },
                 updateMongoItems: function(statDate) {
                     return generalHttpService.getApiData('PreciseMongo',

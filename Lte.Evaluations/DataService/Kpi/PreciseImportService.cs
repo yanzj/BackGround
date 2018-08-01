@@ -5,7 +5,8 @@ using Lte.Parameters.Entities.Kpi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Abp.EntityFramework.AutoMapper;
+using System.Threading.Tasks;
+using Abp.EntityFramework.Repositories;
 using Lte.Evaluations.ViewModels.RegionKpi;
 using Lte.MySqlFramework.Abstract;
 
@@ -20,6 +21,8 @@ namespace Lte.Evaluations.DataService.Kpi
         private readonly IPreciseMongoRepository _mongoRepository;
         private readonly ITownMrsRsrpRepository _townMrsRsrpRepository;
         private readonly ITopMrsRsrpRepository _topMrsRsrpRepository;
+        private readonly ITownMrsSinrUlRepository _townMrsSinrUlRepository;
+        private readonly ITopMrsSinrUlRepository _topMrsSinrUlRepository;
 
         public static Stack<PreciseCoverage4G> PreciseCoverage4Gs { get; set; } 
         
@@ -27,7 +30,8 @@ namespace Lte.Evaluations.DataService.Kpi
             ITownPreciseCoverage4GStatRepository regionRepository,
             IENodebRepository eNodebRepository, ITownRepository townRepository,
             IPreciseMongoRepository mongoRepository,
-            ITownMrsRsrpRepository townMrsRsrpRepository, ITopMrsRsrpRepository topMrsRsrpRepository)
+            ITownMrsRsrpRepository townMrsRsrpRepository, ITopMrsRsrpRepository topMrsRsrpRepository,
+            ITownMrsSinrUlRepository townMrsSinrUlRepository, ITopMrsSinrUlRepository topMrsSinrUlRepository)
         {
             _repository = repository;
             _regionRepository = regionRepository;
@@ -36,6 +40,8 @@ namespace Lte.Evaluations.DataService.Kpi
             _mongoRepository = mongoRepository;
             _townMrsRsrpRepository = townMrsRsrpRepository;
             _topMrsRsrpRepository = topMrsRsrpRepository;
+            _townMrsSinrUlRepository = townMrsSinrUlRepository;
+            _topMrsSinrUlRepository = topMrsSinrUlRepository;
             if (PreciseCoverage4Gs == null)
                 PreciseCoverage4Gs = new Stack<PreciseCoverage4G>();
         }
@@ -95,44 +101,17 @@ namespace Lte.Evaluations.DataService.Kpi
             return townStats;
         }
 
-        public void DumpTownStats(TownPreciseViewContainer container)
+        public async Task DumpTownStats(TownPreciseViewContainer container)
         {
             var stats = Mapper.Map<IEnumerable<TownPreciseView>, IEnumerable<TownPreciseCoverage4GStat>>(container.Views);
-            foreach (var stat in stats)
-            {
-                var endTime = stat.StatTime.AddDays(1);
-                var item =
-                    _regionRepository.FirstOrDefault(
-                        x => x.TownId == stat.TownId && x.StatTime >= stat.StatTime && x.StatTime < endTime);
-                if (item == null)
-                {
-                    _regionRepository.Insert(stat);
-                }
-                else
-                {
-                    stat.MapTo(item);
-                }
-            }
-            _regionRepository.SaveChanges();
+            await _regionRepository.UpdateMany(stats);
 
             var mrsStats = container.MrsRsrps;
-            foreach (var stat in mrsStats)
-            {
-                var endTime = stat.StatDate.AddDays(1);
-                var item =
-                    _townMrsRsrpRepository.FirstOrDefault(
-                        x => x.TownId == stat.TownId && x.StatDate >= stat.StatDate && x.StatDate < endTime);
-                if (item == null)
-                {
-                    _townMrsRsrpRepository.Insert(stat);
-                }
-                else
-                {
-                    stat.MapTo(item);
-                }
-            }
-            _townMrsRsrpRepository.SaveChanges();
-            
+            await _townMrsRsrpRepository.UpdateMany(mrsStats);
+
+            var mrsSinrUlStats = container.MrsSinrUls;
+            await _townMrsSinrUlRepository.UpdateMany(mrsSinrUlStats);
+
         }
 
         public bool DumpOneStat()
@@ -186,6 +165,9 @@ namespace Lte.Evaluations.DataService.Kpi
                 var townMrsItems =
                     _townMrsRsrpRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
                 var topMrsItems = _topMrsRsrpRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
+                var townSinrUlItems =
+                    _townMrsSinrUlRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
+                var topSinrUlItems = _topMrsSinrUlRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
                 results.Add(new PreciseHistory
                 {
                     DateString = begin.ToShortDateString(),
@@ -193,7 +175,9 @@ namespace Lte.Evaluations.DataService.Kpi
                     PreciseStats = items.Count,
                     TownPreciseStats = townItems.Count,
                     TownMrsStats = townMrsItems.Count,
-                    TopMrsStats = topMrsItems.Count
+                    TopMrsStats = topMrsItems.Count,
+                    TownSinrUlStats = townSinrUlItems.Count,
+                    TopSinrUlStats = topSinrUlItems.Count
                 });
                 begin = begin.AddDays(1);
             }

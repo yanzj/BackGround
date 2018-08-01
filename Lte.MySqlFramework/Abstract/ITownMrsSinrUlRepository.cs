@@ -9,7 +9,7 @@ using Abp.EntityFramework.Repositories;
 
 namespace Lte.MySqlFramework.Abstract
 {
-    public interface ITownMrsSinrUlRepository : IRepository<TownMrsSinrUl>, ISaveChanges
+    public interface ITownMrsSinrUlRepository : IRepository<TownMrsSinrUl>, ISaveChanges, IMatchRepository<TownMrsSinrUl>
     {
     }
 }

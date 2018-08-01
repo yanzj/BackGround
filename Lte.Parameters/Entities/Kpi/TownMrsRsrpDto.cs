@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Dependency;
 using Lte.Domain.Common.Wireless;
-using Lte.Parameters.Entities.Kpi;
 
-namespace Lte.Evaluations.ViewModels.Precise
+namespace Lte.Parameters.Entities.Kpi
 {
     [AutoMapFrom(typeof(MrsRsrpStat))]
     public class TownMrsRsrpDto : ICityDistrictTown, IStatDate, ITownId

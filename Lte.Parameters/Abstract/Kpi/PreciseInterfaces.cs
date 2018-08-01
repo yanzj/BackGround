@@ -14,10 +14,6 @@ namespace Lte.Parameters.Abstract.Kpi
         List<PreciseCoverage4G> GetAllList(DateTime begin, DateTime end);
     }
 
-    public interface ITownPreciseCoverage4GStatRepository : IRepository<TownPreciseCoverage4GStat>, ISaveChanges
-    {
-    }
-
     public interface IPreciseMongoRepository : IRepository<PreciseMongo, ObjectId>
     {
         List<PreciseMongo> GetAllList(DateTime statDate);

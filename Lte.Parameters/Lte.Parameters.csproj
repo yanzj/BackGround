@@ -173,6 +173,7 @@
     <Compile Include="Abstract\Infrastructure\RegionRepositories.cs" />
     <Compile Include="Abstract\Kpi\IMrsRsrpRepository.cs" />
     <Compile Include="Abstract\Kpi\IMrsSinrUlRepository.cs" />
+    <Compile Include="Abstract\Kpi\ITownPreciseCoverage4GStatRepository.cs" />
     <Compile Include="Abstract\Kpi\MrMongoInterfaces.cs" />
     <Compile Include="Abstract\Kpi\PreciseInterfaces.cs" />
     <Compile Include="Abstract\Switch\ICellMeasGroupZteRepository.cs" />
@@ -193,6 +194,7 @@
     <Compile Include="Concrete\Kpi\MrsRepositories.cs" />
     <Compile Include="Concrete\EFParametersContext.cs" />
     <Compile Include="Concrete\Kpi\PreciseRepositories.cs" />
+    <Compile Include="Concrete\Kpi\TownPreciseCoverage4GStatRepository.cs" />
     <Compile Include="Concrete\MasterTestContext.cs" />
     <Compile Include="Concrete\Kpi\InterferenceMongoRepository.cs" />
     <Compile Include="Concrete\MyMongoProvider.cs" />
@@ -246,6 +248,8 @@
     <Compile Include="Entities\Kpi\NeighborRsrpView.cs" />
     <Compile Include="Entities\Kpi\PreciseMongo.cs" />
     <Compile Include="Entities\Kpi\TopPrecise4GContainer.cs" />
+    <Compile Include="Entities\Kpi\TownMrsRsrpDto.cs" />
+    <Compile Include="Entities\Kpi\TownMrsSinrUlDto.cs" />
     <Compile Include="Entities\Kpi\TownPreciseCoverage4GStat.cs" />
     <Compile Include="Entities\Kpi\TownPreciseView.cs" />
     <Compile Include="Entities\Neighbor\EutranInterFreqNCell.cs" />

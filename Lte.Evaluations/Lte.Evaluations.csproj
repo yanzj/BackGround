@@ -204,6 +204,7 @@
     <Compile Include="DataService\Mr\DpiGridKpiService.cs" />
     <Compile Include="DataService\Mr\MrGridKpiService.cs" />
     <Compile Include="DataService\Mr\MrsRsrpImportService.cs" />
+    <Compile Include="DataService\Mr\MrsSinrUlImportService.cs" />
     <Compile Include="DataService\Mr\TopCoverageStatService.cs" />
     <Compile Include="DataService\Mr\GridClusterService.cs" />
     <Compile Include="DataService\Mr\InterferenceMatrixService.cs" />
@@ -261,7 +262,6 @@
     <Compile Include="ViewModels\Precise\PreciseInterferenceVictimsContainer.cs" />
     <Compile Include="ViewModels\Precise\PreciseViews.cs" />
     <Compile Include="ViewModels\Precise\TopPreciseViewContainer.cs" />
-    <Compile Include="ViewModels\Precise\TownMrsRsrpView.cs" />
     <Compile Include="ViewModels\RegionKpi\CoverageRegionDateView.cs" />
     <Compile Include="ViewModels\RegionKpi\DistrictComplainDateView.cs" />
     <Compile Include="ViewModels\RegionKpi\DistrictComplainView.cs" />

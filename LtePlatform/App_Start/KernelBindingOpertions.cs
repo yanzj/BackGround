@@ -73,7 +73,7 @@ namespace LtePlatform
 
             ninjectKernel.Bind<ITopConnection2GRepository>().To<TopConnection2GRepository>();
 
-            ninjectKernel.Bind<ITownPreciseCoverage4GStatRepository>().To<EFTownPreciseCoverage4GStatRepository>();
+            ninjectKernel.Bind<ITownPreciseCoverage4GStatRepository>().To<TownPreciseCoverage4GStatRepository>();
 
             ninjectKernel.Bind<IAreaTestDateRepository>().To<AreaTestDateDateRepository>();
 
@@ -470,6 +470,8 @@ namespace LtePlatform
             ninjectKernel.Bind<MrGridKpiService>().ToSelf();
 
             ninjectKernel.Bind<MrsRsrpImportService>().ToSelf();
+
+            ninjectKernel.Bind<MrsSinrUlImportService>().ToSelf();
 
         }
     }

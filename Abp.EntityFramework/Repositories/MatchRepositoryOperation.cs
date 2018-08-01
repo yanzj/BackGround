@@ -220,6 +220,30 @@ namespace Abp.EntityFramework.Repositories
             return repository.SaveChanges();
         }
 
+        public static async Task<int> UpdateMany<TRepository, TEntity>(this TRepository repository, IEnumerable<TEntity> stats)
+            where TRepository : IRepository<TEntity>, IMatchRepository<TEntity>, ISaveChanges
+            where TEntity : Entity, new()
+        {
+            var count = 0;
+            foreach (var stat in stats)
+            {
+                var info = repository.Match(stat);
+                if (info == null)
+                {
+                    await repository.InsertAsync(stat.MapTo<TEntity>());
+                }
+                else
+                {
+                    Mapper.Map(stat, info);
+                    await repository.UpdateAsync(info);
+                }
+                if (count++ % 1000 == 0)
+                    repository.SaveChanges();
+            }
+
+            return repository.SaveChanges();
+        }
+
         public static async Task<TProcessDto> ConstructProcess
             <TRepository, TProcessRepository, TEntity, TDto, TProcess, TProcessDto>(this TRepository repository,
                 TProcessRepository processRepository, TDto dto, string userName)

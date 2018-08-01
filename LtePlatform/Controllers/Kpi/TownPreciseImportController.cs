@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.Http;
-using Abp.EntityFramework.Entities;
 using Lte.Evaluations.DataService.Kpi;
 using Lte.Evaluations.ViewModels.RegionKpi;
-using Lte.MySqlFramework.Entities;
 using Lte.Parameters.Entities.Kpi;
 using LtePlatform.Models;
 
@@ -33,9 +32,9 @@ namespace LtePlatform.Controllers.Kpi
         [HttpPost]
         [ApiDoc("导入镇区精确覆盖率")]
         [ApiParameterDoc("container", "等待导入数据库的记录")]
-        public void Post(TownPreciseViewContainer container)
+        public async Task Post(TownPreciseViewContainer container)
         {
-            _service.DumpTownStats(container);
+            await _service.DumpTownStats(container);
         }
     }
 }

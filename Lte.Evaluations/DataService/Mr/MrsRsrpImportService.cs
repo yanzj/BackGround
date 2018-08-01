@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Repositories;
 using AutoMapper;
 using Lte.Evaluations.ViewModels.Precise;
 using Lte.MySqlFramework.Abstract;
-using Lte.MySqlFramework.Entities;
 using Lte.Parameters.Abstract.Kpi;
 using Lte.Parameters.Entities.Kpi;
 
