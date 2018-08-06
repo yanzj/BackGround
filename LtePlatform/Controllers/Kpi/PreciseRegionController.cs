@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Web.Http;
 using Lte.Evaluations.DataService.Kpi;
-using Lte.Evaluations.ViewModels.RegionKpi;
+using Lte.MySqlFramework.Support;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.Kpi

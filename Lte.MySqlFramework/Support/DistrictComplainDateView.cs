@@ -5,7 +5,7 @@ using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities;
 using Lte.Domain.Common.Wireless;
 
-namespace Lte.Evaluations.ViewModels.RegionKpi
+namespace Lte.MySqlFramework.Support
 {
     public class DistrictComplainDateView : IStatDate
     {

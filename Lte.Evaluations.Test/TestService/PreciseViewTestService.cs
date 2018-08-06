@@ -1,8 +1,8 @@
-﻿using Lte.Evaluations.ViewModels.RegionKpi;
+﻿using Abp.EntityFramework.Entities;
 using Lte.Parameters.Entities.Kpi;
 using NUnit.Framework;
 
-namespace Lte.Evaluations.Test.TestService
+namespace Lte.Evaluations.TestService
 {
     public static class PreciseViewTestService
     {

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities;
@@ -13,9 +12,9 @@ using Lte.Domain.Excel;
 using Lte.Domain.LinqToExcel;
 using Lte.Evaluations.Policy;
 using Lte.Evaluations.ViewModels.Precise;
-using Lte.Evaluations.ViewModels.RegionKpi;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Support;
 
 namespace Lte.Evaluations.DataService.Dump
 {

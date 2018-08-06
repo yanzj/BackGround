@@ -177,6 +177,7 @@
     <Compile Include="DataService\Kpi\CqiQueryService.cs" />
     <Compile Include="DataService\Kpi\CqiRegionStatService.cs" />
     <Compile Include="DataService\Kpi\CqiReportService.cs" />
+    <Compile Include="DataService\Kpi\DoubleFlowRegionStatService.cs" />
     <Compile Include="DataService\Kpi\DtQuery.cs" />
     <Compile Include="DataService\Kpi\ENodebFlowService.cs" />
     <Compile Include="DataService\Kpi\FlowQueryService.cs" />
@@ -262,19 +263,6 @@
     <Compile Include="ViewModels\Precise\PreciseInterferenceVictimsContainer.cs" />
     <Compile Include="ViewModels\Precise\PreciseViews.cs" />
     <Compile Include="ViewModels\Precise\TopPreciseViewContainer.cs" />
-    <Compile Include="ViewModels\RegionKpi\CoverageRegionDateView.cs" />
-    <Compile Include="ViewModels\RegionKpi\DistrictComplainDateView.cs" />
-    <Compile Include="ViewModels\RegionKpi\DistrictComplainView.cs" />
-    <Compile Include="ViewModels\RegionKpi\ENodebView.cs" />
-    <Compile Include="ViewModels\RegionKpi\FlowRegionDateView.cs" />
-    <Compile Include="ViewModels\RegionKpi\MrsRegionDateView.cs" />
-    <Compile Include="ViewModels\RegionKpi\PrbRegionDateView.cs" />
-    <Compile Include="ViewModels\RegionKpi\PreciseRegion.cs" />
-    <Compile Include="ViewModels\RegionKpi\QciRegionDateView.cs" />
-    <Compile Include="ViewModels\RegionKpi\RrcRegionDateView.cs" />
-    <Compile Include="ViewModels\RegionKpi\StatViews.cs" />
-    <Compile Include="ViewModels\RegionKpi\TownPreciseViewContainer.cs" />
-    <Compile Include="ViewModels\RegionKpi\WorkItemChartView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Abp.EntityFramework\Abp.EntityFramework.Customize.csproj">

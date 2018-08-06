@@ -1,4 +1,4 @@
-namespace Lte.Evaluations.ViewModels.RegionKpi
+namespace Lte.MySqlFramework.Support
 {
     public class DistrictComplainView
     {

@@ -16,7 +16,6 @@ using Abp.EntityFramework.Entities;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Excel;
 using Lte.Evaluations.ViewModels.Precise;
-using Lte.Evaluations.ViewModels.RegionKpi;
 
 namespace Lte.Evaluations.MapperService
 {

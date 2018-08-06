@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using Lte.Domain.Regular;
-using Lte.Evaluations.ViewModels.RegionKpi;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Entities;
-using Lte.Parameters.Abstract.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;

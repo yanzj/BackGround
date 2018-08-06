@@ -197,6 +197,7 @@
     <Compile Include="Entities\CqiZte.cs" />
     <Compile Include="Entities\CsvFilesInfo.cs" />
     <Compile Include="Entities\DistributionSystem.cs" />
+    <Compile Include="Entities\DistrictPreciseView.cs" />
     <Compile Include="Entities\DoubleFlowHuawei.cs" />
     <Compile Include="Entities\DoubleFlowZte.cs" />
     <Compile Include="Entities\DownSwitchFlow.cs" />
@@ -241,6 +242,7 @@
     <Compile Include="Entities\PlanningSiteView.cs" />
     <Compile Include="Entities\PrbHuawei.cs" />
     <Compile Include="Entities\PrbZte.cs" />
+    <Compile Include="Entities\PreciseCoverage4G.cs" />
     <Compile Include="Entities\PreciseCoverageDto.cs" />
     <Compile Include="Entities\PreciseInterferenceNeighborDto.cs" />
     <Compile Include="Entities\PreciseInterferenceVictimDto.cs" />
@@ -259,14 +261,18 @@
     <Compile Include="Entities\TopDrop2GCell.cs" />
     <Compile Include="Entities\TopMrsRsrp.cs" />
     <Compile Include="Entities\TopMrsSinrUl.cs" />
+    <Compile Include="Entities\TopPrecise4GContainer.cs" />
     <Compile Include="Entities\Town.cs" />
     <Compile Include="Entities\TownBoundary.cs" />
     <Compile Include="Entities\TownCoverageStat.cs" />
     <Compile Include="Entities\TownCqiStat.cs" />
+    <Compile Include="Entities\TownDoubleFlow.cs" />
     <Compile Include="Entities\TownFlow.cs" />
     <Compile Include="Entities\TownMrsRsrp.cs" />
     <Compile Include="Entities\TownMrsSinrUl.cs" />
     <Compile Include="Entities\TownPrbStat.cs" />
+    <Compile Include="Entities\TownPreciseCoverage4GStat.cs" />
+    <Compile Include="Entities\TownPreciseView.cs" />
     <Compile Include="Entities\TownQciStat.cs" />
     <Compile Include="Entities\TownRrcStat.cs" />
     <Compile Include="Entities\UserLoginSessionInfo.cs" />

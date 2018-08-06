@@ -1,10 +1,9 @@
 ﻿using Abp.EntityFramework.AutoMapper;
 using Abp.Reflection;
 using Lte.Evaluations.Policy;
-using Lte.Evaluations.Test.TestService;
-using Lte.Evaluations.ViewModels.RegionKpi;
 using NUnit.Framework;
 using System.Linq;
+using Abp.EntityFramework.Entities;
 using Lte.Domain.Common.Wireless;
 using Lte.Parameters.Entities.Kpi;
 

@@ -4,8 +4,8 @@ using System.Web.Http;
 using Abp.EntityFramework.Entities;
 using Lte.Domain.Common.Wireless;
 using Lte.Evaluations.DataService.Kpi;
-using Lte.Evaluations.ViewModels.RegionKpi;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Support;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.Kpi

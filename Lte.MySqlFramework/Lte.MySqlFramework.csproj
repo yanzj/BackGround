@@ -322,6 +322,10 @@
     <Compile Include="Entities\AreaTestFileView.cs" />
     <Compile Include="Entities\CheckingDetailsView.cs" />
     <Compile Include="Entities\CheckingResultView.cs" />
+    <Compile Include="Entities\DistrictDoubleFlowView.cs" />
+    <Compile Include="Entities\ENodebView.cs" />
+    <Compile Include="Entities\TownDoubleFlowView.cs" />
+    <Compile Include="Entities\WorkItemView.cs" />
     <Compile Include="Migrations\201807190903562_Update_Station.cs" />
     <Compile Include="Migrations\201807190903562_Update_Station.Designer.cs">
       <DependentUpon>201807190903562_Update_Station.cs</DependentUpon>
@@ -389,7 +393,6 @@
     <Compile Include="Entities\TownBoundariesView.cs" />
     <Compile Include="Entities\TownBoundaryView.cs" />
     <Compile Include="Entities\TownCoverageView.cs" />
-    <Compile Include="Entities\TownDoubleFlow.cs" />
     <Compile Include="Entities\TownFlowView.cs" />
     <Compile Include="Entities\TownMrsRsrpView.cs" />
     <Compile Include="Entities\TownPrbView.cs" />
@@ -402,7 +405,20 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\CollegeStat.cs" />
+    <Compile Include="Support\CoverageRegionDateView.cs" />
+    <Compile Include="Support\CqiRegionDateView.cs" />
+    <Compile Include="Support\DistrictComplainDateView.cs" />
+    <Compile Include="Support\DistrictComplainView.cs" />
+    <Compile Include="Support\DoubleFlowRegionDateView.cs" />
     <Compile Include="Support\FlowQuerySupport.cs" />
+    <Compile Include="Support\FlowRegionDateView.cs" />
+    <Compile Include="Support\MrsRegionDateView.cs" />
+    <Compile Include="Support\PrbRegionDateView.cs" />
+    <Compile Include="Support\PreciseRegion.cs" />
+    <Compile Include="Support\QciRegionDateView.cs" />
+    <Compile Include="Support\RrcRegionDateView.cs" />
+    <Compile Include="Support\TownPreciseViewContainer.cs" />
+    <Compile Include="Support\WorkItemChartView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Abstract\OldHotSpots.json" />

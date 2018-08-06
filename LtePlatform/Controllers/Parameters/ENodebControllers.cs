@@ -3,7 +3,7 @@ using LtePlatform.Models;
 using System.Collections.Generic;
 using System.Web.Http;
 using Lte.Domain.Common.Geo;
-using Lte.Evaluations.ViewModels.RegionKpi;
+using Lte.MySqlFramework.Entities;
 
 namespace LtePlatform.Controllers.Parameters
 {

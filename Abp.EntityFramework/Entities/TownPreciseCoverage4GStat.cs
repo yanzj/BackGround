@@ -1,20 +1,15 @@
 using System;
+using Abp.Domain.Entities;
 using Abp.EntityFramework.AutoMapper;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
 
-namespace Lte.Parameters.Entities.Kpi
+namespace Abp.EntityFramework.Entities
 {
-    [AutoMap(typeof(TownPreciseCoverage4GStat))]
-    public class TownPreciseView : ICityDistrictTown, IStatTime
+    [AutoMapFrom(typeof(PreciseCoverage4G))]
+    public class TownPreciseCoverage4GStat : Entity, ITownId, IStatTime
     {
         public DateTime StatTime { get; set; }
-
-        public string City { get; set; } = "-";
-
-        public string District { get; set; } = "-";
-
-        public string Town { get; set; } = "-";
 
         public int TownId { get; set; }
 
@@ -25,12 +20,6 @@ namespace Lte.Parameters.Entities.Kpi
         public int SecondNeighbors { get; set; }
 
         public int FirstNeighbors { get; set; }
-
-        public double PreciseRate => 100 - (double)SecondNeighbors * 100 / TotalMrs;
-
-        public double FirstRate => 100 - (double)FirstNeighbors * 100 / TotalMrs;
-
-        public double ThirdRate => 100 - (double)ThirdNeighbors * 100 / TotalMrs;
 
         public int NeighborsMore { get; set; }
 

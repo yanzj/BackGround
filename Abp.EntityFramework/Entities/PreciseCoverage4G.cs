@@ -1,11 +1,8 @@
-﻿using Abp.Domain.Entities;
-using Abp.EntityFramework.AutoMapper;
-using System;
-using Lte.Domain.Common;
-using Lte.Domain.Excel;
+﻿using System;
+using Abp.Domain.Entities;
 using Lte.Domain.Regular.Attributes;
 
-namespace Lte.Parameters.Entities.Kpi
+namespace Abp.EntityFramework.Entities
 {
     public class PreciseCoverage4G : Entity
     {

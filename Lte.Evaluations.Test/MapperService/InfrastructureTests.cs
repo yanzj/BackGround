@@ -3,7 +3,6 @@ using Abp.Reflection;
 using Lte.Evaluations.DataService.Basic;
 using Lte.Evaluations.MockItems;
 using Lte.Evaluations.Policy;
-using Lte.Evaluations.ViewModels.Precise;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Entities;
 using Moq;
@@ -14,7 +13,6 @@ using System.Linq;
 using System.Reflection;
 using Abp.EntityFramework.Entities;
 using Lte.Domain.Common.Geo;
-using Lte.Evaluations.ViewModels.RegionKpi;
 
 namespace Lte.Evaluations.MapperService
 {

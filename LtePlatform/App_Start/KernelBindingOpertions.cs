@@ -63,7 +63,7 @@ namespace LtePlatform
 
             ninjectKernel.Bind<IIndoorDistributionRepository>().To<EFIndoorDistributionRepository>();
 
-            ninjectKernel.Bind<IPreciseCoverage4GRepository>().To<EFPreciseCoverage4GRepository>();
+            ninjectKernel.Bind<IPreciseCoverage4GRepository>().To<PreciseCoverage4GRepository>();
 
             ninjectKernel.Bind<IPreciseMongoRepository>().To<PreciseMongoRepository>();
 
@@ -472,6 +472,8 @@ namespace LtePlatform
             ninjectKernel.Bind<MrsRsrpImportService>().ToSelf();
 
             ninjectKernel.Bind<MrsSinrUlImportService>().ToSelf();
+
+            ninjectKernel.Bind<DoubleFlowRegionStatService>().ToSelf();
 
         }
     }

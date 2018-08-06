@@ -1,7 +1,8 @@
 using Abp.EntityFramework.AutoMapper;
 using Lte.Domain.Regular.Attributes;
+using Lte.MySqlFramework.Entities;
 
-namespace Lte.Evaluations.ViewModels.RegionKpi
+namespace Lte.MySqlFramework.Support
 {
     [AutoMapFrom(typeof(WorkItemView))]
     public class WorkItemChartView

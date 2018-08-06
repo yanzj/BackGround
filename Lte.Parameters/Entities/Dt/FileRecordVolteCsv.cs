@@ -113,6 +113,8 @@ namespace Lte.Parameters.Entities.Dt
         [CsvColumn(Name = "RTP Payload Size")]
         public int? RtpPayloadSize { get; set; }
 
+        public double? PolqaMos { get; set; }
+
         [CsvColumn(Name = "Packet LossCount")]
         public int? PacketLossCount { get; set; }
 

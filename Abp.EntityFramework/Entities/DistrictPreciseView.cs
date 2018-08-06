@@ -1,7 +1,7 @@
 ﻿using Abp.EntityFramework.AutoMapper;
 using Lte.Domain.Common.Wireless;
 
-namespace Lte.Parameters.Entities.Kpi
+namespace Abp.EntityFramework.Entities
 {
     [AutoMapFrom(typeof(TownPreciseView))]
     public class DistrictPreciseView : ICityDistrict

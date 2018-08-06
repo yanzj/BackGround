@@ -12,7 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities;
-using Lte.Evaluations.ViewModels.RegionKpi;
+using Lte.MySqlFramework.Support;
 
 namespace Lte.Evaluations.DataService.College
 {

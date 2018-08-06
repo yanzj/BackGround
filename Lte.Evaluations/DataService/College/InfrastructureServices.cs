@@ -9,7 +9,6 @@ using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
 using Lte.Evaluations.DataService.Basic;
 using Lte.Evaluations.ViewModels.Precise;
-using Lte.Evaluations.ViewModels.RegionKpi;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Entities;
 

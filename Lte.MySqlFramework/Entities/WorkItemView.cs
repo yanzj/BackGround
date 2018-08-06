@@ -6,7 +6,7 @@ using Lte.Domain.Common.Wireless;
 using Lte.Domain.Regular.Attributes;
 using Lte.MySqlFramework.Abstract;
 
-namespace Lte.Evaluations.ViewModels.RegionKpi
+namespace Lte.MySqlFramework.Entities
 {
     [TypeDoc("工单信息视图")]
     [AutoMapFrom(typeof(WorkItem))]

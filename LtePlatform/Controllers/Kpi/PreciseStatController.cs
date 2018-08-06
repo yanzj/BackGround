@@ -1,13 +1,12 @@
-﻿using Lte.Domain.Common;
-using Lte.Domain.Common.Wireless;
+﻿using Lte.Domain.Common.Wireless;
 using Lte.Evaluations.DataService.Basic;
 using Lte.Evaluations.DataService.Kpi;
 using Lte.Evaluations.ViewModels.Precise;
-using Lte.Parameters.Entities.Kpi;
 using LtePlatform.Models;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
+using Abp.EntityFramework.Entities;
 using Lte.Domain.Common.Types;
 
 namespace LtePlatform.Controllers.Kpi

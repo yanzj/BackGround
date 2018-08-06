@@ -1,4 +1,4 @@
-﻿namespace Lte.Parameters.Entities.Kpi
+﻿namespace Abp.EntityFramework.Entities
 {
     public class TopPrecise4GContainer
     {

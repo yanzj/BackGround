@@ -1,6 +1,6 @@
 ﻿using Abp.Domain.Repositories;
+using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Repositories;
-using Lte.Parameters.Entities.Kpi;
 
 namespace Lte.Parameters.Abstract.Kpi
 {

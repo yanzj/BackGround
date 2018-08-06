@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Abp.EntityFramework.Dependency;
-using Lte.Parameters.Entities.Kpi;
+using Abp.EntityFramework.Entities;
 
-namespace Lte.Evaluations.ViewModels.RegionKpi
+namespace Lte.MySqlFramework.Support
 {
     public class PreciseRegionDateView : IRegionDateSpanView<DistrictPreciseView, TownPreciseView>
     {

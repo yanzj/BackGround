@@ -1,9 +1,9 @@
-﻿using Lte.MySqlFramework.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Abp.EntityFramework.Dependency;
+using Lte.MySqlFramework.Entities;
 
-namespace Lte.Evaluations.ViewModels.RegionKpi
+namespace Lte.MySqlFramework.Support
 {
     public class FlowRegionDateView : IRegionDateSpanView<DistrictFlowView, TownFlowView>
     {

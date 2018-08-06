@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Abp.EntityFramework.Entities;
 using Lte.Evaluations.DataService.Kpi;
-using Lte.Evaluations.ViewModels.RegionKpi;
-using Lte.Parameters.Entities.Kpi;
+using Lte.MySqlFramework.Support;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.Kpi

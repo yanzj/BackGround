@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Abp.EntityFramework.Entities;
 using Lte.Evaluations.DataService.Dump;
-using Lte.Evaluations.ViewModels.RegionKpi;
+using Lte.MySqlFramework.Entities;
 
 namespace LtePlatform.Controllers.Kpi
 {

@@ -5,9 +5,8 @@ using Abp.EntityFramework.Entities;
 using Lte.Domain.Common.Geo;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Regular;
-using Lte.MySqlFramework.Entities;
 
-namespace Lte.Evaluations.ViewModels.RegionKpi
+namespace Lte.MySqlFramework.Entities
 {
     [AutoMapFrom(typeof(ENodeb), typeof(Town))]
     public class ENodebView : IGeoPointReadonly<double>, ITownId

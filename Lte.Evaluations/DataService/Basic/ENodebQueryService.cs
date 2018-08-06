@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.Entities;
 using Lte.Domain.Common.Geo;
-using Lte.Evaluations.ViewModels.RegionKpi;
 using Lte.MySqlFramework.Entities;
 
 namespace Lte.Evaluations.DataService.Basic

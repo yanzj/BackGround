@@ -7,9 +7,9 @@ using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Repositories;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Regular;
-using Lte.Evaluations.ViewModels.RegionKpi;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Support;
 
 namespace Lte.Evaluations.DataService.Kpi
 {

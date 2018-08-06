@@ -1,9 +1,7 @@
 ﻿using Abp.EntityFramework;
-using Lte.Parameters.Entities;
-using Lte.Parameters.Entities.Basic;
 using Lte.Parameters.Entities.Kpi;
-using Lte.Parameters.Entities.Neighbor;
 using System.Data.Entity;
+using Abp.EntityFramework.Entities;
 
 namespace Lte.Parameters.Concrete
 {
