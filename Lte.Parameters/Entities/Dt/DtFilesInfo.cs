@@ -99,6 +99,7 @@ namespace Lte.Parameters.Entities.Dt
                         RtpFrameType = subList.FirstOrDefault(x => x.RtpFrameType != null)?.RtpFrameType,
                         RtpLoggedPayloadSize = subList.Where(x => x.RtpLoggedPayloadSize != null).Average(x => x.RtpLoggedPayloadSize),
                         RtpPayloadSize = subList.Where(x => x.RtpPayloadSize != null).Average(x => x.RtpPayloadSize),
+                        PolqaMos = subList.Where(x => x.PolqaMos != null).Average(x => x.PolqaMos),
                         PacketLossCount = subList.Where(x => x.PacketLossCount != null).Average(x => x.PacketLossCount),
                         RxRtpPacketNum = subList.Where(x => x.RxRtpPacketNum != null).Average(x => x.RxRtpPacketNum),
                         VoicePacketDelay = subList.Where(x => x.VoicePacketDelay != null).Average(x => x.VoicePacketDelay),
@@ -337,7 +338,7 @@ namespace Lte.Parameters.Entities.Dt
                    + "[Cell2ndEARFCN],[Cell2ndPCI],[Cell2ndRSRP],[Cell3rdEARFCN],[Cell3rdPCI],[Cell3rdRSRP],"
                    + "[Cell4thEARFCN],[Cell4thPCI],[Cell4thRSRP],[Cell5thEARFCN],[Cell5thPCI],[Cell5thRSRP],"
                    + "[Cell6thEARFCN],[Cell6thPCI],[Cell6thRSRP],[RTPFrameType],[RTPLoggedPayloadSize],"
-                   + "[RTPPayloadSize],[PacketLossCount],[RxRTPPacketNum],[VoicePacketDelay],"
+                   + "[RTPPayloadSize],[PolqaMos],[PacketLossCount],[RxRTPPacketNum],[VoicePacketDelay],"
                    + "[VoicePacketLossRate],[VoiceRFC1889Jitter],[Rank2CQICode0],[Rank1CQI]) VALUES("
                    + stat.RasterNum
                    + ",'" + stat.TestTimeString
@@ -373,6 +374,7 @@ namespace Lte.Parameters.Entities.Dt
                    + "," + (stat.RtpFrameType == null ? "NULL" : stat.RtpFrameType.ToString())
                    + "," + (stat.RtpLoggedPayloadSize == null ? "NULL" : stat.RtpLoggedPayloadSize.ToString())
                    + "," + (stat.RtpPayloadSize == null ? "NULL" : stat.RtpPayloadSize.ToString())
+                   + "," + (stat.PolqaMos == null ? "NULL" : stat.PolqaMos.ToString())
                    + "," + (stat.PacketLossCount == null ? "NULL" : stat.PacketLossCount.ToString())
                    + "," + (stat.RxRtpPacketNum == null ? "NULL" : stat.RxRtpPacketNum.ToString())
                    + "," + (stat.VoicePacketDelay == null ? "NULL" : stat.VoicePacketDelay.ToString())

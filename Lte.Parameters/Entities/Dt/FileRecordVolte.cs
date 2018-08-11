@@ -112,6 +112,9 @@ namespace Lte.Parameters.Entities.Dt
         [Column(Name = "RTPPayloadSize", DbType = "Real")]
         public double? RtpPayloadSize { get; set; }
 
+        [Column(Name = "PolqaMos", DbType = "Real")]
+        public double? PolqaMos { get; set; }
+
         [Column(Name = "PacketLossCount", DbType = "Real")]
         public double? PacketLossCount { get; set; }
 

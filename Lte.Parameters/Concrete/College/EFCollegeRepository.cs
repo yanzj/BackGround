@@ -108,7 +108,7 @@ namespace Lte.Parameters.Concrete.College
                                     + "Cell4thEARFCN INT, Cell4thPCI SMALLINT, Cell4thRSRP REAL, "
                                     + "Cell5thEARFCN INT, Cell5thPCI SMALLINT, Cell5thRSRP REAL, "
                                     + "Cell6thEARFCN INT, Cell6thPCI SMALLINT, Cell6thRSRP REAL, "
-                                    + "RTPFrameType TINYINT, RTPLoggedPayloadSize REAL, RTPPayloadSize REAL, "
+                                    + "RTPFrameType TINYINT, RTPLoggedPayloadSize REAL, RTPPayloadSize REAL, PolqaMos REAL, "
                                     + "PacketLossCount REAL, RxRTPPacketNum REAL, VoicePacketDelay REAL, "
                                     + "VoicePacketLossRate REAL, VoiceRFC1889Jitter REAL, Rank2CQICode0 REAL, "
                                     + "Rank1CQI REAL)");

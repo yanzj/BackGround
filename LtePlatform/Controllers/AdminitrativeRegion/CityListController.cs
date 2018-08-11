@@ -19,10 +19,10 @@ namespace LtePlatform.Controllers.AdminitrativeRegion
         [HttpGet]
         [ApiDoc("获得所有城市列表")]
         [ApiResponse("所有城市列表")]
-        public IHttpActionResult Get()
+        public List<string> Get()
         {
             var query = _service.GetCities();
-            return query.Count == 0 ? (IHttpActionResult) BadRequest("Empty City List!") : Ok(query);
+            return query;
         }
 
         [HttpGet]
