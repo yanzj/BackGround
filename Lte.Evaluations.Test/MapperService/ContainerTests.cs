@@ -1,7 +1,6 @@
 ﻿using Abp.EntityFramework.AutoMapper;
 using Abp.Reflection;
 using AutoMapper;
-using Lte.Domain.Common.Wireless;
 using Lte.Domain.Regular;
 using Lte.Evaluations.Policy;
 using Lte.MySqlFramework.Entities;
@@ -12,11 +11,9 @@ using Shouldly;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Cdma;
 using Abp.EntityFramework.Entities.Complain;
 using Abp.EntityFramework.Entities.Infrastructure;
-using Abp.EntityFramework.Entities.Kpi;
 using Abp.EntityFramework.Entities.Maintainence;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless.Complain;
@@ -26,6 +23,7 @@ using Lte.Domain.Common.Wireless.Station;
 using Lte.Domain.Common.Wireless.Work;
 using Lte.Domain.Excel;
 using Lte.Evaluations.ViewModels.Precise;
+using Lte.MySqlFramework.Support.Container;
 
 namespace Lte.Evaluations.MapperService
 {

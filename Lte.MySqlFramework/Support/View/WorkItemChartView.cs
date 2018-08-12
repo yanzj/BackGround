@@ -2,7 +2,7 @@ using Abp.EntityFramework.AutoMapper;
 using Lte.Domain.Regular.Attributes;
 using Lte.MySqlFramework.Entities;
 
-namespace Lte.MySqlFramework.Support
+namespace Lte.MySqlFramework.Support.View
 {
     [AutoMapFrom(typeof(WorkItemView))]
     public class WorkItemChartView

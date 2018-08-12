@@ -1,10 +1,9 @@
 using Abp.EntityFramework.AutoMapper;
-using Lte.Domain.Common;
 using Lte.Domain.Common.Types;
-using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Kpi;
+using Lte.MySqlFramework.Entities;
 
-namespace Lte.MySqlFramework.Entities
+namespace Lte.MySqlFramework.Support.Container
 {
     [AutoMapFrom(typeof(TopCellContainer<TopConnection3GTrend>))]
     public class TopConnection3GTrendViewContainer

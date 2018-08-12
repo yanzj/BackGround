@@ -1,11 +1,10 @@
 ﻿using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Cdma;
 using Lte.Domain.Common.Types;
-using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Kpi;
+using Lte.MySqlFramework.Entities;
 
-namespace Lte.MySqlFramework.Entities
+namespace Lte.MySqlFramework.Support.Container
 {
     [AutoMapFrom(typeof(TopCellContainer<TopDrop2GCell>))]
     public class TopDrop2GCellViewContainer

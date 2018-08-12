@@ -3,18 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Dependency;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.RegionKpi;
 using Abp.EntityFramework.Repositories;
-using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Common.Wireless.Region;
 using Lte.Domain.Regular;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Abstract.RegionKpi;
 using Lte.MySqlFramework.Entities;
-using Lte.MySqlFramework.Support;
+using Lte.MySqlFramework.Support.View;
 
 namespace Lte.Evaluations.DataService.Kpi
 {

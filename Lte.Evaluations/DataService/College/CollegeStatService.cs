@@ -18,6 +18,7 @@ using Lte.MySqlFramework.Abstract.College;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Test;
 using Lte.MySqlFramework.Support;
+using Lte.MySqlFramework.Support.View;
 
 namespace Lte.Evaluations.DataService.College
 {

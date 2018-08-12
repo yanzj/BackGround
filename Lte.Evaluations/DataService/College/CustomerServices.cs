@@ -4,21 +4,19 @@ using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Repositories;
 using AutoMapper;
 using Lte.Domain.Common.Wireless;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Abp.EntityFramework.Dependency;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Complain;
 using Abp.EntityFramework.Entities.Region;
-using Lte.Domain.Excel;
 using Lte.MySqlFramework.Abstract.Complain;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Support;
+using Lte.MySqlFramework.Support.View;
 
 namespace Lte.Evaluations.DataService.College
 {

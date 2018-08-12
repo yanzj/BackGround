@@ -1,4 +1,4 @@
-namespace Lte.MySqlFramework.Support
+namespace Lte.MySqlFramework.Support.View
 {
     public class DistrictComplainView
     {

@@ -4,15 +4,13 @@ using System.Linq;
 using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
 using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Infrastructure;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Cell;
-using Lte.Evaluations.Policy;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Region;
+using Lte.MySqlFramework.Support;
 
 namespace Lte.Evaluations.DataService.Switch
 {

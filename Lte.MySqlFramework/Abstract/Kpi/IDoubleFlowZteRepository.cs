@@ -5,8 +5,7 @@ using Abp.EntityFramework.Repositories;
 namespace Lte.MySqlFramework.Abstract.Kpi
 {
     public interface IDoubleFlowZteRepository : IRepository<DoubleFlowZte>, ISaveChanges,
-        IMatchRepository<DoubleFlowZte>
+        IMatchRepository<DoubleFlowZte>, IFilterTopRepository<DoubleFlowZte>
     {
-        
     }
 }

@@ -1,14 +1,12 @@
 ﻿using System.Runtime.Serialization;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.College;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Distribution;
 using Lte.Domain.Regular.Attributes;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.College;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 
-namespace Lte.MySqlFramework.Support
+namespace Lte.MySqlFramework.Support.View
 {
     [TypeDoc("校园网统计信息，主要包括用户数和有关的基础信息")]
     [DataContract]

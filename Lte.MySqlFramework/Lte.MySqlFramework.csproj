@@ -333,6 +333,11 @@
     <Compile Include="Migrations\201807301629158_Add_SinrUl.Designer.cs">
       <DependentUpon>201807301629158_Add_SinrUl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Support\AreaTestInfoQuery.cs" />
     <Compile Include="Entities\CdmaCellView.cs" />
     <Compile Include="Entities\CdmaCompoundCellView.cs" />
@@ -372,20 +377,20 @@
     <Compile Include="Entities\StationDictionaryView.cs" />
     <Compile Include="Entities\StationRruView.cs" />
     <Compile Include="Entities\TopConnection3GCellView.cs" />
-    <Compile Include="Entities\TopConnection3GCellViewContainer.cs" />
+    <Compile Include="Support\Container\TopConnection3GCellViewContainer.cs" />
     <Compile Include="Entities\TopConnection3GDateView.cs" />
     <Compile Include="Entities\TopConnection3GTrend.cs" />
     <Compile Include="Entities\TopConnection3GTrendView.cs" />
-    <Compile Include="Entities\TopConnection3GTrendViewContainer.cs" />
-    <Compile Include="Entities\TopCoverageStatContainer.cs" />
+    <Compile Include="Support\Container\TopConnection3GTrendViewContainer.cs" />
+    <Compile Include="Support\Container\TopCoverageStatContainer.cs" />
     <Compile Include="Entities\TopCoverageStatView.cs" />
     <Compile Include="Entities\TopDrop2GCellView.cs" />
-    <Compile Include="Entities\TopDrop2GCellViewContainer.cs" />
+    <Compile Include="Support\Container\TopDrop2GCellViewContainer.cs" />
     <Compile Include="Entities\TopDrop2GDateView.cs" />
     <Compile Include="Entities\TopDrop2GTrend.cs" />
     <Compile Include="Entities\TopDrop2GTrendView.cs" />
-    <Compile Include="Entities\TopDrop2GTrendViewContainer.cs" />
-    <Compile Include="Entities\TopMrsRsrpContainer.cs" />
+    <Compile Include="Support\Container\TopDrop2GTrendViewContainer.cs" />
+    <Compile Include="Support\Container\TopMrsRsrpContainer.cs" />
     <Compile Include="Entities\TopMrsRsrpView.cs" />
     <Compile Include="Entities\TownAreaTestFileView.cs" />
     <Compile Include="Entities\TownBoundariesView.cs" />
@@ -402,26 +407,33 @@
     <Compile Include="Entities\ZhangshangyouQualityView.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Support\CollegeStat.cs" />
-    <Compile Include="Support\CoverageRegionDateView.cs" />
-    <Compile Include="Support\CqiRegionDateView.cs" />
-    <Compile Include="Support\DistrictComplainDateView.cs" />
-    <Compile Include="Support\DistrictComplainView.cs" />
-    <Compile Include="Support\DoubleFlowRegionDateView.cs" />
+    <Compile Include="Support\FilterService.cs" />
+    <Compile Include="Support\GeneralFlowQuery.cs" />
+    <Compile Include="Support\OrderService.cs" />
+    <Compile Include="Support\View\CollegeStat.cs" />
+    <Compile Include="Support\View\CoverageRegionDateView.cs" />
+    <Compile Include="Support\View\CqiRegionDateView.cs" />
+    <Compile Include="Support\View\DistrictComplainDateView.cs" />
+    <Compile Include="Support\View\DistrictComplainView.cs" />
+    <Compile Include="Support\View\DoubleFlowRegionDateView.cs" />
     <Compile Include="Support\FlowQuerySupport.cs" />
-    <Compile Include="Support\FlowRegionDateView.cs" />
-    <Compile Include="Support\MrsRegionDateView.cs" />
-    <Compile Include="Support\PrbRegionDateView.cs" />
+    <Compile Include="Support\View\FlowRegionDateView.cs" />
+    <Compile Include="Support\View\MrsRegionDateView.cs" />
+    <Compile Include="Support\View\PrbRegionDateView.cs" />
     <Compile Include="Support\PreciseRegion.cs" />
-    <Compile Include="Support\QciRegionDateView.cs" />
-    <Compile Include="Support\RrcRegionDateView.cs" />
-    <Compile Include="Support\TownPreciseViewContainer.cs" />
-    <Compile Include="Support\WorkItemChartView.cs" />
+    <Compile Include="Support\View\QciRegionDateView.cs" />
+    <Compile Include="Support\View\RrcRegionDateView.cs" />
+    <Compile Include="Support\Container\TownPreciseViewContainer.cs" />
+    <Compile Include="Support\View\WorkItemChartView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Abstract\OldHotSpots.json" />
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201807190903562_Update_Station.resx">

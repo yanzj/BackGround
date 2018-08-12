@@ -4,7 +4,6 @@ using System.Linq;
 using Abp.EntityFramework.Entities.Kpi;
 using Lte.Evaluations.DataService.Switch;
 using Lte.Evaluations.Query;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Kpi;
 using Lte.MySqlFramework.Abstract.Region;
@@ -20,12 +19,12 @@ namespace Lte.Evaluations.DataService.Kpi
         {
         }
 
-        protected override Switch.IDateSpanQuery<List<RrcView>> GenerateHuaweiQuery(int eNodebId, byte sectorId)
+        protected override IDateSpanQuery<List<RrcView>> GenerateHuaweiQuery(int eNodebId, byte sectorId)
         {
             return new HuaweiRrcQuery(HuaweiRepository, HuaweiCellRepository, eNodebId, sectorId);
         }
 
-        protected override Switch.IDateSpanQuery<List<RrcView>> GenerateZteQuery(int eNodebId, byte sectorId)
+        protected override IDateSpanQuery<List<RrcView>> GenerateZteQuery(int eNodebId, byte sectorId)
         {
             return new ZteRrcQuery(ZteRepository, eNodebId, sectorId);
         }

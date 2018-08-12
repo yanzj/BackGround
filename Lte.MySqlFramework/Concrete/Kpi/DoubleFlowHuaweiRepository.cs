@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Abp.EntityFramework;
 using Abp.EntityFramework.Entities.Kpi;
 using Abp.EntityFramework.Repositories;
@@ -17,6 +19,13 @@ namespace Lte.MySqlFramework.Concrete.Kpi
             return FirstOrDefault(x =>
                 x.StatTime == stat.StatTime && x.ENodebId == stat.ENodebId &&
                 x.SectorId == stat.SectorId);
+        }
+
+        public List<DoubleFlowHuawei> FilterTopList(DateTime begin, DateTime end)
+        {
+            return GetAllList(x => (x.CloseLoopRank2Prbs + x.OpenLoopRank2Prbs) * 5 <
+                                   (x.CloseLoopRank1Prbs + x.OpenLoopRank1Prbs)
+                                   && (x.CloseLoopRank1Prbs + x.OpenLoopRank1Prbs) > 500000000);
         }
     }
 }

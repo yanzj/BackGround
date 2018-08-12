@@ -218,7 +218,6 @@
     <Compile Include="DataService\Mr\TownSupportService.cs" />
     <Compile Include="DataService\Dt\RasterInfoService.cs" />
     <Compile Include="DataService\Switch\DateSpanQuery.cs" />
-    <Compile Include="DataService\Switch\GeneralFlowQuery.cs" />
     <Compile Include="DataService\Switch\HuaweiCellMongoQuery.cs" />
     <Compile Include="DataService\Switch\HuaweiENodebMongoQuery.cs" />
     <Compile Include="DataService\Switch\HuaweiInterFreqCellQuery.cs" />
@@ -247,8 +246,6 @@
     <Compile Include="DataService\Kpi\Top2GServices.cs" />
     <Compile Include="DataService\Dump\WorkItemService.cs" />
     <Compile Include="MapperSerive\EvalutaionMapperProfile.cs" />
-    <Compile Include="Policy\FilterWorkItemService.cs" />
-    <Compile Include="Policy\OrderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Precise\CellMrsRsrpDto.cs" />
     <Compile Include="ViewModels\Precise\CellMrsSinrUlDto.cs" />

@@ -1,6 +1,5 @@
 ﻿using Abp.EntityFramework.AutoMapper;
 using Lte.Evaluations.DataService.Switch;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Entities;
 using System;
 using System.Collections.Generic;

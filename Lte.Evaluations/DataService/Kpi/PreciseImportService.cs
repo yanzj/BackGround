@@ -6,15 +6,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Kpi;
 using Abp.EntityFramework.Entities.RegionKpi;
 using Abp.EntityFramework.Repositories;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Mr;
 using Lte.MySqlFramework.Abstract.Region;
-using Lte.MySqlFramework.Support;
+using Lte.MySqlFramework.Support.Container;
 
 namespace Lte.Evaluations.DataService.Kpi
 {

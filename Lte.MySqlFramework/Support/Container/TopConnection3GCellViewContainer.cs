@@ -1,12 +1,10 @@
 ﻿using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Cdma;
-using Abp.EntityFramework.Entities.Kpi;
 using Lte.Domain.Common.Types;
-using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Kpi;
+using Lte.MySqlFramework.Entities;
 
-namespace Lte.MySqlFramework.Entities
+namespace Lte.MySqlFramework.Support.Container
 {
     [AutoMapFrom(typeof(TopCellContainer<TopConnection3GCell>))]
     public class TopConnection3GCellViewContainer

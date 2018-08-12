@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Abp.EntityFramework.Dependency;
 using Lte.MySqlFramework.Entities;
 
-namespace Lte.MySqlFramework.Support
+namespace Lte.MySqlFramework.Support.View
 {
     public class QciRegionDateView : IRegionDateSpanView<DistrictQciView, TownQciView>
     {

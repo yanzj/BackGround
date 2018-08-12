@@ -1,7 +1,4 @@
-﻿using Lte.Domain.Common;
-using Lte.Domain.Common.Wireless;
-using Lte.Evaluations.DataService.Kpi;
-using Lte.Evaluations.Policy;
+﻿using Lte.Evaluations.DataService.Kpi;
 using LtePlatform.Models;
 using System;
 using System.Collections.Generic;
@@ -9,6 +6,7 @@ using System.Web.Http;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless.Kpi;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Support;
 
 namespace LtePlatform.Controllers.Kpi
 {

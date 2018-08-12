@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities.RegionKpi;
 using Lte.MySqlFramework.Entities;
 
-namespace Lte.MySqlFramework.Support
+namespace Lte.MySqlFramework.Support.View
 {
     public class DoubleFlowRegionDateView : IRegionDateSpanView<DistrictDoubleFlowView, TownDoubleFlowView>
     {

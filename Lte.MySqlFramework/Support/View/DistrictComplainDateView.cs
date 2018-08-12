@@ -2,13 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.Dependency;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Complain;
-using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Complain;
 using Lte.Domain.Common.Wireless.Station;
 
-namespace Lte.MySqlFramework.Support
+namespace Lte.MySqlFramework.Support.View
 {
     public class DistrictComplainDateView : IStatDate
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lte.Evaluations.Properties {
+namespace Lte.MySqlFramework.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -25,10 +25,10 @@ namespace Lte.Evaluations.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3000")]
-        public int TotalMrsThreshold {
+        [global::System.Configuration.DefaultSettingValueAttribute("40")]
+        public double PreciseRateThreshold {
             get {
-                return ((int)(this["TotalMrsThreshold"]));
+                return ((double)(this["PreciseRateThreshold"]));
             }
         }
     }

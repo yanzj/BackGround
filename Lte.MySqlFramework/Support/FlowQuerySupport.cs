@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Kpi;
-using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Kpi;
 
 namespace Lte.MySqlFramework.Support

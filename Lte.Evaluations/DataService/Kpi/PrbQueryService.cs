@@ -5,7 +5,6 @@ using Abp.EntityFramework.Entities.Kpi;
 using Lte.Domain.Common.Wireless.Kpi;
 using Lte.Evaluations.DataService.Switch;
 using Lte.Evaluations.Query;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Kpi;
 using Lte.MySqlFramework.Abstract.Region;
@@ -33,14 +32,8 @@ namespace Lte.Evaluations.DataService.Kpi
 
         private IEnumerable<PrbView> QueryDistrictViews(string city, string district, DateTime begin, DateTime end)
         {
-            var zteStats =
-                ZteRepository.GetAllList(
-                    x => x.StatTime >= begin && x.StatTime < end && x.DownlinkPrbSubframe > 1000
-                    && (x.DownlinkPrbSubframe < 7 * x.PdschPrbs || x.UplinkPrbSubframe < 7 * x.PuschPrbs));
-            var huaweiStats =
-                HuaweiRepository.GetAllList(x => x.StatTime >= begin && x.StatTime < end
-                                                                     && x.DownlinkPrbSubframe > 1000
-                    && (x.DownlinkPrbSubframe < 7 * x.PdschPrbs || x.UplinkPrbSubframe < 7 * x.PuschPrbs));
+            var zteStats = ZteRepository.FilterTopList(begin, end);
+            var huaweiStats = HuaweiRepository.FilterTopList(begin, end);
             var results = HuaweiCellRepository.QueryDistrictFlowViews<PrbView, PrbZte, PrbHuawei>(city, district,
                 zteStats,
                 huaweiStats,
@@ -78,14 +71,8 @@ namespace Lte.Evaluations.DataService.Kpi
 
         public List<PrbView> QueryTopPrbViews(DateTime begin, DateTime end, int topCount, OrderPrbStatPolicy policy)
         {
-            var zteStats =
-                ZteRepository.GetAllList(
-                    x => x.StatTime >= begin && x.StatTime < end && x.DownlinkPrbSubframe > 1000
-                         && (x.DownlinkPrbSubframe < 7 * x.PdschPrbs || x.UplinkPrbSubframe < 7 * x.PuschPrbs));
-            var huaweiStats =
-                HuaweiRepository.GetAllList(x => x.StatTime >= begin && x.StatTime < end
-                                                                     && x.DownlinkPrbSubframe > 1000
-                    && (x.DownlinkPrbSubframe < 7 * x.PdschPrbs || x.UplinkPrbSubframe < 7 * x.PuschPrbs));
+            var zteStats = ZteRepository.FilterTopList(begin, end);
+            var huaweiStats = HuaweiRepository.FilterTopList(begin, end);
             var joinViews = HuaweiCellRepository.QueryAllFlowViews<PrbView, PrbZte, PrbHuawei>(zteStats, huaweiStats).ToList();
             var days = (joinViews.Max(x => x.StatTime) - joinViews.Min(x => x.StatTime)).Days + 1;
             return QueryTopViewsByPolicy(joinViews, topCount * days, policy);

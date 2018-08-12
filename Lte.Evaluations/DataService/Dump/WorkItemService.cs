@@ -3,25 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Kpi;
 using Abp.EntityFramework.Entities.Maintainence;
 using Abp.EntityFramework.Repositories;
 using AutoMapper;
 using Lte.Domain.Common.Types;
-using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Work;
 using Lte.Domain.Excel;
 using Lte.Domain.LinqToExcel;
-using Lte.Evaluations.Policy;
 using Lte.Evaluations.ViewModels.Precise;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Cdma;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Maintainence;
 using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Entities;
 using Lte.MySqlFramework.Support;
+using Lte.MySqlFramework.Support.View;
 
 namespace Lte.Evaluations.DataService.Dump
 {

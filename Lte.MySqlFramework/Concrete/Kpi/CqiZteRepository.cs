@@ -5,7 +5,7 @@ using Abp.EntityFramework.Entities.Kpi;
 using Abp.EntityFramework.Repositories;
 using Lte.MySqlFramework.Abstract.Kpi;
 
-namespace Lte.MySqlFramework.Concrete
+namespace Lte.MySqlFramework.Concrete.Kpi
 {
     public class CqiZteRepository : EfRepositorySave<MySqlContext, CqiZte>, ICqiZteRepository
     {

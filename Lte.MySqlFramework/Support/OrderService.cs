@@ -1,18 +1,17 @@
-﻿using Lte.Domain.Common.Wireless;
-using Lte.Evaluations.Properties;
-using Lte.Parameters.Entities.Kpi;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Kpi;
 using Abp.EntityFramework.Entities.Mr;
 using Abp.EntityFramework.Entities.Test;
+using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Kpi;
 using Lte.Domain.Regular;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Properties;
 
-namespace Lte.Evaluations.Policy
+namespace Lte.MySqlFramework.Support
 {
     public static class OrderService
     {

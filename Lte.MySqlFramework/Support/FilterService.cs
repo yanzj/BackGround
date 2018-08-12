@@ -1,23 +1,19 @@
-﻿using Lte.Domain.Common.Wireless;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Cdma;
 using Abp.EntityFramework.Entities.Infrastructure;
 using Abp.EntityFramework.Entities.Maintainence;
 using AutoMapper;
 using Lte.Domain.Common.Wireless.Work;
 using Lte.Domain.Excel;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Region;
-using Lte.MySqlFramework.Entities;
 
-namespace Lte.Evaluations.Policy
+namespace Lte.MySqlFramework.Support
 {
-    public static class FilterWorkItemService
+    public static class FilterService
     {
         public static Expression<Func<WorkItem, bool>> GetWorkItemFilter(this string filerDescription)
         {
