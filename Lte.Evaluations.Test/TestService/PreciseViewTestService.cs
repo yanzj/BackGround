@@ -1,4 +1,5 @@
 ﻿using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.RegionKpi;
 using Lte.Parameters.Entities.Kpi;
 using NUnit.Framework;
 

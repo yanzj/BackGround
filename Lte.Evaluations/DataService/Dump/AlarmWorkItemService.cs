@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Station;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Entities;
 

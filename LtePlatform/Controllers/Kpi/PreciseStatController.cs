@@ -7,7 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Web.Http;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Kpi;
 using Lte.Domain.Common.Types;
+using Lte.Domain.Common.Wireless.Kpi;
 
 namespace LtePlatform.Controllers.Kpi
 {

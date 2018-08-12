@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.ENodeb;
+using Lte.Domain.Common.Wireless.Station;
 
 namespace Lte.Evaluations.DataService.Basic
 {

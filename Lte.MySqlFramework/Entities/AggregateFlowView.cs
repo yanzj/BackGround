@@ -1,5 +1,7 @@
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Kpi;
+using Abp.EntityFramework.Entities.RegionKpi;
 using Lte.Domain.Regular.Attributes;
 
 namespace Lte.MySqlFramework.Entities

@@ -4,8 +4,10 @@ using Lte.MySqlFramework.Entities;
 using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Infrastructure;
 using Lte.Domain.Common.Geo;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Station;
 using Lte.Evaluations.ViewModels.Precise;
 
 namespace Lte.Evaluations.DataService.Basic

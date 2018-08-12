@@ -8,6 +8,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Abp.EntityFramework.Entities.Station;
+using Lte.Domain.Common.Wireless.Antenna;
+using Lte.Domain.Common.Wireless.Cell;
+using Lte.Domain.Common.Wireless.ENodeb;
 
 namespace Lte.MySqlFramework.Entities
 {

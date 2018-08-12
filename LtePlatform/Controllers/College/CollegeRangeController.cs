@@ -1,5 +1,6 @@
 ﻿using System.Web.Http;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Region;
 using Lte.MySqlFramework.Abstract;
 using LtePlatform.Models;
 

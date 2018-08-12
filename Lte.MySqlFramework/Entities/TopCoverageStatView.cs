@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Infrastructure;
+using Abp.EntityFramework.Entities.Test;
 using AutoMapper;
 
 namespace Lte.MySqlFramework.Entities

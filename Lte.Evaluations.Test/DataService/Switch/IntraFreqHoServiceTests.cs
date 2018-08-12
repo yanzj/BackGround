@@ -1,5 +1,6 @@
 ﻿using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Infrastructure;
 using Abp.Reflection;
 using Lte.Evaluations.Policy;
 using Lte.MySqlFramework.Abstract;

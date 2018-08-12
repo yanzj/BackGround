@@ -2,7 +2,9 @@
 using Moq;
 using System.Linq;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Infrastructure;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Distribution;
 using Lte.MySqlFramework.Abstract;
 using Lte.Parameters.MockOperations;
 

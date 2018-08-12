@@ -6,7 +6,10 @@ using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Entities;
 using System.Linq;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.College;
+using Abp.EntityFramework.Entities.Infrastructure;
 using Lte.Domain.Common.Types;
+using Lte.Domain.Common.Wireless.Distribution;
 
 namespace Lte.Evaluations.DataService.College
 {

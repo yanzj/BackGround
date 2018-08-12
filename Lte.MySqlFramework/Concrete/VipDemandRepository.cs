@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Abp.EntityFramework;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Complain;
 using Abp.EntityFramework.Repositories;
 using Lte.Domain.Excel;
 using Lte.MySqlFramework.Abstract;

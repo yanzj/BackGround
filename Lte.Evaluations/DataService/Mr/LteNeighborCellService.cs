@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Infrastructure;
 using Lte.MySqlFramework.Abstract;
 
 namespace Lte.Evaluations.DataService.Mr

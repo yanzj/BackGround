@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Test;
 using Abp.EntityFramework.Repositories;
 using Lte.Domain.Excel;
 using Lte.Domain.LinqToExcel;

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Infrastructure;
 using Lte.Domain.Common.Geo;
 using Lte.Domain.Common.Wireless;
 

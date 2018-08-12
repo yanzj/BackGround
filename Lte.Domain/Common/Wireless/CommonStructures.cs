@@ -1,4 +1,5 @@
 ﻿using Lte.Domain.Common.Geo;
+using Lte.Domain.Common.Wireless.Distribution;
 using Lte.Domain.Regular.Attributes;
 
 namespace Lte.Domain.Common.Wireless

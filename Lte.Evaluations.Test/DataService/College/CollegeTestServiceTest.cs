@@ -8,6 +8,7 @@ using NUnit.Framework;
 using System;
 using System.Linq;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.College;
 
 namespace Lte.Evaluations.DataService.College
 {

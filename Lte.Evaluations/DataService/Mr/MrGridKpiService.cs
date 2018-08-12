@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Mr;
 using Lte.Domain.Common.Geo;
 using Lte.MySqlFramework.Abstract;
 using Lte.Domain.Regular;

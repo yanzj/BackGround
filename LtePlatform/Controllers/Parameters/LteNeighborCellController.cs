@@ -3,6 +3,7 @@ using LtePlatform.Models;
 using System.Collections.Generic;
 using System.Web.Http;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Infrastructure;
 
 namespace LtePlatform.Controllers.Parameters
 {

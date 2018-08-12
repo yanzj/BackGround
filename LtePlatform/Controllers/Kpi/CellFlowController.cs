@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Cell;
 using Lte.Evaluations.DataService.Kpi;
 using Lte.MySqlFramework.Entities;
 using LtePlatform.Models;

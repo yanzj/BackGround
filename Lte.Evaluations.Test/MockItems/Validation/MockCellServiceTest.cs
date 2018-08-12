@@ -1,5 +1,7 @@
 ﻿using System.Linq;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Cdma;
+using Abp.EntityFramework.Entities.Infrastructure;
 using Lte.Domain.Common.Wireless;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Entities;

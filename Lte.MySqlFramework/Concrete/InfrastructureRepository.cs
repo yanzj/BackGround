@@ -3,8 +3,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Abp.EntityFramework;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Infrastructure;
 using Abp.EntityFramework.Repositories;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Distribution;
 using Lte.MySqlFramework.Abstract;
 
 namespace Lte.MySqlFramework.Concrete

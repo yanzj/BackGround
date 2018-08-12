@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Kpi;
 using Lte.Domain.Regular;
 using Lte.Domain.Common.Geo;
 using Lte.Parameters.MockOperations;

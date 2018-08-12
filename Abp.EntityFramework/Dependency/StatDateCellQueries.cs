@@ -7,6 +7,7 @@ using Abp.Domain.Repositories;
 using Abp.EntityFramework.Repositories;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Region;
 using MongoDB.Bson;
 
 namespace Abp.EntityFramework.Dependency

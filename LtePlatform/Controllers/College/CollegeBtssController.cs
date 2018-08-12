@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Cdma;
 using Lte.Domain.Common.Geo;
 using Lte.Evaluations.DataService.College;
 using LtePlatform.Models;

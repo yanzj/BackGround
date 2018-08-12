@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Kpi;
 using Lte.Evaluations.DataService.Dump;
 using Lte.MySqlFramework.Entities;
 

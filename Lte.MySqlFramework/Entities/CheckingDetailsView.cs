@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Maintainence;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Complain;
 using Lte.Domain.Regular.Attributes;
 
 namespace Lte.MySqlFramework.Entities

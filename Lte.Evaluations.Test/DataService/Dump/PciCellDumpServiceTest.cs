@@ -3,6 +3,7 @@ using NUnit.Framework;
 using Shouldly;
 using System.Collections.Generic;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Infrastructure;
 using Lte.Domain.Excel;
 using Lte.MySqlFramework.Abstract;
 

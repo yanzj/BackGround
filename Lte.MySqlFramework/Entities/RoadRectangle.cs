@@ -1,4 +1,5 @@
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Region;
 
 namespace Lte.MySqlFramework.Entities
 {

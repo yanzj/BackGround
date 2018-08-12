@@ -1,6 +1,8 @@
 ﻿using System.Runtime.Serialization;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.College;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Distribution;
 using Lte.Domain.Regular.Attributes;
 using Lte.MySqlFramework.Abstract;
 

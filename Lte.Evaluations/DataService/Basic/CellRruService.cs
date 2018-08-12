@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Infrastructure;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Regular;
 using Lte.Evaluations.ViewModels.Precise;

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Cdma;
 
 namespace Lte.Evaluations.DataService.Kpi
 {

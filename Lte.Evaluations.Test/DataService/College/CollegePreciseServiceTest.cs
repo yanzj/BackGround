@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Infrastructure;
+using Abp.EntityFramework.Entities.Kpi;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Entities;
 

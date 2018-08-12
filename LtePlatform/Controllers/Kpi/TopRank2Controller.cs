@@ -6,6 +6,7 @@ using Lte.Evaluations.DataService.Kpi;
 using LtePlatform.Models;
 using System.Linq;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Kpi;
 
 namespace LtePlatform.Controllers.Kpi
 {

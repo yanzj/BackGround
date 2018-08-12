@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Complain;
 using Abp.EntityFramework.Repositories;
 using AutoMapper;
 using Lte.MySqlFramework.Abstract;

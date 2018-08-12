@@ -1,4 +1,5 @@
 using System;
+using Lte.Domain.Common.Wireless.Alarm;
 
 namespace Lte.Domain.Common.Wireless
 {

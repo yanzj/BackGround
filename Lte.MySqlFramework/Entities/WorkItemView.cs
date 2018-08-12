@@ -1,8 +1,10 @@
 ﻿using System;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Maintainence;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Work;
 using Lte.Domain.Regular.Attributes;
 using Lte.MySqlFramework.Abstract;
 

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Abp.EntityFramework;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Maintainence;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Work;
 using Lte.MySqlFramework.Abstract;
 
 namespace Lte.MySqlFramework.Concrete

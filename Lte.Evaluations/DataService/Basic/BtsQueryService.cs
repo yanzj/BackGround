@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Cdma;
 using Lte.Domain.Common.Geo;
 using Lte.Domain.Regular;
 using Lte.MySqlFramework.Abstract;

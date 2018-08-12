@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Abp.Domain.Repositories;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Region;
 
 namespace Lte.MySqlFramework.Abstract
 {

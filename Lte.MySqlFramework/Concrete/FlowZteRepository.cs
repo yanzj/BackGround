@@ -5,6 +5,7 @@ using Abp.EntityFramework.Repositories;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Entities;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Kpi;
 
 namespace Lte.MySqlFramework.Concrete
 {

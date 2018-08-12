@@ -4,6 +4,7 @@ using System.Linq;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Channel;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Kpi;
 using Lte.Domain.Common.Geo;
 using Lte.Domain.Regular;
 using Lte.MySqlFramework.Abstract;

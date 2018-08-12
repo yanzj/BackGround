@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.RegionKpi;
+using Abp.EntityFramework.Entities.Test;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Entities;
 

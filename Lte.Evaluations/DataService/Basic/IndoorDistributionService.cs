@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Distribution;
 
 namespace Lte.Evaluations.DataService.Basic
 {

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Web.Http;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Kpi;
 using Lte.Evaluations.DataService.Mr;
 
 namespace LtePlatform.Controllers.Dt

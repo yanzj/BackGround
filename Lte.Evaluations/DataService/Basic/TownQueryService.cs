@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Region;
 using Lte.Domain.Common.Wireless;
 using Lte.MySqlFramework.Abstract;
 

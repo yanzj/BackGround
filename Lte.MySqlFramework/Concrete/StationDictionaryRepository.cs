@@ -1,5 +1,6 @@
 using Abp.EntityFramework;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Station;
 using Abp.EntityFramework.Repositories;
 using Lte.Domain.Common;
 using Lte.Domain.Excel;

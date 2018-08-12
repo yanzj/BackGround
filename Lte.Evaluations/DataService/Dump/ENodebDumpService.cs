@@ -3,6 +3,8 @@ using Lte.Evaluations.DataService.Basic;
 using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Cdma;
+using Abp.EntityFramework.Entities.Infrastructure;
 using Lte.Domain.Common.Geo;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Excel;

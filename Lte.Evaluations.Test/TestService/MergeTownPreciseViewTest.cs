@@ -4,7 +4,9 @@ using Lte.Evaluations.Policy;
 using NUnit.Framework;
 using System.Linq;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.RegionKpi;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Region;
 using Lte.Parameters.Entities.Kpi;
 
 namespace Lte.Evaluations.TestService

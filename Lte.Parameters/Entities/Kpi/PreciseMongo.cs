@@ -3,6 +3,7 @@ using Abp.Domain.Entities;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Kpi;
 using AutoMapper;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Regular;

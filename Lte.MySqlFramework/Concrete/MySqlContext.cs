@@ -2,6 +2,17 @@
 using Lte.MySqlFramework.Entities;
 using System.Data.Entity;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Cdma;
+using Abp.EntityFramework.Entities.College;
+using Abp.EntityFramework.Entities.Complain;
+using Abp.EntityFramework.Entities.Infrastructure;
+using Abp.EntityFramework.Entities.Kpi;
+using Abp.EntityFramework.Entities.Maintainence;
+using Abp.EntityFramework.Entities.Mr;
+using Abp.EntityFramework.Entities.Region;
+using Abp.EntityFramework.Entities.RegionKpi;
+using Abp.EntityFramework.Entities.Station;
+using Abp.EntityFramework.Entities.Test;
 using MySql.Data.Entity;
 
 namespace Lte.MySqlFramework.Concrete

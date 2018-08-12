@@ -5,6 +5,7 @@ using NUnit.Framework;
 using System;
 using System.Linq.Expressions;
 using Lte.Domain.Common.Types;
+using Lte.Domain.Common.Wireless.Region;
 
 namespace Lte.Domain.Test.Regular
 {

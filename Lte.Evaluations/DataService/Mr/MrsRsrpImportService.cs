@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Kpi;
+using Abp.EntityFramework.Entities.Mr;
 using Abp.EntityFramework.Repositories;
 using AutoMapper;
 using Lte.Evaluations.ViewModels.Precise;

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Abp.EntityFramework.Entities.Complain;
 using Lte.Evaluations.DataService.College;
 using Lte.MySqlFramework.Entities;
 using LtePlatform.Models;

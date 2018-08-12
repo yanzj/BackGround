@@ -8,6 +8,8 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Cdma;
+using Abp.EntityFramework.Entities.Region;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Entities;
 

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Cdma;
 using Abp.EntityFramework.Repositories;
 using Lte.MySqlFramework.Abstract;
 

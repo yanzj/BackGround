@@ -1,5 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using Lte.Domain.Common.Wireless.Alarm;
+using Lte.Domain.Common.Wireless.Antenna;
+using Lte.Domain.Common.Wireless.Cell;
+using Lte.Domain.Common.Wireless.Complain;
+using Lte.Domain.Common.Wireless.Distribution;
+using Lte.Domain.Common.Wireless.ENodeb;
+using Lte.Domain.Common.Wireless.Kpi;
+using Lte.Domain.Common.Wireless.Region;
+using Lte.Domain.Common.Wireless.Station;
+using Lte.Domain.Common.Wireless.Work;
 
 namespace Lte.Domain.Common.Wireless
 {

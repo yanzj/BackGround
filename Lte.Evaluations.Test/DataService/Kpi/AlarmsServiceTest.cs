@@ -15,6 +15,7 @@ using Shouldly;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Lte.Domain.Common.Wireless.Alarm;
 using Lte.Evaluations.DataService.Basic;
 using Lte.Parameters.Abstract.Kpi;
 

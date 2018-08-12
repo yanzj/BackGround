@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Abp.Domain.Repositories;
 using Abp.EntityFramework.Repositories;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Kpi;
 
 namespace Lte.MySqlFramework.Abstract
 {

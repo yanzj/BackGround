@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Abp.Domain.Repositories;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Region;
 
 namespace Lte.MySqlFramework.Abstract
 {

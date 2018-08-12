@@ -1,5 +1,6 @@
 ﻿using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Test;
 
 namespace Lte.MySqlFramework.Entities
 {

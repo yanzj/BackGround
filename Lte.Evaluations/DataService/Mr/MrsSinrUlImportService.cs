@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Mr;
 using Abp.EntityFramework.Repositories;
 using AutoMapper;
 using Lte.Evaluations.ViewModels.Precise;

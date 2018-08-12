@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Abp.Domain.Repositories;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Test;
 using Abp.EntityFramework.Repositories;
 using Lte.MySqlFramework.Entities;
 

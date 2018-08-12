@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web.Http;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Mr;
 using Lte.Evaluations.DataService.Mr;
 using LtePlatform.Models;
 

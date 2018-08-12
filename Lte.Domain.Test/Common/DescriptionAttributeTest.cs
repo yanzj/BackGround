@@ -3,6 +3,9 @@ using Lte.Domain.Common.Wireless;
 using NUnit.Framework;
 using System.Reflection;
 using Lte.Domain.Common.Types;
+using Lte.Domain.Common.Wireless.Alarm;
+using Lte.Domain.Common.Wireless.Antenna;
+using Lte.Domain.Common.Wireless.Complain;
 
 namespace Lte.Domain.Test.Common
 {

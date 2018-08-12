@@ -5,7 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Cdma;
+using Abp.EntityFramework.Entities.Kpi;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Kpi;
 using Lte.Evaluations.MapperSerive;
 
 namespace Lte.Evaluations.DataService.Kpi

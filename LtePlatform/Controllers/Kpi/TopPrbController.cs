@@ -7,6 +7,7 @@ using System.Web.Http;
 using Lte.Domain.Common;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Kpi;
 using Lte.Evaluations.DataService.Basic;
 using Lte.Evaluations.DataService.Kpi;
 using Lte.MySqlFramework.Entities;

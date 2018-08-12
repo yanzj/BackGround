@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Maintainence;
 using Lte.MySqlFramework.Abstract;
 
 namespace Lte.Evaluations.DataService.Dump

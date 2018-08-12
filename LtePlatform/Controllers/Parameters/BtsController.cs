@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Web.Http;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Cdma;
 using Lte.Domain.Common.Geo;
 using Lte.Evaluations.DataService.Basic;
 using LtePlatform.Models;

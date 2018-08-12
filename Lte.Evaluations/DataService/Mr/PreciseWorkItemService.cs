@@ -7,6 +7,7 @@ using Lte.MySqlFramework.Abstract;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Maintainence;
 
 namespace Lte.Evaluations.DataService.Mr
 {

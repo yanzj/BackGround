@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Kpi;
+using Lte.Domain.Common.Wireless.Kpi;
 
 namespace Lte.Evaluations.DataService.Kpi
 {

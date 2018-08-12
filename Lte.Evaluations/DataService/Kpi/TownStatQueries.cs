@@ -4,6 +4,7 @@ using System.Linq;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Infrastructure;
 using AutoMapper;
 using Lte.Domain.Common.Geo;
 using Lte.Domain.Common.Types;

@@ -7,6 +7,8 @@ using NUnit.Framework;
 using Shouldly;
 using System.Linq;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Cdma;
+using Abp.EntityFramework.Entities.Infrastructure;
 using Lte.Domain.Excel;
 using Lte.Domain.LinqToExcel;
 using Lte.MySqlFramework.Abstract;

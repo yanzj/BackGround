@@ -5,6 +5,7 @@ using System.Linq;
 using AutoMapper;
 using Lte.Domain.Common;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Alarm;
 using Lte.Domain.LinqToCsv.Context;
 using Lte.Domain.LinqToCsv.Description;
 using Lte.MySqlFramework.Abstract;

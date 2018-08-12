@@ -1,5 +1,6 @@
 ﻿using Abp.EntityFramework;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.RegionKpi;
 using Abp.EntityFramework.Repositories;
 using Lte.Parameters.Abstract.Kpi;
 

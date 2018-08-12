@@ -10,6 +10,8 @@ using Shouldly;
 using System;
 using System.Linq;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Cdma;
+using Abp.EntityFramework.Entities.Infrastructure;
 using Lte.MySqlFramework.Entities;
 
 namespace Lte.Evaluations.DataService.Kpi

@@ -2,6 +2,7 @@
 using Abp.EntityFramework.AutoMapper;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Alarm;
 using Lte.Domain.Regular.Attributes;
 
 namespace Lte.Parameters.Entities.Kpi

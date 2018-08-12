@@ -1,6 +1,7 @@
 ﻿using System;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.ENodeb;
 
 namespace Lte.Domain.Regular
 {

@@ -15,6 +15,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Infrastructure;
+using Abp.EntityFramework.Entities.Kpi;
+using Abp.EntityFramework.Entities.Maintainence;
 
 namespace Lte.Evaluations.DataService.Mr
 {

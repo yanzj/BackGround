@@ -1,5 +1,6 @@
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Regular.Attributes;
 
 namespace Lte.Domain.Excel

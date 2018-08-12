@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Mr;
+using Abp.EntityFramework.Entities.RegionKpi;
 
 namespace Lte.MySqlFramework.Support
 {

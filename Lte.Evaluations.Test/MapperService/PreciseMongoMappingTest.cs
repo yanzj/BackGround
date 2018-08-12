@@ -1,6 +1,7 @@
 ﻿using System;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Kpi;
 using Abp.Reflection;
 using AutoMapper;
 using Lte.Evaluations.Policy;

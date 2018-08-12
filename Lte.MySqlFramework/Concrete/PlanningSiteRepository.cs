@@ -1,5 +1,6 @@
 ﻿using Abp.EntityFramework;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Infrastructure;
 using Abp.EntityFramework.Repositories;
 using Lte.Domain.Excel;
 using Lte.MySqlFramework.Abstract;

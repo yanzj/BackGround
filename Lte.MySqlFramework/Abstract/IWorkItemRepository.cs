@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Maintainence;
 using Abp.EntityFramework.Repositories;
 
 namespace Lte.MySqlFramework.Abstract

@@ -4,6 +4,7 @@ using Lte.Parameters.Abstract.Kpi;
 using System;
 using System.Collections.Generic;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Kpi;
 
 namespace Lte.Parameters.Concrete.Kpi
 {

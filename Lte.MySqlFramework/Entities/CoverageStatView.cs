@@ -2,6 +2,7 @@ using System;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Test;
 using AutoMapper;
 using Lte.Domain.Common.Wireless;
 using Lte.MySqlFramework.Abstract;

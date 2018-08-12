@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Cdma;
 using Abp.EntityFramework.Repositories;
 using AutoMapper;
 using Lte.Domain.Common.Geo;

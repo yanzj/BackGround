@@ -1,6 +1,7 @@
 ﻿using Abp.EntityFramework.AutoMapper;
 using System;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Kpi;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Regular;
 using Lte.Domain.Regular.Attributes;

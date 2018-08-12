@@ -4,6 +4,7 @@ using Lte.MySqlFramework.Abstract;
 using System;
 using System.Collections.Generic;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Complain;
 
 namespace Lte.MySqlFramework.Concrete
 {

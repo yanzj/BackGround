@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Abp.EntityFramework;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Test;
 using Abp.EntityFramework.Repositories;
 using Lte.Domain.Common;
 using Lte.MySqlFramework.Abstract;

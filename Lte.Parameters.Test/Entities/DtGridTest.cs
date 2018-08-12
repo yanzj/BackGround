@@ -2,6 +2,7 @@
 using System.IO;
 using System.Xml;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Kpi;
 using NUnit.Framework;
 
 namespace Lte.Parameters.Test.Entities

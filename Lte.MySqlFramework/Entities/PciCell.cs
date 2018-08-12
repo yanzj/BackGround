@@ -1,5 +1,6 @@
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Infrastructure;
 
 namespace Lte.MySqlFramework.Entities
 {

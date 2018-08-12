@@ -6,7 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.College;
+using Abp.EntityFramework.Entities.Maintainence;
+using Abp.EntityFramework.Entities.Test;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Region;
 
 namespace Lte.MySqlFramework.Concrete
 {

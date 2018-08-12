@@ -3,7 +3,12 @@ using Moq;
 using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Cdma;
+using Abp.EntityFramework.Entities.College;
+using Abp.EntityFramework.Entities.Infrastructure;
+using Abp.EntityFramework.Entities.Region;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Distribution;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Entities;
 

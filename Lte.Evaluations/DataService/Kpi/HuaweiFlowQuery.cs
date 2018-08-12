@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Kpi;
 using Lte.Evaluations.DataService.Switch;
 using Lte.MySqlFramework.Abstract;
 

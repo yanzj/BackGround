@@ -9,6 +9,8 @@ using NUnit.Framework;
 using Shouldly;
 using System.Collections.Generic;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Cdma;
+using Abp.EntityFramework.Entities.Region;
 using Lte.Domain.Excel;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Entities;

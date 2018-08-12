@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Web.Http;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Kpi;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Cell;
 using Lte.Evaluations.DataService.Kpi;
 using LtePlatform.Models;
 

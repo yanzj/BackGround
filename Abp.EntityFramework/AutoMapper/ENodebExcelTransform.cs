@@ -1,4 +1,5 @@
 ﻿using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Infrastructure;
 using AutoMapper;
 using Lte.Domain.Excel;
 

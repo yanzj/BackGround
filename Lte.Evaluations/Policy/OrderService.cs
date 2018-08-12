@@ -5,6 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Kpi;
+using Abp.EntityFramework.Entities.Mr;
+using Abp.EntityFramework.Entities.Test;
+using Lte.Domain.Common.Wireless.Kpi;
 using Lte.Domain.Regular;
 using Lte.MySqlFramework.Entities;
 
