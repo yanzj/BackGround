@@ -4,6 +4,7 @@ using System.Linq;
 using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Kpi;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Kpi;
 
 namespace Lte.Evaluations.DataService.Mr
 {

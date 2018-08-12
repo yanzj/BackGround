@@ -8,6 +8,7 @@ using Abp.EntityFramework.Entities.Kpi;
 using Lte.Domain.Common.Geo;
 using Lte.Domain.Regular;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Mr;
 using Lte.Parameters.Abstract.Kpi;
 using Lte.Parameters.Entities.Channel;
 

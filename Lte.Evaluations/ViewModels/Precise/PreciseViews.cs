@@ -4,6 +4,7 @@ using Abp.EntityFramework.Entities.Kpi;
 using AutoMapper;
 using Lte.Domain.Regular.Attributes;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Infrastructure;
 
 namespace Lte.Evaluations.ViewModels.Precise
 {

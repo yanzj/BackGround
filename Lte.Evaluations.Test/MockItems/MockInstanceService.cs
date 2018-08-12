@@ -10,6 +10,10 @@ using Abp.EntityFramework.Entities.Region;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Distribution;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Cdma;
+using Lte.MySqlFramework.Abstract.College;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Entities;
 
 namespace Lte.Evaluations.MockItems

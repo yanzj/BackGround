@@ -3,6 +3,7 @@ using System.Linq;
 using Abp.EntityFramework.Entities;
 using Lte.Domain.Common.Geo;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Entities;
 
 namespace Lte.MySqlFramework.Support

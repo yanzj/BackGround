@@ -6,6 +6,8 @@ using Abp.EntityFramework.Entities.Kpi;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Kpi;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Cdma;
+using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Entities;
 
 namespace Lte.Evaluations.MapperSerive

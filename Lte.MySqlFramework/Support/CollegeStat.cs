@@ -5,6 +5,8 @@ using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Distribution;
 using Lte.Domain.Regular.Attributes;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.College;
+using Lte.MySqlFramework.Abstract.Infrastructure;
 
 namespace Lte.MySqlFramework.Support
 {

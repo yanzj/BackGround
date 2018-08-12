@@ -164,7 +164,9 @@
     <Compile Include="Dependency\QueryableExtensions.cs" />
     <Compile Include="Dependency\StatDateCellQueries.cs" />
     <Compile Include="Dependency\ZteRepositoryQueries.cs" />
+    <Compile Include="Entities\Kpi\DoubleFlowView.cs" />
     <Compile Include="Entities\Maintainence\AlarmWorkItem.cs" />
+    <Compile Include="Entities\RegionKpi\TownDoubleFlowView.cs" />
     <Compile Include="Entities\Test\AreaTestDate.cs" />
     <Compile Include="Entities\Test\AreaTestInfo.cs" />
     <Compile Include="Entities\Complain\BranchDemand.cs" />

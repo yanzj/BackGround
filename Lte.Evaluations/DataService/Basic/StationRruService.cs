@@ -10,6 +10,7 @@ using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.ENodeb;
 using Lte.Domain.Common.Wireless.Station;
+using Lte.MySqlFramework.Abstract.Station;
 
 namespace Lte.Evaluations.DataService.Basic
 {

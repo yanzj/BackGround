@@ -4,6 +4,7 @@ using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Station;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Station;
 using Lte.MySqlFramework.Entities;
 
 namespace Lte.Evaluations.DataService.Basic

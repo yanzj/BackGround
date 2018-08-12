@@ -11,6 +11,7 @@ using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Cdma;
 using Lte.Domain.Excel;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Cdma;
 
 namespace Lte.Evaluations.DataService.Dump
 {

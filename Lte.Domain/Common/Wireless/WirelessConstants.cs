@@ -206,6 +206,9 @@ namespace Lte.Domain.Common.Wireless
                 },
                 {
                     "TestType", TestTypeTuples.GetTuples()
+                },
+                {
+                    "OrderDoubleFlowPolicy", OrderDoubleFlowPolicyTuples.GetTuples()
                 }
             };
     }

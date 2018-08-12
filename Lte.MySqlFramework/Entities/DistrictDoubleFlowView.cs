@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
+using Abp.EntityFramework.Entities.RegionKpi;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
 

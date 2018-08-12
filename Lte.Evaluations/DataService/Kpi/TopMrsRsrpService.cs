@@ -11,6 +11,8 @@ using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Kpi;
 using Lte.Evaluations.Policy;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Mr;
 using Lte.MySqlFramework.Entities;
 
 namespace Lte.Evaluations.DataService.Kpi

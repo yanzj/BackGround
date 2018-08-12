@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Lte.Domain.Common.Wireless;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.Parameters.Abstract.Kpi;
 using Lte.Parameters.Entities.Kpi;
 

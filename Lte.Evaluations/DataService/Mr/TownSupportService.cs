@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Lte.Domain.Common.Geo;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Region;
 
 namespace Lte.Evaluations.DataService.Mr
 {

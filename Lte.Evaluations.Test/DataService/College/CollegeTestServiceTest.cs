@@ -9,6 +9,9 @@ using System;
 using System.Linq;
 using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.College;
+using Lte.MySqlFramework.Abstract.College;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Test;
 
 namespace Lte.Evaluations.DataService.College
 {

@@ -11,6 +11,8 @@ using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Infrastructure;
 using Abp.EntityFramework.Entities.Region;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Entities;
 
 namespace Lte.Evaluations.DataService.Queries

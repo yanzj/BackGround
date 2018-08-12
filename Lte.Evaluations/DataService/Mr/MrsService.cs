@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Abp.EntityFramework.AutoMapper;
 using Lte.Evaluations.ViewModels.Precise;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Infrastructure;
 
 namespace Lte.Evaluations.DataService.Mr
 {

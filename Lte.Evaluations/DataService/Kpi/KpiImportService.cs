@@ -21,6 +21,13 @@ using Lte.Domain.Excel;
 using Lte.Domain.LinqToCsv.Context;
 using Lte.Domain.LinqToCsv.Description;
 using Lte.Evaluations.DataService.Dt;
+using Lte.Evaluations.Query;
+using Lte.MySqlFramework.Abstract.Cdma;
+using Lte.MySqlFramework.Abstract.Complain;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Maintainence;
+using Lte.MySqlFramework.Abstract.Region;
+using Lte.MySqlFramework.Abstract.Test;
 using Lte.Parameters.Entities.Dt;
 
 namespace Lte.Evaluations.DataService.Kpi

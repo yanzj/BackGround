@@ -7,6 +7,9 @@ using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Work;
 using Lte.Domain.Regular.Attributes;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Cdma;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Region;
 
 namespace Lte.MySqlFramework.Entities
 {

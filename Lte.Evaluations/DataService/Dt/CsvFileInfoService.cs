@@ -5,6 +5,7 @@ using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Test;
 using AutoMapper;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Test;
 using Lte.MySqlFramework.Entities;
 using Lte.Parameters.Abstract.Infrastructure;
 using Lte.Parameters.Entities.Dt;

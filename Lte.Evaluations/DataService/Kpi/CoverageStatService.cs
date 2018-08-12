@@ -9,6 +9,7 @@ using Lte.Domain.Excel;
 using Lte.Domain.LinqToExcel;
 using Lte.Domain.Regular;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Test;
 
 namespace Lte.Evaluations.DataService.Kpi
 {

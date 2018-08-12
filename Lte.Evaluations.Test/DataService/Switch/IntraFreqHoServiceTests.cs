@@ -4,6 +4,7 @@ using Abp.EntityFramework.Entities.Infrastructure;
 using Abp.Reflection;
 using Lte.Evaluations.Policy;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Entities;
 using Lte.Parameters.Abstract.Basic;
 using Lte.Parameters.Abstract.Switch;

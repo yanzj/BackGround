@@ -9,6 +9,12 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Lte.Domain.Common.Wireless;
+using Lte.MySqlFramework.Abstract.Cdma;
+using Lte.MySqlFramework.Abstract.College;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Maintainence;
+using Lte.MySqlFramework.Abstract.Region;
+using Lte.MySqlFramework.Abstract.Test;
 
 namespace Lte.Evaluations.MockItems
 {

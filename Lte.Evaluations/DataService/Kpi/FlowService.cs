@@ -14,6 +14,9 @@ using Abp.EntityFramework.Repositories;
 using Lte.Domain.Common;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Cell;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Kpi;
+using Lte.MySqlFramework.Abstract.RegionKpi;
 using Lte.Parameters.Entities.Kpi;
 
 namespace Lte.Evaluations.DataService.Kpi

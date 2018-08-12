@@ -9,6 +9,7 @@ using Lte.Domain.Common.Geo;
 using Lte.Domain.Excel;
 using Lte.Evaluations.DataService.Basic;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Cdma;
 using Lte.MySqlFramework.Entities;
 
 namespace Lte.Evaluations.DataService.Dump

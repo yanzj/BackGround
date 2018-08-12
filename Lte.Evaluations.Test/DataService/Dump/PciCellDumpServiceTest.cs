@@ -6,6 +6,7 @@ using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Infrastructure;
 using Lte.Domain.Excel;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Infrastructure;
 
 namespace Lte.Evaluations.DataService.Dump
 {

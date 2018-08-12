@@ -14,6 +14,9 @@ using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Regular;
 using Lte.Evaluations.ViewModels.Precise;
+using Lte.MySqlFramework.Abstract.College;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Test;
 using Lte.MySqlFramework.Support;
 
 namespace Lte.Evaluations.DataService.College

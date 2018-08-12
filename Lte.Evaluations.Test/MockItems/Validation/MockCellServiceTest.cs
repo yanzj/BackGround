@@ -4,6 +4,8 @@ using Abp.EntityFramework.Entities.Cdma;
 using Abp.EntityFramework.Entities.Infrastructure;
 using Lte.Domain.Common.Wireless;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Cdma;
+using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Entities;
 using Moq;
 using NUnit.Framework;

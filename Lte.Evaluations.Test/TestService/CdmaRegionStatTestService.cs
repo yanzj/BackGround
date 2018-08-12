@@ -9,6 +9,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Cdma;
+using Lte.MySqlFramework.Abstract.Cdma;
+using Lte.MySqlFramework.Abstract.Region;
 
 namespace Lte.Evaluations.TestService
 {

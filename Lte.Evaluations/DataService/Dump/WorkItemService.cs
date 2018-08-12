@@ -16,6 +16,10 @@ using Lte.Domain.LinqToExcel;
 using Lte.Evaluations.Policy;
 using Lte.Evaluations.ViewModels.Precise;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Cdma;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Maintainence;
+using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Entities;
 using Lte.MySqlFramework.Support;
 

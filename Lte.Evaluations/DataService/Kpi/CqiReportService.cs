@@ -1,16 +1,16 @@
 ﻿using Abp.EntityFramework.AutoMapper;
-using Lte.Domain.Common.Wireless;
 using Lte.Evaluations.DataService.Switch;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Kpi;
 using Lte.Domain.Common.Wireless.Kpi;
+using Lte.Evaluations.Query;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Kpi;
+using Lte.MySqlFramework.Abstract.Region;
 
 namespace Lte.Evaluations.DataService.Kpi
 {

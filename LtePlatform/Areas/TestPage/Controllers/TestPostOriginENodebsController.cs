@@ -8,6 +8,7 @@ using Abp.EntityFramework.Entities.Infrastructure;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Excel;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Entities;
 
 namespace LtePlatform.Areas.TestPage.Controllers

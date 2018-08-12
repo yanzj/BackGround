@@ -6,6 +6,8 @@ using Lte.Domain.Common.Types;
 using Lte.Domain.Regular;
 using Lte.Evaluations.ViewModels.Precise;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Station;
 using Lte.MySqlFramework.Entities;
 
 namespace Lte.Evaluations.DataService.Basic

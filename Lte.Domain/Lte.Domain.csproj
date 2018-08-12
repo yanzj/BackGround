@@ -112,6 +112,7 @@
     <Compile Include="Common\Types\YesToBoolTransform.cs" />
     <Compile Include="Common\Types\ZeroBoolTransform.cs" />
     <Compile Include="Common\Wireless\Cell\FrequencyBandType.cs" />
+    <Compile Include="Common\Wireless\Kpi\OrderDoubleFlowPolicy.cs" />
     <Compile Include="Common\Wireless\Kpi\OrderFeelingRatePolicy.cs" />
     <Compile Include="Common\Wireless\Region\RectangleRange.cs" />
     <Compile Include="Common\Wireless\Region\RegionType.cs" />

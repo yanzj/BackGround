@@ -6,6 +6,7 @@ using Abp.EntityFramework.Entities.Test;
 using AutoMapper;
 using Lte.Domain.Common.Wireless;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Infrastructure;
 
 namespace Lte.MySqlFramework.Entities
 {

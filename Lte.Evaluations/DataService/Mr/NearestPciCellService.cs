@@ -14,6 +14,8 @@ using Lte.Domain.LinqToCsv.Context;
 using Lte.Evaluations.DataService.Basic;
 using Lte.MySqlFramework.Entities;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Mr;
 
 namespace Lte.Evaluations.DataService.Mr
 {

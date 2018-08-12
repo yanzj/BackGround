@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Maintainence;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Maintainence;
 
 namespace Lte.Evaluations.DataService.Dump
 {

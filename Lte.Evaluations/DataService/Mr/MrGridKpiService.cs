@@ -9,6 +9,7 @@ using Abp.EntityFramework.Entities.Mr;
 using Lte.Domain.Common.Geo;
 using Lte.MySqlFramework.Abstract;
 using Lte.Domain.Regular;
+using Lte.MySqlFramework.Abstract.Mr;
 
 namespace Lte.Evaluations.DataService.Mr
 {

@@ -10,6 +10,8 @@ using Abp.EntityFramework.Entities.Kpi;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Kpi;
 using Lte.Evaluations.MapperSerive;
+using Lte.MySqlFramework.Abstract.Cdma;
+using Lte.MySqlFramework.Abstract.Infrastructure;
 
 namespace Lte.Evaluations.DataService.Kpi
 {

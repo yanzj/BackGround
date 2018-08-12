@@ -12,6 +12,8 @@ using Abp.EntityFramework.Entities.Infrastructure;
 using Lte.Domain.Common.Geo;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Excel;
+using Lte.MySqlFramework.Abstract.Cdma;
+using Lte.MySqlFramework.Abstract.Infrastructure;
 
 namespace Lte.Evaluations.DataService.Dump
 {

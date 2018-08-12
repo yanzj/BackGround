@@ -15,6 +15,8 @@ using Abp.EntityFramework.Entities.Region;
 using Lte.Domain.Common;
 using Lte.Domain.Excel;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Entities;
 
 namespace Lte.Evaluations.DataService.Dump

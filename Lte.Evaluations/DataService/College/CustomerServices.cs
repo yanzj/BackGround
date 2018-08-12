@@ -15,6 +15,9 @@ using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Complain;
 using Abp.EntityFramework.Entities.Region;
 using Lte.Domain.Excel;
+using Lte.MySqlFramework.Abstract.Complain;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Support;
 
 namespace Lte.Evaluations.DataService.College

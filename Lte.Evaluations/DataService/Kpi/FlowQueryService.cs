@@ -3,11 +3,13 @@ using Lte.MySqlFramework.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Kpi;
-using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Common.Wireless.Kpi;
+using Lte.Evaluations.Query;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Kpi;
+using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Support;
 
 namespace Lte.Evaluations.DataService.Kpi
@@ -15,6 +17,12 @@ namespace Lte.Evaluations.DataService.Kpi
     public class FlowQueryService : DateSpanQuery<FlowView, IFlowHuaweiRepository, IFlowZteRepository>
     {
         private const int DownSwitchThreshold = 200;
+
+        public FlowQueryService(IFlowHuaweiRepository huaweiRepository, IFlowZteRepository zteRepository,
+            IENodebRepository eNodebRepository, ICellRepository huaweiCellRepository, ITownRepository townRepository)
+            : base(huaweiRepository, zteRepository, eNodebRepository, huaweiCellRepository, townRepository)
+        {
+        }
 
         private IEnumerable<FlowView> QueryDistrictDownSwitchViews(string city, string district, DateTime begin, DateTime end)
         {
@@ -135,12 +143,6 @@ namespace Lte.Evaluations.DataService.Kpi
                 HuaweiRepository.GetAllList(
                     x => x.StatTime >= begin && x.StatTime < end && x.SchedulingRank1 > 1000000));
             return results.OrderBy(x => x.Rank2Rate).Take(topCount);
-        }
-
-        public FlowQueryService(IFlowHuaweiRepository huaweiRepository, IFlowZteRepository zteRepository,
-            IENodebRepository eNodebRepository, ICellRepository huaweiCellRepository, ITownRepository townRepository)
-            : base(huaweiRepository, zteRepository, eNodebRepository, huaweiCellRepository, townRepository)
-        {
         }
 
         protected override IDateSpanQuery<List<FlowView>> GenerateHuaweiQuery(int eNodebId, byte sectorId)

@@ -7,7 +7,29 @@ using Lte.Evaluations.DataService.Kpi;
 using Lte.Evaluations.DataService.Mr;
 using Lte.Evaluations.DataService.Switch;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Cdma;
+using Lte.MySqlFramework.Abstract.College;
+using Lte.MySqlFramework.Abstract.Complain;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Kpi;
+using Lte.MySqlFramework.Abstract.Maintainence;
+using Lte.MySqlFramework.Abstract.Mr;
+using Lte.MySqlFramework.Abstract.Region;
+using Lte.MySqlFramework.Abstract.RegionKpi;
+using Lte.MySqlFramework.Abstract.Station;
+using Lte.MySqlFramework.Abstract.Test;
 using Lte.MySqlFramework.Concrete;
+using Lte.MySqlFramework.Concrete.Cdma;
+using Lte.MySqlFramework.Concrete.College;
+using Lte.MySqlFramework.Concrete.Complain;
+using Lte.MySqlFramework.Concrete.Infrastructure;
+using Lte.MySqlFramework.Concrete.Kpi;
+using Lte.MySqlFramework.Concrete.Maintainence;
+using Lte.MySqlFramework.Concrete.Mr;
+using Lte.MySqlFramework.Concrete.Region;
+using Lte.MySqlFramework.Concrete.RegionKpi;
+using Lte.MySqlFramework.Concrete.Station;
+using Lte.MySqlFramework.Concrete.Test;
 using Lte.Parameters.Abstract.Basic;
 using Lte.Parameters.Abstract.Infrastructure;
 using Lte.Parameters.Abstract.Kpi;
@@ -61,7 +83,7 @@ namespace LtePlatform
 
             ninjectKernel.Bind<ICdmaCellRepository>().To<CdmaCellRepository>();
 
-            ninjectKernel.Bind<IIndoorDistributionRepository>().To<EFIndoorDistributionRepository>();
+            ninjectKernel.Bind<IIndoorDistributionRepository>().To<IndoorDistributionRepository>();
 
             ninjectKernel.Bind<IPreciseCoverage4GRepository>().To<PreciseCoverage4GRepository>();
 

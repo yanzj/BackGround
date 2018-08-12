@@ -8,6 +8,8 @@ using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Station;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Maintainence;
 using Lte.MySqlFramework.Entities;
 
 namespace Lte.Evaluations.DataService.Dump

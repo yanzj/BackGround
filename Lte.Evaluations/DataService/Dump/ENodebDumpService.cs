@@ -10,6 +10,9 @@ using Lte.Domain.Common.Types;
 using Lte.Domain.Excel;
 using Lte.Evaluations.Policy;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Cdma;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Entities;
 
 namespace Lte.Evaluations.DataService.Dump

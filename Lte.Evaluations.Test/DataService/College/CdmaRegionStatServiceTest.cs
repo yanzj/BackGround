@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Region;
 using Lte.Evaluations.DataService.Queries;
+using Lte.MySqlFramework.Abstract.Cdma;
+using Lte.MySqlFramework.Abstract.Region;
 
 namespace Lte.Evaluations.DataService.College
 {

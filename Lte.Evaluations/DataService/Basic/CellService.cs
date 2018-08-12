@@ -9,6 +9,7 @@ using Lte.Domain.Common.Geo;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Station;
 using Lte.Evaluations.ViewModels.Precise;
+using Lte.MySqlFramework.Abstract.Infrastructure;
 
 namespace Lte.Evaluations.DataService.Basic
 {

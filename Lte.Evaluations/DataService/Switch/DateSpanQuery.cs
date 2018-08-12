@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Lte.Domain.Regular;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Region;
 
 namespace Lte.Evaluations.DataService.Switch
 {

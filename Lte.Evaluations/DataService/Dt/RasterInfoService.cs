@@ -7,6 +7,8 @@ using Abp.EntityFramework.Entities.Region;
 using Abp.EntityFramework.Entities.Test;
 using Lte.Domain.Common.Types;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Region;
+using Lte.MySqlFramework.Abstract.Test;
 using Lte.MySqlFramework.Entities;
 
 namespace Lte.Evaluations.DataService.Dt

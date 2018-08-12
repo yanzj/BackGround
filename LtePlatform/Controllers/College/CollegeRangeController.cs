@@ -2,6 +2,7 @@
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Region;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.College;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.College

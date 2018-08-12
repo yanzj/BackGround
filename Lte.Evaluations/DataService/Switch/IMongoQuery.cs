@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Lte.Domain.Common.Wireless;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Infrastructure;
 
 namespace Lte.Evaluations.DataService.Switch
 {

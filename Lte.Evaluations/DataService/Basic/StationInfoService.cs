@@ -9,6 +9,7 @@ using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Antenna;
 using Lte.Domain.Common.Wireless.Station;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Station;
 using Lte.MySqlFramework.Entities;
 
 namespace Lte.Evaluations.DataService.Basic

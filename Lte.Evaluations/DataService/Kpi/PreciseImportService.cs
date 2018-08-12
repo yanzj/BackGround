@@ -11,6 +11,9 @@ using Abp.EntityFramework.Entities.Kpi;
 using Abp.EntityFramework.Entities.RegionKpi;
 using Abp.EntityFramework.Repositories;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Mr;
+using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Support;
 
 namespace Lte.Evaluations.DataService.Kpi

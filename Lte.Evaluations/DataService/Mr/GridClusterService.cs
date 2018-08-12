@@ -5,6 +5,7 @@ using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Mr;
 using Lte.Domain.Common.Geo;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Mr;
 
 namespace Lte.Evaluations.DataService.Mr
 {

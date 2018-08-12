@@ -9,6 +9,8 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Lte.MySqlFramework.Abstract.Cdma;
+using Lte.MySqlFramework.Abstract.Region;
 
 namespace Lte.Evaluations.DataService.Kpi
 {

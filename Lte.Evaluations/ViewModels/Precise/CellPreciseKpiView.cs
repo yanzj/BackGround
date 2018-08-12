@@ -6,6 +6,7 @@ using Abp.EntityFramework.Entities.Infrastructure;
 using AutoMapper;
 using Lte.Domain.Common.Types;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.Parameters.Abstract.Kpi;
 
 namespace Lte.Evaluations.ViewModels.Precise

@@ -11,6 +11,8 @@ using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Common.Wireless.Region;
 using Lte.Domain.Regular;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Region;
+using Lte.MySqlFramework.Abstract.RegionKpi;
 using Lte.MySqlFramework.Entities;
 using Lte.MySqlFramework.Support;
 

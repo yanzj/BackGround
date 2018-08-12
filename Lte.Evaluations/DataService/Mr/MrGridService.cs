@@ -13,6 +13,8 @@ using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Alarm;
 using Lte.Domain.Regular;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Mr;
+using Lte.MySqlFramework.Abstract.Region;
 
 namespace Lte.Evaluations.DataService.Mr
 {

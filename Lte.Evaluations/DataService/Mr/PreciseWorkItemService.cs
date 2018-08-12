@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Maintainence;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Maintainence;
 
 namespace Lte.Evaluations.DataService.Mr
 {

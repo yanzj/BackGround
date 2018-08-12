@@ -6,6 +6,7 @@ using Abp.EntityFramework.Entities.Infrastructure;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Distribution;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.Parameters.MockOperations;
 
 namespace Lte.Evaluations.DataService.College

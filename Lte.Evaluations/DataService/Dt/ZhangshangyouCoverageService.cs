@@ -12,6 +12,8 @@ using Lte.Domain.Common;
 using Lte.Domain.LinqToCsv.Context;
 using Lte.Domain.LinqToCsv.Description;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Test;
 using Lte.MySqlFramework.Entities;
 using Remotion.Data.Linq.Utilities;
 

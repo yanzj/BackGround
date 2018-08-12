@@ -6,6 +6,9 @@ using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Region;
 using Lte.Domain.Common.Wireless;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Cdma;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Region;
 
 namespace Lte.Evaluations.DataService.Basic
 {

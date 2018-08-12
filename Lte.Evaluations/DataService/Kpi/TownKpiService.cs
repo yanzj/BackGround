@@ -12,6 +12,9 @@ using Lte.Domain.Common.Wireless.Cell;
 using Lte.Evaluations.DataService.Basic;
 using Lte.Evaluations.DataService.Switch;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Kpi;
+using Lte.MySqlFramework.Abstract.RegionKpi;
 using Lte.MySqlFramework.Entities;
 
 namespace Lte.Evaluations.DataService.Kpi

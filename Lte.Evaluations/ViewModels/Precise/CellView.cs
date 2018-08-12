@@ -5,6 +5,7 @@ using AutoMapper;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Regular.Attributes;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Entities;
 
 namespace Lte.Evaluations.ViewModels.Precise

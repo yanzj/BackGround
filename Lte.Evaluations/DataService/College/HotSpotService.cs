@@ -10,6 +10,8 @@ using Abp.EntityFramework.Entities.College;
 using Abp.EntityFramework.Entities.Infrastructure;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless.Distribution;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Region;
 
 namespace Lte.Evaluations.DataService.College
 {

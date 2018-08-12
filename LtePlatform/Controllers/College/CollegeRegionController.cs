@@ -1,5 +1,6 @@
 using System.Web.Http;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.College;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.College

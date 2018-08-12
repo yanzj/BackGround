@@ -2,6 +2,7 @@ using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Mr;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Mr;
 
 namespace Lte.Evaluations.DataService.Mr
 {

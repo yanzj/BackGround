@@ -7,6 +7,8 @@ using Abp.EntityFramework.Entities.Cdma;
 using Lte.Domain.Common.Geo;
 using Lte.Domain.Regular;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Cdma;
+using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Entities;
 
 namespace Lte.Evaluations.DataService.Basic

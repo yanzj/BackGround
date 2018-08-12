@@ -2,6 +2,7 @@
 using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Maintainence;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Maintainence;
 
 namespace LtePlatform.Models
 {

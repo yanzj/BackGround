@@ -7,6 +7,8 @@ using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.RegionKpi;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Region;
+using Lte.MySqlFramework.Abstract.RegionKpi;
 using Lte.MySqlFramework.Entities;
 using Lte.MySqlFramework.Support;
 

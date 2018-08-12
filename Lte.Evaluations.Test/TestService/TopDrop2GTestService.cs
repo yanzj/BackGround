@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Cdma;
+using Lte.MySqlFramework.Abstract.Cdma;
+using Lte.MySqlFramework.Abstract.Infrastructure;
 
 namespace Lte.Evaluations.TestService
 {

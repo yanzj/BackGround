@@ -6,6 +6,8 @@ using Abp.EntityFramework.Entities.Complain;
 using Abp.EntityFramework.Repositories;
 using AutoMapper;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Complain;
+using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Entities;
 
 namespace Lte.Evaluations.DataService.College

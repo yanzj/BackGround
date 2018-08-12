@@ -6,6 +6,8 @@ using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Distribution;
 using Lte.Domain.Regular;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Entities;
 
 namespace Lte.Evaluations.DataService.Basic

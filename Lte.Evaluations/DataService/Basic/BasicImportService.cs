@@ -11,6 +11,10 @@ using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Entities;
 using Abp.EntityFramework.Repositories;
 using Lte.Domain.Excel;
+using Lte.MySqlFramework.Abstract.Cdma;
+using Lte.MySqlFramework.Abstract.College;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Station;
 
 namespace Lte.Evaluations.DataService.Basic
 {

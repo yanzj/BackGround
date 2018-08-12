@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
 using Lte.MySqlFramework.Abstract;
+using Lte.MySqlFramework.Abstract.Maintainence;
 using Lte.MySqlFramework.Entities;
 
 namespace Lte.Evaluations.DataService.College
