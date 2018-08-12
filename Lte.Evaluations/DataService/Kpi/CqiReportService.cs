@@ -1,5 +1,4 @@
 ﻿using Abp.EntityFramework.AutoMapper;
-using Lte.MySqlFramework.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,14 +45,14 @@ namespace Lte.Evaluations.DataService.Kpi
             return new List<CqiView>();
         }
 
-        public List<CqiView> QueryTopCqiViews(string city, string district, DateTime begin, DateTime end, int topCount)
+        public List<CqiView> QueryTopDistrictViews(string city, string district, DateTime begin, DateTime end, int topCount)
         {
             var results = QueryDistrictViews(city, district, begin, end).ToList();
             var days = (results.Max(x => x.StatTime) - results.Min(x => x.StatTime)).Days + 1;
             return results.OrderByDescending(x => x.CqiCounts.Item1 - x.CqiCounts.Item2).Take(topCount * days).ToList();
         }
 
-        public List<CqiView> QueryTopCqiViews(DateTime begin, DateTime end, int topCount, OrderCqiPolicy policy)
+        public List<CqiView> QueryTopDistrictViews(DateTime begin, DateTime end, int topCount, OrderCqiPolicy policy)
         {
             var zteStats = ZteRepository.FilterTopList(begin, end);
             var huaweiStats = HuaweiRepository.FilterTopList(begin, end);
@@ -62,7 +61,7 @@ namespace Lte.Evaluations.DataService.Kpi
             return QueryTopViewsByPolicy(joinViews, topCount * days, policy);
         }
 
-        public List<CqiView> QueryTopCqiViews(string city, string district, DateTime begin, DateTime end,
+        public List<CqiView> QueryTopDistrictViews(string city, string district, DateTime begin, DateTime end,
             int topCount, OrderCqiPolicy policy)
         {
             var joinViews = QueryDistrictViews(city, district, begin, end).ToList();

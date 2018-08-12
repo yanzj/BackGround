@@ -315,6 +315,7 @@
     <Compile Include="Controllers\Dt\ZhangshangyouQualityController.cs" />
     <Compile Include="Controllers\Kpi\AlarmWorkItemController.cs" />
     <Compile Include="Controllers\Kpi\CellAlarmWorkItemController.cs" />
+    <Compile Include="Controllers\Kpi\DoubleFlowQueryController.cs" />
     <Compile Include="Controllers\Kpi\DoubleFlowRegionController.cs" />
     <Compile Include="Controllers\Kpi\ENodebAlarmWorkItemController.cs" />
     <Compile Include="Controllers\Kpi\MonthAlarmProcessTrendController.cs" />
@@ -327,6 +328,7 @@
     <Compile Include="Controllers\Kpi\MonthMaintainProjectTrendController.cs" />
     <Compile Include="Controllers\Kpi\MonthPreciseTrendController.cs" />
     <Compile Include="Controllers\Kpi\MonthYuejiTrendController.cs" />
+    <Compile Include="Controllers\Kpi\TopDoubleFlowController.cs" />
     <Compile Include="Controllers\Kpi\TopFeelingRateController.cs" />
     <Compile Include="Controllers\Mongo\MrsRsrpImportController.cs" />
     <Compile Include="Controllers\Mongo\MrsSinrUlImportController.cs" />

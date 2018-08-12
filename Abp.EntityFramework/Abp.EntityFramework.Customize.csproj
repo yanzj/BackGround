@@ -173,6 +173,7 @@
     <Compile Include="Entities\Cdma\CdmaRegionStatView.cs" />
     <Compile Include="Entities\Cdma\CdmaSectorView.cs" />
     <Compile Include="Entities\Kpi\AggregateFlowView.cs" />
+    <Compile Include="Entities\Kpi\CqiView.cs" />
     <Compile Include="Entities\Kpi\DoubleFlowView.cs" />
     <Compile Include="Entities\Maintainence\AlarmWorkItem.cs" />
     <Compile Include="Entities\Maintainence\AlarmWorkItemGroup.cs" />

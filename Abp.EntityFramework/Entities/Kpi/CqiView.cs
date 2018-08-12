@@ -1,13 +1,11 @@
-﻿using Abp.EntityFramework.AutoMapper;
-using System;
-using Abp.EntityFramework.Entities;
-using Abp.EntityFramework.Entities.Kpi;
+﻿using System;
+using Abp.EntityFramework.AutoMapper;
+using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Regular;
 using Lte.Domain.Regular.Attributes;
-using Lte.Domain.Common.Types;
 
-namespace Lte.MySqlFramework.Entities
+namespace Abp.EntityFramework.Entities.Kpi
 {
     [AutoMapFrom(typeof(CqiHuawei), typeof(CqiZte))]
     [IncreaseNumberKpi(KpiPrefix = "Cqi", KpiAffix = "Reports", IndexRange = 16)]

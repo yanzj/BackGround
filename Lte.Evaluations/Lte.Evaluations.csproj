@@ -177,6 +177,7 @@
     <Compile Include="DataService\Kpi\CqiQueryService.cs" />
     <Compile Include="DataService\Kpi\CqiRegionStatService.cs" />
     <Compile Include="DataService\Kpi\CqiReportService.cs" />
+    <Compile Include="DataService\Kpi\DoubleFlowQueryService.cs" />
     <Compile Include="DataService\Kpi\DoubleFlowRegionStatService.cs" />
     <Compile Include="DataService\Switch\HuaweiInterFreqENodebMongoQuery.cs" />
     <Compile Include="DataService\Switch\HuaweiIntraFreqENodebMongoQuery.cs" />

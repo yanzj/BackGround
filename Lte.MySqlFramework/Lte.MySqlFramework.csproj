@@ -335,12 +335,14 @@
     </Compile>
     <Compile Include="Query\HuaweiCqiQuery.cs" />
     <Compile Include="Query\HuaweiDateSpanQuery.cs" />
+    <Compile Include="Query\HuaweiDoubleFlowQuery.cs" />
     <Compile Include="Query\HuaweiFlowQuery.cs" />
     <Compile Include="Query\HuaweiPrbQuery.cs" />
     <Compile Include="Query\HuaweiQciQuery.cs" />
     <Compile Include="Query\HuaweiRrcQuery.cs" />
     <Compile Include="Query\ZteCqiQuery.cs" />
     <Compile Include="Query\ZteDateSpanQuery.cs" />
+    <Compile Include="Query\ZteDoubleFlowQuery.cs" />
     <Compile Include="Query\ZteFlowQuery.cs" />
     <Compile Include="Query\ZtePrbQuery.cs" />
     <Compile Include="Query\ZteQciQuery.cs" />
@@ -358,7 +360,6 @@
     <Compile Include="Entities\StationAntennaView.cs" />
     <Compile Include="Entities\StationCellView.cs" />
     <Compile Include="Entities\CoverageStatView.cs" />
-    <Compile Include="Entities\CqiView.cs" />
     <Compile Include="Entities\DistrictCoverageView.cs" />
     <Compile Include="Entities\DistrictFileView.cs" />
     <Compile Include="Entities\DistrictFlowView.cs" />

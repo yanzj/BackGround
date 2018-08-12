@@ -497,6 +497,8 @@ namespace LtePlatform
 
             ninjectKernel.Bind<DoubleFlowRegionStatService>().ToSelf();
 
+            ninjectKernel.Bind<DoubleFlowQueryService>().ToSelf();
+
         }
     }
 }
