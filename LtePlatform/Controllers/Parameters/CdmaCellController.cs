@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
+using Abp.EntityFramework.Entities.Cdma;
 using Lte.Evaluations.DataService.Basic;
-using Lte.MySqlFramework.Entities;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.Parameters

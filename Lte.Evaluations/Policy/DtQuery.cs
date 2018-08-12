@@ -4,11 +4,10 @@ using System.Linq;
 using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities.Test;
 using Lte.Domain.Common.Types;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Test;
 using Lte.Parameters.Abstract.Infrastructure;
 
-namespace Lte.Evaluations.Query
+namespace Lte.Evaluations.Policy
 {
     public static class DtQuery
     {

@@ -1,5 +1,4 @@
-﻿using Lte.MySqlFramework.Abstract;
-using Lte.MySqlFramework.Abstract.Infrastructure;
+﻿using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.Parameters.Abstract.Basic;
 using Lte.Parameters.Abstract.Switch;
 using Lte.Parameters.Entities.Switch;
@@ -60,40 +59,6 @@ namespace Lte.Evaluations.DataService.Switch
         {
             var query = ConstructCellQuery(eNodebId, sectorId);
             return query?.Query();
-        }
-    }
-
-    internal class HuaweiIntraFreqENodebMongoQuery : HuaweiENodebMongoQuery<IntraRatHoComm, ENodebIntraFreqHoView, IIntraRatHoCommRepository>
-    {
-        public HuaweiIntraFreqENodebMongoQuery(IIntraRatHoCommRepository repository, int eNodebId) : base(repository, eNodebId)
-        {
-        }
-    }
-
-    internal class ZteIntraFreqENodebQuery : ZteGeneralENodebQuery<UeEUtranMeasurementZte, ENodebIntraFreqHoView>
-    {
-        private readonly ICellMeasGroupZteRepository _zteGroupRepository;
-        private readonly IUeEUtranMeasurementRepository _zteMeasurementRepository;
-
-        public ZteIntraFreqENodebQuery(ICellMeasGroupZteRepository zteGroupRepository,
-            IUeEUtranMeasurementRepository zteMeasurementRepository, int eNodebId) 
-            : base(eNodebId)
-        {
-            _zteGroupRepository = zteGroupRepository;
-            _zteMeasurementRepository = zteMeasurementRepository;
-        }
-
-        protected override UeEUtranMeasurementZte QueryStat()
-        {
-            if (UeEUtranMeasurementZte.IntraFreqHoConfigId < 0)
-            {
-                var zteGroup = _zteGroupRepository.GetRecent(ENodebId);
-                UeEUtranMeasurementZte.IntraFreqHoConfigId = zteGroup == null
-                    ? 50
-                    : int.Parse(zteGroup.intraFHOMeasCfg.Split(',')[0]);
-            }
-
-            return _zteMeasurementRepository.GetRecent(ENodebId, UeEUtranMeasurementZte.IntraFreqHoConfigId);
         }
     }
 }

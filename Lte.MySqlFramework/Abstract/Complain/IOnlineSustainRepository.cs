@@ -7,7 +7,7 @@ namespace Lte.MySqlFramework.Abstract.Complain
 {
     public interface IOnlineSustainRepository
         : IRepository<OnlineSustain>, IMatchRepository<OnlineSustain, OnlineSustainExcel>,
-            IDateSpanQuery<OnlineSustain>, ISaveChanges
+            IDateSpanRepository<OnlineSustain>, ISaveChanges
     {
         
     }

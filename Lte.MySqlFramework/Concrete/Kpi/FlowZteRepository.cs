@@ -20,7 +20,7 @@ namespace Lte.MySqlFramework.Concrete.Kpi
                 x.SectorId == stat.SectorId);
         }
 
-        public List<FlowZte> GetBusyList(DateTime begin, DateTime end)
+        public List<FlowZte> FilterTopList(DateTime begin, DateTime end)
         {
             return GetAllList(x =>
                 x.StatTime >= begin && x.StatTime < end && x.DownlinkPdcpFlow + x.PdcpUplinkDuration > 200000 &&

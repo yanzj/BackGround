@@ -1,8 +1,7 @@
 using System;
 using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Entities;
 
-namespace Lte.MySqlFramework.Entities
+namespace Abp.EntityFramework.Entities.Test
 {
     [AutoMapFrom(typeof(AreaTestInfo))]
     public class AreaTestFileView

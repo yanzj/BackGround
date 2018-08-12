@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Abp.EntityFramework.Dependency;
 using Lte.Domain.Regular;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Region;
 
-namespace Lte.Evaluations.DataService.Switch
+namespace Lte.MySqlFramework.Support
 {
     public abstract class DateSpanQuery<T, THuaweiRepository, TZteRepository> 
         where T : class, new()

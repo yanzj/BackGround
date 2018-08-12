@@ -10,9 +10,8 @@ using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Cell;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Region;
-using Lte.MySqlFramework.Support;
 
-namespace Lte.Evaluations.DataService.Switch
+namespace Lte.MySqlFramework.Support
 {
     public static class GeneralFlowQuery
     {

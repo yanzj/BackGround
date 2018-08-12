@@ -6,10 +6,9 @@ using Abp.EntityFramework.Repositories;
 
 namespace Lte.MySqlFramework.Abstract.Kpi
 {
-    public interface IFlowHuaweiRepository : IRepository<FlowHuawei>, ISaveChanges, IMatchRepository<FlowHuawei>
+    public interface IFlowHuaweiRepository : IRepository<FlowHuawei>, ISaveChanges, IMatchRepository<FlowHuawei>,
+        IFilterTopRepository<FlowHuawei>
     {
-        List<FlowHuawei> GetBusyList(DateTime begin, DateTime end);
-
         List<FlowHuawei> GetHighDownSwitchList(DateTime begin, DateTime end, int threshold);
     }
 }

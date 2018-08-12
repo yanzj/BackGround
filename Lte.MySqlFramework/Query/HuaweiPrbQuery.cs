@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Abp.EntityFramework.Entities.Kpi;
-using Lte.Evaluations.DataService.Switch;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Kpi;
 using Lte.MySqlFramework.Entities;
 
-namespace Lte.Evaluations.Query
+namespace Lte.MySqlFramework.Query
 {
     public class HuaweiPrbQuery : HuaweiDateSpanQuery<PrbHuawei, PrbView, IPrbHuaweiRepository>
     {

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Lte.MySqlFramework.Entities
+namespace Abp.EntityFramework.Entities.Cdma
 {
     public class CdmaRegionDateView
     {

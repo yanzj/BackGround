@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Lte.MySqlFramework.Entities;
+using Abp.EntityFramework.Entities.Cdma;
 using NUnit.Framework;
 
 namespace Lte.Evaluations.DataService.Queries

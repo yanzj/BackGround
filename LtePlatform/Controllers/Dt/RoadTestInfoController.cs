@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Web.Http;
 using Abp.EntityFramework.Entities;
-using Lte.Domain.Common.Wireless;
+using Abp.EntityFramework.Entities.Test;
 using Lte.Domain.Common.Wireless.Distribution;
 using Lte.Evaluations.DataService.College;
 using Lte.Evaluations.DataService.Dt;
-using Lte.MySqlFramework.Entities;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.Dt

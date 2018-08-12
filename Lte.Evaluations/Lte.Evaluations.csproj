@@ -178,14 +178,14 @@
     <Compile Include="DataService\Kpi\CqiRegionStatService.cs" />
     <Compile Include="DataService\Kpi\CqiReportService.cs" />
     <Compile Include="DataService\Kpi\DoubleFlowRegionStatService.cs" />
-    <Compile Include="Query\DtQuery.cs" />
+    <Compile Include="DataService\Switch\HuaweiInterFreqENodebMongoQuery.cs" />
+    <Compile Include="DataService\Switch\HuaweiIntraFreqENodebMongoQuery.cs" />
+    <Compile Include="DataService\Switch\HuaweiUlOlPcQuery.cs" />
+    <Compile Include="DataService\Switch\ZteIntraFreqENodebQuery.cs" />
+    <Compile Include="DataService\Switch\ZteUlOlPcQuery.cs" />
     <Compile Include="DataService\Kpi\ENodebFlowService.cs" />
     <Compile Include="DataService\Kpi\FlowQueryService.cs" />
     <Compile Include="DataService\Kpi\FlowService.cs" />
-    <Compile Include="Query\HuaweiFlowQuery.cs" />
-    <Compile Include="Query\HuaweiPrbQuery.cs" />
-    <Compile Include="Query\HuaweiQciQuery.cs" />
-    <Compile Include="Query\HuaweiRrcQuery.cs" />
     <Compile Include="DataService\Kpi\MrsRegionStatService.cs" />
     <Compile Include="DataService\Kpi\PrbQueryService.cs" />
     <Compile Include="DataService\Kpi\PrbRegionStatService.cs" />
@@ -196,11 +196,6 @@
     <Compile Include="DataService\Kpi\TownFlowService.cs" />
     <Compile Include="DataService\Kpi\TownKpiService.cs" />
     <Compile Include="DataService\Kpi\TownStatQueries.cs" />
-    <Compile Include="Query\ZteCqiQuery.cs" />
-    <Compile Include="Query\ZteFlowQuery.cs" />
-    <Compile Include="Query\ZtePrbQuery.cs" />
-    <Compile Include="Query\ZteQciQuery.cs" />
-    <Compile Include="Query\ZteRrcQuery.cs" />
     <Compile Include="DataService\Mr\AgpsService.cs" />
     <Compile Include="DataService\Mr\DpiGridKpiService.cs" />
     <Compile Include="DataService\Mr\MrGridKpiService.cs" />
@@ -217,7 +212,6 @@
     <Compile Include="DataService\Mr\PreciseWorkItemService.cs" />
     <Compile Include="DataService\Mr\TownSupportService.cs" />
     <Compile Include="DataService\Dt\RasterInfoService.cs" />
-    <Compile Include="DataService\Switch\DateSpanQuery.cs" />
     <Compile Include="DataService\Switch\HuaweiCellMongoQuery.cs" />
     <Compile Include="DataService\Switch\HuaweiENodebMongoQuery.cs" />
     <Compile Include="DataService\Switch\HuaweiInterFreqCellQuery.cs" />
@@ -232,6 +226,7 @@
     <Compile Include="DataService\Switch\ZteInterFreqENodebQuery.cs" />
     <Compile Include="DataService\Switch\ZteIntraFreqCellQuery.cs" />
     <Compile Include="MapperSerive\TopCellQueriesService.cs" />
+    <Compile Include="Policy\DtQuery.cs" />
     <Compile Include="Policy\MyAssemblyFinder.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

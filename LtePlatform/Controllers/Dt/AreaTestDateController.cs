@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Http;
+using Abp.EntityFramework.Entities.Test;
 using Lte.Evaluations.DataService.Dt;
-using Lte.MySqlFramework.Entities;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.Dt

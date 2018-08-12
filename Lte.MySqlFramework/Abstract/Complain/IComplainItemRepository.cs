@@ -10,7 +10,7 @@ namespace Lte.MySqlFramework.Abstract.Complain
             IMatchRepository<ComplainItem, ComplainExcel>,
             IMatchRepository<ComplainItem, ComplainDto>,
             IMatchRepository<ComplainItem, ComplainSupplyExcel>,
-            IDateSpanQuery<ComplainItem>,
+            IDateSpanRepository<ComplainItem>,
             ISaveChanges
     {
         ComplainItem Get(string serialNumber);

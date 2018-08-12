@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities.Kpi;
-using Lte.Evaluations.DataService.Switch;
-using Lte.Evaluations.Query;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Kpi;
 using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Query;
+using Lte.MySqlFramework.Support;
 
 namespace Lte.Evaluations.DataService.Kpi
 {
@@ -33,14 +34,8 @@ namespace Lte.Evaluations.DataService.Kpi
             int topCount)
         {
             var results = HuaweiCellRepository.QueryDistrictFlowViews<RrcView, RrcZte, RrcHuawei>(city, district,
-                ZteRepository.GetAllList(
-                    x =>
-                        x.StatTime >= begin && x.StatTime < end &&
-                        x.MoDataRrcRequest + x.MoSignallingRrcRequest + x.MtAccessRrcRequest > 20000),
-                HuaweiRepository.GetAllList(
-                    x =>
-                        x.StatTime >= begin && x.StatTime < end &&
-                        x.MoDataRrcRequest + x.MoSignallingRrcRequest + x.MtAccessRrcRequest > 20000),
+                ZteRepository.FilterTopList(begin, end),
+                HuaweiRepository.FilterTopList(begin, end),
                 TownRepository, ENodebRepository).ToList();
             var days = (results.Max(x => x.StatTime) - results.Min(x => x.StatTime)).Days + 1;
             return results.OrderByDescending(x => x.TotalRrcFail).Take(topCount * days);

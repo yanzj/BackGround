@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
+using Abp.EntityFramework.Entities.Cdma;
 using Lte.Evaluations.DataService.College;
 using Lte.MySqlFramework.Entities;
 using LtePlatform.Models;

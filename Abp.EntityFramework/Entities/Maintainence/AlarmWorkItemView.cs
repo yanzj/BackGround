@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Entities;
-using Abp.EntityFramework.Entities.Maintainence;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Alarm;
@@ -13,7 +7,7 @@ using Lte.Domain.Common.Wireless.Station;
 using Lte.Domain.Common.Wireless.Work;
 using Lte.Domain.Regular.Attributes;
 
-namespace Lte.MySqlFramework.Entities
+namespace Abp.EntityFramework.Entities.Maintainence
 {
     [AutoMapFrom(typeof(AlarmWorkItem))]
     [TypeDoc("故障工单视图")]

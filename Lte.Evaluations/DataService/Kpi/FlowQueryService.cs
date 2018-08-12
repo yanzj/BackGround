@@ -1,19 +1,20 @@
-﻿using Lte.Evaluations.DataService.Switch;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities.Kpi;
 using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Common.Wireless.Kpi;
-using Lte.Evaluations.Query;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Kpi;
 using Lte.MySqlFramework.Abstract.Region;
+using Lte.MySqlFramework.Query;
 using Lte.MySqlFramework.Support;
 
 namespace Lte.Evaluations.DataService.Kpi
 {
-    public class FlowQueryService : DateSpanQuery<FlowView, IFlowHuaweiRepository, IFlowZteRepository>
+    public class FlowQueryService 
+        : FilterLocalDateSpanQuery<FlowView, IFlowHuaweiRepository, IFlowZteRepository, FlowZte, FlowHuawei>
     {
         private const int DownSwitchThreshold = 200;
 
@@ -34,17 +35,6 @@ namespace Lte.Evaluations.DataService.Kpi
             return results;
         }
         
-        private IEnumerable<FlowView> QueryDistrictViews(string city, string district, DateTime begin, DateTime end)
-        {
-            var zteStats = ZteRepository.GetBusyList(begin, end);
-            var huaweiStats = HuaweiRepository.GetBusyList(begin, end);
-            var results = HuaweiCellRepository.QueryDistrictFlowViews<FlowView, FlowZte, FlowHuawei>(city, district,
-                zteStats,
-                huaweiStats,
-                TownRepository, ENodebRepository);
-            return results;
-        }
-
         public IEnumerable<FlowView> QueryAllTownViews(string city, string district, string town,
             DateTime begin, DateTime end, FrequencyBandType frequency)
         {
@@ -85,8 +75,8 @@ namespace Lte.Evaluations.DataService.Kpi
         public List<FlowView> QueryTopFeelingRateViews(DateTime begin, DateTime end, int topCount,
             OrderFeelingRatePolicy policy)
         {
-            var zteStats = ZteRepository.GetBusyList(begin, end);
-            var huaweiStats = HuaweiRepository.GetBusyList(begin, end);
+            var zteStats = ZteRepository.FilterTopList(begin, end);
+            var huaweiStats = HuaweiRepository.FilterTopList(begin, end);
             var joinViews =
                 HuaweiCellRepository.QueryAllFlowViews<FlowView, FlowZte, FlowHuawei>(zteStats, huaweiStats);
             return joinViews.ToList().QueryTopViewsByPolicy(topCount, policy);
@@ -94,8 +84,8 @@ namespace Lte.Evaluations.DataService.Kpi
 
         public List<FlowView> QueryTopFlowViews(DateTime begin, DateTime end, int topCount, OrderTopFlowPolicy policy)
         {
-            var zteStats = ZteRepository.GetBusyList(begin, end);
-            var huaweiStats = HuaweiRepository.GetBusyList(begin, end);
+            var zteStats = ZteRepository.FilterTopList(begin, end);
+            var huaweiStats = HuaweiRepository.FilterTopList(begin, end);
             var joinViews = HuaweiCellRepository.QueryAllFlowViews<FlowView, FlowZte, FlowHuawei>(zteStats, huaweiStats);
             return joinViews.ToList().QueryTopViewsByPolicy(topCount, policy);
         }

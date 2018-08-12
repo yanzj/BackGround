@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Lte.MySqlFramework.Entities
+namespace Abp.EntityFramework.Entities.Cdma
 {
     public class CdmaRegionStatDetails
     {

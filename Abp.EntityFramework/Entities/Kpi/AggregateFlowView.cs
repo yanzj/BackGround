@@ -1,10 +1,8 @@
 using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Entities;
-using Abp.EntityFramework.Entities.Kpi;
 using Abp.EntityFramework.Entities.RegionKpi;
 using Lte.Domain.Regular.Attributes;
 
-namespace Lte.MySqlFramework.Entities
+namespace Abp.EntityFramework.Entities.Kpi
 {
     [AutoMapFrom(typeof(FlowView), typeof(TownFlowStat))]
     [TypeDoc("聚合流量统计视图")]

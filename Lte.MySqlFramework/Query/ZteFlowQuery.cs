@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Abp.EntityFramework.Entities.Kpi;
-using Lte.Evaluations.DataService.Switch;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Kpi;
 
-namespace Lte.Evaluations.Query
+namespace Lte.MySqlFramework.Query
 {
     public class ZteFlowQuery : ZteDateSpanQuery<FlowZte, FlowView, IFlowZteRepository>
     {

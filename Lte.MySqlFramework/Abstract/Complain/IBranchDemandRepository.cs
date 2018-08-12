@@ -7,7 +7,7 @@ namespace Lte.MySqlFramework.Abstract.Complain
 {
     public interface IBranchDemandRepository
         : IRepository<BranchDemand>, IMatchRepository<BranchDemand, BranchDemandExcel>,
-            IDateSpanQuery<BranchDemand>, ISaveChanges
+            IDateSpanRepository<BranchDemand>, ISaveChanges
     {
         
     }

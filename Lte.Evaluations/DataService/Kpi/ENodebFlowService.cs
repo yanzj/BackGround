@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Infrastructure;
 using Abp.EntityFramework.Entities.Kpi;
-using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Cell;
 using Lte.Evaluations.DataService.Basic;
-using Lte.Evaluations.DataService.Switch;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Kpi;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Support;
 
 namespace Lte.Evaluations.DataService.Kpi
 {

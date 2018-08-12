@@ -22,9 +22,12 @@ namespace Lte.MySqlFramework.Concrete.Kpi
 
         public List<DoubleFlowZte> FilterTopList(DateTime begin, DateTime end)
         {
-            return GetAllList(x => (x.SchedulingTm3Rank2Old + x.SchedulingTm4Rank2) * 6 <
+            return GetAllList(x => x.StatTime >= begin
+                                   && x.StatTime < end
+                                   && (x.SchedulingTm3Rank2Old + x.SchedulingTm4Rank2) * 6 <
                                    (x.SchedulingTm2 + x.SchedulingTm3Old + x.SchedulingTm4)
-                                   && (x.SchedulingTm2 + x.SchedulingTm3Old + x.SchedulingTm4) > 200000000);
+                                   && (x.SchedulingTm2 + x.SchedulingTm3Old + x.SchedulingTm4) >
+                                   200000000);
         }
     }
 }

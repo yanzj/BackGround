@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Lte.MySqlFramework.Entities;
+using Abp.EntityFramework.Entities.Cdma;
 
 namespace LtePlatform.Controllers.Kpi
 {

@@ -37,7 +37,7 @@ namespace Lte.Evaluations.DataService.College
 
         public static List<TDto> Query<TRepository, TEntity, TDto>(this TRepository repository,
             ITownRepository townRepository, DateTime begin, DateTime end)
-            where TRepository : IDateSpanQuery<TEntity>
+            where TRepository : IDateSpanRepository<TEntity>
             where TDto : IDistrictTown, ITownId
         {
             var results = Mapper.Map<List<TEntity>, List<TDto>>(repository.GetAllList(begin, end));
@@ -51,7 +51,7 @@ namespace Lte.Evaluations.DataService.College
 
         public static List<TDto> Query<TRepository, TEntity, TDto>(this TRepository repository,
             List<Town> towns, List<TEntity> list)
-            where TRepository : IDateSpanQuery<TEntity>
+            where TRepository : IDateSpanRepository<TEntity>
             where TDto : IDistrictTown, ITownId
         {
             var results = Mapper.Map<List<TEntity>, List<TDto>>(list);
@@ -94,7 +94,7 @@ namespace Lte.Evaluations.DataService.College
 
         public static List<TDto> Query<TRepository, TEntity, TDto>(this TRepository repository,
             ITownRepository townRepository, string district, string town, DateTime begin, DateTime end)
-            where TRepository : IDateSpanQuery<TEntity>
+            where TRepository : IDateSpanRepository<TEntity>
             where TDto : IDistrictTown
         {
             var townId = townRepository.QueryTown(district, town)?.Id ?? 1;

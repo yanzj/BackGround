@@ -1,4 +1,5 @@
 using Abp.EntityFramework.AutoMapper;
+using Abp.EntityFramework.Entities.Cdma;
 using Lte.Domain.Regular.Attributes;
 
 namespace Lte.MySqlFramework.Entities

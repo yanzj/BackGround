@@ -6,8 +6,8 @@ using Abp.EntityFramework.Repositories;
 
 namespace Lte.MySqlFramework.Abstract.Kpi
 {
-    public interface IQciZteRepository : IRepository<QciZte>, ISaveChanges, IMatchRepository<QciZte>
+    public interface IQciZteRepository : IRepository<QciZte>, ISaveChanges, IMatchRepository<QciZte>,
+        IFilterTopRepository<QciZte>
     {
-        List<QciZte> FilterTopList(DateTime begin, DateTime end);
     }
 }

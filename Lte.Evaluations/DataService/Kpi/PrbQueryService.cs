@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities.Kpi;
 using Lte.Domain.Common.Wireless.Kpi;
-using Lte.Evaluations.DataService.Switch;
-using Lte.Evaluations.Query;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Kpi;
 using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Query;
+using Lte.MySqlFramework.Support;
 
 namespace Lte.Evaluations.DataService.Kpi
 {
-    public class PrbQueryService : DateSpanQuery<PrbView, IPrbHuaweiRepository, IPrbZteRepository>
+    public class PrbQueryService 
+        : FilterLocalDateSpanQuery<PrbView, IPrbHuaweiRepository, IPrbZteRepository, PrbZte, PrbHuawei>
     {
         public PrbQueryService(IPrbHuaweiRepository huaweiRepository, IPrbZteRepository zteRepository,
             IENodebRepository eNodebRepository, ICellRepository huaweiCellRepository, ITownRepository townRepository)
@@ -29,18 +31,7 @@ namespace Lte.Evaluations.DataService.Kpi
         {
             return new ZtePrbQuery(ZteRepository, eNodebId, sectorId);
         }
-
-        private IEnumerable<PrbView> QueryDistrictViews(string city, string district, DateTime begin, DateTime end)
-        {
-            var zteStats = ZteRepository.FilterTopList(begin, end);
-            var huaweiStats = HuaweiRepository.FilterTopList(begin, end);
-            var results = HuaweiCellRepository.QueryDistrictFlowViews<PrbView, PrbZte, PrbHuawei>(city, district,
-                zteStats,
-                huaweiStats,
-                TownRepository, ENodebRepository);
-            return results;
-        }
-
+        
         private List<PrbView> QueryTopViewsByPolicy(IEnumerable<PrbView> source, int topCount,
             OrderPrbStatPolicy policy)
         {

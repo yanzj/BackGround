@@ -20,7 +20,7 @@ namespace Lte.MySqlFramework.Concrete.Kpi
                 x.LocalCellId == stat.LocalCellId);
         }
 
-        public List<FlowHuawei> GetBusyList(DateTime begin, DateTime end)
+        public List<FlowHuawei> FilterTopList(DateTime begin, DateTime end)
         {
             return GetAllList(
                 x => x.StatTime >= begin && x.PdcpDownlinkFlow + x.PdcpUplinkFlow > 200000 && x.MaxUsers > 10);
@@ -31,5 +31,6 @@ namespace Lte.MySqlFramework.Concrete.Kpi
             return GetAllList(
                 x => x.StatTime >= begin && x.StatTime < end && x.RedirectCdma2000 > threshold);
         }
+        
     }
 }

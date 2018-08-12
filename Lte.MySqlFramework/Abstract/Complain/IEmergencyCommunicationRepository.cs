@@ -7,7 +7,7 @@ namespace Lte.MySqlFramework.Abstract.Complain
     public interface IEmergencyCommunicationRepository 
         : IRepository<EmergencyCommunication>, 
         IMatchRepository<EmergencyCommunication, EmergencyCommunicationDto>, 
-        IDateSpanQuery<EmergencyCommunication>,
+        IDateSpanRepository<EmergencyCommunication>,
         ISaveChanges
     {
     }

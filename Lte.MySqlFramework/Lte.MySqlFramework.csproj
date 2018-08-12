@@ -315,11 +315,6 @@
     <Compile Include="Concrete\Maintainence\WorkItemRepository.cs" />
     <Compile Include="Concrete\Test\ZhangshangyouCoverageRepository.cs" />
     <Compile Include="Concrete\Test\ZhangshangyouQualityRepository.cs" />
-    <Compile Include="Entities\AggregateFlowView.cs" />
-    <Compile Include="Entities\AlarmWorkItemGroup.cs" />
-    <Compile Include="Entities\AlarmWorkItemView.cs" />
-    <Compile Include="Entities\AreaTestDateView.cs" />
-    <Compile Include="Entities\AreaTestFileView.cs" />
     <Compile Include="Entities\CheckingDetailsView.cs" />
     <Compile Include="Entities\CheckingResultView.cs" />
     <Compile Include="Entities\DistrictDoubleFlowView.cs" />
@@ -338,14 +333,19 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Query\HuaweiCqiQuery.cs" />
+    <Compile Include="Query\HuaweiDateSpanQuery.cs" />
+    <Compile Include="Query\HuaweiFlowQuery.cs" />
+    <Compile Include="Query\HuaweiPrbQuery.cs" />
+    <Compile Include="Query\HuaweiQciQuery.cs" />
+    <Compile Include="Query\HuaweiRrcQuery.cs" />
+    <Compile Include="Query\ZteCqiQuery.cs" />
+    <Compile Include="Query\ZteDateSpanQuery.cs" />
+    <Compile Include="Query\ZteFlowQuery.cs" />
+    <Compile Include="Query\ZtePrbQuery.cs" />
+    <Compile Include="Query\ZteQciQuery.cs" />
+    <Compile Include="Query\ZteRrcQuery.cs" />
     <Compile Include="Support\AreaTestInfoQuery.cs" />
-    <Compile Include="Entities\CdmaCellView.cs" />
-    <Compile Include="Entities\CdmaCompoundCellView.cs" />
-    <Compile Include="Entities\CdmaRegionDateView.cs" />
-    <Compile Include="Entities\CdmaRegionStatDetails.cs" />
-    <Compile Include="Entities\CdmaRegionStatTrend.cs" />
-    <Compile Include="Entities\CdmaRegionStatView.cs" />
-    <Compile Include="Entities\CdmaSectorView.cs" />
     <Compile Include="Entities\CellFlowView.cs" />
     <Compile Include="Entities\CellRruView.cs" />
     <Compile Include="Entities\CollegeYearView.cs" />
@@ -407,6 +407,9 @@
     <Compile Include="Entities\ZhangshangyouQualityView.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Support\DateSpanQuery.cs" />
+    <Compile Include="Support\FilterDateSpanQuery.cs" />
+    <Compile Include="Support\FilterLocalDateSpanQuery.cs" />
     <Compile Include="Support\FilterService.cs" />
     <Compile Include="Support\GeneralFlowQuery.cs" />
     <Compile Include="Support\OrderService.cs" />

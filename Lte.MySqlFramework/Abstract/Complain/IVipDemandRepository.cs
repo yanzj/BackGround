@@ -10,7 +10,7 @@ namespace Lte.MySqlFramework.Abstract.Complain
         : IRepository<VipDemand>, 
             IMatchRepository<VipDemand, VipDemandExcel>, 
             IMatchRepository<VipDemand, VipDemandDto>,
-            IDateSpanQuery<VipDemand>,
+            IDateSpanRepository<VipDemand>,
             ISaveChanges
     {
     }

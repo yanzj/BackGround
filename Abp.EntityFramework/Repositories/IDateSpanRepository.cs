@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Abp.EntityFramework.Repositories
 {
-    public interface IDateSpanQuery<TEntity>
+    public interface IDateSpanRepository<TEntity>
     {
         List<TEntity> GetAllList(DateTime begin, DateTime end);
 

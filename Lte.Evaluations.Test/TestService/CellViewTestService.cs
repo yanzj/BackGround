@@ -1,4 +1,5 @@
-﻿using Lte.Evaluations.ViewModels.Precise;
+﻿using Abp.EntityFramework.Entities.Cdma;
+using Lte.Evaluations.ViewModels.Precise;
 using Lte.MySqlFramework.Entities;
 using NUnit.Framework;
 

@@ -1,19 +1,21 @@
 ﻿using Abp.EntityFramework.AutoMapper;
-using Lte.Evaluations.DataService.Switch;
 using Lte.MySqlFramework.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities.Kpi;
 using Lte.Domain.Common.Wireless.Kpi;
-using Lte.Evaluations.Query;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Kpi;
 using Lte.MySqlFramework.Abstract.Region;
+using Lte.MySqlFramework.Query;
+using Lte.MySqlFramework.Support;
 
 namespace Lte.Evaluations.DataService.Kpi
 {
-    public class CqiReportService : DateSpanQuery<CqiView, ICqiHuaweiRepository, ICqiZteRepository>
+    public class CqiReportService 
+        : FilterDateSpanQuery<CqiView, ICqiHuaweiRepository, ICqiZteRepository, CqiZte, CqiHuawei>
     {
         public CqiReportService(ICqiHuaweiRepository huaweiRepository, ICqiZteRepository zteRepository,
             IENodebRepository eNodebRepository, ITownRepository townRepository)
@@ -29,17 +31,6 @@ namespace Lte.Evaluations.DataService.Kpi
         protected override IDateSpanQuery<List<CqiView>> GenerateZteQuery(int eNodebId, byte sectorId)
         {
             return new ZteCqiQuery(ZteRepository, eNodebId, sectorId);
-        }
-
-        private IEnumerable<CqiView> QueryDistrictViews(string city, string district, DateTime begin, DateTime end)
-        {
-            var zteStats = ZteRepository.FilterTopList(begin, end);
-            var huaweiStats = HuaweiRepository.FilterTopList(begin, end);
-            var results = ENodebRepository.QueryDistrictCqiViews<CqiView, CqiZte, CqiHuawei>(city, district,
-                zteStats,
-                huaweiStats,
-                TownRepository);
-            return results;
         }
 
         private List<CqiView> QueryTopViewsByPolicy(IEnumerable<CqiView> source, int topCount,

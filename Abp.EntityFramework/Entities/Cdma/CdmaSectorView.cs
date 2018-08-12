@@ -1,7 +1,7 @@
 using Abp.EntityFramework.AutoMapper;
 using Lte.Domain.Regular.Attributes;
 
-namespace Lte.MySqlFramework.Entities
+namespace Abp.EntityFramework.Entities.Cdma
 {
     [TypeDoc("扇区视图，用于地理化显示")]
     [AutoMapFrom(typeof(CdmaCellView))]

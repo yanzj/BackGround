@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Abp.EntityFramework.Entities.Test;
 
 namespace Lte.MySqlFramework.Entities
 {

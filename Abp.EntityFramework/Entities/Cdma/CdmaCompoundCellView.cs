@@ -1,9 +1,7 @@
 using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Entities;
-using Abp.EntityFramework.Entities.Cdma;
 using Lte.Domain.Common.Types;
 
-namespace Lte.MySqlFramework.Entities
+namespace Abp.EntityFramework.Entities.Cdma
 {
     [AutoMapFrom(typeof(CdmaCell))]
     public class CdmaCompoundCellView
