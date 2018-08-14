@@ -26,7 +26,7 @@ namespace Lte.MySqlFramework.Support
         {
             var zteStats = ZteRepository.FilterTopList(begin, end);
             var huaweiStats = HuaweiRepository.FilterTopList(begin, end);
-            var results = ENodebRepository.QueryDistrictCqiViews<TView, TZte, THuawei>(city, district,
+            var results = ENodebRepository.QueryDistrictKpiViews<TView, TZte, THuawei>(city, district,
                 zteStats,
                 huaweiStats,
                 TownRepository);

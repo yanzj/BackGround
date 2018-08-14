@@ -27,7 +27,7 @@ namespace Lte.MySqlFramework.Concrete.Kpi
                                    && (x.SchedulingTm3Rank2Old + x.SchedulingTm4Rank2) * 6 <
                                    (x.SchedulingTm2 + x.SchedulingTm3Old + x.SchedulingTm4)
                                    && (x.SchedulingTm2 + x.SchedulingTm3Old + x.SchedulingTm4) >
-                                   200000000);
+                                   100000000);
         }
     }
 }

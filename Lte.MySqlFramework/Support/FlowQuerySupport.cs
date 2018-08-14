@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.Entities.Kpi;
+using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Antenna;
 using Lte.Domain.Common.Wireless.Kpi;
+using Lte.MySqlFramework.Abstract.Infrastructure;
 
 namespace Lte.MySqlFramework.Support
 {
@@ -69,6 +72,16 @@ namespace Lte.MySqlFramework.Support
                     return new List<FlowView>();
             }
 
+        }
+
+        public static List<TStat> FilterSinglePortCells<TStat>(this List<TStat> joinViews,
+            ICellRepository cellRepository)
+        where TStat: ILteCellQuery
+        {
+            var cells = cellRepository.GetAllList(x => x.AntennaPorts != AntennaPortsConfigure.Antenna1T1R);
+            return (from v in joinViews
+                join c in cells on new { v.ENodebId, v.SectorId } equals new { c.ENodebId, c.SectorId }
+                select v).ToList();
         }
 
     }

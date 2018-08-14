@@ -70,7 +70,7 @@ namespace Lte.MySqlFramework.Support
             return zteViews.Concat(huaweiViews).ToList();
         }
 
-        public static IEnumerable<TView> QueryDistrictCqiViews<TView, TZte, THuawei>(this IENodebRepository eNodebRepository,
+        public static IEnumerable<TView> QueryDistrictKpiViews<TView, TZte, THuawei>(this IENodebRepository eNodebRepository,
             string city, string district, List<TZte> zteStats, List<THuawei> huaweiStats,
             ITownRepository townRepository)
             where TZte : ILteCellQuery

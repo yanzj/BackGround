@@ -13,7 +13,6 @@ Microsoft.*.xml
 *.suo
 Entity*.xml
 Newton*.xml
-*.sln
 .docstates
 *.user
 *.VisualState.xml
