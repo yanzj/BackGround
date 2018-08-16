@@ -950,65 +950,7 @@
                         }
                     ];
                 },
-
-                generateFixingStationGroups: function(station) {
-                    return [
-                        {
-                            items: [
-                                {
-                                    key: '站址编号',
-                                    value: station.id
-                                }, {
-                                    key: '站址名称',
-                                    value: station.name
-                                }, {
-                                    key: '地址',
-                                    value: station.address
-                                }
-                            ]
-                        }, {
-                            items: [
-                                {
-                                    key: '经度',
-                                    value: station.longtitute
-                                }, {
-                                    key: '纬度',
-                                    value: station.lattitute
-                                }, {
-                                    key: '状态',
-                                    value: station.status
-                                }
-                            ]
-                        }, {
-                            items: [
-                                {
-                                    key: '需求时间',
-                                    value: station.requireTime
-                                }, {
-                                    key: '整治人员',
-                                    value: station.checkingMan
-                                }, {
-                                    key: '预算金额',
-                                    value: station.cost
-                                }
-                            ]
-                        }, {
-                            items: [
-                                {
-                                    key: '整治级别',
-                                    value: station.level
-                                }, {
-                                    key: '整治计划',
-                                    value: station.plan
-                                }, {
-                                    key: '整治内容描述',
-                                    value: station.details
-                                }
-                            ]
-                        }
-                    ];
-                },
-
+                
                 generateCdmaCellGroups: function(cell) {
                     return [
                         {

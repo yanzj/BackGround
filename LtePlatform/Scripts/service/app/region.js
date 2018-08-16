@@ -855,14 +855,6 @@ angular.module('region.basic', ['app.core'])
                         'LtePlatForm/lte/index.php/StationCommon/add',
                         station);
                 },
-                getFixingStationById: function (id) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/Fixing/single/',
-                        {
-                        "id": id
-                    });
-                },
                 getCommonStationById: function (id) {
                     return generalHttpService
                         .postPhpUrlData(appUrlService.getPhpHost() +
@@ -935,27 +927,6 @@ angular.module('region.basic', ['app.core'])
                         "stationName": name,
                         'type': type
                     });
-                },
-                getFixingStation: function (areaName, status, type, page, pageSize) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() + 'LtePlatForm/lte/index.php/Fixing/search',
-                        {
-                        "curr_page": page,
-                        "page_size": pageSize,
-                        "areaName": areaName,
-                        "level": status,
-                        "type": type
-                    });
-                },
-                getSpecialStations: function(recoverName, page, pageSize) {
-
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() + 'LtePlatForm/lte/index.php/Special/search',
-                        {
-                            "curr_page": page,
-                            "page_size": pageSize,
-                            "recoverName": recoverName
-                        });
                 },
                 getSpecialIndoor: function(recoverName, page, pageSize) {
                     return generalHttpService

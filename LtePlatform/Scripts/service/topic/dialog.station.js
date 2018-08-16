@@ -1,20 +1,5 @@
 ﻿angular.module('topic.dialog.station', ['myApp.url', 'myApp.region', 'myApp.kpi', 'topic.basic', "ui.bootstrap",'angularFileUpload'])
-    .controller('map.special-station.dialog',
-        function($scope,
-            $uibModalInstance,
-            station,
-            dialogTitle,
-            appFormatService) {
 
-            $scope.itemGroups = appFormatService.generateSpecialStationGroups(station);
-
-            $scope.dialogTitle = dialogTitle;
-
-
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            };
-        })
     .controller('map.special-indoor.dialog',
         function($scope,
             $uibModalInstance,
@@ -58,58 +43,6 @@
             $uibModalInstance.dismiss('cancel');
         };
     })
-    .controller('map.checkingResultsStationAdd.dialog', function ($scope, $uibModalInstance, station, dialogTitle,
-        appFormatService, networkElementService, downSwitchService) {
-        $scope.station = {};
-        $scope.station.stationId = station.StationId;
-        $scope.station.WYMC003 = station.StationName;
-        $scope.station.WYBH002 = station.StationId;
-        $scope.station.XJLSH001 = station.id;
-        $scope.station.KSSJ008 = station.starttime;
-        $scope.station.JSSJ009 = station.endtime;
-        $scope.station.XJDW005 = station.service;
-        $scope.station.WGMC007 = 'FS'+station.AreaName;
-        $scope.tab = 1;
-        $scope.dialogTitle = dialogTitle;
-        $scope.cancel = function () {
-            $uibModalInstance.dismiss('cancel');
-        };
-        $scope.ok = function () {
-            downSwitchService.addCheckResults({
-                "Station": JSON.stringify($scope.station)
-            }).then(function (result) {
-                alert(result.description);
-                $uibModalInstance.dismiss('cancel');
-            });
-        }
-        $scope.selectTab = function (setTab) {
-            $scope.tab = setTab;
-        }
-        $scope.isSelectTab = function (checkTab) {
-            return $scope.tab === checkTab
-        }
-        $scope.selectTab(0);
-    })
-    .controller('map.fixingStation.dialog',
-        function($scope,
-            $uibModalInstance,
-            station,
-            dialogTitle,
-            appFormatService,
-            downSwitchService) {
-
-            downSwitchService.getFixingStationById(station.id).then(function (response) {
-                $scope.fixingStations = response.result[0];
-                $scope.fixingStations.longtitute = station.longtitute;
-                $scope.fixingStations.lattitute = station.lattitute;
-                $scope.itemGroups = appFormatService.generateFixingStationGroups($scope.fixingStations);
-            });
-            $scope.dialogTitle = dialogTitle;
-
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            };
-        })
     .controller('map.common-stationList.dialog',
         function($scope,
             $http,

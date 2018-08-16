@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Test;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Abstract.Test;
-using Lte.MySqlFramework.Entities;
 
 namespace Lte.Evaluations.DataService.Dt
 {
@@ -27,7 +24,7 @@ namespace Lte.Evaluations.DataService.Dt
                 _repository.GetAllList()
                     .Select(x => x.ConstructAreaView<AreaTestDate, AreaTestDateView>(_townRepository));
         }
-
+        
         public int UpdateLastDate(DateTime testDate, string networkType, int townId)
         {
             var town = _townRepository.Get(townId);

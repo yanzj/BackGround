@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Test;
 using Lte.Domain.Common.Geo;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Region;

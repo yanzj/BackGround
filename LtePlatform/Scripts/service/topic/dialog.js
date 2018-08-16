@@ -146,20 +146,6 @@
                         }
                     });
                 },
-                showFixingStationInfo: function(station) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/Evaluation/Dialog/SpecialStationDetails.html',
-                        controller: 'map.fixingStation.dialog',
-                        resolve: {
-                            dialogTitle: function() {
-                                return "整治信息:" + station.name;
-                            },
-                            station: function() {
-                                return station;
-                            }
-                        }
-                    });
-                },
                 showCommonStationList: function(type) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/Evaluation/Dialog/CommonStationListDialog.html',
@@ -170,20 +156,6 @@
                             },
                             type: function() {
                                 return type;
-                            }
-                        }
-                    });
-                },
-                showSpecialStationInfo: function(station) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/Evaluation/Dialog/SpecialStationDetails.html',
-                        controller: 'map.special-station.dialog',
-                        resolve: {
-                            dialogTitle: function() {
-                                return "站点信息:" + station.enodebName;
-                            },
-                            station: function() {
-                                return station;
                             }
                         }
                     });

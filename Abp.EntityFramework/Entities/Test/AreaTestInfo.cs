@@ -1,7 +1,7 @@
 using Abp.Domain.Entities;
 using Lte.Domain.Common.Wireless;
 
-namespace Abp.EntityFramework.Entities
+namespace Abp.EntityFramework.Entities.Test
 {
     public class AreaTestInfo : Entity, ITownId
     {

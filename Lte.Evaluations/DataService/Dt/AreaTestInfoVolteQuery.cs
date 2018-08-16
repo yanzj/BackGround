@@ -3,6 +3,7 @@ using Lte.MySqlFramework.Entities;
 using Lte.Parameters.Abstract.Infrastructure;
 using System.Collections.Generic;
 using Abp.EntityFramework.Entities;
+using Abp.EntityFramework.Entities.Test;
 using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Support;
 

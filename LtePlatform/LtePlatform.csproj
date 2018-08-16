@@ -659,7 +659,6 @@
     <Content Include="appViews\Evaluation\Dialog\BtsSearchCondition.html" />
     <Content Include="appViews\Evaluation\Dialog\BuildingInfoBox.html" />
     <Content Include="appViews\Evaluation\Dialog\CommonStationListDialog.html" />
-    <Content Include="appViews\Evaluation\Dialog\SpecialStationDetails.html" />
     <Content Include="appViews\Evaluation\FaultStation.html" />
     <Content Include="appViews\Evaluation\Fixing.html" />
     <Content Include="appViews\Evaluation\HighValue.html" />
