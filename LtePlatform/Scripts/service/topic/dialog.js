@@ -132,20 +132,6 @@
                         }
                     });
                 },
-                showCheckingStationInfo: function(station) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/Evaluation/Dialog/SpecialStationDetails.html',
-                        controller: 'map.checkingStation.dialog',
-                        resolve: {
-                            dialogTitle: function() {
-                                return "巡检信息:" + station.name;
-                            },
-                            station: function() {
-                                return station;
-                            }
-                        }
-                    });
-                },
                 showCommonStationList: function(type) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/Evaluation/Dialog/CommonStationListDialog.html',

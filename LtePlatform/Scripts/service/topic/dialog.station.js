@@ -32,17 +32,6 @@
                 $uibModalInstance.dismiss('cancel');
             };
         })
-    .controller('map.checkingStation.dialog', function ($scope, $uibModalInstance, station, dialogTitle,
-        appFormatService, networkElementService, downSwitchService) {
-        $scope.station;
-        downSwitchService.getCheckDetailsById(station.id).then(function (response) {
-            $scope.station = response.result[0];
-        });
-        $scope.dialogTitle = dialogTitle;
-        $scope.cancel = function () {
-            $uibModalInstance.dismiss('cancel');
-        };
-    })
     .controller('map.common-stationList.dialog',
         function($scope,
             $http,

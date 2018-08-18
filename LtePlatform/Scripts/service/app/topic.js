@@ -811,26 +811,6 @@ angular.module('topic.college',
                             mapDialogService.showCommonStationInfo(station);
                         });
                 },
-                showCheckingStations: function (stations, color, status, type) {
-                    if (status === '已巡检') {
-                        if (type === 'JZ') {
-                            generalMapService
-                                .showPointWithClusterer(stations, color, function (station) {
-                                    parametersDialogService.showCheckingStationInfo(station);
-                                });
-                        } else {
-                            generalMapService
-                                .showPointWithClusterer(stations, color, function (station) {
-                                    parametersDialogService.showCheckingIndoorInfo(station);
-                                });
-                        }
-                    } else {
-                        generalMapService
-                            .showPointWithClusterer(stations, color, function (station) {
-                                mapDialogService.showCommonStationInfo(station);
-                            });
-                    }
-                },
                 showConstructionSites: function(stations, status, callback) {
                     baiduQueryService.transformToBaidu(stations[0].longtitute, stations[0].lattitute)
                         .then(function(coors) {
@@ -1653,20 +1633,6 @@ angular.module('topic.parameters', ['app.menu', 'app.core', 'topic.basic'])
                         }
                     });
                 },
-                showCheckingStationInfo: function(station) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/Evaluation/Dialog/CheckDetails.html',
-                        controller: 'map.checkingStation.dialog',
-                        resolve: {
-                            dialogTitle: function() {
-                                return "巡检信息:" + station.name;
-                            },
-                            station: function() {
-                                return station;
-                            }
-                        }
-                    });
-                },
                 showCheckingResultsStationAdd: function (station) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/Evaluation/Dialog/CheckResultsStationAdd.html',
@@ -1676,20 +1642,6 @@ angular.module('topic.parameters', ['app.menu', 'app.core', 'topic.basic'])
                                 return "巡检结果录入:" + station.StationName + ' '+ station.id;
                             },
                             station: function () {
-                                return station;
-                            }
-                        }
-                    });
-                },
-                showCheckingIndoorInfo: function(station) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/Evaluation/Dialog/CheckIndoorDetails.html',
-                        controller: 'map.checkingStation.dialog',
-                        resolve: {
-                            dialogTitle: function() {
-                                return "巡检信息:" + station.name;
-                            },
-                            station: function() {
                                 return station;
                             }
                         }
@@ -3234,17 +3186,6 @@ angular.module('topic.dialog.station', ['myApp.url', 'myApp.region', 'myApp.kpi'
                 $uibModalInstance.dismiss('cancel');
             };
         })
-    .controller('map.checkingStation.dialog', function ($scope, $uibModalInstance, station, dialogTitle,
-        appFormatService, networkElementService, downSwitchService) {
-        $scope.station;
-        downSwitchService.getCheckDetailsById(station.id).then(function (response) {
-            $scope.station = response.result[0];
-        });
-        $scope.dialogTitle = dialogTitle;
-        $scope.cancel = function () {
-            $uibModalInstance.dismiss('cancel');
-        };
-    })
     .controller('map.common-stationList.dialog',
         function($scope,
             $http,
@@ -3555,20 +3496,6 @@ angular.module('topic.dialog',[ 'app.menu', 'app.core' ])
                             },
                             item: function() {
                                 return item;
-                            }
-                        }
-                    });
-                },
-                showCheckingStationInfo: function(station) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/Evaluation/Dialog/SpecialStationDetails.html',
-                        controller: 'map.checkingStation.dialog',
-                        resolve: {
-                            dialogTitle: function() {
-                                return "巡检信息:" + station.name;
-                            },
-                            station: function() {
-                                return station;
                             }
                         }
                     });

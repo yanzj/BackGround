@@ -138,20 +138,6 @@
                         }
                     });
                 },
-                showCheckingStationInfo: function(station) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/Evaluation/Dialog/CheckDetails.html',
-                        controller: 'map.checkingStation.dialog',
-                        resolve: {
-                            dialogTitle: function() {
-                                return "巡检信息:" + station.name;
-                            },
-                            station: function() {
-                                return station;
-                            }
-                        }
-                    });
-                },
                 showCheckingResultsStationAdd: function (station) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/Evaluation/Dialog/CheckResultsStationAdd.html',
@@ -161,20 +147,6 @@
                                 return "巡检结果录入:" + station.StationName + ' '+ station.id;
                             },
                             station: function () {
-                                return station;
-                            }
-                        }
-                    });
-                },
-                showCheckingIndoorInfo: function(station) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/Evaluation/Dialog/CheckIndoorDetails.html',
-                        controller: 'map.checkingStation.dialog',
-                        resolve: {
-                            dialogTitle: function() {
-                                return "巡检信息:" + station.name;
-                            },
-                            station: function() {
                                 return station;
                             }
                         }

@@ -863,13 +863,6 @@
                         "id": id
                     });
                 },
-                getCheckDetailsById: function (id) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/Checking/details/', {
-                        "id": id
-                    });
-                },
                 getCommonStationByName: function(areaName, stationName, type, page, pageSize) {
                     return generalHttpService
                         .postPhpUrlData(appUrlService.getPhpHost() +
@@ -905,17 +898,6 @@
                         .postPhpUrlData(appUrlService.getPhpHost() + 'LtePlatForm/lte/index.php/StationCommon/delete',
                         {
                             "idList": stationId
-                        });
-                },
-                getCheckingStation: function(areaName, status, type, page, pageSize) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() + 'LtePlatForm/lte/index.php/Checking/search',
-                        {
-                            "curr_page": page,
-                            "page_size": pageSize,
-                            "areaName": areaName,
-                            "status": status,
-                            'type': type
                         });
                 },
                 getCheckingStationByName: function (name, type, page, pageSize) {

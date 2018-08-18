@@ -230,7 +230,7 @@ namespace Lte.Evaluations.DataService.Kpi
             var filterInfos =
                 infos.GetFoshanGeoPoints().ToList();
             if (!filterInfos.Any()) throw new Exception("无数据或格式错误！");
-            _dtFileInfoRepository.UpdateCsvFileInfo(tableName, filterInfos[0].StatTime);
+            _dtFileInfoRepository.UpdateCsvFileInfo(tableName, filterInfos[0].StatTime, "2G");
             var stats = filterInfos.MergeRecords();
             _rasterTestInfoRepository.UpdateRasterInfo(stats, tableName, "2G");
             var count = _fileRecordRepository.InsertFileRecord2Gs(stats, tableName);
@@ -248,7 +248,7 @@ namespace Lte.Evaluations.DataService.Kpi
             var filterInfos =
                 infos.GetFoshanGeoPoints().ToList();
             if (!filterInfos.Any()) throw new Exception("无数据或格式错误！");
-            _dtFileInfoRepository.UpdateCsvFileInfo(tableName, filterInfos[0].StatTime);
+            _dtFileInfoRepository.UpdateCsvFileInfo(tableName, filterInfos[0].StatTime, "3G");
             var stats = filterInfos.MergeRecords();
             _rasterTestInfoRepository.UpdateRasterInfo(stats, tableName, "3G");
             var count = _fileRecordRepository.InsertFileRecord3Gs(stats, tableName);
@@ -266,7 +266,7 @@ namespace Lte.Evaluations.DataService.Kpi
             var filterInfos =
                 infos.GetFoshanGeoPoints().ToList();
             if (!filterInfos.Any()) throw new Exception("无数据或格式错误！");
-            _dtFileInfoRepository.UpdateCsvFileInfo(tableName, filterInfos[0].StatTime);
+            _dtFileInfoRepository.UpdateCsvFileInfo(tableName, filterInfos[0].StatTime, "Volte");
             var stats = filterInfos.MergeRecords();
             if (!stats.Any()) throw new Exception("无数据或格式错误！");
             _rasterTestInfoRepository.UpdateRasterInfo(stats, tableName, "Volte");
@@ -309,7 +309,7 @@ namespace Lte.Evaluations.DataService.Kpi
             if (string.IsNullOrEmpty(filePath)) return "所有表格均存在于数据库中";
             
             var statTime = filterInfos[0].StatTime.AddDays((statDate - DateTime.Today).Days);
-            _dtFileInfoRepository.UpdateCsvFileInfo(tableName, statTime);
+            _dtFileInfoRepository.UpdateCsvFileInfo(tableName, statTime, "4G");
             var stats = filterInfos.MergeRecords();
             _rasterTestInfoRepository.UpdateRasterInfo(stats, tableName, "4G");
             var count = _fileRecordRepository.InsertFileRecord4Gs(stats, tableName);
@@ -326,7 +326,7 @@ namespace Lte.Evaluations.DataService.Kpi
             var filterInfos =
                 infos.GetFoshanGeoPoints().ToList();
             if (!filterInfos.Any()) return "无数据或格式错误！";
-            _dtFileInfoRepository.UpdateCsvFileInfo(tableName, filterInfos[0].StatTime);
+            _dtFileInfoRepository.UpdateCsvFileInfo(tableName, filterInfos[0].StatTime, "4G");
             var stats = filterInfos.MergeRecords();
             _rasterTestInfoRepository.UpdateRasterInfo(stats, tableName, "4G");
             var count = _fileRecordRepository.InsertFileRecord4Gs(stats, tableName);

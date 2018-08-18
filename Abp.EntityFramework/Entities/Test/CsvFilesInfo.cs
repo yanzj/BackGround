@@ -24,5 +24,7 @@ namespace Abp.EntityFramework.Entities.Test
 
         [MemberDoc("¸²¸ÇÂÊ")]
         public double CoverageRate => Count == 0 ? 0 : 100 * (double)CoverageCount / Count;
+
+        public string FileType { get; set; }
     }
 }

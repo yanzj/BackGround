@@ -48,8 +48,12 @@ namespace Lte.Evaluations.DataService.Dt
 
         public string QueryNetworkType(string csvFileName)
         {
+            var csvFileInfo = _dtFileInfoRepository.FirstOrDefault(x => x.CsvFileName == csvFileName + ".csv");
             var info = _testInfoRepository.FirstOrDefault(x => x.CsvFilesName.Contains(csvFileName));
-            return info?.NetworkType;
+            if (csvFileInfo == null || info == null) return info?.NetworkType;
+            csvFileInfo.FileType = info.NetworkType;
+            _dtFileInfoRepository.SaveChanges();
+            return info.NetworkType;
         }
 
         public IEnumerable<CsvFilesInfo> QueryFileNames(DateTime begin, DateTime end)

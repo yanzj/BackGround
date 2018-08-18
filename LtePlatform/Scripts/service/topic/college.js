@@ -243,26 +243,6 @@
                             mapDialogService.showCommonStationInfo(station);
                         });
                 },
-                showCheckingStations: function (stations, color, status, type) {
-                    if (status === '已巡检') {
-                        if (type === 'JZ') {
-                            generalMapService
-                                .showPointWithClusterer(stations, color, function (station) {
-                                    parametersDialogService.showCheckingStationInfo(station);
-                                });
-                        } else {
-                            generalMapService
-                                .showPointWithClusterer(stations, color, function (station) {
-                                    parametersDialogService.showCheckingIndoorInfo(station);
-                                });
-                        }
-                    } else {
-                        generalMapService
-                            .showPointWithClusterer(stations, color, function (station) {
-                                mapDialogService.showCommonStationInfo(station);
-                            });
-                    }
-                },
                 showConstructionSites: function(stations, status, callback) {
                     baiduQueryService.transformToBaidu(stations[0].longtitute, stations[0].lattitute)
                         .then(function(coors) {

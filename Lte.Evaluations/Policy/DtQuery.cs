@@ -39,7 +39,7 @@ namespace Lte.Evaluations.Policy
         }
 
         public static void UpdateCsvFileInfo(this IDtFileInfoRepository dtFileInfoRepository,
-            string tableName, DateTime testDate)
+            string tableName, DateTime testDate, string fileType)
         {
             var csvFileInfo = dtFileInfoRepository.FirstOrDefault(x => x.CsvFileName == tableName + ".csv");
             if (csvFileInfo == null)
@@ -47,7 +47,8 @@ namespace Lte.Evaluations.Policy
                 dtFileInfoRepository.Insert(new CsvFilesInfo
                 {
                     CsvFileName = tableName + ".csv",
-                    TestDate = testDate
+                    TestDate = testDate,
+                    FileType = fileType
                 });
                 dtFileInfoRepository.SaveChanges();
             }
