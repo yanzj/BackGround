@@ -320,13 +320,13 @@
     <Compile Include="Entities\DistrictDoubleFlowView.cs" />
     <Compile Include="Entities\ENodebView.cs" />
     <Compile Include="Entities\WorkItemView.cs" />
-    <Compile Include="Migrations\201807190903562_Update_Station.cs" />
-    <Compile Include="Migrations\201807190903562_Update_Station.Designer.cs">
-      <DependentUpon>201807190903562_Update_Station.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201807301629158_Add_SinrUl.cs" />
     <Compile Include="Migrations\201807301629158_Add_SinrUl.Designer.cs">
       <DependentUpon>201807301629158_Add_SinrUl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808180919250_Update_Dt.cs" />
+    <Compile Include="Migrations\201808180919250_Update_Dt.Designer.cs">
+      <DependentUpon>201808180919250_Update_Dt.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -440,11 +440,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807190903562_Update_Station.resx">
-      <DependentUpon>201807190903562_Update_Station.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807301629158_Add_SinrUl.resx">
       <DependentUpon>201807301629158_Add_SinrUl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808180919250_Update_Dt.resx">
+      <DependentUpon>201808180919250_Update_Dt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
