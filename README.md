@@ -1,4 +1,9 @@
 # LTE网络优化平台
+
+<p align="center">
+  <a href="https://travis-ci.com/fsouyh18/BackGround"><img src="https://travis-ci.com/fsouyh18/BackGround.svg?branch=master" alt="slack" ></a>
+</p>
+
 该解决方案是一个主要以WEB页面形式为呈现方式的`LTE`综合网络优化分析呈现平台。
 该平台的程序是一个用`Visual Studio`开发的解决方案。
 
