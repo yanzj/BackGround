@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "DT测试数据文件导入";
+}
+
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            <strong>@ViewBag.Title</strong>
+        </h2>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <h4>2G\3G数据文件导入</h4>
+                @using (Html.BeginForm("Dt2GImport", "Kpi",
+                    FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    <div dump-file-selector file-title="2G测试文件选择：" tag="dt2G" file-type=".csv"></div>
+                }
+                @using (Html.BeginForm("Dt3GImport", "Kpi",
+                    FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    <div dump-file-selector file-title="3G测试文件选择：" tag="dt3G" file-type=".csv"></div>
+                }
+            </div>
+            <div class="col-md-5">
+                @{Html.RenderPartial("_AlertPanel");}
+            </div>
+            <div class="col-md-6">
+                <h4>4G数据文件导入</h4>
+                @using (Html.BeginForm("Dt4GImport", "Kpi",
+                    FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    <div multiple-file-selector file-title="4G测试文件选择：" tag="dt4G" file-type=".csv"></div>
+                }
+                @using (Html.BeginForm("Dt4GDingliImport", "Kpi",
+                    FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    <div dump-file-selector file-title="4G测试文件选择（鼎利格式）：" tag="dt4GDingli" file-type=".csv"></div>
+                }
+            </div>
+            <div class="col-md-6">
+                <h4>VoLTE数据文件导入</h4>
+                @using (Html.BeginForm("DtVolteImport", "Kpi",
+                    FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                {
+                    <div dump-file-selector file-title="VoLTE测试文件选择（鼎利格式）：" tag="dtVolte" file-type=".csv"></div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        angular.module("myApp", ['app.common']);
+    </script>
+}

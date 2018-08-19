@@ -2295,6 +2295,7 @@
     <Content Include="Scripts\service\region\app.region.js" />
     <Content Include="Scripts\service\package.json" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Kpi\DtImport.cshtml" />
     <None Include="Views\Kpi\PreciseImport.cshtml" />
     <Content Include="Views\Kpi\WorkItemImport.cshtml" />
     <Content Include="appViews\Rutrace\Map\NeighborMapInfoBox.html" />

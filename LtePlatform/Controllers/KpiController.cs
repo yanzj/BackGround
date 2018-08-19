@@ -39,6 +39,11 @@ namespace LtePlatform.Controllers
             return View();
         }
 
+        public ActionResult DtImport()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ViewResult KpiImport()
         {
@@ -182,7 +187,7 @@ namespace LtePlatform.Controllers
                     ViewBag.ErrorMessage = "读取文件出错，信息为：" + e.Message;
                 }
             }
-            return View("Import");
+            return View("DtImport");
         }
 
         [HttpPost]
@@ -205,7 +210,7 @@ namespace LtePlatform.Controllers
                     ViewBag.ErrorMessage = "读取文件出错，信息为：" + e.Message;
                 }
             }
-            return View("Import");
+            return View("DtImport");
         }
 
         [HttpPost]
@@ -228,7 +233,7 @@ namespace LtePlatform.Controllers
                     ViewBag.ErrorMessage = "读取文件出错，信息为：" + e.Message;
                 }
             }
-            return View("Import");
+            return View("DtImport");
         }
 
         [HttpPost]
@@ -237,7 +242,7 @@ namespace LtePlatform.Controllers
             if (dt4G == null || dt4G.Length <= 0 || string.IsNullOrEmpty(dt4G[0]?.FileName))
             {
                 ViewBag.ErrorMessage = "上传文件为空！请先上传文件。";
-                return View("Import");
+                return View("DtImport");
             }
 
             var date = DateTime.Today;
@@ -258,7 +263,7 @@ namespace LtePlatform.Controllers
             }
             
             ViewBag.Message = _importService.ImportDt4GFile(infos, paths, date);
-            return View("Import");
+            return View("DtImport");
         }
 
         [HttpPost]
@@ -281,7 +286,7 @@ namespace LtePlatform.Controllers
                     ViewBag.ErrorMessage = "读取文件出错，信息为：" + e.Message;
                 }
             }
-            return View("Import");
+            return View("DtImport");
         }
 
         [HttpPost]
@@ -304,7 +309,7 @@ namespace LtePlatform.Controllers
                     ViewBag.ErrorMessage = "读取文件出错，信息为：" + e.Message;
                 }
             }
-            return View("Import");
+            return View("DtImport");
         }
 
         [HttpPost]

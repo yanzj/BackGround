@@ -22,32 +22,6 @@
                 {
                     <div dump-file-selector file-title="规划信息文件选择：" tag="planning" file-type=".xls, .xlsx"></div>
                 }
-                <h4>DT数据文件导入</h4>
-                @using (Html.BeginForm("Dt2GImport", "Kpi",
-                FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
-                {
-                    <div dump-file-selector file-title="2G测试文件选择：" tag="dt2G" file-type=".csv"></div>
-                }
-                @using (Html.BeginForm("Dt3GImport", "Kpi",
-                    FormMethod.Post, new {enctype = "multipart/form-data", @class = "form-horizontal", role = "form"}))
-                {
-                    <div dump-file-selector file-title="3G测试文件选择：" tag="dt3G" file-type=".csv"></div>
-                }
-                @using (Html.BeginForm("Dt4GImport", "Kpi",
-                    FormMethod.Post, new {enctype = "multipart/form-data", @class = "form-horizontal", role = "form"}))
-                {
-                    <div multiple-file-selector file-title="4G测试文件选择：" tag="dt4G" file-type=".csv"></div>
-                }
-                @using (Html.BeginForm("Dt4GDingliImport", "Kpi",
-                FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
-                {
-                    <div dump-file-selector file-title="4G测试文件选择（鼎利格式）：" tag="dt4GDingli" file-type=".csv"></div>
-                }
-                @using (Html.BeginForm("DtVolteImport", "Kpi",
-                FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
-                {
-                    <div dump-file-selector file-title="VoLTE测试文件选择（鼎利格式）：" tag="dtVolte" file-type=".csv"></div>
-                }
             </div>
             <div class="col-md-5">
                 @{Html.RenderPartial("_AlertPanel");}
