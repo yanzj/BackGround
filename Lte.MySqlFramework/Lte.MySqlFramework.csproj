@@ -147,6 +147,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\Kpi\IHourPrbRepository.cs" />
     <Compile Include="Abstract\Maintainence\ICheckingBasicRepository.cs" />
     <Compile Include="Abstract\Maintainence\ICheckingDetailsRepository.cs" />
     <Compile Include="Abstract\Maintainence\ICheckingProjectRepository.cs" />
@@ -239,6 +240,7 @@
     <Compile Include="Abstract\Test\IZhangshangyouQualityRepository.cs" />
     <Compile Include="Abstract\Region\TownBoundaryQuery.cs" />
     <Compile Include="Abstract\Region\TownQueries.cs" />
+    <Compile Include="Concrete\Kpi\HourPrbRepository.cs" />
     <Compile Include="Concrete\Maintainence\AlarmWorkItemRepository.cs" />
     <Compile Include="Concrete\Test\AreaTestInfoRepository.cs" />
     <Compile Include="Concrete\Complain\BranchDemandRepository.cs" />

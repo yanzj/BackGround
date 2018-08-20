@@ -13,7 +13,7 @@ using Lte.Domain.Regular.Attributes;
 namespace Abp.EntityFramework.Entities.Kpi
 {
     [TypeDoc("集团网管定义忙时PRB利用率统计")]
-    [AutoMapFrom(typeof(HourPrbExcel))]
+    [AutoMapFrom(typeof(HourPrbCsv))]
     public class HourPrb: Entity, IStatTime, ILteCellQuery
     {
         [MemberDoc("时间")]

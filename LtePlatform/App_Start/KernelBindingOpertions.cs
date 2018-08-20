@@ -309,6 +309,8 @@ namespace LtePlatform
 
             ninjectKernel.Bind<ICheckingDetailsRepository>().To<CheckingDetailsRepository>();
 
+            ninjectKernel.Bind<IHourPrbRepository>().To<HourPrbRepository>();
+
             ninjectKernel.Bind<CdmaRegionStatService>().ToSelf();
 
             ninjectKernel.Bind<CollegeStatService>().ToSelf();
@@ -498,6 +500,8 @@ namespace LtePlatform
             ninjectKernel.Bind<DoubleFlowRegionStatService>().ToSelf();
 
             ninjectKernel.Bind<DoubleFlowQueryService>().ToSelf();
+
+            ninjectKernel.Bind<HourKpiService>().ToSelf();
 
         }
     }

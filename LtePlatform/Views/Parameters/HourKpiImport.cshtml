@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "忙时指标导入";
+}
+
+<h3 class="text text-primary"><strong>@ViewBag.Title</strong></h3>
+<div class="row" ng-controller="hour.import">
+    <div class="col-md-6">
+        @{
+            Html.RenderPartial("_AlertPanel");
+            using (Html.BeginForm("HourPrbPost", "Parameters",
+                FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+            {
+                <div multiple-file-selector file-title="忙时PRB统计导入：" tag="hourPrb" file-type=".csv"></div>
+            }
+        }
+    </div>
+</div>
+
+    @section Scripts{
+        <script src="~/Scripts/parameters/import/hour.controller.js"></script>
+    }

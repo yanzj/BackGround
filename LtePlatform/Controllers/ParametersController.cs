@@ -22,11 +22,13 @@ namespace LtePlatform.Controllers
         private readonly CoverageStatService _coverageService;
         private readonly ZhangshangyouQualityService _zhangshangyouQualityService;
         private readonly ZhangshangyouCoverageService _zhangshangyouCoverageService;
+        private readonly HourKpiService _hourKpiService;
 
         public ParametersController(BasicImportService basicImportService, AlarmsService alarmsService,
             NearestPciCellService neighborService, MrGridService mrGridService,
             FlowService flowService, CoverageStatService coverageService,
-            ZhangshangyouQualityService zhangshangyouQualityService, ZhangshangyouCoverageService zhangshangyouCoverageService)
+            ZhangshangyouQualityService zhangshangyouQualityService, ZhangshangyouCoverageService zhangshangyouCoverageService,
+            HourKpiService hourKpiService)
         {
             _basicImportService = basicImportService;
             _alarmsService = alarmsService;
@@ -36,6 +38,7 @@ namespace LtePlatform.Controllers
             _coverageService = coverageService;
             _zhangshangyouQualityService = zhangshangyouQualityService;
             _zhangshangyouCoverageService = zhangshangyouCoverageService;
+            _hourKpiService = hourKpiService;
         }
         
         public ActionResult AlarmImport()
@@ -256,7 +259,13 @@ namespace LtePlatform.Controllers
         {
             return View();
         }
-        
+
+        [Authorize]
+        public ActionResult HourKpiImport()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<ActionResult> ZteNeighborPost(HttpPostedFileBase[] neighborZte)
         {
@@ -327,6 +336,19 @@ namespace LtePlatform.Controllers
                 }
             }
             return View("NeighborImport");
+        }
+
+        public ActionResult HourPrbPost(HttpPostedFileBase[] hourPrb)
+        {
+            if (hourPrb != null && hourPrb.Length > 0 && !string.IsNullOrEmpty(hourPrb[0]?.FileName))
+            {
+                ViewBag.Message = "共上传忙时PRB信息文件" + hourPrb.Length + "个！";
+                foreach (var file in hourPrb)
+                {
+                    _hourKpiService.UploadPrbs(new StreamReader(file.InputStream, Encoding.GetEncoding("GB2312")));
+                }
+            }
+            return View("HourKpiImport");
         }
     }
 }

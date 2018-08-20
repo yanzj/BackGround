@@ -2017,6 +2017,7 @@
     <Content Include="Scripts\locales\zh.js" />
     <Content Include="Scripts\MarkerClusterer.js" />
     <Content Include="Scripts\mycharts\combo-examples.js" />
+    <Content Include="Scripts\parameters\import\hour.controller.js" />
     <Content Include="Scripts\parameters\import\index.controller.js" />
     <Content Include="Scripts\parameters\neighbor\import.controller.js" />
     <Content Include="Scripts\plugins\canvas-to-blob.js" />
@@ -2305,6 +2306,7 @@
     <Content Include="Views\Shared\_AlertPanel.cshtml" />
     <Content Include="appViews\College\Infrastructure\DistributionDialog.html" />
     <None Include="Views\Parameters\BasicImport.cshtml" />
+    <Content Include="Views\Parameters\HourKpiImport.cshtml" />
     <None Include="Views\Parameters\NeighborImport.cshtml" />
     <Content Include="appViews\Parameters\Import\Index.html" />
     <Content Include="appViews\Parameters\Import\ENodebLonLatTable.html" />

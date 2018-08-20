@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Lte.Domain.Common.Types;
 using Lte.Domain.LinqToCsv;
+using Lte.Domain.LinqToCsv.Context;
+using Lte.Domain.LinqToCsv.Description;
 
 namespace Lte.Domain.Common.Wireless.Kpi
 {
-    public class HourPrbExcel: IStatTime, ILteCellQuery
+    public class HourPrbCsv: IStatTime, ILteCellQuery
     {
         [CsvColumn(Name = "时间")]
         public DateTime StatTime { get; set; }
@@ -125,5 +128,12 @@ namespace Lte.Domain.Common.Wireless.Kpi
         public double PagingUtilityRate { get; set; }
 
         public double PagingCount => PagingCapacity * PagingUtilityRate / 100;
+
+        public static List<HourPrbCsv> ReadCsvs(StreamReader reader)
+        {
+            return
+                CsvContext.Read<HourPrbCsv>(reader, CsvFileDescription.CommaDescription)
+                    .ToList();
+        }
     }
 }
