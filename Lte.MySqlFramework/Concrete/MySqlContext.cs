@@ -1,7 +1,5 @@
 ﻿using Abp.EntityFramework;
-using Lte.MySqlFramework.Entities;
 using System.Data.Entity;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Cdma;
 using Abp.EntityFramework.Entities.College;
 using Abp.EntityFramework.Entities.Complain;
@@ -203,6 +201,8 @@ namespace Lte.MySqlFramework.Concrete
         public DbSet<CheckingBasic> CheckingBasics { get; set; }
 
         public DbSet<CheckingDetails> CheckingDetailses { get; set; }
+
+        public DbSet<HourPrb> HourPrbs { get; set; }
 
     }
 }
