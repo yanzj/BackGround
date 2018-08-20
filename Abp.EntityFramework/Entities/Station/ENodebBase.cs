@@ -28,6 +28,12 @@ namespace Abp.EntityFramework.Entities.Station
         [MemberDoc("所属铁塔站址名称")]
         public string TowerStationName { get; set; }
 
+        [MemberDoc("省/自治区/直辖市")]
+        public string Province { get; set; }
+
+        [MemberDoc("市/地区/州/盟")]
+        public string City { get; set; }
+
         [MemberDoc("区/市/县/旗")]
         public string StationDistrict { get; set; }
 
@@ -118,7 +124,7 @@ namespace Abp.EntityFramework.Entities.Station
         [AutoMapPropertyResolve("ENodebShared", typeof(ENodebBaseExcel), typeof(YesToBoolTransform))]
         public bool IsENodebShared { get; set; }
 
-        [MemberDoc("OMCIP地址")]
+        [MemberDoc("OMCID")]
         public string OmcIp { get; set; }
 
         [MemberDoc("入网日期")]

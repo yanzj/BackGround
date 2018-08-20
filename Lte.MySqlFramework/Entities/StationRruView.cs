@@ -44,6 +44,12 @@ namespace Lte.MySqlFramework.Entities
         [MemberDoc("所属eNBID名称")]
         public string ENodebName { get; set; }
 
+        [MemberDoc("省/自治区/直辖市")]
+        public string Province { get; set; }
+
+        [MemberDoc("市/地区/州/盟")]
+        public string City { get; set; }
+
         [MemberDoc("区/市/县/旗")]
         public string StationDistrict { get; set; }
 
@@ -127,6 +133,10 @@ namespace Lte.MySqlFramework.Entities
         [MemberDoc("共享方式")]
         [AutoMapPropertyResolve("ShareFunction", typeof(StationRru), typeof(ShareFunctionDescriptionTransform))]
         public string ShareFunctionDescription { get; set; }
+
+        [MemberDoc("是否共享RRU")]
+        [AutoMapPropertyResolve("IsSharedRru", typeof(StationRru), typeof(YesNoTransform))]
+        public string SharedRru { get; set; }
 
         [MemberDoc("是否虚拟RRU")]
         [AutoMapPropertyResolve("IsVirtualRru", typeof(StationRru), typeof(YesNoTransform))]

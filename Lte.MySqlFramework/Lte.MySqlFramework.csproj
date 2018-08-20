@@ -322,13 +322,13 @@
     <Compile Include="Entities\DistrictDoubleFlowView.cs" />
     <Compile Include="Entities\ENodebView.cs" />
     <Compile Include="Entities\WorkItemView.cs" />
-    <Compile Include="Migrations\201808180919250_Update_Dt.cs" />
-    <Compile Include="Migrations\201808180919250_Update_Dt.Designer.cs">
-      <DependentUpon>201808180919250_Update_Dt.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201808200433056_Add_HourPrb.cs" />
     <Compile Include="Migrations\201808200433056_Add_HourPrb.Designer.cs">
       <DependentUpon>201808200433056_Add_HourPrb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808201732191_Update_Station.cs" />
+    <Compile Include="Migrations\201808201732191_Update_Station.Designer.cs">
+      <DependentUpon>201808201732191_Update_Station.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -442,11 +442,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808180919250_Update_Dt.resx">
-      <DependentUpon>201808180919250_Update_Dt.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808200433056_Add_HourPrb.resx">
       <DependentUpon>201808200433056_Add_HourPrb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808201732191_Update_Station.resx">
+      <DependentUpon>201808201732191_Update_Station.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -34,6 +34,12 @@ namespace Lte.MySqlFramework.Entities
         [MemberDoc("所属铁塔站址名称")]
         public string TowerStationName { get; set; }
 
+        [MemberDoc("省/自治区/直辖市")]
+        public string Province { get; set; }
+
+        [MemberDoc("市/地区/州/盟")]
+        public string City { get; set; }
+
         [MemberDoc("区/市/县/旗")]
         public string StationDistrict { get; set; }
 
@@ -108,8 +114,8 @@ namespace Lte.MySqlFramework.Entities
         [MemberDoc("是否共享基站")]
         [AutoMapPropertyResolve("IsENodebShared", typeof(ENodebBase), typeof(YesNoTransform))]
         public string ENodebShared { get; set; }
-
-        [MemberDoc("OMCIP地址")]
+        
+        [MemberDoc("OMCID")]
         public string OmcIp { get; set; }
 
         [MemberDoc("入网日期")]

@@ -5,6 +5,7 @@ using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless.Antenna;
 using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Common.Wireless.ENodeb;
+using Lte.Domain.Common.Wireless.Station;
 using Lte.Domain.Excel;
 using Lte.Domain.Regular.Attributes;
 
@@ -22,6 +23,12 @@ namespace Abp.EntityFramework.Entities.Station
 
         [MemberDoc("所属eNBID名称")]
         public string ENodebName { get; set; }
+
+        [MemberDoc("省/自治区/直辖市")]
+        public string Province { get; set; }
+
+        [MemberDoc("市/地区/州/盟")]
+        public string City { get; set; }
 
         [MemberDoc("区/市/县/旗")]
         public string StationDistrict { get; set; }
@@ -125,6 +132,21 @@ namespace Abp.EntityFramework.Entities.Station
 
         [MemberDoc("室分编码")]
         public string IndoorDistributionSerial { get; set; }
+
+        [MemberDoc("是否CA小区")]
+        [AutoMapPropertyResolve("CaCell", typeof(ConstructionExcel), typeof(YesToBoolTransform))]
+        public bool IsCaCell { get; set; }
+
+        [MemberDoc("CA小区辅小区标识")]
+        public string SecondaryCellId { get; set; }
+
+        [MemberDoc("是否共享小区")]
+        [AutoMapPropertyResolve("SharedCell", typeof(ConstructionExcel), typeof(YesToBoolTransform))]
+        public bool IsSharedCell { get; set; }
+
+        [MemberDoc("业务类型")]
+        [AutoMapPropertyResolve("NetworkTypeDescription", typeof(ConstructionExcel), typeof(NetworkTypeTransform))]
+        public NetworkType NetworkType { get; set; }
 
         [MemberDoc("备注")]
         public string Comments { get; set; }

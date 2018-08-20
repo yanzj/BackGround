@@ -15,6 +15,12 @@ namespace Lte.Domain.Excel
         [ExcelColumn("铁塔站址名称")]
         public string TowerStationName { get; set; }
 
+        [ExcelColumn("省/自治区/直辖市")]
+        public string Province { get; set; }
+
+        [ExcelColumn("市/地区/州/盟")]
+        public string City { get; set; }
+
         [ExcelColumn("区/市/县/旗")]
         public string StationDistrict { get; set; }
 
@@ -38,6 +44,9 @@ namespace Lte.Domain.Excel
 
         [ExcelColumn("站址名称")]
         public string ElementName { get; set; }
+
+        [ExcelColumn("站址等级")]
+        public string ENodebClassDescription { get; set; }
 
         [ExcelColumn("站址经度")]
         public double Longtitute { get; set; }

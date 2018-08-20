@@ -47,6 +47,8 @@ namespace Lte.Domain.Common.Wireless.Station
                 new Tuple<object, string>(NetworkType.With4G, "4G"),
                 new Tuple<object, string>(NetworkType.With3G, "3G网络"),
                 new Tuple<object, string>(NetworkType.With4G, "4G网络"),
+                new Tuple<object, string>(NetworkType.Volte, "VoLTE"), 
+                new Tuple<object, string>(NetworkType.NbIot, "NB-IoT"), 
                 new Tuple<object, string>(NetworkType.Lte, "LTE"), 
                 new Tuple<object, string>(NetworkType.Wifi, "WIFI"),
                 new Tuple<object, string>(NetworkType.Evdo, "EVDO"), 

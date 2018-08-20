@@ -22,6 +22,12 @@ namespace Lte.Domain.Excel
         [ExcelColumn("所属铁塔站址名称")]
         public string TowerStationName { get; set; }
 
+        [ExcelColumn("省/自治区/直辖市")]
+        public string Province { get; set; }
+
+        [ExcelColumn("市/地区/州/盟")]
+        public string City { get; set; }
+
         [ExcelColumn("区/市/县/旗")]
         public string StationDistrict { get; set; }
 
@@ -106,7 +112,7 @@ namespace Lte.Domain.Excel
         [ExcelColumn("是否共享基站")]
         public string ENodebShared { get; set; }
 
-        [ExcelColumn("OMCIP地址")]
+        [ExcelColumn("OMCID")]
         public string OmcIp { get; set; }
 
         [ExcelColumn("入网日期")]

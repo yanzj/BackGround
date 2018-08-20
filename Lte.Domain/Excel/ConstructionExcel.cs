@@ -16,6 +16,12 @@ namespace Lte.Domain.Excel
         [ExcelColumn("所属eNBID名称")]
         public string ENodebName { get; set; }
 
+        [ExcelColumn("省/自治区/直辖市")]
+        public string Province { get; set; }
+
+        [ExcelColumn("市/地区/州/盟")]
+        public string City { get; set; }
+
         [ExcelColumn("区/市/县/旗")]
         public string StationDistrict { get; set; }
 
@@ -111,6 +117,18 @@ namespace Lte.Domain.Excel
 
         [ExcelColumn("室分编码")]
         public string IndoorDistributionSerial { get; set; }
+
+        [ExcelColumn("是否CA小区")]
+        public string CaCell { get; set; }
+
+        [ExcelColumn("CA小区辅小区标识")]
+        public string SecondaryCellId { get; set; }
+
+        [ExcelColumn("是否共享小区")]
+        public string SharedCell { get; set; }
+
+        [ExcelColumn("业务类型")]
+        public string NetworkTypeDescription { get; set; }
 
         [ExcelColumn("备注")]
         public string Comments { get; set; }

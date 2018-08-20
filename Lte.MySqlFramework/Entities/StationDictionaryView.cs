@@ -10,6 +10,7 @@ using Lte.Domain.Common.Geo;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Antenna;
+using Lte.Domain.Common.Wireless.ENodeb;
 using Lte.Domain.Common.Wireless.Station;
 using Lte.Domain.Regular.Attributes;
 
@@ -28,6 +29,12 @@ namespace Lte.MySqlFramework.Entities
         [MemberDoc("铁塔站址名称")]
         public string TowerStationName { get; set; }
 
+        [MemberDoc("省/自治区/直辖市")]
+        public string Province { get; set; }
+
+        [MemberDoc("市/地区/州/盟")]
+        public string City { get; set; }
+
         [MemberDoc("区/市/县/旗")]
         public string StationDistrict { get; set; }
 
@@ -36,6 +43,10 @@ namespace Lte.MySqlFramework.Entities
 
         [MemberDoc("站址名称")]
         public string ElementName { get; set; }
+
+        [MemberDoc("站址等级")]
+        [AutoMapPropertyResolve("ENodebClass", typeof(ENodebBase), typeof(ENodebClassDescriptionTransform))]
+        public string ENodebClassDescription { get; set; }
 
         [MemberDoc("站址经度")]
         public double Longtitute { get; set; }

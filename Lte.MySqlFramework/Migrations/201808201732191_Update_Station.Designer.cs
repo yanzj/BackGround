@@ -7,13 +7,13 @@ namespace Lte.MySqlFramework.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Update_Dt : IMigrationMetadata
+    public sealed partial class Update_Station : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Update_Dt));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Update_Station));
         
         string IMigrationMetadata.Id
         {
-            get { return "201808180919250_Update_Dt"; }
+            get { return "201808201732191_Update_Station"; }
         }
         
         string IMigrationMetadata.Source

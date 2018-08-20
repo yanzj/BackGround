@@ -27,6 +27,12 @@ namespace Lte.MySqlFramework.Entities
         [MemberDoc("所属eNBID名称")]
         public string ENodebName { get; set; }
 
+        [MemberDoc("省/自治区/直辖市")]
+        public string Province { get; set; }
+
+        [MemberDoc("市/地区/州/盟")]
+        public string City { get; set; }
+
         [MemberDoc("区/市/县/旗")]
         public string StationDistrict { get; set; }
 
@@ -115,5 +121,18 @@ namespace Lte.MySqlFramework.Entities
         [MemberDoc("室分编码")]
         public string IndoorDistributionSerial { get; set; }
 
+        [MemberDoc("是否CA小区")]
+        [AutoMapPropertyResolve("IsCaCell", typeof(ConstructionInformation), typeof(YesNoTransform))]
+        public string CaCell { get; set; }
+
+        [MemberDoc("CA小区辅小区标识")]
+        public string SecondaryCellId { get; set; }
+
+        [MemberDoc("是否共享小区")]
+        [AutoMapPropertyResolve("IsSharedCell", typeof(ConstructionInformation), typeof(YesNoTransform))]
+        public string SharedCell { get; set; }
+
+        [MemberDoc("业务类型")]
+        public string NetworkTypeDescription { get; set; }
     }
 }

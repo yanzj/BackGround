@@ -163,6 +163,9 @@ namespace Abp.EntityFramework.Entities.Station
         [MemberDoc("天线总挂高(米)")]
         public double Height { get; set; }
 
+        [MemberDoc("所在铁塔平台位置")]
+        public int TowerPlatform { get; set; }
+
         [MemberDoc("是否有塔放")]
         [AutoMapPropertyResolve("HasTowerAmplifier", typeof(StationAntennaExcel), typeof(YesToBoolTransform))]
         public bool IsHasTowerAmplifier { get; set; }

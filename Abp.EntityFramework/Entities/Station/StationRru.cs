@@ -40,6 +40,12 @@ namespace Abp.EntityFramework.Entities.Station
         [MemberDoc("所属eNBID名称")]
         public string ENodebName { get; set; }
 
+        [MemberDoc("省/自治区/直辖市")]
+        public string Province { get; set; }
+
+        [MemberDoc("市/地区/州/盟")]
+        public string City { get; set; }
+
         [MemberDoc("区/市/县/旗")]
         public string StationDistrict { get; set; }
 
@@ -138,6 +144,10 @@ namespace Abp.EntityFramework.Entities.Station
         [MemberDoc("共享方式")]
         [AutoMapPropertyResolve("ShareFunctionDescription", typeof(StationRruExcel), typeof(ShareFunctionTransform))]
         public ShareFunction ShareFunction { get; set; }
+
+        [MemberDoc("是否共享RRU")]
+        [AutoMapPropertyResolve("SharedRru", typeof(StationRruExcel), typeof(YesToBoolTransform))]
+        public bool IsSharedRru { get; set; }
 
         [MemberDoc("是否虚拟RRU")]
         [AutoMapPropertyResolve("VirtualRru", typeof(StationRruExcel), typeof(YesToBoolTransform))]

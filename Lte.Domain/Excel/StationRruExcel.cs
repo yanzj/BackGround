@@ -29,6 +29,12 @@ namespace Lte.Domain.Excel
         [ExcelColumn("所属eNBID名称")]
         public string ENodebName { get; set; }
 
+        [ExcelColumn("省/自治区/直辖市")]
+        public string Province { get; set; }
+
+        [ExcelColumn("市/地区/州/盟")]
+        public string City { get; set; }
+
         [ExcelColumn("区/市/县/旗")]
         public string StationDistrict { get; set; }
 
@@ -118,6 +124,9 @@ namespace Lte.Domain.Excel
 
         [ExcelColumn("共享方式")]
         public string ShareFunctionDescription { get; set; }
+
+        [ExcelColumn("是否共享RRU")]
+        public string SharedRru { get; set; }
 
         [ExcelColumn("是否虚拟RRU")]
         public string VirtualRru { get; set; }

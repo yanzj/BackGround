@@ -153,6 +153,9 @@ namespace Lte.MySqlFramework.Entities
         [MemberDoc("天线总挂高(米)")]
         public double Height { get; set; }
 
+        [MemberDoc("所在铁塔平台位置")]
+        public int TowerPlatform { get; set; }
+
         [MemberDoc("是否有塔放")]
         [AutoMapPropertyResolve("IsHasTowerAmplifier", typeof(StationAntenna), typeof(YesNoTransform))]
         public string HasTowerAmplifier { get; set; }

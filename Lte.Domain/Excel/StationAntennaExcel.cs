@@ -148,6 +148,9 @@ namespace Lte.Domain.Excel
         [ExcelColumn("天线总挂高(米)")]
         public double Height { get; set; }
 
+        [ExcelColumn("所在铁塔平台位置")]
+        public int TowerPlatform { get; set; }
+
         [ExcelColumn("是否有塔放")]
         public string HasTowerAmplifier { get; set; }
 

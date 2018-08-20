@@ -4,6 +4,7 @@ using Abp.EntityFramework.AutoMapper;
 using Lte.Domain.Common.Geo;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless.Antenna;
+using Lte.Domain.Common.Wireless.ENodeb;
 using Lte.Domain.Common.Wireless.Station;
 using Lte.Domain.Excel;
 using Lte.Domain.Regular.Attributes;
@@ -22,6 +23,12 @@ namespace Abp.EntityFramework.Entities.Station
 
         [MemberDoc("铁塔站址名称")]
         public string TowerStationName { get; set; }
+
+        [MemberDoc("省/自治区/直辖市")]
+        public string Province { get; set; }
+
+        [MemberDoc("市/地区/州/盟")]
+        public string City { get; set; }
 
         [MemberDoc("区/市/县/旗")]
         public string StationDistrict { get; set; }
@@ -46,6 +53,10 @@ namespace Abp.EntityFramework.Entities.Station
 
         [MemberDoc("站址名称")]
         public string ElementName { get; set; }
+
+        [MemberDoc("站址等级")]
+        [AutoMapPropertyResolve("ENodebClassDescription", typeof(StationDictionaryExcel), typeof(ENodebClassTransform))]
+        public ENodebClass ENodebClass { get; set; }
 
         [MemberDoc("站址经度")]
         public double Longtitute { get; set; }
