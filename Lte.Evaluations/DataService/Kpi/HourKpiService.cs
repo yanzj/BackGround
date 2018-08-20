@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities.Kpi;
+using Abp.EntityFramework.Repositories;
 using Lte.Domain.Common.Wireless.Kpi;
 using Lte.MySqlFramework.Abstract.Kpi;
 
@@ -12,6 +14,8 @@ namespace Lte.Evaluations.DataService.Kpi
         private readonly IHourPrbRepository _prbRepository;
 
         private static Stack<HourPrb> HourPrbs { get; set; }
+
+        public int HourPrbCount => HourPrbs.Count;
 
         public HourKpiService(IHourPrbRepository prbRepository)
         {
@@ -26,6 +30,22 @@ namespace Lte.Evaluations.DataService.Kpi
             {
                 HourPrbs.Push(csv.MapTo<HourPrb>());
             }
+        }
+
+        public async Task<bool> DumpOnePrbStat()
+        {
+            var stat = HourPrbs.Pop();
+            if (stat != null)
+            {
+                await _prbRepository.ImportOneAsync(stat);
+            }
+
+            return true;
+        }
+
+        public void ClearPrbStats()
+        {
+            HourPrbs.Clear();
         }
 
     }

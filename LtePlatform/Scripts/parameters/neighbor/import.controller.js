@@ -59,13 +59,13 @@
                 totalFailItems: 0,
                 totalDumpItems: 0
             };
-            $scope.clearZteItems = function() {
-                flowImportService.clearDumpHuaweis().then(function() {
-                    $scope.zteInfo.totalDumpItems = 0;
-                    $scope.zteInfo.totalSuccessItems = 0;
-                    $scope.zteInfo.totalFailItems = 0;
-                });
-            }
+        $scope.clearZteItems = function() {
+            flowImportService.clearDumpHuaweis().then(function() {
+                $scope.zteInfo.totalDumpItems = 0;
+                $scope.zteInfo.totalSuccessItems = 0;
+                $scope.zteInfo.totalFailItems = 0;
+            });
+        };
             $scope.dumpZteItems = function() {
                 flowImportService.dumpZteItem().then(function(result) {
                         neighborImportService.updateSuccessProgress(result, $scope.zteInfo, $scope.dumpZteItems);

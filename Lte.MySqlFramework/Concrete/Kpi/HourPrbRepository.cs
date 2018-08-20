@@ -15,5 +15,11 @@ namespace Lte.MySqlFramework.Concrete.Kpi
         public HourPrbRepository(IDbContextProvider<MySqlContext> dbContextProvider) : base(dbContextProvider)
         {
         }
+
+        public HourPrb Match(HourPrb stat)
+        {
+            return FirstOrDefault(x =>
+                x.StatTime == stat.StatTime && x.ENodebId == stat.ENodebId && x.SectorId == stat.SectorId);
+        }
     }
 }

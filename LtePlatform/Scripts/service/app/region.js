@@ -1386,56 +1386,65 @@ angular.module('region.import', ['app.core'])
                 queryHuaweiFlows: function() {
                     return generalHttpService.getApiData('DumpHuaweiFlow', {});
                 },
-                queryHuaweiCqis: function () {
+                queryHuaweiCqis: function() {
                     return generalHttpService.getApiData('DumpHuaweiCqi', {});
                 },
                 queryZteFlows: function() {
                     return generalHttpService.getApiData('DumpZteFlow', {});
                 },
+                queryHourPrbs: function () {
+                    return generalHttpService.getApiData('DumpHourPrb', {});
+                },
                 clearDumpHuaweis: function() {
                     return generalHttpService.deleteApiData('DumpHuaweiFlow');
                 },
-                clearDumpCqiHuaweis: function () {
+                clearDumpCqiHuaweis: function() {
                     return generalHttpService.deleteApiData('DumpHuaweiCqi');
                 },
                 clearDumpZtes: function() {
                     return generalHttpService.deleteApiData('DumpZteFlow');
                 },
+                clearDumpHourPrbs: function() {
+                    return generalHttpService.deleteApiData('DumpHourPrb');
+                },
                 dumpHuaweiItem: function() {
                     return generalHttpService.putApiData('DumpHuaweiFlow', {});
                 },
-                dumpHuaweiCqiItem: function () {
+                dumpHuaweiCqiItem: function() {
                     return generalHttpService.putApiData('DumpHuaweiCqi', {});
                 },
                 dumpZteItem: function() {
                     return generalHttpService.putApiData('DumpZteFlow', {});
                 },
+                dumpHourPrb: function () {
+                    return generalHttpService.putApiData('DumpHourPrb', {});
+                },
                 queryHuaweiStat: function(index) {
                     return generalHttpService.getApiData('DumpHuaweiFlow',
-                    {
-                        index: index
-                    });
+                        {
+                            index: index
+                        });
                 },
                 queryFlowDumpHistory: function(begin, end) {
                     return generalHttpService.getApiData('DumpFlow',
-                    {
-                        begin: begin,
-                        end: end
-                    });
+                        {
+                            begin: begin,
+                            end: end
+                        });
                 },
                 dumpTownStats: function(statDate) {
                     return generalHttpService.getApiData('DumpFlow',
-                    {
-                        statDate: statDate
-                    });
+                        {
+                            statDate: statDate
+                        });
                 },
-                dumpTownCqis: function (statDate) {
+                dumpTownCqis: function(statDate) {
                     return generalHttpService.getApiData('DumpFlow',
                         {
                             statTime: statDate
                         });
                 }
-            }
+            };
         })
     .factory('flowService',
         function(generalHttpService) {
