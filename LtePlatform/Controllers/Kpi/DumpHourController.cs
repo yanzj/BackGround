@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using Lte.Evaluations.DataService.Kpi;
+using Lte.Evaluations.DataService.RegionKpi;
 using Lte.Parameters.Entities.Kpi;
 using LtePlatform.Models;
 
@@ -15,10 +16,12 @@ namespace LtePlatform.Controllers.Kpi
     public class DumpHourController : ApiController
     {
         private readonly HourKpiService _service;
+        private readonly TownHourKpiService _kpiService;
 
-        public DumpHourController(HourKpiService service)
+        public DumpHourController(HourKpiService service, TownHourKpiService kpiService)
         {
             _service = service;
+            _kpiService = kpiService;
         }
 
         [HttpGet]
@@ -29,6 +32,12 @@ namespace LtePlatform.Controllers.Kpi
         public async Task<IEnumerable<HourKpiHistory>> Get(DateTime begin, DateTime end)
         {
             return await _service.GetHourHistories(begin.Date, end.Date);
+        }
+
+        [HttpGet]
+        public async Task<int[]> Get(DateTime statDate)
+        {
+            return await _kpiService.GenerateTownStats(statDate);
         }
 
     }

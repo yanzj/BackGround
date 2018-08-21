@@ -518,6 +518,10 @@ namespace LtePlatform
 
             ninjectKernel.Bind<TownDoubleFlowService>().ToSelf();
 
+            ninjectKernel.Bind<TownHourKpiService>().ToSelf();
+
+            ninjectKernel.Bind<TownHourPrbService>().ToSelf();
+
         }
     }
 }

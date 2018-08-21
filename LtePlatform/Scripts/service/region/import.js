@@ -225,6 +225,12 @@
                             statDate: statDate
                         });
                 },
+                dumpTownHourStats: function (statDate) {
+                    return generalHttpService.getApiData('DumpHour',
+                        {
+                            statDate: statDate
+                        });
+                },
                 dumpTownCqis: function(statDate) {
                     return generalHttpService.getApiData('DumpFlow',
                         {

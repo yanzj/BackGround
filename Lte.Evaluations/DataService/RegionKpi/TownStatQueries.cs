@@ -38,6 +38,29 @@ namespace Lte.Evaluations.DataService.RegionKpi
             return townStats;
         }
 
+        public static IEnumerable<TTownStat> GetTownDateStats<TStat, TTownStat>(this IEnumerable<TStat> stats,
+            IENodebRepository eNodebRepository)
+            where TStat : IENodebId, IStatTime
+            where TTownStat : ITownId, IStatDate
+        {
+            var query = from stat in stats
+                join eNodeb in eNodebRepository.GetAllList() on stat.ENodebId equals eNodeb.ENodebId
+                select
+                    new
+                    {
+                        Stat = stat,
+                        eNodeb.TownId
+                    };
+            var townStats = query.Select(x =>
+            {
+                var townStat = Mapper.Map<TStat, TTownStat>(x.Stat);
+                townStat.TownId = x.TownId;
+                townStat.StatDate = x.Stat.StatTime.Date;
+                return townStat;
+            });
+            return townStats;
+        }
+
         public static IEnumerable<TENodebStat> GetENodebStats<TStat, TENodebStat>(this IEnumerable<TStat> stats,
             IEnumerable<ENodeb> eNodebs, Func<IGrouping<int, TStat>, TStat> filterFlow)
             where TStat : IENodebId
