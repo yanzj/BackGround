@@ -5,6 +5,7 @@ using Lte.Evaluations.DataService.Dt;
 using Lte.Evaluations.DataService.Dump;
 using Lte.Evaluations.DataService.Kpi;
 using Lte.Evaluations.DataService.Mr;
+using Lte.Evaluations.DataService.RegionKpi;
 using Lte.Evaluations.DataService.Switch;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Cdma;
@@ -311,6 +312,8 @@ namespace LtePlatform
 
             ninjectKernel.Bind<IHourPrbRepository>().To<HourPrbRepository>();
 
+            ninjectKernel.Bind<ITownHourPrbRepository>().To<TownHourPrbRepository>();
+
             ninjectKernel.Bind<CdmaRegionStatService>().ToSelf();
 
             ninjectKernel.Bind<CollegeStatService>().ToSelf();
@@ -502,6 +505,18 @@ namespace LtePlatform
             ninjectKernel.Bind<DoubleFlowQueryService>().ToSelf();
 
             ninjectKernel.Bind<HourKpiService>().ToSelf();
+
+            ninjectKernel.Bind<RegionTownFlowService>().ToSelf();
+
+            ninjectKernel.Bind<TownRrcService>().ToSelf();
+
+            ninjectKernel.Bind<TownQciService>().ToSelf();
+
+            ninjectKernel.Bind<TownCqiService>().ToSelf();
+
+            ninjectKernel.Bind<TownPrbService>().ToSelf();
+
+            ninjectKernel.Bind<TownDoubleFlowService>().ToSelf();
 
         }
     }

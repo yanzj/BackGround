@@ -1,6 +1,6 @@
 using System;
 using System.Web.Http;
-using Lte.Evaluations.DataService.Kpi;
+using Lte.Evaluations.DataService.RegionKpi;
 using Lte.MySqlFramework.Support.View;
 using LtePlatform.Models;
 

@@ -316,6 +316,7 @@
     <Compile Include="Controllers\Kpi\CellAlarmWorkItemController.cs" />
     <Compile Include="Controllers\Kpi\DoubleFlowQueryController.cs" />
     <Compile Include="Controllers\Kpi\DoubleFlowRegionController.cs" />
+    <Compile Include="Controllers\Kpi\DumpHourController.cs" />
     <Compile Include="Controllers\Kpi\DumpHourPrbController.cs" />
     <Compile Include="Controllers\Kpi\ENodebAlarmWorkItemController.cs" />
     <Compile Include="Controllers\Kpi\MonthAlarmProcessTrendController.cs" />

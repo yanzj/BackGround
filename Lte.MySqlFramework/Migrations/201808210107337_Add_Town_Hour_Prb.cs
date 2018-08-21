@@ -3,22 +3,21 @@ namespace Lte.MySqlFramework.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Add_HourPrb : DbMigration
+    public partial class Add_Town_Hour_Prb : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.HourPrbs",
+                "dbo.TownHourPrbs",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        StatTime = c.DateTime(nullable: false, precision: 0),
-                        ENodebId = c.Int(nullable: false),
-                        SectorId = c.Byte(nullable: false),
+                        TownId = c.Int(nullable: false),
+                        StatDate = c.DateTime(nullable: false, precision: 0),
                         CellSerialNumber = c.String(unicode: false),
-                        UplinkPrbCapacity = c.Int(nullable: false),
+                        UplinkPrbCapacity = c.Long(nullable: false),
                         PucchPrbs = c.Double(nullable: false),
-                        PdschPrbCapacity = c.Int(nullable: false),
+                        PdschPrbCapacity = c.Long(nullable: false),
                         PdschTotalPrbs = c.Double(nullable: false),
                         PdschQci1Prbs = c.Double(nullable: false),
                         PdschQci2Prbs = c.Double(nullable: false),
@@ -32,12 +31,12 @@ namespace Lte.MySqlFramework.Migrations
                         DownlinkControlPrbs = c.Double(nullable: false),
                         UplinkTotalPrbs = c.Double(nullable: false),
                         DownlinkTotalPrbs = c.Double(nullable: false),
-                        PdcchCceCapacity = c.Int(nullable: false),
+                        PdcchCceCapacity = c.Long(nullable: false),
                         PdcchTotalCces = c.Double(nullable: false),
-                        PrachNonCompetitivePreambles = c.Int(nullable: false),
-                        PrachCompetitivePreambles = c.Int(nullable: false),
-                        PrachNonCompetitiveCapacity = c.Int(nullable: false),
-                        PrachCompetitiveCapacity = c.Int(nullable: false),
+                        PrachNonCompetitivePreambles = c.Long(nullable: false),
+                        PrachCompetitivePreambles = c.Long(nullable: false),
+                        PrachNonCompetitiveCapacity = c.Long(nullable: false),
+                        PrachCompetitiveCapacity = c.Long(nullable: false),
                         PuschTotalPrbs = c.Double(nullable: false),
                         PuschQci1Prbs = c.Double(nullable: false),
                         PuschQci2Prbs = c.Double(nullable: false),
@@ -48,7 +47,7 @@ namespace Lte.MySqlFramework.Migrations
                         PuschQci7Prbs = c.Double(nullable: false),
                         PuschQci8Prbs = c.Double(nullable: false),
                         PuschQci9Prbs = c.Double(nullable: false),
-                        PagingCapacity = c.Int(nullable: false),
+                        PagingCapacity = c.Long(nullable: false),
                         PagingCount = c.Double(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
@@ -57,7 +56,7 @@ namespace Lte.MySqlFramework.Migrations
         
         public override void Down()
         {
-            DropTable("dbo.HourPrbs");
+            DropTable("dbo.TownHourPrbs");
         }
     }
 }

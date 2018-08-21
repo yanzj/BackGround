@@ -39,6 +39,12 @@
             </div>
         </div>
     </div>
+    <div class="col-md-12">
+        <div date-span-row begin-date="beginDate" end-date="endDate">
+            <button class="btn btn-primary" ng-click="updateDumpHistory()">更新</button>
+        </div>
+        <div hour-dump-history-table items="dumpHistory"></div>
+    </div>
 </div>
 
 @section Scripts{

@@ -135,6 +135,28 @@ angular.module('workitem.module.feedback', ['ui.grid', 'myApp.kpi'])
                     argumentName: 'items'
                 },
                 $compile);
+    })
+    .controller('HourDumpHistoryController',
+        function ($scope) {
+            $scope.gridOptions = {
+                columnDefs: [
+                    { field: 'dateString', name: '日期' },
+                    { field: 'prbItems', name: 'PRB利用率' },
+                    { field: 'townPrbs', name: '镇-PRB利用率' }
+                ],
+                data: []
+            };
+        })
+    .directive('hourDumpHistoryTable',
+        function ($compile, calculateService) {
+            return calculateService.generateGridDirective({
+                    controllerName: 'HourDumpHistoryController',
+                    scope: {
+                        items: '='
+                    },
+                    argumentName: 'items'
+                },
+                $compile);
         });
 
 angular.module('workitem.module.details', [])

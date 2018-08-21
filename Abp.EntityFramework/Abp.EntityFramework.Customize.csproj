@@ -180,6 +180,7 @@
     <Compile Include="Entities\Maintainence\AlarmWorkItemGroup.cs" />
     <Compile Include="Entities\Maintainence\AlarmWorkItemView.cs" />
     <Compile Include="Entities\RegionKpi\TownDoubleFlowView.cs" />
+    <Compile Include="Entities\RegionKpi\TownHourPrb.cs" />
     <Compile Include="Entities\Test\AreaTestDate.cs" />
     <Compile Include="Entities\Test\AreaTestDateView.cs" />
     <Compile Include="Entities\Test\AreaTestFileView.cs" />

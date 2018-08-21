@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Dependency;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Infrastructure;
 using AutoMapper;
 using Lte.Domain.Common.Geo;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Regular;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Entities;
 
-namespace Lte.Evaluations.DataService.Kpi
+namespace Lte.Evaluations.DataService.RegionKpi
 {
     public static class TownStatQueries
     {

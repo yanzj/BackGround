@@ -13,7 +13,7 @@ using Lte.MySqlFramework.Abstract.RegionKpi;
 using Lte.MySqlFramework.Entities;
 using Lte.MySqlFramework.Support.View;
 
-namespace Lte.Evaluations.DataService.Kpi
+namespace Lte.Evaluations.DataService.RegionKpi
 {
     public class TownFlowService
     {

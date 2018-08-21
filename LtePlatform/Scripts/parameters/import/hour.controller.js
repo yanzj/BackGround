@@ -1,6 +1,16 @@
 ﻿angular.module("myApp", ['app.common'])
     .controller("hour.import",
-        function($scope, basicImportService, neighborImportService, flowImportService, mapDialogService) {
+    function ($scope, basicImportService, neighborImportService, flowImportService, mapDialogService) {
+        var lastWeek = new Date();
+        lastWeek.setDate(lastWeek.getDate() - 7);
+        $scope.beginDate = {
+            value: lastWeek,
+            opened: false
+        };
+        $scope.endDate = {
+            value: new Date(),
+            opened: false
+        };
 
             $scope.prbInfo = {
                 totalSuccessItems: 0,
@@ -24,11 +34,14 @@
             };
 
 
-            $scope.updateDumpHistory = function() {
-                flowImportService.queryHourPrbs().then(function (result) {
-                    $scope.prbInfo.totalDumpItems = result;
-                });
-            }
+        $scope.updateDumpHistory = function() {
+            flowImportService.queryHourPrbs().then(function(result) {
+                $scope.prbInfo.totalDumpItems = result;
+            });
+            flowImportService.queryHourDumpHistory($scope.beginDate.value, $scope.endDate.value).then(function(result) {
+                $scope.dumpHistory = result;
+            });
+        };
 
             $scope.updateDumpHistory();
 

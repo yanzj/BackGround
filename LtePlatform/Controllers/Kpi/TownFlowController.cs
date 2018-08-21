@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Web.Http;
 using Abp.EntityFramework.Entities.RegionKpi;
 using Lte.Domain.Common.Wireless.Cell;
-using Lte.Evaluations.DataService.Kpi;
+using Lte.Evaluations.DataService.RegionKpi;
 using Lte.MySqlFramework.Entities;
 using Lte.MySqlFramework.Support.View;
 using LtePlatform.Models;

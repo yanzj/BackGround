@@ -180,6 +180,12 @@
     <Compile Include="DataService\Kpi\DoubleFlowQueryService.cs" />
     <Compile Include="DataService\Kpi\DoubleFlowRegionStatService.cs" />
     <Compile Include="DataService\Kpi\HourKpiService.cs" />
+    <Compile Include="DataService\RegionKpi\RegionTownFlowService.cs" />
+    <Compile Include="DataService\RegionKpi\TownCqiService.cs" />
+    <Compile Include="DataService\RegionKpi\TownDoubleFlowService.cs" />
+    <Compile Include="DataService\RegionKpi\TownPrbService.cs" />
+    <Compile Include="DataService\RegionKpi\TownQciService.cs" />
+    <Compile Include="DataService\RegionKpi\TownRrcService.cs" />
     <Compile Include="DataService\Switch\HuaweiInterFreqENodebMongoQuery.cs" />
     <Compile Include="DataService\Switch\HuaweiIntraFreqENodebMongoQuery.cs" />
     <Compile Include="DataService\Switch\HuaweiUlOlPcQuery.cs" />
@@ -194,10 +200,10 @@
     <Compile Include="DataService\Kpi\RrcQueryService.cs" />
     <Compile Include="DataService\Kpi\RrcRegionStatService.cs" />
     <Compile Include="DataService\Kpi\TopMrsRsrpService.cs" />
-    <Compile Include="DataService\Kpi\TownCoverageService.cs" />
-    <Compile Include="DataService\Kpi\TownFlowService.cs" />
-    <Compile Include="DataService\Kpi\TownKpiService.cs" />
-    <Compile Include="DataService\Kpi\TownStatQueries.cs" />
+    <Compile Include="DataService\RegionKpi\TownCoverageService.cs" />
+    <Compile Include="DataService\RegionKpi\TownFlowService.cs" />
+    <Compile Include="DataService\RegionKpi\TownKpiService.cs" />
+    <Compile Include="DataService\RegionKpi\TownStatQueries.cs" />
     <Compile Include="DataService\Mr\AgpsService.cs" />
     <Compile Include="DataService\Mr\DpiGridKpiService.cs" />
     <Compile Include="DataService\Mr\MrGridKpiService.cs" />

@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.RegionKpi;
 using Abp.EntityFramework.Entities.Test;
-using Lte.MySqlFramework.Abstract;
+using Lte.Evaluations.DataService.Kpi;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.RegionKpi;
 using Lte.MySqlFramework.Abstract.Test;
-using Lte.MySqlFramework.Entities;
 
-namespace Lte.Evaluations.DataService.Kpi
+namespace Lte.Evaluations.DataService.RegionKpi
 {
     public class TownCoverageService
     {

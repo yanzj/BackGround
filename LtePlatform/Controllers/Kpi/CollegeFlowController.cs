@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Kpi;
 using Abp.EntityFramework.Entities.RegionKpi;
-using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Regular;
 using Lte.Evaluations.DataService.College;
 using Lte.Evaluations.DataService.Kpi;
-using Lte.MySqlFramework.Entities;
+using Lte.Evaluations.DataService.RegionKpi;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.Kpi

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Lte.Domain.Common.Geo;
 using Lte.Evaluations.DataService.Kpi;
+using Lte.Evaluations.DataService.RegionKpi;
 using Lte.Parameters.Entities.Kpi;
 using LtePlatform.Models;
 

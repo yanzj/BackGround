@@ -1432,6 +1432,13 @@ angular.module('region.import', ['app.core'])
                             end: end
                         });
                 },
+                queryHourDumpHistory: function (begin, end) {
+                    return generalHttpService.getApiData('DumpHour',
+                        {
+                            begin: begin,
+                            end: end
+                        });
+                },
                 dumpTownStats: function(statDate) {
                     return generalHttpService.getApiData('DumpFlow',
                         {
