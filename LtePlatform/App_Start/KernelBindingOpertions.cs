@@ -315,6 +315,8 @@ namespace LtePlatform
 
             ninjectKernel.Bind<IHourUsersRepository>().To<HourUsersRepository>();
 
+            ninjectKernel.Bind<ITownHourUsersRepository>().To<TownHourUsersRepository>();
+
             ninjectKernel.Bind<CdmaRegionStatService>().ToSelf();
 
             ninjectKernel.Bind<CollegeStatService>().ToSelf();
@@ -526,6 +528,8 @@ namespace LtePlatform
             ninjectKernel.Bind<HourPrbService>().ToSelf();
 
             ninjectKernel.Bind<HourUsersService>().ToSelf();
+
+            ninjectKernel.Bind<TownHourUsersService>().ToSelf();
 
         }
     }

@@ -16,11 +16,16 @@ namespace Lte.Evaluations.DataService.Kpi
     {
         private readonly IHourPrbRepository _prbRepository;
         private readonly ITownHourPrbRepository _townPrbRepository;
+        private readonly IHourUsersRepository _usersRepository;
+        private readonly ITownHourUsersRepository _townUsersRepository;
 
-        public HourKpiService(IHourPrbRepository prbRepository, ITownHourPrbRepository townPrbRepository)
+        public HourKpiService(IHourPrbRepository prbRepository, ITownHourPrbRepository townPrbRepository,
+            IHourUsersRepository usersRepository, ITownHourUsersRepository townUsersRepository)
         {
             _prbRepository = prbRepository;
             _townPrbRepository = townPrbRepository;
+            _usersRepository = usersRepository;
+            _townUsersRepository = townUsersRepository;
         }
 
 
@@ -35,11 +40,17 @@ namespace Lte.Evaluations.DataService.Kpi
                     await _prbRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
                 var townPrbs =
                     await _townPrbRepository.CountAsync(x => x.StatDate >= beginDate && x.StatDate < endDate);
+                var usersItems =
+                    await _usersRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
+                var townUserses =
+                    await _townUsersRepository.CountAsync(x => x.StatDate >= beginDate && x.StatDate < endDate);
                 results.Add(new HourKpiHistory
                 {
                     DateString = begin.ToShortDateString(),
                     PrbItems = prbItems,
-                    TownPrbs = townPrbs
+                    TownPrbs = townPrbs,
+                    UsersItems = usersItems,
+                    TownUserses = townUserses
                 });
                 begin = begin.AddDays(1);
             }

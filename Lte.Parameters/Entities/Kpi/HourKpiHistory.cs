@@ -14,5 +14,9 @@ namespace Lte.Parameters.Entities.Kpi
 
         public int TownPrbs { get; set; }
 
+        public int UsersItems { get; set; }
+
+        public int TownUserses { get; set; }
+
     }
 }
