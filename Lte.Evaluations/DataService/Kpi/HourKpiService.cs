@@ -17,15 +17,10 @@ namespace Lte.Evaluations.DataService.Kpi
         private readonly IHourPrbRepository _prbRepository;
         private readonly ITownHourPrbRepository _townPrbRepository;
 
-        private static Stack<HourPrb> HourPrbs { get; set; }
-
-        public int HourPrbCount => HourPrbs.Count;
-
         public HourKpiService(IHourPrbRepository prbRepository, ITownHourPrbRepository townPrbRepository)
         {
             _prbRepository = prbRepository;
             _townPrbRepository = townPrbRepository;
-            if (HourPrbs == null) HourPrbs = new Stack<HourPrb>();
         }
 
 
@@ -49,31 +44,6 @@ namespace Lte.Evaluations.DataService.Kpi
                 begin = begin.AddDays(1);
             }
             return results;
-        }
-
-        public void UploadPrbs(StreamReader reader)
-        {
-            var originCsvs = HourPrbCsv.ReadCsvs(reader);
-            foreach (var csv in originCsvs)
-            {
-                HourPrbs.Push(csv.MapTo<HourPrb>());
-            }
-        }
-
-        public async Task<bool> DumpOnePrbStat()
-        {
-            var stat = HourPrbs.Pop();
-            if (stat != null)
-            {
-                await _prbRepository.ImportOneAsync(stat);
-            }
-
-            return true;
-        }
-
-        public void ClearPrbStats()
-        {
-            HourPrbs.Clear();
         }
 
     }

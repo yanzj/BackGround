@@ -5,13 +5,21 @@
 
 <h3 class="text text-primary"><strong>@ViewBag.Title</strong></h3>
 <div class="row" ng-controller="hour.import">
+    @{Html.RenderPartial("_AlertPanel");}
     <div class="col-md-6">
         @{
-            Html.RenderPartial("_AlertPanel");
+            
             using (Html.BeginForm("HourPrbPost", "Parameters",
-                FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+                FormMethod.Post, new {enctype = "multipart/form-data", @class = "form-horizontal", role = "form"}))
             {
                 <div multiple-file-selector file-title="忙时PRB统计导入：" tag="hourPrb" file-type=".csv"></div>
+            }
+        }
+        @{
+            using (Html.BeginForm("HourUsersPost", "Parameters",
+                FormMethod.Post, new {enctype = "multipart/form-data", @class = "form-horizontal", role = "form"}))
+            {
+                <div multiple-file-selector file-title="忙时用户数统计导入：" tag="hourUsers" file-type=".csv"></div>
             }
         }
     </div>
@@ -35,6 +43,28 @@
             <div uib-bar value="100*prbInfo.totalFailItems / prbInfo.totalDumpItems" type="erroe">
                 <span ng-show="100*prbInfo.totalFailItems / prbInfo.totalDumpItems > 5">
                     {{100*prbInfo.totalFailItems / prbInfo.totalDumpItems | number: 2}}%
+                </span>
+            </div>
+        </div>
+        <h4>用户数指标</h4>
+        <button class="btn btn-primary" ng-click="dumpUsersItems()" ng-disabled="usersInfo.totalDumpItems === 0">
+            一键导入
+        </button>
+        <button class="btn btn-danger" ng-click="clearUsersItems()" ng-disabled="usersInfo.totalDumpItems === 0">
+            清除导入
+        </button>
+        总数：{{usersInfo.totalDumpItems}}&nbsp;
+        成功数：{{usersInfo.totalSuccessItems}}&nbsp;
+        失败数：{{usersInfo.totalFailItems}}
+        <div uib-progress>
+            <div uib-bar value="100*usersInfo.totalSuccessItems / usersInfo.totalDumpItems" type="success">
+                <span ng-show="100*usersInfo.totalSuccessItems / usersInfo.totalDumpItems > 5">
+                    {{100*usersInfo.totalSuccessItems / usersInfo.totalDumpItems | number: 2}}%
+                </span>
+            </div>
+            <div uib-bar value="100*usersInfo.totalFailItems / usersInfo.totalDumpItems" type="erroe">
+                <span ng-show="100*usersInfo.totalFailItems / usersInfo.totalDumpItems > 5">
+                    {{100*usersInfo.totalFailItems / usersInfo.totalDumpItems | number: 2}}%
                 </span>
             </div>
         </div>

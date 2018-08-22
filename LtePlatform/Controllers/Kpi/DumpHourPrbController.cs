@@ -13,9 +13,9 @@ namespace LtePlatform.Controllers.Kpi
     [ApiGroup("导入")]
     public class DumpHourPrbController : ApiController
     {
-        private readonly HourKpiService _service;
+        private readonly HourPrbService _service;
 
-        public DumpHourPrbController(HourKpiService service)
+        public DumpHourPrbController(HourPrbService service)
         {
             _service = service;
         }

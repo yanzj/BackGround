@@ -90,6 +90,12 @@ namespace Lte.Evaluations.DataService.Basic
                     .MapTo<IEnumerable<StationDictionaryView>>();
         }
 
+        public StationDictionaryView QueryOneByStationDistrictAndName(string district, string stationName)
+        {
+            return _repository.FirstOrDefault(x => x.ElementName.Contains(stationName) && x.StationDistrict == district)
+                .MapTo<StationDictionaryView>();
+        }
+
         public StationDictionaryView QueryOneByStationName(string stationName)
         {
             return _repository.FirstOrDefault(x => x.ElementName.Contains(stationName)).MapTo<StationDictionaryView>();

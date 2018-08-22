@@ -7,7 +7,6 @@ using Lte.Evaluations.DataService.Kpi;
 using Lte.Evaluations.DataService.Mr;
 using Lte.Evaluations.DataService.RegionKpi;
 using Lte.Evaluations.DataService.Switch;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Cdma;
 using Lte.MySqlFramework.Abstract.College;
 using Lte.MySqlFramework.Abstract.Complain;
@@ -314,6 +313,8 @@ namespace LtePlatform
 
             ninjectKernel.Bind<ITownHourPrbRepository>().To<TownHourPrbRepository>();
 
+            ninjectKernel.Bind<IHourUsersRepository>().To<HourUsersRepository>();
+
             ninjectKernel.Bind<CdmaRegionStatService>().ToSelf();
 
             ninjectKernel.Bind<CollegeStatService>().ToSelf();
@@ -521,6 +522,10 @@ namespace LtePlatform
             ninjectKernel.Bind<TownHourKpiService>().ToSelf();
 
             ninjectKernel.Bind<TownHourPrbService>().ToSelf();
+
+            ninjectKernel.Bind<HourPrbService>().ToSelf();
+
+            ninjectKernel.Bind<HourUsersService>().ToSelf();
 
         }
     }

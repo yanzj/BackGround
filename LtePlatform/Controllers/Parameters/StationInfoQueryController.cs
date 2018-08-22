@@ -59,6 +59,16 @@ namespace LtePlatform.Controllers.Parameters
         }
 
         [HttpGet]
+        [ApiDoc("按照站址名称匹配查询站址信息")]
+        [ApiParameterDoc("district", "区")]
+        [ApiParameterDoc("name", "站址名称")]
+        [ApiResponse("站址信息")]
+        public StationDictionaryView QueryOne(string district, string name)
+        {
+            return _service.QueryOneByStationDistrictAndName(district, name);
+        }
+
+        [HttpGet]
         [ApiDoc("按照基站编号匹配查询站址信息")]
         [ApiParameterDoc("eNodebId", "基站编号")]
         [ApiResponse("站址信息")]

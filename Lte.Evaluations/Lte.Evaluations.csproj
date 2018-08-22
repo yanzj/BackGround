@@ -180,6 +180,8 @@
     <Compile Include="DataService\Kpi\DoubleFlowQueryService.cs" />
     <Compile Include="DataService\Kpi\DoubleFlowRegionStatService.cs" />
     <Compile Include="DataService\Kpi\HourKpiService.cs" />
+    <Compile Include="DataService\Kpi\HourPrbService.cs" />
+    <Compile Include="DataService\Kpi\HourUsersService.cs" />
     <Compile Include="DataService\RegionKpi\RegionTownFlowService.cs" />
     <Compile Include="DataService\RegionKpi\TownCqiService.cs" />
     <Compile Include="DataService\RegionKpi\TownDoubleFlowService.cs" />

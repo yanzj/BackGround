@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Lte.Domain.Common.Types;
 using Lte.Domain.LinqToCsv;
+using Lte.Domain.LinqToCsv.Context;
+using Lte.Domain.LinqToCsv.Description;
+using Lte.Domain.Regular;
 
 namespace Lte.Domain.Common.Wireless.Kpi
 {
@@ -92,7 +96,10 @@ namespace Lte.Domain.Common.Wireless.Kpi
         public int MaxActiveUsers { get; set; }
 
         [CsvColumn(Name = "4.21 小区平均CA能力用户数(个)")]
-        public double? AverageCaUsers { get; set; }
+        public string AverageCaUserString { get; set; }
+
+        public double? AverageCaUsers =>
+            string.IsNullOrEmpty(AverageCaUserString) ? (double?)null : AverageCaUserString.ConvertToDouble(0);
 
         [CsvColumn(Name = "4.22 小区最大CA能力用户数(个)")]
         public int MaxCaUsers { get; set; }
@@ -115,5 +122,11 @@ namespace Lte.Domain.Common.Wireless.Kpi
         [CsvColumn(Name = "4.28 小区上行CoMP状态的最大用户数(个)")]
         public int? UplinkCompMaxUsers { get; set; }
 
+        public static List<HourUsersCsv> ReadCsvs(StreamReader reader)
+        {
+            return
+                CsvContext.Read<HourUsersCsv>(reader, CsvFileDescription.CommaDescription)
+                    .ToList();
+        }
     }
 }

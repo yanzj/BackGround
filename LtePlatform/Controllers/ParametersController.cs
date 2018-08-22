@@ -22,13 +22,14 @@ namespace LtePlatform.Controllers
         private readonly CoverageStatService _coverageService;
         private readonly ZhangshangyouQualityService _zhangshangyouQualityService;
         private readonly ZhangshangyouCoverageService _zhangshangyouCoverageService;
-        private readonly HourKpiService _hourKpiService;
+        private readonly HourPrbService _hourKpiService;
+        private readonly HourUsersService _hourUsersService;
 
         public ParametersController(BasicImportService basicImportService, AlarmsService alarmsService,
             NearestPciCellService neighborService, MrGridService mrGridService,
             FlowService flowService, CoverageStatService coverageService,
             ZhangshangyouQualityService zhangshangyouQualityService, ZhangshangyouCoverageService zhangshangyouCoverageService,
-            HourKpiService hourKpiService)
+            HourPrbService hourKpiService, HourUsersService hourUsersService)
         {
             _basicImportService = basicImportService;
             _alarmsService = alarmsService;
@@ -39,6 +40,7 @@ namespace LtePlatform.Controllers
             _zhangshangyouQualityService = zhangshangyouQualityService;
             _zhangshangyouCoverageService = zhangshangyouCoverageService;
             _hourKpiService = hourKpiService;
+            _hourUsersService = hourUsersService;
         }
         
         public ActionResult AlarmImport()
@@ -346,6 +348,19 @@ namespace LtePlatform.Controllers
                 foreach (var file in hourPrb)
                 {
                     _hourKpiService.UploadPrbs(new StreamReader(file.InputStream, Encoding.GetEncoding("GB2312")));
+                }
+            }
+            return View("HourKpiImport");
+        }
+
+        public ActionResult HourUsersPost(HttpPostedFileBase[] hourUsers)
+        {
+            if (hourUsers != null && hourUsers.Length > 0 && !string.IsNullOrEmpty(hourUsers[0]?.FileName))
+            {
+                ViewBag.Message = "共上传忙时用户数信息文件" + hourUsers.Length + "个！";
+                foreach (var file in hourUsers)
+                {
+                    _hourUsersService.UploadUserses(new StreamReader(file.InputStream, Encoding.GetEncoding("GB2312")));
                 }
             }
             return View("HourKpiImport");
