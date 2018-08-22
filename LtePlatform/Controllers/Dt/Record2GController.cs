@@ -3,6 +3,7 @@ using System.Web.Http;
 using Lte.Evaluations.DataService;
 using Lte.Evaluations.DataService.Dt;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Dt;
 using Lte.Parameters.Entities.Dt;
 using LtePlatform.Models;
 

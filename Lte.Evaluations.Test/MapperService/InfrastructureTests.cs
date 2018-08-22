@@ -18,6 +18,7 @@ using Abp.EntityFramework.Entities.Kpi;
 using Abp.EntityFramework.Entities.Maintainence;
 using Lte.Domain.Common.Geo;
 using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Entities.Infrastructure;
 
 namespace Lte.Evaluations.MapperService
 {

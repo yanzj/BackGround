@@ -17,6 +17,7 @@ using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Maintainence;
 using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Maintainence;
 using Lte.MySqlFramework.Support;
 using Lte.MySqlFramework.Support.View;
 

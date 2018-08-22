@@ -7,6 +7,7 @@ using Abp.EntityFramework.AutoMapper;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Maintainence;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Maintainence;
 
 namespace Lte.Evaluations.DataService.College
 {

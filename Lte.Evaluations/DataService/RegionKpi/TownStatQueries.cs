@@ -11,6 +11,7 @@ using Lte.Domain.Common.Wireless;
 using Lte.Domain.Regular;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Kpi;
 
 namespace Lte.Evaluations.DataService.RegionKpi
 {

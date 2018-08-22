@@ -6,6 +6,7 @@ using System.Web.Http;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless.Kpi;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Cdma;
 using Lte.MySqlFramework.Support;
 
 namespace LtePlatform.Controllers.Kpi

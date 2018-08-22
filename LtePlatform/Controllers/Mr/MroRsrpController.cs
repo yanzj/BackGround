@@ -6,6 +6,7 @@ using System.Web.Http;
 using Lte.Evaluations.DataService.Mr;
 using Lte.Evaluations.ViewModels.Precise;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Mr;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.Mr

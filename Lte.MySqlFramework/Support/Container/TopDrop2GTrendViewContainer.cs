@@ -2,6 +2,7 @@ using Abp.EntityFramework.AutoMapper;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless.Kpi;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Cdma;
 
 namespace Lte.MySqlFramework.Support.Container
 {

@@ -9,6 +9,7 @@ using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Maintainence;
 using Lte.Evaluations.DataService.Dump;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Maintainence;
 
 namespace LtePlatform.Controllers.Mr
 {

@@ -5,6 +5,7 @@ using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Cell;
 using Lte.Evaluations.DataService.Kpi;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Kpi;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.Kpi

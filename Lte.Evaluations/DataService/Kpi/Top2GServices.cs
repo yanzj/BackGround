@@ -8,6 +8,7 @@ using Lte.Domain.Common.Wireless.Kpi;
 using Lte.Evaluations.MapperSerive;
 using Lte.MySqlFramework.Abstract.Cdma;
 using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Entities.Cdma;
 using Lte.MySqlFramework.Support.Container;
 
 namespace Lte.Evaluations.DataService.Kpi

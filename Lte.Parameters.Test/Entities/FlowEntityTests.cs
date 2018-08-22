@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Kpi;
+using Lte.MySqlFramework.Entities.RegionKpi;
 using NUnit.Framework;
 using Shouldly;
 

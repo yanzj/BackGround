@@ -1,6 +1,7 @@
 using Abp.EntityFramework.AutoMapper;
 using Lte.Domain.Regular.Attributes;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Maintainence;
 
 namespace Lte.MySqlFramework.Support.View
 {

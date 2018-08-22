@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Web.Http;
 using Lte.Evaluations.DataService.Basic;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Infrastructure;
 
 namespace LtePlatform.Controllers.Parameters
 {

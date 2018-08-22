@@ -17,6 +17,7 @@ using Lte.Evaluations.ViewModels.Precise;
 using Lte.MySqlFramework.Abstract.College;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Test;
+using Lte.MySqlFramework.Entities.College;
 using Lte.MySqlFramework.Support;
 using Lte.MySqlFramework.Support.View;
 

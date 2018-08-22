@@ -6,6 +6,7 @@ using Abp.EntityFramework.Entities.Station;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Station;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Infrastructure;
 
 namespace Lte.Evaluations.DataService.Basic
 {

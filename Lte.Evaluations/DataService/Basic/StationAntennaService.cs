@@ -12,6 +12,7 @@ using Lte.Domain.Common.Wireless.Antenna;
 using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Common.Wireless.Region;
 using Lte.MySqlFramework.Abstract.Station;
+using Lte.MySqlFramework.Entities.Infrastructure;
 
 namespace Lte.Evaluations.DataService.Basic
 {

@@ -44,7 +44,7 @@ namespace Lte.Evaluations.DataService.RegionKpi
                 {
                     await _townHourUsersRepository.InsertAsync(stat);
                 }
-                item1 = _townHourUsersRepository.SaveChanges();
+                item2 = _townHourUsersRepository.SaveChanges();
             }
             return new [] { item1, item2 };
         }

@@ -1,4 +1,5 @@
 ﻿using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Cdma;
 using NUnit.Framework;
 using Shouldly;
 

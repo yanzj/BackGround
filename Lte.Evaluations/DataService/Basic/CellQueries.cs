@@ -7,6 +7,7 @@ using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Cdma;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Infrastructure;
 
 namespace Lte.Evaluations.DataService.Basic
 {

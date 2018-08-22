@@ -3,6 +3,7 @@ using Lte.MySqlFramework.Entities;
 using LtePlatform.Models;
 using System.Collections.Generic;
 using System.Web.Http;
+using Lte.MySqlFramework.Entities.Maintainence;
 
 namespace LtePlatform.Controllers.College
 {

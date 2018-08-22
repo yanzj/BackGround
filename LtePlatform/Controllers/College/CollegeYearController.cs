@@ -2,6 +2,7 @@
 using System.Web.Http;
 using Lte.Evaluations.DataService.College;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.College;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.College

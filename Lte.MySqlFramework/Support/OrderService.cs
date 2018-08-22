@@ -9,6 +9,7 @@ using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Kpi;
 using Lte.Domain.Regular;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Cdma;
 using Lte.MySqlFramework.Properties;
 
 namespace Lte.MySqlFramework.Support

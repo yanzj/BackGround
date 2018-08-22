@@ -10,6 +10,7 @@ using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Distribution;
 using Lte.MySqlFramework.Abstract.Station;
+using Lte.MySqlFramework.Entities.Maintainence;
 
 namespace Lte.Evaluations.DataService.Basic
 {

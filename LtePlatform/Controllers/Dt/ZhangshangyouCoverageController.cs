@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Http;
 using Lte.Evaluations.DataService.Dt;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Dt;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.Dt

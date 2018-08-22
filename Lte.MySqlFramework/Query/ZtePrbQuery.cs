@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Abp.EntityFramework.Entities.Kpi;
 using Lte.MySqlFramework.Abstract.Kpi;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Kpi;
 
 namespace Lte.MySqlFramework.Query
 {

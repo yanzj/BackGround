@@ -6,6 +6,7 @@ using Abp.EntityFramework.Entities.RegionKpi;
 using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Abstract.RegionKpi;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.RegionKpi;
 using Lte.MySqlFramework.Support.View;
 
 namespace Lte.Evaluations.DataService.Kpi

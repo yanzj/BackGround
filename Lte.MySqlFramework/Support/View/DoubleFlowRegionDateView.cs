@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities.RegionKpi;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.RegionKpi;
 
 namespace Lte.MySqlFramework.Support.View
 {

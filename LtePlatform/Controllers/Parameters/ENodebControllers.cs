@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Web.Http;
 using Lte.Domain.Common.Geo;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Infrastructure;
 
 namespace LtePlatform.Controllers.Parameters
 {

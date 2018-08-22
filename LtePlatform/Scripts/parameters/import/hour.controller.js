@@ -65,9 +65,11 @@
                         $scope.dumpHistory = result;
                         angular.forEach(result,
                             function(record) {
-                                if (record.prbItems > 27000 && record.townPrbs < 44) {
+                                if ((record.prbItems > 27000 && record.townPrbs < 44)
+                                    || (record.usersItems > 27000 && record.townUserses < 44)) {
                                     flowImportService.dumpTownHourStats(record.dateString).then(function(count) {
                                         record.townPrbs = count[0];
+                                        record.townUserses = count[1];
                                     });
                                 }
                             });

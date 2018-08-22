@@ -15,6 +15,7 @@ using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Test;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Dt;
 
 namespace Lte.Evaluations.DataService.Dt
 {

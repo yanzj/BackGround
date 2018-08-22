@@ -7,6 +7,7 @@ using Lte.Domain.Common.Wireless.Kpi;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Mr;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Mr;
 using Lte.MySqlFramework.Support;
 using Lte.MySqlFramework.Support.Container;
 

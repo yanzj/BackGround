@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Abp.EntityFramework.Dependency;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Mr;
 
 namespace Lte.MySqlFramework.Support.View
 {

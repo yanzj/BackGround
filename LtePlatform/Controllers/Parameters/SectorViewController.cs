@@ -3,6 +3,7 @@ using System.Web.Http;
 using Lte.Domain.Common.Geo;
 using Lte.Evaluations.DataService.Basic;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Infrastructure;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.Parameters

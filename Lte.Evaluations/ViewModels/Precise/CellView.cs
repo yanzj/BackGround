@@ -7,6 +7,7 @@ using Lte.Domain.Regular.Attributes;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Infrastructure;
 
 namespace Lte.Evaluations.ViewModels.Precise
 {

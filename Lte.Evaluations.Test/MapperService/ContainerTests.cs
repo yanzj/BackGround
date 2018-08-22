@@ -23,6 +23,8 @@ using Lte.Domain.Common.Wireless.Station;
 using Lte.Domain.Common.Wireless.Work;
 using Lte.Domain.Excel;
 using Lte.Evaluations.ViewModels.Precise;
+using Lte.MySqlFramework.Entities.Cdma;
+using Lte.MySqlFramework.Entities.Maintainence;
 using Lte.MySqlFramework.Support.Container;
 
 namespace Lte.Evaluations.MapperService

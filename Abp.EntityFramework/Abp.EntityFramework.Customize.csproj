@@ -172,6 +172,7 @@
     <Compile Include="Entities\Cdma\CdmaRegionStatTrend.cs" />
     <Compile Include="Entities\Cdma\CdmaRegionStatView.cs" />
     <Compile Include="Entities\Cdma\CdmaSectorView.cs" />
+    <Compile Include="Entities\Complain\VipDemandDto.cs" />
     <Compile Include="Entities\Kpi\AggregateFlowView.cs" />
     <Compile Include="Entities\Kpi\CqiView.cs" />
     <Compile Include="Entities\Kpi\DoubleFlowView.cs" />

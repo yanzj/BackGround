@@ -6,6 +6,8 @@ using Lte.Domain.Common.Geo;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Entities.Dt;
+using Lte.MySqlFramework.Entities.Region;
 
 namespace Lte.MySqlFramework.Support
 {
