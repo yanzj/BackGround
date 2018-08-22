@@ -1,26 +1,27 @@
-﻿using Abp.Domain.Entities;
-using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Dependency;
-using Abp.EntityFramework.Entities.Kpi;
-using Lte.Domain.Common.Wireless;
-using Lte.Domain.Regular.Attributes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Abp.EntityFramework.AutoMapper;
+using Abp.EntityFramework.Dependency;
+using Abp.EntityFramework.Entities.RegionKpi;
+using Lte.Domain.Common.Wireless;
+using Lte.Domain.Regular.Attributes;
 
-namespace Abp.EntityFramework.Entities.RegionKpi
+namespace Lte.MySqlFramework.Entities.RegionKpi
 {
-    [AutoMapFrom(typeof(HourUsers))]
+    [AutoMapFrom(typeof(TownHourUsers))]
     [TypeDoc("镇区忙时用户数统计")]
-    public class TownHourUsers : Entity, ITownId, IStatDate
+    public class TownHourUsersView : IStatDate, ICityDistrictTown
     {
-        [ArraySumProtection]
-        public int TownId { get; set; }
-
-        [ArraySumProtection]
         public DateTime StatDate { get; set; }
+
+        public string District { get; set; }
+
+        public string Town { get; set; }
+
+        public string City { get; set; }
 
         [MemberDoc("4.14 最大RRC连接用户数(个)")]
         public int MaxRrcUsers { get; set; }

@@ -1,15 +1,13 @@
-﻿using Lte.Parameters.Abstract.Kpi;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.Dependency;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.RegionKpi;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Support;
+using Lte.Parameters.Abstract.Kpi;
 
-namespace Lte.Evaluations.DataService.Kpi
+namespace Lte.Evaluations.DataService.RegionKpi
 {
     public class PreciseRegionStatService
     {

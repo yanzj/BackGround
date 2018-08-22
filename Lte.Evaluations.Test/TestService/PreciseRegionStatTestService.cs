@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.RegionKpi;
+using Lte.Evaluations.DataService.RegionKpi;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Support;

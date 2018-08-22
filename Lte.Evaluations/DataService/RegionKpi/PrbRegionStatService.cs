@@ -1,28 +1,27 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities.RegionKpi;
 using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Abstract.RegionKpi;
-using Lte.MySqlFramework.Entities;
 using Lte.MySqlFramework.Entities.RegionKpi;
 using Lte.MySqlFramework.Support.View;
 
-namespace Lte.Evaluations.DataService.Kpi
+namespace Lte.Evaluations.DataService.RegionKpi
 {
-    public class RrcRegionStatService
+    public class PrbRegionStatService
     {
-        private readonly ITownRrcRepository _statRepository;
+        private readonly ITownPrbRepository _statRepository;
         private readonly ITownRepository _townRepository;
 
-        public RrcRegionStatService(ITownRrcRepository statRepository, ITownRepository townRepository)
+        public PrbRegionStatService(ITownPrbRepository statRepository, ITownRepository townRepository)
         {
             _statRepository = statRepository;
             _townRepository = townRepository;
         }
 
-        public RrcRegionDateView QueryLastDateStat(DateTime initialDate, string city)
+        public PrbRegionDateView QueryLastDateStat(DateTime initialDate, string city)
         {
             var stats = _statRepository.QueryLastDate(initialDate, (repository, beginDate, endDate) =>
             {
@@ -30,18 +29,18 @@ namespace Lte.Evaluations.DataService.Kpi
                     _statRepository.GetAllList(x => x.StatTime >= beginDate & x.StatTime < endDate);
                 return query.FilterTownList(_townRepository.GetAllList().Where(x => x.CityName == city).ToList());
             });
-            var townViews = stats.ConstructViews<TownRrcStat, TownRrcView>(_townRepository);
-            return townViews.QueryRegionDateView<RrcRegionDateView, DistrictRrcView, TownRrcView>(initialDate,
-                DistrictRrcView.ConstructView);
+            var townViews = stats.ConstructViews<TownPrbStat, TownPrbView>(_townRepository);
+            return townViews.QueryRegionDateDateView<PrbRegionDateView, DistrictPrbView, TownPrbView>(initialDate,
+                DistrictPrbView.ConstructView);
         }
 
-        public IEnumerable<RrcRegionDateView> QueryDateViews(DateTime begin, DateTime end, string city)
+        public IEnumerable<PrbRegionDateView> QueryDateViews(DateTime begin, DateTime end, string city)
         {
             var query = _statRepository.GetAllList(x => x.StatTime >= begin & x.StatTime < end);
-            var townViews = query.QueryTownStat<TownRrcStat, TownRrcView>(_townRepository, city);
+            var townViews = query.QueryTownStat<TownPrbStat, TownPrbView>(_townRepository, city);
             return
-                townViews.QueryDateSpanViews<RrcRegionDateView, DistrictRrcView, TownRrcView>(
-                    DistrictRrcView.ConstructView);
+                townViews.QueryDateDateViews<PrbRegionDateView, DistrictPrbView, TownPrbView>(
+                    DistrictPrbView.ConstructView);
         }
     }
 }

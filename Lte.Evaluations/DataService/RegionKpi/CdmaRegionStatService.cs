@@ -1,18 +1,15 @@
-﻿using AutoMapper;
-using Lte.Domain.Regular;
-using Lte.MySqlFramework.Abstract;
-using Lte.MySqlFramework.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Abp.EntityFramework.Dependency;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Cdma;
+using AutoMapper;
+using Lte.Domain.Regular;
 using Lte.MySqlFramework.Abstract.Cdma;
 using Lte.MySqlFramework.Abstract.Region;
 
-namespace Lte.Evaluations.DataService.Kpi
+namespace Lte.Evaluations.DataService.RegionKpi
 {
     public class CdmaRegionStatService
     {

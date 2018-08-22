@@ -3,6 +3,7 @@ using LtePlatform.Models;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
+using Lte.Evaluations.DataService.RegionKpi;
 using Lte.MySqlFramework.Support.View;
 
 namespace LtePlatform.Controllers.Kpi

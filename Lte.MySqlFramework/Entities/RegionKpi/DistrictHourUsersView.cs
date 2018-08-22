@@ -1,25 +1,23 @@
-﻿using Abp.Domain.Entities;
-using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Dependency;
-using Abp.EntityFramework.Entities.Kpi;
-using Lte.Domain.Common.Wireless;
-using Lte.Domain.Regular.Attributes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Abp.EntityFramework.AutoMapper;
+using Abp.EntityFramework.Dependency;
+using Lte.Domain.Common.Wireless;
+using Lte.Domain.Regular.Attributes;
 
-namespace Abp.EntityFramework.Entities.RegionKpi
+namespace Lte.MySqlFramework.Entities.RegionKpi
 {
-    [AutoMapFrom(typeof(HourUsers))]
-    [TypeDoc("镇区忙时用户数统计")]
-    public class TownHourUsers : Entity, ITownId, IStatDate
+    [AutoMapFrom(typeof(TownHourUsersView))]
+    [TypeDoc("区忙时用户数统计")]
+    public class DistrictHourUsersView : ICityDistrict, IStatDate
     {
-        [ArraySumProtection]
-        public int TownId { get; set; }
+        public string District { get; set; }
 
-        [ArraySumProtection]
+        public string City { get; set; }
+
         public DateTime StatDate { get; set; }
 
         [MemberDoc("4.14 最大RRC连接用户数(个)")]
@@ -115,5 +113,9 @@ namespace Abp.EntityFramework.Entities.RegionKpi
         [MemberDoc("4.28 小区上行CoMP状态的最大用户数(个)")]
         public int? UplinkCompMaxUsers { get; set; }
 
+        public static DistrictHourUsersView ConstructView(TownHourUsersView townView)
+        {
+            return townView.MapTo<DistrictHourUsersView>();
+        }
     }
 }

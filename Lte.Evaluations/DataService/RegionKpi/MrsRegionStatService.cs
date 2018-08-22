@@ -5,11 +5,10 @@ using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities.Mr;
 using Lte.MySqlFramework.Abstract.Mr;
 using Lte.MySqlFramework.Abstract.Region;
-using Lte.MySqlFramework.Entities;
 using Lte.MySqlFramework.Entities.Mr;
 using Lte.MySqlFramework.Support.View;
 
-namespace Lte.Evaluations.DataService.Kpi
+namespace Lte.Evaluations.DataService.RegionKpi
 {
     public class MrsRegionStatService
     {

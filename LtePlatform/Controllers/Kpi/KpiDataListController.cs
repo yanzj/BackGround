@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Abp.EntityFramework.Entities.Cdma;
+using Lte.Evaluations.DataService.RegionKpi;
 
 namespace LtePlatform.Controllers.Kpi
 {
