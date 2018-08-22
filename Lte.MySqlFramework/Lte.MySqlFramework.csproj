@@ -324,13 +324,13 @@
     <Compile Include="Entities\DistrictDoubleFlowView.cs" />
     <Compile Include="Entities\ENodebView.cs" />
     <Compile Include="Entities\WorkItemView.cs" />
-    <Compile Include="Migrations\201808210107337_Add_Town_Hour_Prb.cs" />
-    <Compile Include="Migrations\201808210107337_Add_Town_Hour_Prb.Designer.cs">
-      <DependentUpon>201808210107337_Add_Town_Hour_Prb.cs</DependentUpon>
+    <Compile Include="Migrations\201808220116216_Add_Hour_Users.cs" />
+    <Compile Include="Migrations\201808220116216_Add_Hour_Users.Designer.cs">
+      <DependentUpon>201808220116216_Add_Hour_Users.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808210109012_Add_Town_Hour_Prb1.cs" />
-    <Compile Include="Migrations\201808210109012_Add_Town_Hour_Prb1.Designer.cs">
-      <DependentUpon>201808210109012_Add_Town_Hour_Prb1.cs</DependentUpon>
+    <Compile Include="Migrations\201808220118298_Add_Hour_Users1.cs" />
+    <Compile Include="Migrations\201808220118298_Add_Hour_Users1.Designer.cs">
+      <DependentUpon>201808220118298_Add_Hour_Users1.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -444,11 +444,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808210107337_Add_Town_Hour_Prb.resx">
-      <DependentUpon>201808210107337_Add_Town_Hour_Prb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808220116216_Add_Hour_Users.resx">
+      <DependentUpon>201808220116216_Add_Hour_Users.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808210109012_Add_Town_Hour_Prb1.resx">
-      <DependentUpon>201808210109012_Add_Town_Hour_Prb1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808220118298_Add_Hour_Users1.resx">
+      <DependentUpon>201808220118298_Add_Hour_Users1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

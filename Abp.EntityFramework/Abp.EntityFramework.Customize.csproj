@@ -176,6 +176,7 @@
     <Compile Include="Entities\Kpi\CqiView.cs" />
     <Compile Include="Entities\Kpi\DoubleFlowView.cs" />
     <Compile Include="Entities\Kpi\HourPrb.cs" />
+    <Compile Include="Entities\Kpi\HourUsers.cs" />
     <Compile Include="Entities\Maintainence\AlarmWorkItem.cs" />
     <Compile Include="Entities\Maintainence\AlarmWorkItemGroup.cs" />
     <Compile Include="Entities\Maintainence\AlarmWorkItemView.cs" />
