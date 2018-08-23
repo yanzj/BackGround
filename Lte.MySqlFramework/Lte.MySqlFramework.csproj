@@ -334,13 +334,13 @@
     <Compile Include="Entities\RegionKpi\DistrictHourUsersView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourPrbView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourUsersView.cs" />
-    <Compile Include="Migrations\201808220118298_Add_Hour_Users1.cs" />
-    <Compile Include="Migrations\201808220118298_Add_Hour_Users1.Designer.cs">
-      <DependentUpon>201808220118298_Add_Hour_Users1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201808220611418_Add_Town_Users.cs" />
     <Compile Include="Migrations\201808220611418_Add_Town_Users.Designer.cs">
       <DependentUpon>201808220611418_Add_Town_Users.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808232228440_Update_Town_Hour_Users.cs" />
+    <Compile Include="Migrations\201808232228440_Update_Town_Hour_Users.Designer.cs">
+      <DependentUpon>201808232228440_Update_Town_Hour_Users.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -456,11 +456,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808220118298_Add_Hour_Users1.resx">
-      <DependentUpon>201808220118298_Add_Hour_Users1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808220611418_Add_Town_Users.resx">
       <DependentUpon>201808220611418_Add_Town_Users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808232228440_Update_Town_Hour_Users.resx">
+      <DependentUpon>201808232228440_Update_Town_Hour_Users.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -25,7 +25,13 @@ namespace Lte.Evaluations.DataService.RegionKpi
         {
             var end = statDate.AddDays(1);
             var userses = _usersRepository.GetAllList(x => x.StatTime >= statDate && x.StatTime < end);
-            var townStatList = userses.GetTownDateStats<HourUsers, TownHourUsers>(_eNodebRepository);
+            var townStatList = userses.GetTownDateStats<HourUsers, TownHourUsers>(_eNodebRepository,
+                (stat, townStat) =>
+                {
+                    townStat.AverageCaUsers = stat.AverageCaUsers ?? 0;
+                    townStat.PCellDownlinkMaxCaUes = stat.PCellDownlinkMaxCaUes ?? 0;
+                    townStat.UplinkCompMaxUsers = stat.UplinkCompMaxUsers ?? 0;
+                });
             return townStatList.ToList();
         }
 

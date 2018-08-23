@@ -92,7 +92,7 @@ namespace Abp.EntityFramework.Entities.RegionKpi
         public int MaxActiveUsers { get; set; }
 
         [MemberDoc("4.21 小区平均CA能力用户数(个)")]
-        public double? AverageCaUsers { get; set; }
+        public double AverageCaUsers { get; set; }
 
         [MemberDoc("4.22 小区最大CA能力用户数(个)")]
         public int MaxCaUsers { get; set; }
@@ -101,7 +101,7 @@ namespace Abp.EntityFramework.Entities.RegionKpi
         public double PCellDownlinkAverageCaUes { get; set; }
 
         [MemberDoc("4.24 PCell小区下行CA最大激活UE数(个)")]
-        public int? PCellDownlinkMaxCaUes { get; set; }
+        public int PCellDownlinkMaxCaUes { get; set; }
 
         [MemberDoc("4.25 Pcell分配给CA用户的下行PDSCH PRB总数(个)")]
         public long PCellPdschCaPrbs { get; set; }
@@ -113,7 +113,7 @@ namespace Abp.EntityFramework.Entities.RegionKpi
         public double UplinkCompAverageUsers { get; set; }
 
         [MemberDoc("4.28 小区上行CoMP状态的最大用户数(个)")]
-        public int? UplinkCompMaxUsers { get; set; }
+        public int UplinkCompMaxUsers { get; set; }
 
     }
 }
