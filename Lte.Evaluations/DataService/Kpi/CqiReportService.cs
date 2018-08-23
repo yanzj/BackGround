@@ -48,6 +48,7 @@ namespace Lte.Evaluations.DataService.Kpi
         public List<CqiView> QueryTopDistrictViews(string city, string district, DateTime begin, DateTime end, int topCount)
         {
             var results = QueryDistrictViews(city, district, begin, end).ToList();
+            if (!results.Any()) { return new List<CqiView>(); }
             var days = (results.Max(x => x.StatTime) - results.Min(x => x.StatTime)).Days + 1;
             return results.OrderByDescending(x => x.CqiCounts.Item1 - x.CqiCounts.Item2).Take(topCount * days).ToList();
         }
@@ -65,6 +66,7 @@ namespace Lte.Evaluations.DataService.Kpi
             int topCount, OrderCqiPolicy policy)
         {
             var joinViews = QueryDistrictViews(city, district, begin, end).ToList();
+            if (!joinViews.Any()) { return new List<CqiView>(); }
             var days = (joinViews.Max(x => x.StatTime) - joinViews.Min(x => x.StatTime)).Days + 1;
             return QueryTopViewsByPolicy(joinViews, topCount * days, policy);
         }

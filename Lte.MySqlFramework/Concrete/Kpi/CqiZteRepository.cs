@@ -24,9 +24,7 @@ namespace Lte.MySqlFramework.Concrete.Kpi
         {
             return GetAllList(
                 x => x.StatTime >= begin && x.StatTime < end
-                     && x.Cqi0Reports + x.Cqi1Reports + x.Cqi2Reports + x.Cqi3Reports + x.Cqi4Reports
-                     + x.Cqi5Reports + x.Cqi6Reports >
-                     3000000);
+                     && x.Cqi0Reports + x.Cqi1Reports + x.Cqi2Reports + x.Cqi3Reports + x.Cqi4Reports > 300000);
         }
     }
 }

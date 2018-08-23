@@ -436,6 +436,7 @@
     <Compile Include="Support\FlowQuerySupport.cs" />
     <Compile Include="Support\View\FlowRegionDateView.cs" />
     <Compile Include="Support\View\HourPrbRegionDateView.cs" />
+    <Compile Include="Support\View\HourUsersRegionDateView.cs" />
     <Compile Include="Support\View\MrsRegionDateView.cs" />
     <Compile Include="Support\View\PrbRegionDateView.cs" />
     <Compile Include="Support\PreciseRegion.cs" />

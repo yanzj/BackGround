@@ -531,6 +531,12 @@ namespace LtePlatform
 
             ninjectKernel.Bind<TownHourUsersService>().ToSelf();
 
+            ninjectKernel.Bind<HourPrbRegionStatService>().ToSelf();
+
+            ninjectKernel.Bind<HourUsersRegionStatService>().ToSelf();
+
+            ninjectKernel.Bind<SinrUlRegionStatService>().ToSelf();
+
         }
     }
 }

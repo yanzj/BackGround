@@ -80,7 +80,7 @@ namespace Lte.MySqlFramework.Support
             var eNodebs = townRepository.QueryENodebs(eNodebRepository, city, district);
             if (!eNodebs.Any())
             {
-                return new List<TView>();
+                throw new OutOfMemoryException("abc");
             }
 
             var zteViews = eNodebs.QueryZteViews<TView, TZte>(zteStats);

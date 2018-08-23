@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Abp.Domain.Entities;
+using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Repositories;
 using Lte.Domain.Common.Wireless;
 using Lte.MySqlFramework.Abstract.Infrastructure;
