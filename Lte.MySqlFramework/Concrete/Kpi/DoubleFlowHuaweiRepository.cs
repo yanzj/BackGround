@@ -25,7 +25,7 @@ namespace Lte.MySqlFramework.Concrete.Kpi
         {
             return GetAllList(x => x.StatTime >= begin
                                    && x.StatTime < end
-                                   && (x.CloseLoopRank2Prbs + x.OpenLoopRank2Prbs) * 5 <
+                                   && (x.CloseLoopRank2Prbs + x.OpenLoopRank2Prbs) * 4 <
                                    (x.CloseLoopRank1Prbs + x.OpenLoopRank1Prbs)
                                    && (x.CloseLoopRank1Prbs + x.OpenLoopRank1Prbs) > 500000000);
         }

@@ -48,12 +48,18 @@ namespace Lte.Evaluations.DataService.Kpi
                     return source.Where(x => x.CloseLoopPrbs > 0).OrderBy(x => x.CloseLoopDoubleFlowRate).Take(topCount)
                         .ToList();
                 case OrderDoubleFlowPolicy.OrderByDoubleFlowRate:
-                    return source.OrderBy(x => x.DoubleFlowRate).Take(topCount).ToList();
+                    var items = source.ToArray();
+                    return items.Where(x => x.CloseLoopRank2Prbs + x.OpenLoopRank2Prbs > 0)
+                        .OrderBy(x => x.DoubleFlowRate).Take(topCount)
+                        .Concat(items.Where(x => x.CloseLoopRank2Prbs + x.OpenLoopRank2Prbs == 0)).ToList();
                 case OrderDoubleFlowPolicy.OrderByOpenLoopDoubleFlowRate:
                     return source.Where(x => x.OpenLoopPrbs > 0).OrderBy(x => x.OpenLoopDoubleFlowRate).Take(topCount)
                         .ToList();
                 case OrderDoubleFlowPolicy.OrderByRank1PrbsDescendings:
-                    return source.OrderBy(x => x.Rank1Prbs).Take(topCount).ToList();
+                    items = source.ToArray();
+                    return items.Where(x => x.CloseLoopRank2Prbs + x.OpenLoopRank2Prbs > 0).OrderBy(x => x.Rank1Prbs)
+                        .Take(topCount).ToList()
+                        .Concat(items.Where(x => x.CloseLoopRank2Prbs + x.OpenLoopRank2Prbs == 0)).ToList();
             }
             return new List<DoubleFlowView>();
         }
@@ -62,9 +68,9 @@ namespace Lte.Evaluations.DataService.Kpi
             int topCount)
         {
             var results = QueryDistrictViews(city, district, begin, end).ToList();
-            results = results.FilterSinglePortCells(_cellRepository);
-            var days = (results.Max(x => x.StatTime) - results.Min(x => x.StatTime)).Days + 1;
-            return results.OrderByDescending(x => x.TotalPrbs).Take(topCount * days).ToList();
+            var topStats = results.FilterSinglePortCells(_cellRepository);
+            var days = (topStats.Max(x => x.StatTime) - topStats.Min(x => x.StatTime)).Days + 1;
+            return topStats.OrderByDescending(x => x.TotalPrbs).Take(topCount * days).ToList();
         }
 
         public List<DoubleFlowView> QueryTopDistrictViews(DateTime begin, DateTime end, int topCount,
@@ -74,18 +80,18 @@ namespace Lte.Evaluations.DataService.Kpi
             var huaweiStats = HuaweiRepository.FilterTopList(begin, end); 
             var joinViews = zteStats.MapTo<IEnumerable<DoubleFlowView>>()
                 .Concat(huaweiStats.MapTo<IEnumerable<DoubleFlowView>>()).ToList();
-            joinViews = joinViews.FilterSinglePortCells(_cellRepository);
-            var days = (joinViews.Max(x => x.StatTime) - joinViews.Min(x => x.StatTime)).Days + 1;
-            return QueryTopViewsByPolicy(joinViews, topCount * days, policy);
+            var topStats = joinViews.FilterSinglePortCells(_cellRepository);
+            var days = (topStats.Max(x => x.StatTime) - topStats.Min(x => x.StatTime)).Days + 1;
+            return QueryTopViewsByPolicy(topStats, topCount * days, policy);
         }
 
         public List<DoubleFlowView> QueryTopDistrictViews(string city, string district, DateTime begin, DateTime end,
             int topCount, OrderDoubleFlowPolicy policy)
         {
             var joinViews = QueryDistrictViews(city, district, begin, end).ToList();
-            joinViews = joinViews.FilterSinglePortCells(_cellRepository);
-            var days = (joinViews.Max(x => x.StatTime) - joinViews.Min(x => x.StatTime)).Days + 1;
-            return QueryTopViewsByPolicy(joinViews, topCount * days, policy);
+            var topStats = joinViews.FilterSinglePortCells(_cellRepository);
+            var days = (topStats.Max(x => x.StatTime) - topStats.Min(x => x.StatTime)).Days + 1;
+            return QueryTopViewsByPolicy(topStats, topCount * days, policy);
         }
     }
 }

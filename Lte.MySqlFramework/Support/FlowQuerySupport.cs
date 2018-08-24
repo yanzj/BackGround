@@ -78,7 +78,8 @@ namespace Lte.MySqlFramework.Support
             ICellRepository cellRepository)
         where TStat: ILteCellQuery
         {
-            var cells = cellRepository.GetAllList(x => x.AntennaPorts != AntennaPortsConfigure.Antenna1T1R);
+            var cells = cellRepository.GetAllList(x => x.AntennaPorts != AntennaPortsConfigure.Antenna1T1R
+                                                       && x.AntennaPorts != AntennaPortsConfigure.Antenna1T2R);
             return (from v in joinViews
                 join c in cells on new { v.ENodebId, v.SectorId } equals new { c.ENodebId, c.SectorId }
                 select v).ToList();

@@ -24,7 +24,7 @@ namespace Lte.MySqlFramework.Concrete.Kpi
         {
             return GetAllList(x => x.StatTime >= begin
                                    && x.StatTime < end
-                                   && (x.SchedulingTm3Rank2Old + x.SchedulingTm4Rank2) * 6 <
+                                   && (x.SchedulingTm3Rank2Old + x.SchedulingTm4Rank2) * 4 <
                                    (x.SchedulingTm2 + x.SchedulingTm3Old + x.SchedulingTm4)
                                    && (x.SchedulingTm2 + x.SchedulingTm3Old + x.SchedulingTm4) >
                                    100000000);

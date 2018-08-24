@@ -11,7 +11,8 @@ namespace Lte.Domain.Common.Wireless.Antenna
         Antenna2T4R,
         Antenna1T1R,
         Antenna2T8R,
-        Antenna4T4R
+        Antenna4T4R,
+        Antenna1T2R
     }
 
     public class AntennaPortsConfigureTransform : ValueResolver<string, AntennaPortsConfigure>
@@ -32,7 +33,8 @@ namespace Lte.Domain.Common.Wireless.Antenna
                 new Tuple<object, string>(AntennaPortsConfigure.Antenna2T2R, "2T2R"),
                 new Tuple<object, string>(AntennaPortsConfigure.Antenna2T4R, "2T4R"),
                 new Tuple<object, string>(AntennaPortsConfigure.Antenna2T8R, "2T8R"),
-                new Tuple<object, string>(AntennaPortsConfigure.Antenna4T4R, "4T4R")
+                new Tuple<object, string>(AntennaPortsConfigure.Antenna4T4R, "4T4R"),
+                new Tuple<object, string>(AntennaPortsConfigure.Antenna1T2R, "1T2R"), 
             };
         }
     }

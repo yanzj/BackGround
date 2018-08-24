@@ -11,6 +11,7 @@ using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Infrastructure;
 using Lte.Domain.Common.Geo;
 using Lte.Domain.Common.Types;
+using Lte.Domain.Common.Wireless.Antenna;
 using Lte.Domain.Excel;
 using Lte.MySqlFramework.Abstract.Cdma;
 using Lte.MySqlFramework.Abstract.Infrastructure;
@@ -137,7 +138,18 @@ namespace Lte.Evaluations.DataService.Dump
         public async Task<int> UpdateCells()
         {
             var info = BasicImportContainer.CellExcels[BasicImportContainer.LteCellIndex];
-            await _cellRepository.UpdateOnly<ICellRepository, Cell, CellExcel>(info);
+            await _cellRepository.UpdateOnly<ICellRepository, Cell, CellExcel>(info,
+                (excel, stat) =>
+                {
+                    stat.AntennaPorts = excel.AntennaInfo.ToUpper().GetEnumType<AntennaPortsConfigure>();
+                    stat.AntennaGain = excel.AntennaGain;
+                    stat.Azimuth = excel.Azimuth;
+                    stat.ETilt = excel.ETilt;
+                    stat.MTilt = excel.MTilt;
+                    stat.Height = excel.Height;
+                    stat.Prach = excel.Prach;
+                    stat.Tac = excel.Tac;
+                });
             BasicImportContainer.LteCellIndex++;
             return BasicImportContainer.LteCellIndex < BasicImportContainer.CellExcels.Count
                 ? BasicImportContainer.LteCellIndex
