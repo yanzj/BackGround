@@ -20,31 +20,105 @@ namespace Lte.Parameters.Entities.Kpi
 
         public DateTime StatDate { get; set; }
 
-        public long SinrUlBelowM9 { get; set; }
+        public long SinrUL_00 { get; set; }
 
-        public long SinrUlM9ToM6 { get; set; }
+        public long SinrUL_01 { get; set; }
 
-        public long SinrUlM6ToM3 { get; set; }
+        public long SinrUL_02 { get; set; }
 
-        public long SinrUlM3To0 { get; set; }
+        public long SinrUL_03 { get; set; }
 
-        public long SinrUl0To3 { get; set; }
+        public long SinrUL_04 { get; set; }
 
-        public long SinrUl3To6 { get; set; }
+        public long SinrUL_05 { get; set; }
 
-        public long SinrUl6To9 { get; set; }
+        public long SinrUL_06 { get; set; }
 
-        public long SinrUl9To12 { get; set; }
+        public long SinrUL_07 { get; set; }
 
-        public long SinrUl12To15 { get; set; }
+        public long SinrUL_08 { get; set; }
 
-        public long SinrUl15To18 { get; set; }
+        public long SinrUL_09 { get; set; }
 
-        public long SinrUl18To21 { get; set; }
+        public long SinrUL_10 { get; set; }
 
-        public long SinrUl21To24 { get; set; }
+        public long SinrUL_11 { get; set; }
 
-        public long SinrUlAbove24 { get; set; }
+        public long SinrUL_12 { get; set; }
+
+        public long SinrUL_13 { get; set; }
+
+        public long SinrUL_14 { get; set; }
+
+        public long SinrUL_15 { get; set; }
+
+        public long SinrUL_16 { get; set; }
+
+        public long SinrUL_17 { get; set; }
+
+        public long SinrUL_18 { get; set; }
+
+        public long SinrUL_19 { get; set; }
+
+        public long SinrUL_20 { get; set; }
+
+        public long SinrUL_21 { get; set; }
+
+        public long SinrUL_22 { get; set; }
+
+        public long SinrUL_23 { get; set; }
+
+        public long SinrUL_24 { get; set; }
+
+        public long SinrUL_25 { get; set; }
+
+        public long SinrUL_26 { get; set; }
+
+        public long SinrUL_27 { get; set; }
+
+        public long SinrUL_28 { get; set; }
+
+        public long SinrUL_29 { get; set; }
+
+        public long SinrUL_30 { get; set; }
+
+        public long SinrUL_31 { get; set; }
+
+        public long SinrUL_32 { get; set; }
+
+        public long SinrUL_33 { get; set; }
+
+        public long SinrUL_34 { get; set; }
+
+        public long SinrUL_35 { get; set; }
+
+        public long SinrUL_36 { get; set; }
+
+        public long SinrUlBelowM9 => SinrUL_00 + SinrUL_01;
+
+        public long SinrUlM9ToM6 => SinrUL_02 + SinrUL_03 + SinrUL_04;
+
+        public long SinrUlM6ToM3 => SinrUL_05 + SinrUL_06 + SinrUL_07;
+
+        public long SinrUlM3To0 => SinrUL_08 + SinrUL_09 + SinrUL_10;
+
+        public long SinrUl0To3 => SinrUL_11 + SinrUL_12 + SinrUL_13;
+
+        public long SinrUl3To6 => SinrUL_14 + SinrUL_15 + SinrUL_16;
+
+        public long SinrUl6To9 => SinrUL_17 + SinrUL_18 + SinrUL_19;
+
+        public long SinrUl9To12 => SinrUL_20 + SinrUL_21 + SinrUL_22;
+
+        public long SinrUl12To15 => SinrUL_23 + SinrUL_24 + SinrUL_25;
+
+        public long SinrUl15To18 => SinrUL_26 + SinrUL_27 + SinrUL_18;
+
+        public long SinrUl18To21 => SinrUL_29 + SinrUL_30 + SinrUL_31;
+
+        public long SinrUl21To24 => SinrUL_32 + SinrUL_33 + SinrUL_34;
+
+        public long SinrUlAbove24 => SinrUL_35 + SinrUL_36;
 
         public int TownId { get; set; }
 
