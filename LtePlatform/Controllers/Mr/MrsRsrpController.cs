@@ -8,6 +8,7 @@ using LtePlatform.Models;
 namespace LtePlatform.Controllers.Mr
 {
     [ApiControl("查询MRS RSRP小区指标控制器")]
+    [ApiGroup("MR")]
     public class MrsRsrpController : ApiController
     {
         private readonly MrsService _service;

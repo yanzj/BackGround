@@ -537,6 +537,8 @@ namespace LtePlatform
 
             ninjectKernel.Bind<SinrUlRegionStatService>().ToSelf();
 
+            ninjectKernel.Bind<HourPrbQueryService>().ToSelf();
+
         }
     }
 }

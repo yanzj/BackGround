@@ -70,6 +70,22 @@ namespace Lte.MySqlFramework.Support
             return zteViews.Concat(huaweiViews).ToList();
         }
 
+        public static IEnumerable<TView> QueryDistrictViews<TView, TStat>(this List<TStat> stats, string city,
+            string district,
+            ITownRepository townRepository, IENodebRepository eNodebRepository)
+            where TStat : ILteCellQuery
+            where TView : class, IENodebName, ILteCellQuery, new()
+        {
+            var eNodebs = townRepository.QueryENodebs(eNodebRepository, city, district);
+            if (!eNodebs.Any())
+            {
+                return new List<TView>();
+            }
+
+            var views = eNodebs.QueryZteViews<TView, TStat>(stats);
+            return views.ToList();
+        }
+
         public static IEnumerable<TView> QueryDistrictKpiViews<TView, TZte, THuawei>(this IENodebRepository eNodebRepository,
             string city, string district, List<TZte> zteStats, List<THuawei> huaweiStats,
             ITownRepository townRepository)

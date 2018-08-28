@@ -335,6 +335,7 @@
     <Compile Include="Controllers\Kpi\SinrUlRegionController.cs" />
     <Compile Include="Controllers\Kpi\TopDoubleFlowController.cs" />
     <Compile Include="Controllers\Kpi\TopFeelingRateController.cs" />
+    <Compile Include="Controllers\Kpi\TopHourPrbController.cs" />
     <Compile Include="Controllers\Mongo\MrsRsrpImportController.cs" />
     <Compile Include="Controllers\Mongo\MrsSinrUlImportController.cs" />
     <Compile Include="Controllers\Mongo\UplinkOpenLoopPowerControlController.cs" />
@@ -350,6 +351,9 @@
     <Compile Include="Controllers\Mr\DumpStationRruController.cs" />
     <Compile Include="Controllers\Mr\GridClusterController.cs" />
     <Compile Include="Controllers\Mr\MrGridKpiController.cs" />
+    <Compile Include="Controllers\Mr\MrsSinrUlController.cs" />
+    <Compile Include="Controllers\Mr\MrsTadvController.cs" />
+    <Compile Include="Controllers\Mr\MrsTadvRsrpController.cs" />
     <Compile Include="Controllers\Mr\TownMrGridController.cs" />
     <Compile Include="Controllers\Parameters\CheckingResultController.cs" />
     <Compile Include="Controllers\Parameters\StationAntennaQueryController.cs" />
@@ -512,7 +516,7 @@
     <Compile Include="Controllers\Mr\InterferenceControllers.cs" />
     <Compile Include="Controllers\Mr\MrGridController.cs" />
     <Compile Include="Controllers\Mr\MroRsrpController.cs" />
-    <Compile Include="Controllers\Mr\MrsControllers.cs" />
+    <Compile Include="Controllers\Mr\MrsPhrController.cs" />
     <Compile Include="Controllers\Mr\MrsRsrpController.cs" />
     <Compile Include="Controllers\Mr\PreciseWorkItemController.cs" />
     <Compile Include="Controllers\Mr\TopCoverageStatController.cs" />

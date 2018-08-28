@@ -323,6 +323,7 @@
     <Compile Include="Concrete\Maintainence\WorkItemRepository.cs" />
     <Compile Include="Concrete\Test\ZhangshangyouCoverageRepository.cs" />
     <Compile Include="Concrete\Test\ZhangshangyouQualityRepository.cs" />
+    <Compile Include="Entities\Kpi\HourPrbView.cs" />
     <Compile Include="Entities\Maintainence\CheckingDetailsView.cs" />
     <Compile Include="Entities\Maintainence\CheckingResultView.cs" />
     <Compile Include="Entities\Mr\DistrictMrsSinrUlView.cs" />

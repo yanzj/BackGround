@@ -9,7 +9,8 @@ using Abp.EntityFramework.Repositories;
 
 namespace Lte.MySqlFramework.Abstract.Kpi
 {
-    public interface IHourPrbRepository : IRepository<HourPrb>, ISaveChanges, IMatchRepository<HourPrb>
+    public interface IHourPrbRepository : IRepository<HourPrb>, ISaveChanges, IMatchRepository<HourPrb>,
+        IFilterTopRepository<HourPrb>
     {
     }
 }
