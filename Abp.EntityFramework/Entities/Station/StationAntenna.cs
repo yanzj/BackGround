@@ -2,6 +2,7 @@
 using Abp.Domain.Entities;
 using Abp.EntityFramework.AutoMapper;
 using Lte.Domain.Common.Geo;
+using Lte.Domain.Common.Transform;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless.Antenna;
 using Lte.Domain.Common.Wireless.Cell;
@@ -13,7 +14,7 @@ namespace Abp.EntityFramework.Entities.Station
 {
     [AutoMapFrom(typeof(StationAntennaExcel))]
     [TypeDoc("集团网优平台天线信息")]
-    public class StationAntenna : Entity, ICellAntenna<double>, IGeoPoint<double>
+    public class StationAntenna : Entity, ICellAntenna<double>, IGeoPoint<double>, IIsInUse
     {
         [MemberDoc("天线编码")]
         public string AntennaNum { get; set; }
@@ -224,5 +225,7 @@ namespace Abp.EntityFramework.Entities.Station
 
         [MemberDoc("自定义3")]
         public string Customize3 { get; set; }
+
+        public bool IsInUse { get; set; }
     }
 }

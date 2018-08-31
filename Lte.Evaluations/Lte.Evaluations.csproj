@@ -128,6 +128,7 @@
     <Compile Include="DataService\Basic\IndoorDistributionService.cs" />
     <Compile Include="DataService\Basic\PlanningQueryService.cs" />
     <Compile Include="DataService\Basic\StationAntennaService.cs" />
+    <Compile Include="DataService\Basic\StationImportService.cs" />
     <Compile Include="DataService\Basic\StationInfoService.cs" />
     <Compile Include="DataService\Basic\StationRruService.cs" />
     <Compile Include="DataService\College\CheckingService.cs" />
@@ -136,7 +137,6 @@
     <Compile Include="DataService\Dt\AreaTestDateService.cs" />
     <Compile Include="DataService\Basic\AlarmsService.cs" />
     <Compile Include="DataService\Basic\BandCellService.cs" />
-    <Compile Include="DataService\Basic\BasicImportContainer.cs" />
     <Compile Include="DataService\Basic\BasicImportService.cs" />
     <Compile Include="DataService\Basic\TownBoundaryService.cs" />
     <Compile Include="DataService\Basic\CdmaCellService.cs" />

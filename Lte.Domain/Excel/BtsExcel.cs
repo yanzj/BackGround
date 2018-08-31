@@ -1,3 +1,4 @@
+using Lte.Domain.Common.Transform;
 using Lte.Domain.Regular.Attributes;
 
 namespace Lte.Domain.Excel

@@ -6,6 +6,7 @@ using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
 using Abp.EntityFramework.AutoMapper;
 using AutoMapper;
+using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
 
 namespace Abp.EntityFramework.Repositories
@@ -178,6 +179,25 @@ namespace Abp.EntityFramework.Repositories
             else
             {
                 stat.MapTo(info);
+            }
+            return repository.SaveChanges();
+        }
+        
+        public static async Task<int> UpdateOneInUse<TRepository, TEntity, TDto>(this TRepository repository, TDto stat)
+            where TRepository : IRepository<TEntity>, IMatchRepository<TEntity, TDto>, ISaveChanges
+            where TEntity : Entity, IIsInUse, new()
+        {
+            var info = repository.Match(stat);
+            if (info == null)
+            {
+                info = stat.MapTo<TEntity>();
+                info.IsInUse = true;
+                await repository.InsertAsync(info);
+            }
+            else
+            {
+                stat.MapTo(info);
+                info.IsInUse = true;
             }
             return repository.SaveChanges();
         }

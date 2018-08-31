@@ -1,6 +1,7 @@
 using System;
 using Abp.Domain.Entities;
 using Abp.EntityFramework.AutoMapper;
+using Lte.Domain.Common.Transform;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless.Antenna;
 using Lte.Domain.Common.Wireless.ENodeb;
@@ -11,7 +12,7 @@ namespace Abp.EntityFramework.Entities.Station
 {
     [AutoMapFrom(typeof(ENodebBaseExcel))]
     [TypeDoc("集团网优平台基站定义")]
-    public class ENodebBase : Entity
+    public class ENodebBase : Entity, IIsInUse
     {
         [MemberDoc("eNBID")]
         public int ENodebId { get; set; }
@@ -159,5 +160,7 @@ namespace Abp.EntityFramework.Entities.Station
 
         [MemberDoc("自定义3")]
         public string Customize3 { get; set; }
+
+        public bool IsInUse { get;set; }
     }
 }

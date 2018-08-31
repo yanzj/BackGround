@@ -13,9 +13,9 @@ namespace LtePlatform.Controllers.Mr
     [ApiGroup("导入")]
     public class DumpStationAntennaController : ApiController
     {
-        private readonly BasicImportService _service;
+        private readonly StationImportService _service;
 
-        public DumpStationAntennaController(BasicImportService service)
+        public DumpStationAntennaController(StationImportService service)
         {
             _service = service;
         }

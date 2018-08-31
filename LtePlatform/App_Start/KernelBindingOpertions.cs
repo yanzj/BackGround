@@ -539,6 +539,8 @@ namespace LtePlatform
 
             ninjectKernel.Bind<HourPrbQueryService>().ToSelf();
 
+            ninjectKernel.Bind<StationImportService>().ToSelf();
+
         }
     }
 }

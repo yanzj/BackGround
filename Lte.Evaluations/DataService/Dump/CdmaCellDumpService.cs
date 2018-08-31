@@ -1,16 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Cdma;
 using Abp.EntityFramework.Repositories;
 using AutoMapper;
 using Lte.Domain.Common.Geo;
+using Lte.Domain.Common.Types;
 using Lte.Domain.Excel;
-using Lte.Evaluations.DataService.Basic;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Cdma;
-using Lte.MySqlFramework.Entities;
 
 namespace Lte.Evaluations.DataService.Dump
 {

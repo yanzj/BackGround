@@ -61,7 +61,7 @@
                 });
         }
     ])
-    .run(function ($rootScope, basicImportService, neighborImportService) {
+    .run(function ($rootScope, basicImportService) {
         $rootScope.rootPath = "/Parameters/BasicImport#/";
         $rootScope.importData = {
             newENodebs: [],
@@ -73,42 +73,6 @@
             vanishedBtsIds: [],
             vanishedCdmaCellIds: [],
             updateMessages: []
-        };
-
-        $rootScope.stationInfo = {
-            totalSuccessItems: 0,
-            totalFailItems: 0,
-            totalDumpItems: 0
-        };
-
-        $rootScope.eNodebInfo = {
-            totalSuccessItems: 0,
-            totalFailItems: 0,
-            totalDumpItems: 0
-        };
-
-        $rootScope.cellInfo = {
-            totalSuccessItems: 0,
-            totalFailItems: 0,
-            totalDumpItems: 0
-        };
-
-        $rootScope.rruInfo = {
-            totalSuccessItems: 0,
-            totalFailItems: 0,
-            totalDumpItems: 0
-        };
-
-        $rootScope.antennaInfo = {
-            totalSuccessItems: 0,
-            totalFailItems: 0,
-            totalDumpItems: 0
-        };
-
-        $rootScope.distributionInfo = {
-            totalSuccessItems: 0,
-            totalFailItems: 0,
-            totalDumpItems: 0
         };
 
         $rootScope.updateDumpHistory = function() {
@@ -138,90 +102,6 @@
                 $rootScope.importData.vanishedCdmaCellIds = data;
             });
 
-            basicImportService.queryStationInfos().then(function(result) {
-                $rootScope.stationInfo.totalDumpItems = result;
-            });
-            basicImportService.queryStationENodebs().then(function (result) {
-                $rootScope.eNodebInfo.totalDumpItems = result;
-            });
-            basicImportService.queryStationCells().then(function (result) {
-                $rootScope.cellInfo.totalDumpItems = result;
-            });
-            basicImportService.queryStationRrus().then(function (result) {
-                $rootScope.rruInfo.totalDumpItems = result;
-            });
-            basicImportService.queryStationAntennas().then(function (result) {
-                $rootScope.antennaInfo.totalDumpItems = result;
-            });
-            basicImportService.queryStationDistributions().then(function (result) {
-                $rootScope.distributionInfo.totalDumpItems = result;
-            });
-        };
-
-        $rootScope.dumpStationItems = function() {
-            basicImportService.dumpStationInfo().then(function(result) {
-                    neighborImportService.updateSuccessProgress(result,
-                        $rootScope.stationInfo,
-                        $rootScope.dumpStationItems);
-                },
-                function() {
-                    neighborImportService.updateFailProgress($rootScope.stationInfo, $rootScope.dumpStationItems);
-                });
-        };
-
-        $rootScope.dumpENodebItems = function () {
-            basicImportService.dumpStationENodeb().then(function (result) {
-                    neighborImportService.updateSuccessProgress(result,
-                        $rootScope.eNodebInfo,
-                        $rootScope.dumpENodebItems);
-                },
-                function () {
-                    neighborImportService.updateFailProgress($rootScope.eNodebInfo, $rootScope.dumpENodebItems);
-                });
-        };
-
-        $rootScope.dumpCellItems = function () {
-            basicImportService.dumpStationCell().then(function (result) {
-                    neighborImportService.updateSuccessProgress(result,
-                        $rootScope.cellInfo,
-                        $rootScope.dumpCellItems);
-                },
-                function () {
-                    neighborImportService.updateFailProgress($rootScope.cellInfo, $rootScope.dumpCellItems);
-                });
-        };
-
-        $rootScope.dumpRruItems = function () {
-            basicImportService.dumpStationRru().then(function (result) {
-                    neighborImportService.updateSuccessProgress(result,
-                        $rootScope.rruInfo,
-                        $rootScope.dumpRruItems);
-                },
-                function () {
-                    neighborImportService.updateFailProgress($rootScope.rruInfo, $rootScope.dumpRruItems);
-                });
-        };
-
-        $rootScope.dumpAntennaItems = function () {
-            basicImportService.dumpStationAntenna().then(function (result) {
-                    neighborImportService.updateSuccessProgress(result,
-                        $rootScope.antennaInfo,
-                        $rootScope.dumpAntennaItems);
-                },
-                function () {
-                    neighborImportService.updateFailProgress($rootScope.antennaInfo, $rootScope.dumpAntennaItems);
-                });
-        };
-
-        $rootScope.dumpDistributionItems = function () {
-            basicImportService.dumpStationDistribution().then(function (result) {
-                    neighborImportService.updateSuccessProgress(result,
-                        $rootScope.distributionInfo,
-                        $rootScope.dumpDistributionItems);
-                },
-                function () {
-                    neighborImportService.updateFailProgress($rootScope.distributionInfo, $rootScope.dumpDistributionItems);
-                });
         };
 
         $rootScope.closeAlert = function(index) {

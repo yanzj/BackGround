@@ -2,6 +2,7 @@ using System;
 using Abp.Domain.Entities;
 using Abp.EntityFramework.AutoMapper;
 using Lte.Domain.Common.Geo;
+using Lte.Domain.Common.Transform;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless.Distribution;
 using Lte.Domain.Common.Wireless.ENodeb;
@@ -12,7 +13,7 @@ namespace Abp.EntityFramework.Entities.Station
 {
     [AutoMapFrom(typeof(IndoorDistributionExcel))]
     [TypeDoc("集团网优平台室分信息")]
-    public class IndoorDistribution : Entity, IGeoPoint<double>
+    public class IndoorDistribution : Entity, IGeoPoint<double>, IIsInUse
     {
         [MemberDoc("室分编码")]
         public string IndoorSerialNum { get; set; }
@@ -179,5 +180,7 @@ namespace Abp.EntityFramework.Entities.Station
 
         [MemberDoc("自定义3")]
         public string Customize3 { get; set; }
+
+        public bool IsInUse { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿angular.module("myApp", ['app.common'])
     .controller("neighbor.import",
-    function ($scope, basicImportService, neighborImportService, flowImportService, mapDialogService) {
+    function ($scope, neighborImportService, flowImportService, mapDialogService) {
             var lastWeek = new Date();
             lastWeek.setDate(lastWeek.getDate() - 7);
             $scope.beginDate = {

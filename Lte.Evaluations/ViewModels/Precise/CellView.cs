@@ -2,6 +2,7 @@ using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Infrastructure;
 using AutoMapper;
+using Lte.Domain.Common.Transform;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Regular.Attributes;
 using Lte.MySqlFramework.Abstract;

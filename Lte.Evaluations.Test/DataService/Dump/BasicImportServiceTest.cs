@@ -6,15 +6,13 @@ using Moq;
 using NUnit.Framework;
 using Shouldly;
 using System.Linq;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Cdma;
 using Abp.EntityFramework.Entities.Infrastructure;
+using Lte.Domain.Common.Types;
 using Lte.Domain.Excel;
 using Lte.Domain.LinqToExcel;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Cdma;
 using Lte.MySqlFramework.Abstract.Infrastructure;
-using Lte.MySqlFramework.Entities;
 
 namespace Lte.Evaluations.DataService.Dump
 {
@@ -32,7 +30,7 @@ namespace Lte.Evaluations.DataService.Dump
         public void TestFixtureSetup()
         {
             _service = new BasicImportService(_eNodebRepository.Object, _cellRepository.Object, _btsRepository.Object,
-                _cdmaCellRepository.Object, null, null, null, null, null, null, null);
+                _cdmaCellRepository.Object, null);
             _eNodebRepository.MockThreeENodebs();
             _btsRepository.MockThreeBtss();
             _cellRepository.MockSixCells();
@@ -169,7 +167,7 @@ namespace Lte.Evaluations.DataService.Dump
             var testDirectory = AppDomain.CurrentDomain.BaseDirectory;
             var excelFilesDirectory = Path.Combine(testDirectory, "ExcelFiles");
             var path = Path.Combine(excelFilesDirectory, "LteCells.xlsx");
-            var service = new BasicImportService(null, null, null, null, null, null, null, null, null, null, null);
+            var service = new BasicImportService(null, null, null, null, null);
             //service.ImportLteParameters(path);
             var repo = new ExcelQueryFactory { FileName = path };
             var cellExcels = (from c in repo.Worksheet<CellExcel>("小区级")
@@ -189,7 +187,7 @@ namespace Lte.Evaluations.DataService.Dump
             var testDirectory = AppDomain.CurrentDomain.BaseDirectory;
             var excelFilesDirectory = Path.Combine(testDirectory, "ExcelFiles");
             var path = Path.Combine(excelFilesDirectory, "LteCells.xlsx");
-            var service = new BasicImportService(null, null, null, null, null, null, null, null, null, null, null);
+            var service = new BasicImportService(null, null, null, null, null);
             BasicImportContainer.CellExcels = service.ImportCellExcels(path);
 
             BasicImportContainer.CellExcels.ShouldNotBeNull();

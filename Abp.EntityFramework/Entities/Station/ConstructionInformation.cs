@@ -1,6 +1,7 @@
 ﻿using System;
 using Abp.Domain.Entities;
 using Abp.EntityFramework.AutoMapper;
+using Lte.Domain.Common.Transform;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless.Antenna;
 using Lte.Domain.Common.Wireless.Cell;
@@ -13,7 +14,7 @@ namespace Abp.EntityFramework.Entities.Station
 {
     [TypeDoc("集团网优平台小区信息")]
     [AutoMapFrom(typeof(ConstructionExcel))]
-    public class ConstructionInformation : Entity
+    public class ConstructionInformation : Entity, IIsInUse
     {
         [MemberDoc("小区标识")]
         public string CellSerialNum { get; set; }
@@ -165,5 +166,7 @@ namespace Abp.EntityFramework.Entities.Station
 
         [MemberDoc("自定义3")]
         public string Customize3 { get; set; }
+
+        public bool IsInUse {get; set; }
     }
 }

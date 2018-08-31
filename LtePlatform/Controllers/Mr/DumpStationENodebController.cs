@@ -13,9 +13,9 @@ namespace LtePlatform.Controllers.Mr
     [ApiGroup("导入")]
     public class DumpStationENodebController : ApiController
     {
-        private readonly BasicImportService _service;
+        private readonly StationImportService _service;
 
-        public DumpStationENodebController(BasicImportService service)
+        public DumpStationENodebController(StationImportService service)
         {
             _service = service;
         }

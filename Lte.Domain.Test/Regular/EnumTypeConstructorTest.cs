@@ -4,6 +4,7 @@ using Lte.Domain.Common.Wireless;
 using NUnit.Framework;
 using System;
 using System.Linq.Expressions;
+using Lte.Domain.Common.Transform;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless.Region;
 

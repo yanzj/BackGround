@@ -2,6 +2,7 @@
 using Abp.Domain.Entities;
 using Abp.EntityFramework.AutoMapper;
 using Lte.Domain.Common.Geo;
+using Lte.Domain.Common.Transform;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Cell;
@@ -15,7 +16,7 @@ namespace Abp.EntityFramework.Entities.Station
 {
     [AutoMapFrom(typeof(StationRruExcel))]
     [TypeDoc("集团网优平台RRU信息")]
-    public class StationRru : Entity, IENodebId, IENodebName, IGeoPoint<double?>
+    public class StationRru : Entity, IENodebId, IENodebName, IGeoPoint<double?>, IIsInUse
     {
         [MemberDoc("RRU标识")]
         public string RruSerialNum { get; set; }
@@ -178,5 +179,7 @@ namespace Abp.EntityFramework.Entities.Station
 
         [MemberDoc("自定义3")]
         public string Customize3 { get; set; }
+
+        public bool IsInUse { get; set; }
     }
 }

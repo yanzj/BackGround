@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Lte.Domain.Common.Types;
 using Lte.Evaluations.DataService.Dt;
 
 namespace LtePlatform.Controllers
@@ -15,6 +16,7 @@ namespace LtePlatform.Controllers
     public class ParametersController : Controller
     {
         private readonly BasicImportService _basicImportService;
+        private readonly StationImportService _stationImportService;
         private readonly AlarmsService _alarmsService;
         private readonly NearestPciCellService _neighborService;
         private readonly MrGridService _mrGridService;
@@ -27,7 +29,7 @@ namespace LtePlatform.Controllers
 
         public ParametersController(BasicImportService basicImportService, AlarmsService alarmsService,
             NearestPciCellService neighborService, MrGridService mrGridService,
-            FlowService flowService, CoverageStatService coverageService,
+            FlowService flowService, CoverageStatService coverageService, StationImportService stationImportService,
             ZhangshangyouQualityService zhangshangyouQualityService, ZhangshangyouCoverageService zhangshangyouCoverageService,
             HourPrbService hourKpiService, HourUsersService hourUsersService)
         {
@@ -37,6 +39,7 @@ namespace LtePlatform.Controllers
             _mrGridService = mrGridService;
             _flowService = flowService;
             _coverageService = coverageService;
+            _stationImportService = stationImportService;
             _zhangshangyouQualityService = zhangshangyouQualityService;
             _zhangshangyouCoverageService = zhangshangyouCoverageService;
             _hourKpiService = hourKpiService;
@@ -125,6 +128,11 @@ namespace LtePlatform.Controllers
         {
             return View();
         }
+        
+        public ActionResult StationImport()
+        {
+            return View();
+        }
 
         [HttpPost]
         public ActionResult LteImportPost()
@@ -161,10 +169,10 @@ namespace LtePlatform.Controllers
             if (dictFile!=null&& dictFile.FileName!="")
             {
                 var dictPath = dictFile.UploadParametersFile();
-                var count = _basicImportService.ImportStationDictionaries(dictPath);
+                var count = _stationImportService.ImportStationDictionaries(dictPath);
                 ViewBag.Message = "共上传集团站点记录" + count + "条";
             } 
-            return View("BasicImport");
+            return View("StationImport");
         }
 
         [HttpPost]
@@ -174,10 +182,10 @@ namespace LtePlatform.Controllers
             if (dictFile != null && dictFile.FileName != "")
             {
                 var dictPath = dictFile.UploadParametersFile();
-                var count = _basicImportService.ImportStationENodebs(dictPath);
+                var count = _stationImportService.ImportStationENodebs(dictPath);
                 ViewBag.Message = "共上传集团基站记录" + count + "条";
             }
-            return View("BasicImport");
+            return View("StationImport");
         }
 
         [HttpPost]
@@ -185,16 +193,16 @@ namespace LtePlatform.Controllers
         {
             if (construction == null || construction.Length <= 0 ||
                 string.IsNullOrEmpty(construction[0]?.FileName))
-                return View("BasicImport");
+                return View("StationImport");
             var count = 0;
             foreach (var dictFile in construction)
             {
                 var dictPath = dictFile.UploadParametersFile();
-                count = _basicImportService.ImportConstructions(dictPath);
+                count = _stationImportService.ImportConstructions(dictPath);
             }
             
             ViewBag.Message = "共上传集团小区记录" + count + "条";
-            return View("BasicImport");
+            return View("StationImport");
         }
 
         [HttpPost]
@@ -202,16 +210,16 @@ namespace LtePlatform.Controllers
         {
             if (stationRru == null || stationRru.Length <= 0 ||
                 string.IsNullOrEmpty(stationRru[0]?.FileName))
-                return View("BasicImport");
+                return View("StationImport");
             var count = 0;
             foreach (var dictFile in stationRru)
             {
                 var dictPath = dictFile.UploadParametersFile();
-                count = _basicImportService.ImportStationRrus(dictPath);
+                count = _stationImportService.ImportStationRrus(dictPath);
             }
             ViewBag.Message = "共上传集团RRU记录" + count + "条";
 
-            return View("BasicImport");
+            return View("StationImport");
         }
 
         [HttpPost]
@@ -219,16 +227,16 @@ namespace LtePlatform.Controllers
         {
             if (stationAntenna == null || stationAntenna.Length <= 0 ||
                 string.IsNullOrEmpty(stationAntenna[0]?.FileName))
-                return View("BasicImport");
+                return View("StationImport");
             var count = 0;
             foreach (var dictFile in stationAntenna)
             {
                 var dictPath = dictFile.UploadParametersFile();
-                count = _basicImportService.ImportStationAntennas(dictPath);
+                count = _stationImportService.ImportStationAntennas(dictPath);
             }
             ViewBag.Message = "共上传集团天线记录" + count + "条";
 
-            return View("BasicImport");
+            return View("StationImport");
         }
 
         [HttpPost]
@@ -238,10 +246,10 @@ namespace LtePlatform.Controllers
             if (distributionFile!=null&&distributionFile.FileName!="")
             {
                 var path = distributionFile.UploadParametersFile();
-                var count = _basicImportService.ImportDistributions(path);
+                var count = _stationImportService.ImportDistributions(path);
                 ViewBag.Message = "共上传室内分布记录" + count + "条";
             }
-            return View("BasicImport");
+            return View("StationImport");
         }
 
         public ActionResult HotSpotPost()

@@ -2,6 +2,7 @@
 using Abp.Domain.Entities;
 using Abp.EntityFramework.AutoMapper;
 using Lte.Domain.Common.Geo;
+using Lte.Domain.Common.Transform;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless.Antenna;
 using Lte.Domain.Common.Wireless.ENodeb;
@@ -13,7 +14,7 @@ namespace Abp.EntityFramework.Entities.Station
 {
     [AutoMapFrom(typeof(StationDictionaryExcel))]
     [TypeDoc("集团定义站址")]
-    public class StationDictionary : Entity, IGeoPoint<double>
+    public class StationDictionary : Entity, IGeoPoint<double>, IIsInUse
     {
         [MemberDoc("站址编码")]
         public string StationNum { get; set; }
@@ -221,5 +222,7 @@ namespace Abp.EntityFramework.Entities.Station
 
         [MemberDoc("自定义3")]
         public string Customize3 { get; set; }
+
+        public bool IsInUse { get; set; }
     }
 }

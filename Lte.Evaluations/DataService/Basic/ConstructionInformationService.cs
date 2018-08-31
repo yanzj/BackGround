@@ -30,12 +30,12 @@ namespace Lte.Evaluations.DataService.Basic
 
         public IEnumerable<ConstructionView> QueryAll()
         {
-            return _repository.GetAllList().MapTo<IEnumerable<ConstructionView>>();
+            return _repository.GetAllList(x => x.IsInUse).MapTo<IEnumerable<ConstructionView>>();
         }
 
         public IEnumerable<ConstructionView> QueryByStationNum(string stationNum)
         {
-            var eNodebs = _baseRepository.GetAllList(x => x.StationNum == stationNum);
+            var eNodebs = _baseRepository.GetAllList(x => x.StationNum == stationNum && x.IsInUse);
             return eNodebs.Any() ? eNodebs.Select(x => _repository.GetAllList(c => c.ENodebId == x.ENodebId))
                 .Aggregate((a, b) => a.Concat(b).ToList()).MapTo<IEnumerable<ConstructionView>>()
                 : new List<ConstructionView>();
@@ -43,7 +43,8 @@ namespace Lte.Evaluations.DataService.Basic
 
         public IEnumerable<ConstructionView> QueryByAntennaNum(string antennaNum)
         {
-            return _repository.GetAllList(x => x.AntennaSerial == antennaNum).MapTo<IEnumerable<ConstructionView>>();
+            return _repository.GetAllList(x => x.AntennaSerial == antennaNum && x.IsInUse)
+                .MapTo<IEnumerable<ConstructionView>>();
         }
 
         public ConstructionView QueryByCellName(string cellName)
@@ -54,7 +55,7 @@ namespace Lte.Evaluations.DataService.Basic
 
         public ConstructionView QueryByCellNum(string cellNum)
         {
-            var item = _repository.FirstOrDefault(x => x.CellSerialNum == cellNum);
+            var item = _repository.FirstOrDefault(x => x.CellSerialNum == cellNum && x.IsInUse);
             return item == null ? null : item.MapTo<ConstructionView>();
         }
 
@@ -70,6 +71,7 @@ namespace Lte.Evaluations.DataService.Basic
             item.RemoteType = remoteTypeDescription.GetEnumType<RemoteType>();
             item.AntennaType = antennaTypeDescription.GetEnumType<AntennaType>();
             item.IsCoAntennaWithOtherCells = coAntennaWithOtherCells == "是";
+            item.IsInUse = true;
             _repository.SaveChanges();
             return true;
         }

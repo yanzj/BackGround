@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 using System.Web.Http;
-using Lte.Evaluations.DataService.Basic;
+using Lte.Domain.Common.Types;
 using Lte.Evaluations.DataService.Dump;
 
 namespace LtePlatform.Controllers.Parameters

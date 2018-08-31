@@ -2030,6 +2030,7 @@
     <Content Include="Scripts\mycharts\combo-examples.js" />
     <Content Include="Scripts\parameters\import\hour.controller.js" />
     <Content Include="Scripts\parameters\import\index.controller.js" />
+    <Content Include="Scripts\parameters\import\station.controller.js" />
     <Content Include="Scripts\parameters\neighbor\import.controller.js" />
     <Content Include="Scripts\plugins\canvas-to-blob.js" />
     <Content Include="Scripts\plugins\canvas-to-blob.min.js" />
@@ -2333,6 +2334,7 @@
     <Content Include="appViews\Parameters\QueryMap.html" />
     <Content Include="appViews\GeneralMenu.html" />
     <Content Include="appViews\Rutrace\Interference\MatchCellDialog.html" />
+    <Content Include="Views\Parameters\StationImport.cshtml" />
     <None Include="Web.20170818.config" />
   </ItemGroup>
   <ItemGroup>

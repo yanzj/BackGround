@@ -1,4 +1,5 @@
 ﻿using System;
+using Lte.Domain.Common.Transform;
 
 namespace Lte.Domain.Regular.Attributes
 {
