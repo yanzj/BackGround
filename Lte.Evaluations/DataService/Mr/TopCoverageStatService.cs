@@ -7,7 +7,6 @@ using Abp.EntityFramework.Entities.Test;
 using Lte.Domain.Common.Wireless.Kpi;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Test;
-using Lte.MySqlFramework.Entities;
 using Lte.MySqlFramework.Entities.Mr;
 using Lte.MySqlFramework.Support;
 using Lte.MySqlFramework.Support.Container;
@@ -37,9 +36,7 @@ namespace Lte.Evaluations.DataService.Mr
                 var stats = queryFunc(beginDate, endDate);
                 if (stats.Any())
                 {
-                    orderResult.AddRange(stats
-                        .Where(x => (double) x.TelecomAbove110 / x.TelecomMrs < 0.8 && x.TelecomMrs > 10000)
-                        .Order(policy, topCount));
+                    orderResult.AddRange(stats.Order(policy, topCount));
                 }
                 beginDate = beginDate.AddDays(1);
                 endDate = beginDate.AddDays(1);
@@ -58,7 +55,9 @@ namespace Lte.Evaluations.DataService.Mr
         {
             return GetTopViews(begin, end, topCount, policy, _eNodebRepository.GetAllList(),
                 (beginDate, endDate) =>
-                    _repository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate));
+                    _repository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                         x.TelecomAbove110 < x.TelecomMrs * 0.6 && x.TelecomMrs > 20000));
         }
 
         public IEnumerable<TopCoverageStatView> GetPartialTopViews(DateTime begin, DateTime end, int topCount,
@@ -67,7 +66,9 @@ namespace Lte.Evaluations.DataService.Mr
             return GetTopViews(begin, end, topCount, policy, eNodebs,
                 (beginDate, endDate) =>
                 {
-                    var stats = _repository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
+                    var stats = _repository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.TelecomAbove110 < x.TelecomMrs * 0.6 && x.TelecomMrs > 20000);
                     return (from q in stats
                             join e in eNodebs on q.ENodebId equals e.ENodebId
                             select q).ToList();

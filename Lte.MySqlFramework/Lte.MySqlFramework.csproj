@@ -348,6 +348,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Query\HourPrbDateSpanQuery.cs" />
     <Compile Include="Query\HuaweiCqiQuery.cs" />
     <Compile Include="Query\HuaweiDateSpanQuery.cs" />
     <Compile Include="Query\HuaweiDoubleFlowQuery.cs" />

@@ -38,17 +38,16 @@ namespace Lte.MySqlFramework.Support
 
     }
 
-    public abstract class FilterLocalDateSpanQuery<TView, TRepository, TStat>
+    public abstract class FilterLocalDateSpanQuery<TView, TRepository, TStat> :
+        DateSpanQuery<TView, TRepository> 
         where TView : class, ILteCellQuery, IENodebName, new()
         where TStat : Entity, ILteCellQuery
         where TRepository : IFilterTopRepository<TStat>
     {
-        protected readonly TRepository Repository;
-        protected readonly IENodebRepository ENodebRepository;
         protected readonly ITownRepository TownRepository;
 
         protected FilterLocalDateSpanQuery(TRepository repository, IENodebRepository eNodebRepository,
-            ITownRepository townRepository)
+            ITownRepository townRepository) : base(repository, eNodebRepository)
         {
             Repository = repository;
             ENodebRepository = eNodebRepository;

@@ -8,7 +8,7 @@ using Lte.MySqlFramework.Abstract.Region;
 
 namespace Lte.MySqlFramework.Support
 {
-    public abstract class DateSpanQuery<T, THuaweiRepository, TZteRepository> 
+    public abstract class  DateSpanQuery<T, THuaweiRepository, TZteRepository> 
         where T : class, new()
     {
         protected readonly THuaweiRepository HuaweiRepository;
@@ -51,6 +51,36 @@ namespace Lte.MySqlFramework.Support
         {
             var query = ConstructQuery(eNodebId, sectorId);
             var list = query?.Query(begin, end);
+            if (list == null) return null;
+            return list.Any() ? list.Average() : null;
+        }
+
+    }
+
+    public abstract class DateSpanQuery<T, TRepository>
+        where T : class, new()
+    {
+        protected TRepository Repository;
+        protected IENodebRepository ENodebRepository;
+        
+        protected DateSpanQuery(TRepository repository, IENodebRepository eNodebRepository)
+        {
+            Repository = repository;
+            ENodebRepository = eNodebRepository;
+        }
+        
+        protected abstract IDateSpanQuery<List<T>> GenerateQuery(int eNodebId, byte sectorId);
+
+        public List<T> Query(int eNodebId, byte sectorId, DateTime begin, DateTime end)
+        {
+            var query = GenerateQuery(eNodebId, sectorId);
+            return query.Query(begin, end);
+        }
+
+        public T QueryAverageView(int eNodebId, byte sectorId, DateTime begin, DateTime end)
+        {
+            var query = GenerateQuery(eNodebId, sectorId);
+            var list = query.Query(begin, end);
             if (list == null) return null;
             return list.Any() ? list.Average() : null;
         }

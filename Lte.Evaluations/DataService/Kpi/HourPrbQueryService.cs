@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
+using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities.Kpi;
 using Lte.Domain.Common.Wireless.Kpi;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Kpi;
 using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Entities.Kpi;
+using Lte.MySqlFramework.Query;
 using Lte.MySqlFramework.Support;
 
 namespace Lte.Evaluations.DataService.Kpi
@@ -63,6 +65,11 @@ namespace Lte.Evaluations.DataService.Kpi
             var joinViews = QueryDistrictViews(city, district, begin, end).ToList();
             var days = (joinViews.Max(x => x.StatTime) - joinViews.Min(x => x.StatTime)).Days + 1;
             return QueryTopViewsByPolicy(joinViews, topCount * days, policy);
+        }
+
+        protected override IDateSpanQuery<List<HourPrbView>> GenerateQuery(int eNodebId, byte sectorId)
+        {
+            return new HourPrbDateSpanQuery(Repository, eNodebId, sectorId);
         }
     }
 }
