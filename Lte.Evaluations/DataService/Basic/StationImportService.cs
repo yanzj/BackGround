@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Abp.EntityFramework.Entities.Infrastructure;
+using Abp.EntityFramework.Entities.Region;
 using Abp.EntityFramework.Entities.Station;
 using Abp.EntityFramework.Repositories;
 using Lte.Domain.Excel;
 using Lte.Domain.LinqToExcel;
+using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Abstract.Station;
 
 namespace Lte.Evaluations.DataService.Basic
@@ -18,6 +22,8 @@ namespace Lte.Evaluations.DataService.Basic
         private readonly IStationAntennaRepository _stationAntennaRepository;
         private readonly IENodebBaseRepository _eNodebBaseRepository;
         private readonly IStationDictionaryRepository _stationDictionary;
+        private readonly IENodebRepository _eNodebRepository;
+        private readonly ITownRepository _townRepository;
         
         private static Stack<StationDictionaryExcel> Stations { get; set; }
 
@@ -43,17 +49,22 @@ namespace Lte.Evaluations.DataService.Basic
 
         public int StationDistributionCount => StationDistributions.Count;
 
+        private static List<Town> Towns { get; set; }
+
         public StationImportService(IDistributionRepository distributionRepository,
-            IENodebBaseRepository eNodebBaseRepository,
+            IENodebBaseRepository eNodebBaseRepository, IENodebRepository eNodebRepository,
             IConstructionInformationRepository constructionInformation, IStationRruRepository stationRruRepository,
-            IStationAntennaRepository stationAntennaRepository, IStationDictionaryRepository stationDictionary)
+            IStationAntennaRepository stationAntennaRepository, IStationDictionaryRepository stationDictionary,
+            ITownRepository townRepository)
         {
             _distributionRepository = distributionRepository;
             _constructionInformation = constructionInformation;
             _stationRruRepository = stationRruRepository;
             _stationAntennaRepository = stationAntennaRepository;
             _eNodebBaseRepository = eNodebBaseRepository;
+            _eNodebRepository = eNodebRepository;
             _stationDictionary = stationDictionary;
+            _townRepository = townRepository;
            
             if (Stations == null) Stations = new Stack<StationDictionaryExcel>();
             if (ENodebBases == null) ENodebBases = new Stack<ENodebBaseExcel>();
@@ -61,6 +72,7 @@ namespace Lte.Evaluations.DataService.Basic
             if (StationRrus == null) StationRrus = new Stack<StationRruExcel>();
             if (StationAntennas == null) StationAntennas = new Stack<StationAntennaExcel>();
             if (StationDistributions == null) StationDistributions = new Stack<IndoorDistributionExcel>();
+            if (Towns == null) Towns = _townRepository.GetAllList();
         }
         
         public int ImportStationDictionaries(string path)
@@ -102,6 +114,36 @@ namespace Lte.Evaluations.DataService.Basic
             if (stat == null) throw new NullReferenceException("stat is null!");
             await _eNodebBaseRepository
                 .UpdateOneInUse<IENodebBaseRepository, ENodebBase, ENodebBaseExcel>(stat);
+            await _eNodebRepository
+                .UpdateOneInUse<IENodebRepository, ENodeb, ENodebBaseExcel, Town>(stat, Towns, excel =>
+                {
+                    if (excel.StationTown != "城区") return excel.StationTown.Replace("金沙", "丹灶");
+                    var candidates = new[] {"石湾", "张槎", "祖庙"};
+                    var result = candidates.FirstOrDefault(x => excel.ENodebName.Contains(x));
+                    if (result != null) return result;
+                    var station = _stationDictionary.FirstOrDefault(x => x.StationNum == excel.StationNum);
+                    if (station == null) return "石湾";
+                    result = candidates.FirstOrDefault(x =>
+                        station.ElementName.Contains(x) || station.Address.Contains(x));
+                    return result ?? "石湾";
+                }, (info, excel) =>
+                {
+                    var station = _stationDictionary.FirstOrDefault(x => x.StationNum == excel.StationNum);
+                    if (station == null) return;
+                    info.Address = station.Address;
+                    if (string.IsNullOrEmpty(info.PlanNum)) info.PlanNum = excel.ProjectSerial;
+                }, excel =>
+                {
+                    var candidates = Towns.Select(x => new {x.TownName, x.Id}).ToList();
+                    var result = candidates.FirstOrDefault(x => excel.ENodebName.Contains(x.TownName));
+                    if (result != null) return result.Id;
+                    var station = _stationDictionary.FirstOrDefault(x => x.StationNum == excel.StationNum);
+                    if (station == null) return -1;
+                    result = candidates.FirstOrDefault(x =>
+                        station.ElementName.Contains(x.TownName) || station.Address.Contains(x.TownName));
+                    if (result != null) return result.Id;
+                    return -1;
+                });
             return true;
         }
 

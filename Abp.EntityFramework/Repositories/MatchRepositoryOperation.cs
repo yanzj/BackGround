@@ -128,6 +128,38 @@ namespace Abp.EntityFramework.Repositories
             return count;
         }
 
+        public static async Task<int> UpdateOneInUse<TRepository, TEntity, TDto, TTown>(this TRepository repository,
+            TDto stat, List<TTown> towns, Func<TDto, string> queryTownFunc, Action<TEntity, TDto> updateAction,
+            Func<TDto, int> searchTownFunc)
+            where TRepository : IRepository<TEntity>, IMatchRepository<TEntity, TDto>, ISaveChanges
+            where TEntity : Entity, IIsInUse, ITownId, new()
+            where TTown : Entity, ITown
+            where TDto : IStationDistrictTown
+        {
+            var info = repository.Match(stat);
+            if (info == null)
+            {
+                info = stat.MapTo<TEntity>();
+                updateAction(info, stat);
+                info.IsInUse = true;
+                var town = towns.FirstOrDefault(x =>
+                    x.DistrictName == stat.StationDistrict && x.TownName == queryTownFunc(stat));
+                info.TownId = town?.Id ?? searchTownFunc(stat);
+                await repository.InsertAsync(info);
+            }
+            else
+            {
+                stat.MapTo(info);
+                updateAction(info, stat);
+                var town = towns.FirstOrDefault(x =>
+                    x.DistrictName == stat.StationDistrict && x.TownName == queryTownFunc(stat));
+                info.TownId = town?.Id ?? searchTownFunc(stat);
+                info.IsInUse = true;
+            }
+
+            return repository.SaveChanges();
+        }
+
         public static int ImportOne<TRepository, TEntity, TDto>(this TRepository repository, TDto stat)
             where TRepository : IRepository<TEntity>, IMatchRepository<TEntity, TDto>, ISaveChanges
             where TEntity : Entity

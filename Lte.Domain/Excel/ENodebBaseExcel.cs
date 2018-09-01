@@ -1,11 +1,13 @@
 ﻿using System;
 using Lte.Domain.Common.Geo;
+using Lte.Domain.Common.Transform;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Regular;
 using Lte.Domain.Regular.Attributes;
 
 namespace Lte.Domain.Excel
 {
-    public class ENodebBaseExcel : IENodebId, IGeoPoint<double?>
+    public class ENodebBaseExcel : IENodebId, IGeoPoint<double?>, IStationDistrictTown
     {
         [ExcelColumn("eNBID")]
         public int ENodebId { get; set; }
@@ -63,12 +65,20 @@ namespace Lte.Domain.Excel
 
         [ExcelColumn("IPV4地址")]
         public string Ipv4Address { get; set; }
+        
+        [ExcelColumn("IPV4地址", TransformEnum.IpAddress)]
+        [MemberDoc("IPV4地址")]
+        public IpAddress Ip { get; set; } = new IpAddress("0.0.0.0");
 
         [ExcelColumn("子网掩码")]
         public string SubNetMask { get; set; }
 
         [ExcelColumn("网关地址")]
         public string GatewayIp { get; set; }
+        
+        [ExcelColumn("网关地址", TransformEnum.IpAddress)]
+        [MemberDoc("网关地址")]
+        public IpAddress GatewayIpAddress { get; set; } = new IpAddress("0.0.0.0");
 
         [ExcelColumn("S1配置带宽(Mbps)")]
         public double? S1Bandwidth { get; set; }
@@ -123,6 +133,8 @@ namespace Lte.Domain.Excel
 
         [ExcelColumn("频段标识")]
         public string BandClass { get; set; }
+
+        public bool IsFdd => BandClass != "2.6G";
 
         [ExcelColumn("业务类型")]
         public string ServiceType { get; set; }

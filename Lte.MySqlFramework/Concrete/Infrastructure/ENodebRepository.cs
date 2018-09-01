@@ -3,6 +3,7 @@ using System.Linq;
 using Abp.EntityFramework;
 using Abp.EntityFramework.Entities.Infrastructure;
 using Abp.EntityFramework.Repositories;
+using Lte.Domain.Excel;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 
 namespace Lte.MySqlFramework.Concrete.Infrastructure
@@ -21,6 +22,11 @@ namespace Lte.MySqlFramework.Concrete.Infrastructure
 
         public ENodebRepository(IDbContextProvider<MySqlContext> dbContextProvider) : base(dbContextProvider)
         {
+        }
+
+        public ENodeb Match(ENodebBaseExcel stat)
+        {
+            return FirstOrDefault(x => x.ENodebId == stat.ENodebId);
         }
     }
 }

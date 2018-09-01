@@ -16,6 +16,14 @@ namespace Lte.Domain.Common.Wireless
 
         string Town { get; set; }
     }
+    
+    public interface IStationDistrictTown
+    {
+        string StationDistrict { get; set; }
+
+        string StationTown { get; set; }
+        
+    }
 
     public interface ICityDistrictTown : IDistrictTown
     {

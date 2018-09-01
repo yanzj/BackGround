@@ -89,7 +89,7 @@
             };
             
             $scope.initENodebItems = function() {
-                basicImportService.resetENodebInfo().then(function(result) {
+                basicImportService.resetStationENodeb().then(function(result) {
 
                 });
             };
@@ -106,7 +106,7 @@
             };
             
             $scope.initCellItems = function() {
-                basicImportService.resetCellInfo().then(function(result) {
+                basicImportService.resetStationCell().then(function(result) {
 
                 });
             };
@@ -123,7 +123,7 @@
             };
             
             $scope.initRruItems = function() {
-                basicImportService.resetRruInfo().then(function(result) {
+                basicImportService.resetStationRru().then(function(result) {
 
                 });
             };
@@ -140,7 +140,7 @@
             };
 
             $scope.initAntennaItems = function() {
-                basicImportService.resetAntennaInfo().then(function(result) {
+                basicImportService.resetStationAntenna().then(function(result) {
 
                 });
             };
@@ -157,7 +157,7 @@
             };
             
             $scope.initDistributionItems = function() {
-                basicImportService.resetDistributionInfo().then(function(result) {
+                basicImportService.resetStationDistribution().then(function(result) {
 
                 });
             };
