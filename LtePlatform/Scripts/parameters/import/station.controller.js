@@ -71,6 +71,12 @@
                     });
             };
 
+            $scope.initStationItems = function() {
+                basicImportService.resetStationInfo().then(function(result) {
+
+                });
+            };
+
             $scope.dumpENodebItems = function() {
                 basicImportService.dumpStationENodeb().then(function(result) {
                         neighborImportService.updateSuccessProgress(result,
@@ -80,6 +86,12 @@
                     function() {
                         neighborImportService.updateFailProgress($scope.eNodebInfo, $scope.dumpENodebItems);
                     });
+            };
+            
+            $scope.initENodebItems = function() {
+                basicImportService.resetENodebInfo().then(function(result) {
+
+                });
             };
 
             $scope.dumpCellItems = function() {
@@ -92,6 +104,12 @@
                         neighborImportService.updateFailProgress($scope.cellInfo, $scope.dumpCellItems);
                     });
             };
+            
+            $scope.initCellItems = function() {
+                basicImportService.resetCellInfo().then(function(result) {
+
+                });
+            };
 
             $scope.dumpRruItems = function() {
                 basicImportService.dumpStationRru().then(function(result) {
@@ -102,6 +120,12 @@
                     function() {
                         neighborImportService.updateFailProgress($scope.rruInfo, $scope.dumpRruItems);
                     });
+            };
+            
+            $scope.initRruItems = function() {
+                basicImportService.resetRruInfo().then(function(result) {
+
+                });
             };
 
             $scope.dumpAntennaItems = function() {
@@ -115,6 +139,12 @@
                     });
             };
 
+            $scope.initAntennaItems = function() {
+                basicImportService.resetAntennaInfo().then(function(result) {
+
+                });
+            };
+
             $scope.dumpDistributionItems = function() {
                 basicImportService.dumpStationDistribution().then(function(result) {
                         neighborImportService.updateSuccessProgress(result,
@@ -126,6 +156,12 @@
                     });
             };
             
+            $scope.initDistributionItems = function() {
+                basicImportService.resetDistributionInfo().then(function(result) {
+
+                });
+            };
+
             $scope.updateDumpHistory();
 
         });

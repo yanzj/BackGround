@@ -1348,11 +1348,17 @@ angular.module('region.import', ['app.core'])
                 dumpStationInfo: function () {
                     return generalHttpService.putApiData('DumpStationInfo', {});
                 },
+                resetStationInfo: function () {
+                    return generalHttpService.deleteApiData('StationInfoReset', {});
+                },
                 queryStationENodebs: function () {
                     return generalHttpService.getApiData('DumpStationENodeb', {});
                 },
                 dumpStationENodeb: function () {
                     return generalHttpService.putApiData('DumpStationENodeb', {});
+                },
+                resetStationENodeb: function () {
+                    return generalHttpService.deleteApiData('StationENodebReset', {});
                 },
                 queryStationCells: function () {
                     return generalHttpService.getApiData('DumpStationCell', {});
@@ -1360,11 +1366,17 @@ angular.module('region.import', ['app.core'])
                 dumpStationCell: function () {
                     return generalHttpService.putApiData('DumpStationCell', {});
                 },
+                resetStationCell: function () {
+                    return generalHttpService.deleteApiData('StationCellReset', {});
+                },
                 queryStationRrus: function () {
                     return generalHttpService.getApiData('DumpStationRru', {});
                 },
                 dumpStationRru: function () {
                     return generalHttpService.putApiData('DumpStationRru', {});
+                },
+                resetStationRru: function () {
+                    return generalHttpService.deleteApiData('StationRruReset', {});
                 },
                 queryStationAntennas: function () {
                     return generalHttpService.getApiData('DumpStationAntenna', {});
@@ -1372,11 +1384,17 @@ angular.module('region.import', ['app.core'])
                 dumpStationAntenna: function () {
                     return generalHttpService.putApiData('DumpStationAntenna', {});
                 },
+                resetStationAntenna: function () {
+                    return generalHttpService.deleteApiData('StationAntennaReset', {});
+                },
                 queryStationDistributions: function () {
                     return generalHttpService.getApiData('DumpStationDistribution', {});
                 },
                 dumpStationDistribution: function () {
                     return generalHttpService.putApiData('DumpStationDistribution', {});
+                },
+                resetStationDistribution: function () {
+                    return generalHttpService.deleteApiData('StationDistributionReset', {});
                 }
             };
         })
