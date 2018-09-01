@@ -1,13 +1,7 @@
 ﻿using Abp.EntityFramework.AutoMapper;
-using Lte.MySqlFramework.Abstract;
-using Lte.MySqlFramework.Entities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Lte.Domain.Common.Types;
-using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Antenna;
 using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Common.Wireless.ENodeb;
@@ -49,14 +43,53 @@ namespace Lte.Evaluations.DataService.Basic
 
         public ConstructionView QueryByCellName(string cellName)
         {
-            var item = _repository.FirstOrDefault(x => x.CellName == cellName);
+            var item = _repository.FirstOrDefault(x => x.CellName == cellName && x.IsInUse);
             return item == null ? null : item.MapTo<ConstructionView>();
+        }
+        
+        public bool ResetByCellName(string cellName)
+        {
+            var item = _repository.FirstOrDefault(x => x.CellName == cellName && x.IsInUse);
+            if (item == null) return false;
+            item.IsInUse = false;
+            _repository.SaveChanges();
+            return true;
         }
 
         public ConstructionView QueryByCellNum(string cellNum)
         {
             var item = _repository.FirstOrDefault(x => x.CellSerialNum == cellNum && x.IsInUse);
             return item == null ? null : item.MapTo<ConstructionView>();
+        }
+        
+        public bool ResetByCellNum(string cellNum)
+        {
+            var item = _repository.FirstOrDefault(x => x.CellSerialNum == cellNum && x.IsInUse);
+            if (item == null) return false;
+            item.IsInUse = false;
+            _repository.SaveChanges();
+            return true;
+        }
+        
+        public bool ResetBySerialNumber(string serialNumber)
+        {
+            var item = _repository.FirstOrDefault(x => x.CellSerialNum == serialNumber && x.IsInUse);
+            if (item == null) return false;
+            item.IsInUse = false;
+            _repository.SaveChanges();
+            return true;
+        }
+
+        public bool ResetAll()
+        {
+            var items = _repository.GetAll();
+            foreach (var item in items)
+            {
+                item.IsInUse = false;
+            }
+
+            _repository.SaveChanges();
+            return true;
         }
 
         public bool Update(string serialNumber, string eNodebFactoryDescription, string duplexingDescription,

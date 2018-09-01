@@ -1,13 +1,7 @@
 ﻿using Abp.EntityFramework.AutoMapper;
-using Lte.MySqlFramework.Abstract;
-using Lte.MySqlFramework.Entities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Lte.Domain.Common.Types;
-using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.ENodeb;
 using Lte.Domain.Common.Wireless.Station;
 using Lte.MySqlFramework.Abstract.Station;
@@ -26,41 +20,74 @@ namespace Lte.Evaluations.DataService.Basic
 
         public IEnumerable<StationRruView> QueryAll()
         {
-            return _repository.GetAllList().MapTo<IEnumerable<StationRruView>>();
+            return _repository.GetAllList(x => x.IsInUse).MapTo<IEnumerable<StationRruView>>();
         }
 
         public IEnumerable<StationRruView> QueryByStationNum(string stationNum)
         {
-            return _repository.GetAllList(x => x.StationNum == stationNum).MapTo<IEnumerable<StationRruView>>();
+            return _repository.GetAllList(x => x.StationNum == stationNum && x.IsInUse)
+                .MapTo<IEnumerable<StationRruView>>();
         }
 
         public IEnumerable<StationRruView> QueryRange(double west, double east, double south, double north)
         {
             return
                 _repository.GetAllList(
-                        x => x.Longtitute >= west && x.Longtitute < east && x.Lattitute >= south && x.Lattitute < north)
+                        x => x.Longtitute >= west && x.Longtitute < east && x.Lattitute >= south &&
+                             x.Lattitute < north && x.IsInUse)
                     .MapTo<IEnumerable<StationRruView>>();
         }
 
         public IEnumerable<StationRruView> QueryBySerialNum(string serialNum)
         {
             var items =
-                _repository.GetAllList(x => x.CellSerialNum.Contains(serialNum));
+                _repository.GetAllList(x => x.CellSerialNum.Contains(serialNum) && x.IsInUse);
             return items.MapTo<IEnumerable<StationRruView>>();
         }
 
         public StationRruView QueryByRruNum(string rruNum)
         {
             var item =
-                _repository.FirstOrDefault(x => x.RruSerialNum == rruNum);
+                _repository.FirstOrDefault(x => x.RruSerialNum == rruNum && x.IsInUse);
             return item?.MapTo<StationRruView>();
         }
-
+        
         public StationRruView QueryByENodebIdAndRackId(int eNodebId, int rackId)
         {
-            var items = _repository.GetAllList(x => x.ENodebId == eNodebId);
+            var items = _repository.GetAllList(x => x.ENodebId == eNodebId && x.IsInUse);
             var item = items.FirstOrDefault(x => x.RackId == rackId);
             return item?.MapTo<StationRruView>();
+        }
+        
+        public bool ResetByENodebIdAndRackId(int eNodebId, int rackId)
+        {
+            var items = _repository.GetAllList(x => x.ENodebId == eNodebId && x.IsInUse);
+            var item = items.FirstOrDefault(x => x.RackId == rackId);
+            if (item == null) return false;
+            item.IsInUse = false;
+            _repository.SaveChanges();
+            return true;
+        }
+
+        public bool ResetBySerialNumber(string serialNumber)
+        {
+            var item = _repository.FirstOrDefault(x => x.RruSerialNum == serialNumber && x.IsInUse);
+            if (item == null) return false;
+            item.IsInUse = false;
+            _repository.SaveChanges();
+            return true;
+        }
+        
+        public bool ResetAll()
+        {
+            var items = _repository.GetAll();
+            foreach (var item in items)
+            {
+                item.IsInUse = false;
+            }
+
+            _repository.SaveChanges();
+            return true;
         }
 
         public bool UpdateBasicInfo(string rruNum, string eNodebFactoryDescription, string duplexingDescription,

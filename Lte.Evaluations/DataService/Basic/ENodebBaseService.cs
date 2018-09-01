@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Abp.EntityFramework.AutoMapper;
 using Lte.Domain.Common.Types;
-using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Antenna;
 using Lte.Domain.Common.Wireless.ENodeb;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Station;
-using Lte.MySqlFramework.Entities;
 using Lte.MySqlFramework.Entities.Infrastructure;
 
 namespace Lte.Evaluations.DataService.Basic
@@ -29,35 +22,59 @@ namespace Lte.Evaluations.DataService.Basic
             return string.IsNullOrEmpty(searchText)
                 ? new List<ENodebBaseView>()
                 : _repository.GetAllList(
-                        x => x.ENodebName.Contains(searchText)
-                             || x.ENodebSerial.Contains(searchText)
-                             || x.ProjectSerial.Contains(searchText)
-                             || x.StationNum.Contains(searchText)
-                             || x.StationName.Contains(searchText))
+                        x => (x.ENodebName.Contains(searchText)
+                              || x.ENodebSerial.Contains(searchText)
+                              || x.ProjectSerial.Contains(searchText)
+                              || x.StationNum.Contains(searchText)
+                              || x.StationName.Contains(searchText)) && x.IsInUse)
                     .MapTo<IEnumerable<ENodebBaseView>>();
         }
 
         public IEnumerable<ENodebBaseView> QueryAll()
         {
-            return _repository.GetAllList().MapTo<IEnumerable<ENodebBaseView>>();
+            return _repository.GetAllList(x => x.IsInUse).MapTo<IEnumerable<ENodebBaseView>>();
         }
 
         public IEnumerable<ENodebBaseView> QueryByStationNum(string stationNum)
         {
-            return _repository.GetAllList(x => x.StationNum == stationNum).MapTo<IEnumerable<ENodebBaseView>>();
+            return _repository.GetAllList(x => x.StationNum == stationNum && x.IsInUse)
+                .MapTo<IEnumerable<ENodebBaseView>>();
         }
 
         public ENodebBaseView QueryByENodebName(string eNodebName)
         {
-            return _repository.FirstOrDefault(x => x.ENodebFormalName == eNodebName)?.MapTo<ENodebBaseView>();
+            return _repository.FirstOrDefault(x => x.ENodebFormalName == eNodebName && x.IsInUse)
+                ?.MapTo<ENodebBaseView>();
+        }
+        
+        public bool ResetByENodebName(string eNodebName)
+        {
+            var item = _repository.FirstOrDefault(x => x.ENodebFormalName == eNodebName && x.IsInUse);
+            if (item == null) return false;
+            item.IsInUse = false;
+            _repository.SaveChanges();
+            return true;
         }
 
         public IEnumerable<ENodebBaseView> QueryRange(double west, double east, double south, double north)
         {
             return
                 _repository.GetAllList(
-                        x => x.Longtitute >= west && x.Longtitute < east && x.Lattitute >= south && x.Lattitute < north)
+                        x => x.Longtitute >= west && x.Longtitute < east && x.Lattitute >= south &&
+                             x.Lattitute < north && x.IsInUse)
                     .MapTo<IEnumerable<ENodebBaseView>>();
+        }
+        
+        public bool ResetAll()
+        {
+            var items = _repository.GetAll();
+            foreach (var item in items)
+            {
+                item.IsInUse = false;
+            }
+
+            _repository.SaveChanges();
+            return true;
         }
 
         public bool UpdateENodebBasicInfo(int eNodebId, string eNodebFactoryDescription, string duplexingDescription,

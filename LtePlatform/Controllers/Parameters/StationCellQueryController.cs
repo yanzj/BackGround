@@ -1,10 +1,6 @@
 ﻿using Lte.Evaluations.DataService.Basic;
-using Lte.MySqlFramework.Entities;
 using LtePlatform.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
 using Lte.MySqlFramework.Entities.Infrastructure;
 
@@ -58,7 +54,7 @@ namespace LtePlatform.Controllers.Parameters
 
         [HttpGet]
         [ApiDoc("根据小区标识查询小区记录")]
-        [ApiParameterDoc("cellName", "小区标识")]
+        [ApiParameterDoc("cellNum", "小区标识")]
         [ApiResponse("小区记录")]
         public ConstructionView GetByCellNum(string cellNum)
         {

@@ -71,35 +71,67 @@ namespace Lte.Evaluations.DataService.Basic
             _repository.SaveChanges();
             return true;
         }
+        
+        public bool ResetBySerialNumber(string serialNumber)
+        {
+            var item = _repository.FirstOrDefault(x => x.StationNum == serialNumber && x.IsInUse);
+            if (item == null) return false;
+            item.IsInUse = false;
+            _repository.SaveChanges();
+            return true;
+        }
 
         public IEnumerable<StationDictionaryView> QueryAll()
         {
-            return _repository.GetAllList().MapTo<IEnumerable<StationDictionaryView>>();
+            return _repository.GetAllList(x => x.IsInUse).MapTo<IEnumerable<StationDictionaryView>>();
         }
 
         public IEnumerable<StationDictionaryView> QueryByDistrict(string district)
         {
             return
-                _repository.GetAllList(x => x.StationDistrict == district).MapTo<IEnumerable<StationDictionaryView>>();
+                _repository.GetAllList(x => x.StationDistrict == district && x.IsInUse)
+                    .MapTo<IEnumerable<StationDictionaryView>>();
         }
 
         public IEnumerable<StationDictionaryView> QueryRange(double west, double east, double south, double north)
         {
             return
                 _repository.GetAllList(
-                        x => x.Longtitute >= west && x.Longtitute < east && x.Lattitute >= south && x.Lattitute < north)
+                        x => x.Longtitute >= west && x.Longtitute < east && x.Lattitute >= south &&
+                             x.Lattitute < north && x.IsInUse)
                     .MapTo<IEnumerable<StationDictionaryView>>();
         }
 
         public StationDictionaryView QueryOneByStationDistrictAndName(string district, string stationName)
         {
-            return _repository.FirstOrDefault(x => x.ElementName.Contains(stationName) && x.StationDistrict == district)
+            return _repository.FirstOrDefault(x =>
+                    x.ElementName.Contains(stationName) && x.StationDistrict == district && x.IsInUse)
                 .MapTo<StationDictionaryView>();
+        }
+        
+        public bool ResetOneByStationDistrictAndName(string district, string stationName)
+        {
+            var item = _repository.FirstOrDefault(x =>
+                x.ElementName.Contains(stationName) && x.StationDistrict == district && x.IsInUse);
+            if (item == null) return false;
+            item.IsInUse = false;
+            _repository.SaveChanges();
+            return true;
         }
 
         public StationDictionaryView QueryOneByStationName(string stationName)
         {
-            return _repository.FirstOrDefault(x => x.ElementName.Contains(stationName)).MapTo<StationDictionaryView>();
+            return _repository.FirstOrDefault(x => x.ElementName.Contains(stationName) && x.IsInUse)
+                .MapTo<StationDictionaryView>();
+        }
+        
+        public bool ResetOneByStationName(string stationName)
+        {
+            var item = _repository.FirstOrDefault(x => x.ElementName.Contains(stationName) && x.IsInUse);
+            if (item == null) return false;
+            item.IsInUse = false;
+            _repository.SaveChanges();
+            return true;
         }
 
         public StationDictionaryView QueryOneByENodebId(int eNodebId)
@@ -107,7 +139,31 @@ namespace Lte.Evaluations.DataService.Basic
             var eNodeb = _eNodebBaseRepository.FirstOrDefault(x => x.ENodebId == eNodebId);
             return eNodeb == null
                 ? null
-                : _repository.FirstOrDefault(x => x.StationNum == eNodeb.StationNum).MapTo<StationDictionaryView>();
+                : _repository.FirstOrDefault(x => x.StationNum == eNodeb.StationNum && x.IsInUse)
+                    .MapTo<StationDictionaryView>();
+        }
+        
+        public bool ResetOneByENodebId(int eNodebId)
+        {
+            var eNodeb = _eNodebBaseRepository.FirstOrDefault(x => x.ENodebId == eNodebId);
+            if (eNodeb ==null) return false;
+            var item = _repository.FirstOrDefault(x => x.StationNum == eNodeb.StationNum && x.IsInUse);
+            if (item == null) return false;
+            item.IsInUse = false;
+            _repository.SaveChanges();
+            return true;
+        }
+
+        public bool ResetAll()
+        {
+            var items = _repository.GetAll();
+            foreach (var item in items)
+            {
+                item.IsInUse = false;
+            }
+
+            _repository.SaveChanges();
+            return true;
         }
     }
 }

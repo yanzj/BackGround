@@ -1,13 +1,6 @@
 ﻿using Abp.EntityFramework.AutoMapper;
-using Lte.MySqlFramework.Abstract;
-using Lte.MySqlFramework.Entities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Lte.Domain.Common.Types;
-using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Antenna;
 using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Common.Wireless.Region;
@@ -27,20 +20,43 @@ namespace Lte.Evaluations.DataService.Basic
 
         public IEnumerable<StationAntennaView> QueryAll()
         {
-            return _repository.GetAllList().MapTo<IEnumerable<StationAntennaView>>();
+            return _repository.GetAllList(x => x.IsInUse).MapTo<IEnumerable<StationAntennaView>>();
         }
 
         public IEnumerable<StationAntennaView> QueryByStationNum(string stationNum)
         {
-            return _repository.GetAllList(x => x.StationNum == stationNum).MapTo<IEnumerable<StationAntennaView>>();
+            return _repository.GetAllList(x => x.StationNum == stationNum && x.IsInUse)
+                .MapTo<IEnumerable<StationAntennaView>>();
         }
 
         public IEnumerable<StationAntennaView> QueryRange(double west, double east, double south, double north)
         {
             return
                 _repository.GetAllList(
-                        x => x.Longtitute >= west && x.Longtitute < east && x.Lattitute >= south && x.Lattitute < north)
+                        x => x.Longtitute >= west && x.Longtitute < east && x.Lattitute >= south &&
+                             x.Lattitute < north && x.IsInUse)
                     .MapTo<IEnumerable<StationAntennaView>>();
+        }
+
+        public bool ResetBySerialNumber(string serialNumber)
+        {
+            var item = _repository.FirstOrDefault(x => x.AntennaNum == serialNumber && x.IsInUse);
+            if (item == null) return false;
+            item.IsInUse = false;
+            _repository.SaveChanges();
+            return true;
+        }
+        
+        public bool ResetAll()
+        {
+            var items = _repository.GetAll();
+            foreach (var item in items)
+            {
+                item.IsInUse = false;
+            }
+
+            _repository.SaveChanges();
+            return true;
         }
 
         public bool UpdateNumericInfo(string serialNumber, double azimuth, double eTilt, double mTilt,

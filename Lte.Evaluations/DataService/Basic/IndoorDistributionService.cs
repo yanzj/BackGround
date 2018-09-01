@@ -1,13 +1,7 @@
 ﻿using Abp.EntityFramework.AutoMapper;
-using Lte.MySqlFramework.Abstract;
-using Lte.MySqlFramework.Entities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Lte.Domain.Common.Types;
-using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Distribution;
 using Lte.MySqlFramework.Abstract.Station;
 using Lte.MySqlFramework.Entities.Maintainence;
@@ -30,29 +24,50 @@ namespace Lte.Evaluations.DataService.Basic
 
         public IEnumerable<IndoorDistributionView> QueryAll()
         {
-            return _repository.GetAllList().MapTo<IEnumerable<IndoorDistributionView>>();
+            return _repository.GetAllList(x => x.IsInUse).MapTo<IEnumerable<IndoorDistributionView>>();
         }
 
         public IEnumerable<IndoorDistributionView> QueryRange(double west, double east, double south, double north)
         {
             return
                 _repository.GetAllList(
-                        x => x.Longtitute >= west && x.Longtitute < east && x.Lattitute >= south && x.Lattitute < north)
+                        x => x.Longtitute >= west && x.Longtitute < east && x.Lattitute >= south &&
+                             x.Lattitute < north && x.IsInUse)
                     .MapTo<IEnumerable<IndoorDistributionView>>();
         }
 
         public IndoorDistributionView QueryByRruNum(string rruNum)
         {
             var item =
-                _repository.FirstOrDefault(x => x.RruSerialNum.Contains(rruNum));
+                _repository.FirstOrDefault(x => x.RruSerialNum.Contains(rruNum) && x.IsInUse);
             return item?.MapTo<IndoorDistributionView>();
+        }
+        
+        public bool ResetByRruNum(string rruNum)
+        {
+            var item =
+                _repository.FirstOrDefault(x => x.RruSerialNum.Contains(rruNum) && x.IsInUse);
+            if (item == null) return false;
+            item.IsInUse = false;
+            _repository.SaveChanges();
+            return true;
         }
 
         public IndoorDistributionView QueryByCellNum(string cellNum)
         {
             var item =
-                _repository.FirstOrDefault(x => x.CellSerialNum.Contains(cellNum));
+                _repository.FirstOrDefault(x => x.CellSerialNum.Contains(cellNum) && x.IsInUse);
             return item?.MapTo<IndoorDistributionView>();
+        }
+        
+        public bool ResetByCellNum(string cellNum)
+        {
+            var item =
+                _repository.FirstOrDefault(x => x.CellSerialNum.Contains(cellNum) && x.IsInUse);
+            if (item == null) return false;
+            item.IsInUse = false;
+            _repository.SaveChanges();
+            return true;
         }
 
         public IEnumerable<IndoorDistributionView> QueryByStationNum(string stationNum)
@@ -63,11 +78,32 @@ namespace Lte.Evaluations.DataService.Basic
                     _cellRepository.GetAllList(c => c.ENodebId == x.ENodebId && c.IndoorDistributionSerial != null))
                 .Aggregate((a, b) => a.Concat(b).ToList());
             return cells.Any()
-                ? cells.Select(c => _repository.GetAllList(x => x.CellSerialNum == c.CellSerialNum))
+                ? cells.Select(c => _repository.GetAllList(x => x.CellSerialNum == c.CellSerialNum && x.IsInUse))
                     .Aggregate((a, b) => a.Concat(b).ToList()).MapTo<IEnumerable<IndoorDistributionView>>()
                 : new List<IndoorDistributionView>();
         }
         
+        public bool ResetBySerialNumber(string serialNumber)
+        {
+            var item = _repository.FirstOrDefault(x => x.IndoorSerialNum == serialNumber && x.IsInUse);
+            if (item == null) return false;
+            item.IsInUse = false;
+            _repository.SaveChanges();
+            return true;
+        }
+        
+        public bool ResetAll()
+        {
+            var items = _repository.GetAll();
+            foreach (var item in items)
+            {
+                item.IsInUse = false;
+            }
+
+            _repository.SaveChanges();
+            return true;
+        }
+
         public bool UpdatePositionInfo(string serialNumber, string address, double longtitute, double lattitute,
             string indoorCategoryDescription, string checkingAddress)
         {

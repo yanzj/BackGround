@@ -1,10 +1,6 @@
 ﻿using Lte.Evaluations.DataService.Basic;
-using Lte.MySqlFramework.Entities;
 using LtePlatform.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
 using Lte.MySqlFramework.Entities.Infrastructure;
 
@@ -30,7 +26,7 @@ namespace LtePlatform.Controllers.Parameters
         }
 
         [HttpGet]
-        [ApiDoc("根据站点编号查询记录")]
+        [ApiDoc("根据站编号查询记录")]
         [ApiParameterDoc("stationNum", "站点编号")]
         [ApiResponse("符合条件的记录")]
         public IEnumerable<StationRruView> GetByStationNum(string stationNum)
