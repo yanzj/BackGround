@@ -115,6 +115,8 @@ namespace Lte.Domain.Excel
         [ExcelColumn("天线编码")]
         public string AntennaSerial { get; set; }
 
+        public bool IsOutdoor => !string.IsNullOrEmpty(AntennaSerial);
+
         [ExcelColumn("室分编码")]
         public string IndoorDistributionSerial { get; set; }
 

@@ -23,6 +23,7 @@ namespace Lte.Evaluations.DataService.Basic
         private readonly IENodebBaseRepository _eNodebBaseRepository;
         private readonly IStationDictionaryRepository _stationDictionary;
         private readonly IENodebRepository _eNodebRepository;
+        private readonly ICellRepository _cellRepository;
         private readonly ITownRepository _townRepository;
         
         private static Stack<StationDictionaryExcel> Stations { get; set; }
@@ -55,7 +56,7 @@ namespace Lte.Evaluations.DataService.Basic
             IENodebBaseRepository eNodebBaseRepository, IENodebRepository eNodebRepository,
             IConstructionInformationRepository constructionInformation, IStationRruRepository stationRruRepository,
             IStationAntennaRepository stationAntennaRepository, IStationDictionaryRepository stationDictionary,
-            ITownRepository townRepository)
+            ITownRepository townRepository, ICellRepository cellRepository)
         {
             _distributionRepository = distributionRepository;
             _constructionInformation = constructionInformation;
@@ -65,6 +66,7 @@ namespace Lte.Evaluations.DataService.Basic
             _eNodebRepository = eNodebRepository;
             _stationDictionary = stationDictionary;
             _townRepository = townRepository;
+            _cellRepository = cellRepository;
            
             if (Stations == null) Stations = new Stack<StationDictionaryExcel>();
             if (ENodebBases == null) ENodebBases = new Stack<ENodebBaseExcel>();
@@ -117,7 +119,7 @@ namespace Lte.Evaluations.DataService.Basic
             await _eNodebRepository
                 .UpdateOneInUse<IENodebRepository, ENodeb, ENodebBaseExcel, Town>(stat, Towns, excel =>
                 {
-                    if (excel.StationTown != "城区") return excel.StationTown.Replace("金沙", "丹灶");
+                    if (excel.StationTown != "城区") return excel.StationTown.Replace("金沙", "丹灶").Replace("小塘", "狮山");
                     var candidates = new[] {"石湾", "张槎", "祖庙"};
                     var result = candidates.FirstOrDefault(x => excel.ENodebName.Contains(x));
                     if (result != null) return result;
@@ -165,6 +167,29 @@ namespace Lte.Evaluations.DataService.Basic
             if (stat == null) throw new NullReferenceException("stat is null!");
             await _constructionInformation
                 .UpdateOneInUse<IConstructionInformationRepository, ConstructionInformation, ConstructionExcel>(stat);
+            await _cellRepository
+                .UpdateOneInUse<ICellRepository, Cell, ConstructionExcel>(stat,
+                    (info, excel) =>
+                    {
+                        if (!excel.IsOutdoor)
+                        {
+                            var distribution = _distributionRepository.FirstOrDefault(x =>
+                                x.IndoorSerialNum == excel.IndoorDistributionSerial);
+                            if (distribution == null) return;
+                            info.Longtitute = distribution.Longtitute;
+                            info.Lattitute = distribution.Lattitute;
+                        }
+                        var antenna =
+                            _stationAntennaRepository.FirstOrDefault(x => x.AntennaNum == excel.AntennaSerial);
+                        if (antenna == null) return;
+                        info.ETilt = antenna.ETilt;
+                        info.MTilt = antenna.MTilt;
+                        info.Height = antenna.Height;
+                        info.Azimuth = antenna.Azimuth;
+                        info.Longtitute = antenna.Longtitute;
+                        info.Lattitute = antenna.Lattitute;
+                        info.AntennaGain = excel.BandClass == 5 ? antenna.AntennaGainLow : antenna.AntennaGainHigh;
+                    });
             return true;
         }
 

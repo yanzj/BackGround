@@ -233,6 +233,28 @@ namespace Abp.EntityFramework.Repositories
             }
             return repository.SaveChanges();
         }
+        
+        public static async Task<int> UpdateOneInUse<TRepository, TEntity, TDto>(this TRepository repository, TDto stat,
+            Action<TEntity, TDto> updateAction)
+            where TRepository : IRepository<TEntity>, IMatchRepository<TEntity, TDto>, ISaveChanges
+            where TEntity : Entity, IIsInUse, new()
+        {
+            var info = repository.Match(stat);
+            if (info == null)
+            {
+                info = stat.MapTo<TEntity>();
+                info.IsInUse = true;
+                updateAction(info, stat);
+                await repository.InsertAsync(info);
+            }
+            else
+            {
+                stat.MapTo(info);
+                updateAction(info, stat);
+                info.IsInUse = true;
+            }
+            return repository.SaveChanges();
+        }
 
         public static async Task<int> UpdateOnly<TRepository, TEntity, TDto>(this TRepository repository, TDto stat,
             Action<TDto, TEntity> updateAction)

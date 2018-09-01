@@ -6,7 +6,8 @@ using Lte.Domain.Excel;
 
 namespace Lte.MySqlFramework.Abstract.Infrastructure
 {
-    public interface ICellRepository : IRepository<Cell>, IMatchRepository<Cell, CellExcel>, ISaveChanges
+    public interface ICellRepository : IRepository<Cell>, IMatchRepository<Cell, CellExcel>, ISaveChanges,
+        IMatchRepository<Cell, ConstructionExcel>
     {
         Cell GetBySectorId(int eNodebId, byte sectorId);
 

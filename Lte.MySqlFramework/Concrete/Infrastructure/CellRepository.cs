@@ -55,5 +55,10 @@ namespace Lte.MySqlFramework.Concrete.Infrastructure
         {
             return FirstOrDefault(x => x.ENodebId == stat.ENodebId && x.SectorId == stat.SectorId);
         }
+
+        public Cell Match(ConstructionExcel stat)
+        {
+            return FirstOrDefault(x => x.ENodebId == stat.ENodebId && x.SectorId == stat.SectorId);
+        }
     }
 }

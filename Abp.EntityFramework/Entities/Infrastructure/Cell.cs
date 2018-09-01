@@ -12,8 +12,8 @@ using Lte.Domain.Regular.Attributes;
 namespace Abp.EntityFramework.Entities.Infrastructure
 {
     [TypeDoc("定义LTE小区数据库中对应的ORM对象")]
-    [AutoMapFrom(typeof(CellExcel))]
-    public class Cell : Entity, ILteCellParameters<short, int>, ILteCellQuery, IGeoPoint<double>, ICellAntenna<double>
+    [AutoMapFrom(typeof(CellExcel), typeof(ConstructionExcel))]
+    public class Cell : Entity, ILteCellParameters<short, int>, ILteCellQuery, IGeoPoint<double>, ICellAntenna<double>, IIsInUse
     {
         [MemberDoc("基站编号")]
         public int ENodebId { get; set; }
@@ -22,6 +22,7 @@ namespace Abp.EntityFramework.Entities.Infrastructure
         public byte SectorId { get; set; }
 
         [MemberDoc("本地小区编号")]
+        [AutoMapPropertyResolve("LocalCellId", typeof(ConstructionExcel))]
         public byte LocalSectorId { get; set; }
 
         [MemberDoc("频点号，目前2.1G主要用100频点，1.8G主要用1825频点，800M主要用2446频点")]
@@ -37,7 +38,7 @@ namespace Abp.EntityFramework.Entities.Infrastructure
         public short Prach { get; set; }
 
         [MemberDoc("参考信号(Reference Signal)功率，单位是dBm")]
-        public double RsPower { get; set; }
+        public double RsPower { get; set; } = 17.5;
 
         [AutoMapPropertyResolve("IsIndoor", typeof(CellExcel), typeof(IndoorDescriptionToOutdoorBoolTransform))]
         [MemberDoc("是否为室外小区")]

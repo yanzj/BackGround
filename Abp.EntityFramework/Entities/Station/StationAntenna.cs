@@ -8,6 +8,7 @@ using Lte.Domain.Common.Wireless.Antenna;
 using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Common.Wireless.Region;
 using Lte.Domain.Excel;
+using Lte.Domain.Regular;
 using Lte.Domain.Regular.Attributes;
 
 namespace Abp.EntityFramework.Entities.Station
@@ -135,6 +136,15 @@ namespace Abp.EntityFramework.Entities.Station
 
         [MemberDoc("天线增益(dBi)")]
         public string AntennaGain { get; set; }
+        
+        public string[] AntennaGainArray =>
+            string.IsNullOrEmpty(AntennaGain) ? new string[] { } : AntennaGain.GetSplittedFields('/');
+
+        public double AntennaGainHigh => AntennaGainArray.Length > 1
+            ? AntennaGainArray[1].ConvertToDouble(17.5)
+            : (AntennaGainArray.Length > 0 ? AntennaGainArray[0].ConvertToDouble(17.5) : 17.5);
+
+        public double AntennaGainLow => AntennaGainArray.Length > 0 ? AntennaGainArray[0].ConvertToDouble(15) : 15;
 
         [MemberDoc("天线水平半功率角(度) ")]
         public string HorizontalHalfDegree { get; set; }
