@@ -93,6 +93,12 @@ namespace Lte.Evaluations.DataService.Basic
                     .MapTo<IEnumerable<StationDictionaryView>>();
         }
 
+        public IEnumerable<StationDictionaryView> QueryByNameText(string nameText)
+        {
+            return _repository.GetAllList(x => x.ElementName.Contains(nameText) && x.IsInUse)
+                .MapTo<IEnumerable<StationDictionaryView>>();
+        }
+
         public IEnumerable<StationDictionaryView> QueryRange(double west, double east, double south, double north)
         {
             return

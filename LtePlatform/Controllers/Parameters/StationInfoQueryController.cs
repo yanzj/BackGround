@@ -33,6 +33,15 @@ namespace LtePlatform.Controllers.Parameters
         {
             return _service.QueryByDistrict(district);
         }
+        
+        [HttpGet]
+        [ApiDoc("按照站址名称模糊匹配查询站址信息")]
+        [ApiParameterDoc("nameText", "站址名称")]
+        [ApiResponse("站址信息")]
+        public IEnumerable<StationDictionaryView> QueryByNameText(string nameText)
+        {
+            return _service.QueryByNameText(nameText);
+        }
 
         [HttpGet]
         [ApiDoc("查询经纬度范围内的记录")]

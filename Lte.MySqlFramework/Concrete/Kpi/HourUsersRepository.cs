@@ -21,5 +21,10 @@ namespace Lte.MySqlFramework.Concrete.Kpi
             return FirstOrDefault(x =>
                 x.StatTime == stat.StatTime && x.ENodebId == stat.ENodebId && x.SectorId == stat.SectorId);
         }
+
+        public List<HourUsers> FilterTopList(DateTime begin, DateTime end)
+        {
+            return GetAllList(x => x.StatTime >= begin && x.StatTime < end);
+        }
     }
 }

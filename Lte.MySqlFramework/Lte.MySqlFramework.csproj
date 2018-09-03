@@ -324,6 +324,7 @@
     <Compile Include="Concrete\Test\ZhangshangyouCoverageRepository.cs" />
     <Compile Include="Concrete\Test\ZhangshangyouQualityRepository.cs" />
     <Compile Include="Entities\Kpi\HourPrbView.cs" />
+    <Compile Include="Entities\Kpi\HourUsersView.cs" />
     <Compile Include="Entities\Maintainence\CheckingDetailsView.cs" />
     <Compile Include="Entities\Maintainence\CheckingResultView.cs" />
     <Compile Include="Entities\Mr\DistrictMrsSinrUlView.cs" />
@@ -349,6 +350,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Query\HourPrbDateSpanQuery.cs" />
+    <Compile Include="Query\HourUsersDateSpanQuery.cs" />
     <Compile Include="Query\HuaweiCqiQuery.cs" />
     <Compile Include="Query\HuaweiDateSpanQuery.cs" />
     <Compile Include="Query\HuaweiDoubleFlowQuery.cs" />
