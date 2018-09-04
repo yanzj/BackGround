@@ -1416,6 +1416,9 @@ angular.module('region.import', ['app.core'])
                 queryHourUserses: function () {
                     return generalHttpService.getApiData('DumpHourUsers', {});
                 },
+                queryHourCqis: function () {
+                    return generalHttpService.getApiData('DumpHourCqi', {});
+                },
 
                 clearDumpHuaweis: function() {
                     return generalHttpService.deleteApiData('DumpHuaweiFlow');
@@ -1432,6 +1435,9 @@ angular.module('region.import', ['app.core'])
                 clearDumpHourUserses: function () {
                     return generalHttpService.deleteApiData('DumpHourUsers');
                 },
+                clearDumpHourCqis: function () {
+                    return generalHttpService.deleteApiData('DumpHourCqi');
+                },
 
                 dumpHuaweiItem: function() {
                     return generalHttpService.putApiData('DumpHuaweiFlow', {});
@@ -1447,6 +1453,9 @@ angular.module('region.import', ['app.core'])
                 },
                 dumpHourUserses: function () {
                     return generalHttpService.putApiData('DumpHourUsers', {});
+                },
+                dumpHourCqis: function () {
+                    return generalHttpService.putApiData('DumpHourCqi', {});
                 },
 
                 queryHuaweiStat: function(index) {

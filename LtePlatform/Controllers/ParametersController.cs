@@ -26,12 +26,13 @@ namespace LtePlatform.Controllers
         private readonly ZhangshangyouCoverageService _zhangshangyouCoverageService;
         private readonly HourPrbService _hourKpiService;
         private readonly HourUsersService _hourUsersService;
+        private readonly HourCqiService _hourCqiService;
 
         public ParametersController(BasicImportService basicImportService, AlarmsService alarmsService,
             NearestPciCellService neighborService, MrGridService mrGridService,
             FlowService flowService, CoverageStatService coverageService, StationImportService stationImportService,
             ZhangshangyouQualityService zhangshangyouQualityService, ZhangshangyouCoverageService zhangshangyouCoverageService,
-            HourPrbService hourKpiService, HourUsersService hourUsersService)
+            HourPrbService hourKpiService, HourUsersService hourUsersService, HourCqiService hourCqiService)
         {
             _basicImportService = basicImportService;
             _alarmsService = alarmsService;
@@ -44,6 +45,7 @@ namespace LtePlatform.Controllers
             _zhangshangyouCoverageService = zhangshangyouCoverageService;
             _hourKpiService = hourKpiService;
             _hourUsersService = hourUsersService;
+            _hourCqiService = hourCqiService;
         }
         
         public ActionResult AlarmImport()
@@ -369,6 +371,19 @@ namespace LtePlatform.Controllers
                 foreach (var file in hourUsers)
                 {
                     _hourUsersService.UploadUserses(new StreamReader(file.InputStream, Encoding.GetEncoding("GB2312")));
+                }
+            }
+            return View("HourKpiImport");
+        }
+        
+        public ActionResult HourCqiPost(HttpPostedFileBase[] hourCqi)
+        {
+            if (hourCqi != null && hourCqi.Length > 0 && !string.IsNullOrEmpty(hourCqi[0]?.FileName))
+            {
+                ViewBag.Message = "共上传忙时CQI优良比信息文件" + hourCqi.Length + "个！";
+                foreach (var file in hourCqi)
+                {
+                    _hourCqiService.UploadCqis(new StreamReader(file.InputStream, Encoding.GetEncoding("GB2312")));
                 }
             }
             return View("HourKpiImport");

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Lte.Domain.Common.Types;
 using Lte.Domain.LinqToCsv;
+using Lte.Domain.LinqToCsv.Context;
+using Lte.Domain.LinqToCsv.Description;
 
 namespace Lte.Domain.Common.Wireless.Kpi
 {
@@ -71,9 +74,16 @@ namespace Lte.Domain.Common.Wireless.Kpi
         public int Cqi15Times { get; set; }
         
         [CsvColumn(Name = "12.1 下行实际占用的PRB总数(个)")]
-        public int TotalPrbs { get; set; }
+        public double TotalPrbs { get; set; }
 
         [CsvColumn(Name = "12.1 下行双流模式调度的PRB总数(个)")]
-        public int DoubleFlowPrbs { get; set; }
+        public long DoubleFlowPrbs { get; set; }
+        
+        public static List<HourCqiCsv> ReadCsvs(StreamReader reader)
+        {
+            return
+                CsvContext.Read<HourCqiCsv>(reader, CsvFileDescription.CommaDescription)
+                    .ToList();
+        }
     }
 }

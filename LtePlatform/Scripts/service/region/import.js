@@ -196,6 +196,9 @@
                 queryHourUserses: function () {
                     return generalHttpService.getApiData('DumpHourUsers', {});
                 },
+                queryHourCqis: function () {
+                    return generalHttpService.getApiData('DumpHourCqi', {});
+                },
 
                 clearDumpHuaweis: function() {
                     return generalHttpService.deleteApiData('DumpHuaweiFlow');
@@ -212,6 +215,9 @@
                 clearDumpHourUserses: function () {
                     return generalHttpService.deleteApiData('DumpHourUsers');
                 },
+                clearDumpHourCqis: function () {
+                    return generalHttpService.deleteApiData('DumpHourCqi');
+                },
 
                 dumpHuaweiItem: function() {
                     return generalHttpService.putApiData('DumpHuaweiFlow', {});
@@ -227,6 +233,9 @@
                 },
                 dumpHourUserses: function () {
                     return generalHttpService.putApiData('DumpHourUsers', {});
+                },
+                dumpHourCqis: function () {
+                    return generalHttpService.putApiData('DumpHourCqi', {});
                 },
 
                 queryHuaweiStat: function(index) {

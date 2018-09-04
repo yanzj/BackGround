@@ -22,6 +22,11 @@
                 totalFailItems: 0,
                 totalDumpItems: 0
             };
+            $scope.cqiInfo = {
+                totalSuccessItems: 0,
+                totalFailItems: 0,
+                totalDumpItems: 0
+            };
             $scope.clearPrbItems = function() {
                 flowImportService.clearDumpHourPrbs().then(function() {
                     $scope.prbInfo.totalDumpItems = 0;
@@ -34,6 +39,13 @@
                     $scope.usersInfo.totalDumpItems = 0;
                     $scope.usersInfo.totalSuccessItems = 0;
                     $scope.usersInfo.totalFailItems = 0;
+                });
+            };
+            $scope.clearCqiItems = function() {
+                flowImportService.clearDumpHourCqis().then(function() {
+                    $scope.cqiInfo.totalDumpItems = 0;
+                    $scope.cqiInfo.totalSuccessItems = 0;
+                    $scope.cqiInfo.totalFailItems = 0;
                 });
             };
             $scope.dumpPrbItems = function() {
@@ -52,6 +64,14 @@
                         neighborImportService.updateFailProgress($scope.usersInfo, $scope.dumpUsersItems);
                     });
             };
+            $scope.dumpCqiItems = function() {
+                flowImportService.dumpHourCqis().then(function(result) {
+                        neighborImportService.updateSuccessProgress(result, $scope.cqiInfo, $scope.dumpCqiItems);
+                    },
+                    function() {
+                        neighborImportService.updateFailProgress($scope.cqiInfo, $scope.dumpCqiItems);
+                    });
+            };
 
             $scope.updateDumpHistory = function() {
                 flowImportService.queryHourPrbs().then(function(result) {
@@ -59,6 +79,9 @@
                 });
                 flowImportService.queryHourUserses().then(function(result) {
                     $scope.usersInfo.totalDumpItems = result;
+                });
+                flowImportService.queryHourCqis().then(function(result) {
+                    $scope.cqiInfo.totalDumpItems = result;
                 });
                 flowImportService.queryHourDumpHistory($scope.beginDate.value, $scope.endDate.value).then(
                     function(result) {

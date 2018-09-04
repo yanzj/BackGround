@@ -147,6 +147,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\Kpi\IHourCqiRepository.cs" />
     <Compile Include="Abstract\Kpi\IHourPrbRepository.cs" />
     <Compile Include="Abstract\Kpi\IHourUsersRepository.cs" />
     <Compile Include="Abstract\Maintainence\ICheckingBasicRepository.cs" />
@@ -243,6 +244,7 @@
     <Compile Include="Abstract\Test\IZhangshangyouQualityRepository.cs" />
     <Compile Include="Abstract\Region\TownBoundaryQuery.cs" />
     <Compile Include="Abstract\Region\TownQueries.cs" />
+    <Compile Include="Concrete\Kpi\HourCqiRepository.cs" />
     <Compile Include="Concrete\Kpi\HourPrbRepository.cs" />
     <Compile Include="Concrete\Kpi\HourUsersRepository.cs" />
     <Compile Include="Concrete\Maintainence\AlarmWorkItemRepository.cs" />
@@ -337,13 +339,13 @@
     <Compile Include="Entities\RegionKpi\DistrictHourUsersView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourPrbView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourUsersView.cs" />
-    <Compile Include="Migrations\201808311345413_Update_Staion_InUse.cs" />
-    <Compile Include="Migrations\201808311345413_Update_Staion_InUse.Designer.cs">
-      <DependentUpon>201808311345413_Update_Staion_InUse.cs</DependentUpon>
+    <Compile Include="Migrations\201809041327318_Add_Hour_Cqi1.cs" />
+    <Compile Include="Migrations\201809041327318_Add_Hour_Cqi1.Designer.cs">
+      <DependentUpon>201809041327318_Add_Hour_Cqi1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809040928402_Add_Hour_Cqi.cs" />
-    <Compile Include="Migrations\201809040928402_Add_Hour_Cqi.Designer.cs">
-      <DependentUpon>201809040928402_Add_Hour_Cqi.cs</DependentUpon>
+    <Compile Include="Migrations\201809041334096_Add_Hour_Cqi2.cs" />
+    <Compile Include="Migrations\201809041334096_Add_Hour_Cqi2.Designer.cs">
+      <DependentUpon>201809041334096_Add_Hour_Cqi2.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -461,11 +463,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808311345413_Update_Staion_InUse.resx">
-      <DependentUpon>201808311345413_Update_Staion_InUse.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809041327318_Add_Hour_Cqi1.resx">
+      <DependentUpon>201809041327318_Add_Hour_Cqi1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809040928402_Add_Hour_Cqi.resx">
-      <DependentUpon>201809040928402_Add_Hour_Cqi.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809041334096_Add_Hour_Cqi2.resx">
+      <DependentUpon>201809041334096_Add_Hour_Cqi2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

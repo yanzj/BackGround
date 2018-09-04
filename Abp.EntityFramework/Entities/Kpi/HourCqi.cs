@@ -77,9 +77,9 @@ namespace Abp.EntityFramework.Entities.Kpi
         public int Cqi15Times { get; set; }
         
         [MemberDoc("12.1 下行实际占用的PRB总数(个)")]
-        public int TotalPrbs { get; set; }
+        public double TotalPrbs { get; set; }
 
         [MemberDoc("12.1 下行双流模式调度的PRB总数(个)")]
-        public int DoubleFlowPrbs { get; set; }
+        public long DoubleFlowPrbs { get; set; }
     }
 }
