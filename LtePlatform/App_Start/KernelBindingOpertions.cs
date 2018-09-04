@@ -319,6 +319,8 @@ namespace LtePlatform
 
             ninjectKernel.Bind<IHourCqiRepository>().To<HourCqiRepository>();
 
+            ninjectKernel.Bind<ITownHourCqiRepository>().To<TownHourCqiRepository>();
+
             ninjectKernel.Bind<CdmaRegionStatService>().ToSelf();
 
             ninjectKernel.Bind<CollegeStatService>().ToSelf();
@@ -546,6 +548,8 @@ namespace LtePlatform
             ninjectKernel.Bind<HourUsersQueryService>().ToSelf();
 
             ninjectKernel.Bind<HourCqiService>().ToSelf();
+
+            ninjectKernel.Bind<TownHourCqiService>().ToSelf();
 
         }
     }

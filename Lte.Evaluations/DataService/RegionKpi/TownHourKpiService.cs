@@ -13,14 +13,19 @@ namespace Lte.Evaluations.DataService.RegionKpi
         private readonly TownHourPrbService _prbService;
         private readonly ITownHourUsersRepository _townHourUsersRepository;
         private readonly TownHourUsersService _usersService;
+        private readonly ITownHourCqiRepository _townHourCqiRepository;
+        private readonly TownHourCqiService _cqiService;
 
         public TownHourKpiService(ITownHourPrbRepository townHourPrbRepository, TownHourPrbService prbService,
-            ITownHourUsersRepository townHourUsersRepository, TownHourUsersService usersService)
+            ITownHourUsersRepository townHourUsersRepository, TownHourUsersService usersService,
+            ITownHourCqiRepository townHourCqiRepository, TownHourCqiService cqiService)
         {
             _townHourPrbRepository = townHourPrbRepository;
             _prbService = prbService;
             _townHourUsersRepository = townHourUsersRepository;
             _usersService = usersService;
+            _townHourCqiRepository = townHourCqiRepository;
+            _cqiService = cqiService;
         }
 
         public async Task<int[]> GenerateTownStats(DateTime statDate)
@@ -46,7 +51,17 @@ namespace Lte.Evaluations.DataService.RegionKpi
                 }
                 item2 = _townHourUsersRepository.SaveChanges();
             }
-            return new [] { item1, item2 };
+            var item3 = _townHourCqiRepository.Count(x => x.StatDate >= statDate && x.StatDate < end);
+            if (item3 == 0)
+            {
+                var townList = _cqiService.GetTownCqiStats(statDate);
+                foreach (var stat in townList.GetDateMergeStats(statDate))
+                {
+                    await _townHourCqiRepository.InsertAsync(stat);
+                }
+                item3 = _townHourCqiRepository.SaveChanges();
+            }
+            return new [] { item1, item2, item3 };
         }
 
     }

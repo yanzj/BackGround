@@ -18,14 +18,19 @@ namespace Lte.Evaluations.DataService.Kpi
         private readonly ITownHourPrbRepository _townPrbRepository;
         private readonly IHourUsersRepository _usersRepository;
         private readonly ITownHourUsersRepository _townUsersRepository;
+        private readonly IHourCqiRepository _cqiRepository;
+        private readonly ITownHourCqiRepository _townCqiRepository;
 
         public HourKpiService(IHourPrbRepository prbRepository, ITownHourPrbRepository townPrbRepository,
-            IHourUsersRepository usersRepository, ITownHourUsersRepository townUsersRepository)
+            IHourUsersRepository usersRepository, ITownHourUsersRepository townUsersRepository,
+            IHourCqiRepository cqiRepository, ITownHourCqiRepository townCqiRepository)
         {
             _prbRepository = prbRepository;
             _townPrbRepository = townPrbRepository;
             _usersRepository = usersRepository;
             _townUsersRepository = townUsersRepository;
+            _cqiRepository = cqiRepository;
+            _townCqiRepository = townCqiRepository;
         }
 
 
@@ -44,13 +49,19 @@ namespace Lte.Evaluations.DataService.Kpi
                     await _usersRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
                 var townUserses =
                     await _townUsersRepository.CountAsync(x => x.StatDate >= beginDate && x.StatDate < endDate);
+                var cqiItems =
+                    await _cqiRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
+                var townCqis =
+                    await _townCqiRepository.CountAsync(x => x.StatDate >= beginDate && x.StatDate < endDate);
                 results.Add(new HourKpiHistory
                 {
                     DateString = begin.ToShortDateString(),
                     PrbItems = prbItems,
                     TownPrbs = townPrbs,
                     UsersItems = usersItems,
-                    TownUserses = townUserses
+                    TownUserses = townUserses,
+                    CqiItems = cqiItems,
+                    TownCqis = townCqis
                 });
                 begin = begin.AddDays(1);
             }

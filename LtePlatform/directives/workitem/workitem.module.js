@@ -144,7 +144,9 @@ angular.module('workitem.module.feedback', ['ui.grid', 'myApp.kpi'])
                     { field: 'prbItems', name: 'PRB利用率' },
                     { field: 'townPrbs', name: '镇-PRB利用率' },
                     { field: 'usersItems', name: '用户数' },
-                    { field: 'townUserses', name: '镇-用户数' }
+                    { field: 'townUserses', name: '镇-用户数' },
+                    { field: 'cqiItems', name: 'CQI优良率' },
+                    { field: 'townCqis', name: '镇-CQI优良率' }
                 ],
                 data: []
             };

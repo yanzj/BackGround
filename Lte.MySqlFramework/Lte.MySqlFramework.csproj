@@ -155,6 +155,7 @@
     <Compile Include="Abstract\Maintainence\ICheckingProjectRepository.cs" />
     <Compile Include="Abstract\College\ICollegeRepository.cs" />
     <Compile Include="Abstract\Cdma\ICdmaRegionStatRepository.cs" />
+    <Compile Include="Abstract\RegionKpi\ITownHourCqiRepository.cs" />
     <Compile Include="Abstract\RegionKpi\ITownHourPrbRepository.cs" />
     <Compile Include="Abstract\RegionKpi\ITownHourUsersRepository.cs" />
     <Compile Include="Abstract\Test\ICollege3GTestRepository.cs" />
@@ -248,6 +249,7 @@
     <Compile Include="Concrete\Kpi\HourPrbRepository.cs" />
     <Compile Include="Concrete\Kpi\HourUsersRepository.cs" />
     <Compile Include="Concrete\Maintainence\AlarmWorkItemRepository.cs" />
+    <Compile Include="Concrete\RegionKpi\TownHourCqiRepository.cs" />
     <Compile Include="Concrete\RegionKpi\TownHourPrbRepository.cs" />
     <Compile Include="Concrete\RegionKpi\TownHourUsersRepository.cs" />
     <Compile Include="Concrete\Test\AreaTestInfoRepository.cs" />
@@ -337,15 +339,16 @@
     <Compile Include="Entities\Maintainence\WorkItemView.cs" />
     <Compile Include="Entities\RegionKpi\DistrictHourPrbView.cs" />
     <Compile Include="Entities\RegionKpi\DistrictHourUsersView.cs" />
+    <Compile Include="Entities\RegionKpi\TownHourCqiView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourPrbView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourUsersView.cs" />
-    <Compile Include="Migrations\201809041327318_Add_Hour_Cqi1.cs" />
-    <Compile Include="Migrations\201809041327318_Add_Hour_Cqi1.Designer.cs">
-      <DependentUpon>201809041327318_Add_Hour_Cqi1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201809041334096_Add_Hour_Cqi2.cs" />
     <Compile Include="Migrations\201809041334096_Add_Hour_Cqi2.Designer.cs">
       <DependentUpon>201809041334096_Add_Hour_Cqi2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809041411478_Add_Town_Hour_Cqi.cs" />
+    <Compile Include="Migrations\201809041411478_Add_Town_Hour_Cqi.Designer.cs">
+      <DependentUpon>201809041411478_Add_Town_Hour_Cqi.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -463,11 +466,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809041327318_Add_Hour_Cqi1.resx">
-      <DependentUpon>201809041327318_Add_Hour_Cqi1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809041334096_Add_Hour_Cqi2.resx">
       <DependentUpon>201809041334096_Add_Hour_Cqi2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809041411478_Add_Town_Hour_Cqi.resx">
+      <DependentUpon>201809041411478_Add_Town_Hour_Cqi.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
