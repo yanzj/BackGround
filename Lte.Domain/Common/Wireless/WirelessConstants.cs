@@ -211,7 +211,7 @@ namespace Lte.Domain.Common.Wireless
                     "OrderDoubleFlowPolicy", OrderDoubleFlowPolicyTuples.GetTuples()
                 },
                 {
-                    "OrderUsersStatPolicyTuples", OrderUsersStatPolicyTuples.GetTuples()
+                    "OrderUsersStatPolicy", OrderUsersStatPolicyTuples.GetTuples()
                 }
             };
     }

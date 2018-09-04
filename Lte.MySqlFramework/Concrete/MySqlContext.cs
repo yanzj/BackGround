@@ -210,5 +210,7 @@ namespace Lte.MySqlFramework.Concrete
 
         public DbSet<TownHourUsers> TownHourUserses { get; set; }
 
+        public DbSet<HourCqi> HourCqis { get; set; }
+
     }
 }

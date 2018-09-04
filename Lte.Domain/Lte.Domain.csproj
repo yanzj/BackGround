@@ -112,6 +112,7 @@
     <Compile Include="Common\Transform\YesToBoolTransform.cs" />
     <Compile Include="Common\Transform\ZeroBoolTransform.cs" />
     <Compile Include="Common\Wireless\Cell\FrequencyBandType.cs" />
+    <Compile Include="Common\Wireless\Kpi\HourCqiCsv.cs" />
     <Compile Include="Common\Wireless\Kpi\HourPrbCsv.cs" />
     <Compile Include="Common\Wireless\Kpi\HourUsersCsv.cs" />
     <Compile Include="Common\Wireless\Kpi\OrderDoubleFlowPolicy.cs" />
