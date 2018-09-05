@@ -321,6 +321,7 @@
     <Compile Include="Controllers\Kpi\DumpHourPrbController.cs" />
     <Compile Include="Controllers\Kpi\DumpHourUsersController.cs" />
     <Compile Include="Controllers\Kpi\ENodebAlarmWorkItemController.cs" />
+    <Compile Include="Controllers\Kpi\HourCqiQueryController.cs" />
     <Compile Include="Controllers\Kpi\HourCqiRegionController.cs" />
     <Compile Include="Controllers\Kpi\HourPrbQueryController.cs" />
     <Compile Include="Controllers\Kpi\HourPrbRegionController.cs" />
@@ -339,6 +340,7 @@
     <Compile Include="Controllers\Kpi\SinrUlRegionController.cs" />
     <Compile Include="Controllers\Kpi\TopDoubleFlowController.cs" />
     <Compile Include="Controllers\Kpi\TopFeelingRateController.cs" />
+    <Compile Include="Controllers\Kpi\TopHourCqiController.cs" />
     <Compile Include="Controllers\Kpi\TopHourPrbController.cs" />
     <Compile Include="Controllers\Kpi\TopHourUsersController.cs" />
     <Compile Include="Controllers\Mongo\MrsRsrpImportController.cs" />
