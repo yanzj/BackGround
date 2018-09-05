@@ -5,25 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Dependency;
-using Abp.EntityFramework.Entities.RegionKpi;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Regular;
 using Lte.Domain.Regular.Attributes;
 
 namespace Lte.MySqlFramework.Entities.RegionKpi
 {
-    [AutoMapFrom(typeof(TownHourCqi))]
+    [AutoMapFrom(typeof(TownHourCqiView))]
     [IncreaseNumberKpi(KpiPrefix = "Cqi", KpiAffix = "Times", IndexRange = 16)]
-    [TypeDoc("镇区忙时CQI优良率统计")]
-    public class TownHourCqiView : IStatDate, ICityDistrictTown
+    [TypeDoc("区忙时CQI优良率统计")]
+    public class DistrictHourCqiView : ICityDistrict, IStatDate
     {
-        public DateTime StatDate { get; set; }
-
         public string District { get; set; }
 
-        public string Town { get; set; }
-
         public string City { get; set; }
+
+        public DateTime StatDate { get; set; }
         
         [MemberDoc("12.2 CQI0上报数量(次)")]
         public long Cqi0Times { get; set; }
@@ -84,5 +81,10 @@ namespace Lte.MySqlFramework.Entities.RegionKpi
         public long DoubleFlowPrbs { get; set; }
         
         public double DoubleFlowRate => TotalPrbs == 0 ? 0 : (double) DoubleFlowPrbs / TotalPrbs * 100;
+        
+        public static DistrictHourCqiView ConstructView(TownHourCqiView townView)
+        {
+            return townView.MapTo<DistrictHourCqiView>();
+        }
     }
 }

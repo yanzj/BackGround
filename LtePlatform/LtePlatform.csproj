@@ -321,6 +321,7 @@
     <Compile Include="Controllers\Kpi\DumpHourPrbController.cs" />
     <Compile Include="Controllers\Kpi\DumpHourUsersController.cs" />
     <Compile Include="Controllers\Kpi\ENodebAlarmWorkItemController.cs" />
+    <Compile Include="Controllers\Kpi\HourCqiRegionController.cs" />
     <Compile Include="Controllers\Kpi\HourPrbQueryController.cs" />
     <Compile Include="Controllers\Kpi\HourPrbRegionController.cs" />
     <Compile Include="Controllers\Kpi\HourUsersQueryController.cs" />

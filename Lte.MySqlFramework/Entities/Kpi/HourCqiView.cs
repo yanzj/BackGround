@@ -89,6 +89,6 @@ namespace Lte.MySqlFramework.Entities.Kpi
         [MemberDoc("12.1 下行双流模式调度的PRB总数(个)")]
         public int DoubleFlowPrbs { get; set; }
 
-        public double DoubleFlowRate => TotalPrbs == 0 ? 0 : (double) DoubleFlowPrbs / TotalPrbs;
+        public double DoubleFlowRate => TotalPrbs == 0 ? 0 : (double) DoubleFlowPrbs / TotalPrbs * 100;
     }
 }

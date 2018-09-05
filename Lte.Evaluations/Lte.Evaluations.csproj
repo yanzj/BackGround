@@ -165,6 +165,7 @@
     <Compile Include="DataService\Dump\AlarmWorkItemService.cs" />
     <Compile Include="DataService\Dump\CdmaCellDumpService.cs" />
     <Compile Include="DataService\Dump\LteProblemService.cs" />
+    <Compile Include="DataService\Kpi\HourCqiQueryService.cs" />
     <Compile Include="DataService\Kpi\HourCqiService.cs" />
     <Compile Include="DataService\Kpi\HourPrbQueryService.cs" />
     <Compile Include="DataService\Kpi\HourUsersQueryService.cs" />
@@ -185,6 +186,7 @@
     <Compile Include="DataService\Kpi\HourKpiService.cs" />
     <Compile Include="DataService\Kpi\HourPrbService.cs" />
     <Compile Include="DataService\Kpi\HourUsersService.cs" />
+    <Compile Include="DataService\RegionKpi\HourCqiRegionStatService.cs" />
     <Compile Include="DataService\RegionKpi\HourPrbRegionStatService.cs" />
     <Compile Include="DataService\RegionKpi\HourUsersRegionStatService.cs" />
     <Compile Include="DataService\RegionKpi\RegionTownFlowService.cs" />

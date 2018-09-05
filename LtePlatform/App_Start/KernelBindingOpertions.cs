@@ -551,6 +551,10 @@ namespace LtePlatform
 
             ninjectKernel.Bind<TownHourCqiService>().ToSelf();
 
+            ninjectKernel.Bind<HourCqiQueryService>().ToSelf();
+
+            ninjectKernel.Bind<HourCqiRegionStatService>().ToSelf();
+
         }
     }
 }
