@@ -5,7 +5,6 @@ using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.College
 {
-    [Cors("http://132.110.60.94:2018", "http://218.13.12.242:2018")]
     public class CollegeRegionController : ApiController
     {
         private readonly ICollegeRepository _repository;

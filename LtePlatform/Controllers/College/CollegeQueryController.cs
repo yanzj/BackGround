@@ -1,15 +1,15 @@
 ﻿using Lte.Evaluations.DataService.College;
-using Lte.MySqlFramework.Entities;
 using LtePlatform.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.College;
+using Lte.MySqlFramework.Entities.College;
 
 namespace LtePlatform.Controllers.College
 {
     [ApiControl("校园网基本查询控制器")]
+    [ApiGroup("专题优化")]
     public class CollegeQueryController : ApiController
     {
         private readonly CollegeStatService _service;
@@ -18,15 +18,32 @@ namespace LtePlatform.Controllers.College
         {
             _service = service;
         }
+        
+        [HttpGet]
+        [ApiDoc("查询指定年份所有校园网信息")]
+        [ApiParameterDoc("year", "指定年份")]
+        [ApiResponse("所有校园网年度信息")]
+        public IEnumerable<CollegeYearView> GetNamesByYear(int year)
+        {
+            return _service.QueryYearViews(year);
+        }
+        
+        [HttpGet]
+        [ApiDoc("根据名称查询校园网信息")]
+        [ApiParameterDoc("name", "校园名称")]
+        [ApiResponse("校园网信息")]
+        public CollegeView GetByName(string name)
+        {
+            return _service.QueryInfo(name);
+        }
 
         [HttpGet]
         [ApiDoc("根据编号查询校园网信息")]
         [ApiParameterDoc("id", "校园编号")]
         [ApiResponse("校园网信息")]
-        public IHttpActionResult Get(int id)
+        public IEnumerable<CollegeYearView> GetById(int id)
         {
-            var info = _service.QueryInfo(id);
-            return info == null ? (IHttpActionResult)BadRequest("College Id Not Found!") : Ok(info);
+            return _service.QueryInfo(id);
         }
 
         [HttpGet]
@@ -34,7 +51,7 @@ namespace LtePlatform.Controllers.College
         [ApiParameterDoc("name", "校园名称")]
         [ApiParameterDoc("year", "年份")]
         [ApiResponse("校园网信息")]
-        public CollegeYearInfo Get(string name, int year)
+        public CollegeYearView Get(string name, int year)
         {
             return _service.QueryInfo(name, year);
         }
@@ -42,7 +59,7 @@ namespace LtePlatform.Controllers.College
         [HttpGet]
         [ApiDoc("查询所有的校园网")]
         [ApiResponse("所有校园网信息")]
-        public IEnumerable<CollegeInfo> Get()
+        public IEnumerable<CollegeView> Get()
         {
             return _service.QueryInfos();
         }

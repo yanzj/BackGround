@@ -245,6 +245,11 @@
     <Compile Include="Abstract\Test\IZhangshangyouQualityRepository.cs" />
     <Compile Include="Abstract\Region\TownBoundaryQuery.cs" />
     <Compile Include="Abstract\Region\TownQueries.cs" />
+    <Compile Include="Concrete\College\CollegeYearRepository.cs" />
+    <Compile Include="Concrete\College\EFCollege3GTestRepository.cs" />
+    <Compile Include="Concrete\College\EFCollege4GTestRepository.cs" />
+    <Compile Include="Concrete\College\ModuleUsageRecordRepository.cs" />
+    <Compile Include="Concrete\College\UserLoginSessionInfoRepository.cs" />
     <Compile Include="Concrete\Kpi\HourCqiRepository.cs" />
     <Compile Include="Concrete\Kpi\HourPrbRepository.cs" />
     <Compile Include="Concrete\Kpi\HourUsersRepository.cs" />
@@ -300,7 +305,7 @@
     <Compile Include="Concrete\Test\RasterInfoRepository.cs" />
     <Compile Include="Concrete\Test\RasterTestInfoRepository.cs" />
     <Compile Include="Concrete\Region\RegionRepositories.cs" />
-    <Compile Include="Concrete\College\CollegeRepositories.cs" />
+    <Compile Include="Concrete\College\CollegeRepository.cs" />
     <Compile Include="Concrete\Complain\EmergencyCommunicationRepository.cs" />
     <Compile Include="Concrete\Kpi\FlowZteRepository.cs" />
     <Compile Include="Concrete\MySqlContext.cs" />

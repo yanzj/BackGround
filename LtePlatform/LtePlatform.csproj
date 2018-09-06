@@ -436,14 +436,11 @@
     <Compile Include="Controllers\College\CollegeCellsController.cs" />
     <Compile Include="Controllers\College\CollegeENodebController.cs" />
     <Compile Include="Controllers\College\CollegeLteDistributionsController.cs" />
-    <Compile Include="Controllers\College\CollegeNameController.cs" />
     <Compile Include="Controllers\College\CollegeNamesController.cs" />
     <Compile Include="Controllers\College\CollegePreciseController.cs" />
-    <Compile Include="Controllers\College\CollegeRangeController.cs" />
     <Compile Include="Controllers\College\CollegeRegionController.cs" />
     <Compile Include="Controllers\College\CollegeStatController.cs" />
     <Compile Include="Controllers\College\College3GTestController.cs" />
-    <Compile Include="Controllers\College\CollegeYearController.cs" />
     <Compile Include="Controllers\College\ComplainDateController.cs" />
     <Compile Include="Controllers\College\ComplainPositionController.cs" />
     <Compile Include="Controllers\College\ComplainQueryController.cs" />
