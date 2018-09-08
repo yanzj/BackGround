@@ -445,19 +445,6 @@
                         resolve: stationFormatService.dateSpanDateResolve({}, beginDate, endDate)
                     });
                 },
-                showCollegeFlowTrend: function(beginDate, endDate, name) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/College/Test/CollegeFlow.html',
-                        controller: 'college.flow.name',
-                        resolve: stationFormatService.dateSpanDateResolve({
-                                name: function() {
-                                    return name;
-                                }
-                            },
-                            beginDate,
-                            endDate)
-                    });
-                },
                 showHotSpotFlowTrend: function (beginDate, endDate, name) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/College/Test/CollegeFlow.html',

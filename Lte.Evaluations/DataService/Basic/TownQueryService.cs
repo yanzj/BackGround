@@ -91,8 +91,8 @@ namespace Lte.Evaluations.DataService.Basic
                     District = district,
                     Band1Cells = cells.Count(x => x.BandClass == 1),
                     Band3Cells = cells.Count(x => x.BandClass == 3),
-                    Band5Cells = cells.Count(x => x.BandClass == 5 && x.Frequency != 2506),
-                    NbIotCells = cells.Count(x => x.BandClass == 5 && x.Frequency == 2506),
+                    Band5Cells = cells.Count(x => x.BandClass == 5 && x.Frequency <= 2504),
+                    NbIotCells = cells.Count(x => x.BandClass == 5 && x.Frequency >= 2504),
                     Band41Cells = cells.Count(x => x.BandClass == 41)
                 }).ToList();
         }
@@ -128,9 +128,12 @@ namespace Lte.Evaluations.DataService.Basic
                 {
                     District = district,
                     TotalLteENodebs = eNodebs.Count(),
-                    TotalLteCells = cells.Count(x => x.Frequency != 2506),
-                    Lte800Cells = cells.Count(x => x.BandClass == 5 && x.Frequency != 2506),
-                    TotalNbIotCells = cells.Count(x => x.Frequency == 2506),
+                    TotalLteCells = cells.Count(x => x.Frequency < 2504 || x.BandClass == 41),
+                    Lte800Cells = cells.Count(x => x.BandClass == 5 && x.Frequency >= 2504),
+                    Lte1800Cells = cells.Count(x => x.BandClass == 3),
+                    Lte2100Cells = cells.Count(x => x.BandClass == 1),
+                    Lte2600Cells = cells.Count(x => x.BandClass == 41),
+                    TotalNbIotCells = cells.Count(x => x.Frequency >= 2504 && x.BandClass == 5),
                     TotalCdmaBts = btss.Count(),
                     TotalCdmaCells = cdmaCells.Count()
                 }).ToList();
@@ -169,9 +172,12 @@ namespace Lte.Evaluations.DataService.Basic
                 {
                     Town = town.TownName,
                     TotalLteENodebs = eNodebs.Count(),
-                    TotalLteCells = cells.Count(x => x.Frequency != 2506),
-                    Lte800Cells = cells.Count(x => x.BandClass == 5 && x.Frequency != 2506),
-                    TotalNbIotCells = cells.Count(x => x.Frequency == 2506),
+                    TotalLteCells = cells.Count(x => x.Frequency < 2504 || x.BandClass == 41),
+                    Lte800Cells = cells.Count(x => x.BandClass == 5 && x.Frequency >= 2504),
+                    Lte1800Cells = cells.Count(x => x.BandClass == 3),
+                    Lte2100Cells = cells.Count(x => x.BandClass == 1),
+                    Lte2600Cells = cells.Count(x => x.BandClass == 41),
+                    TotalNbIotCells = cells.Count(x => x.Frequency >= 2504 && x.BandClass == 5),
                     TotalCdmaBts = btss.Count(),
                     TotalCdmaCells = cdmaCells.Count()
                 }).ToList();

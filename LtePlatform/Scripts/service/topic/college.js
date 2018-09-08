@@ -171,24 +171,6 @@
                             });
                     });
                 },
-                drawCollegeArea: function(collegeId, callback) {
-                    collegeService.queryRegion(collegeId).then(function(region) {
-                        var center;
-                        switch (region.regionType) {
-                        case 2:
-                            center = baiduMapService.drawPolygonAndGetCenter(region.info.split(';'));
-                            break;
-                        case 1:
-                            center = baiduMapService.drawRectangleAndGetCenter(region.info.split(';'));
-                            break;
-                        default:
-                            center = baiduMapService.drawCircleAndGetCenter(region.info.split(';'));
-                            break;
-                        }
-                        baiduMapService.setCellFocus(center.X, center.Y);
-                        callback(center);
-                    });
-                },
                 showDtInfos: function(infos, begin, end) {
                     collegeQueryService.queryAll().then(function(colleges) {
                         angular.forEach(colleges,

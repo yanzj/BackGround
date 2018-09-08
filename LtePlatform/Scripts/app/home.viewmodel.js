@@ -378,20 +378,6 @@ angular.module('home.route', ['app.common'])
                 },
                 url: "/analysis"
             })
-            .state('collegeMap',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.analysis"
-                    },
-                    "contents": {
-                        templateUrl: '/appViews/College/CollegeMenu.html',
-                        controller: "college.map"
-                    }
-                },
-                url: "/collegeMap"
-            })
             .state('highway',
             {
                 views: {
@@ -2100,47 +2086,6 @@ angular.module('home.college', ['app.common'])
                     }
                 ]
             };
-        })
-    .controller("home.college",
-        function($scope,
-            baiduMapService,
-            collegeQueryService,
-            parametersMapService,
-            collegeService,
-            collegeMapService,
-            mapDialogService,
-            baiduQueryService) {
-            baiduMapService.initializeMap("map", 11);
-            $scope.year = new Date().getYear() + 1900;
-            $scope.showView = function(college) {
-                $scope.currentView = college.name;
-                $scope.currentCollege = college;
-                baiduMapService.clearOverlays();
-                baiduMapService.addCityBoundary("佛山");
-                collegeMapService.drawCollegeArea(college.id,
-                    function(center) {
-                        baiduQueryService.transformToBaidu(center.X, center.Y).then(function(coors) {
-                            $scope.center = {
-                                X: 2 * center.X - coors.x,
-                                Y: 2 * center.Y - coors.y,
-                                points: center.points
-                            };
-                        });
-                    });
-
-                parametersMapService.showHotSpotCellSectors(college.name, $scope.beginDate, $scope.endDate);
-                parametersMapService.showCollegeENodebs(college.name, $scope.beginDate, $scope.endDate);
-            };
-            $scope.showFlowTrend = function() {
-                mapDialogService.showCollegeFlowTrend($scope.beginDate, $scope.endDate, $scope.currentView);
-            };
-            $scope.showFeelingRateTrend = function() {
-                mapDialogService.showCollegeFeelingTrend($scope.beginDate, $scope.endDate, $scope.currentView);
-            };
-            collegeQueryService.queryAll().then(function(spots) {
-                $scope.hotSpots = spots;
-                $scope.showView($scope.hotSpots[0]);
-            });
         })
     .controller("college.coverage",
         function($scope,

@@ -1791,11 +1791,6 @@ angular.module('region.college', ['app.core'])
                     collegeName: name
                 });
             },
-            queryCells: function(name) {
-                return generalHttpService.getApiData('CollegeCells', {
-                    collegeName: name
-                });
-            },
             queryBtss: function(name) {
                 return generalHttpService.getApiData('CollegeBtss', {
                     collegeName: name
@@ -1927,9 +1922,6 @@ angular.module('region.college', ['app.core'])
                     year: year
                 });
             },
-            queryAll: function() {
-                return generalHttpService.getApiData('CollegeQuery', {});
-            },
             queryYearList: function(year) {
                 return generalHttpService.getApiData('CollegeYear', {
                     year: year
@@ -1947,11 +1939,6 @@ angular.module('region.college', ['app.core'])
             queryCollegeCellSectors: function(collegeName) {
                 return generalHttpService.getApiData('CollegeCellContainer', {
                     collegeName: collegeName
-                });
-            },
-            queryHotSpotSectors: function(name) {
-                return generalHttpService.getApiData('HotSpotSectors', {
-                    name: name
                 });
             },
             saveCollegeCdmaCells: function(container) {

@@ -739,24 +739,6 @@ angular.module('topic.college',
                             });
                     });
                 },
-                drawCollegeArea: function(collegeId, callback) {
-                    collegeService.queryRegion(collegeId).then(function(region) {
-                        var center;
-                        switch (region.regionType) {
-                        case 2:
-                            center = baiduMapService.drawPolygonAndGetCenter(region.info.split(';'));
-                            break;
-                        case 1:
-                            center = baiduMapService.drawRectangleAndGetCenter(region.info.split(';'));
-                            break;
-                        default:
-                            center = baiduMapService.drawCircleAndGetCenter(region.info.split(';'));
-                            break;
-                        }
-                        baiduMapService.setCellFocus(center.X, center.Y);
-                        callback(center);
-                    });
-                },
                 showDtInfos: function(infos, begin, end) {
                     collegeQueryService.queryAll().then(function(colleges) {
                         angular.forEach(colleges,
@@ -1852,21 +1834,6 @@ angular.module('topic.parameters', ['app.menu', 'app.core', 'topic.basic'])
                                 .showENodebsElements(eNodebs, beginDate, endDate, true, siteOverlays, cellOverlays);
                         });
                     },
-                showHotSpotCellSectors: function(hotSpotName, beginDate, endDate) {
-                    collegeQueryService.queryHotSpotSectors(hotSpotName).then(function(sectors) {
-                        baiduQueryService.transformToBaidu(sectors[0].longtitute, sectors[0].lattitute)
-                            .then(function(coors) {
-                                var xOffset = coors.x - sectors[0].longtitute;
-                                var yOffset = coors.y - sectors[0].lattitute;
-                                parametersDisplayMapService.showCellSectors(sectors, xOffset, yOffset, beginDate, endDate);
-                            });
-                    });
-                },
-                showCollegeENodebs: function(name, beginDate, endDate) {
-                    collegeService.queryENodebs(name).then(function(eNodebs) {
-                        parametersDisplayMapService.showENodebsElements(eNodebs, beginDate, endDate);
-                    });
-                },
                 showElementsWithGeneralName: function(name, beginDate, endDate) {
                     networkElementService.queryENodebsByGeneralNameInUse(name).then(function(eNodebs) {
                         if (eNodebs.length === 0) return;
@@ -2534,43 +2501,6 @@ angular.module("topic.dialog.college", ['myApp.url', 'myApp.region', 'myApp.kpi'
             messages.splice(index, 1);
         };
     })
-    .controller("college.flow.name",
-        function($scope,
-            $uibModalInstance,
-            name,
-            beginDate,
-            endDate,
-            collegeService,
-            appKpiService,
-            kpiChartService) {
-            $scope.dialogTitle = name + "流量分析";
-            $scope.beginDate = beginDate;
-            $scope.endDate = endDate;
-            $scope.flowStats = [];
-            $scope.mergeStats = [];
-            $scope.query = function() {
-                appKpiService.calculateFlowStats($scope.cellList,
-                    $scope.flowStats,
-                    $scope.mergeStats,
-                    $scope.beginDate,
-                    $scope.endDate);
-            };
-            $scope.showCharts = function() {
-                kpiChartService.showFlowCharts($scope.flowStats, name, $scope.mergeStats);
-            };
-            collegeService.queryCells(name).then(function(cells) {
-                $scope.cellList = cells;
-                $scope.query();
-            });
-
-            $scope.ok = function() {
-                $uibModalInstance.close($scope.eNodeb);
-            };
-
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            };
-        })
     .controller("hotSpot.flow.name",
         function($scope,
             $uibModalInstance,
@@ -2596,43 +2526,6 @@ angular.module("topic.dialog.college", ['myApp.url', 'myApp.region', 'myApp.kpi'
                 kpiChartService.showFlowCharts($scope.flowStats, name, $scope.mergeStats);
             };
             complainService.queryHotSpotCells(name).then(function(cells) {
-                $scope.cellList = cells;
-                $scope.query();
-            });
-
-            $scope.ok = function() {
-                $uibModalInstance.close($scope.eNodeb);
-            };
-
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            };
-        })
-    .controller("college.feeling.name",
-        function($scope,
-            $uibModalInstance,
-            name,
-            beginDate,
-            endDate,
-            collegeService,
-            appKpiService,
-            kpiChartService) {
-            $scope.dialogTitle = name + "感知速率分析";
-            $scope.beginDate = beginDate;
-            $scope.endDate = endDate;
-            $scope.flowStats = [];
-            $scope.mergeStats = [];
-            $scope.query = function() {
-                appKpiService.calculateFeelingStats($scope.cellList,
-                    $scope.flowStats,
-                    $scope.mergeStats,
-                    $scope.beginDate,
-                    $scope.endDate);
-            };
-            $scope.showCharts = function() {
-                kpiChartService.showFeelingCharts($scope.flowStats, name, $scope.mergeStats);
-            };
-            collegeService.queryCells(name).then(function(cells) {
                 $scope.cellList = cells;
                 $scope.query();
             });
@@ -3816,19 +3709,6 @@ angular.module('topic.dialog',[ 'app.menu', 'app.core' ])
                         templateUrl: '/appViews/College/Coverage/All.html',
                         controller: 'college.coverage.all',
                         resolve: stationFormatService.dateSpanDateResolve({}, beginDate, endDate)
-                    });
-                },
-                showCollegeFlowTrend: function(beginDate, endDate, name) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/College/Test/CollegeFlow.html',
-                        controller: 'college.flow.name',
-                        resolve: stationFormatService.dateSpanDateResolve({
-                                name: function() {
-                                    return name;
-                                }
-                            },
-                            beginDate,
-                            endDate)
                     });
                 },
                 showHotSpotFlowTrend: function (beginDate, endDate, name) {

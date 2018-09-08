@@ -352,21 +352,6 @@
                                 .showENodebsElements(eNodebs, beginDate, endDate, true, siteOverlays, cellOverlays);
                         });
                     },
-                showHotSpotCellSectors: function(hotSpotName, beginDate, endDate) {
-                    collegeQueryService.queryHotSpotSectors(hotSpotName).then(function(sectors) {
-                        baiduQueryService.transformToBaidu(sectors[0].longtitute, sectors[0].lattitute)
-                            .then(function(coors) {
-                                var xOffset = coors.x - sectors[0].longtitute;
-                                var yOffset = coors.y - sectors[0].lattitute;
-                                parametersDisplayMapService.showCellSectors(sectors, xOffset, yOffset, beginDate, endDate);
-                            });
-                    });
-                },
-                showCollegeENodebs: function(name, beginDate, endDate) {
-                    collegeService.queryENodebs(name).then(function(eNodebs) {
-                        parametersDisplayMapService.showENodebsElements(eNodebs, beginDate, endDate);
-                    });
-                },
                 showElementsWithGeneralName: function(name, beginDate, endDate) {
                     networkElementService.queryENodebsByGeneralNameInUse(name).then(function(eNodebs) {
                         if (eNodebs.length === 0) return;

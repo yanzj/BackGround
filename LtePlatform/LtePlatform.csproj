@@ -645,7 +645,6 @@
     <Content Include="appViews\College\Infrastructure\YearInfoDialog.html" />
     <Content Include="appViews\College\Stat.html" />
     <Content Include="appViews\College\Table\CollegeCellBasicInfo.html" />
-    <Content Include="appViews\College\Test\CollegeFlow.html" />
     <Content Include="appViews\College\Test\Flow.html" />
     <Content Include="appViews\College\Test\Planning.html" />
     <Content Include="appViews\College\Test\Process.html" />
@@ -2308,8 +2307,6 @@
     <Content Include="Views\Kpi\Import.cshtml" />
     <Content Include="appViews\BasicKpi\Index.html" />
     <Content Include="appViews\College\CollegeMenu.html" />
-    <Content Include="appViews\College\Test\Construct3GTest.html" />
-    <Content Include="appViews\College\Test\Construct4GTest.html" />
     <Content Include="appViews\College\Table\CollegeMapInfoBox.html" />
     <Content Include="appViews\College\Table\DistributionMapInfoBox.html" />
     <Content Include="appViews\College\Coverage\All.html" />

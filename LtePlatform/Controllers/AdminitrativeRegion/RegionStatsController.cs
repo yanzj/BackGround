@@ -7,6 +7,7 @@ using Lte.Domain.Common.Wireless;
 namespace LtePlatform.Controllers.AdminitrativeRegion
 {
     [ApiControl("区域、镇区在用基站扇区数量统计控制器")]
+    [ApiGroup("基础信息")]
     public class RegionStatsController : ApiController
     {
         private readonly TownQueryService _service;

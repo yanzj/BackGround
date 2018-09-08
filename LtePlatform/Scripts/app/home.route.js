@@ -267,20 +267,6 @@
                 },
                 url: "/analysis"
             })
-            .state('collegeMap',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.analysis"
-                    },
-                    "contents": {
-                        templateUrl: '/appViews/College/CollegeMenu.html',
-                        controller: "college.map"
-                    }
-                },
-                url: "/collegeMap"
-            })
             .state('highway',
             {
                 views: {
