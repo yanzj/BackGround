@@ -132,20 +132,6 @@
                         }
                     });
                 },
-                showCommonStationList: function(type) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/Evaluation/Dialog/CommonStationListDialog.html',
-                        controller: 'map.common-stationList.dialog',
-                        resolve: {
-                            dialogTitle: function() {
-                                return "公共列表";
-                            },
-                            type: function() {
-                                return type;
-                            }
-                        }
-                    });
-                },
                 showSpecialIndoorInfo: function(station) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/Evaluation/Dialog/SpecialStationDetails.html',

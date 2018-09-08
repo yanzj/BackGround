@@ -855,14 +855,6 @@ angular.module('region.basic', ['app.core'])
                         'LtePlatForm/lte/index.php/StationCommon/add',
                         station);
                 },
-                getCommonStationById: function (id) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/StationCommon/single/',
-                        {
-                        "id": id
-                    });
-                },
                 getCommonStationByName: function(areaName, stationName, type, page, pageSize) {
                     return generalHttpService
                         .postPhpUrlData(appUrlService.getPhpHost() +
@@ -876,30 +868,6 @@ angular.module('region.basic', ['app.core'])
                         });
                 },
                 
-                getCommonStationIdAdd: function (distinct, type) {
-                    return generalHttpService.postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/StationCommon/generateId',
-                        {
-                        "distinct": distinct,
-                        "type": type
-                    });
-                },
-                getAllCommonStations: function(type, page, pageSize) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() + 'LtePlatForm/lte/index.php/StationCommon/search',
-                        {
-                            "curr_page": page,
-                            "page_size": pageSize,
-                            "type": type
-                        });
-                },
-                deleteCommonStation: function(stationId) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() + 'LtePlatForm/lte/index.php/StationCommon/delete',
-                        {
-                            "idList": stationId
-                        });
-                },
                 getCheckingStationByName: function (name, type, page, pageSize) {
                     return generalHttpService
                         .postPhpUrlData(appUrlService.getPhpHost() + 'LtePlatForm/lte/index.php/Checking/search',

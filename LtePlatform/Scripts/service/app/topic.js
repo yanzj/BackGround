@@ -787,12 +787,6 @@ angular.module('topic.college',
                             });
                     });
                 },
-                showCommonStations: function (stations, color) {
-                    generalMapService.showPointWithClusterer(stations, color,
-                        function (station) {
-                            mapDialogService.showCommonStationInfo(station);
-                        });
-                },
                 showConstructionSites: function(stations, status, callback) {
                     baiduQueryService.transformToBaidu(stations[0].longtitute, stations[0].lattitute)
                         .then(function(coors) {
@@ -1362,58 +1356,8 @@ angular.module('topic.parameters.coverage', ['myApp.url', 'myApp.region', 'myApp
                 $uibModalInstance.dismiss('cancel');
             };
         });
-angular.module('topic.parameters.station', ['myApp.url', 'myApp.region', 'myApp.kpi', 'topic.basic', "ui.bootstrap", 'angularFileUpload'])
-    .controller('map.common-stationEdit.dialog', function ($scope, stationId, dialogTitle, $uibModalInstance, downSwitchService) {
-	    $scope.dialogTitle = dialogTitle;
-	    $scope.station = {};
-        downSwitchService.getStationCommonById(stationId).then(function(result) {
-            $scope.station = result.result[0];
-            $scope.station.longtitute = result.result[0].longtitute*1;
-            $scope.station.lattitute = result.result[0].lattitute*1;
-        });
-	    
-	    $scope.ok = function() {
-                downSwitchService.updateStationCommon({
-                    "Station": JSON.stringify($scope.station)
-                }).then(function(result) {
-                    alert(result.description);
-                });
-            }
-	    $scope.cancel = function () {
-	        $uibModalInstance.dismiss('cancel');
-	    }
-    })
-    .controller('map.common-stationAdd.dialog',
-        function($scope,
-            $http,
-            dialogTitle,
-            type,
-            $uibModalInstance,
-            downSwitchService,
-            stationFactory) {
-            $scope.dialogTitle = dialogTitle;
-            $scope.station = {};
-            $scope.distincts = stationFactory.stationDistincts;
-
-            $scope.change = function() {
-                downSwitchService.getCommonStationIdAdd($scope.selectedDistinct, type).then(function(result) {
-                    $scope.station.id = result.result;
-                });
-            };
-            
-            $scope.ok = function() {
-                downSwitchService.addCommonStation({
-                    "Station": JSON.stringify($scope.station)
-                }).then(function(result) {
-                    alert(result.description);
-                    $uibModalInstance.dismiss('cancel');
-                });
-            }
-
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            }
-        })
+angular.module('topic.parameters.station',
+        ['myApp.url', 'myApp.region', 'myApp.kpi', 'topic.basic', "ui.bootstrap", 'angularFileUpload'])
     .controller('map.construction.dialog',
         function($scope, $uibModalInstance, dialogTitle, site, appFormatService, downSwitchService) {
             $scope.dialogTitle = dialogTitle;
@@ -1589,34 +1533,6 @@ angular.module('topic.parameters', ['app.menu', 'app.core', 'topic.basic'])
                             name: function () {
                                 return name;
                             },
-                        }
-                    });
-                },
-                showCommonStationEdit: function(stationId) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/Home/CommonStationEdit.html',
-                        controller: 'map.common-stationEdit.dialog',
-                        resolve: {
-                            dialogTitle: function() {
-                                return "编辑站点";
-                            },
-                            stationId: function() {
-                                return stationId;
-                            }
-                        }
-                    });
-                },
-                showCommonStationAdd: function(type) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/BasicKpi/CommonStationAdd.html',
-                        controller: 'map.common-stationAdd.dialog',
-                        resolve: {
-                            dialogTitle: function() {
-                                return "站点添加";
-                            },
-                            type: function() {
-                                return type;
-                            }
                         }
                     });
                 },
@@ -3083,110 +2999,6 @@ angular.module('topic.dialog.station', ['myApp.url', 'myApp.region', 'myApp.kpi'
             $scope.cancel = function() {
                 $uibModalInstance.dismiss('cancel');
             };
-        })
-    .controller('map.common-stationList.dialog',
-        function($scope,
-            $http,
-            dialogTitle,
-            type,
-            $uibModalInstance,
-            parametersDialogService,
-            downSwitchService,
-            mapDialogService,
-            appUrlService,
-            $upload) {
-            $scope.dialogTitle = dialogTitle;
-            $scope.distincts = new Array('FS', 'SD', 'NH', 'CC', 'SS', 'GM');
-            $scope.stationList = [];
-            $scope.page = 1;
-            $scope.stationName = '';
-            $scope.totolPage = 1;
-            
-            $scope.data = {
-                file: null
-            };
-            $scope.onFileSelect = function ($files) {
-                $scope.data.file = $files[0];
-            }
-            $scope.upload = function () {
-                if (!$scope.data.file) {
-                    return;
-                }
-                var url = appUrlService.getPhpHost() + 'LtePlatForm/lte/index.php/StationCommon/upload/';  //params是model传的参数，图片上传接口的url
-                var data = angular.copy($scope.data || {}); // 接口需要的额外参数，比如指定所上传的图片属于哪个用户: { UserId: 78 }
-                data.file = $scope.data.file;
-
-                $upload.upload({
-                    url: url,
-                    data: data
-                }).success(function (data) {
-                    alert('success');
-                }).error(function () {
-                    alert('error');
-                    });
-            };
-            
-            downSwitchService.getAllCommonStations(type, 0, 10).then(function(response) {
-                $scope.stationList = response.result.rows;
-                $scope.totolPage = response.result.total_pages;
-                $scope.page = response.result.curr_page;
-            });
-            $scope.details = function(stationId) {
-                downSwitchService.getCommonStationById(stationId).then(function(result) {
-                    mapDialogService.showCommonStationInfo(result.result[0]);
-                });
-            }
-
-            $scope.delete = function(stationId) {
-                if (confirm("你确定删除该站点？")) {
-                    downSwitchService.deleteCommonStation(stationId).then(function(response) {
-                        alert(response.description);
-                        $scope.jumpPage($scope.page);
-                    });
-                }
-            }
-            $scope.edit = function(stationId) {
-                parametersDialogService.showCommonStationEdit(stationId);
-            }
-            $scope.addStation = function() {
-                parametersDialogService.showCommonStationAdd(type);
-            }
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            }
-            $scope.search = function() {
-                $scope.page = 1;
-                $scope.jumpPage($scope.page);
-            }
-            $scope.firstPage = function() {
-                $scope.page = 1;
-                $scope.jumpPage($scope.page);
-            }
-            $scope.lastPage = function() {
-                $scope.page = $scope.totolPage;
-                $scope.jumpPage($scope.page);
-            }
-            $scope.prevPage = function() {
-                if ($scope.page !== 1)
-                    $scope.page--;
-                $scope.jumpPage($scope.page);
-            }
-            $scope.nextPage = function() {
-                if ($scope.page !== $scope.totolPage)
-                    $scope.page++;
-                $scope.jumpPage($scope.page);
-            }
-            $scope.jumpPage = function(page) {
-                if (page >= $scope.totolPage)
-                    page = $scope.totolPage;
-                downSwitchService.getCommonStationByName($scope.selectDistinct, $scope.stationName, type, page, 10)
-                    .then(function(response) {
-                        $scope.stationList = response.result.rows;
-                        $scope.totolPage = response.result.total_pages;
-                        $scope.page = response.result.curr_page;
-                        $scope.records = response.result.records;
-                    });
-            }
         });
 angular.module('topic.dialog.alarm', ['myApp.url', 'myApp.region', 'myApp.kpi', 'topic.basic', "ui.bootstrap"])
     .controller('map.zero-voice.dialog',
@@ -3394,20 +3206,6 @@ angular.module('topic.dialog',[ 'app.menu', 'app.core' ])
                             },
                             item: function() {
                                 return item;
-                            }
-                        }
-                    });
-                },
-                showCommonStationList: function(type) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/Evaluation/Dialog/CommonStationListDialog.html',
-                        controller: 'map.common-stationList.dialog',
-                        resolve: {
-                            dialogTitle: function() {
-                                return "公共列表";
-                            },
-                            type: function() {
-                                return type;
                             }
                         }
                     });

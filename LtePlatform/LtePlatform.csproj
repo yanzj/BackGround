@@ -604,21 +604,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="appViews\BasicKpi\ClusterPoint.html" />
-    <Content Include="appViews\BasicKpi\Common.html" />
-    <Content Include="appViews\BasicKpi\CommonMenu.html" />
-    <Content Include="appViews\BasicKpi\CommonStationAdd.html" />
     <Content Include="appViews\BasicKpi\Construction.html" />
     <Content Include="appViews\BasicKpi\CsvDtDialog.html" />
     <Content Include="appViews\BasicKpi\HotspotDtDialog.html" />
     <Content Include="appViews\College\Table\DumpCollegeFlowTable.html" />
     <Content Include="appViews\Customer\Dialog\Recent.html" />
-    <Content Include="appViews\Evaluation\Dialog\CheckDetails.html" />
-    <Content Include="appViews\Evaluation\Dialog\CheckIndoorDetails.html" />
     <Content Include="appViews\Evaluation\Dialog\CheckPlanListDialog.html" />
     <Content Include="appViews\Evaluation\Dialog\CheckResultsStationAdd.html" />
     <Content Include="appViews\Home\Assessment.html" />
     <Content Include="appViews\Home\Common.html" />
-    <Content Include="appViews\Home\CommonStationEdit.html" />
     <Content Include="appViews\Home\DT.html" />
     <Content Include="appViews\BasicKpi\GridApp.html" />
     <Content Include="appViews\BasicKpi\GridClusterDialog.html" />
@@ -677,7 +671,6 @@
     <Content Include="appViews\Evaluation\Dialog\AlarmHistoryListDialog.html" />
     <Content Include="appViews\Evaluation\Dialog\BtsSearchCondition.html" />
     <Content Include="appViews\Evaluation\Dialog\BuildingInfoBox.html" />
-    <Content Include="appViews\Evaluation\Dialog\CommonStationListDialog.html" />
     <Content Include="appViews\Evaluation\FaultStation.html" />
     <Content Include="appViews\Evaluation\Fixing.html" />
     <Content Include="appViews\Evaluation\HighValue.html" />
@@ -1138,7 +1131,6 @@
     <Content Include="Scripts\app\home.route.js" />
     <Content Include="Scripts\app\network.theme.js" />
     <Content Include="Scripts\app\station.checking.js" />
-    <Content Include="Scripts\app\station.common.js" />
     <Content Include="Scripts\app\station.fixing.js" />
     <Content Include="Scripts\baidu\plugins\ComplexCustomOverlay.js" />
     <Content Include="Scripts\bootstrap.js" />

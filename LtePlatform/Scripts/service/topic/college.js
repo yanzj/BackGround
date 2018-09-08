@@ -219,12 +219,6 @@
                             });
                     });
                 },
-                showCommonStations: function (stations, color) {
-                    generalMapService.showPointWithClusterer(stations, color,
-                        function (station) {
-                            mapDialogService.showCommonStationInfo(station);
-                        });
-                },
                 showConstructionSites: function(stations, status, callback) {
                     baiduQueryService.transformToBaidu(stations[0].longtitute, stations[0].lattitute)
                         .then(function(coors) {

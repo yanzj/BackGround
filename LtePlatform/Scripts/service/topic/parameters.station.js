@@ -1,55 +1,5 @@
-﻿angular.module('topic.parameters.station', ['myApp.url', 'myApp.region', 'myApp.kpi', 'topic.basic', "ui.bootstrap", 'angularFileUpload'])
-    .controller('map.common-stationEdit.dialog', function ($scope, stationId, dialogTitle, $uibModalInstance, downSwitchService) {
-	    $scope.dialogTitle = dialogTitle;
-	    $scope.station = {};
-        downSwitchService.getStationCommonById(stationId).then(function(result) {
-            $scope.station = result.result[0];
-            $scope.station.longtitute = result.result[0].longtitute*1;
-            $scope.station.lattitute = result.result[0].lattitute*1;
-        });
-	    
-	    $scope.ok = function() {
-                downSwitchService.updateStationCommon({
-                    "Station": JSON.stringify($scope.station)
-                }).then(function(result) {
-                    alert(result.description);
-                });
-            }
-	    $scope.cancel = function () {
-	        $uibModalInstance.dismiss('cancel');
-	    }
-    })
-    .controller('map.common-stationAdd.dialog',
-        function($scope,
-            $http,
-            dialogTitle,
-            type,
-            $uibModalInstance,
-            downSwitchService,
-            stationFactory) {
-            $scope.dialogTitle = dialogTitle;
-            $scope.station = {};
-            $scope.distincts = stationFactory.stationDistincts;
-
-            $scope.change = function() {
-                downSwitchService.getCommonStationIdAdd($scope.selectedDistinct, type).then(function(result) {
-                    $scope.station.id = result.result;
-                });
-            };
-            
-            $scope.ok = function() {
-                downSwitchService.addCommonStation({
-                    "Station": JSON.stringify($scope.station)
-                }).then(function(result) {
-                    alert(result.description);
-                    $uibModalInstance.dismiss('cancel');
-                });
-            }
-
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            }
-        })
+﻿angular.module('topic.parameters.station',
+        ['myApp.url', 'myApp.region', 'myApp.kpi', 'topic.basic', "ui.bootstrap", 'angularFileUpload'])
     .controller('map.construction.dialog',
         function($scope, $uibModalInstance, dialogTitle, site, appFormatService, downSwitchService) {
             $scope.dialogTitle = dialogTitle;

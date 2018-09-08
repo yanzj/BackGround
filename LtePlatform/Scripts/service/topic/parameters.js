@@ -110,34 +110,6 @@
                         }
                     });
                 },
-                showCommonStationEdit: function(stationId) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/Home/CommonStationEdit.html',
-                        controller: 'map.common-stationEdit.dialog',
-                        resolve: {
-                            dialogTitle: function() {
-                                return "编辑站点";
-                            },
-                            stationId: function() {
-                                return stationId;
-                            }
-                        }
-                    });
-                },
-                showCommonStationAdd: function(type) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/BasicKpi/CommonStationAdd.html',
-                        controller: 'map.common-stationAdd.dialog',
-                        resolve: {
-                            dialogTitle: function() {
-                                return "站点添加";
-                            },
-                            type: function() {
-                                return type;
-                            }
-                        }
-                    });
-                },
                 showCheckingResultsStationAdd: function (station) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/Evaluation/Dialog/CheckResultsStationAdd.html',
