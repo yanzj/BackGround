@@ -874,54 +874,6 @@ angular.module('kpi.college.infrastructure', ['myApp.url', 'myApp.region', "ui.b
             });
         };
     })
-    .controller('eNodeb.dialog',
-        function($scope,
-            $uibModalInstance,
-            collegeService,
-            collegeDialogService,
-            geometryService,
-            collegeQueryService,
-            baiduQueryService,
-            name,
-            dialogTitle) {
-            $scope.dialogTitle = dialogTitle;
-            $scope.query = function() {
-                collegeService.queryENodebs(name).then(function(result) {
-                    $scope.eNodebList = result;
-                });
-            };
-            collegeQueryService.queryByName(name).then(function(college) {
-                collegeService.queryRegion(college.id).then(function(region) {
-                    var center = geometryService.queryRegionCenter(region);
-                    baiduQueryService.transformToBaidu(center.X, center.Y).then(function(coors) {
-                        $scope.center = {
-                            X: 2 * center.X - coors.x,
-                            Y: 2 * center.Y - coors.y
-                        };
-                    });
-                });
-            });
-
-            $scope.addENodebs = function() {
-                collegeDialogService.addENodeb(name,
-                    $scope.center,
-                    function(count) {
-                        $scope.addSuccessMessage('增加ENodeb' + count + '个');
-                        $scope.query();
-                    });
-            };
-
-            $scope.query();
-
-
-            $scope.ok = function() {
-                $uibModalInstance.close($scope.eNodebList);
-            };
-
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            };
-        })
     .controller('bts.dialog',
         function($scope,
             $uibModalInstance,
@@ -964,42 +916,6 @@ angular.module('kpi.college.infrastructure', ['myApp.url', 'myApp.region', "ui.b
 
             $scope.ok = function() {
                 $uibModalInstance.close($scope.btsList);
-            };
-
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            };
-        })
-    .controller('cell.dialog',
-        function($scope,
-            $uibModalInstance,
-            collegeService,
-            collegeDialogService,
-            name,
-            dialogTitle) {
-            $scope.dialogTitle = dialogTitle;
-            $scope.updateLteCells = function() {
-                collegeService.queryCells(name).then(function(cells) {
-                    $scope.cellList = cells;
-                });
-            };
-            $scope.supplementCells = function() {
-                collegeDialogService.supplementENodebCells($scope.eNodebList,
-                    $scope.cellList,
-                    name,
-                    $scope.updateLteCells);
-            };
-            $scope.supplementLonelyCells = function() {
-                collegeDialogService.supplementPositionCells(name, $scope.updateLteCells);
-            };
-
-            $scope.updateLteCells();
-            collegeService.queryENodebs(name).then(function(eNodebs) {
-                $scope.eNodebList = eNodebs;
-            });
-
-            $scope.ok = function() {
-                $uibModalInstance.close($scope.cellList);
             };
 
             $scope.cancel = function() {
@@ -1825,13 +1741,6 @@ angular.module('kpi.college', ['app.menu', 'region.college'])
 					templateUrl: '/appViews/College/Infrastructure/ENodebDialog.html',
 					controller: 'eNodeb.dialog',
 					resolve: resolveScope(name, "LTE基站信息")
-				});
-			},
-			showCells: function(name) {
-				menuItemService.showGeneralDialog({
-					templateUrl: '/appViews/College/Infrastructure/LteCellDialog.html',
-					controller: 'cell.dialog',
-					resolve: resolveScope(name, "LTE小区信息")
 				});
 			},
 			showBtss: function(name) {

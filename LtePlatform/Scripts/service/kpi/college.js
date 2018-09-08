@@ -18,13 +18,6 @@
 					resolve: resolveScope(name, "LTE基站信息")
 				});
 			},
-			showCells: function(name) {
-				menuItemService.showGeneralDialog({
-					templateUrl: '/appViews/College/Infrastructure/LteCellDialog.html',
-					controller: 'cell.dialog',
-					resolve: resolveScope(name, "LTE小区信息")
-				});
-			},
 			showBtss: function(name) {
 				menuItemService.showGeneralDialog({
 					templateUrl: '/appViews/College/Infrastructure/BtsDialog.html',

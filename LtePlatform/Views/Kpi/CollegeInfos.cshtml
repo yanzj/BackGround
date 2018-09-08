@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "校园网数据管理";
+}
+
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            <strong>@ViewBag.Title</strong>
+        </h2>
+    </div>
+    <div class="panel-body row" ng-controller="college.infos">
+        <div class="col-md-3">
+            <div class="list-group">
+                <div class="list-group-item row" ng-repeat="collegeInfo in collegeInfos">
+                    <a class="btn" ng-class="{'btn-primary': collegeInfo.name === currentCollegeName}" href=""
+                            ng-click="updateCurrentCollege(collegeInfo)">
+                        {{collegeInfo.name}}
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div uib-alert ng-repeat="message in page.messages" class="alert-{{message.type}}" dismiss-on-timeout="2000" 
+                 close="closeAlert(page.messages, $index)">
+                {{message.contents}}
+            </div>
+            <h5>LTE基站信息</h5>
+            <div e-nodeb-table items="eNodebList"></div>
+            <h5>LTE小区信息</h5>
+            <div cell-dialog-table items="cellList"></div>
+            <div class="btn-group">
+                <button class="btn btn-sm btn-primary" ng-click="addENodebs(currentCollegeName)">新增基站</button>
+                <button class="btn btn-sm btn-primary" ng-click="supplementCells(currentCollegeName)">补充小区（根据基站）</button>
+                <button class="btn btn-sm btn-primary" ng-click="supplementLonelyCells(currentCollegeName)">补充小区（根据位置）</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/kpi/college.infos.js"></script>
+}

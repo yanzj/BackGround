@@ -29,15 +29,6 @@ namespace LtePlatform.Controllers.College
         }
         
         [HttpGet]
-        [ApiDoc("根据名称查询校园网信息")]
-        [ApiParameterDoc("name", "校园名称")]
-        [ApiResponse("校园网信息")]
-        public CollegeView GetByName(string name)
-        {
-            return _service.QueryInfo(name);
-        }
-
-        [HttpGet]
         [ApiDoc("根据编号查询校园网信息")]
         [ApiParameterDoc("id", "校园编号")]
         [ApiResponse("校园网信息")]

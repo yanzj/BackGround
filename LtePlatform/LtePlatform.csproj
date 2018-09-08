@@ -438,7 +438,6 @@
     <Compile Include="Controllers\College\CollegeLteDistributionsController.cs" />
     <Compile Include="Controllers\College\CollegeNamesController.cs" />
     <Compile Include="Controllers\College\CollegePreciseController.cs" />
-    <Compile Include="Controllers\College\CollegeRegionController.cs" />
     <Compile Include="Controllers\College\CollegeStatController.cs" />
     <Compile Include="Controllers\College\College3GTestController.cs" />
     <Compile Include="Controllers\College\ComplainDateController.cs" />
@@ -633,8 +632,6 @@
     <Content Include="appViews\College\Infrastructure\CdmaCellDialog.html" />
     <Content Include="appViews\College\Infrastructure\CellSupplementDialog.html" />
     <Content Include="appViews\College\Infrastructure\CollegeQuery.html" />
-    <Content Include="appViews\College\Infrastructure\ENodebDialog.html" />
-    <Content Include="appViews\College\Infrastructure\LteCellDialog.html" />
     <Content Include="appViews\College\Infrastructure\NewCollegeDialog.html" />
     <Content Include="appViews\College\Infrastructure\YearInfoDialog.html" />
     <Content Include="appViews\College\Stat.html" />
@@ -1978,6 +1975,7 @@
     <Content Include="Scripts\jquery-3.1.0.slim.min.js" />
     <Content Include="Scripts\jquery-ui-1.12.0.js" />
     <Content Include="Scripts\jquery-ui-1.12.0.min.js" />
+    <Content Include="Scripts\kpi\college.infos.js" />
     <Content Include="Scripts\kpi\workitem.import.js" />
     <Content Include="Scripts\college\route.controller.js" />
     <Content Include="Scripts\kpi\precise.import.js" />
@@ -2307,6 +2305,7 @@
     <Content Include="Scripts\service\package.json" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Kpi\DtImport.cshtml" />
+    <Content Include="Views\Kpi\CollegeInfos.cshtml" />
     <None Include="Views\Kpi\PreciseImport.cshtml" />
     <Content Include="Views\Kpi\WorkItemImport.cshtml" />
     <Content Include="appViews\Rutrace\Map\NeighborMapInfoBox.html" />

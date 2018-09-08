@@ -1742,77 +1742,95 @@ angular.module('region.college', ['app.core'])
                 return generalHttpService.getApiData('CollegeNames', {});
             },
             queryStats: function(year) {
-                return generalHttpService.getApiData('CollegeStat', {
-                    year: year
-                });
+                return generalHttpService.getApiData('CollegeStat',
+                    {
+                        year: year
+                    });
             },
             queryRegion: function(id) {
                 return generalHttpService.getApiData('CollegeRegion/' + id, {});
             },
             queryRange: function(name) {
-                return generalHttpService.getApiData('CollegeRange', {
-                    collegeName: name
-                });
+                return generalHttpService.getApiData('CollegeRange',
+                    {
+                        collegeName: name
+                    });
             },
             queryENodebs: function(name) {
-                return generalHttpService.getApiData('CollegeENodeb', {
-                    collegeName: name
-                });
+                return generalHttpService.getApiData('CollegeENodeb',
+                    {
+                        collegeName: name
+                    });
             },
             queryBtss: function(name) {
-                return generalHttpService.getApiData('CollegeBtss', {
-                    collegeName: name
-                });
+                return generalHttpService.getApiData('CollegeBtss',
+                    {
+                        collegeName: name
+                    });
+            },
+            queryCells: function(name) {
+                return generalHttpService.getApiData('CollegeCells',
+                    {
+                        collegeName: name
+                    });
             },
             queryCdmaCells: function(name) {
-                return generalHttpService.getApiData('CollegeCdmaCells', {
-                    collegeName: name
-                });
+                return generalHttpService.getApiData('CollegeCdmaCells',
+                    {
+                        collegeName: name
+                    });
             },
             queryLteDistributions: function(name) {
-                return generalHttpService.getApiData('CollegeLteDistributions', {
-                    collegeName: name
-                });
+                return generalHttpService.getApiData('CollegeLteDistributions',
+                    {
+                        collegeName: name
+                    });
             },
             queryCdmaDistributions: function(name) {
-                return generalHttpService.getApiData('CollegeCdmaDistributions', {
-                    collegeName: name
-                });
+                return generalHttpService.getApiData('CollegeCdmaDistributions',
+                    {
+                        collegeName: name
+                    });
             },
             queryRaster: function(dataType, range, begin, end) {
-                return generalHttpService.getApiData('RasterFile', {
-                    dataType: dataType,
-                    west: range.west,
-                    east: range.east,
-                    south: range.south,
-                    north: range.north,
-                    begin: begin,
-                    end: end
-                });
+                return generalHttpService.getApiData('RasterFile',
+                    {
+                        dataType: dataType,
+                        west: range.west,
+                        east: range.east,
+                        south: range.south,
+                        north: range.north,
+                        begin: begin,
+                        end: end
+                    });
             },
             queryTownRaster: function(dataType, town, begin, end) {
-                return generalHttpService.getApiData('RasterFile', {
-                    dataType: dataType,
-                    townName: town,
-                    begin: begin,
-                    end: end
-                });
+                return generalHttpService.getApiData('RasterFile',
+                    {
+                        dataType: dataType,
+                        townName: town,
+                        begin: begin,
+                        end: end
+                    });
             },
             queryCsvFileNames: function(begin, end) {
-                return generalHttpService.getApiData('RasterFile', {
-                    begin: begin,
-                    end: end
-                });
+                return generalHttpService.getApiData('RasterFile',
+                    {
+                        begin: begin,
+                        end: end
+                    });
             },
-            queryCsvFileType: function (name) {
-                return generalHttpService.getApiData('RasterFile', {
-                    csvFileName: name
-                });
+            queryCsvFileType: function(name) {
+                return generalHttpService.getApiData('RasterFile',
+                    {
+                        csvFileName: name
+                    });
             },
             queryCsvFileInfo: function(fileName) {
-                return generalHttpService.getApiData('CsvFileInfo', {
-                    fileName: fileName
-                });
+                return generalHttpService.getApiData('CsvFileInfo',
+                    {
+                        fileName: fileName
+                    });
             },
             updateCsvFileDistance: function(filesInfo) {
                 return generalHttpService.postApiData('CsvFileInfo', filesInfo);
@@ -1821,60 +1839,72 @@ angular.module('region.college', ['app.core'])
                 return generalHttpService.putApiData('TownTestInfo', info);
             },
             calculateTownDtTestInfos: function(name, type) {
-                return generalHttpService.getApiData('TownTestInfo', {
-                    csvFileName: name,
-                    type: type
-                });
+                return generalHttpService.getApiData('TownTestInfo',
+                    {
+                        csvFileName: name,
+                        type: type
+                    });
             },
-            calculateRoadDtTestInfos: function (name, type) {
-                return generalHttpService.getApiData('RoadTestInfo', {
-                    csvFileName: name,
-                    type: type
-                });
+            calculateRoadDtTestInfos: function(name, type) {
+                return generalHttpService.getApiData('RoadTestInfo',
+                    {
+                        csvFileName: name,
+                        type: type
+                    });
             },
             queryFileTownDtTestInfo: function(fileId) {
-                return generalHttpService.getApiData('TownTestInfo', {
-                    fileId: fileId
-                });
+                return generalHttpService.getApiData('TownTestInfo',
+                    {
+                        fileId: fileId
+                    });
             },
-            queryFileRoadDtTestInfo: function (fileId) {
-                return generalHttpService.getApiData('RoadTestInfo', {
-                    fileId: fileId
-                });
+            queryFileRoadDtTestInfo: function(fileId) {
+                return generalHttpService.getApiData('RoadTestInfo',
+                    {
+                        fileId: fileId
+                    });
             },
-            queryRoadDtFileInfos: function (name, begin, end) {
-                return generalHttpService.getApiData('RoadTestInfo', {
-                    roadName: name,
-                    begin: begin,
-                    end: end
-                });
+            queryRoadDtFileInfos: function(name, begin, end) {
+                return generalHttpService.getApiData('RoadTestInfo',
+                    {
+                        roadName: name,
+                        begin: begin,
+                        end: end
+                    });
             },
             query2GFileRecords: function(fileName) {
-                return generalHttpService.getApiData("Record2G", {
-                    fileName: fileName
-                });
+                return generalHttpService.getApiData("Record2G",
+                    {
+                        fileName: fileName
+                    });
             },
-            query3GFileRecords: function (fileName) {
-                return generalHttpService.getApiData("Record3G", {
-                    fileName: fileName
-                });
+            query3GFileRecords: function(fileName) {
+                return generalHttpService.getApiData("Record3G",
+                    {
+                        fileName: fileName
+                    });
             },
-            queryVolteFileRecords: function (fileName) {
-                return generalHttpService.getApiData("RecordVolte", {
-                    fileName: fileName
-                });
+            queryVolteFileRecords: function(fileName) {
+                return generalHttpService.getApiData("RecordVolte",
+                    {
+                        fileName: fileName
+                    });
             },
-            query4GFileRecords: function (fileName) {
-                return generalHttpService.getApiData("Record4G", {
-                    fileName: fileName
-                });
+            query4GFileRecords: function(fileName) {
+                return generalHttpService.getApiData("Record4G",
+                    {
+                        fileName: fileName
+                    });
             }
-        }
+        };
     })
     .factory('collegeQueryService', function(generalHttpService) {
         return {
+            queryAll: function() {
+                return generalHttpService.getApiData('CollegeQuery', {});
+            },
             queryByName: function(name) {
-                return generalHttpService.getApiData('CollegeName', {
+                return generalHttpService.getApiData('CollegeNames', {
                     name: name
                 });
             },

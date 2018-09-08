@@ -344,6 +344,11 @@ namespace LtePlatform.Controllers
         {
             return View();
         }
+        
+        public ActionResult CollegeInfos()
+        {
+            return View();
+        }
 
         [HttpPost]
         public ActionResult WorkItemPost()
