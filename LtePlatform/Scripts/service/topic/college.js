@@ -195,10 +195,8 @@
                 },
                 queryCenterAndCallback: function(collegeName, callback) {
                     collegeQueryService.queryByName(collegeName).then(function(college) {
-                        collegeService.queryRegion(college.id).then(function(region) {
-                            var center = geometryService.queryRegionCenter(region);
-                            callback(center);
-                        });
+                        var center = geometryService.queryRegionCenter(college);
+                        callback(center);
                     });
                 },
                 showRsrpMrGrid: function(result, longtitute, lattitute, areaStats, colorDictionary) {

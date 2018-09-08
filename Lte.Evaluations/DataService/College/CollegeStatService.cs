@@ -45,6 +45,9 @@ namespace Lte.Evaluations.DataService.College
             {
                 var region = _repository.GetRegion(view.Id);
                 view.RectangleRange = region?.RectangleRange;
+                view.Area = region?.Area ?? 0;
+                view.RegionType = region?.RegionType ?? 0;
+                view.Info = region?.Info;
                 var town = _townRepository.FirstOrDefault(x => x.Id == view.TownId);
                 if (town == null) return;
                 view.City = town.CityName;
@@ -73,6 +76,9 @@ namespace Lte.Evaluations.DataService.College
             if (view == null) return null;
             var region = _repository.GetRegion(view.Id);
             view.RectangleRange = region?.RectangleRange;
+            view.Area = region?.Area ?? 0;
+            view.RegionType = region?.RegionType ?? 0;
+            view.Info = region?.Info;
             var town = _townRepository.FirstOrDefault(x => x.Id == view.TownId);
             if (town == null) return view;
             view.City = town.CityName;

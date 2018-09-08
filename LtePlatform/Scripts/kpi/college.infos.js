@@ -45,12 +45,12 @@
                 });
             };
             
-            $scope.addENodebs = function() {
+            $scope.addENodebs = function(name) {
                 collegeDialogService.addENodeb(name,
                     $scope.center,
                     function(count) {
                         $scope.addSuccessMessage('增加ENodeb' + count + '个');
-                        $scope.query();
+                        $scope.queryENodebs(name);
                     });
             };
 

@@ -1147,6 +1147,7 @@ angular.module('kpi.college.maintain', ['myApp.url', 'myApp.region', "ui.bootstr
             collegeMapService,
             baiduQueryService,
             collegeService,
+            collegeQueryService,
             networkElementService,
             neighborImportService,
             collegeName) {
@@ -1158,9 +1159,9 @@ angular.module('kpi.college.maintain', ['myApp.url', 'myApp.region', "ui.bootstr
                 function(center) {
                     collegeService.queryCells(collegeName).then(function(cells) {
                         baiduQueryService.transformToBaidu(center.X, center.Y).then(function(coors) {
-                            collegeService.queryRange(collegeName).then(function(range) {
+                            collegeQueryService.queryByName(collegeName).then(function(info) {
                                 networkElementService
-                                    .queryRangeCells(neighborImportService.generateRange(range, center, coors))
+                                    .queryRangeCells(neighborImportService.generateRange(info.rectangleRange, center, coors))
                                     .then(function(results) {
                                         neighborImportService.updateENodebRruInfo($scope.supplementCells,
                                         {
@@ -1191,6 +1192,7 @@ angular.module('kpi.college.maintain', ['myApp.url', 'myApp.region', "ui.bootstr
             geometryService,
             baiduQueryService,
             collegeService,
+            collegeQueryService,
             center,
             collegeName) {
             $scope.dialogTitle = collegeName + "LTE基站补充";
@@ -1199,7 +1201,7 @@ angular.module('kpi.college.maintain', ['myApp.url', 'myApp.region', "ui.bootstr
 
             $scope.query = function() {
                 baiduQueryService.transformToBaidu(center.X, center.Y).then(function(coors) {
-                    collegeService.queryRange(collegeName).then(function(range) {
+                    collegeQueryService.queryByName(collegeName).then(function(info) {
                         var ids = [];
                         collegeService.queryENodebs(collegeName).then(function(eNodebs) {
                             angular.forEach(eNodebs,
@@ -1208,7 +1210,7 @@ angular.module('kpi.college.maintain', ['myApp.url', 'myApp.region', "ui.bootstr
                                 });
                             networkElementService
                                 .queryRangeENodebs(neighborImportService
-                                    .generateRangeWithExcludedIds(range, center, coors, ids)).then(function(results) {
+                                    .generateRangeWithExcludedIds(info.rectangleRange, center, coors, ids)).then(function(results) {
                                     angular.forEach(results,
                                         function(item) {
                                             item.distance = geometryService
@@ -1835,7 +1837,7 @@ angular.module('kpi.college', ['app.menu', 'region.college'])
 						collegeName: collegeName,
 						cellNames: cellNames
 					}).then(function() {
-						callback();
+						callback(collegeName);
 					});
 
 				});
@@ -1858,7 +1860,7 @@ angular.module('kpi.college', ['app.menu', 'region.college'])
 						collegeName: collegeName,
 						cellNames: cellNames
 					}).then(function() {
-						callback();
+						callback(collegeName);
 					});
 
 				});

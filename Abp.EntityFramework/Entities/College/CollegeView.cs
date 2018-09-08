@@ -34,5 +34,12 @@ namespace Abp.EntityFramework.Entities.College
         public double Longtitute => RectangleRange == null ? 0 : (RectangleRange.West + RectangleRange.East) / 2;
 
         public double Lattitute => RectangleRange == null ? 0 : (RectangleRange.South + RectangleRange.North) / 2;
+        
+        public double Area { get; set; }
+
+        public RegionType RegionType { get; set; }
+
+        public string Info { get; set; }
+
     }
 }

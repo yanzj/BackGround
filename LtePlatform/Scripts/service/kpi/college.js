@@ -110,7 +110,7 @@
 						collegeName: collegeName,
 						cellNames: cellNames
 					}).then(function() {
-						callback();
+						callback(collegeName);
 					});
 
 				});
@@ -133,7 +133,7 @@
 						collegeName: collegeName,
 						cellNames: cellNames
 					}).then(function() {
-						callback();
+						callback(collegeName);
 					});
 
 				});
