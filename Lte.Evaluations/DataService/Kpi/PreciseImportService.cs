@@ -67,9 +67,15 @@ namespace Lte.Evaluations.DataService.Kpi
         public IEnumerable<TownPreciseView> GetMergeStats(DateTime statTime,
             FrequencyBandType frequency = FrequencyBandType.All)
         {
+            var mergeStats = GetTownPreciseStats(statTime, frequency);
+            return mergeStats.Select(x => x.ConstructView<TownPreciseStat, TownPreciseView>(_townRepository));
+        }
+
+        private IEnumerable<TownPreciseStat> GetTownPreciseStats(DateTime statTime, FrequencyBandType frequency)
+        {
             var stats = _repository.GetAllList(statTime.Date, statTime.Date.AddDays(1), frequency);
             var townStats = GetTownStats(stats);
-            
+
             var mergeStats = from stat in townStats
                 group stat by stat.TownId
                 into g
@@ -87,9 +93,9 @@ namespace Lte.Evaluations.DataService.Kpi
                     StatTime = statTime,
                     FrequencyBandType = frequency
                 };
-            return mergeStats.Select(x => x.ConstructView<TownPreciseStat, TownPreciseView>(_townRepository));
+            return mergeStats;
         }
-
+        
         private IEnumerable<TownPreciseStat> GetTownStats(List<PreciseCoverage4G> stats)
         {
             var query = from stat in stats
@@ -112,9 +118,11 @@ namespace Lte.Evaluations.DataService.Kpi
         public async Task DumpTownStats(TownPreciseViewContainer container)
         {
             var stats = Mapper.Map<IEnumerable<TownPreciseView>, IEnumerable<TownPreciseStat>>(
-                container.Views.Concat(container.CollegeViews).Concat(container.Views800)
+                container.Views.Concat(container.Views800)
                     .Concat(container.Views1800).Concat(container.Views2100));
             await _regionRepository.UpdateMany(stats);
+            if (container.CollegeStats.Any())
+                await _regionRepository.UpdateMany(container.CollegeStats);
 
             var mrsStats = container.MrsRsrps;
             await _townMrsRsrpRepository.UpdateMany(mrsStats);

@@ -1992,7 +1992,7 @@ angular.module('region.college', ['app.core'])
                 return generalHttpService.getApiData('CollegeFlow',
                     {
                         statDate: statDate
-                    })
+                    });
             }
         };
     })
@@ -2221,6 +2221,12 @@ angular.module('region.precise', ['app.core'])
                         frequency: frequency
                     });
                 },
+                queryCollegePreciseViews: function(statTime) {
+                    return generalHttpService.getApiData('TownPreciseImport',
+                        {
+                            statDate: statTime
+                        });
+                },
                 queryTownMrsStats: function (statTime) {
                     return generalHttpService.getApiData('MrsRsrpImport',
                         {
@@ -2255,12 +2261,12 @@ angular.module('region.precise', ['app.core'])
                     return generalHttpService.deleteApiData('MrsSinrUlImport', {});
                 },
                 dumpTownItems: function(
-                    views, collegeViews, views800, views1800, views2100, mrsStats, mrsSinrUls
+                    views, collegeStats, views800, views1800, views2100, mrsStats, mrsSinrUls
                 ) {
                     return generalHttpService.postApiData('TownPreciseImport',
                     {
                         views: views,
-                        collegeViews: collegeViews,
+                        collegeStats: collegeStats,
                         views800: views800,
                         views1800: views1800,
                         views2100: views2100,

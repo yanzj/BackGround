@@ -8,7 +8,7 @@ namespace Lte.MySqlFramework.Support.Container
     {
         public IEnumerable<TownPreciseView> Views { get; set; }
         
-        public IEnumerable<TownPreciseView> CollegeViews { get; set; }
+        public IEnumerable<TownPreciseStat> CollegeStats { get; set; }
 
         public IEnumerable<TownPreciseView> Views800 { get; set; }
 

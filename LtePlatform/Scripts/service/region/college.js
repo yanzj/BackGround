@@ -255,7 +255,7 @@
                 return generalHttpService.getApiData('CollegeFlow',
                     {
                         statDate: statDate
-                    })
+                    });
             }
         };
     })

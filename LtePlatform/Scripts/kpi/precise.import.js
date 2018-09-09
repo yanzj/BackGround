@@ -27,7 +27,7 @@
         };
         $scope.dumpHistory = [];
         $scope.townPreciseViews = [];
-        $scope.collegePreciseViews = [];
+        $scope.collegePreciseStats = [];
         $scope.townPrecise800Views = [];
         $scope.townPrecise1800Views = [];
         $scope.townPrecise2100Views = [];
@@ -80,12 +80,12 @@
 
         $scope.dumpTownItems = function() {
             preciseImportService.dumpTownItems(
-                $scope.townPreciseViews, $scope.collegePreciseViews, 
+                $scope.townPreciseViews, $scope.collegePreciseStats, 
                 $scope.townPrecise800Views, $scope.townPrecise1800Views, $scope.townPrecise2100Views, 
                 $scope.townMrsStats, $scope.townSinrUlStats
             ).then(function () {
                 $scope.townPreciseViews = [];
-                $scope.collegePreciseViews = [];
+                $scope.collegePreciseStats = [];
                 $scope.townPrecise800Views = [];
                 $scope.townPrecise1800Views = [];
                 $scope.townPrecise2100Views = [];
@@ -105,8 +105,8 @@
             preciseImportService.queryTownPreciseViews(date, 'all').then(function(result) {
                 $scope.townPreciseViews = result;
             });
-            preciseImportService.queryTownPreciseViews(date, 'college').then(function(result) {
-                $scope.collegePreciseViews = result;
+            preciseImportService.queryCollegePreciseViews(date).then(function(result) {
+                $scope.collegePreciseStats = result;
             });
             preciseImportService.queryTownPreciseViews(date, '800').then(function(result) {
                 $scope.townPrecise800Views = result;
