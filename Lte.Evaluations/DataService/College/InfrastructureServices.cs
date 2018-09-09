@@ -130,17 +130,23 @@ namespace Lte.Evaluations.DataService.College
             _rruRepository = rruRepository;
         }
 
-        public IEnumerable<CellRruView> GetCollegeViews(string collegeName)
+        public List<Cell> GetCollegeCells(string collegeName)
         {
             var ids =
                 _repository.GetAllList(
                     x =>
                         x.HotspotType == HotspotType.College && x.HotspotName == collegeName &&
                         x.InfrastructureType == InfrastructureType.Cell);
-            var cells =
-                ids.Select(x => _cellRepository.GetBySectorId(x.ENodebId, x.SectorId))
-                    .Where(cell => cell != null)
-                    .ToList();
+            var cellList = _cellRepository.GetAllList();
+            return 
+                (from id in ids
+                    join c in cellList on new {id.ENodebId, id.SectorId} equals new {c.ENodebId, c.SectorId}
+                    select c).ToList();
+        }
+
+        public IEnumerable<CellRruView> GetCollegeViews(string collegeName)
+        {
+            var cells = GetCollegeCells(collegeName);
             return cells.Any()
                 ? cells.Select(x => x.ConstructCellRruView(_eNodebRepository, _rruRepository))
                 : new List<CellRruView>();

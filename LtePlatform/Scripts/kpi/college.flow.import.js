@@ -32,20 +32,11 @@
                                         });
                                     $scope.updateCollegeNames(newItems);
                                 });
-                            } else {
-                                $scope.updateCollegeNames(items);
                             }
                         });
                     });
             };
-            $scope.updateCollegeNames = function(items) {
-                angular.forEach(items,
-                    function(item) {
-                        collegeQueryService.queryCollegeById(item.townId).then(function(college) {
-                            item.name = college.name;
-                        });
-                    });
-            };
+
             $scope.showChart = function (items) {
                 $("#collegeFlowChart").highcharts(kpiDisplayService.generateCollegeFlowBarOptions(items));
             };

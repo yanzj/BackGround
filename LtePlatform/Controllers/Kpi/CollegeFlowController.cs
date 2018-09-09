@@ -59,7 +59,7 @@ namespace LtePlatform.Controllers.Kpi
         [ApiResponse("流量情况，按照日期排列，每天一条记录")]
         public IEnumerable<FlowView> GetDateViews(string collegeName, DateTime beginDate, DateTime endDate)
         {
-            var cells = _collegeCellViewService.GetCollegeViews(collegeName);
+            var cells = _collegeCellViewService.GetCollegeCells(collegeName);
             var viewList = cells.Select(cell => _service.Query(cell.ENodebId, cell.SectorId, beginDate, endDate))
                 .Where(views => views != null && views.Any())
                 .Aggregate((x, y) => x.Concat(y).ToList());
@@ -83,7 +83,7 @@ namespace LtePlatform.Controllers.Kpi
             var colleges = _collegeService.QueryInfos();
             return colleges.Select(college =>
             {
-                var cells = _collegeCellViewService.GetCollegeViews(college.Name);
+                var cells = _collegeCellViewService.GetCollegeCells(college.Name);
                 var viewListList = cells.Select(cell => _service.Query(cell.ENodebId, cell.SectorId, beginDate, endDate))
                     .Where(views => views != null && views.Any()).ToList();
                 if (!viewListList.Any()) return null;

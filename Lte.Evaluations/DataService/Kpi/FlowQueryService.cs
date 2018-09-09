@@ -133,7 +133,7 @@ namespace Lte.Evaluations.DataService.Kpi
                     x => x.StatTime >= begin && x.StatTime < end && x.SchedulingRank1 > 1000000));
             return results.OrderBy(x => x.Rank2Rate).Take(topCount);
         }
-
+        
         protected override IDateSpanQuery<List<FlowView>> GenerateHuaweiQuery(int eNodebId, byte sectorId)
         {
             return new HuaweiFlowQuery(HuaweiRepository, HuaweiCellRepository, eNodebId, sectorId);

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities.RegionKpi;
+using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Regular;
 using Lte.Evaluations.DataService.College;
@@ -52,16 +53,16 @@ namespace LtePlatform.Controllers.Kpi
             var beginDate = statDate.Date;
             var endDate = beginDate.AddDays(1);
             var colleges = _collegeService.QueryInfos();
+            var stats = _statService.GetTimeSpanStats(beginDate, endDate);
             return colleges.Select(college =>
             {
-                var cells = _collegeCellViewService.GetCollegeViews(college.Name);
-                var viewListList 
-                    = cells.Select(cell => _statService.GetTimeSpanStats(cell.ENodebId, cell.SectorId, beginDate, endDate))
-                    .Where(views => views != null && views.Any()).ToList();
+                var cells = _collegeCellViewService.GetCollegeCells(college.Name);
+                var viewListList
+                    = (from c in cells
+                        join s in stats on new {c.ENodebId, c.SectorId} equals new {ENodebId = s.CellId, s.SectorId}
+                        select s).ToList();
                 if (!viewListList.Any()) return null;
-                var viewList = viewListList.Aggregate((x, y) => x.Concat(y)).ToList();
-                if (!viewList.Any()) return null;
-                var stat = viewList.ArraySum().MapTo<TownPreciseStat>();
+                var stat = viewListList.ArraySum().MapTo<TownPreciseStat>();
                 stat.FrequencyBandType = FrequencyBandType.College;
                 stat.TownId = college.Id;
                 return stat;
