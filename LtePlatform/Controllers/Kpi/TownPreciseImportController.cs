@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Abp.EntityFramework.Entities.RegionKpi;
+using Lte.Domain.Common.Wireless.Cell;
 using Lte.Evaluations.DataService.Kpi;
 using Lte.MySqlFramework.Support.Container;
 using LtePlatform.Models;
@@ -24,9 +25,9 @@ namespace LtePlatform.Controllers.Kpi
         [ApiParameterDoc("statTime", "查询指定日期")]
         [ApiResponse("镇区精确覆盖率统计指标")]
         [HttpGet]
-        public IEnumerable<TownPreciseView> Get(DateTime statTime)
+        public IEnumerable<TownPreciseView> Get(DateTime statTime, string frequency)
         {
-            return _service.GetMergeStats(statTime);
+            return _service.GetMergeStats(statTime, frequency.GetBandFromFcn());
         }
 
         [HttpPost]

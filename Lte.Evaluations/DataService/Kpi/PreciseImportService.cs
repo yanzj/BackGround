@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Abp.EntityFramework.Entities.Kpi;
 using Abp.EntityFramework.Entities.RegionKpi;
 using Abp.EntityFramework.Repositories;
+using Lte.Domain.Common.Wireless.Cell;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Mr;
 using Lte.MySqlFramework.Abstract.Region;
@@ -63,9 +64,10 @@ namespace Lte.Evaluations.DataService.Kpi
             return PreciseCoverage4Gs.Count;
         }
 
-        public IEnumerable<TownPreciseView> GetMergeStats(DateTime statTime)
+        public IEnumerable<TownPreciseView> GetMergeStats(DateTime statTime,
+            FrequencyBandType frequency = FrequencyBandType.All)
         {
-            var stats = _repository.GetAllList(statTime.Date, statTime.Date.AddDays(1));
+            var stats = _repository.GetAllList(statTime.Date, statTime.Date.AddDays(1), frequency);
             var townStats = GetTownStats(stats);
             
             var mergeStats = from stat in townStats
@@ -165,8 +167,17 @@ namespace Lte.Evaluations.DataService.Kpi
             {
                 var beginDate = begin.Date;
                 var endDate = beginDate.AddDays(1);
-                var items = _repository.GetAllList(beginDate, endDate);
-                var townItems = _regionRepository.GetAllList(x => x.StatTime >= beginDate && x.StatTime < endDate);
+                var items = _repository.GetAllList(beginDate, endDate, FrequencyBandType.All);
+                var townItems = _regionRepository.GetAllList(x =>
+                    x.StatTime >= beginDate && x.StatTime < endDate && x.FrequencyBandType == FrequencyBandType.All);
+                var collegeItems = _regionRepository.GetAllList(x =>
+                    x.StatTime >= beginDate && x.StatTime < endDate && x.FrequencyBandType == FrequencyBandType.College);
+                var townItems800 = _regionRepository.GetAllList(x =>
+                    x.StatTime >= beginDate && x.StatTime < endDate && x.FrequencyBandType == FrequencyBandType.Band800VoLte);
+                var townItems1800 = _regionRepository.GetAllList(x =>
+                    x.StatTime >= beginDate && x.StatTime < endDate && x.FrequencyBandType == FrequencyBandType.Band1800);
+                var townItems2100 = _regionRepository.GetAllList(x =>
+                    x.StatTime >= beginDate && x.StatTime < endDate && x.FrequencyBandType == FrequencyBandType.Band2100);
                 var townMrsItems =
                     _townMrsRsrpRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
                 var topMrsItems = _topMrsRsrpRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
@@ -179,6 +190,10 @@ namespace Lte.Evaluations.DataService.Kpi
                     StatDate = begin.Date,
                     PreciseStats = items.Count,
                     TownPreciseStats = townItems.Count,
+                    CollegePreciseStats = collegeItems.Count,
+                    TownPrecise800Stats = townItems800.Count,
+                    TownPrecise1800Stats = townItems1800.Count,
+                    TownPrecise2100Stats = townItems2100.Count,
                     TownMrsStats = townMrsItems.Count,
                     TopMrsStats = topMrsItems.Count,
                     TownSinrUlStats = townSinrUlItems.Count,

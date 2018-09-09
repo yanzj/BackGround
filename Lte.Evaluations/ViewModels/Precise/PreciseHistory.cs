@@ -9,8 +9,16 @@ namespace Lte.Evaluations.ViewModels.Precise
         public DateTime StatDate { get; set; }
 
         public int PreciseStats { get; set; }
-
+        
         public int TownPreciseStats { get; set; }
+
+        public int CollegePreciseStats { get; set; }
+
+        public int TownPrecise800Stats { get; set; }
+
+        public int TownPrecise1800Stats { get; set; }
+        
+        public int TownPrecise2100Stats { get; set; }
 
         public int TownMrsStats { get; set; }
 
