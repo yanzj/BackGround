@@ -43,6 +43,11 @@ namespace LtePlatform.Controllers
         {
             return View();
         }
+        
+        public ActionResult CollegeFlowImport()
+        {
+            return View();
+        }
 
         [HttpPost]
         public ViewResult KpiImport()

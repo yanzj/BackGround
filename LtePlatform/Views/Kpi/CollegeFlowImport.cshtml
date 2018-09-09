@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "校园网流量指标导入";
+}
+
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            <strong>@ViewBag.Title</strong>
+        </h2>
+    </div>
+    <div class="panel-body row" ng-controller="college.flows">
+        <div class="col-md-6">
+            <div date-span-row begin-date="beginDate" end-date="endDate">
+                <button class="btn btn-primary" ng-click="query()">更新</button>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>日期</th>
+                    <th>记录数</th>
+                    <th>详情</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="stat in stats">
+                    <td>{{stat.date | date: 'yyyy-MM-dd'}}</td>
+                    <td>{{stat.items.length}}</td>
+                    <td>
+                        <button class="btn btn-default" ng-disabled="!stat.items.length"
+                                ng-click="showChart(stat.items)">
+                            流量分布
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <div id="collegeFlowChart" style="min-height: 600px"></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/kpi/college.flow.import.js"></script>
+}
