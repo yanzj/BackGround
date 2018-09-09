@@ -175,7 +175,6 @@
     <Compile Include="Abstract\Kpi\IMrsRsrpRepository.cs" />
     <Compile Include="Abstract\Kpi\IMrsSinrUlRepository.cs" />
     <Compile Include="Abstract\Kpi\IPreciseMongoRepository.cs" />
-    <Compile Include="Abstract\Kpi\ITownPreciseCoverage4GStatRepository.cs" />
     <Compile Include="Abstract\Kpi\MrMongoInterfaces.cs" />
     <Compile Include="Abstract\Kpi\IPreciseCoverage4GRepository.cs" />
     <Compile Include="Abstract\Switch\ICellMeasGroupZteRepository.cs" />
@@ -198,7 +197,6 @@
     <Compile Include="Concrete\EFParametersContext.cs" />
     <Compile Include="Concrete\Kpi\PreciseMongoRepository.cs" />
     <Compile Include="Concrete\Kpi\PreciseCoverage4GRepository.cs" />
-    <Compile Include="Concrete\Kpi\TownPreciseCoverage4GStatRepository.cs" />
     <Compile Include="Concrete\MasterTestContext.cs" />
     <Compile Include="Concrete\Kpi\InterferenceMongoRepository.cs" />
     <Compile Include="Concrete\MyMongoProvider.cs" />

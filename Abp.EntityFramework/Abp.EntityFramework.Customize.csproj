@@ -294,7 +294,7 @@
     <Compile Include="Entities\Mr\TownMrsRsrp.cs" />
     <Compile Include="Entities\Mr\TownMrsSinrUl.cs" />
     <Compile Include="Entities\RegionKpi\TownPrbStat.cs" />
-    <Compile Include="Entities\RegionKpi\TownPreciseCoverage4GStat.cs" />
+    <Compile Include="Entities\RegionKpi\TownPreciseStat.cs" />
     <Compile Include="Entities\RegionKpi\TownPreciseView.cs" />
     <Compile Include="Entities\RegionKpi\TownQciStat.cs" />
     <Compile Include="Entities\RegionKpi\TownRrcStat.cs" />

@@ -4,17 +4,17 @@ using System.Linq;
 using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities.RegionKpi;
 using Lte.MySqlFramework.Abstract.Region;
+using Lte.MySqlFramework.Abstract.RegionKpi;
 using Lte.MySqlFramework.Support;
-using Lte.Parameters.Abstract.Kpi;
 
 namespace Lte.Evaluations.DataService.RegionKpi
 {
     public class PreciseRegionStatService
     {
-        private readonly ITownPreciseCoverage4GStatRepository _statRepository;
+        private readonly ITownPreciseCoverageRepository _statRepository;
         private readonly ITownRepository _townRepository;
 
-        public PreciseRegionStatService(ITownPreciseCoverage4GStatRepository statRepository,
+        public PreciseRegionStatService(ITownPreciseCoverageRepository statRepository,
             ITownRepository townRepository)
         {
             _statRepository = statRepository;
@@ -29,7 +29,7 @@ namespace Lte.Evaluations.DataService.RegionKpi
                     _statRepository.GetAllList(x => x.StatTime >= beginDate & x.StatTime < endDate);
                 return query.FilterTownList(_townRepository.GetAllList().Where(x => x.CityName == city).ToList());
             });
-            var townViews = stats.ConstructViews<TownPreciseCoverage4GStat, TownPreciseView>(_townRepository);
+            var townViews = stats.ConstructViews<TownPreciseStat, TownPreciseView>(_townRepository);
             return townViews.QueryRegionDateView<PreciseRegionDateView, DistrictPreciseView, TownPreciseView>(initialDate,
                 DistrictPreciseView.ConstructView);
         }
@@ -37,7 +37,7 @@ namespace Lte.Evaluations.DataService.RegionKpi
         public IEnumerable<PreciseRegionDateView> QueryDateViews(DateTime begin, DateTime end, string city)
         {
             var query = _statRepository.GetAllList(x => x.StatTime >= begin & x.StatTime < end);
-            var townViews = query.QueryTownStat<TownPreciseCoverage4GStat, TownPreciseView>(_townRepository, city);
+            var townViews = query.QueryTownStat<TownPreciseStat, TownPreciseView>(_townRepository, city);
             return
                 townViews.QueryDateSpanViews<PreciseRegionDateView, DistrictPreciseView, TownPreciseView>(
                     DistrictPreciseView.ConstructView);

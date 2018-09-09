@@ -12,6 +12,7 @@ using Abp.EntityFramework.Repositories;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Mr;
 using Lte.MySqlFramework.Abstract.Region;
+using Lte.MySqlFramework.Abstract.RegionKpi;
 using Lte.MySqlFramework.Support.Container;
 
 namespace Lte.Evaluations.DataService.Kpi
@@ -19,7 +20,7 @@ namespace Lte.Evaluations.DataService.Kpi
     public class PreciseImportService
     {
         private readonly IPreciseCoverage4GRepository _repository;
-        private readonly ITownPreciseCoverage4GStatRepository _regionRepository;
+        private readonly ITownPreciseCoverageRepository _regionRepository;
         private readonly IENodebRepository _eNodebRepository;
         private readonly ITownRepository _townRepository;
         private readonly IPreciseMongoRepository _mongoRepository;
@@ -31,7 +32,7 @@ namespace Lte.Evaluations.DataService.Kpi
         public static Stack<PreciseCoverage4G> PreciseCoverage4Gs { get; set; } 
         
         public PreciseImportService(IPreciseCoverage4GRepository repository,
-            ITownPreciseCoverage4GStatRepository regionRepository,
+            ITownPreciseCoverageRepository regionRepository,
             IENodebRepository eNodebRepository, ITownRepository townRepository,
             IPreciseMongoRepository mongoRepository,
             ITownMrsRsrpRepository townMrsRsrpRepository, ITopMrsRsrpRepository topMrsRsrpRepository,
@@ -70,7 +71,7 @@ namespace Lte.Evaluations.DataService.Kpi
             var mergeStats = from stat in townStats
                 group stat by stat.TownId
                 into g
-                select new TownPreciseCoverage4GStat
+                select new TownPreciseStat
                 {
                     TownId = g.Key,
                     FirstNeighbors = g.Sum(x => x.FirstNeighbors),
@@ -83,10 +84,10 @@ namespace Lte.Evaluations.DataService.Kpi
                     NeighborsMore = g.Sum(x => x.NeighborsMore),
                     StatTime = statTime
                 };
-            return mergeStats.Select(x => x.ConstructView<TownPreciseCoverage4GStat, TownPreciseView>(_townRepository));
+            return mergeStats.Select(x => x.ConstructView<TownPreciseStat, TownPreciseView>(_townRepository));
         }
 
-        private IEnumerable<TownPreciseCoverage4GStat> GetTownStats(List<PreciseCoverage4G> stats)
+        private IEnumerable<TownPreciseStat> GetTownStats(List<PreciseCoverage4G> stats)
         {
             var query = from stat in stats
                 join eNodeb in _eNodebRepository.GetAllList() on stat.CellId equals eNodeb.ENodebId
@@ -98,7 +99,7 @@ namespace Lte.Evaluations.DataService.Kpi
                     };
             var townStats = query.Select(x =>
             {
-                var townStat = Mapper.Map<PreciseCoverage4G, TownPreciseCoverage4GStat>(x.Stat);
+                var townStat = Mapper.Map<PreciseCoverage4G, TownPreciseStat>(x.Stat);
                 townStat.TownId = x.TownId;
                 return townStat;
             });
@@ -107,7 +108,7 @@ namespace Lte.Evaluations.DataService.Kpi
 
         public async Task DumpTownStats(TownPreciseViewContainer container)
         {
-            var stats = Mapper.Map<IEnumerable<TownPreciseView>, IEnumerable<TownPreciseCoverage4GStat>>(container.Views);
+            var stats = Mapper.Map<IEnumerable<TownPreciseView>, IEnumerable<TownPreciseStat>>(container.Views);
             await _regionRepository.UpdateMany(stats);
 
             var mrsStats = container.MrsRsrps;

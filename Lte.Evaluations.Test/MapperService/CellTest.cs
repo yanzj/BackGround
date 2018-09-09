@@ -421,7 +421,7 @@ namespace Lte.Evaluations.MapperService
         [Test]
         public void Test_TownPreciseView()
         {
-            var stat = new TownPreciseCoverage4GStat
+            var stat = new TownPreciseStat
             {
                 StatTime = new DateTime(2015, 7, 10),
                 FirstNeighbors = 0,
@@ -447,7 +447,7 @@ namespace Lte.Evaluations.MapperService
                 TotalMrs = 37,
                 TownId = 4
             };
-            stat = view.MapTo<TownPreciseCoverage4GStat>();
+            stat = view.MapTo<TownPreciseStat>();
             stat.StatTime.ShouldBe(new DateTime(2015, 6, 11));
             stat.FirstNeighbors.ShouldBe(1);
             stat.SecondNeighbors.ShouldBe(12);

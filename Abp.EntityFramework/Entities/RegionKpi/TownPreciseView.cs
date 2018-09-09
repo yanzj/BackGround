@@ -5,7 +5,7 @@ using Lte.Domain.Common.Wireless;
 
 namespace Abp.EntityFramework.Entities.RegionKpi
 {
-    [AutoMap(typeof(TownPreciseCoverage4GStat))]
+    [AutoMap(typeof(TownPreciseStat))]
     public class TownPreciseView : ICityDistrictTown, IStatTime
     {
         public DateTime StatTime { get; set; }

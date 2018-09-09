@@ -3,19 +3,16 @@ using Abp.Reflection;
 using Lte.Evaluations.MockItems;
 using Lte.Evaluations.Policy;
 using Lte.Evaluations.TestService;
-using Lte.Parameters.Abstract.Kpi;
 using Lte.Parameters.MockOperations;
 using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Region;
 using Abp.EntityFramework.Entities.RegionKpi;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Region;
-using Lte.Parameters.Entities.Kpi;
+using Lte.MySqlFramework.Abstract.RegionKpi;
 
 namespace Lte.Evaluations.DataService.Kpi
 {
@@ -24,8 +21,8 @@ namespace Lte.Evaluations.DataService.Kpi
     {
         private readonly ITypeFinder _typeFinder = new TypeFinder(new MyAssemblyFinder());
         private readonly Mock<ITownRepository> _townRepository = new Mock<ITownRepository>(); 
-        private readonly Mock<ITownPreciseCoverage4GStatRepository> _statRepository =
-            new Mock<ITownPreciseCoverage4GStatRepository>();
+        private readonly Mock<ITownPreciseCoverageRepository> _statRepository =
+            new Mock<ITownPreciseCoverageRepository>();
 
         private PreciseRegionStatTestService _testService;
 

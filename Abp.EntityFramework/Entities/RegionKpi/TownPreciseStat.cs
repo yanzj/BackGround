@@ -4,15 +4,22 @@ using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities.Kpi;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Cell;
+using Lte.Domain.Regular.Attributes;
 
 namespace Abp.EntityFramework.Entities.RegionKpi
 {
     [AutoMapFrom(typeof(PreciseCoverage4G))]
-    public class TownPreciseCoverage4GStat : Entity, ITownId, IStatTime
+    public class TownPreciseStat : Entity, ITownId, IStatTime
     {
+        [ArraySumProtection]
         public DateTime StatTime { get; set; }
-
+        
+        [ArraySumProtection]
         public int TownId { get; set; }
+        
+        [ArraySumProtection]
+        public FrequencyBandType FrequencyBandType { get; set; } = FrequencyBandType.All;
 
         public int TotalMrs { get; set; }
 

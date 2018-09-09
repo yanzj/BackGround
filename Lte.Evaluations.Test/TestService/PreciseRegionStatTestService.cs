@@ -1,15 +1,12 @@
-﻿using Lte.Evaluations.DataService.Kpi;
-using Lte.Parameters.Abstract.Kpi;
-using Lte.Parameters.MockOperations;
+﻿using Lte.Parameters.MockOperations;
 using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.RegionKpi;
 using Lte.Evaluations.DataService.RegionKpi;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Region;
+using Lte.MySqlFramework.Abstract.RegionKpi;
 using Lte.MySqlFramework.Support;
 
 namespace Lte.Evaluations.TestService
@@ -17,10 +14,10 @@ namespace Lte.Evaluations.TestService
     public class PreciseRegionStatTestService
     {
         private readonly Mock<ITownRepository> _townRepository;
-        private readonly Mock<ITownPreciseCoverage4GStatRepository> _statRepository;
+        private readonly Mock<ITownPreciseCoverageRepository> _statRepository;
 
         public PreciseRegionStatTestService(Mock<ITownRepository> townRepository,
-            Mock<ITownPreciseCoverage4GStatRepository> statRepository)
+            Mock<ITownPreciseCoverageRepository> statRepository)
         {
             _townRepository = townRepository;
             _statRepository = statRepository;
@@ -29,9 +26,9 @@ namespace Lte.Evaluations.TestService
         public void ImportPreciseRecord(int townId, string statDate, int totalMrs, int firstNeighbors,
             int secondNeighbors, int thirdNeighbors)
         {
-            _statRepository.MockQueryItems(new List<TownPreciseCoverage4GStat>
+            _statRepository.MockQueryItems(new List<TownPreciseStat>
             {
-                new TownPreciseCoverage4GStat
+                new TownPreciseStat
                 {
                     TownId = townId,
                     StatTime = DateTime.Parse(statDate),
@@ -46,7 +43,7 @@ namespace Lte.Evaluations.TestService
         public void ImportPreciseRecord(int townId, string[] statDates, int[] totalMrs, int[] firstNeighbors,
             int[] secondNeighbors, int[] thirdNeighbors)
         {
-            var statList = statDates.Select((t, i) => new TownPreciseCoverage4GStat
+            var statList = statDates.Select((t, i) => new TownPreciseStat
             {
                 TownId = townId,
                 StatTime = DateTime.Parse(statDates[i]),
@@ -61,7 +58,7 @@ namespace Lte.Evaluations.TestService
         public void ImportPreciseRecord(int[] townIds, string[] statDates, int[] totalMrs, int[] firstNeighbors,
             int[] secondNeighbors, int[] thirdNeighbors)
         {
-            var statList = statDates.Select((t, i) => new TownPreciseCoverage4GStat
+            var statList = statDates.Select((t, i) => new TownPreciseStat
             {
                 TownId = townIds[i],
                 StatTime = DateTime.Parse(statDates[i]),
