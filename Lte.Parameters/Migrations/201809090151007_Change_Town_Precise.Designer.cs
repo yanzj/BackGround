@@ -6,14 +6,14 @@ namespace Lte.Parameters.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Infrastructure_Change : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
+    public sealed partial class Change_Town_Precise : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Infrastructure_Change));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Change_Town_Precise));
         
         string IMigrationMetadata.Id
         {
-            get { return "201708250351322_Infrastructure_Change"; }
+            get { return "201809090151007_Change_Town_Precise"; }
         }
         
         string IMigrationMetadata.Source

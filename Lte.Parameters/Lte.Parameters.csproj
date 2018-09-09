@@ -272,13 +272,13 @@
     <Compile Include="Entities\Switch\IZteMeasGroup.cs" />
     <Compile Include="Entities\Switch\IntraRatHoComm.cs" />
     <Compile Include="Entities\Switch\UeEUtranMeasurementZte.cs" />
-    <Compile Include="Migrations\201708250351322_Infrastructure_Change.cs" />
-    <Compile Include="Migrations\201708250351322_Infrastructure_Change.Designer.cs">
-      <DependentUpon>201708250351322_Infrastructure_Change.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201708300231567_Change_ENodeb.cs" />
     <Compile Include="Migrations\201708300231567_Change_ENodeb.Designer.cs">
       <DependentUpon>201708300231567_Change_ENodeb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809090151007_Change_Town_Precise.cs" />
+    <Compile Include="Migrations\201809090151007_Change_Town_Precise.Designer.cs">
+      <DependentUpon>201809090151007_Change_Town_Precise.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MockOperations\DbHelper.cs" />
@@ -309,11 +309,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201708250351322_Infrastructure_Change.resx">
-      <DependentUpon>201708250351322_Infrastructure_Change.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708300231567_Change_ENodeb.resx">
       <DependentUpon>201708300231567_Change_ENodeb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809090151007_Change_Town_Precise.resx">
+      <DependentUpon>201809090151007_Change_Town_Precise.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
