@@ -47,5 +47,19 @@ namespace Abp.EntityFramework.Entities.Kpi
 
         public double UplinkFeelingRate
             => UplinkFeelingDuration == 0 ? 0 : UplinkFeelingThroughput / UplinkFeelingDuration;
+        
+        public double SchedulingRank2 { get; set; }
+
+        public double SchedulingTimes { get; set; }
+
+        public double Rank2Rate => SchedulingTimes == 0 ? 100 : (SchedulingRank2 / SchedulingTimes * 100);
+
+        public int RedirectCdma2000 { get; set; }
+
+        public double DownSwitchRate
+            =>
+                PdcpUplinkFlow + PdcpDownlinkFlow == 0
+                    ? 100
+                    : (8 * (double)RedirectCdma2000 / (PdcpUplinkFlow/1024 + PdcpDownlinkFlow/1024));
     }
 }

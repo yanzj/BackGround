@@ -68,7 +68,7 @@ namespace LtePlatform.Controllers.Kpi
             var results = stats.MapTo<List<AggregateFlowView>>();
             results.ForEach(view =>
             {
-                view.CellCount=cells.Count();
+                view.CellCount = cells.Count();
                 view.Name = collegeName;
             });
             return results;
