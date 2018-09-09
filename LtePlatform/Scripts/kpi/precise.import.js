@@ -27,6 +27,10 @@
         };
         $scope.dumpHistory = [];
         $scope.townPreciseViews = [];
+        $scope.collegePreciseViews = [];
+        $scope.townPrecise800Views = [];
+        $scope.townPrecise1800Views = [];
+        $scope.townPrecise2100Views = [];
         $scope.townMrsStats = [];
         $scope.townSinrUlStats = [];
 
@@ -76,22 +80,42 @@
 
         $scope.dumpTownItems = function() {
             preciseImportService.dumpTownItems(
-                $scope.townPreciseViews, $scope.townMrsStats, $scope.townSinrUlStats
+                $scope.townPreciseViews, $scope.collegePreciseViews, 
+                $scope.townPrecise800Views, $scope.townPrecise1800Views, $scope.townPrecise2100Views, 
+                $scope.townMrsStats, $scope.townSinrUlStats
             ).then(function () {
                 $scope.townPreciseViews = [];
+                $scope.collegePreciseViews = [];
+                $scope.townPrecise800Views = [];
+                $scope.townPrecise1800Views = [];
+                $scope.townPrecise2100Views = [];
                 $scope.townMrsStats = [];
                 $scope.townSinrUlStats = [];
                 $scope.updateHistory();
             });
         };
         $scope.updateHistory = function() {
-            preciseImportService.queryDumpHistroy($scope.beginDate.value, $scope.endDate.value).then(function(result) {
+            preciseImportService.queryDumpHistroy(
+                $scope.beginDate.value, $scope.endDate.value
+            ).then(function(result) {
                 $scope.dumpHistory = result;
             });
         };
         $scope.updateTownItems = function(date) {
-            preciseImportService.queryTownPreciseViews(date).then(function(result) {
+            preciseImportService.queryTownPreciseViews(date, 'all').then(function(result) {
                 $scope.townPreciseViews = result;
+            });
+            preciseImportService.queryTownPreciseViews(date, 'college').then(function(result) {
+                $scope.collegePreciseViews = result;
+            });
+            preciseImportService.queryTownPreciseViews(date, '800').then(function(result) {
+                $scope.townPrecise800Views = result;
+            });
+            preciseImportService.queryTownPreciseViews(date, '1800').then(function(result) {
+                $scope.townPrecise1800Views = result;
+            });
+            preciseImportService.queryTownPreciseViews(date, '2100').then(function(result) {
+                $scope.townPrecise2100Views = result;
             });
         };
         $scope.updateTownMrsItems = function(date) {

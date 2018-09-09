@@ -16,7 +16,8 @@ namespace Lte.MySqlFramework.Concrete.RegionKpi
         {
             var endTime = stat.StatTime.AddDays(1);
             return FirstOrDefault(
-                x => x.TownId == stat.TownId && x.StatTime >= stat.StatTime && x.StatTime < endTime);
+                x => x.TownId == stat.TownId && x.StatTime >= stat.StatTime && x.StatTime < endTime
+                     && x.FrequencyBandType == stat.FrequencyBandType);
         }
     }
 }

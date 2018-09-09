@@ -1,12 +1,18 @@
 ﻿
 <div ng-controller="precise.import">
     <button class="btn btn-info"
-            ng-disabled="townPreciseViews.length === 0 && townMrsStats.length === 0 && townSinrUlStats.length === 0"
+            ng-disabled="townPreciseViews.length === 0 && collegePreciseViews.length === 0 && townPrecise800Views.length === 0
+             && townPrecise1800Views.length === 0 && townPrecise2100Views.length === 0
+            && townMrsStats.length === 0 && townSinrUlStats.length === 0"
             ng-click="dumpTownItems()">
         导入镇区指标
-        <div class="badge">精确覆盖{{townPreciseViews.length}}</div>
-        <div class="badge">RSRP覆盖{{townMrsStats.length}}</div>
-        <div class="badge">上行SINR{{townSinrUlStats.length}}</div>
+        <div class="badge">精确({{townPreciseViews.length}})</div>
+        <div class="badge">精确校园({{collegePreciseViews.length}})</div>
+        <div class="badge">精确800({{townPrecise800Views.length}})</div>
+        <div class="badge">精确1800({{townPrecise1800Views.length}})</div>
+        <div class="badge">精确2100({{townPrecise2100Views.length}})</div>
+        <div class="badge">RSRP覆盖({{townMrsStats.length}})</div>
+        <div class="badge">上行SINR({{townSinrUlStats.length}})</div>
     </button>
     <div class="row">
         <div class="col-md-4">

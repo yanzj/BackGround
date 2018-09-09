@@ -158,10 +158,11 @@
                 queryTotalMrsSinrUlItems: function () {
                     return generalHttpService.getApiData('MrsSinrUlImport', {});
                 },
-                queryTownPreciseViews: function(statTime) {
+                queryTownPreciseViews: function(statTime, frequency) {
                     return generalHttpService.getApiData('TownPreciseImport',
                     {
-                        statTime: statTime
+                        statTime: statTime,
+                        frequency: frequency
                     });
                 },
                 queryTownMrsStats: function (statTime) {
@@ -197,10 +198,16 @@
                 clearMrsSinrUlItems: function () {
                     return generalHttpService.deleteApiData('MrsSinrUlImport', {});
                 },
-                dumpTownItems: function(views, mrsStats, mrsSinrUls) {
+                dumpTownItems: function(
+                    views, collegeViews, views800, views1800, views2100, mrsStats, mrsSinrUls
+                ) {
                     return generalHttpService.postApiData('TownPreciseImport',
                     {
                         views: views,
+                        collegeViews: collegeViews,
+                        views800: views800,
+                        views1800: views1800,
+                        views2100: views2100,
                         mrsRsrps: mrsStats,
                         mrsSinrUls: mrsSinrUls
                     });

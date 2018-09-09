@@ -84,7 +84,8 @@ namespace Lte.Evaluations.DataService.Kpi
                     InterSecondNeighbors = g.Sum(x => x.InterSecondNeighbors),
                     InterThirdNeighbors = g.Sum(x => x.InterThirdNeighbors),
                     NeighborsMore = g.Sum(x => x.NeighborsMore),
-                    StatTime = statTime
+                    StatTime = statTime,
+                    FrequencyBandType = frequency
                 };
             return mergeStats.Select(x => x.ConstructView<TownPreciseStat, TownPreciseView>(_townRepository));
         }
@@ -110,7 +111,9 @@ namespace Lte.Evaluations.DataService.Kpi
 
         public async Task DumpTownStats(TownPreciseViewContainer container)
         {
-            var stats = Mapper.Map<IEnumerable<TownPreciseView>, IEnumerable<TownPreciseStat>>(container.Views);
+            var stats = Mapper.Map<IEnumerable<TownPreciseView>, IEnumerable<TownPreciseStat>>(
+                container.Views.Concat(container.CollegeViews).Concat(container.Views800)
+                    .Concat(container.Views1800).Concat(container.Views2100));
             await _regionRepository.UpdateMany(stats);
 
             var mrsStats = container.MrsRsrps;

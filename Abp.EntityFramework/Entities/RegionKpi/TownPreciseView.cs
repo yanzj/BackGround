@@ -2,6 +2,7 @@ using System;
 using Abp.EntityFramework.AutoMapper;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Cell;
 
 namespace Abp.EntityFramework.Entities.RegionKpi
 {
@@ -17,6 +18,8 @@ namespace Abp.EntityFramework.Entities.RegionKpi
         public string Town { get; set; } = "-";
 
         public int TownId { get; set; }
+
+        public FrequencyBandType FrequencyBandType { get; set; }
 
         public int TotalMrs { get; set; }
 
