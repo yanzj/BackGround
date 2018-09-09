@@ -1,3 +1,4 @@
+using System;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities.RegionKpi;
 using Lte.Domain.Regular.Attributes;
@@ -10,6 +11,10 @@ namespace Abp.EntityFramework.Entities.Kpi
     {
         [MemberDoc("小区个数")]
         public int CellCount { get; set; }
+
+        public string Name { get; set; }
+
+        public DateTime StatTime { get; set; }
 
         [MemberDoc("PDCP层下行流量")]
         public double PdcpDownlinkFlow { get; set; }

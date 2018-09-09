@@ -407,7 +407,6 @@
     <Compile Include="Entities\Kpi\QciView.cs" />
     <Compile Include="Entities\Region\RoadRectangle.cs" />
     <Compile Include="Entities\Kpi\RrcView.cs" />
-    <Compile Include="Entities\Infrastructure\SectorView.cs" />
     <Compile Include="Entities\Infrastructure\StationDictionaryView.cs" />
     <Compile Include="Entities\Infrastructure\StationRruView.cs" />
     <Compile Include="Entities\Cdma\TopConnection3GCellView.cs" />

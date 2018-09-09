@@ -1,7 +1,6 @@
 ﻿using Abp.EntityFramework.Entities.Cdma;
+using Abp.EntityFramework.Entities.Infrastructure;
 using Lte.Evaluations.ViewModels.Precise;
-using Lte.MySqlFramework.Entities;
-using Lte.MySqlFramework.Entities.Infrastructure;
 using NUnit.Framework;
 
 namespace Lte.Evaluations.TestService

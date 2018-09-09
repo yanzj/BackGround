@@ -1,12 +1,14 @@
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities.Cdma;
+using Lte.Domain.Common.Geo;
+using Lte.Domain.Common.Wireless;
 using Lte.Domain.Regular.Attributes;
 
-namespace Lte.MySqlFramework.Entities.Infrastructure
+namespace Abp.EntityFramework.Entities.Infrastructure
 {
     [TypeDoc("扇区视图，用于地理化显示")]
     [AutoMapFrom(typeof(CdmaCellView))]
-    public class SectorView
+    public class SectorView : ILteCellQuery, IGeoPoint<double>
     {
         [MemberDoc("小区名称，用于辨析小区")]
         public string CellName { get; set; }

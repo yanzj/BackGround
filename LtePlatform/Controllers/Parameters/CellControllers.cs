@@ -1,8 +1,8 @@
 ﻿using Lte.Evaluations.DataService.Basic;
-using Lte.MySqlFramework.Entities;
 using LtePlatform.Models;
 using System.Collections.Generic;
 using System.Web.Http;
+using Abp.EntityFramework.Entities.Infrastructure;
 using Lte.Evaluations.ViewModels.Precise;
 using Lte.MySqlFramework.Entities.Infrastructure;
 

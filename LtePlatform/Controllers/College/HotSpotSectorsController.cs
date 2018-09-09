@@ -1,14 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
+using Abp.EntityFramework.Entities.Infrastructure;
 using Lte.Evaluations.DataService.College;
-using Lte.MySqlFramework.Entities;
-using Lte.MySqlFramework.Entities.Infrastructure;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.College
 {
     [ApiControl("查询热点LTE扇区的控制器")]
-    [Cors("http://132.110.60.94:2018", "http://218.13.12.242:2018")]
     public class HotSpotSectorsController : ApiController
     {
         private readonly CollegeCellViewService _viewService;
