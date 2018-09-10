@@ -10,7 +10,6 @@ using Lte.Domain.Regular;
 using Lte.Evaluations.DataService.College;
 using Lte.Evaluations.DataService.Kpi;
 using Lte.Evaluations.DataService.RegionKpi;
-using Lte.MySqlFramework.Entities.Kpi;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.Kpi
@@ -32,6 +31,66 @@ namespace LtePlatform.Controllers.Kpi
             _collegeService = collegeService;
             _townFlowService = townFlowService;
         }
+        
+        [HttpGet]
+        [ApiDoc("查询指定日期范围内所有学校流量情况")]
+        [ApiParameterDoc("startDate", "开始日期")]
+        [ApiParameterDoc("lastDate", "结束日期")]
+        [ApiResponse("所有学校天平均流量统计")]
+        public IEnumerable<AggregateFlowView> Get(DateTime startDate, DateTime lastDate)
+        {
+            var colleges = _collegeService.QueryInfos();
+            return colleges.Select(college =>
+            {
+                var stats = _townFlowService.QueryTownFlowViews(startDate, lastDate, college.Id, FrequencyBandType.College);
+                var result = stats.Any()
+                    ? stats.ArraySum().MapTo<AggregateFlowView>()
+                    : new AggregateFlowView();
+                result.Name = college.Name;
+                return result;
+            });
+        }
+        
+        [HttpGet]
+        [ApiDoc("查询所有学校指定日期范围内流量情况，按照日期排列")]
+        [ApiParameterDoc("firstDate", "开始日期")]
+        [ApiParameterDoc("secondDate", "结束日期")]
+        [ApiResponse("流量情况，按照日期排列，每天一条记录")]
+        public IEnumerable<AggregateFlowView> GetAllDateViews(DateTime firstDate, DateTime secondDate)
+        {
+            var results = new List<AggregateFlowView>();
+            var begin = firstDate;
+            while (begin<=secondDate)
+            {
+                var stat = _townFlowService.QueryOneDateBandStat(begin, FrequencyBandType.College);
+                begin = begin.AddDays(1);
+                if (stat == null) continue;
+                var item = stat.MapTo<AggregateFlowView>();
+                item.StatTime = begin.AddDays(-1);
+                results.Add(item);
+            }
+
+            return results;
+        }
+
+        [HttpGet]
+        [ApiDoc("查询指定日期内所有学校流量情况")]
+        [ApiParameterDoc("currentDate", "指定日期")]
+        [ApiResponse("所有学校天流量统计")]
+        public IEnumerable<AggregateFlowView> Get(DateTime currentDate)
+        {
+            var colleges = _collegeService.QueryInfos();
+            var lastDate = currentDate.AddDays(1);
+            return colleges.Select(college =>
+            {
+                var stats = _townFlowService.QueryTownFlowViews(currentDate, lastDate, college.Id, FrequencyBandType.College);
+                var result = stats.Any()
+                    ? stats.ArraySum().MapTo<AggregateFlowView>()
+                    : new AggregateFlowView();
+                result.Name = college.Name;
+                return result;
+            });
+        }
 
         [HttpGet]
         [ApiDoc("查询指定学校指定日期范围内流量情况")]
@@ -42,13 +101,11 @@ namespace LtePlatform.Controllers.Kpi
         public AggregateFlowView Get(string collegeName, DateTime begin, DateTime end)
         {
             var college = _collegeService.QueryInfo(collegeName);
-            var cells = _collegeCellViewService.QueryCollegeSectors(collegeName);
             if (college == null) return null;
             var stats = _townFlowService.QueryTownFlowViews(begin, end, college.Id, FrequencyBandType.College);
             var result = stats.Any()
                 ? stats.ArraySum().MapTo<AggregateFlowView>()
                 : new AggregateFlowView();
-            result.CellCount = cells.Count();
             result.Name = collegeName;
             return result;
         }
@@ -62,13 +119,11 @@ namespace LtePlatform.Controllers.Kpi
         public IEnumerable<AggregateFlowView> GetDateViews(string collegeName, DateTime beginDate, DateTime endDate)
         {
             var college = _collegeService.QueryInfo(collegeName);
-            var cells = _collegeCellViewService.QueryCollegeSectors(collegeName);
             if (college == null) return null;
             var stats = _townFlowService.QueryTownFlowViews(beginDate, endDate, college.Id, FrequencyBandType.College);
             var results = stats.MapTo<List<AggregateFlowView>>();
             results.ForEach(view =>
             {
-                view.CellCount = cells.Count();
                 view.Name = collegeName;
             });
             return results;

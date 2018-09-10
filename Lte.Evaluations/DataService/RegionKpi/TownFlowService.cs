@@ -154,6 +154,14 @@ namespace Lte.Evaluations.DataService.RegionKpi
             return query;
         }
 
+        public TownFlowStat QueryOneDateBandStat(DateTime statDate, FrequencyBandType frequency)
+        {
+            var end = statDate.AddDays(1);
+            var result = _repository
+                .GetAllList(x => x.StatTime >= statDate && x.StatTime < end && x.FrequencyBandType == frequency);
+            return result.Any() ? result.ArraySum() : null;
+        }
+
         public TownFlowStat Update(TownFlowStat stat)
         {
             return _repository.ImportOne(stat);

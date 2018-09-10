@@ -437,7 +437,7 @@
     <Compile Include="Controllers\College\CollegeENodebController.cs" />
     <Compile Include="Controllers\College\CollegeLteDistributionsController.cs" />
     <Compile Include="Controllers\College\CollegeNamesController.cs" />
-    <Compile Include="Controllers\College\CollegePreciseController.cs" />
+    <Compile Include="Controllers\Kpi\CollegePreciseController.cs" />
     <Compile Include="Controllers\College\CollegeStatController.cs" />
     <Compile Include="Controllers\College\College3GTestController.cs" />
     <Compile Include="Controllers\College\ComplainDateController.cs" />

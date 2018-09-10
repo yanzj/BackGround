@@ -25,10 +25,9 @@ namespace LtePlatform.Controllers.College
         [ApiParameterDoc("id", "校园编号")]
         [ApiParameterDoc("year", "年份")]
         [ApiResponse("校园网统计信息， 若查不到则会返回错误信息")]
-        public IHttpActionResult Get(int id, int year)
+        public CollegeStat Get(int id, int year)
         {
-            var stat = _service.QueryStat(id, year);
-            return stat == null ? (IHttpActionResult)BadRequest("ID Not Found!") : Ok(stat);
+            return _service.QueryStat(id, year);
         }
 
         [HttpGet]

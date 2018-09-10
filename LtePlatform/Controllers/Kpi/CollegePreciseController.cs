@@ -5,7 +5,7 @@ using Lte.Evaluations.DataService.College;
 using Lte.Evaluations.ViewModels.Precise;
 using LtePlatform.Models;
 
-namespace LtePlatform.Controllers.College
+namespace LtePlatform.Controllers.Kpi
 {
     [ApiControl("校园网精确覆盖率查询控制器")]
     public class CollegePreciseController : ApiController
