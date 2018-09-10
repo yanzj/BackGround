@@ -291,20 +291,6 @@
                         }
                     }
                 });
-            },
-			maintainCollegeInfo: function (year) {
-				menuItemService.showGeneralDialog({
-					templateUrl: '/appViews/College/Stat.html',
-					controller: 'maintain.college.dialog',
-					resolve: {
-						dialogTitle: function () {
-							return "校园基础信息维护（" + year + "年）";
-						},
-						year: function () {
-							return year;
-						}
-					}
-				});
-			}
+            }
 		};
 	});

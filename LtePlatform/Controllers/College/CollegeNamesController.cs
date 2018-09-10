@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
 using Abp.EntityFramework.Entities.College;
 using Lte.Evaluations.DataService.College;
+using Lte.MySqlFramework.Entities.College;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.College
@@ -25,6 +27,20 @@ namespace LtePlatform.Controllers.College
         {
             return _service.QueryInfo(name);
         }
-
+        
+        [HttpGet]
+        [ApiDoc("查询所有校园网名称")]
+        public IEnumerable<string> GetAllNames()
+        {
+            return _service.QueryInfos().Select(x => x.Name);
+        }
+        [HttpGet]
+        [ApiDoc("获得指定年份的校园网信息列表")]
+        [ApiParameterDoc("year", "指定年份")]
+        [ApiResponse("校园网信息列表")]
+        public IEnumerable<CollegeYearView> GetYearViews(int year)
+        {
+            return _service.QueryYearViews(year);
+        }
     }
 }

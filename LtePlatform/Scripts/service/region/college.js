@@ -5,7 +5,7 @@
                 return generalHttpService.getApiData('CollegeNames', {});
             },
             queryStats: function(year) {
-                return generalHttpService.getApiData('CollegeStat',
+                return generalHttpService.getApiData('CollegeNames',
                     {
                         year: year
                     });
@@ -178,7 +178,7 @@
                 });
             },
             queryYearList: function(year) {
-                return generalHttpService.getApiData('CollegeYear', {
+                return generalHttpService.getApiData('CollegeStat', {
                     year: year
                 });
             },

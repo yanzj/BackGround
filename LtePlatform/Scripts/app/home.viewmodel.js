@@ -2530,39 +2530,6 @@ angular.module('network.theme', ['app.common'])
                 ]
             };
         })
-    .controller("college.map",
-        function($scope, collegeDialogService, baiduMapService, collegeMapService) {
-            $scope.collegeInfo = {
-                year: {
-                    options: [2015, 2016, 2017, 2018, 2019],
-                    selected: new Date().getYear() + 1900
-                }
-            };
-            $scope.displayCollegeMap = function() {
-                baiduMapService.clearOverlays();
-                baiduMapService.addCityBoundary($scope.city.selected);
-                collegeMapService.showCollegeInfos(function(college) {
-                        collegeDialogService.showCollegDialog(college, $scope.collegeInfo.year.selected);
-                    },
-                    $scope.collegeInfo.year.selected);
-            };
-            $scope.maintainInfo = function() {
-                collegeDialogService.maintainCollegeInfo($scope.collegeInfo.year.selected);
-            };
-            $scope.showFlow = function() {
-                collegeDialogService.showCollegeFlow($scope.collegeInfo.year.selected);
-            };
-
-            baiduMapService.initializeMap("map", 11);
-            baiduMapService.addCityBoundary("佛山");
-
-            $scope.$watch('collegeInfo.year.selected',
-                function(year) {
-                    if (year > 0) {
-                        $scope.displayCollegeMap();
-                    }
-                });
-        })
     .controller("analysis.highway",
         function($scope,
             baiduMapService,

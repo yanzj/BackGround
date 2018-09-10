@@ -136,6 +136,11 @@ namespace LtePlatform.Controllers
             return View();
         }
 
+        public ActionResult MaintainCollege()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult LteImportPost()
         {

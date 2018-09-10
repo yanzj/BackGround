@@ -176,6 +176,10 @@
             baiduQueryService,
             appRegionService,
             $timeout) {
+            $scope.city = {
+                selected: "佛山",
+                options: ["佛山"]
+            };
             $scope.dialogTitle = "新建校园信息";
             $scope.collegeRegion = {
                 area: 0,
@@ -249,88 +253,4 @@
             $scope.cancel = function() {
                 $uibModalInstance.dismiss('cancel');
             };
-        })
-    .controller("maintain.college.dialog",
-        function($scope,
-            $uibModalInstance,
-            dialogTitle,
-            year,
-            collegeService,
-            collegeQueryService,
-            collegeDialogService,
-            appFormatService) {
-            $scope.dialogTitle = dialogTitle;
-            $scope.collegeYearList = [];
-            $scope.collegeInfo = {
-                names: []
-            };
-            collegeService.queryNames().then(function(result) {
-                $scope.collegeInfo.names = result;
-                $scope.collegeName = $scope.collegeInfo.names[0];
-            });
-
-            $scope.updateInfos = function() {
-                collegeService.queryStats(year).then(function(colleges) {
-                    $scope.collegeList = colleges;
-                });
-                collegeQueryService.queryYearList(year).then(function(colleges) {
-                    $scope.collegeYearList = colleges;
-                });
-                $scope.updateCollegeStatus($scope.collegeName);
-            };
-            $scope.updateCollegeStatus = function(name) {
-                collegeQueryService.queryByNameAndYear(name, year).then(function(info) {
-                    $scope.collegeExisted = !!info;
-                });
-            };
-            $scope.$watch('collegeName',
-                function(name) {
-                    $scope.updateCollegeStatus(name);
-                });
-            $scope.addOneCollegeMarkerInfo = function() {
-                collegeQueryService.queryByNameAndYear($scope.collegeName, year - 1).then(function(item) {
-                    if (!item) {
-                        var begin = new Date();
-                        begin.setDate(begin.getDate() - 365 - 7);
-                        var end = new Date();
-                        end.setDate(end.getDate() - 365);
-                        collegeQueryService.queryByName($scope.collegeName).then(function(college) {
-                            item = {
-                                oldOpenDate: appFormatService.getDateString(begin, 'yyyy-MM-dd'),
-                                newOpenDate: appFormatService.getDateString(end, 'yyyy-MM-dd'),
-                                collegeId: college.id
-                            };
-                            collegeDialogService.addYearInfo(item,
-                                $scope.collegeName,
-                                year,
-                                function() {
-                                    $scope.updateInfos();
-                                });
-                        });
-                    } else {
-                        collegeDialogService.addYearInfo(item,
-                            $scope.collegeName,
-                            year,
-                            function() {
-                                $scope.updateInfos();
-                            });
-                    }
-                });
-            };
-            $scope.createNewCollege = function() {
-                collegeDialogService.addNewCollege(function() {
-                    $scope.updateInfos();
-                });
-            };
-
-            $scope.updateInfos();
-
-            $scope.ok = function() {
-                $uibModalInstance.close($scope.cell);
-            };
-
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            };
-
         });

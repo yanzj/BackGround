@@ -1742,7 +1742,7 @@ angular.module('region.college', ['app.core'])
                 return generalHttpService.getApiData('CollegeNames', {});
             },
             queryStats: function(year) {
-                return generalHttpService.getApiData('CollegeStat',
+                return generalHttpService.getApiData('CollegeNames',
                     {
                         year: year
                     });
@@ -1915,7 +1915,7 @@ angular.module('region.college', ['app.core'])
                 });
             },
             queryYearList: function(year) {
-                return generalHttpService.getApiData('CollegeYear', {
+                return generalHttpService.getApiData('CollegeStat', {
                     year: year
                 });
             },

@@ -91,7 +91,9 @@ namespace Lte.Evaluations.DataService.College
         {
             var info = _repository.GetByName(name);
             if (info == null) return null;
-            var view = _yearRepository.GetByCollegeAndYear(info.Id, year).MapTo<CollegeYearView>();
+            var yearInfo = _yearRepository.GetByCollegeAndYear(info.Id, year);
+            if (yearInfo == null) return null;
+            var view = yearInfo.MapTo<CollegeYearView>();
             view.Name = name;
             return view;
         }

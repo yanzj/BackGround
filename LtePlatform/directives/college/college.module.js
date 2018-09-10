@@ -336,33 +336,6 @@ angular.module('college.stat.module', ['ui.grid', 'myApp.region', 'myApp.url'])
         })
     .controller('CollegeStatController',
         function($scope, collegeDialogService) {
-            $scope.showENodebs = function(name) {
-                collegeDialogService.showENodebs(name);
-            };
-
-            $scope.showCells = function(name) {
-                collegeDialogService.showCells(name);
-            };
-
-            $scope.showBtss = function(name) {
-                collegeDialogService.showBtss(name);
-            };
-
-            $scope.showCdmaCells = function(name) {
-                collegeDialogService.showCdmaCells(name);
-            };
-
-            $scope.showLteDistributions = function(name) {
-                collegeDialogService.showLteDistributions(name);
-            };
-
-            $scope.showCdmaDistributions = function(name) {
-                collegeDialogService.showCdmaDistributions(name);
-            };
-            $scope.showDetails = function(name) {
-                collegeDialogService.showCollegeDetails(name);
-            };
-
             $scope.gridOptions = {
                 columnDefs: [
                     { field: 'name', name: '校园名称', width: 170, enableColumnResizing: false },
@@ -377,43 +350,38 @@ angular.module('college.stat.module', ['ui.grid', 'myApp.region', 'myApp.url'])
                     {
                         name: '4G基站数',
                         cellTemplate:
-                            '<button class="btn btn-sm btn-primary" ng-click="grid.appScope.showENodebs(row.entity.name)">' +
+                            '<button class="btn btn-sm btn-primary">' +
                                 '详情<span class="badge pull-right">{{row.entity.totalLteENodebs}}</span></button>'
                     },
                     {
                         name: '4G小区数',
                         cellTemplate:
-                            '<button class="btn btn-sm btn-primary" ng-click="grid.appScope.showCells(row.entity.name)">' +
+                            '<button class="btn btn-sm btn-primary">' +
                                 '详情<span class="badge pull-right">{{row.entity.totalLteCells}}</span></button>'
                     },
                     {
                         name: '3G基站数',
                         cellTemplate:
-                            '<button class="btn btn-sm btn-default" ng-click="grid.appScope.showBtss(row.entity.name)">' +
+                            '<button class="btn btn-sm btn-default">' +
                                 '详情<span class="badge pull-right">{{row.entity.totalCdmaBts}}</span></button>'
                     },
                     {
                         name: '3G小区数',
                         cellTemplate:
-                            '<button class="btn btn-sm btn-default" ng-click="grid.appScope.showCdmaCells(row.entity.name)">' +
+                            '<button class="btn btn-sm btn-default">' +
                                 '详情<span class="badge pull-right">{{row.entity.totalCdmaCells}}</span></button>'
                     },
                     {
                         name: '4G室分数',
                         cellTemplate:
-                            '<button class="btn btn-sm btn-default" ng-click="grid.appScope.showLteDistributions(row.entity.name)">' +
+                            '<button class="btn btn-sm btn-default">' +
                                 '详情<span class="badge pull-right">{{row.entity.totalLteIndoors}}</span></button>'
                     },
                     {
                         name: '3G室分数',
                         cellTemplate:
-                            '<button class="btn btn-sm btn-default" ng-click="grid.appScope.showCdmaDistributions(row.entity.name)">' +
+                            '<button class="btn btn-sm btn-default">' +
                                 '详情<span class="badge pull-right">{{row.entity.totalCdmaIndoors}}</span></button>'
-                    },
-                    {
-                        name: '详细信息',
-                        cellTemplate:
-                            '<button class="btn btn-sm btn-success" ng-click="grid.appScope.showDetails(row.entity.name)">详细</button>'
                     }
                 ],
                 data: []

@@ -622,7 +622,6 @@
     <Content Include="appViews\College\Coverage\TownMap.html" />
     <Content Include="appViews\College\Infrastructure\BtsSupplementDialog.html" />
     <Content Include="appViews\College\Infrastructure\ENodebSupplementDialog.html" />
-    <Content Include="appViews\College\Root.html" />
     <Content Include="appViews\College\CollegeMap.html" />
     <Content Include="appViews\College\Coverage\CollegeSupport.html" />
     <Content Include="appViews\College\Coverage\Support.html" />
@@ -633,7 +632,6 @@
     <Content Include="appViews\College\Infrastructure\CollegeQuery.html" />
     <Content Include="appViews\College\Infrastructure\NewCollegeDialog.html" />
     <Content Include="appViews\College\Infrastructure\YearInfoDialog.html" />
-    <Content Include="appViews\College\Stat.html" />
     <Content Include="appViews\College\Table\CollegeCellBasicInfo.html" />
     <Content Include="appViews\College\Test\Flow.html" />
     <Content Include="appViews\College\Test\Planning.html" />
@@ -2029,6 +2027,7 @@
     <Content Include="Scripts\parameters\import\hour.controller.js" />
     <Content Include="Scripts\parameters\import\index.controller.js" />
     <Content Include="Scripts\parameters\import\station.controller.js" />
+    <Content Include="Scripts\parameters\maintain.college.js" />
     <Content Include="Scripts\parameters\neighbor\import.controller.js" />
     <Content Include="Scripts\plugins\canvas-to-blob.js" />
     <Content Include="Scripts\plugins\canvas-to-blob.min.js" />
@@ -2317,6 +2316,7 @@
     <Content Include="appViews\College\Infrastructure\DistributionDialog.html" />
     <None Include="Views\Parameters\BasicImport.cshtml" />
     <Content Include="Views\Parameters\HourKpiImport.cshtml" />
+    <Content Include="Views\Parameters\MaintainCollege.cshtml" />
     <None Include="Views\Parameters\NeighborImport.cshtml" />
     <Content Include="appViews\Parameters\Import\Index.html" />
     <Content Include="appViews\Parameters\Import\ENodebLonLatTable.html" />
