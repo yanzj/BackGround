@@ -1113,8 +1113,6 @@
     <Content Include="Scripts\app\home.root.js" />
     <Content Include="Scripts\app\home.route.js" />
     <Content Include="Scripts\app\network.theme.js" />
-    <Content Include="Scripts\app\station.checking.js" />
-    <Content Include="Scripts\app\station.fixing.js" />
     <Content Include="Scripts\baidu\plugins\ComplexCustomOverlay.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -2083,7 +2081,6 @@
     <Content Include="Scripts\service\topic\parameters.basic.js" />
     <Content Include="Scripts\service\topic\parameters.coverage.js" />
     <Content Include="Scripts\service\topic\parameters.js" />
-    <Content Include="Scripts\service\topic\parameters.station.js" />
     <Content Include="Scripts\service\url\app.url.es5.js">
       <DependentUpon>app.url.js</DependentUpon>
     </Content>
