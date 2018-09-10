@@ -607,8 +607,6 @@
     <Content Include="appViews\BasicKpi\CsvDtDialog.html" />
     <Content Include="appViews\BasicKpi\HotspotDtDialog.html" />
     <Content Include="appViews\Customer\Dialog\Recent.html" />
-    <Content Include="appViews\Evaluation\Dialog\CheckPlanListDialog.html" />
-    <Content Include="appViews\Evaluation\Dialog\CheckResultsStationAdd.html" />
     <Content Include="appViews\Home\Assessment.html" />
     <Content Include="appViews\Home\Common.html" />
     <Content Include="appViews\Home\DT.html" />
@@ -656,20 +654,12 @@
     <Content Include="appViews\Customer\Process\Emergency.html" />
     <Content Include="appViews\Customer\Process\Vip.html" />
     <Content Include="appViews\Customer\VipList.html" />
-    <Content Include="appViews\Evaluation\Alarm.html" />
-    <Content Include="appViews\Evaluation\AlarmFilter.html" />
-    <Content Include="appViews\Evaluation\AlarmSearchMenu.html" />
-    <Content Include="appViews\Evaluation\Checking.html" />
-    <Content Include="appViews\Evaluation\ClearZero.html" />
     <Content Include="appViews\Evaluation\Dialog\AgpsSearchCondition.html" />
     <Content Include="appViews\Evaluation\Dialog\AlarmHistoryListDialog.html" />
     <Content Include="appViews\Evaluation\Dialog\BtsSearchCondition.html" />
     <Content Include="appViews\Evaluation\Dialog\BuildingInfoBox.html" />
-    <Content Include="appViews\Evaluation\FaultStation.html" />
-    <Content Include="appViews\Evaluation\Fixing.html" />
     <Content Include="appViews\Evaluation\HighValue.html" />
     <Content Include="appViews\Evaluation\Highway.html" />
-    <Content Include="appViews\Evaluation\SpecialStation.html" />
     <Content Include="appViews\Evaluation\Subway.html" />
     <Content Include="appViews\HeaderMenu.html" />
     <Content Include="appViews\Home\Analysis.html" />
@@ -689,7 +679,6 @@
     <Content Include="appViews\Home\Query.html" />
     <Content Include="appViews\Home\SingleChartDialog.html" />
     <Content Include="appViews\Import\ImportProgress.html" />
-    <Content Include="appViews\Import\ResoureDetails.html" />
     <Content Include="appViews\Manage\AllUsers.html" />
     <Content Include="appViews\Manage\CurrentUser.html" />
     <Content Include="appViews\Manage\ForgotPassword.html" />
@@ -2085,7 +2074,6 @@
     <Content Include="Scripts\service\region\precise.js" />
     <Content Include="Scripts\service\topic\basic.js" />
     <Content Include="Scripts\service\topic\college.js" />
-    <Content Include="Scripts\service\topic\dialog.alarm.js" />
     <Content Include="Scripts\service\topic\dialog.college.js" />
     <Content Include="Scripts\service\topic\dialog.customer.js" />
     <Content Include="Scripts\service\topic\dialog.js" />
@@ -2095,7 +2083,6 @@
     <Content Include="Scripts\service\topic\parameters.basic.js" />
     <Content Include="Scripts\service\topic\parameters.coverage.js" />
     <Content Include="Scripts\service\topic\parameters.js" />
-    <Content Include="Scripts\service\topic\dialog.station.js" />
     <Content Include="Scripts\service\topic\parameters.station.js" />
     <Content Include="Scripts\service\url\app.url.es5.js">
       <DependentUpon>app.url.js</DependentUpon>

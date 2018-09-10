@@ -110,847 +110,334 @@ angular.module('home.root', ['app.common'])
         $rootScope.distincts = ['佛山市'];
     });
 angular.module('home.route', ['app.common'])
-    .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         $locationProvider.hashPrefix('');
         var viewDir = "/appViews/Home/";
         $stateProvider
             .state('list',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.root"
+                {
+                    views: {
+                        'menu': {
+                            templateUrl: "/appViews/DropDownMenu.html",
+                            controller: "menu.root"
+                        },
+                        "contents": {
+                            templateUrl: "/appViews/Home/Network.html",
+                            controller: "home.network"
+                        }
                     },
-                    "contents": {
-                        templateUrl: "/appViews/Home/Network.html",
-                        controller: "home.network"
-                    }
-                },
-                url: "/cells"
-            })
+                    url: "/cells"
+                })
             .state('query',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.root"
+                {
+                    views: {
+                        'menu': {
+                            templateUrl: "/appViews/DropDownMenu.html",
+                            controller: "menu.root"
+                        },
+                        "contents": {
+                            templateUrl: "/appViews/Home/Query.html",
+                            controller: "home.query"
+                        }
                     },
-                    "contents": {
-                        templateUrl: "/appViews/Home/Query.html",
-                        controller: "home.query"
-                    }
-                },
-                url: "/query"
-            })
+                    url: "/query"
+                })
             .state('building',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.analysis"
+                {
+                    views: {
+                        'menu': {
+                            templateUrl: "/appViews/DropDownMenu.html",
+                            controller: "menu.analysis"
+                        },
+                        "contents": {
+                            templateUrl: "/appViews/Home/Query.html",
+                            controller: "evaluation.home"
+                        }
                     },
-                    "contents": {
-                        templateUrl: "/appViews/Home/Query.html",
-                        controller: "evaluation.home"
-                    }
-                },
-                url: "/building"
-            })
+                    url: "/building"
+                })
             .state('topic',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.analysis"
+                {
+                    views: {
+                        'menu': {
+                            templateUrl: "/appViews/DropDownMenu.html",
+                            controller: "menu.analysis"
+                        },
+                        "contents": {
+                            templateUrl: "/appViews/Parameters/Topic.html",
+                            controller: "query.topic"
+                        }
                     },
-                    "contents": {
-                        templateUrl: "/appViews/Parameters/Topic.html",
-                        controller: "query.topic"
-                    }
-                },
-                url: "/topic"
-            })
-            .state('common-station', {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/Home/StationSearchMenu.html",
-                        controller: "menu.common-station"
+                    url: "/topic"
+                })
+            .state('common-station',
+                {
+                    views: {
+                        'menu': {
+                            templateUrl: "/appViews/Home/StationSearchMenu.html",
+                            controller: "menu.common-station"
+                        },
+                        "contents": {
+                            templateUrl: "/appViews/Home/Common.html",
+                            controller: "common-station.network"
+                        }
                     },
-                    "contents": {
-                        templateUrl: "/appViews/Home/Common.html",
-                        controller: "common-station.network"
-                    }
-                },
-                url: "/common-station"
-            })
-            .state('common-indoor', {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/Home/StationSearchMenu.html",
-                        controller: "menu.common-indoor"
+                    url: "/common-station"
+                })
+            .state('common-indoor',
+                {
+                    views: {
+                        'menu': {
+                            templateUrl: "/appViews/Home/StationSearchMenu.html",
+                            controller: "menu.common-indoor"
+                        },
+                        "contents": {
+                            templateUrl: "/appViews/Home/Common.html",
+                            controller: "common-indoor.network"
+                        }
                     },
-                    "contents": {
-                        templateUrl: "/appViews/Home/Common.html",
-                        controller: "common-indoor.network"
-                    }
-                },
-                url: "/common-indoor"
-            })
+                    url: "/common-indoor"
+                })
             .state('flow',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.root"
+                {
+                    views: {
+                        'menu': {
+                            templateUrl: "/appViews/DropDownMenu.html",
+                            controller: "menu.root"
+                        },
+                        "contents": {
+                            templateUrl: "/appViews/Home/Flow.html",
+                            controller: "home.flow"
+                        }
                     },
-                    "contents": {
-                        templateUrl: "/appViews/Home/Flow.html",
-                        controller: "home.flow"
-                    }
-                },
-                url: "/flow"
-            })
+                    url: "/flow"
+                })
             .state('dt',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.dt"
+                {
+                    views: {
+                        'menu': {
+                            templateUrl: "/appViews/DropDownMenu.html",
+                            controller: "menu.dt"
+                        },
+                        "contents": {
+                            templateUrl: "/appViews/Home/Dt.html",
+                            controller: "home.dt"
+                        }
                     },
-                    "contents": {
-                        templateUrl: "/appViews/Home/Dt.html",
-                        controller: "home.dt"
-                    }
-                },
-                url: "/dt"
-            })
+                    url: "/dt"
+                })
             .state('plan',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.plan"
+                {
+                    views: {
+                        'menu': {
+                            templateUrl: "/appViews/DropDownMenu.html",
+                            controller: "menu.plan"
+                        },
+                        "contents": {
+                            templateUrl: "/appViews/Home/Menu/Plan.html",
+                            controller: "home.plan"
+                        }
                     },
-                    "contents": {
-                        templateUrl: "/appViews/Home/Menu/Plan.html",
-                        controller: "home.plan"
-                    }
-                },
-                url: "/plan"
-            })
+                    url: "/plan"
+                })
             .state('cdma',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.cdma"
+                {
+                    views: {
+                        'menu': {
+                            templateUrl: "/appViews/DropDownMenu.html",
+                            controller: "menu.cdma"
+                        },
+                        "contents": {
+                            templateUrl: "/appViews/Home/Menu/Cdma.html",
+                            controller: "home.cdma"
+                        }
                     },
-                    "contents": {
-                        templateUrl: "/appViews/Home/Menu/Cdma.html",
-                        controller: "home.cdma"
-                    }
-                },
-                url: "/cdma"
-            })
+                    url: "/cdma"
+                })
             .state('interference',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.cdma"
+                {
+                    views: {
+                        'menu': {
+                            templateUrl: "/appViews/DropDownMenu.html",
+                            controller: "menu.cdma"
+                        },
+                        "contents": {
+                            templateUrl: "/appViews/Home/Menu/Plan.html",
+                            controller: "home.interference"
+                        }
                     },
-                    "contents": {
-                        templateUrl: "/appViews/Home/Menu/Plan.html",
-                        controller: "home.interference"
-                    }
-                },
-                url: "/interference"
-            })
+                    url: "/interference"
+                })
             .state('complain',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.complain"
+                {
+                    views: {
+                        'menu': {
+                            templateUrl: "/appViews/DropDownMenu.html",
+                            controller: "menu.complain"
+                        },
+                        "contents": {
+                            templateUrl: "/appViews/Home/Complain.html",
+                            controller: "home.complain"
+                        }
                     },
-                    "contents": {
-                        templateUrl: "/appViews/Home/Complain.html",
-                        controller: "home.complain"
-                    }
-                },
-                url: "/complain"
-            })
+                    url: "/complain"
+                })
             .state('micro',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.complain"
+                {
+                    views: {
+                        'menu': {
+                            templateUrl: "/appViews/DropDownMenu.html",
+                            controller: "menu.complain"
+                        },
+                        "contents": {
+                            templateUrl: "/appViews/Home/Micro.html",
+                            controller: "complain.micro"
+                        }
                     },
-                    "contents": {
-                        templateUrl: "/appViews/Home/Micro.html",
-                        controller: "complain.micro"
-                    }
-                },
-                url: "/micro"
-            })
+                    url: "/micro"
+                })
             .state('college',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.college"
+                {
+                    views: {
+                        'menu': {
+                            templateUrl: "/appViews/DropDownMenu.html",
+                            controller: "menu.college"
+                        },
+                        "contents": {
+                            templateUrl: "/appViews/College/Root.html",
+                            controller: "home.college"
+                        }
                     },
-                    "contents": {
-                        templateUrl: "/appViews/College/Root.html",
-                        controller: "home.college"
-                    }
-                },
-                url: "/college"
-            })
+                    url: "/college"
+                })
             .state('college-coverage',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.college"
+                {
+                    views: {
+                        'menu': {
+                            templateUrl: "/appViews/DropDownMenu.html",
+                            controller: "menu.college"
+                        },
+                        "contents": {
+                            templateUrl: "/appViews/College/Coverage/Index.html",
+                            controller: "college.coverage"
+                        }
                     },
-                    "contents": {
-                        templateUrl: "/appViews/College/Coverage/Index.html",
-                        controller: "college.coverage"
-                    }
-                },
-                url: "/college-coverage"
-            })
+                    url: "/college-coverage"
+                })
             .state('mr',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.mr"
+                {
+                    views: {
+                        'menu': {
+                            templateUrl: "/appViews/DropDownMenu.html",
+                            controller: "menu.mr"
+                        },
+                        "contents": {
+                            templateUrl: "/appViews/Home/Mr.html",
+                            controller: "home.mr"
+                        }
                     },
-                    "contents": {
-                        templateUrl: "/appViews/Home/Mr.html",
-                        controller: "home.mr"
-                    }
-                },
-                url: "/mr"
-            })
+                    url: "/mr"
+                })
             .state('grid',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.mr"
+                {
+                    views: {
+                        'menu': {
+                            templateUrl: "/appViews/DropDownMenu.html",
+                            controller: "menu.mr"
+                        },
+                        "contents": {
+                            templateUrl: viewDir + "MrGrid.html",
+                            controller: "mr.grid"
+                        }
                     },
-                    "contents": {
-                        templateUrl: viewDir + "MrGrid.html",
-                        controller: "mr.grid"
-                    }
-                },
-                url: "/grid"
-            })
+                    url: "/grid"
+                })
             .state('app',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.mr"
+                {
+                    views: {
+                        'menu': {
+                            templateUrl: "/appViews/DropDownMenu.html",
+                            controller: "menu.mr"
+                        },
+                        "contents": {
+                            templateUrl: "/appViews/BasicKpi/GridApp.html",
+                            controller: "mr.app"
+                        }
                     },
-                    "contents": {
-                        templateUrl: "/appViews/BasicKpi/GridApp.html",
-                        controller: "mr.app"
-                    }
-                },
-                url: "/app"
-            })
+                    url: "/app"
+                })
             .state('analysis',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.root"
+                {
+                    views: {
+                        'menu': {
+                            templateUrl: "/appViews/DropDownMenu.html",
+                            controller: "menu.root"
+                        },
+                        "contents": {
+                            templateUrl: viewDir + "Analysis.html",
+                            controller: "network.analysis"
+                        }
                     },
-                    "contents": {
-                        templateUrl: viewDir + "Analysis.html",
-                        controller: "network.analysis"
-                    }
-                },
-                url: "/analysis"
-            })
+                    url: "/analysis"
+                })
             .state('highway',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.analysis"
+                {
+                    views: {
+                        'menu': {
+                            templateUrl: "/appViews/DropDownMenu.html",
+                            controller: "menu.analysis"
+                        },
+                        "contents": {
+                            templateUrl: '/appViews/Evaluation/Highway.html',
+                            controller: "analysis.highway"
+                        }
                     },
-                    "contents": {
-                        templateUrl: '/appViews/Evaluation/Highway.html',
-                        controller: "analysis.highway"
-                    }
-                },
-                url: "/highway"
-            })
+                    url: "/highway"
+                })
             .state('railway',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.analysis"
+                {
+                    views: {
+                        'menu': {
+                            templateUrl: "/appViews/DropDownMenu.html",
+                            controller: "menu.analysis"
+                        },
+                        "contents": {
+                            templateUrl: '/appViews/Evaluation/Highway.html',
+                            controller: "analysis.railway"
+                        }
                     },
-                    "contents": {
-                        templateUrl: '/appViews/Evaluation/Highway.html',
-                        controller: "analysis.railway"
-                    }
-                },
-                url: "/railway"
-            })
+                    url: "/railway"
+                })
             .state('subway',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.analysis"
+                {
+                    views: {
+                        'menu': {
+                            templateUrl: "/appViews/DropDownMenu.html",
+                            controller: "menu.analysis"
+                        },
+                        "contents": {
+                            templateUrl: '/appViews/Evaluation/Subway.html',
+                            controller: "analysis.subway"
+                        }
                     },
-                    "contents": {
-                        templateUrl: '/appViews/Evaluation/Subway.html',
-                        controller: "analysis.subway"
-                    }
-                },
-                url: "/subway"
-            })
+                    url: "/subway"
+                })
             .state('highvalue',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.analysis"
+                {
+                    views: {
+                        'menu': {
+                            templateUrl: "/appViews/DropDownMenu.html",
+                            controller: "menu.analysis"
+                        },
+                        "contents": {
+                            templateUrl: '/appViews/Evaluation/HighValue.html',
+                            controller: "analysis.highvalue"
+                        }
                     },
-                    "contents": {
-                        templateUrl: '/appViews/Evaluation/HighValue.html',
-                        controller: "analysis.highvalue"
-                    }
-                },
-                url: "/highvalue"
-            })
-            .state('alarm-indoor',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: viewDir + "StationSearchMenu.html",
-                        controller: "menu.alarm-indoor"
-                    },
-                    "contents": {
-                        templateUrl: "/appViews/Evaluation/Alarm.html",
-                        controller: "alarm-indoor.network"
-                    }
-
-                },
-                url: "/alarm-indoor"
-            })
-            .state('checking-station',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: viewDir + "StationSearchMenu.html",
-                        controller: "menu.checking-station"
-                    },
-                    "contents": {
-                        templateUrl: "/appViews/Evaluation/Checking.html",
-                        controller: "checking-station.network"
-                    }
-                },
-                url: "/checking-station"
-            })
-            .state('checking-indoor',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: viewDir + "StationSearchMenu.html",
-                        controller: "menu.checking"
-                    },
-                    "contents": {
-                        templateUrl: "/appViews/Evaluation/Checking.html",
-                        controller: "checking-indoor.network"
-                    }
-                },
-                url: "/checking-indoor"
-            })
-            .state('fixing-station',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: viewDir + "StationSearchMenu.html",
-                        controller: "menu.fixing-station"
-                    },
-                    "contents": {
-                        templateUrl: "/appViews/Evaluation/Fixing.html",
-                        controller: "fixing-station.network"
-                    }
-                },
-                url: "/fixing-station"
-            })
-            .state('fixing-indoor',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: viewDir + "StationSearchMenu.html",
-                        controller: "menu.fixing-indoor"
-                    },
-                    "contents": {
-                        templateUrl: "/appViews/Evaluation/Fixing.html",
-                        controller: "fixing-indoor.network"
-                    }
-                },
-                url: "/fixing-indoor"
-            })
-            .state('special-station',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.fixing"
-                    },
-                    "contents": {
-                        templateUrl: "/appViews/Evaluation/SpecialStation.html",
-                        controller: "special-station.network"
-                    }
-
-                },
-                url: "/special-station"
-            })
-            .state('long-term',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.fixing"
-                    },
-                    "contents": {
-                        templateUrl: "/appViews/Evaluation/FaultStation.html",
-                        controller: "fault-station.network"
-                    }
-                },
-                url: "/long-term"
-            })
-            .state('special-indoor',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.fixing"
-                    },
-                    "contents": {
-                        templateUrl: "/appViews/Evaluation/SpecialStation.html",
-                        controller: "special-indoor.network"
-                    }
-
-                },
-                url: "/special-indoor"
-            })
-            .state('clear-flow',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.fixing"
-                    },
-                    "contents": {
-                        templateUrl: "/appViews/Evaluation/ClearZero.html",
-                        controller: "clear-flow.network"
-                    }
-                },
-                url: "/clear-flow"
-            })
-            .state('clear-voice',
-            {
-                views: {
-                    'menu': {
-                        templateUrl: "/appViews/DropDownMenu.html",
-                        controller: "menu.fixing"
-                    },
-                    "contents": {
-                        templateUrl: "/appViews/Evaluation/ClearZero.html",
-                        controller: "clear-voice.network"
-                    }
-                },
-                url: "/clear-voice"
-            });
+                    url: "/highvalue"
+                });
         $urlRouterProvider.otherwise('/cells');
-    })
-angular.module('station.checking', ['app.common'])
-    .controller("menu.checking-station",
-    function ($scope, downSwitchService, baiduMapService, parametersDialogService, baiduQueryService, mapDialogService) {
-
-            $scope.stationName = "";
-            $scope.stations = [];
-
-            $scope.search = function() {
-                downSwitchService.getCheckingStationByName($scope.stationName, 'JZ', '', 1, 10)
-                    .then(function(response) {
-                        $scope.stations = response.result.rows;
-                    });
-            }
-            $scope.showStationInfo = function(index) {
-                document.getElementById("cardlist").style.display = "none";
-                mapDialogService.showCommonStationInfo($scope.stations[index - 1]);
-            }
-            
-            $scope.$watch('stations',
-                function() {
-                    baiduMapService.clearOverlays();
-                    if (!$scope.stations.length)
-                        return;
-                    document.getElementById("cardlist").style.display = "inline";
-                    baiduQueryService.transformToBaidu($scope.stations[0].longtitute, $scope.stations[0].lattitute)
-                        .then(function(coors) {
-                            var xOffset = coors.x - $scope.stations[0].longtitute;
-                            var yOffset = coors.y - $scope.stations[0].lattitute;
-                            baiduMapService.drawPointsUsual($scope.stations,
-                                -xOffset,
-                                -yOffset,
-                                function() {
-                                    mapDialogService.showCommonStationInfo(this.data);
-                                });
-                        });
-                });
-        })
-    .controller("menu.checking-indoor",
-    function ($scope, downSwitchService, baiduMapService, parametersDialogService, baiduQueryService, mapDialogService) {
-
-            $scope.stationName = "";
-            $scope.stations = [];
-
-            $scope.search = function() {
-                downSwitchService.getCheckingStationByName($scope.stationName, 'SF', '', 1, 10)
-                    .then(function(response) {
-                        $scope.stations = response.result.rows;
-                    });
-            }
-            $scope.showStationInfo = function(index) {
-                document.getElementById("cardlist").style.display = "none";
-                mapDialogService.showCommonStationInfo($scope.stations[index - 1]);
-            }
-            $scope.$watch('stations',
-                function() {
-                    baiduMapService.clearOverlays();
-                    if (!$scope.stations.length)
-                        return;
-                    document.getElementById("cardlist").style.display = "inline";
-                    baiduQueryService.transformToBaidu($scope.stations[0].longtitute, $scope.stations[0].lattitute)
-                        .then(function(coors) {
-                            var xOffset = coors.x - $scope.stations[0].longtitute;
-                            var yOffset = coors.y - $scope.stations[0].lattitute;
-                            baiduMapService.drawPointsUsual($scope.stations,
-                                -xOffset,
-                                -yOffset,
-                                function() {
-                                    mapDialogService.showCommonStationInfo(this.data);
-                                });
-                        });
-                });
-        })
-    .controller("fault-station.network",
-        function($scope,
-            downSwitchService,
-            baiduMapService,
-            geometryService,
-            mapDialogService,
-            baiduQueryService) {
-            $scope.stationss = [];
-            $scope.stationss[1] = [];
-            $scope.stationss[2] = [];
-            baiduMapService.initializeMap("map", 13);
-
-            $scope.colorFault = new Array("#FF0000", "#00FF00");
-
-            //获取站点
-            $scope.getStations = function() {
-                downSwitchService.getFaultStations(0, 10000).then(function(response) {
-
-                    $scope.stationss[1] = response.result.rows;
-                    var color = $scope.colorFault[0];
-                    baiduQueryService.transformToBaidu($scope.stationss[1][0].longtitute,
-                        $scope.stationss[1][0].lattitute).then(function(coors) {
-                        var xOffset = coors.x - $scope.stationss[1][0].longtitute;
-                        var yOffset = coors.y - $scope.stationss[1][0].lattitute;
-                        baiduMapService.drawPointCollection($scope.stationss[1],
-                            color,
-                            -xOffset,
-                            -yOffset,
-                            function(e) {
-                                mapDialogService.showFaultStationInfo(e.point.data);
-                            });
-                    });
-                });
-            };
-            $scope.reflashMap = function() {
-                baiduMapService.clearOverlays();
-                baiduMapService.setCenter(0);
-                $scope.getStations();
-            };
-            $scope.reflashMap();
-        });
-angular.module('station.fixing', ['app.common'])
-    .controller("menu.fixing-station",
-    function ($scope, downSwitchService, baiduMapService, parametersDialogService, baiduQueryService, mapDialogService) {
-
-            $scope.stationName = "";
-            $scope.stations = [];
-
-            $scope.search = function() {
-                downSwitchService.getFixingStationByName($scope.stationName, 'JZ', '', 1, 10).then(function(response) {
-                    $scope.stations = response.result.rows;
-                });
-            }
-            $scope.showStationInfo = function(index) {
-                document.getElementById("cardlist").style.display = "none";
-                mapDialogService.showFixingStationInfo($scope.stations[index - 1]);
-            }
-            $scope.$watch('stations',
-                function() {
-                    baiduMapService.clearOverlays();
-                    if (!$scope.stations.length)
-                        return;
-                    document.getElementById("cardlist").style.display = "inline";
-                    baiduQueryService.transformToBaidu($scope.stations[0].longtitute, $scope.stations[0].lattitute)
-                        .then(function(coors) {
-                            var xOffset = coors.x - $scope.stations[0].longtitute;
-                            var yOffset = coors.y - $scope.stations[0].lattitute;
-                            baiduMapService.drawPointsUsual($scope.stations,
-                                -xOffset,
-                                -yOffset,
-                                function() {
-                                    mapDialogService.showFixingStationInfo(this.data);
-                                });
-                        });
-                });
-        })
-    .controller("menu.fixing-indoor",
-    function ($scope, downSwitchService, baiduMapService, parametersDialogService, baiduQueryService, mapDialogService) {
-
-            $scope.stationName = "";
-            $scope.stations = [];
-
-            $scope.search = function() {
-                downSwitchService.getFixingStationByName($scope.stationName, 'SF', '', 1, 10).then(function(response) {
-                    $scope.stations = response.result.rows;
-                });
-            }
-            $scope.showStationInfo = function(index) {
-                document.getElementById("cardlist").style.display = "none";
-                mapDialogService.showFixingStationInfo($scope.stations[index - 1]);
-            }
-            $scope.$watch('stations',
-                function() {
-                    baiduMapService.clearOverlays();
-                    if (!$scope.stations.length)
-                        return;
-                    document.getElementById("cardlist").style.display = "inline";
-                    baiduQueryService.transformToBaidu($scope.stations[0].longtitute, $scope.stations[0].lattitute)
-                        .then(function(coors) {
-                            var xOffset = coors.x - $scope.stations[0].longtitute;
-                            var yOffset = coors.y - $scope.stations[0].lattitute;
-                            baiduMapService.drawPointsUsual($scope.stations,
-                                -xOffset,
-                                -yOffset,
-                                function() {
-                                    mapDialogService.showFixingStationInfo(this.data);
-                                });
-                        });
-                });
-        })
-    .controller("special-indoor.network",
-        function($scope,
-            downSwitchService,
-            baiduMapService,
-            geometryService,
-            mapDialogService,
-            baiduQueryService) {
-
-            $scope.isRecovers = new Array('未恢复', '已恢复', '全部');
-            $scope.isRecover = new Array('否', '是');
-            baiduMapService.initializeMap("map", 13);
-
-            $scope.colorFault = new Array("#FF0000", "#00FF00");
-
-            $scope.recoverIndex = 0;
-            $scope.recoverName = $scope.isRecovers[$scope.recoverIndex];
-
-            //获取站点
-            $scope.getStations = function(recoverIndex) {
-
-                var recoverName = $scope.isRecover[recoverIndex];
-                downSwitchService.getSpecialIndoor(recoverName, 0, 10000).then(function(response) {
-
-                    var stations = response.result.rows;
-                    var color = $scope.colorFault[recoverIndex];
-                    baiduQueryService.transformToBaidu(stations[0].longtitute, stations[0].lattitute)
-                        .then(function(coors) {
-                            var xOffset = coors.x - stations[0].longtitute;
-                            var yOffset = coors.y - stations[0].lattitute;
-                            baiduMapService.drawPointCollection(stations,
-                                color,
-                                -xOffset,
-                                -yOffset,
-                                function(e) {
-                                    mapDialogService.showSpecialIndoorInfo(e.point.data);
-                                });
-                        });
-                });
-            };
-
-
-            $scope.changeRecover = function(index) {
-                $scope.recoverIndex = index;
-                $scope.recoverName = $scope.isRecovers[$scope.recoverIndex];
-                $scope.reflashMap();
-            };
-
-            $scope.reflashMap = function() {
-                baiduMapService.clearOverlays();
-                baiduMapService.setCenter(0);
-                if ($scope.recoverIndex === 2) {
-                    for (var i = 0; i < 2; ++i) {
-                        $scope.getStations(i);
-                    }
-                } else {
-                    $scope.getStations($scope.recoverIndex);
-                }
-
-            };
-            $scope.initializeLegend();
-            $scope.initializeFaultLegend($scope.colorFault);
-            $scope.reflashMap();
-        })
-    .controller("clear-voice.network",
-        function($scope,
-            downSwitchService,
-            baiduMapService,
-            geometryService,
-            mapDialogService,
-            baiduQueryService) {
-
-            $scope.isRecovers = new Array('未解决', '已解决', '全部');
-            $scope.isRecover = new Array('未解决', '已解决');
-            baiduMapService.initializeMap("map", 13);
-
-            $scope.colorFault = new Array("#FF0000", "#00FF00");
-
-
-            $scope.recoverIndex = 0;
-            $scope.recoverName = $scope.isRecovers[$scope.recoverIndex];
-
-
-            //获取站点
-            $scope.getStations = function(recoverIndex) {
-
-                var recoverName = $scope.isRecover[recoverIndex];
-                downSwitchService.getZeroVoice(recoverName, 0, 10000).then(function(response) {
-
-                    var stations = response.result.rows;
-                    var color = $scope.colorFault[recoverIndex];
-                    baiduQueryService.transformToBaidu(stations[0].longtitute, stations[0].lattitute)
-                        .then(function(coors) {
-                            var xOffset = coors.x - stations[0].longtitute;
-                            var yOffset = coors.y - stations[0].lattitute;
-                            baiduMapService.drawPointCollection(stations,
-                                color,
-                                -xOffset,
-                                -yOffset,
-                                function(e) {
-                                    mapDialogService.showZeroVoiceInfo(e.point.data);
-                                });
-                        });
-                });
-            };
-
-
-            $scope.changeRecover = function(index) {
-                $scope.recoverIndex = index;
-                $scope.recoverName = $scope.isRecovers[$scope.recoverIndex];
-                $scope.reflashMap();
-            };
-
-            $scope.reflashMap = function() {
-                baiduMapService.clearOverlays();
-                baiduMapService.setCenter(0);
-                if ($scope.recoverIndex === 2) {
-                    for (var i = 0; i < 2; ++i) {
-                        $scope.getStations(i);
-                    }
-                } else {
-                    $scope.getStations($scope.recoverIndex);
-                }
-
-            };
-            $scope.initializeLegend();
-            $scope.initializeSolveLegend($scope.colorFault);
-            $scope.reflashMap();
-        })
-    .controller("clear-flow.network",
-        function($scope,
-            downSwitchService,
-            baiduMapService,
-            geometryService,
-            mapDialogService,
-            baiduQueryService) {
-
-            $scope.isRecovers = new Array('未解决', '已解决', '全部');
-            $scope.isRecover = new Array('未解决', '已解决');
-            baiduMapService.initializeMap("map", 13);
-
-            $scope.colorFault = new Array("#FF0000", "#00FF00");
-
-            $scope.recoverIndex = 0;
-            $scope.recoverName = $scope.isRecovers[$scope.recoverIndex];
-
-
-            //获取站点
-            $scope.getStations = function(recoverIndex) {
-
-                var recoverName = $scope.isRecover[recoverIndex];
-                downSwitchService.getZeroFlow(recoverName, 0, 10000).then(function(response) {
-                    var stations = response.result.rows;
-                    var color = $scope.colorFault[recoverIndex];
-                    baiduQueryService.transformToBaidu(stations[0].longtitute, stations[0].lattitute)
-                        .then(function(coors) {
-                            var xOffset = coors.x - stations[0].longtitute;
-                            var yOffset = coors.y - stations[0].lattitute;
-                            baiduMapService.drawPointCollection(stations,
-                                color,
-                                -xOffset,
-                                -yOffset,
-                                function(e) {
-                                    mapDialogService.showZeroFlowInfo(e.point.data);
-                                });
-                        });
-                });
-            };
-
-            $scope.changeRecover = function(index) {
-                $scope.recoverIndex = index;
-                $scope.recoverName = $scope.isRecovers[$scope.recoverIndex];
-                $scope.reflashMap();
-            };
-
-            $scope.reflashMap = function() {
-                baiduMapService.clearOverlays();
-                baiduMapService.setCenter(0);
-                if ($scope.recoverIndex === 2) {
-                    for (var i = 0; i < 2; ++i) {
-                        $scope.getStations(i);
-                    }
-                } else {
-                    $scope.getStations($scope.recoverIndex);
-                }
-
-            };
-            $scope.initializeLegend();
-            $scope.initializeSolveLegend($scope.colorFault);
-            $scope.reflashMap();
-        });
+    });
 angular.module('home.menu', ['app.common'])
     .controller("menu.root",
         function($scope) {
@@ -2629,7 +2116,6 @@ angular.module('network.theme', ['app.common'])
 angular.module("myApp",
 [
     'home.root', 'home.route',
-    'station.checking', 'station.fixing',
     'home.menu', 'home.complain', 'home.network', 'home.mr', 'home.kpi',
     'home.college', 'network.theme'
 ]);

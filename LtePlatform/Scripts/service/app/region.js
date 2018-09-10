@@ -544,97 +544,97 @@ angular.module('region.basic', ['app.core'])
             return {
                 queryPositionList: function(begin, end) {
                     return generalHttpService.getApiData('ComplainPosition',
-                    {
-                        begin: begin,
-                        end: end
-                    });
+                        {
+                            begin: begin,
+                            end: end
+                        });
                 },
                 postPosition: function(dto) {
                     return generalHttpService.postApiData('ComplainPosition', dto);
                 },
                 queryCurrentComplains: function(today) {
                     return generalHttpService.getApiData('ComplainTrend',
-                    {
-                        today: today
-                    });
+                        {
+                            today: today
+                        });
                 },
                 queryMonthTrend: function(date) {
                     return generalHttpService.getApiData('ComplainTrend',
-                    {
-                        date: date
-                    });
+                        {
+                            date: date
+                        });
                 },
                 queryBranchDemands: function(today) {
                     return generalHttpService.getApiData('BranchDemand',
-                    {
-                        today: today
-                    });
+                        {
+                            today: today
+                        });
                 },
                 queryLastMonthSustainCount: function(today) {
                     return generalHttpService.getApiData('SustainCount',
-                    {
-                        today: today
-                    });
+                        {
+                            today: today
+                        });
                 },
                 queryAll: function(begin, end) {
                     return generalHttpService.getApiData("ComplainQuery",
-                    {
-                        begin: begin,
-                        end: end
-                    });
+                        {
+                            begin: begin,
+                            end: end
+                        });
                 },
                 queryBranchList: function(begin, end) {
                     return generalHttpService.getApiData("BranchDemand",
-                    {
-                        begin: begin,
-                        end: end
-                    });
+                        {
+                            begin: begin,
+                            end: end
+                        });
                 },
                 queryOnlineList: function(begin, end) {
                     return generalHttpService.getApiData("OnlineSustain",
-                    {
-                        begin: begin,
-                        end: end
-                    });
+                        {
+                            begin: begin,
+                            end: end
+                        });
                 },
                 queryLastMonthOnlineList: function(today) {
                     return generalHttpService.getApiData("OnlineSustain",
-                    {
-                        today: today
-                    });
+                        {
+                            today: today
+                        });
                 },
                 queryLastMonthOnlineListInOneDistrict: function(today, city, district) {
                     return generalHttpService.getApiData("OnlineSustain",
-                    {
-                        today: today,
-                        city: city,
-                        district: district
-                    });
+                        {
+                            today: today,
+                            city: city,
+                            district: district
+                        });
                 },
-                queryLastMonthComplainListInOneDistrict: function (today, city, district) {
+                queryLastMonthComplainListInOneDistrict: function(today, city, district) {
                     return generalHttpService.getApiData("ComplainQuery",
-                    {
-                        today: today,
-                        city: city,
-                        district: district
-                    });
+                        {
+                            today: today,
+                            city: city,
+                            district: district
+                        });
                 },
                 updateComplain: function(dto) {
                     return generalHttpService.putApiData("ComplainQuery", dto);
                 },
                 queryComplainMonthStats: function(date) {
                     return generalHttpService.getApiData("ComplainTrend",
-                    {
-                        countDate: date
-                    });
+                        {
+                            countDate: date
+                        });
                 },
                 queryLastDateComplainStats: function(date) {
                     return generalHttpService.getApiData("ComplainDate",
-                    {
-                        initialDate: date
-                    });
+                        {
+                            initialDate: date
+                        });
                 },
-                queryDateSpanComplainStats: function (begin, end) {
+                queryDateSpanComplainStats: function(begin, end) {
                     return generalHttpService.getApiData("ComplainDate",
                         {
                             begin: begin,
@@ -643,12 +643,12 @@ angular.module('region.basic', ['app.core'])
                 },
                 queryLastDateDistrictComplains: function(date, district) {
                     return generalHttpService.getApiData('ComplainQuery',
-                    {
-                        statDate: date,
-                        district: district
-                    });
+                        {
+                            statDate: date,
+                            district: district
+                        });
                 },
-                queryDateSpanDistrictComplains: function (beginDate, endDate, district) {
+                queryDateSpanDistrictComplains: function(beginDate, endDate, district) {
                     return generalHttpService.getApiData('ComplainQuery',
                         {
                             beginDate: beginDate,
@@ -658,283 +658,9 @@ angular.module('region.basic', ['app.core'])
                 },
                 queryHotSpotCells: function(name) {
                     return generalHttpService.getApiData('HotSpotCells',
-                    {
-                        name: name
-                    });
-                }
-            }
-        })
-    .factory('downSwitchService',
-        function(generalHttpService, appUrlService) {
-            return {
-                getStationListByName: function (name, areaName, page, pageSize) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/Station/llist',
                         {
-                            "curr_page": page,
-                            "page_size": pageSize,
-                            "stationName": name,
-                            "areaName": areaName
+                            name: name
                         });
-                },
-                getIndoorListByName: function (name, areaName, page, pageSize) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/Indoor/llist',
-                        {
-                            "curr_page": page,
-                            "page_size": pageSize,
-                            "stationName": name,
-                            "areaName": areaName
-                        });
-                },
-                getFixingStationByName: function (name, type, page, pageSize) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/Fixing/search',
-                        {
-                        "curr_page": page,
-                        "page_size": pageSize,
-                        "stationName": name,
-                        'type': type
-                    });
-                },
-                getResourceStationByName: function (name, type, page, pageSize) {
-                    return generalHttpService.postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/Resource/search',
-                        {
-                        "curr_page": page,
-                        "page_size": pageSize,
-                        "stationName": name,
-                        'type': type
-                    });
-                },
-                getResource: function (table, id) {
-                    return generalHttpService.postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/Resource/single',
-                        {
-                        "table": table,
-                        "id": id
-                    });
-                },
-                getResourceCounter: function (id) {
-                    return generalHttpService.postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/Resource/counter',
-                        {
-                        "id": id
-                    });
-                },
-                deleteIndoorById: function (stationId) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/Indoor/delete',
-                        {
-                            "idList": stationId
-                        });
-                },
-                deleteAssessmentById: function (id) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/Assessment/delete',
-                        {
-                            "id": id
-                        });
-                },
-                getStationsByAreaName: function(areaName, page, pageSize) {
-                    return generalHttpService.getMvcData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/Station/search/',
-                        {
-                            curr_page: page,
-                            page_size: pageSize,
-                            areaName: areaName
-                        });
-                },
-                getStations: function(page, pageSize) {
-                    return generalHttpService.getMvcData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/Station/search/',
-                        {
-                            curr_page: page,
-                            page_size: pageSize
-                        });
-                },
-               getStationCommonById: function (id) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/StationCommon/single',
-                        {
-                        "id": id
-                    });
-                },
-                getStationByStationId: function (id) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/Station/single',
-                        {
-                            "SysStationId": id
-                        });
-                },
-                updateStation: function(station) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/Station/update',
-                            station);
-                },
-                updateIndoor: function (indoor) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/Indoor/update',
-                        indoor);
-                },
-                updateStationCommon: function(station) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/StationCommon/update',
-                            station);
-                },
-                addStation: function(station) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/Station/add', station);
-                },
-                addCheckPlan: function (station) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/Checking/addCheckPlan', station);
-                },
-                addCheckResults: function (station) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/Checking/addCheckResults', station);
-                },
-                addIndoor: function (indoor) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/Indoor/add', indoor);
-                },
-                getAlarmHistorybyFilter: function (id, curr_page, page_size, alarmLevel, beginDate, endDate) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/Alarmhistory/search',
-                        {
-                        "id": id,
-                        "alarmLevel": alarmLevel,
-                        "curr_page": curr_page,
-                        "page_size": page_size,
-                        "starttime": beginDate,
-                        "endtime": endDate
-                    });
-                },
-                getStationAddListByName: function (areaName, stationName, type, page, pageSize) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/StationCommon/addList',
-                        {
-                            "curr_page": page,
-                            "page_size": pageSize,
-                            "stationName": stationName,
-                            "areaName": areaName,
-                            "type": type
-                        });
-                },
-                getCheckPlanByName: function (stationName,areaName , type, page, pageSize) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/Checking/checkPlanList',
-                        {
-                            "curr_page": page,
-                            "page_size": pageSize,
-                            "stationName": stationName,
-                            "areaName": areaName,
-                            "type": type
-                        });
-                },
-                addCommonStation: function (station) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/StationCommon/add',
-                        station);
-                },
-                getCommonStationByName: function(areaName, stationName, type, page, pageSize) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/StationCommon/search',
-                        {
-                            "curr_page": page,
-                            "page_size": pageSize,
-                            "stationName": stationName,
-                            "areaName": areaName,
-                            "type": type
-                        });
-                },
-                
-                getCheckingStationByName: function (name, type, page, pageSize) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() + 'LtePlatForm/lte/index.php/Checking/search',
-                        {
-                        "curr_page": page,
-                        "page_size": pageSize,
-                        "stationName": name,
-                        'type': type
-                    });
-                },
-                getSpecialIndoor: function(recoverName, page, pageSize) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() + 'LtePlatForm/lte/index.php/SpecialIndoor/search',
-                        {
-                            "curr_page": page,
-                            "page_size": pageSize,
-                            "recoverName": recoverName
-                        });
-                },
-                getFaultStations: function(page, pageSize) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() + 'LtePlatForm/lte/index.php/Fault/search',
-                        {
-                            "curr_page": page,
-                            "page_size": pageSize
-                        });
-                },
-                getZeroVoice: function(isSolve, page, pageSize) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() + 'LtePlatForm/lte/index.php/ZeroVoice/search',
-                        {
-                            "curr_page": page,
-                            "page_size": pageSize,
-                            "isSolve": isSolve
-                        });
-                },
-                getZeroFlow: function(isSolve, page, pageSize) {
-                    return generalHttpService
-                        .postPhpUrlData(appUrlService.getPhpHost() + 'LtePlatForm/lte/index.php/ZeroFlow/search',
-                        {
-                            "curr_page": page,
-                            "page_size": pageSize,
-                            "isSolve": isSolve
-                        });
-                },
-                getStationCnt: function (distinct,cycle) {
-                    return generalHttpService.postPhpUrlData(appUrlService.getPhpHost() +
-                        'LtePlatForm/lte/index.php/Assessment/stationCnt',
-                        {
-                            "areaName": distinct,
-                            "cycle": cycle
-                        });
-                },
-                queryDwgList: function(btsId) {
-                    return generalHttpService.getApiData('DwgQuery',
-                    {
-                        directory: 'Common',
-                        btsId: btsId
-                    });
-                },
-                queryDwgUrl: function(btsId, fileName) {
-                    return generalHttpService.getApiData('DwgView',
-                    {
-                        directory: 'Common',
-                        btsId: btsId,
-                        filename: fileName
-                    });
                 }
             };
         });

@@ -27,8 +27,7 @@
                         'topic/basic.js', 'topic/college.js',
                         'topic/parameters.basic.js', 'topic/parameters.coverage.js', 'topic/parameters.station.js', 'topic/parameters.js',
                         'topic/dialog.customer.js', 'topic/dialog.parameters.js', "topic/dialog.college.js",
-                        'topic/dialog.kpi.js', 'topic/dialog.top.js',
-                        'topic/dialog.station.js', 'topic/dialog.alarm.js', 'topic/dialog.js', 'topic/baidu.map.js'
+                        'topic/dialog.kpi.js', 'topic/dialog.top.js', 'topic/dialog.js', 'topic/baidu.map.js'
                     ],
                     'app/filters.js': [
                         'filters/basic.js', 'filters/cell.js', 'filters/handoff.js', 'filters/combined.js'
