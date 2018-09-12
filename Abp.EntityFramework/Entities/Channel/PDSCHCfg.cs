@@ -2,7 +2,7 @@
 using Abp.EntityFramework.Dependency;
 using MongoDB.Bson;
 
-namespace Abp.EntityFramework.Channel
+namespace Abp.EntityFramework.Entities.Channel
 {
     public class PDSCHCfg : IEntity<ObjectId>, IHuaweiCellMongo
     {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Abp.Domain.Entities;
@@ -15,6 +16,20 @@ namespace Abp.EntityFramework.Dependency
             where TTown : Entity
         {
             return (from q in query join t in towns on q.TownId equals t.Id select q).ToList();
+        }
+
+        public static PagingContainer<T> GetPagingContainer<T>(this IEnumerable<T> source, int itemsPerPage, int page)
+        {
+            var sourceList = source.ToList();
+            var totalItems = sourceList.Count;
+            var actualPage = Math.Min(page, (int) Math.Ceiling((double) totalItems / itemsPerPage));
+            return new PagingContainer<T>
+            {
+                CurrentPage = actualPage,
+                ItemsPerPage = itemsPerPage,
+                TotalItems = totalItems,
+                Stats = sourceList.Skip((actualPage - 1) * itemsPerPage).Take(itemsPerPage)
+            };
         }
     }
 }

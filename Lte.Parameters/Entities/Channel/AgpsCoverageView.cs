@@ -1,7 +1,7 @@
 ﻿using System;
 using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Channel;
 using Abp.EntityFramework.Dependency;
+using Abp.EntityFramework.Entities.Channel;
 using Lte.Domain.Common.Geo;
 
 namespace Lte.Parameters.Entities.Channel

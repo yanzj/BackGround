@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
+using Abp.EntityFramework.Dependency;
 using Lte.Evaluations.DataService.Basic;
 using Lte.MySqlFramework.Entities.Infrastructure;
 using LtePlatform.Models;
@@ -36,11 +37,24 @@ namespace LtePlatform.Controllers.Parameters
         
         [HttpGet]
         [ApiDoc("按照站址名称模糊匹配查询站址信息")]
-        [ApiParameterDoc("nameText", "站址名称")]
+        [ApiParameterDoc("nameText", "模糊匹配站址名称")]
         [ApiResponse("站址信息")]
         public IEnumerable<StationDictionaryView> QueryByNameText(string nameText)
         {
             return _service.QueryByNameText(nameText);
+        }
+        
+        [HttpGet]
+        [ApiDoc("按照站址名称模糊匹配查询分页站址信息")]
+        [ApiParameterDoc("district", "区")]
+        [ApiParameterDoc("pagingText", "模糊匹配站址名称")]
+        [ApiParameterDoc("itemsPerPage", "每页条数")]
+        [ApiParameterDoc("page", "当前页")]
+        [ApiResponse("站址信息")]
+        public PagingContainer<StationDictionaryView> QueryPagingByNameText(string district, string pagingText, 
+            int itemsPerPage, int page)
+        {
+            return _service.QueryPagingByNameText(district, pagingText, itemsPerPage, page);
         }
 
         [HttpGet]

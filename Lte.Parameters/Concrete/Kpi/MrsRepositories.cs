@@ -5,8 +5,7 @@ using Lte.Parameters.Entities.Kpi;
 using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
-using Abp.EntityFramework.Channel;
-using Lte.Parameters.Entities.Channel;
+using Abp.EntityFramework.Entities.Channel;
 
 namespace Lte.Parameters.Concrete.Kpi
 {

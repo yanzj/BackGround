@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Abp.EntityFramework.Channel;
 
 namespace Lte.Parameters.Entities.Channel
 {

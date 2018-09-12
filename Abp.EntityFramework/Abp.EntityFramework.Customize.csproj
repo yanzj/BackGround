@@ -146,10 +146,11 @@
     <Compile Include="AutoMapper\AutoMapperHelper.cs" />
     <Compile Include="AutoMapper\AutoMapToAttribute.cs" />
     <Compile Include="AutoMapper\ENodebExcelTransform.cs" />
-    <Compile Include="Channel\AgpsMongo.cs" />
-    <Compile Include="Channel\CellUlpcComm.cs" />
-    <Compile Include="Channel\Pdsch.cs" />
-    <Compile Include="Channel\PDSCHCfg.cs" />
+    <Compile Include="Dependency\PagingContainer.cs" />
+    <Compile Include="Entities\Channel\AgpsMongo.cs" />
+    <Compile Include="Entities\Channel\CellUlpcComm.cs" />
+    <Compile Include="Entities\Channel\Pdsch.cs" />
+    <Compile Include="Entities\Channel\PDSCHCfg.cs" />
     <Compile Include="Dependency\HuaweiRepositoryQueries.cs" />
     <Compile Include="Dependency\IDateSpanQuery.cs" />
     <Compile Include="Dependency\IHuaweiCellMongo.cs" />

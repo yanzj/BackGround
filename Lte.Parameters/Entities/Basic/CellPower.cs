@@ -1,5 +1,5 @@
 using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Channel;
+using Abp.EntityFramework.Entities.Channel;
 using Lte.Parameters.Entities.Channel;
 
 namespace Lte.Parameters.Entities.Basic

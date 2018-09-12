@@ -1,5 +1,5 @@
 ﻿using Abp.Domain.Repositories;
-using Abp.EntityFramework.Channel;
+using Abp.EntityFramework.Entities.Channel;
 using MongoDB.Bson;
 
 namespace Lte.Parameters.Abstract.Basic

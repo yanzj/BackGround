@@ -7,7 +7,7 @@ using Lte.Domain.Regular;
 using Lte.Domain.Regular.Attributes;
 using MongoDB.Bson;
 
-namespace Abp.EntityFramework.Channel
+namespace Abp.EntityFramework.Entities.Channel
 {
     public class AgpsMongo : IEntity<ObjectId>, IStatDateCell, IGeoPointReadonly<double>
     {

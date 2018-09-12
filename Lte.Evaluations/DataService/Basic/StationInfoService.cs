@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
+using Abp.EntityFramework.Dependency;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Antenna;
@@ -97,6 +98,14 @@ namespace Lte.Evaluations.DataService.Basic
         {
             return _repository.GetAllList(x => x.ElementName.Contains(nameText) && x.IsInUse)
                 .MapTo<IEnumerable<StationDictionaryView>>();
+        }
+
+        public PagingContainer<StationDictionaryView> QueryPagingByNameText(string district, string nameText,
+            int itemsPerPage, int page)
+        {
+            return _repository.GetAllList(x => x.ElementName.Contains(nameText) && x.IsInUse && x.StationDistrict == district)
+                .MapTo<IEnumerable<StationDictionaryView>>()
+                .GetPagingContainer(itemsPerPage, page);
         }
 
         public IEnumerable<StationDictionaryView> QueryRange(double west, double east, double south, double north)
