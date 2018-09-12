@@ -3,14 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ED69F761-0D49-4012-99AF-882BF928B88C}"
-	ProjectSection(SolutionItems) = preProject
-		Databases.md = Databases.md
-		Evaluations.md = Evaluations.md
-		Infrastructure.md = Infrastructure.md
-		README.md = README.md
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2F8B4712-C0F2-44E5-9371-812E7B11AC47}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Accessory", "Accessory", "{981B8D52-F198-428E-9799-F6A58F5ECA13}"

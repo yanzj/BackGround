@@ -604,7 +604,6 @@
   <ItemGroup>
     <Content Include="appViews\BasicKpi\ClusterPoint.html" />
     <Content Include="appViews\BasicKpi\Construction.html" />
-    <Content Include="appViews\BasicKpi\CsvDtDialog.html" />
     <Content Include="appViews\BasicKpi\HotspotDtDialog.html" />
     <Content Include="appViews\Customer\Dialog\Recent.html" />
     <Content Include="appViews\Home\Assessment.html" />
@@ -1961,6 +1960,7 @@
     <Content Include="Scripts\jquery-ui-1.12.0.min.js" />
     <Content Include="Scripts\kpi\college.flow.import.js" />
     <Content Include="Scripts\kpi\college.infos.js" />
+    <Content Include="Scripts\kpi\manage.dt.js" />
     <Content Include="Scripts\kpi\workitem.import.js" />
     <Content Include="Scripts\college\route.controller.js" />
     <Content Include="Scripts\kpi\precise.import.js" />
@@ -2290,6 +2290,7 @@
     <Content Include="Views\Kpi\DtImport.cshtml" />
     <Content Include="Views\Kpi\CollegeInfos.cshtml" />
     <Content Include="Views\Kpi\CollegeFlowImport.cshtml" />
+    <Content Include="Views\Kpi\ManageDt.cshtml" />
     <None Include="Views\Kpi\PreciseImport.cshtml" />
     <Content Include="Views\Kpi\WorkItemImport.cshtml" />
     <Content Include="appViews\Rutrace\Map\NeighborMapInfoBox.html" />

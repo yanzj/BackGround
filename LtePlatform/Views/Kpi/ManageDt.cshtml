@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "DT数据后处理";
+}
+
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            <strong>@ViewBag.Title</strong>
+        </h2>
+    </div>
+    <div class="panel-body row" ng-controller="csv.dt">
+        <div date-span-row begin-date="beginDate" end-date="endDate">
+            <button class="btn btn-success" ng-click="query()">
+                <div class="glyphicon glyphicon-search"></div>
+            </button>
+        </div>
+        <div dt-info-list items="fileInfos"></div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/kpi/manage.dt.js"></script>
+}

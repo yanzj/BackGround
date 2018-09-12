@@ -48,6 +48,11 @@ namespace LtePlatform.Controllers
         {
             return View();
         }
+        
+        public ActionResult ManageDt()
+        {
+            return View();
+        }
 
         [HttpPost]
         public ViewResult KpiImport()

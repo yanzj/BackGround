@@ -89,53 +89,6 @@
                 $uibModalInstance.dismiss('cancel');
             };
         })
-    .controller('csv.dt.dialog',
-        function($scope,
-            dialogTitle,
-            beginDate,
-            endDate,
-            collegeService,
-            $uibModalInstance) {
-            $scope.dialogTitle = dialogTitle;
-            $scope.beginDate = beginDate;
-            $scope.endDate = endDate;
-            $scope.network = {
-                options: ['2G', '3G', '4G'],
-                selected: '2G'
-            };
-
-            $scope.query = function() {
-                collegeService.queryCsvFileNames($scope.beginDate.value, $scope.endDate.value).then(function(infos) {
-                    $scope.fileInfos = infos;
-                    angular.forEach(infos,
-                        function(info) {
-                            if (info.fileType) {
-                                info.networkType = info.fileType;
-                            } else {
-                                collegeService.queryCsvFileType(info.csvFileName.replace('.csv', '')).then(
-                                    function (type) {
-                                        info.networkType = type;
-                                    });
-                            }
-                            collegeService.queryFileTownDtTestInfo(info.id).then(function(items) {
-                                info.townInfos = items;
-                            });
-                            collegeService.queryFileRoadDtTestInfo(info.id).then(function(items) {
-                                info.roadInfos = items;
-                            });
-                        });
-                });
-            };
-
-            $scope.query();
-            $scope.ok = function() {
-                $uibModalInstance.close($scope.bts);
-            };
-
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            };
-        })
     .controller('highway.dt.dialog',
         function($scope,
             dialogTitle,
