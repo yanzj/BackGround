@@ -712,10 +712,6 @@
     <Content Include="appViews\Test\Simple\GridTooltip.html" />
     <Content Include="Areas\TestPage\Scripts\angular\route.js" />
     <Content Include="Areas\TestPage\Scripts\qunit.route.js" />
-    <Content Include="Content\angular-busy.css" />
-    <Content Include="Content\angular-busy.min.css" />
-    <Content Include="Content\angular-toggle-switch-bootstrap.css" />
-    <Content Include="Content\angular-toggle-switch.css" />
     <Content Include="appViews\bootstrap-fileinput\css\fileinput.css" />
     <Content Include="appViews\bootstrap-fileinput\css\fileinput.min.css" />
     <Content Include="appViews\bootstrap-fileinput\img\loading-sm.gif" />
@@ -1028,10 +1024,6 @@
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
     <Content Include="Scripts\angular-aria.min.js" />
-    <Content Include="Scripts\angular-avatar.js" />
-    <Content Include="Scripts\angular-avatar.min.js" />
-    <Content Include="Scripts\angular-busy.js" />
-    <Content Include="Scripts\angular-busy.min.js" />
     <Content Include="Scripts\angular-cookies.js" />
     <Content Include="Scripts\angular-cookies.min.js" />
     <Content Include="Scripts\angular-loader.js" />
@@ -1085,10 +1077,6 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\angular-spinner.js" />
     <Content Include="Scripts\angular-spinner.min.js" />
-    <Content Include="Scripts\angular-toggle-switch.js" />
-    <Content Include="Scripts\angular-toggle-switch.min.js" />
-    <Content Include="Scripts\angular-touch.js" />
-    <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular-ui-router.js" />
     <Content Include="Scripts\angular-ui-router.min.js" />
     <Content Include="Scripts\angular-ui\csv.js" />
