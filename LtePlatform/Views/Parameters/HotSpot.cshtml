@@ -1,39 +1,29 @@
 ﻿@{
-    ViewBag.Title = "校园网基本信息维护";
+    ViewBag.Title = "热点信息维护";
 }
 
-<h4>@ViewBag.Title</h4>
-
-<div ng-controller="maintain.college">
-    <div class="input-group">
-        <select ng-model="collegeName" ng-options="c as c for c in collegeInfo.names" class="form-control"></select>
-        <div class="input-group-btn">
-            <button class="btn btn-primary" ng-click="addOneCollegeMarkerInfo()" ng-disabled="collegeExisted">添加信息</button>
-            <button class="btn btn-success" ng-click="createNewCollege()">增加新校园</button>
-        </div>
-    </div>
+<div ng-controller="maintain.hotspot">
     <div class="panel panel-blue">
         <div class="panel-heading">
             <span class="glyphicon glyphicon-stats"></span>
-            基本信息
+            @ViewBag.Title
         </div>
         <div class="panel-body">
-            <div college-info-list colleges="collegeYearList"></div>
+            <div hot-spot-list items="hotSpotList"></div>
         </div>
-    </div>
-    <div class="panel panel-orange">
-        <div class="panel-heading">
-            <span class="glyphicon glyphicon-apple"></span>
-            基础统计信息
-        </div>
-        <div class="panel-body">
-            <div college-stat-table college-list="collegeList"></div>
+        <div class="panel-footer">
+            <div class="btn-group">
+                <button class="btn btn-sm btn-success" ng-click="addHotSpot()">
+                    <i class="glyphicon glyphicon-apple"></i>
+                    新增热点
+                </button>
+            </div>
         </div>
     </div>
 </div>
 
 @section Scripts{
-    <script src="~/Scripts/parameters/maintain.college.js"></script>
+    <script src="~/Scripts/parameters/maintain.hotspot.js"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=LlMnTd7NcCWI1ibhDAdKeVlG"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
     <script type="text/javascript" src="~/Scripts/MarkerClusterer.js"></script>
@@ -46,4 +36,3 @@
     <script src="http://api.map.baidu.com/library/GeoUtils/1.2/src/GeoUtils_min.js"></script>
     <script src="~/Scripts/baidu/plugins/ComplexCustomOverlay.js"></script>
 }
-

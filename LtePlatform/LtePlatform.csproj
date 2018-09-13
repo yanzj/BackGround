@@ -688,14 +688,12 @@
     <Content Include="appViews\Parameters\Import\HotSpot.html" />
     <Content Include="appViews\Parameters\Import\HotSpotCell.html" />
     <Content Include="appViews\Parameters\Map\CellsMapInfoBox.html" />
-    <Content Include="appViews\Parameters\Map\HotSpotInfoBox.html" />
     <Content Include="appViews\Parameters\Region\ArrangeInfo.html" />
     <Content Include="appViews\Parameters\Region\ENodebFlow.html" />
     <Content Include="appViews\Parameters\Region\FlowKpiInfo.html" />
     <Content Include="appViews\Parameters\Region\RrcKpiInfo.html" />
     <Content Include="appViews\Parameters\Region\TopicCells.html" />
     <Content Include="appViews\Parameters\Region\TownENodebInfo.html" />
-    <Content Include="appViews\Parameters\Topic.html" />
     <Content Include="appViews\Rutrace\Coverage\DetailsChartDialog.html" />
     <Content Include="appViews\Rutrace\Coverage\General.html" />
     <Content Include="appViews\Rutrace\Coverage\Trend.html" />
@@ -2000,6 +1998,7 @@
     <Content Include="Scripts\parameters\import\index.controller.js" />
     <Content Include="Scripts\parameters\import\station.controller.js" />
     <Content Include="Scripts\parameters\maintain.college.js" />
+    <Content Include="Scripts\parameters\maintain.hotspot.js" />
     <Content Include="Scripts\parameters\neighbor\import.controller.js" />
     <Content Include="Scripts\plugins\canvas-to-blob.js" />
     <Content Include="Scripts\plugins\canvas-to-blob.min.js" />
@@ -2286,6 +2285,7 @@
     <None Include="Views\Parameters\BasicImport.cshtml" />
     <Content Include="Views\Parameters\HourKpiImport.cshtml" />
     <Content Include="Views\Parameters\MaintainCollege.cshtml" />
+    <Content Include="Views\Parameters\HotSpot.cshtml" />
     <None Include="Views\Parameters\NeighborImport.cshtml" />
     <Content Include="appViews\Parameters\Import\Index.html" />
     <Content Include="appViews\Parameters\Import\ENodebLonLatTable.html" />

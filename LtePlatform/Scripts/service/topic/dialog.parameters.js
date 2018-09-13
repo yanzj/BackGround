@@ -119,20 +119,6 @@
 
             $scope.query();
         })
-    .controller('hot.spot.info.dialog',
-        function($scope, $uibModalInstance, dialogTitle, hotSpotList) {
-            $scope.dialogTitle = dialogTitle;
-            $scope.hotSpotList = hotSpotList;
-
-            $scope.ok = function() {
-                $uibModalInstance.close($scope.neighbor);
-            };
-
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            };
-
-        })
     .controller('map.sectors.dialog',
         function($scope, $uibModalInstance, sectors, dialogTitle, networkElementService) {
             $scope.sectors = sectors;

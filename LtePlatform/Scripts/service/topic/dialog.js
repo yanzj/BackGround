@@ -62,20 +62,6 @@
                         }
                     });
                 },
-                showHotSpotsInfo: function(hotSpotList) {
-                    menuItemService.showGeneralDialogWithAction({
-                        templateUrl: '/appViews/Parameters/Map/HotSpotInfoBox.html',
-                        controller: 'hot.spot.info.dialog',
-                        resolve: {
-                            dialogTitle: function() {
-                                return "热点信息列表";
-                            },
-                            hotSpotList: function() {
-                                return hotSpotList;
-                            }
-                        }
-                    });
-                },
                 showCellsInfo: function(sectors) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/Parameters/Map/CellsMapInfoBox.html',

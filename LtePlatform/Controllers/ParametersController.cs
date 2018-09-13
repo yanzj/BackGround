@@ -140,6 +140,11 @@ namespace LtePlatform.Controllers
         {
             return View();
         }
+        
+        public ActionResult HotSpot()
+        {
+            return View();
+        }
 
         [HttpPost]
         public ActionResult LteImportPost()

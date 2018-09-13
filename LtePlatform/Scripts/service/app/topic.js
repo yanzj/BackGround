@@ -2206,20 +2206,6 @@ angular.module('topic.dialog.parameters', ['myApp.url', 'myApp.region', 'myApp.k
 
             $scope.query();
         })
-    .controller('hot.spot.info.dialog',
-        function($scope, $uibModalInstance, dialogTitle, hotSpotList) {
-            $scope.dialogTitle = dialogTitle;
-            $scope.hotSpotList = hotSpotList;
-
-            $scope.ok = function() {
-                $uibModalInstance.close($scope.neighbor);
-            };
-
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            };
-
-        })
     .controller('map.sectors.dialog',
         function($scope, $uibModalInstance, sectors, dialogTitle, networkElementService) {
             $scope.sectors = sectors;
@@ -2852,20 +2838,6 @@ angular.module('topic.dialog',[ 'app.menu', 'app.core' ])
                             },
                             town: function () {
                                 return town;
-                            }
-                        }
-                    });
-                },
-                showHotSpotsInfo: function(hotSpotList) {
-                    menuItemService.showGeneralDialogWithAction({
-                        templateUrl: '/appViews/Parameters/Map/HotSpotInfoBox.html',
-                        controller: 'hot.spot.info.dialog',
-                        resolve: {
-                            dialogTitle: function() {
-                                return "热点信息列表";
-                            },
-                            hotSpotList: function() {
-                                return hotSpotList;
                             }
                         }
                     });

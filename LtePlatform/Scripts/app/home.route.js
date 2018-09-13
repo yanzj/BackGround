@@ -45,20 +45,6 @@
                     },
                     url: "/building"
                 })
-            .state('topic',
-                {
-                    views: {
-                        'menu': {
-                            templateUrl: "/appViews/DropDownMenu.html",
-                            controller: "menu.analysis"
-                        },
-                        "contents": {
-                            templateUrl: "/appViews/Parameters/Topic.html",
-                            controller: "query.topic"
-                        }
-                    },
-                    url: "/topic"
-                })
             .state('common-station',
                 {
                     views: {
