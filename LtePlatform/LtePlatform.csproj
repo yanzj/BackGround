@@ -1075,8 +1075,6 @@
     <None Include="Content\themes\map\timecontrol.scss" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\angular-spinner.js" />
-    <Content Include="Scripts\angular-spinner.min.js" />
     <Content Include="Scripts\angular-ui-router.js" />
     <Content Include="Scripts\angular-ui-router.min.js" />
     <Content Include="Scripts\angular-ui\csv.js" />
@@ -1934,7 +1932,6 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="Scripts\app\package.json" />
-    <Content Include="Scripts\angular-spinner.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular-parse-ext.min.js.map" />
@@ -2159,7 +2156,6 @@
     <None Include="Areas\TestPage\Views\AngularTest\Index.cshtml" />
     <None Include="Properties\PublishProfiles\Lte-ftp-219.pubxml" />
     <None Include="Properties\PublishProfiles\Lte2.pubxml" />
-    <Content Include="Scripts\coffee-script.js" />
     <Content Include="Scripts\kpi\interference.import.controller.js" />
     <Content Include="Scripts\kpi\workitem\index.controller.js" />
     <Content Include="Scripts\manage\index.viewmodel.js" />
