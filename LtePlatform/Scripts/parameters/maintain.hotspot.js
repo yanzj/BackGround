@@ -5,7 +5,12 @@
             customerDialogService) {
             $scope.query = function() {
                 basicImportService.queryAllHotSpots().then(function(result) {
-                    $scope.hotSpotList = result;
+                    $scope.hotSpotList = _.filter(result,
+                        function(stat) {
+                            return stat.typeDescription !== '高速公路' &&
+                                stat.typeDescription !== '高速铁路' &&
+                                stat.typeDescription !== '地铁';
+                        });
                 });
             };
             $scope.addHotSpot = function() {

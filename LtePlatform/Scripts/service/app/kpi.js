@@ -3166,8 +3166,8 @@ angular.module('kpi.customer', ['myApp.url', 'myApp.region'])
                         },
                         callback2);
                 },
-                modifyHotSpot: function(item, callback, callback2) {
-                    menuItemService.showGeneralDialogWithDoubleAction({
+                modifyHotSpot: function(item, callback) {
+                    menuItemService.showGeneralDialogWithAction({
                             templateUrl: '/appViews/Parameters/Import/HotSpot.html',
                             controller: 'hot.spot.modify',
                             resolve: {
@@ -3183,8 +3183,7 @@ angular.module('kpi.customer', ['myApp.url', 'myApp.region'])
                             basicImportService.dumpOneHotSpot(dto).then(function(result) {
                                 callback();
                             });
-                        },
-                        callback2);
+                        });
                 },
                 manageHotSpotCells: function(hotSpot, callback) {
                     menuItemService.showGeneralDialogWithAction({

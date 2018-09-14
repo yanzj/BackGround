@@ -74,8 +74,8 @@
                         },
                         callback2);
                 },
-                modifyHotSpot: function(item, callback, callback2) {
-                    menuItemService.showGeneralDialogWithDoubleAction({
+                modifyHotSpot: function(item, callback) {
+                    menuItemService.showGeneralDialogWithAction({
                             templateUrl: '/appViews/Parameters/Import/HotSpot.html',
                             controller: 'hot.spot.modify',
                             resolve: {
@@ -91,8 +91,7 @@
                             basicImportService.dumpOneHotSpot(dto).then(function(result) {
                                 callback();
                             });
-                        },
-                        callback2);
+                        });
                 },
                 manageHotSpotCells: function(hotSpot, callback) {
                     menuItemService.showGeneralDialogWithAction({

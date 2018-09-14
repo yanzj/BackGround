@@ -62,7 +62,7 @@ angular.module('customer.emergency.module', ['myApp.region', 'myApp.kpi'])
                 $compile);
         })
     .controller('HotSpotController',
-        function($scope, customerDialogService, workItemDialog) {
+        function($scope, customerDialogService) {
             $scope.gridOptions = {
                 paginationPageSizes: [20, 40, 60],
                 paginationPageSize: 20,
@@ -76,9 +76,8 @@ angular.module('customer.emergency.module', ['myApp.region', 'myApp.kpi'])
                     {
                         name: '信息',
                         cellTemplate: '<div class="btn-group-sm"> \
-                        <button class="btn btn-sm btn-success" ng-click="grid.appScope.editInfo(row.entity)">编辑</button> \
-                        <button class="btn btn-sm btn-primary" ng-click="grid.appScope.showCells(row.entity.hotspotName)">小区</button> \
-                        <button class="btn btn-sm btn-default" ng-click="grid.appScope.showFlow(row.entity)">流量</button> \
+                        <button class="btn btn-sm btn-success" ng-click="grid.appScope.editInfo(row.entity)">编辑小区</button> \
+                        <button class="btn btn-sm btn-primary" ng-click="grid.appScope.modifyBasic(row.entity)">基本信息</button> \
                         </div>',
                         width: 200
                     }
@@ -91,11 +90,10 @@ angular.module('customer.emergency.module', ['myApp.region', 'myApp.kpi'])
 
                     });
             };
-            $scope.showFlow = function(hotSpot) {
-                workItemDialog.showHotSpotCellFlow(hotSpot, $scope.beginDate, $scope.endDate);
-            };
-            $scope.showCells = function(name) {
-                workItemDialog.showHotSpotCells(name);
+            $scope.modifyBasic = function(stat) {
+                customerDialogService.modifyHotSpot(stat,
+                    function() {
+                    });
             };
         })
     .directive('hotSpotList',
