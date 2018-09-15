@@ -1,6 +1,6 @@
 ﻿angular.module('kpi.customer.sustain', ['myApp.url', 'myApp.region', "ui.bootstrap"])
     .controller('hot.spot.dialog',
-        function($scope, dialogTitle, $uibModalInstance, kpiPreciseService, baiduMapService) {
+        function($scope, dialogTitle, $uibModalInstance, kpiPreciseService, baiduMapService, baiduQueryService) {
             $scope.dialogTitle = dialogTitle;
             $scope.dto = {
                 longtitute: 112.99,
@@ -8,20 +8,41 @@
             };
 
             kpiPreciseService.getHotSpotTypeSelection().then(function(result) {
+                var options =_.filter(result,
+                    function(stat) {
+                        return stat !== '高速公路' && stat !== '其他' &&
+                            stat !== '高速铁路' && stat !== '区域定义' &&
+                            stat !== '地铁' && stat !== 'TOP小区' && stat !== '校园网';
+                    });
                 $scope.spotType = {
-                    options: result,
-                    selected: result[0]
+                    options: options,
+                    selected: options[0]
                 };
-                baiduMapService.switchSubMap();
+            });
+            baiduQueryService.transformToBaidu($scope.dto.longtitute, $scope.dto.lattitute).then(function(coors) {
+                var xOffset = coors.x - $scope.dto.longtitute;
+                var yOffset = coors.y - $scope.dto.lattitute;
                 baiduMapService.initializeMap("hot-map", 15);
                 baiduMapService.addClickListener(function(e) {
-                    $scope.dto.longtitute = e.point.lng;
-                    $scope.dto.lattitute = e.point.lat;
+                    $scope.dto.longtitute = e.point.lng - xOffset;
+                    $scope.dto.lattitute = e.point.lat - yOffset;
                     baiduMapService.clearOverlays();
                     baiduMapService.addOneMarker(baiduMapService
-                        .generateMarker($scope.dto.longtitute, $scope.dto.lattitute));
+                        .generateMarker(e.point.lng, e.point.lat));
                 });
             });
+            $scope.matchPlace = function() {
+                if (!$scope.dto.hotspotName || $scope.dto.hotspotName === '') return;
+                baiduQueryService.queryBaiduPlace($scope.dto.hotspotName).then(function(result) {
+                    angular.forEach(result,
+                        function(place) {
+                            var marker = baiduMapService.generateMarker(place.location.lng, place.location.lat);
+                            baiduMapService.addOneMarker(marker);
+                            baiduMapService.drawLabel(place.name, place.location.lng, place.location.lat);
+                            baiduMapService.setCellFocus(place.location.lng, place.location.lat);
+                        });
+                });
+            };
             $scope.ok = function() {
                 $scope.dto.typeDescription = $scope.spotType.selected;
                 $uibModalInstance.close($scope.dto);
@@ -31,7 +52,7 @@
             };
         })
     .controller('hot.spot.modify',
-        function($scope, dialogTitle, dto, $uibModalInstance, kpiPreciseService, baiduMapService) {
+        function($scope, dialogTitle, dto, $uibModalInstance, kpiPreciseService, baiduMapService, baiduQueryService) {
             $scope.dialogTitle = dialogTitle;
             $scope.dto = dto;
             $scope.modify = true;
@@ -41,19 +62,34 @@
                     options: result,
                     selected: $scope.dto.typeDescription
                 };
-                baiduMapService.switchSubMap();
+            });
+            baiduQueryService.transformToBaidu($scope.dto.longtitute, $scope.dto.lattitute).then(function(coors) {
+                var xOffset = coors.x - $scope.dto.longtitute;
+                var yOffset = coors.y - $scope.dto.lattitute;
                 baiduMapService.initializeMap("hot-map", 15);
                 baiduMapService.addOneMarker(baiduMapService
-                    .generateMarker($scope.dto.longtitute, $scope.dto.lattitute));
-                baiduMapService.setCellFocus($scope.dto.longtitute, $scope.dto.lattitute);
+                    .generateMarker(coors.x, coors.y));
+                baiduMapService.setCellFocus(coors.x, coors.y);
                 baiduMapService.addClickListener(function(e) {
-                    $scope.dto.longtitute = e.point.lng;
-                    $scope.dto.lattitute = e.point.lat;
+                    $scope.dto.longtitute = e.point.lng - xOffset;
+                    $scope.dto.lattitute = e.point.lat - yOffset;
                     baiduMapService.clearOverlays();
                     baiduMapService.addOneMarker(baiduMapService
-                        .generateMarker($scope.dto.longtitute, $scope.dto.lattitute));
+                        .generateMarker(e.point.lng, e.point.lat));
                 });
             });
+            $scope.matchPlace = function() {
+                if (!$scope.dto.hotspotName || $scope.dto.hotspotName === '') return;
+                baiduQueryService.queryBaiduPlace($scope.dto.hotspotName).then(function(result) {
+                    angular.forEach(result,
+                        function(place) {
+                            var marker = baiduMapService.generateMarker(place.location.lng, place.location.lat);
+                            baiduMapService.addOneMarker(marker);
+                            baiduMapService.drawLabel(place.name, place.location.lng, place.location.lat);
+                            baiduMapService.setCellFocus(place.location.lng, place.location.lat);
+                        });
+                });
+            };
             $scope.ok = function() {
                 $scope.dto.typeDescription = $scope.spotType.selected;
                 $uibModalInstance.close($scope.dto);
@@ -78,6 +114,15 @@
             $scope.address = address;
             $scope.gridApi = {};
             $scope.gridApi2 = {};
+            $scope.updateCellInfos = function(positions, existedCells) {
+                neighborImportService.updateENodebRruInfo($scope.positionCells,
+                    {
+                        dstCells: positions,
+                        cells: existedCells,
+                        longtitute: center.longtitute,
+                        lattitute: center.lattitute
+                    });
+            };
             $scope.query = function() {
                 basicImportService.queryHotSpotCells(name).then(function(result) {
                     $scope.candidateIndoorCells = result;
@@ -91,13 +136,30 @@
                         south: center.lattitute - 0.003,
                         north: center.lattitute + 0.003
                     }).then(function(positions) {
-                        neighborImportService.updateENodebRruInfo($scope.positionCells,
-                        {
-                            dstCells: positions,
-                            cells: existedCells,
-                            longtitute: center.longtitute,
-                            lattitute: center.lattitute
-                        });
+                        if (positions.length > 5) {
+                            $scope.updateCellInfos(positions, existedCells);
+                        } else {
+                            networkElementService.queryRangeCells({
+                                west: center.longtitute - 0.01,
+                                east: center.longtitute + 0.01,
+                                south: center.lattitute - 0.01,
+                                north: center.lattitute + 0.01
+                            }).then(function(pos) {
+                                if (pos.length > 5) {
+                                    $scope.updateCellInfos(pos, existedCells);
+                                } else {
+                                    networkElementService.queryRangeCells({
+                                        west: center.longtitute - 0.02,
+                                        east: center.longtitute + 0.02,
+                                        south: center.lattitute - 0.02,
+                                        north: center.lattitute + 0.02
+                                    }).then(function(pos2) {
+                                        $scope.updateCellInfos(pos2, existedCells);
+                                    });
+                                }
+                                
+                            });
+                        }
                     });
                 });
             };

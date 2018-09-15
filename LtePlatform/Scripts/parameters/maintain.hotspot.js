@@ -15,7 +15,7 @@
             };
             $scope.addHotSpot = function() {
                 customerDialogService.constructHotSpot(function() {
-                        $scope.updateMap();
+                        $scope.query();
                     });
             };
 

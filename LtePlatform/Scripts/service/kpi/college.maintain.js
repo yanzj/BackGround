@@ -220,6 +220,7 @@
                             var marker = baiduMapService.generateMarker(place.location.lng, place.location.lat);
                             baiduMapService.addOneMarker(marker);
                             baiduMapService.drawLabel(place.name, place.location.lng, place.location.lat);
+                            baiduMapService.setCellFocus(place.location.lng, place.location.lat);
                         });
                 });
             };
