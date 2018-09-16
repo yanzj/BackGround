@@ -63,6 +63,25 @@ namespace Lte.Domain.Common.Wireless.Cell
             }
         }
 
+        public static string GetBandDescription(this FrequencyBandType band)
+        {
+            switch (band)
+            {
+                case FrequencyBandType.Band1800:
+                    return "1.8G";
+                case FrequencyBandType.Band2100:
+                    return "2.1G";
+                case FrequencyBandType.Band800VoLte:
+                    return "800M";
+                case FrequencyBandType.Band800NbIot:
+                    return "NB-IoT";
+                case FrequencyBandType.Tdd2600:
+                    return "2.6G";
+                default:
+                    return "Others";
+            }
+        }
+
         public static bool IsCdmaFrequency(this short frequency)
         {
             return frequency == 37 || frequency == 78 || frequency == 119 || frequency == 160

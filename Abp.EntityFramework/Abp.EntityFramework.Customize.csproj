@@ -146,6 +146,8 @@
     <Compile Include="AutoMapper\AutoMapperHelper.cs" />
     <Compile Include="AutoMapper\AutoMapToAttribute.cs" />
     <Compile Include="AutoMapper\ENodebExcelTransform.cs" />
+    <Compile Include="Dependency\IFrequencyBand.cs" />
+    <Compile Include="Dependency\IRegionFrequencyView.cs" />
     <Compile Include="Dependency\PagingContainer.cs" />
     <Compile Include="Entities\Channel\AgpsMongo.cs" />
     <Compile Include="Entities\Channel\CellUlpcComm.cs" />
@@ -186,6 +188,7 @@
     <Compile Include="Entities\Maintainence\AlarmWorkItem.cs" />
     <Compile Include="Entities\Maintainence\AlarmWorkItemGroup.cs" />
     <Compile Include="Entities\Maintainence\AlarmWorkItemView.cs" />
+    <Compile Include="Entities\RegionKpi\FrequencyPreciseView.cs" />
     <Compile Include="Entities\RegionKpi\TownDoubleFlowView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourCqi.cs" />
     <Compile Include="Entities\RegionKpi\TownHourPrb.cs" />

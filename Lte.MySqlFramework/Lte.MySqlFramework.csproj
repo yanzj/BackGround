@@ -458,7 +458,8 @@
     <Compile Include="Support\View\HourUsersRegionDateView.cs" />
     <Compile Include="Support\View\MrsRegionDateView.cs" />
     <Compile Include="Support\View\PrbRegionDateView.cs" />
-    <Compile Include="Support\PreciseRegion.cs" />
+    <Compile Include="Support\View\PreciseRegionDateView.cs" />
+    <Compile Include="Support\View\PreciseRegionFrequencyView.cs" />
     <Compile Include="Support\View\QciRegionDateView.cs" />
     <Compile Include="Support\View\RrcRegionDateView.cs" />
     <Compile Include="Support\Container\TownPreciseViewContainer.cs" />
