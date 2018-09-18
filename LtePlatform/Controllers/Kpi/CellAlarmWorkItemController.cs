@@ -31,6 +31,17 @@ namespace LtePlatform.Controllers.Kpi
         {
             return _service.QueryCellAlarmGroups(begin, end, count);
         }
+        
+        [HttpGet]
+        [ApiDoc("查询具有指定字符串的特定日期范围内的工单记录")]
+        [ApiParameterDoc("begin", "开始日期")]
+        [ApiParameterDoc("end", "结束日期")]
+        [ApiParameterDoc("text", "模糊查询字段")]
+        [ApiResponse("特定日期范围内的工单记录")]
+        public IEnumerable<CellAlarmWorkItemGroup> Get(DateTime begin, DateTime end, string text)
+        {
+            return _service.QueryCellAlarmGroups(begin, end, text);
+        }
 
     }
 }

@@ -70,6 +70,20 @@ namespace Lte.Evaluations.DataService.Dump
             var alarms =
                 _repository.GetAllList(
                     x => x.HappenTime >= begin && x.HappenTime < end && x.NetworkType == NetworkType.With4G);
+            return CalculateAlarmWorkItemGroups(count, alarms);
+        }
+        
+        public IEnumerable<CellAlarmWorkItemGroup> QueryCellAlarmGroups(DateTime begin, DateTime end, string text)
+        {
+            var alarms =
+                _repository.GetAllList(
+                    x => x.HappenTime >= begin && x.HappenTime < end && x.NetworkType == NetworkType.With4G
+                         && x.Contents.Contains(text));
+            return CalculateAlarmWorkItemGroups(0, alarms);
+        }
+
+        private IEnumerable<CellAlarmWorkItemGroup> CalculateAlarmWorkItemGroups(int count, List<AlarmWorkItem> alarms)
+        {
             var groups = alarms.Where(x => x.SectorId < 255).ToList().GroupBy(x => new
             {
                 x.ENodebId,
@@ -77,13 +91,21 @@ namespace Lte.Evaluations.DataService.Dump
             });
             var eNodebs = _eNodebRepository.GetAllList();
             var cells = _cellRepository.GetAllList();
-            var results = groups.Select(g => new CellAlarmWorkItemGroup
-            {
-                ENodebId = g.Key.ENodebId,
-                SectorId = g.Key.SectorId,
-                AlarmCounts = g.Count(),
-                ItemList = g.Select(x => x.MapTo<AlarmWorkItemView>()).ToList()
-            }).OrderByDescending(x => x.AlarmCounts).Take(count).ToList();
+            var results = count > 0
+                ? groups.Select(g => new CellAlarmWorkItemGroup
+                {
+                    ENodebId = g.Key.ENodebId,
+                    SectorId = g.Key.SectorId,
+                    AlarmCounts = g.Count(),
+                    ItemList = g.Select(x => x.MapTo<AlarmWorkItemView>()).ToList()
+                }).OrderByDescending(x => x.AlarmCounts).Take(count).ToList()
+                : groups.Select(g => new CellAlarmWorkItemGroup
+                {
+                    ENodebId = g.Key.ENodebId,
+                    SectorId = g.Key.SectorId,
+                    AlarmCounts = g.Count(),
+                    ItemList = g.Select(x => x.MapTo<AlarmWorkItemView>()).ToList()
+                }).OrderByDescending(x => x.AlarmCounts).ToList();
             results.ForEach(result =>
             {
                 var eNodeb = eNodebs.FirstOrDefault(x => x.ENodebId == result.ENodebId);

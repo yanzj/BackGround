@@ -267,6 +267,13 @@ namespace Lte.Evaluations.DataService.College
             var items = _repository.GetAllList(begin, end);
             return Mapper.Map<List<ComplainItem>, List<ComplainDto>>(items);
         }
+        
+        public List<ComplainDto> Query(DateTime begin, DateTime end, string text)
+        {
+            var items = _repository.GetAllList(x =>
+                x.BeginTime >= begin && x.BeginTime < end && x.ComplainContents.Contains(text));
+            return Mapper.Map<List<ComplainItem>, List<ComplainDto>>(items);
+        }
 
         public List<ComplainDto> QueryDate(DateTime begin, DateTime end, string district)
         {

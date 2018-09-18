@@ -29,6 +29,17 @@ namespace LtePlatform.Controllers.College
         {
             return _service.Query(begin, end);
         }
+        
+        [HttpGet]
+        [ApiDoc("模糊查询日期范围内的后端投诉工单视图")]
+        [ApiParameterDoc("begin", "开始日期")]
+        [ApiParameterDoc("end", "结束日期")]
+        [ApiParameterDoc("text", "模糊查询字段")]
+        [ApiResponse("日期范围内的后端投诉工单视图")]
+        public List<ComplainDto> GetByText(DateTime begin, DateTime end, string text)
+        {
+            return _service.Query(begin, end, text);
+        }
 
         [HttpGet]
         [ApiDoc("查询初始日期前的最近一天后端投诉工单视图")]

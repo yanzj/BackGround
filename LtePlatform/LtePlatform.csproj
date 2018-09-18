@@ -2303,7 +2303,6 @@
     <Content Include="appViews\GeneralMenu.html" />
     <Content Include="appViews\Rutrace\Interference\MatchCellDialog.html" />
     <Content Include="Views\Parameters\StationImport.cshtml" />
-    <None Include="Web.20170818.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
