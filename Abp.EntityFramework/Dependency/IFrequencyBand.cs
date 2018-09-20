@@ -8,6 +8,6 @@ namespace Abp.EntityFramework.Dependency
 {
     public interface IFrequencyBand
     {
-        string FrequenyBand { get; }
+        string FrequencyBand { get; }
     }
 }

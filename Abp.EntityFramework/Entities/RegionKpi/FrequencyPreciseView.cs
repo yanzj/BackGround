@@ -20,7 +20,7 @@ namespace Abp.EntityFramework.Entities.RegionKpi
         [ArraySumProtection]
         public FrequencyBandType FrequencyBandType { get; set; }
         
-        public string FrequenyBand => FrequencyBandType.GetBandDescription();
+        public string FrequencyBand => FrequencyBandType.GetBandDescription();
 
         public int TotalMrs { get; set; }
 
