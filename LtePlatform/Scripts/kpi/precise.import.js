@@ -86,7 +86,8 @@
             preciseImportService.dumpTownItems(
                 $scope.townPreciseViews, $scope.collegePreciseStats, 
                 $scope.townPrecise800Views, $scope.townPrecise1800Views, $scope.townPrecise2100Views, 
-                $scope.townMrsStats, $scope.townSinrUlStats
+                $scope.townMrsStats, $scope.collegeMrsStats, $scope.townMrsStats800,
+                $scope.townMrsStats1800, $scope.townMrsStats2100, $scope.townSinrUlStats
             ).then(function () {
                 $scope.townPreciseViews = [];
                 $scope.collegePreciseStats = [];

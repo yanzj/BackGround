@@ -1994,7 +1994,8 @@ angular.module('region.precise', ['app.core'])
                     return generalHttpService.deleteApiData('MrsSinrUlImport', {});
                 },
                 dumpTownItems: function(
-                    views, collegeStats, views800, views1800, views2100, mrsStats, mrsSinrUls
+                    views, collegeStats, views800, views1800, views2100, 
+                    mrsStats, collegeMrsStats, mrsStats800, mrsStats1800, mrsStats2100, mrsSinrUls
                 ) {
                     return generalHttpService.postApiData('TownPreciseImport',
                     {
@@ -2004,6 +2005,10 @@ angular.module('region.precise', ['app.core'])
                         views1800: views1800,
                         views2100: views2100,
                         mrsRsrps: mrsStats,
+                        collegeMrsRsrps: collegeMrsStats,
+                        mrsRsrps800: mrsStats800,
+                        mrsRsrps1800: mrsStats1800,
+                        mrsRsrps2100: mrsStats2100,
                         mrsSinrUls: mrsSinrUls
                     });
                 },

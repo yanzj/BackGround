@@ -127,6 +127,8 @@ namespace Lte.Evaluations.DataService.Kpi
             var mrsStats = container.MrsRsrps.Concat(container.MrsRsrps800).Concat(container.MrsRsrps1800)
                 .Concat(container.MrsRsrps2100);
             await _townMrsRsrpRepository.UpdateMany(mrsStats);
+            if (container.CollegeMrsRsrps.Any())
+                await _townMrsRsrpRepository.UpdateMany(container.CollegeMrsRsrps);
 
             var mrsSinrUlStats = container.MrsSinrUls;
             await _townMrsSinrUlRepository.UpdateMany(mrsSinrUlStats);
