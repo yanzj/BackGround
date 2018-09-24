@@ -3,6 +3,7 @@ using Lte.Parameters.Entities.Kpi;
 using System;
 using System.Collections.Generic;
 using Abp.EntityFramework.AutoMapper;
+using Abp.EntityFramework.Entities.Mr;
 using Lte.Evaluations.ViewModels.Precise;
 using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Infrastructure;
@@ -62,6 +63,11 @@ namespace Lte.Evaluations.DataService.Mr
             var list = _rsrpRepository.GetList(eNodebId + "-" + sectorId, begin, end).MapTo<List<CellMrsRsrpDto>>();
             list.ForEach(stat => stat.ENodebName = eNodeb?.Name);
             return list;
+        }
+
+        public IEnumerable<MrsRsrpStat> QueryDateSpanMrsRsrpStats(DateTime begin, DateTime end)
+        {
+            return _rsrpRepository.GetAllList(x => x.StatDate >= begin && x.StatDate < end);
         }
 
         public MrsSinrUlStat QuerySinrUlStat(int eNodebId, byte sectorId, DateTime statDate)

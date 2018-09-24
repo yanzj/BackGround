@@ -32,6 +32,10 @@
         $scope.townPrecise1800Views = [];
         $scope.townPrecise2100Views = [];
         $scope.townMrsStats = [];
+        $scope.collegeMrsStats = [];
+        $scope.townMrsStats800 = [];
+        $scope.townMrsStats1800 = [];
+        $scope.townMrsStats2100 = [];
         $scope.townSinrUlStats = [];
 
         $scope.clearItems = function() {
@@ -90,6 +94,10 @@
                 $scope.townPrecise1800Views = [];
                 $scope.townPrecise2100Views = [];
                 $scope.townMrsStats = [];
+                $scope.collegeMrsStats = [];
+                $scope.townMrsStats800 = [];
+                $scope.townMrsStats1800 = [];
+                $scope.townMrsStats2100 = [];
                 $scope.townSinrUlStats = [];
                 $scope.updateHistory();
             });
@@ -119,8 +127,20 @@
             });
         };
         $scope.updateTownMrsItems = function(date) {
-            preciseImportService.queryTownMrsStats(date).then(function (result) {
+            preciseImportService.queryTownMrsStats(date, 'all').then(function (result) {
                 $scope.townMrsStats = result;
+            });
+            preciseImportService.queryCollegeMrsStats(date).then(function (result) {
+                $scope.collegeMrsStats = result;
+            });
+            preciseImportService.queryTownMrsStats(date, '800').then(function (result) {
+                $scope.townMrsStats800 = result;
+            });
+            preciseImportService.queryTownMrsStats(date, '1800').then(function (result) {
+                $scope.townMrsStats1800 = result;
+            });
+            preciseImportService.queryTownMrsStats(date, '2100').then(function (result) {
+                $scope.townMrsStats2100 = result;
             });
         };
         $scope.updateTownSinrUlItems = function(date) {

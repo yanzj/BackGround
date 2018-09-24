@@ -233,7 +233,6 @@
     <Compile Include="Entities\Kpi\HourKpiHistory.cs" />
     <Compile Include="Entities\Kpi\InterferenceMatrixMongo.cs" />
     <Compile Include="Entities\Kpi\InterferenceMatrixStat.cs" />
-    <Compile Include="Entities\Kpi\MrsRsrpStat.cs" />
     <Compile Include="Entities\Kpi\MrsSinrUlStat.cs" />
     <Compile Include="Entities\Kpi\MrsPhrStat.cs" />
     <Compile Include="Concrete\Switch\CellMeasGroupZteRepository.cs" />

@@ -188,6 +188,7 @@
     <Compile Include="Entities\Maintainence\AlarmWorkItem.cs" />
     <Compile Include="Entities\Maintainence\AlarmWorkItemGroup.cs" />
     <Compile Include="Entities\Maintainence\AlarmWorkItemView.cs" />
+    <Compile Include="Entities\Mr\MrsRsrpStat.cs" />
     <Compile Include="Entities\RegionKpi\FrequencyPreciseView.cs" />
     <Compile Include="Entities\RegionKpi\TownDoubleFlowView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourCqi.cs" />

@@ -1,11 +1,13 @@
 ﻿using System;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Dependency;
+using Abp.EntityFramework.Entities.Mr;
 using Lte.Domain.Common.Wireless;
 
 namespace Lte.Parameters.Entities.Kpi
 {
     [AutoMapFrom(typeof(MrsRsrpStat))]
+    [AutoMapTo(typeof(TownMrsRsrp))]
     public class TownMrsRsrpDto : ICityDistrictTown, IStatDate, ITownId
     {
         public string District { get; set; }

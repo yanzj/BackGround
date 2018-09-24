@@ -171,7 +171,14 @@
                             statDate: statTime
                         });
                 },
-                queryTownMrsStats: function (statTime) {
+                queryTownMrsStats: function (statTime, frequency) {
+                    return generalHttpService.getApiData('MrsRsrpImport',
+                        {
+                            statTime: statTime,
+                            frequency: frequency
+                        });
+                },
+                queryCollegeMrsStats: function(statTime) {
                     return generalHttpService.getApiData('MrsRsrpImport',
                         {
                             statDate: statTime
