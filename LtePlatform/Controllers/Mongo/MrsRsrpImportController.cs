@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Http;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Mr;
+using Lte.Domain.Common.Wireless.Cell;
 using Lte.Evaluations.DataService.Mr;
 using LtePlatform.Models;
 
@@ -23,9 +23,9 @@ namespace LtePlatform.Controllers.Mongo
         [ApiDoc("合并镇区指标")]
         [ApiParameterDoc("statDate", "统计日期")]
         [ApiResponse("合并结果")]
-        public IEnumerable<TownMrsRsrp> GetMrs(DateTime statDate)
+        public IEnumerable<TownMrsRsrp> GetMrs(DateTime statDate, string band)
         {
-            return _service.GetMergeMrsStats(statDate);
+            return _service.GetMergeMrsStats(statDate, band.GetBandFromFcn());
         }
 
         [HttpGet]

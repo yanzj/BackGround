@@ -19,7 +19,7 @@ namespace Lte.MySqlFramework.Concrete.Infrastructure
         {
             return GetAll().Where(x => x.IsInUse).ToList();
         }
-
+        
         public ENodebRepository(IDbContextProvider<MySqlContext> dbContextProvider) : base(dbContextProvider)
         {
         }

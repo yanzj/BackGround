@@ -124,7 +124,8 @@ namespace Lte.Evaluations.DataService.Kpi
             if (container.CollegeStats.Any())
                 await _regionRepository.UpdateMany(container.CollegeStats);
 
-            var mrsStats = container.MrsRsrps;
+            var mrsStats = container.MrsRsrps.Concat(container.MrsRsrps800).Concat(container.MrsRsrps1800)
+                .Concat(container.MrsRsrps2100);
             await _townMrsRsrpRepository.UpdateMany(mrsStats);
 
             var mrsSinrUlStats = container.MrsSinrUls;
@@ -190,7 +191,25 @@ namespace Lte.Evaluations.DataService.Kpi
                 var townItems2100 = _regionRepository.GetAllList(x =>
                     x.StatTime >= beginDate && x.StatTime < endDate && x.FrequencyBandType == FrequencyBandType.Band2100);
                 var townMrsItems =
-                    _townMrsRsrpRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
+                    _townMrsRsrpRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.All);
+                var collegeMrsItems =
+                    _townMrsRsrpRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.College);
+                var townMrsItems800 =
+                    _townMrsRsrpRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.Band800VoLte);
+                var townMrsItems1800 =
+                    _townMrsRsrpRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.Band1800);
+                var townMrsItems2100 =
+                    _townMrsRsrpRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.Band2100);
                 var topMrsItems = _topMrsRsrpRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
                 var townSinrUlItems =
                     _townMrsSinrUlRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
@@ -206,6 +225,10 @@ namespace Lte.Evaluations.DataService.Kpi
                     TownPrecise1800Stats = townItems1800.Count,
                     TownPrecise2100Stats = townItems2100.Count,
                     TownMrsStats = townMrsItems.Count,
+                    CollegeMrsStats = collegeMrsItems.Count,
+                    TownMrsStats800 = townMrsItems800.Count,
+                    TownMrsStats1800 = townMrsItems1800.Count,
+                    TownMrsStats2100 = townMrsItems2100.Count,
                     TopMrsStats = topMrsItems.Count,
                     TownSinrUlStats = townSinrUlItems.Count,
                     TopSinrUlStats = topSinrUlItems.Count

@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Entities;
-using Abp.EntityFramework.Entities.Kpi;
 using Abp.EntityFramework.Entities.Mr;
 using Abp.EntityFramework.Repositories;
 using AutoMapper;
+using Lte.Domain.Common.Wireless.Cell;
 using Lte.Evaluations.ViewModels.Precise;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Mr;
 using Lte.Parameters.Abstract.Kpi;
@@ -21,22 +19,34 @@ namespace Lte.Evaluations.DataService.Mr
         private readonly IMrsRsrpRepository _mrsRsrpRepository;
         private readonly IENodebRepository _eNodebRepository;
         private readonly ITopMrsRsrpRepository _topMrsRsrpRepository;
+        private readonly ICellRepository _cellRepository;
 
         private static Stack<TopMrsRsrp> TopStats { get; set; }
 
-        public MrsRsrpImportService(IMrsRsrpRepository mrsRsrpRepository,
-            IENodebRepository eNodebRepository, ITopMrsRsrpRepository topRepository)
+        public MrsRsrpImportService(IMrsRsrpRepository mrsRsrpRepository, IENodebRepository eNodebRepository,
+            ICellRepository cellRepository, ITopMrsRsrpRepository topRepository)
         {
             _mrsRsrpRepository = mrsRsrpRepository;
             _eNodebRepository = eNodebRepository;
             _topMrsRsrpRepository = topRepository;
+            _cellRepository = cellRepository;
             if (TopStats == null) TopStats = new Stack<TopMrsRsrp>();
         }
 
-        private IEnumerable<TownMrsRsrpDto> GetTownMrsStats(List<MrsRsrpStat> stats)
+        private IEnumerable<TownMrsRsrpDto> GetTownMrsStats(List<MrsRsrpStat> stats, FrequencyBandType bandType)
         {
+            var cells = _cellRepository.GetAllList(bandType);
             var query = from stat in stats
-                join eNodeb in _eNodebRepository.GetAllList() on stat.ENodebId equals eNodeb.ENodebId
+                join cell in cells on new
+                {
+                    stat.ENodebId,
+                    stat.SectorId
+                } equals new
+                {
+                    cell.ENodebId,
+                    cell.SectorId
+                }
+                join eNodeb in _eNodebRepository.GetAllList() on cell.ENodebId equals eNodeb.ENodebId
                 select
                     new
                     {
@@ -52,11 +62,11 @@ namespace Lte.Evaluations.DataService.Mr
             return townStats;
         }
 
-        public IEnumerable<TownMrsRsrp> GetMergeMrsStats(DateTime statTime)
+        public IEnumerable<TownMrsRsrp> GetMergeMrsStats(DateTime statTime, FrequencyBandType bandType)
         {
             var end = statTime.AddDays(1);
             var stats = _mrsRsrpRepository.GetAllList(x => x.StatDate >= statTime && x.StatDate < end);
-            var townStats = GetTownMrsStats(stats);
+            var townStats = GetTownMrsStats(stats, bandType);
 
             var mergeStats = from stat in townStats
                 group stat by stat.TownId
@@ -75,7 +85,8 @@ namespace Lte.Evaluations.DataService.Mr
                     Rsrp90To80 = g.Sum(x => x.Rsrp90To80),
                     Rsrp95To90 = g.Sum(x => x.Rsrp95To90),
                     RsrpAbove60 = g.Sum(x => x.RsrpAbove60),
-                    RsrpBelow120 = g.Sum(x => x.RsrpBelow120)
+                    RsrpBelow120 = g.Sum(x => x.RsrpBelow120),
+                    FrequencyBandType = bandType
                 };
             return mergeStats;
         }

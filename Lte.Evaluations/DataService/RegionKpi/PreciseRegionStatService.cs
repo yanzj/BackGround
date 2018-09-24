@@ -60,12 +60,12 @@ namespace Lte.Evaluations.DataService.RegionKpi
                 StatDate = g.Key,
                 FrequencyViews = new List<FrequencyPreciseView>
                 {
-                    g.Where(x => x.FrequencyBandType == FrequencyBandType.Band2100).ArraySum()
-                        .MapTo<FrequencyPreciseView>(),
-                    g.Where(x => x.FrequencyBandType == FrequencyBandType.Band1800).ArraySum()
-                        .MapTo<FrequencyPreciseView>(),
-                    g.Where(x => x.FrequencyBandType == FrequencyBandType.Band800VoLte).ArraySum()
-                        .MapTo<FrequencyPreciseView>()
+                    g.Where(x => x.FrequencyBandType == FrequencyBandType.Band2100)
+                        .MapTo<IEnumerable<FrequencyPreciseView>>().ArraySum(),
+                    g.Where(x => x.FrequencyBandType == FrequencyBandType.Band1800)
+                        .MapTo<IEnumerable<FrequencyPreciseView>>().ArraySum(),
+                    g.Where(x => x.FrequencyBandType == FrequencyBandType.Band800VoLte)
+                        .MapTo<IEnumerable<FrequencyPreciseView>>().ArraySum()
                 }
             });
         }

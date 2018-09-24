@@ -22,13 +22,13 @@ namespace Abp.EntityFramework.Entities.RegionKpi
         
         public string FrequencyBand => FrequencyBandType.GetBandDescription();
 
-        public int TotalMrs { get; set; }
+        public long TotalMrs { get; set; }
 
-        public int ThirdNeighbors { get; set; }
+        public long ThirdNeighbors { get; set; }
 
-        public int SecondNeighbors { get; set; }
+        public long SecondNeighbors { get; set; }
 
-        public int FirstNeighbors { get; set; }
+        public long FirstNeighbors { get; set; }
 
         public double PreciseRate => 100 - (double)SecondNeighbors * 100 / TotalMrs;
 
@@ -36,12 +36,12 @@ namespace Abp.EntityFramework.Entities.RegionKpi
 
         public double ThirdRate => 100 - (double)ThirdNeighbors * 100 / TotalMrs;
 
-        public int NeighborsMore { get; set; }
+        public long NeighborsMore { get; set; }
 
-        public int InterFirstNeighbors { get; set; }
+        public long InterFirstNeighbors { get; set; }
 
-        public int InterSecondNeighbors { get; set; }
+        public long InterSecondNeighbors { get; set; }
 
-        public int InterThirdNeighbors { get; set; }
+        public long InterThirdNeighbors { get; set; }
     }
 }

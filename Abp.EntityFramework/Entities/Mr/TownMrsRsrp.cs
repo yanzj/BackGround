@@ -2,12 +2,20 @@
 using Abp.Domain.Entities;
 using Abp.EntityFramework.Dependency;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Cell;
+using Lte.Domain.Regular.Attributes;
 
 namespace Abp.EntityFramework.Entities.Mr
 {
     public class TownMrsRsrp: Entity, IStatDate, ITownId
     {
+        [ArraySumProtection]
         public DateTime StatDate { get; set; }
+        
+        [ArraySumProtection]
+        public FrequencyBandType FrequencyBandType { get; set; } = FrequencyBandType.All;
+
+        public string Frequency => FrequencyBandType.ToString();
 
         public long RsrpBelow120 { get; set; }
 
@@ -30,7 +38,8 @@ namespace Abp.EntityFramework.Entities.Mr
         public long Rsrp70To60 { get; set; }
 
         public long RsrpAbove60 { get; set; }
-
+        
+        [ArraySumProtection]
         public int TownId { get; set; }
     }
 }

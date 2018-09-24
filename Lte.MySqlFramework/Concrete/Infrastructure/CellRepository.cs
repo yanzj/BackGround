@@ -3,6 +3,7 @@ using System.Linq;
 using Abp.EntityFramework;
 using Abp.EntityFramework.Entities.Infrastructure;
 using Abp.EntityFramework.Repositories;
+using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Excel;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 
@@ -40,6 +41,21 @@ namespace Lte.MySqlFramework.Concrete.Infrastructure
                 && x.Longtitute <= east
                 && x.Lattitute >= south
                 && x.Lattitute <= north);
+        }
+
+        public List<Cell> GetAllList(FrequencyBandType bandType)
+        {
+            switch (bandType)
+            {
+                case FrequencyBandType.Band800VoLte:
+                    return GetAllList(x => x.BandClass == 5 && x.Frequency < 2500);
+                case FrequencyBandType.Band1800:
+                    return GetAllList(x => x.BandClass == 3);
+                case FrequencyBandType.Band2100:
+                    return GetAllList(x => x.BandClass == 1);
+                default:
+                    return GetAllList();
+            }
         }
 
         public List<Cell> GetAllInUseList()

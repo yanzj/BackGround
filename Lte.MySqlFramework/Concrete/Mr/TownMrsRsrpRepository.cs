@@ -15,7 +15,8 @@ namespace Lte.MySqlFramework.Concrete.Mr
         {
             var endTime = stat.StatDate.AddDays(1);
             return FirstOrDefault(
-                x => x.TownId == stat.TownId && x.StatDate >= stat.StatDate && x.StatDate < endTime);
+                x => x.TownId == stat.TownId && x.StatDate >= stat.StatDate && x.StatDate < endTime &&
+                     x.FrequencyBandType == stat.FrequencyBandType);
         }
     }
 }
