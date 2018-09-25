@@ -8,7 +8,6 @@ using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Regular;
 using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Abstract.RegionKpi;
-using Lte.MySqlFramework.Support;
 using Lte.MySqlFramework.Support.View;
 
 namespace Lte.Evaluations.DataService.RegionKpi

@@ -457,6 +457,7 @@
     <Compile Include="Support\View\HourPrbRegionDateView.cs" />
     <Compile Include="Support\View\HourUsersRegionDateView.cs" />
     <Compile Include="Support\View\MrsRegionDateView.cs" />
+    <Compile Include="Support\View\MrsRsrpRegionFrequencyView.cs" />
     <Compile Include="Support\View\PrbRegionDateView.cs" />
     <Compile Include="Support\View\PreciseRegionDateView.cs" />
     <Compile Include="Support\View\PreciseRegionFrequencyView.cs" />
