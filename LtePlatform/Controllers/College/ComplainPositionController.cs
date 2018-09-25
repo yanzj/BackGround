@@ -4,13 +4,12 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Abp.EntityFramework.Entities.Complain;
 using Lte.Evaluations.DataService.College;
-using Lte.MySqlFramework.Entities;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.College
 {
     [ApiControl("抱怨量位置更新控制器")]
-    [Cors("http://132.110.60.94:2018", "http://218.13.12.242:2018")]
+    [ApiGroup("投诉")]
     public class ComplainPositionController : ApiController
     {
         private readonly ComplainService _service;

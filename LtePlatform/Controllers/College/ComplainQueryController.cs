@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Complain;
 using Lte.Evaluations.DataService.College;
 using LtePlatform.Models;
@@ -52,6 +51,11 @@ namespace LtePlatform.Controllers.College
         }
 
         [HttpGet]
+        [ApiDoc("查询指定区域和时间范围内的投诉工单")]
+        [ApiParameterDoc("beginDate", "开始时间")]
+        [ApiParameterDoc("endDate", "结束时间")]
+        [ApiParameterDoc("district", "区域")]
+        [ApiResponse("投诉工单列表")]
         public List<ComplainDto> Get(DateTime beginDate, DateTime endDate, string district)
         {
             return _service.QueryDate(beginDate.Date, endDate.Date, district);

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Complain;
 using Lte.Evaluations.DataService.College;
 using LtePlatform.Models;
@@ -9,6 +8,7 @@ using LtePlatform.Models;
 namespace LtePlatform.Controllers.College
 {
     [ApiControl("在线支撑次数查询控制器")]
+    [ApiGroup("投诉")]
     public class SustainCountController : ApiController
     {
         private readonly OnlineSustainService _service;

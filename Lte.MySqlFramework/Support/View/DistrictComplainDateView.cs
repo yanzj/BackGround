@@ -5,13 +5,17 @@ using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities.Complain;
 using Lte.Domain.Common.Wireless.Complain;
 using Lte.Domain.Common.Wireless.Station;
+using Lte.Domain.Regular.Attributes;
 
 namespace Lte.MySqlFramework.Support.View
 {
+    [TypeDoc("分区域单天抱怨量工单统计")]
     public class DistrictComplainDateView : IStatDate
     {
+        [MemberDoc("统计日期")]
         public DateTime StatDate { get; set; }
 
+        [MemberDoc("分区域抱怨量工单列表")]
         public IEnumerable<DistrictComplainView> DistrictComplainViews { get; set; }
 
         public static DistrictComplainDateView GenerateDistrictComplainDateView(List<ComplainItem> stats,
