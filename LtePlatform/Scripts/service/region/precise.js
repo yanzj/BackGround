@@ -286,45 +286,11 @@
                         city: cityName
                     });
                 },
-                queryDistrictInfrastructures: function(cityName) {
-                    return generalHttpService.getApiData('RegionStats',
-                    {
-                        city: cityName
-                    });
-                },
-                queryDistrictIndoorCells: function(cityName) {
-                    return generalHttpService.getApiData('DistrictIndoorCells',
-                    {
-                        city: cityName
-                    });
-                },
-                queryDistrictBandCells: function(cityName) {
-                    return generalHttpService.getApiData('DistrictBandCells',
-                    {
-                        city: cityName
-                    });
-                },
                 queryTowns: function(cityName, districtName) {
                     return generalHttpService.getApiData('CityList',
                     {
                         city: cityName,
                         district: districtName
-                    });
-                },
-                queryTownInfrastructures: function(cityName, districtName) {
-                    return generalHttpService.getApiData('RegionStats',
-                    {
-                        city: cityName,
-                        district: districtName
-                    });
-                },
-                queryTownLteCount: function(cityName, districtName, townName, isIndoor) {
-                    return generalHttpService.getApiData('RegionStats',
-                    {
-                        city: cityName,
-                        district: districtName,
-                        town: townName,
-                        isIndoor: isIndoor
                     });
                 },
                 queryTown: function(city, district, town) {

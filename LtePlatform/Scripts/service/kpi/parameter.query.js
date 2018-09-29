@@ -101,58 +101,6 @@
                 $uibModalInstance.dismiss('cancel');
             };
         })
-    .controller("parameters.list",
-        function($scope, $uibModalInstance, city, dialogTitle, appRegionService, parametersChartService) {
-            $scope.city = city;
-            $scope.dialogTitle = dialogTitle;
-            $scope.showCityStats = function() {
-                appRegionService.queryDistrictInfrastructures($scope.city.selected).then(function(result) {
-                    appRegionService.accumulateCityStat(result, $scope.city.selected);
-                    $scope.districtStats = result;
-
-                    $("#cityLteENodebConfig").highcharts(parametersChartService.getDistrictLteENodebPieOptions(result
-                        .slice(0, result.length - 1),
-                        $scope.city.selected));
-                    $("#cityLteCellConfig").highcharts(parametersChartService.getDistrictLteCellPieOptions(result
-                        .slice(0, result.length - 1),
-                        $scope.city.selected));
-                    $("#cityNbIotCellConfig").highcharts(parametersChartService.getDistrictNbIotCellPieOptions(result
-                        .slice(0, result.length - 1),
-                        $scope.city.selected));
-                    $("#cityCdmaENodebConfig").highcharts(parametersChartService.getDistrictCdmaBtsPieOptions(result
-                        .slice(0, result.length - 1),
-                        $scope.city.selected));
-                    $("#cityCdmaCellConfig").highcharts(parametersChartService.getDistrictCdmaCellPieOptions(result
-                        .slice(0, result.length - 1),
-                        $scope.city.selected));
-                });
-            };
-            $scope.$watch('currentDistrict',
-                function(district) {
-                    appRegionService.queryTownInfrastructures($scope.city.selected, district).then(function(result) {
-                        $scope.townStats = result;
-                        $("#districtLteENodebConfig")
-                            .highcharts(parametersChartService.getTownLteENodebPieOptions(result, district));
-                        $("#districtLteCellConfig")
-                            .highcharts(parametersChartService.getTownLteCellPieOptions(result, district));
-                        $("#districtNbIotCellConfig")
-                            .highcharts(parametersChartService.getTownNbIotCellPieOptions(result, district));
-                        $("#districtCdmaENodebConfig")
-                            .highcharts(parametersChartService.getTownCdmaBtsPieOptions(result, district));
-                        $("#districtCdmaCellConfig")
-                            .highcharts(parametersChartService.getTownCdmaCellPieOptions(result, district));
-                    });
-                });
-            $scope.ok = function() {
-                $uibModalInstance.close($scope.neighbor);
-            };
-
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            };
-
-            $scope.showCityStats();
-        })
     .controller('cell.type.chart',
         function($scope, $uibModalInstance, city, dialogTitle, appRegionService, parametersChartService) {
             $scope.dialogTitle = dialogTitle;

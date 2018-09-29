@@ -129,20 +129,6 @@
                             endDate)
                     });
                 },
-                queryList: function(city) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/Parameters/List.html',
-                        controller: 'parameters.list',
-                        resolve: {
-                            dialogTitle: function() {
-                                return "全网基站小区信息统计";
-                            },
-                            city: function() {
-                                return city;
-                            }
-                        }
-                    });
-                },
                 queryCellTypeChart: function(city) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/Home/DoubleChartDialog.html',

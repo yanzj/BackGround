@@ -634,7 +634,6 @@
     <Content Include="appViews\College\Infrastructure\YearInfoDialog.html" />
     <Content Include="appViews\College\Table\CollegeCellBasicInfo.html" />
     <Content Include="appViews\College\Test\Flow.html" />
-    <Content Include="appViews\College\Test\Planning.html" />
     <Content Include="appViews\College\Test\Process.html" />
     <Content Include="appViews\Customer\Complain\Adjust.html" />
     <Content Include="appViews\Customer\Complain\Branch.html" />
@@ -931,8 +930,6 @@
     <Content Include="appViews\Parameters\Map\DistributionMapInfoBox.html" />
     <Content Include="directives\parameters\cell\BasicInfo.html" />
     <Content Include="appViews\Parameters\Region\CellInfo.html" />
-    <Content Include="directives\parameters\CityInfrastructure.Tpl.html" />
-    <Content Include="directives\parameters\DistrictInfrastructure.Tpl.html" />
     <Content Include="appViews\Rutrace\Coverage\Index.html" />
     <Content Include="directives\parameters\kpi\AlarmTable.html" />
     <Content Include="directives\parameters\kpi\FeelingTable.html" />
@@ -2300,7 +2297,6 @@
     <Content Include="appViews\Parameters\Import\EditCdmaCellDialog.html" />
     <Content Include="appViews\Parameters\Map\ENodebMapInfoBox.html" />
     <Content Include="appViews\Parameters\Map\BtsMapInfoBox.html" />
-    <Content Include="appViews\Parameters\List.html" />
     <Content Include="appViews\Parameters\QueryMap.html" />
     <Content Include="appViews\GeneralMenu.html" />
     <Content Include="appViews\Rutrace\Interference\MatchCellDialog.html" />

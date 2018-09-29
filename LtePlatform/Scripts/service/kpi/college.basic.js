@@ -30,38 +30,6 @@
                 $uibModalInstance.dismiss('cancel');
             };
         })
-    .controller('trace.planning.dialog',
-        function($scope,
-            $uibModalInstance,
-            collegeName,
-            baiduQueryService,
-            collegeService,
-            networkElementService,
-            neighborImportService,
-            collegeMapService) {
-            $scope.dialogTitle = collegeName + "校园网规划站点跟踪";
-
-            collegeMapService.queryCenterAndCallback(collegeName,
-                function(center) {
-                    baiduQueryService.transformToBaidu(center.X, center.Y).then(function(coors) {
-                        collegeService.queryRange(collegeName).then(function(range) {
-                            networkElementService
-                                .queryRangePlanningSites(neighborImportService.generateRange(range, center, coors))
-                                .then(function(results) {
-                                    $scope.items = results;
-                                });
-                        });
-                    });
-                });
-
-            $scope.ok = function() {
-                $uibModalInstance.close($("#reports").html());
-            };
-
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            };
-        })
     .controller('map.college.dialog',
         function($scope,
             $uibModalInstance,

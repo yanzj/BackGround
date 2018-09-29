@@ -999,38 +999,6 @@ angular.module('kpi.college.basic', ['myApp.url', 'myApp.region', "ui.bootstrap"
                 $uibModalInstance.dismiss('cancel');
             };
         })
-    .controller('trace.planning.dialog',
-        function($scope,
-            $uibModalInstance,
-            collegeName,
-            baiduQueryService,
-            collegeService,
-            networkElementService,
-            neighborImportService,
-            collegeMapService) {
-            $scope.dialogTitle = collegeName + "校园网规划站点跟踪";
-
-            collegeMapService.queryCenterAndCallback(collegeName,
-                function(center) {
-                    baiduQueryService.transformToBaidu(center.X, center.Y).then(function(coors) {
-                        collegeService.queryRange(collegeName).then(function(range) {
-                            networkElementService
-                                .queryRangePlanningSites(neighborImportService.generateRange(range, center, coors))
-                                .then(function(results) {
-                                    $scope.items = results;
-                                });
-                        });
-                    });
-                });
-
-            $scope.ok = function() {
-                $uibModalInstance.close($("#reports").html());
-            };
-
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            };
-        })
     .controller('map.college.dialog',
         function($scope,
             $uibModalInstance,
@@ -4605,58 +4573,6 @@ angular.module('kpi.parameter.query', ['myApp.url', 'myApp.region', "ui.bootstra
                 $uibModalInstance.dismiss('cancel');
             };
         })
-    .controller("parameters.list",
-        function($scope, $uibModalInstance, city, dialogTitle, appRegionService, parametersChartService) {
-            $scope.city = city;
-            $scope.dialogTitle = dialogTitle;
-            $scope.showCityStats = function() {
-                appRegionService.queryDistrictInfrastructures($scope.city.selected).then(function(result) {
-                    appRegionService.accumulateCityStat(result, $scope.city.selected);
-                    $scope.districtStats = result;
-
-                    $("#cityLteENodebConfig").highcharts(parametersChartService.getDistrictLteENodebPieOptions(result
-                        .slice(0, result.length - 1),
-                        $scope.city.selected));
-                    $("#cityLteCellConfig").highcharts(parametersChartService.getDistrictLteCellPieOptions(result
-                        .slice(0, result.length - 1),
-                        $scope.city.selected));
-                    $("#cityNbIotCellConfig").highcharts(parametersChartService.getDistrictNbIotCellPieOptions(result
-                        .slice(0, result.length - 1),
-                        $scope.city.selected));
-                    $("#cityCdmaENodebConfig").highcharts(parametersChartService.getDistrictCdmaBtsPieOptions(result
-                        .slice(0, result.length - 1),
-                        $scope.city.selected));
-                    $("#cityCdmaCellConfig").highcharts(parametersChartService.getDistrictCdmaCellPieOptions(result
-                        .slice(0, result.length - 1),
-                        $scope.city.selected));
-                });
-            };
-            $scope.$watch('currentDistrict',
-                function(district) {
-                    appRegionService.queryTownInfrastructures($scope.city.selected, district).then(function(result) {
-                        $scope.townStats = result;
-                        $("#districtLteENodebConfig")
-                            .highcharts(parametersChartService.getTownLteENodebPieOptions(result, district));
-                        $("#districtLteCellConfig")
-                            .highcharts(parametersChartService.getTownLteCellPieOptions(result, district));
-                        $("#districtNbIotCellConfig")
-                            .highcharts(parametersChartService.getTownNbIotCellPieOptions(result, district));
-                        $("#districtCdmaENodebConfig")
-                            .highcharts(parametersChartService.getTownCdmaBtsPieOptions(result, district));
-                        $("#districtCdmaCellConfig")
-                            .highcharts(parametersChartService.getTownCdmaCellPieOptions(result, district));
-                    });
-                });
-            $scope.ok = function() {
-                $uibModalInstance.close($scope.neighbor);
-            };
-
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            };
-
-            $scope.showCityStats();
-        })
     .controller('cell.type.chart',
         function($scope, $uibModalInstance, city, dialogTitle, appRegionService, parametersChartService) {
             $scope.dialogTitle = dialogTitle;
@@ -4884,20 +4800,6 @@ angular.module('kpi.parameter', ['app.menu', 'app.core', 'region.network'])
                             },
                             beginDate,
                             endDate)
-                    });
-                },
-                queryList: function(city) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/Parameters/List.html',
-                        controller: 'parameters.list',
-                        resolve: {
-                            dialogTitle: function() {
-                                return "全网基站小区信息统计";
-                            },
-                            city: function() {
-                                return city;
-                            }
-                        }
                     });
                 },
                 queryCellTypeChart: function(city) {

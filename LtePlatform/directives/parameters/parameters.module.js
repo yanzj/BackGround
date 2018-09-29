@@ -6,42 +6,6 @@
 ]);
 
 angular.module('parameters.basic.module', ['ui.grid', 'myApp.region', 'myApp.url', 'myApp.kpi'])
-    .directive('cityInfrastructure',
-        function() {
-            return {
-                restrict: 'ECMA',
-                replace: true,
-                scope: {
-                    districtStats: '=',
-                    currentDistrict: '='
-                },
-                templateUrl: parametersRoot + '/directives/parameters/CityInfrastructure.Tpl.html',
-                link: function(scope, element, attrs) {
-                    scope.showDistrictDetails = function(district) {
-                        scope.currentDistrict = district;
-                    };
-                    scope.$watch('districtStats',
-                        function(stats) {
-                            if (stats === undefined) return;
-                            scope.showDistrictDetails(stats[0].district);
-                        });
-                }
-            };
-        })
-    .directive('districtInfrastructure',
-        function() {
-            return {
-                restrict: 'ECMA',
-                replace: true,
-                scope: {
-                    townStats: '=',
-                    rootPath: '=',
-                    city: '=',
-                    currentDistrict: '='
-                },
-                templateUrl: '/directives/parameters/DistrictInfrastructure.Tpl.html'
-            }
-        })
     .directive('alarmTable',
         function() {
             return {
@@ -63,33 +27,6 @@ angular.module('parameters.basic.module', ['ui.grid', 'myApp.region', 'myApp.url
                 },
                 templateUrl: '/directives/parameters/kpi/FlowTable.html'
             }
-        })
-    .controller('PlanningSiteController',
-        function($scope) {
-            $scope.gridOptions = {
-                columnDefs: [
-                    { field: 'district', name: '区县' },
-                    { field: 'town', name: '镇街' },
-                    { field: 'formalName', name: '正式名称' },
-                    { field: 'contractDate', name: '合同日期', cellFilter: 'date: "yyyy-MM-dd"' },
-                    { field: 'finishedDate', name: '完工日期', cellFilter: 'date: "yyyy-MM-dd"' },
-                    { field: 'planNum', name: '规划编号' },
-                    { field: 'antennaHeight', name: '天线挂高（米）' },
-                    { field: 'towerType', name: '杆塔类型' }
-                ],
-                data: []
-            };
-        })
-    .directive('planningSiteTable',
-        function($compile, calculateService) {
-            return calculateService.generateGridDirective({
-                    controllerName: 'PlanningSiteController',
-                    scope: {
-                        items: '='
-                    },
-                    argumentName: 'items'
-                },
-                $compile);
         })
     .directive('planSiteDetails',
         function() {
