@@ -1,6 +1,7 @@
 ﻿using Abp.Domain.Entities;
 using Abp.EntityFramework.AutoMapper;
 using Lte.Domain.Common;
+using Lte.Domain.Common.Transform;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Regular.Attributes;
@@ -168,6 +169,18 @@ namespace Abp.EntityFramework.Entities.Kpi
 
         [MemberDoc("PUSCH上检测到PRB级别的平均RSSI为Index21的次数 (无)")]
         public long PuschRssiIndex21 { get; set; }
+
+        [MemberDoc("系统上行每个PRB上检测到的干扰噪声的最大值 (毫瓦分贝)")]
+        [AutoMapPropertyResolve("MaxRssiRbString", typeof(RssiHuaweiCsv), typeof(StringToRssiTransform))]
+        public double MaxRssiRb { get; set; }
+
+        [MemberDoc("系统上行每个PRB上检测到的干扰噪声的最小值 (毫瓦分贝)")]
+        [AutoMapPropertyResolve("MinRssiRbString", typeof(RssiHuaweiCsv), typeof(StringToRssiTransform))]
+        public double MinRssiRb { get; set; }
+
+        [MemberDoc("系统上行每个PRB上检测到的干扰噪声的平均值 (毫瓦分贝)")]
+        [AutoMapPropertyResolve("AverageRssiRbString", typeof(RssiHuaweiCsv), typeof(StringToRssiTransform))]
+        public double AverageRssiRb { get; set; }
 
     }
 }

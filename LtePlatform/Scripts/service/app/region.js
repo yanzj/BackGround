@@ -1101,6 +1101,9 @@ angular.module('region.import', ['app.core'])
                 queryHuaweiCqis: function() {
                     return generalHttpService.getApiData('DumpHuaweiCqi', {});
                 },
+                queryHuaweiRssis: function () {
+                    return generalHttpService.getApiData('DumpHuaweiRssi', {});
+                },
                 queryZteFlows: function() {
                     return generalHttpService.getApiData('DumpZteFlow', {});
                 },
@@ -1120,6 +1123,9 @@ angular.module('region.import', ['app.core'])
                 clearDumpCqiHuaweis: function() {
                     return generalHttpService.deleteApiData('DumpHuaweiCqi');
                 },
+                clearDumpRssiHuaweis: function () {
+                    return generalHttpService.deleteApiData('DumpHuaweiRssi');
+                },
                 clearDumpZtes: function() {
                     return generalHttpService.deleteApiData('DumpZteFlow');
                 },
@@ -1138,6 +1144,9 @@ angular.module('region.import', ['app.core'])
                 },
                 dumpHuaweiCqiItem: function() {
                     return generalHttpService.putApiData('DumpHuaweiCqi', {});
+                },
+                dumpHuaweiRssiItem: function () {
+                    return generalHttpService.putApiData('DumpHuaweiRssi', {});
                 },
                 dumpZteItem: function() {
                     return generalHttpService.putApiData('DumpZteFlow', {});

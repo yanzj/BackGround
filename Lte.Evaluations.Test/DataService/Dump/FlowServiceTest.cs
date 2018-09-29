@@ -30,7 +30,7 @@ namespace Lte.Evaluations.DataService.Dump
         public void Setup()
         {
             _service = new FlowService(null, null, null, null, null, null, null, null, null, null, null, 
-                null, null, null, null, null, null, null, null, null);
+                null, null, null, null, null, null, null, null, null, null, null);
         }
 
         [TestCase(@"开始时间,周期 (分钟),网元名称,小区,小区PDCP层所发送的下行数据的总吞吐量 (比特),小区PDCP层所接收到的上行数据的总吞吐量 (比特),小区可用时长 (秒),小区内的平均用户数 (无),小区内的最大用户数 (无),平均RRC连接许可用户数 (无),平均激活用户数 (无),最大激活用户数 (无),上行平均激活用户数 (无),上行最大激活用户数 (无),下行平均激活用户数 (无),下行最大激活用户数 (无),小区下行有数据传输总时长(1ms精度) (毫秒),小区上行有数据传输总时长(1ms精度) (毫秒),小区Uu接口寻呼用户个数 (无),下行Physical Resource Block被使用的平均个数 (无),下行PDSCH DRB的Physical Resource Block被使用的平均个数 (无),下行可用的PRB个数 (无),上行Physical Resource Block被使用的平均个数 (无),上行PUSCH DRB的Physical Resource Block被使用的平均个数 (无),上行可用的PRB个数 (无),小区接收到属于Group A的Preamble消息次数 (无),小区接收到属于Group B的Preamble消息的次数 (无),小区接收到专用前导消息的次数 (无),统计周期内上行DCI所使用的PDCCH CCE个数 (无),统计周期内下行DCI所使用的PDCCH CCE个数 (无),公共DCI所占用的PDCCH CCE的个数 (无),统计周期内可用的PDCCH CCE的个数 (无),PUCCH的PRB资源分配的平均值 (无),使UE缓存为空的最后一个TTI所传的上行PDCP吞吐量 (比特),扣除使UE缓存为空的最后一个TTI之后的上行数传时长 (毫秒),使缓存为空的最后一个TTI所传的下行PDCP吞吐量 (比特),扣除使下行缓存为空的最后一个TTI之后的数传时长 (毫秒)

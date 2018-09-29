@@ -39,18 +39,25 @@ namespace Lte.Evaluations.DataService.Kpi
         private readonly IPrbHuaweiRepository _prbHuaweiRepository;
         private readonly IPrbZteRepository _prbZteRepository;
         private readonly ITownPrbRepository _townPrbRepository;
+        private readonly IRssiHuaweiRepository _rssiHuaweiRepository;
+        private readonly IRssiZteRepository _rssiZteRepository;
+
 
         private static Stack<Tuple<FlowHuawei, RrcHuawei, QciHuawei, PrbHuawei>> FlowHuaweis { get; set; }
 
-        private static Stack<Tuple<FlowZte, RrcZte, QciZte, PrbZte, CqiZte, DoubleFlowZte>> FlowZtes { get; set; }
+        private static Stack<Tuple<FlowZte, RrcZte, QciZte, PrbZte, CqiZte, DoubleFlowZte, RssiZte>> FlowZtes { get; set; }
 
         private static Stack<Tuple<CqiHuawei, DoubleFlowHuawei>> CqiHuaweis { get; set; }
+
+        private static Stack<RssiHuawei> RssiHuaweis { get; set; }
 
         public int FlowHuaweiCount => FlowHuaweis.Count;
 
         public int FlowZteCount => FlowZtes.Count;
 
         public int FlowHuaweiCqiCount => CqiHuaweis.Count;
+
+        public int RssiHuaweiCount => RssiHuaweis.Count;
 
         public FlowService(
             IFlowHuaweiRepository huaweiRepositroy, IFlowZteRepository zteRepository,
@@ -62,7 +69,8 @@ namespace Lte.Evaluations.DataService.Kpi
             ITownRrcRepository townRrcRepository, ITownQciRepository townQciRepository,
             ITownCqiRepository townCqiRepository, ITownDoubleFlowRepository townDoubleFlowRepository,
             ICellRepository cellRepository, IPrbHuaweiRepository prbHuaweiRepository,
-            IPrbZteRepository prbZteRepository, ITownPrbRepository townPrbRepository)
+            IPrbZteRepository prbZteRepository, ITownPrbRepository townPrbRepository,
+            IRssiHuaweiRepository rssiHuaweiRepository, IRssiZteRepository rssiZteRepository)
         {
             _huaweiRepository = huaweiRepositroy;
             _zteRepository = zteRepository;
@@ -84,9 +92,13 @@ namespace Lte.Evaluations.DataService.Kpi
             _prbHuaweiRepository = prbHuaweiRepository;
             _prbZteRepository = prbZteRepository;
             _townPrbRepository = townPrbRepository;
+            _rssiHuaweiRepository = rssiHuaweiRepository;
+            _rssiZteRepository = rssiZteRepository;
+
             if (FlowHuaweis == null) FlowHuaweis = new Stack<Tuple<FlowHuawei, RrcHuawei, QciHuawei, PrbHuawei>>();
-            if (FlowZtes == null) FlowZtes = new Stack<Tuple<FlowZte, RrcZte, QciZte, PrbZte, CqiZte, DoubleFlowZte>>();
+            if (FlowZtes == null) FlowZtes = new Stack<Tuple<FlowZte, RrcZte, QciZte, PrbZte, CqiZte, DoubleFlowZte, RssiZte>>();
             if (CqiHuaweis == null) CqiHuaweis = new Stack<Tuple<CqiHuawei, DoubleFlowHuawei>>();
+            if (RssiHuaweis == null) RssiHuaweis = new Stack<RssiHuawei>();
         }
 
         public void UploadFlowHuaweis(StreamReader reader)
@@ -118,13 +130,14 @@ namespace Lte.Evaluations.DataService.Kpi
             var csvs = FlowZteCsv.ReadFlowZteCsvs(reader);
             foreach (var csv in csvs)
             {
-                FlowZtes.Push(new Tuple<FlowZte, RrcZte, QciZte, PrbZte, CqiZte, DoubleFlowZte>(
+                FlowZtes.Push(new Tuple<FlowZte, RrcZte, QciZte, PrbZte, CqiZte, DoubleFlowZte, RssiZte>(
                     Mapper.Map<FlowZteCsv, FlowZte>(csv),
                     Mapper.Map<FlowZteCsv, RrcZte>(csv), 
                     Mapper.Map<FlowZteCsv, QciZte>(csv),
                     Mapper.Map<FlowZteCsv, PrbZte>(csv),
                     Mapper.Map<FlowZteCsv, CqiZte>(csv),
-                    Mapper.Map<FlowZteCsv, DoubleFlowZte>(csv)
+                    Mapper.Map<FlowZteCsv, DoubleFlowZte>(csv),
+                    Mapper.Map<FlowZteCsv, RssiZte>(csv)
                     ));
             }
         }
@@ -149,6 +162,27 @@ namespace Lte.Evaluations.DataService.Kpi
                 CqiHuaweis.Push(new Tuple<CqiHuawei, DoubleFlowHuawei>(
                     Mapper.Map<CqiHuaweiCsv, CqiHuawei>(csv),
                     Mapper.Map<CqiHuaweiCsv, DoubleFlowHuawei>(csv)));
+            }
+        }
+
+        public void UploadRssiHuaweis(StreamReader reader)
+        {
+            var originCsvs = RssiHuaweiCsv.ReadRssiHuaweiCsvs(reader);
+            var mergedCsvs = (from item in originCsvs
+                              group item by new
+                              {
+                                  item.StatTime.Date,
+                                  item.CellInfo
+                              }
+                into g
+                              select g.ArrayAggration(stat =>
+                              {
+                                  stat.StatTime = g.Key.Date;
+                                  stat.CellInfo = g.Key.CellInfo;
+                              })).ToList();
+            foreach(var csv in mergedCsvs)
+            {
+                RssiHuaweis.Push(Mapper.Map<RssiHuaweiCsv, RssiHuawei>(csv));
             }
         }
 
@@ -202,6 +236,10 @@ namespace Lte.Evaluations.DataService.Kpi
             {
                 await _doubleFlowZteRepository.ImportOneAsync(stat.Item6);
             }
+            if (stat.Item7 !=null)
+            {
+                await _rssiZteRepository.ImportOneAsync(stat.Item7);
+            }
 
             return true;
         }
@@ -216,6 +254,16 @@ namespace Lte.Evaluations.DataService.Kpi
             if (stat.Item2 != null)
             {
                 await _doubleFlowHuaweiRepository.ImportOneAsync(stat.Item2);
+            }
+            return true;
+        }
+
+        public async Task<bool> DumpOneHuaweiRssiStat()
+        {
+            var stat = RssiHuaweis.Pop();
+            if (stat != null)
+            {
+                await _rssiHuaweiRepository.ImportOneAsync(stat);
             }
             return true;
         }
@@ -235,6 +283,11 @@ namespace Lte.Evaluations.DataService.Kpi
             CqiHuaweis.Clear();
         }
 
+        public void ClearHuaweiRssiStats()
+        {
+            RssiHuaweis.Clear();
+        }
+
         public async Task<IEnumerable<FlowHistory>> GetFlowHistories(DateTime begin, DateTime end)
         {
             var results = new List<FlowHistory>();
@@ -245,8 +298,11 @@ namespace Lte.Evaluations.DataService.Kpi
                 var huaweiItems = await _huaweiRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
                 var huaweiCqis =
                     await _cqiHuaweiRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
+                var huaweiRssis =
+                    await _rssiHuaweiRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
                 var zteItems = await _zteRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
                 var zteCqis = await _cqiZteRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
+                var zteRssis = await _rssiZteRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
                 var townItems =
                     await _townFlowRepository.CountAsync(
                         x =>
@@ -278,8 +334,10 @@ namespace Lte.Evaluations.DataService.Kpi
                     DateString = begin.ToShortDateString(),
                     HuaweiItems = huaweiItems,
                     HuaweiCqis = huaweiCqis,
+                    HuaweiRssis = huaweiRssis,
                     ZteItems = zteItems,
                     ZteCqis = zteCqis,
+                    ZteRssis = zteRssis,
                     TownStats = townItems,
                     TownStats2100 = townItems2100,
                     TownStats1800 = townItems1800,

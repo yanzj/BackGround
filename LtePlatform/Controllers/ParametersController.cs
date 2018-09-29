@@ -289,23 +289,6 @@ namespace LtePlatform.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> ZteNeighborPost(HttpPostedFileBase[] neighborZte)
-        {
-            if (neighborZte == null || neighborZte.Length <= 0 || string.IsNullOrEmpty(neighborZte[0]?.FileName))
-                return View("NeighborImport");
-            var count = 0;
-            foreach (var file in neighborZte)
-            {
-                count +=
-                    await
-                        _neighborService.UploadMrGridKpiPoints(new StreamReader(file.InputStream,
-                            Encoding.GetEncoding("GB2312")));
-            }
-            ViewBag.Message = "共上传MR指标数据文件" + neighborZte.Length + "个！数据" + count + "条";
-            return View("NeighborImport");
-        }
-
-        [HttpPost]
         public ActionResult HwNeighborPost(HttpPostedFileBase[] neighborHw)
         {
             if (neighborHw != null && neighborHw.Length > 0 && !string.IsNullOrEmpty(neighborHw[0]?.FileName))
@@ -343,6 +326,20 @@ namespace LtePlatform.Controllers
                     _flowService.UploadCqiHuaweis(new StreamReader(file.InputStream, Encoding.GetEncoding("GB2312")));
                 }
             }
+            return View("NeighborImport");
+        }
+
+        [HttpPost]
+        public ActionResult HuaweiRssiPost(HttpPostedFileBase[] huaweiRssi)
+        {
+            if (huaweiRssi != null && huaweiRssi.Length > 0 && !string.IsNullOrEmpty(huaweiRssi[0]?.FileName))
+            {
+                foreach (var file in huaweiRssi)
+                {
+                    _flowService.UploadRssiHuaweis(new StreamReader(file.InputStream, Encoding.GetEncoding("GB2312")));
+                }
+            }
+            ViewBag.Message = "共上传华为RSSI指标数据文件" + huaweiRssi.Length + "个！";
             return View("NeighborImport");
         }
 

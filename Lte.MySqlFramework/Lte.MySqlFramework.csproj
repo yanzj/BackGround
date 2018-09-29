@@ -150,6 +150,8 @@
     <Compile Include="Abstract\Kpi\IHourCqiRepository.cs" />
     <Compile Include="Abstract\Kpi\IHourPrbRepository.cs" />
     <Compile Include="Abstract\Kpi\IHourUsersRepository.cs" />
+    <Compile Include="Abstract\Kpi\IRssiHuaweiRepository.cs" />
+    <Compile Include="Abstract\Kpi\IRssiZteRepository.cs" />
     <Compile Include="Abstract\Maintainence\ICheckingBasicRepository.cs" />
     <Compile Include="Abstract\Maintainence\ICheckingDetailsRepository.cs" />
     <Compile Include="Abstract\Maintainence\ICheckingProjectRepository.cs" />
@@ -254,6 +256,8 @@
     <Compile Include="Concrete\Kpi\HourCqiRepository.cs" />
     <Compile Include="Concrete\Kpi\HourPrbRepository.cs" />
     <Compile Include="Concrete\Kpi\HourUsersRepository.cs" />
+    <Compile Include="Concrete\Kpi\RssiHuaweiRepository.cs" />
+    <Compile Include="Concrete\Kpi\RssiZteRepository.cs" />
     <Compile Include="Concrete\Maintainence\AlarmWorkItemRepository.cs" />
     <Compile Include="Concrete\RegionKpi\TownHourCqiRepository.cs" />
     <Compile Include="Concrete\RegionKpi\TownHourPrbRepository.cs" />
@@ -350,13 +354,13 @@
     <Compile Include="Entities\RegionKpi\TownHourCqiView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourPrbView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourUsersView.cs" />
-    <Compile Include="Migrations\201809240221589_Update_Town_Mrs_Rsrp.cs" />
-    <Compile Include="Migrations\201809240221589_Update_Town_Mrs_Rsrp.Designer.cs">
-      <DependentUpon>201809240221589_Update_Town_Mrs_Rsrp.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201809290312059_Add_Rssi_Stat.cs" />
     <Compile Include="Migrations\201809290312059_Add_Rssi_Stat.Designer.cs">
       <DependentUpon>201809290312059_Add_Rssi_Stat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809290430507_Add_Rssi_Stat1.cs" />
+    <Compile Include="Migrations\201809290430507_Add_Rssi_Stat1.Designer.cs">
+      <DependentUpon>201809290430507_Add_Rssi_Stat1.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -477,11 +481,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809240221589_Update_Town_Mrs_Rsrp.resx">
-      <DependentUpon>201809240221589_Update_Town_Mrs_Rsrp.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809290312059_Add_Rssi_Stat.resx">
       <DependentUpon>201809290312059_Add_Rssi_Stat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809290430507_Add_Rssi_Stat1.resx">
+      <DependentUpon>201809290430507_Add_Rssi_Stat1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

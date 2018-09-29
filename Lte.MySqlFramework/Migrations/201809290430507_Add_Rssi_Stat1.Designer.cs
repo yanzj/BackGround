@@ -7,13 +7,13 @@ namespace Lte.MySqlFramework.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Update_Town_Mrs_Rsrp : IMigrationMetadata
+    public sealed partial class Add_Rssi_Stat1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Update_Town_Mrs_Rsrp));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Add_Rssi_Stat1));
         
         string IMigrationMetadata.Id
         {
-            get { return "201809240221589_Update_Town_Mrs_Rsrp"; }
+            get { return "201809290430507_Add_Rssi_Stat1"; }
         }
         
         string IMigrationMetadata.Source

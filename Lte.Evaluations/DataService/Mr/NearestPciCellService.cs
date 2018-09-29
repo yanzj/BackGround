@@ -9,13 +9,11 @@ using Abp.EntityFramework.Entities.Infrastructure;
 using Abp.EntityFramework.Entities.Kpi;
 using Abp.EntityFramework.Entities.Mr;
 using Abp.EntityFramework.Repositories;
-using Lte.Domain.Common.Wireless;
 using Lte.Domain.LinqToCsv.Context;
 using Lte.Evaluations.DataService.Basic;
-using Lte.MySqlFramework.Entities;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Mr;
+using Lte.MySqlFramework.Abstract.Kpi;
 
 namespace Lte.Evaluations.DataService.Mr
 {
@@ -26,21 +24,16 @@ namespace Lte.Evaluations.DataService.Mr
         private readonly IENodebRepository _eNodebRepository;
         private readonly IAgisDtPointRepository _agisRepository;
       
-        private readonly IMrGridKpiRepository _mrGridKpiRepository;
-
         private static Stack<NearestPciCell> NearestCells { get; set; }
 
         public NearestPciCellService(INearestPciCellRepository repository, ICellRepository cellRepository,
-            IENodebRepository eNodebRepository, IAgisDtPointRepository agisRepository,
-            IMrGridKpiRepository mrGridKpiRepository)
+            IENodebRepository eNodebRepository, IAgisDtPointRepository agisRepository)
         {
             _repository = repository;
             _cellRepository = cellRepository;
             _eNodebRepository = eNodebRepository;
             _agisRepository = agisRepository;
           
-            _mrGridKpiRepository = mrGridKpiRepository;
-            
             if (NearestCells == null)
                 NearestCells = new Stack<NearestPciCell>();
         }
@@ -102,14 +95,7 @@ namespace Lte.Evaluations.DataService.Mr
             }
             _repository.SaveChanges();
         }
-
-        public async Task<int> UploadMrGridKpiPoints(StreamReader reader)
-        {
-            var csvs = CsvContext.Read<MrGridKpiDto>(reader);
-            return await _mrGridKpiRepository.UpdateMany<IMrGridKpiRepository, MrGridKpi, MrGridKpiDto>(csvs);
-
-        }
-
+        
         public IEnumerable<AgisDtPoint> QueryAgisDtPoints(DateTime begin, DateTime end)
         {
             var points = _agisRepository.GetAllList(x => x.StatDate > begin && x.StatDate <= end);

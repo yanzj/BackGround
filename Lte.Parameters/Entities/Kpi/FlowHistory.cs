@@ -8,9 +8,13 @@ namespace Lte.Parameters.Entities.Kpi
 
         public int HuaweiCqis { get; set; }
 
+        public int HuaweiRssis { get; set; }
+
         public int ZteItems { get; set; }
 
         public int ZteCqis { get; set; }
+
+        public int ZteRssis { get; set; }
 
         public int TownStats { get; set; }
 

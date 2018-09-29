@@ -1,9 +1,12 @@
 ﻿using Lte.Domain.Common.Types;
 using Lte.Domain.LinqToCsv;
+using Lte.Domain.LinqToCsv.Context;
+using Lte.Domain.LinqToCsv.Description;
 using Lte.Domain.Regular;
 using Lte.Domain.Regular.Attributes;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -196,6 +199,19 @@ namespace Lte.Domain.Common
 
         [CsvColumn(Name = "PUSCH上检测到PRB级别的平均RSSI为Index21的次数 (无)")]
         public long PuschRssiIndex21 { get; set; }
-        
+
+        [CsvColumn(Name = "系统上行每个PRB上检测到的干扰噪声的最大值 (毫瓦分贝)")]
+        public string MaxRssiRbString { get; set; }
+
+        [CsvColumn(Name = "系统上行每个PRB上检测到的干扰噪声的最小值 (毫瓦分贝)")]
+        public string MinRssiRbString { get; set; }
+
+        [CsvColumn(Name = "系统上行每个PRB上检测到的干扰噪声的平均值 (毫瓦分贝)")]
+        public string AverageRssiRbString { get; set; }
+
+        public static List<RssiHuaweiCsv> ReadRssiHuaweiCsvs(StreamReader reader)
+        {
+            return CsvContext.Read<RssiHuaweiCsv>(reader, CsvFileDescription.CommaDescription).ToList();
+        }
     }
 }

@@ -321,6 +321,10 @@ namespace LtePlatform
 
             ninjectKernel.Bind<ITownHourCqiRepository>().To<TownHourCqiRepository>();
 
+            ninjectKernel.Bind<IRssiHuaweiRepository>().To<RssiHuaweiRepository>();
+
+            ninjectKernel.Bind<IRssiZteRepository>().To<RssiZteRepository>();
+
             ninjectKernel.Bind<CdmaRegionStatService>().ToSelf();
 
             ninjectKernel.Bind<CollegeStatService>().ToSelf();
