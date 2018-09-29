@@ -56,6 +56,29 @@
                     });
             };
 
+            $scope.huaweiRssiInfo = {
+                totalSuccessItems: 0,
+                totalFailItems: 0,
+                totalDumpItems: 0
+            };
+            $scope.clearRssiHuaweiItems = function () {
+                flowImportService.clearDumpRssiHuaweis().then(function () {
+                    $scope.huaweiRssiInfo.totalDumpItems = 0;
+                    $scope.huaweiRssiInfo.totalSuccessItems = 0;
+                    $scope.huaweiRssiInfo.totalFailItems = 0;
+                });
+            };
+            $scope.dumpRssiHuaweiItems = function () {
+                flowImportService.dumpHuaweiRssiItem().then(function (result) {
+                    neighborImportService.updateSuccessProgress(result,
+                        $scope.huaweiRssiInfo,
+                        $scope.dumpRssiHuaweiItems);
+                },
+                    function () {
+                        neighborImportService.updateFailProgress($scope.huaweiRssiInfo, $scope.dumpRssiHuaweiItems);
+                    });
+            };
+
             $scope.zteInfo = {
                 totalSuccessItems: 0,
                 totalFailItems: 0,
@@ -83,6 +106,9 @@
                 });
                 flowImportService.queryHuaweiCqis().then(function(result) {
                     $scope.huaweiCqiInfo.totalDumpItems = result;
+                });
+                flowImportService.queryHuaweiRssis().then(function (result) {
+                    $scope.huaweiRssiInfo.totalDumpItems = result;
                 });
                 flowImportService.queryZteFlows().then(function(result) {
                     $scope.zteInfo.totalDumpItems = result;

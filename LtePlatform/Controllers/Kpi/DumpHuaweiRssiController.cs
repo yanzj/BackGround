@@ -25,7 +25,7 @@ namespace LtePlatform.Controllers.Kpi
         [ApiResponse("是否已经成功导入")]
         public Task<bool> Put()
         {
-            return _service.DumpOneHuaweiCqiStat();
+            return _service.DumpOneHuaweiRssiStat();
         }
 
         [HttpGet]
@@ -33,14 +33,14 @@ namespace LtePlatform.Controllers.Kpi
         [ApiResponse("当前服务器中待导入的华为RSSI统计记录数")]
         public int Get()
         {
-            return _service.FlowHuaweiCqiCount;
+            return _service.RssiHuaweiCount;
         }
 
         [HttpDelete]
         [ApiDoc("清空待导入的华为RSSI统计记录")]
         public void Delete()
         {
-            _service.ClearHuaweiCqiStats();
+            _service.ClearHuaweiRssiStats();
         }
     }
 }

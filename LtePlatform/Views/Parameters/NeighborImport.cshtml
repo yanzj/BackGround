@@ -101,6 +101,28 @@
                 </span>
             </div>
         </div>
+        <h4>华为RSSI</h4>
+        <button class="btn btn-primary" ng-click="dumpRssiHuaweiItems()" ng-disabled="huaweiRssiInfo.totalDumpItems === 0">
+            一键导入
+        </button>
+        <button class="btn btn-danger" ng-click="clearRssiHuaweiItems()" ng-disabled="huaweiRssiInfo.totalDumpItems === 0">
+            清除导入
+        </button>
+        总数：{{huaweiRssiInfo.totalDumpItems}}&nbsp;
+        成功数：{{huaweiRssiInfo.totalSuccessItems}}&nbsp;
+        失败数：{{huaweiRssiInfo.totalFailItems}}
+        <div uib-progress>
+            <div uib-bar value="100*huaweiRssiInfo.totalSuccessItems / huaweiRssiInfo.totalDumpItems" type="success">
+                <span ng-show="100*huaweiRssiInfo.totalSuccessItems / huaweiRssiInfo.totalDumpItems > 5">
+                    {{100*huaweiRssiInfo.totalSuccessItems / huaweiRssiInfo.totalDumpItems | number: 2}}%
+                </span>
+            </div>
+            <div uib-bar value="100*huaweiRssiInfo.totalFailItems / huaweiRssiInfo.totalDumpItems" type="erroe">
+                <span ng-show="100*huaweiRssiInfo.totalFailItems / huaweiRssiInfo.totalDumpItems > 5">
+                    {{100*huaweiRssiInfo.totalFailItems / huaweiRssiInfo.totalDumpItems | number: 2}}%
+                </span>
+            </div>
+        </div>
     </div>
     <div class="col-md-12">
         <div date-span-row begin-date="beginDate" end-date="endDate">

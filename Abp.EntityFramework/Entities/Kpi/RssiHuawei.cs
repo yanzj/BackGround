@@ -17,10 +17,13 @@ namespace Abp.EntityFramework.Entities.Kpi
     [TypeDoc("华为RSSI统计")]
     public class RssiHuawei : Entity, ILteCellQuery, IStatTime
     {
+        [ArraySumProtection]
         public int ENodebId { get; set; }
 
+        [ArraySumProtection]
         public byte SectorId { get; set; }
 
+        [ArraySumProtection]
         public DateTime StatTime { get; set; }
 
         [MemberDoc("平均RSSI≤-120dBm (无)")]
@@ -171,14 +174,17 @@ namespace Abp.EntityFramework.Entities.Kpi
         public long PuschRssiIndex21 { get; set; }
 
         [MemberDoc("系统上行每个PRB上检测到的干扰噪声的最大值 (毫瓦分贝)")]
+        [ArrayMax]
         [AutoMapPropertyResolve("MaxRssiRbString", typeof(RssiHuaweiCsv), typeof(StringToRssiTransform))]
         public double MaxRssiRb { get; set; }
 
         [MemberDoc("系统上行每个PRB上检测到的干扰噪声的最小值 (毫瓦分贝)")]
+        [ArrayMin]
         [AutoMapPropertyResolve("MinRssiRbString", typeof(RssiHuaweiCsv), typeof(StringToRssiTransform))]
         public double MinRssiRb { get; set; }
 
         [MemberDoc("系统上行每个PRB上检测到的干扰噪声的平均值 (毫瓦分贝)")]
+        [ArrayAverage]
         [AutoMapPropertyResolve("AverageRssiRbString", typeof(RssiHuaweiCsv), typeof(StringToRssiTransform))]
         public double AverageRssiRb { get; set; }
 

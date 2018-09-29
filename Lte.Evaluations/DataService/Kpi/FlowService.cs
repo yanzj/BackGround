@@ -14,6 +14,7 @@ using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Kpi;
 using Lte.MySqlFramework.Abstract.RegionKpi;
 using Lte.Parameters.Entities.Kpi;
+using Abp.EntityFramework.AutoMapper;
 
 namespace Lte.Evaluations.DataService.Kpi
 {
@@ -167,22 +168,24 @@ namespace Lte.Evaluations.DataService.Kpi
 
         public void UploadRssiHuaweis(StreamReader reader)
         {
-            var originCsvs = RssiHuaweiCsv.ReadRssiHuaweiCsvs(reader);
+            var originCsvs = RssiHuaweiCsv.ReadRssiHuaweiCsvs(reader).MapTo<List<RssiHuawei>>();
             var mergedCsvs = (from item in originCsvs
                               group item by new
                               {
                                   item.StatTime.Date,
-                                  item.CellInfo
+                                  item.ENodebId,
+                                  item.SectorId
                               }
                 into g
                               select g.ArrayAggration(stat =>
                               {
                                   stat.StatTime = g.Key.Date;
-                                  stat.CellInfo = g.Key.CellInfo;
+                                  stat.ENodebId = g.Key.ENodebId;
+                                  stat.SectorId = g.Key.SectorId;
                               })).ToList();
             foreach(var csv in mergedCsvs)
             {
-                RssiHuaweis.Push(Mapper.Map<RssiHuaweiCsv, RssiHuawei>(csv));
+                RssiHuaweis.Push(csv);
             }
         }
 
