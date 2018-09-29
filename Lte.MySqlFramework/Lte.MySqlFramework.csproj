@@ -350,13 +350,13 @@
     <Compile Include="Entities\RegionKpi\TownHourCqiView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourPrbView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourUsersView.cs" />
-    <Compile Include="Migrations\201809090142410_Move_Town_Precise.cs" />
-    <Compile Include="Migrations\201809090142410_Move_Town_Precise.Designer.cs">
-      <DependentUpon>201809090142410_Move_Town_Precise.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201809240221589_Update_Town_Mrs_Rsrp.cs" />
     <Compile Include="Migrations\201809240221589_Update_Town_Mrs_Rsrp.Designer.cs">
       <DependentUpon>201809240221589_Update_Town_Mrs_Rsrp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809290312059_Add_Rssi_Stat.cs" />
+    <Compile Include="Migrations\201809290312059_Add_Rssi_Stat.Designer.cs">
+      <DependentUpon>201809290312059_Add_Rssi_Stat.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -477,11 +477,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809090142410_Move_Town_Precise.resx">
-      <DependentUpon>201809090142410_Move_Town_Precise.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809240221589_Update_Town_Mrs_Rsrp.resx">
       <DependentUpon>201809240221589_Update_Town_Mrs_Rsrp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809290312059_Add_Rssi_Stat.resx">
+      <DependentUpon>201809290312059_Add_Rssi_Stat.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -184,6 +184,8 @@
     <Compile Include="Entities\Kpi\HourCqi.cs" />
     <Compile Include="Entities\Kpi\HourPrb.cs" />
     <Compile Include="Entities\Kpi\HourUsers.cs" />
+    <Compile Include="Entities\Kpi\RssiHuawei.cs" />
+    <Compile Include="Entities\Kpi\RssiZte.cs" />
     <Compile Include="Entities\Kpi\SectorFlowView.cs" />
     <Compile Include="Entities\Maintainence\AlarmWorkItem.cs" />
     <Compile Include="Entities\Maintainence\AlarmWorkItemGroup.cs" />

@@ -216,5 +216,9 @@ namespace Lte.MySqlFramework.Concrete
         
         public DbSet<TownPreciseStat> TownPreciseStats { get; set; }
 
+        public DbSet<RssiHuawei> RssiHuaweis { get; set; }
+
+        public DbSet<RssiZte> RssiZtes { get; set; }
+
     }
 }

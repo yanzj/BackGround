@@ -73,6 +73,7 @@
     <Compile Include="Common\Geo\IGeoPointList.cs" />
     <Compile Include="Common\Geo\IntRangeContainer.cs" />
     <Compile Include="Common\Geo\SectorRangeContainer.cs" />
+    <Compile Include="Common\RssiHuaweiCsv.cs" />
     <Compile Include="Common\Transform\StringToIntTransformMinusOne.cs" />
     <Compile Include="Common\Types\AutoMapConverterAttribute.cs" />
     <Compile Include="Common\Types\AutoMapPropertyResolveAttribute.cs" />
