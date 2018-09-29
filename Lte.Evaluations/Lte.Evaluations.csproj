@@ -131,11 +131,17 @@
     <Compile Include="DataService\Basic\StationImportService.cs" />
     <Compile Include="DataService\Basic\StationInfoService.cs" />
     <Compile Include="DataService\Basic\StationRruService.cs" />
+    <Compile Include="DataService\College\BranchDemandService.cs" />
     <Compile Include="DataService\College\CheckingService.cs" />
     <Compile Include="DataService\College\College3GTestService.cs" />
     <Compile Include="DataService\College\College4GTestService.cs" />
     <Compile Include="DataService\College\CollegePreciseService.cs" />
+    <Compile Include="DataService\College\ComplainService.cs" />
     <Compile Include="DataService\College\EmergencyCommunicationService.cs" />
+    <Compile Include="DataService\College\EmergencyFiberService.cs" />
+    <Compile Include="DataService\College\IDateSpanService.cs" />
+    <Compile Include="DataService\College\MicroAmplifierService.cs" />
+    <Compile Include="DataService\College\OnlineSustainService.cs" />
     <Compile Include="DataService\College\VipDemandService.cs" />
     <Compile Include="DataService\Dt\AreaTestDateService.cs" />
     <Compile Include="DataService\Basic\AlarmsService.cs" />
@@ -155,7 +161,7 @@
     <Compile Include="DataService\Basic\ZteCellPowerQuery.cs" />
     <Compile Include="DataService\Basic\ZteCellQuery.cs" />
     <Compile Include="DataService\College\CollegeAlarmService.cs" />
-    <Compile Include="DataService\College\CustomerServices.cs" />
+    <Compile Include="DataService\College\CustomerQueries.cs" />
     <Compile Include="DataService\College\HotSpotService.cs" />
     <Compile Include="DataService\Dt\AreaTestInfo2GQuery.cs" />
     <Compile Include="DataService\Dt\AreaTestInfo3GQuery.cs" />

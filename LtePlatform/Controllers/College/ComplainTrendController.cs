@@ -13,10 +13,12 @@ namespace LtePlatform.Controllers.College
     public class ComplainTrendController : ApiController
     {
         private readonly ComplainService _service;
+        private readonly OnlineSustainService _onlineSustainService;
 
-        public ComplainTrendController(ComplainService service)
+        public ComplainTrendController(ComplainService service, OnlineSustainService onlineSustainService)
         {
             _service = service;
+            _onlineSustainService = onlineSustainService;
         }
 
         [HttpGet]
@@ -35,9 +37,10 @@ namespace LtePlatform.Controllers.College
 
         [HttpGet]
         [ApiDoc("查询去年今日至今每月的工单数量")]
-        public async Task<Tuple<List<string>, List<int>>> QueryCounts(DateTime countDate)
+        public async Task<Tuple<List<string>, List<int>, List<int>>> QueryCounts(DateTime countDate)
         {
-            return await _service.QueryCounts<ComplainService, ComplainItem>(countDate);
+            return await _service.QueryCounts<ComplainService, ComplainItem, OnlineSustainService, OnlineSustain>(
+                _onlineSustainService, countDate);
         }
 
     }
