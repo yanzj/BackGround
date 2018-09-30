@@ -87,20 +87,6 @@
                     },
                     url: "/flow"
                 })
-            .state('dt',
-                {
-                    views: {
-                        'menu': {
-                            templateUrl: "/appViews/DropDownMenu.html",
-                            controller: "menu.dt"
-                        },
-                        "contents": {
-                            templateUrl: "/appViews/Home/Dt.html",
-                            controller: "home.dt"
-                        }
-                    },
-                    url: "/dt"
-                })
             .state('plan',
                 {
                     views: {
@@ -142,20 +128,6 @@
                         }
                     },
                     url: "/interference"
-                })
-            .state('complain',
-                {
-                    views: {
-                        'menu': {
-                            templateUrl: "/appViews/DropDownMenu.html",
-                            controller: "menu.complain"
-                        },
-                        "contents": {
-                            templateUrl: "/appViews/Home/Complain.html",
-                            controller: "home.complain"
-                        }
-                    },
-                    url: "/complain"
                 })
             .state('micro',
                 {

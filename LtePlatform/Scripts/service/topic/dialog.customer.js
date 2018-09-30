@@ -217,24 +217,4 @@
             $scope.cancel = function() {
                 $uibModalInstance.dismiss('cancel');
             };
-        })
-    .controller('complain.adjust',
-        function ($scope, $uibModalInstance, complainService) {
-            $scope.dialogTitle = "抱怨量信息校正";
-            $scope.items = [];
-
-            $scope.query = function() {
-                complainService.queryPositionList($scope.beginDate.value, $scope.endDate.value).then(function(list) {
-                    $scope.items = list;
-                });
-            };
-
-            $scope.ok = function () {
-                $uibModalInstance.close($scope.building);
-            };
-
-            $scope.cancel = function () {
-                $uibModalInstance.dismiss('cancel');
-            };
-            $scope.query();
         });

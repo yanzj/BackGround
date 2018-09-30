@@ -2064,26 +2064,6 @@ angular.module('topic.dialog.customer', ['myApp.url', 'myApp.region', 'myApp.kpi
             $scope.cancel = function() {
                 $uibModalInstance.dismiss('cancel');
             };
-        })
-    .controller('complain.adjust',
-        function ($scope, $uibModalInstance, complainService) {
-            $scope.dialogTitle = "抱怨量信息校正";
-            $scope.items = [];
-
-            $scope.query = function() {
-                complainService.queryPositionList($scope.beginDate.value, $scope.endDate.value).then(function(list) {
-                    $scope.items = list;
-                });
-            };
-
-            $scope.ok = function () {
-                $uibModalInstance.close($scope.building);
-            };
-
-            $scope.cancel = function () {
-                $uibModalInstance.dismiss('cancel');
-            };
-            $scope.query();
         });
 angular.module('topic.dialog.parameters', ['myApp.url', 'myApp.region', 'myApp.kpi', 'topic.basic', 'topic.dialog', "ui.bootstrap"])
     .controller('town.eNodeb.dialog',
@@ -3100,13 +3080,6 @@ angular.module('topic.dialog',[ 'app.menu', 'app.core' ])
                             },
                             beginDate,
                             endDate)
-                    });
-                },
-                adjustComplainItems: function () {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: "/appViews/Customer/Complain/Adjust.html",
-                        controller: 'complain.adjust',
-                        resolve: {}
                     });
                 },
                 showComplainDetails: function(item) {

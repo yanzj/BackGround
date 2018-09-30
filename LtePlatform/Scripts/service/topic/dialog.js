@@ -322,13 +322,6 @@
                             endDate)
                     });
                 },
-                adjustComplainItems: function () {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: "/appViews/Customer/Complain/Adjust.html",
-                        controller: 'complain.adjust',
-                        resolve: {}
-                    });
-                },
                 showComplainDetails: function(item) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/Customer/Complain/Details.html',

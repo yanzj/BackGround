@@ -635,7 +635,6 @@
     <Content Include="appViews\College\Table\CollegeCellBasicInfo.html" />
     <Content Include="appViews\College\Test\Flow.html" />
     <Content Include="appViews\College\Test\Process.html" />
-    <Content Include="appViews\Customer\Complain\Adjust.html" />
     <Content Include="appViews\Customer\Complain\Branch.html" />
     <Content Include="appViews\Customer\Complain\Details.html" />
     <Content Include="appViews\Customer\Complain\List.html" />
@@ -1994,6 +1993,7 @@
     <Content Include="Scripts\locales\zh.js" />
     <Content Include="Scripts\MarkerClusterer.js" />
     <Content Include="Scripts\mycharts\combo-examples.js" />
+    <Content Include="Scripts\parameters\complain.adjust.js" />
     <Content Include="Scripts\parameters\import\hour.controller.js" />
     <Content Include="Scripts\parameters\import\index.controller.js" />
     <Content Include="Scripts\parameters\import\station.controller.js" />
@@ -2274,6 +2274,7 @@
     <Content Include="Views\Kpi\CollegeInfos.cshtml" />
     <Content Include="Views\Kpi\CollegeFlowImport.cshtml" />
     <Content Include="Views\Kpi\ManageDt.cshtml" />
+    <Content Include="Views\Kpi\ComplainAdjust.cshtml" />
     <None Include="Views\Kpi\PreciseImport.cshtml" />
     <Content Include="Views\Kpi\WorkItemImport.cshtml" />
     <Content Include="appViews\Rutrace\Map\NeighborMapInfoBox.html" />

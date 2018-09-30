@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "投诉工单经纬度匹配";
+}
+
+<div ng-controller="complain.adjust">
+    <div class="panel panel-blue">
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-stats"></span>
+            @ViewBag.Title
+        </div>
+        <div class="panel-body">
+            <div date-span-row begin-date="beginDate" end-date="endDate">
+                <button type="button" class="btn btn-success" ng-click="query()">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+            </div>
+            <div complain-position-list items="items" messages="page.messages" query="query()"></div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/Scripts/parameters/complain.adjust.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=LlMnTd7NcCWI1ibhDAdKeVlG"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+    <script type="text/javascript" src="~/Scripts/MarkerClusterer.js"></script>
+    <script type="text/javascript" src="~/Scripts/laydate/laydate.js"></script>
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=OeWDTDlnolWHBNP1GSkDph34"></script>
+    <script src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+    <link rel="stylesheet" href="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css" />
+    <script src="~/Scripts/baidu/plugins/baidu.tangram.js"></script>
+    <script src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
+    <script src="http://api.map.baidu.com/library/GeoUtils/1.2/src/GeoUtils_min.js"></script>
+    <script src="~/Scripts/baidu/plugins/ComplexCustomOverlay.js"></script>
+}

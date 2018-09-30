@@ -54,6 +54,11 @@ namespace LtePlatform.Controllers
             return View();
         }
 
+        public ActionResult ComplainAdjust()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ViewResult KpiImport()
         {
