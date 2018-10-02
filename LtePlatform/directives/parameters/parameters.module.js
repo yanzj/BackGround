@@ -37,17 +37,6 @@ angular.module('parameters.basic.module', ['ui.grid', 'myApp.region', 'myApp.url
                 },
                 templateUrl: '/appViews/Home/GeneralTableDetails.html'
             }
-        })
-    .directive('lteCellBasicInfo',
-        function() {
-            return {
-                restrict: 'ECMA',
-                replace: true,
-                scope: {
-                    neighbor: '='
-                },
-                templateUrl: '/directives/parameters/cell/BasicInfo.html'
-            }
         });
 
 angular.module('parameters.kpi.module', ['ui.grid', 'myApp.region', 'myApp.url', 'myApp.kpi'])

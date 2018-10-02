@@ -2,22 +2,6 @@
     .factory('neighborDialogService',
         function(menuItemService, networkElementService, stationFormatService, baiduMapService) {
             return {
-                dumpCellMongo: function(cell, beginDate, endDate) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/Rutrace/Interference/DumpCellMongoDialog.html',
-                        controller: 'dump.cell.mongo',
-                        resolve: stationFormatService.dateSpanResolve({
-                                dialogTitle: function() {
-                                    return cell.name + "-" + cell.sectorId + "干扰数据导入";
-                                },
-                                cell: function() {
-                                    return cell;
-                                }
-                            },
-                            beginDate,
-                            endDate)
-                    });
-                },
                 showRutraceInterference: function(cell, beginDate, endDate) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/Rutrace/Interference/Index.html',

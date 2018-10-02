@@ -441,23 +441,7 @@
                 'end': end
             });
         };
-
-        serviceInstance.queryExistedItems = function(eNodebId, sectorId, date) {
-            return generalHttpService.getApiData('DumpInterference', {
-                eNodebId: eNodebId,
-                sectorId: sectorId,
-                date: appFormatService.getDateString(date, 'yyyy-MM-dd')
-            });
-        };
-
-        serviceInstance.queryMongoItems = function(eNodebId, sectorId, date) {
-            return generalHttpService.getApiData('InterferenceMongo', {
-                eNodebId: eNodebId,
-                sectorId: sectorId,
-                date: date
-            });
-        };
-
+        
         serviceInstance.queryNeighborMongoItem = function(eNodebId, sectorId, neighborPci, date) {
             return generalHttpService.getApiData('InterferenceMatrix', {
                 eNodebId: eNodebId,
@@ -466,88 +450,11 @@
                 date: date
             });
         };
-
-        serviceInstance.queryMrsRsrpItem = function(eNodebId, sectorId, date) {
-            return generalHttpService.getApiData('MrsRsrp', {
-                eNodebId: eNodebId,
-                sectorId: sectorId,
-                statDate: date
-            });
-        };
-
-        serviceInstance.queryMrsTadvItem = function(eNodebId, sectorId, date) {
-            return generalHttpService.getApiData('MrsTadv', {
-                eNodebId: eNodebId,
-                sectorId: sectorId,
-                statDate: date
-            });
-        };
-
-        serviceInstance.queryMrsPhrItem = function(eNodebId, sectorId, date) {
-            return generalHttpService.getApiData('MrsPhr', {
-                eNodebId: eNodebId,
-                sectorId: sectorId,
-                statDate: date
-            });
-        };
-
-        serviceInstance.queryMrsTadvRsrpItem = function(eNodebId, sectorId, date) {
-            return generalHttpService.getApiData('MrsTadvRsrp', {
-                eNodebId: eNodebId,
-                sectorId: sectorId,
-                statDate: date
-            });
-        };
-
+        
         return serviceInstance;
     })
-    .factory('dumpPreciseService', function(dumpProgress, networkElementService, authorizeService) {
+    .factory('dumpPreciseService', function(authorizeService) {
         var serviceInstance = {};
-        serviceInstance.dumpAllRecords = function(records, outerIndex, innerIndex, eNodebId, sectorId, queryFunc) {
-            if (outerIndex >= records.length) {
-                if (queryFunc !== undefined)
-                    queryFunc();
-            } else {
-                var subRecord = records[outerIndex];
-                if (subRecord.existedRecords < subRecord.mongoRecords.length && innerIndex < subRecord.mongoRecords.length) {
-                    var stat = subRecord.mongoRecords[innerIndex];
-                    networkElementService.querySystemNeighborCell(eNodebId, sectorId, stat.neighborPci).then(function(neighbor) {
-                        if (neighbor) {
-                            stat.destENodebId = neighbor.nearestCellId;
-                            stat.destSectorId = neighbor.nearestSectorId;
-                        } else {
-                            stat.destENodebId = 0;
-                            stat.destSectorId = 0;
-                        }
-                        dumpProgress.dumpMongo(stat).then(function() {
-                            serviceInstance.dumpAllRecords(records, outerIndex, innerIndex + 1, eNodebId, sectorId, queryFunc);
-                        });
-                    });
-                } else
-                    serviceInstance.dumpAllRecords(records, outerIndex + 1, 0, eNodebId, sectorId, queryFunc);
-            }
-
-        };
-        serviceInstance.dumpDateSpanSingleNeighborRecords = function(cell, date, end) {
-            if (date < end) {
-                dumpProgress.queryNeighborMongoItem(cell.cellId, cell.sectorId, cell.neighborPci, date).then(function(result) {
-                    var stat = result;
-                    var nextDate = date;
-                    nextDate.setDate(nextDate.getDate() + 1);
-                    if (stat) {
-                        stat.destENodebId = cell.neighborCellId;
-                        stat.destSectorId = cell.neighborSectorId;
-                        dumpProgress.dumpMongo(stat).then(function() {
-                            serviceInstance.dumpDateSpanSingleNeighborRecords(cell, nextDate, end);
-                        });
-                    } else {
-                        serviceInstance.dumpDateSpanSingleNeighborRecords(cell, nextDate, end);
-                    }
-                });
-            } else {
-                cell.finished = true;
-            }
-        };
         serviceInstance.generateUsersDistrict = function(city, districts, callback) {
             if (city) {
                 authorizeService.queryCurrentUserName().then(function(userName) {

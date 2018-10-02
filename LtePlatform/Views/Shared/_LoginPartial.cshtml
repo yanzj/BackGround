@@ -9,7 +9,7 @@
             <li>
                 @Html.ActionLink("你好，" + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: new { area = "" }, htmlAttributes: new { title = "Manage" })
             </li>
-            <li><a href="javascript:sessionStorage.removeItem('accessToken');$('#logoutForm').submit();">注销</a></li>
+            <li><button onclick="logout()">注销</button></li>
         </ul>
     }
 }
@@ -20,3 +20,11 @@ else
         <li>@Html.ActionLink("登录", "Login", "Account", routeValues: new { area = "" }, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }
+
+<script>
+    function logout() {
+        sessionStorage.removeItem('accessToken');
+        $('#logoutForm').submit();
+    }
+    
+</script>

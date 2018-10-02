@@ -5,7 +5,6 @@
         'baidu.map',
         'college.module',
         'customer.module',
-        "highcharts-ng",
         'myApp.kpi',
         'myApp.region',
         'myApp.url',

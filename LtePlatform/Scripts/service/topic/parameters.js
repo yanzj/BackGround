@@ -18,22 +18,6 @@
                             endDate)
                     });
                 },
-                showCellInfo: function(cell, beginDate, endDate) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/Rutrace/Map/NeighborMapInfoBox.html',
-                        controller: 'map.neighbor.dialog',
-                        resolve: stationFormatService.dateSpanDateResolve({
-                                dialogTitle: function() {
-                                    return cell.cellName + "小区信息";
-                                },
-                                neighbor: function() {
-                                    return cell;
-                                }
-                            },
-                            beginDate,
-                            endDate)
-                    });
-                },
                 showBtsInfo: function(bts) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/Parameters/Map/BtsMapInfoBox.html',

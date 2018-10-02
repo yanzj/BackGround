@@ -78,63 +78,6 @@
                 $uibModalInstance.dismiss('cancel');
             };
         })
-    .controller('map.neighbor.dialog',
-        function($scope,
-            $uibModalInstance,
-            interFreqHoService,
-            neighborDialogService,
-            flowService,
-            kpiChartCalculateService,
-            neighbor,
-            dialogTitle,
-            beginDate,
-            endDate) {
-            $scope.neighbor = neighbor;
-            $scope.eNodebId = neighbor.otherInfos.split(': ')[5];
-            $scope.sectorId = neighbor.cellName.split('-')[1];
-            $scope.dialogTitle = dialogTitle;
-            $scope.beginDate = beginDate;
-            $scope.endDate = endDate;
-            $scope.parameter = {
-                options: [
-                    '基本参数', '同频切换', '异频切换'
-                ],
-                selected: '基本参数'
-            };
-
-            $scope.dump = function() {
-                neighborDialogService.dumpCellMongo({
-                        eNodebId: $scope.eNodebId,
-                        sectorId: $scope.sectorId,
-                        pci: neighbor.pci,
-                        name: neighbor.cellName.split('-')[0]
-                    },
-                    $scope.beginDate.value,
-                    $scope.endDate.value);
-            };
-
-            $scope.ok = function() {
-                $uibModalInstance.close($scope.neighbor);
-            };
-
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            };
-            $scope.queryFlow = function() {
-                flowService.queryCellFlowByDateSpan($scope.eNodebId,
-                    $scope.sectorId,
-                    $scope.beginDate.value,
-                    $scope.endDate.value).then(function(results) {
-                        $("#flowChart").highcharts(kpiChartCalculateService.generateMergeFlowOptions(results, neighbor.cellName));
-                        $("#usersChart").highcharts(kpiChartCalculateService.generateMergeUsersOptions(results, neighbor.cellName));
-                });
-            };
-
-            interFreqHoService.queryCellParameters($scope.eNodebId, $scope.sectorId).then(function(result) {
-                $scope.interFreqHo = result;
-                $scope.queryFlow();
-            });
-        })
     .controller('map.cdma.cell.dialog',
         function($scope,
             $uibModalInstance,

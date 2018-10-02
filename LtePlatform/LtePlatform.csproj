@@ -927,7 +927,6 @@
     <Content Include="directives\parameters\cell\A5InterFreq.html" />
     <Content Include="appViews\Parameters\Map\CdmaCellInfoBox.html" />
     <Content Include="appViews\Parameters\Map\DistributionMapInfoBox.html" />
-    <Content Include="directives\parameters\cell\BasicInfo.html" />
     <Content Include="appViews\Parameters\Region\CellInfo.html" />
     <Content Include="appViews\Rutrace\Coverage\Index.html" />
     <Content Include="directives\parameters\kpi\AlarmTable.html" />
@@ -939,7 +938,6 @@
     <Content Include="directives\rutrace\coverage\InterferenceVictimList.html" />
     <Content Include="directives\rutrace\import\BackwardNeighbors.html" />
     <Content Include="directives\rutrace\import\ForwardNeighbors.html" />
-    <Content Include="appViews\Rutrace\Interference\DumpCellMongoDialog.html" />
     <Content Include="appViews\Rutrace\Interference\Index.html" />
     <Content Include="appViews\Rutrace\Interference\CoverageDialog.html" />
     <Content Include="directives\rutrace\interference\MongoNeighbors.html" />
@@ -2277,7 +2275,6 @@
     <Content Include="Views\Kpi\ComplainAdjust.cshtml" />
     <None Include="Views\Kpi\PreciseImport.cshtml" />
     <Content Include="Views\Kpi\WorkItemImport.cshtml" />
-    <Content Include="appViews\Rutrace\Map\NeighborMapInfoBox.html" />
     <Content Include="appViews\BasicKpi\TopDrop2G.html" />
     <Content Include="appViews\WorkItem\List.html" />
     <None Include="Views\Parameters\AlarmImport.cshtml" />
