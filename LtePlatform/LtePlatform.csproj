@@ -384,6 +384,10 @@
     <Compile Include="Controllers\Parameters\StationRruQueryController.cs" />
     <Compile Include="Controllers\Parameters\StationRruResetController.cs" />
     <Compile Include="Controllers\Parameters\StationRruUpdateController.cs" />
+    <Compile Include="Migrations\201810050310133_Change_Main.cs" />
+    <Compile Include="Migrations\201810050310133_Change_Main.Designer.cs">
+      <DependentUpon>201810050310133_Change_Main.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\CollectionModelDescription.cs" />
     <Compile Include="Models\CollectionModelProvider.cs" />
     <Compile Include="Models\ComplexModelProvider.cs" />
@@ -2317,6 +2321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712032239102_Expand_User.resx">
       <DependentUpon>201712032239102_Expand_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810050310133_Change_Main.resx">
+      <DependentUpon>201810050310133_Change_Main.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
