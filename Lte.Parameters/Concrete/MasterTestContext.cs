@@ -1,89 +1,32 @@
 ﻿using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Entity;
 using Lte.Parameters.Entities.Dt;
 using System.Data.Linq;
 using System.Data.Linq.Mapping;
 using System.Reflection;
+using Abp.EntityFramework;
+using MySql.Data.Entity;
 
 namespace Lte.Parameters.Concrete
 {
-    //db.ExecuteCommand("UPDATE Products SET QuantityPerUnit = {0} WHERE ProductID = {1}", "24 boxes", 5);
-    [Database(Name = "masterTest")]
-    public class MasterTestContext : DataContext
+    //实施数据库迁移前，请解除注释；迁移完成后，请再次注释编译后发布，否则在IIS上程序会报错
+    //[DbConfigurationType(typeof(MySqlEFConfiguration))]
+    public class MasterTestContext : AbpDbContext
     {
-        private static readonly MappingSource _mappingSource = new AttributeMappingSource();
-
         public MasterTestContext()
-            : base(
-                ConfigurationManager.ConnectionStrings["MasterTest"].ConnectionString,
-                _mappingSource)
+            : base("MasterTest")
         {
 
         }
         
-        [Function(Name = "dbo.sp_get4GFileContents")]
-        public ISingleResult<FileRecord4G> Get4GFileContents([Parameter(DbType = "varchar(max)")] string tableName)
-        {
-            var result = ExecuteMethodCall(this, ((MethodInfo)(MethodBase.GetCurrentMethod())), "[" + tableName + "]");
-            return (ISingleResult<FileRecord4G>) result?.ReturnValue;
-        }
+        public DbSet<FileRecord4G> FileRecord4Gs { get;set; }
 
-        [Function(Name = "dbo.sp_getVolteFileContents")]
-        public ISingleResult<FileRecordVolte> GetVolteFileContents([Parameter(DbType = "varchar(max)")] string tableName)
-        {
-            var result = ExecuteMethodCall(this, ((MethodInfo)(MethodBase.GetCurrentMethod())), "[" + tableName + "]");
-            return (ISingleResult<FileRecordVolte>)result?.ReturnValue;
-        }
-
-        [Function(Name = "dbo.sp_get4GFileContentsRasterConsidered")]
-        public ISingleResult<FileRecord4G> Get4GFileContents([Parameter(DbType = "varchar(max)")] string tableName,
-            [Parameter(DbType = "Int")] int rasterNum)
-        {
-            var result = ExecuteMethodCall(this, ((MethodInfo)(MethodBase.GetCurrentMethod())), "[" + tableName + "]", rasterNum);
-            return (ISingleResult<FileRecord4G>)result?.ReturnValue;
-        }
-
-        [Function(Name = "dbo.sp_getVolteFileContentsRasterConsidered")]
-        public ISingleResult<FileRecordVolte> GetVolteFileContents([Parameter(DbType = "varchar(max)")] string tableName,
-            [Parameter(DbType = "Int")] int rasterNum)
-        {
-            var result = ExecuteMethodCall(this, ((MethodInfo)(MethodBase.GetCurrentMethod())), "[" + tableName + "]", rasterNum);
-            return (ISingleResult<FileRecordVolte>)result?.ReturnValue;
-        }
-
-        [Function(Name = "dbo.sp_get3GFileContents")]
-        public ISingleResult<FileRecord3G> Get3GFileContents([Parameter(DbType = "varchar(max)")] string tableName)
-        {
-            var result = ExecuteMethodCall(this, ((MethodInfo)(MethodBase.GetCurrentMethod())), "[" + tableName + "]");
-            return (ISingleResult<FileRecord3G>)result?.ReturnValue;
-        }
-
-        [Function(Name = "dbo.sp_get3GFileContentsRasterConsidered")]
-        public ISingleResult<FileRecord3G> Get3GFileContents([Parameter(DbType = "varchar(max)")] string tableName,
-            [Parameter(DbType = "Int")] int rasterNum)
-        {
-            var result = ExecuteMethodCall(this, ((MethodInfo)(MethodBase.GetCurrentMethod())), "[" + tableName + "]", rasterNum);
-            return (ISingleResult<FileRecord3G>)result?.ReturnValue;
-        }
-
-        [Function(Name = "dbo.sp_get2GFileContents")]
-        public ISingleResult<FileRecord2G> Get2GFileContents([Parameter(DbType = "varchar(max)")] string tableName)
-        {
-            var result = ExecuteMethodCall(this, ((MethodInfo) (MethodBase.GetCurrentMethod())), "[" + tableName + "]");
-            return (ISingleResult<FileRecord2G>)result?.ReturnValue;
-        }
-
-        [Function(Name = "dbo.sp_get2GFileContentsRasterConsidered")]
-        public ISingleResult<FileRecord2G> Get2GFileContents([Parameter(DbType = "varchar(max)")] string tableName,
-            [Parameter(DbType = "Int")] int rasterNum)
-        {
-            var result = ExecuteMethodCall(this, ((MethodInfo)(MethodBase.GetCurrentMethod())), "[" + tableName + "]", rasterNum);
-            return (ISingleResult<FileRecord2G>)result?.ReturnValue;
-        }
-
-        public IEnumerable<string> GetTables()
-        {
-            return ExecuteQuery<string>("SELECT Name FROM SysObjects Where XType='U' ORDER BY Name");
-        }
+        public DbSet<FileRecordVolte> FileRecordVoltes { get; set; }
+        
+        public DbSet<FileRecord3G> FileRecord3Gs { get; set; }
+        
+        public DbSet<FileRecord2G> FileRecord2Gs { get;set; }
+        
     }
 }

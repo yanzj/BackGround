@@ -2,29 +2,28 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Infrastructure;
 using Abp.EntityFramework.Entities.Test;
 using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Abstract.Test;
 using Lte.MySqlFramework.Support;
-using Lte.Parameters.Abstract.Infrastructure;
+using Lte.Parameters.Abstract.Dt;
 
 namespace Lte.Evaluations.DataService.Dt
 {
     public class TownTestInfoService
     {
-        private readonly IFileRecordRepository _repository;
+        private readonly IFileRecordService _service;
         private readonly ITownBoundaryRepository _boundaryRepository;
         private readonly IDtFileInfoRepository _fileInfoRepository;
         private readonly IAreaTestInfoRepository _areaTestInfoRepository;
         private readonly ITownRepository _townRepository;
 
-        public TownTestInfoService(IFileRecordRepository repository, ITownBoundaryRepository boundaryRepository,
+        public TownTestInfoService(IFileRecordService service, ITownBoundaryRepository boundaryRepository,
             IDtFileInfoRepository fileInfoRepository, IAreaTestInfoRepository areaTestInfoRepository,
             ITownRepository townRepository)
         {
-            _repository = repository;
+            _service = service;
             _boundaryRepository = boundaryRepository;
             _fileInfoRepository = fileInfoRepository;
             _areaTestInfoRepository = areaTestInfoRepository;
@@ -138,16 +137,16 @@ namespace Lte.Evaluations.DataService.Dt
             switch (type)
             {
                 case "2G":
-                    query = new AreaTestInfo2GQuery(_repository, _boundaryRepository);
+                    query = new AreaTestInfo2GQuery(_service, _boundaryRepository);
                     break;
                 case "3G":
-                    query = new AreaTestInfo3GQuery(_repository, _boundaryRepository);
+                    query = new AreaTestInfo3GQuery(_service, _boundaryRepository);
                     break;
                 case "Volte":
-                    query = new AreaTestInfoVolteQuery(_repository, _boundaryRepository);
+                    query = new AreaTestInfoVolteQuery(_service, _boundaryRepository);
                     break;
                 default:
-                    query = new AreaTestInfo4GQuery(_repository, _boundaryRepository);
+                    query = new AreaTestInfo4GQuery(_service, _boundaryRepository);
                     break;
             }  
             return query.QueryAreaTestInfos(townIds, csvFileName, file.Id);
@@ -168,16 +167,16 @@ namespace Lte.Evaluations.DataService.Dt
             switch (type)
             {
                 case "2G":
-                    query = new AreaTestInfo2GQuery(_repository, _boundaryRepository);
+                    query = new AreaTestInfo2GQuery(_service, _boundaryRepository);
                     break;
                 case "3G":
-                    query = new AreaTestInfo3GQuery(_repository, _boundaryRepository);
+                    query = new AreaTestInfo3GQuery(_service, _boundaryRepository);
                     break;
                 case "Volte":
-                    query = new AreaTestInfoVolteQuery(_repository, _boundaryRepository);
+                    query = new AreaTestInfoVolteQuery(_service, _boundaryRepository);
                     break;
                 default:
-                    query = new AreaTestInfo4GQuery(_repository, _boundaryRepository);
+                    query = new AreaTestInfo4GQuery(_service, _boundaryRepository);
                     break;
             }
             return query.QueryRoadTestInfos(townIds, csvFileName, file.Id);

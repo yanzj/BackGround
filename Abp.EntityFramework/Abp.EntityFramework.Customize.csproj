@@ -146,6 +146,7 @@
     <Compile Include="AutoMapper\AutoMapperHelper.cs" />
     <Compile Include="AutoMapper\AutoMapToAttribute.cs" />
     <Compile Include="AutoMapper\ENodebExcelTransform.cs" />
+    <Compile Include="Dependency\IFileId.cs" />
     <Compile Include="Dependency\IFrequencyBand.cs" />
     <Compile Include="Dependency\IRegionFrequencyView.cs" />
     <Compile Include="Dependency\PagingContainer.cs" />

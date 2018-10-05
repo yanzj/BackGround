@@ -21,7 +21,7 @@ namespace Lte.Parameters.Entities.Dt
                         Pn = (short?) subList.FirstOrDefault(x => x.Pn != null)?.Pn,
                         RxAgc = subList.Where(x => x.RxAgc != null).Average(x => x.RxAgc),
                         TxAgc = subList.Where(x => x.TxAgc != null).Average(x => x.TxAgc),
-                        TestTimeString = subList[0].TestTimeString,
+                        StatTime = subList[0].StatTime,
                         TxGain = subList.Where(x => x.TxGain != null).Average(x => x.TxGain),
                         TxPower = subList.Where(x => x.TxPower != null).Average(x => x.TxPower),
                         RasterNum = (short)((short)((lat - 22.64409) / 0.00895) * 104 + (short)((lon - 112.387654) / 0.0098))
@@ -46,7 +46,7 @@ namespace Lte.Parameters.Entities.Dt
                         RxAgc1 = subList.Where(x => x.RxAgc1 != null).Average(x => x.RxAgc1),
                         RlpThroughput = (int?) subList.Where(x => x.RlpThroughput != null).Average(x => x.RlpThroughput),
                         TxAgc = subList.Where(x => x.TxAgc != null).Average(x => x.TxAgc),
-                        TestTimeString = subList[0].TestTimeString,
+                        StatTime = subList[0].StatTime,
                         TotalCi = subList.Where(x => x.TotalCi != null).Average(x => x.TotalCi),
                         DrcValue = (int?) subList.Where(x => x.DrcValue != null).Average(x => x.DrcValue),
                         Sinr = subList.Where(x => x.Sinr != null).Average(x => x.Sinr),
@@ -70,7 +70,7 @@ namespace Lte.Parameters.Entities.Dt
                         Lattitute = lat,
                         Rsrp = subList.Where(x => x.Rsrp != null).Average(x => x.Rsrp),
                         Sinr = subList.Where(x => x.Sinr != null).Average(x => x.Sinr),
-                        TestTimeString = subList[0].StatTime.ToLongTimeString(),
+                        StatTime = subList[0].StatTime,
                         ENodebId = subList.FirstOrDefault(x => x.ENodebId != null)?.ENodebId,
                         SectorId = subList.FirstOrDefault(x => x.SectorId != null)?.SectorId,
                         PdcchPathloss = subList.Where(x => x.PdcchPathloss != null).Average(x => x.PdcchPathloss),
@@ -142,7 +142,7 @@ namespace Lte.Parameters.Entities.Dt
                         PhyThroughputDl = subList.Where(x => x.PhyThroughputDl != null).Average(x => x.PhyThroughputDl),
                         DlMcs = (byte?)subList.Where(x => x.DlMcs != null).Average(x => x.DlMcs),
                         UlMcs = (byte?)subList.Where(x => x.UlMcs != null).Average(x => x.UlMcs),
-                        TestTimeString = (statDate ?? subList[0].StatTime).ToString("yyyy-M-d HH:mm:ss.fff"),
+                        StatTime = statDate ?? subList[0].StatTime,
                         CqiAverage = subList.Where(x => x.CqiAverage != null).Average(x => x.CqiAverage),
                         PdschRbSizeAverage = (int?)subList.Where(x => x.PdschRbSizeAverage != null).Average(x => x.PdschRbSizeAverage),
                         PuschRbSizeAverage = (int?)subList.Where(x => x.PuschRbSizeAverage != null).Average(x => x.PuschRbSizeAverage),
@@ -184,7 +184,7 @@ namespace Lte.Parameters.Entities.Dt
                         PhyThroughputDl = subList.Where(x => x.PhyThroughputDl != null).Average(x => x.PhyThroughputDl),
                         DlMcs = (byte?)subList.Where(x => x.DlMcs != null).Average(x => x.DlMcs),
                         UlMcs = (byte?)subList.Where(x => x.UlMcs != null).Average(x => x.UlMcs),
-                        TestTimeString = (statDate ?? subList[0].StatTime).ToString("yyyy-M-d HH:mm:ss.fff"),
+                        StatTime = statDate ?? subList[0].StatTime,
                         CqiAverage = subList.Where(x => x.CqiAverage != null).Average(x => x.CqiAverage),
                         PdschRbSizeAverage = (int?)subList.Where(x => x.PdschRbSizeAverage != null).Average(x => x.PdschRbSizeAverage),
                         PuschRbSizeAverage = (int?)subList.Where(x => x.PuschRbSizeAverage != null).Average(x => x.PuschRbSizeAverage),
@@ -264,7 +264,7 @@ namespace Lte.Parameters.Entities.Dt
             return "INSERT INTO [" + tableName
                    + "] ( [rasterNum],[testTime],[lon],[lat],[refPN],[EcIo],[rxAGC],[txAGC],[txPower],[txGain]) VALUES("
                    + stat.RasterNum
-                   + ",'" + stat.TestTimeString
+                   + ",'" + stat.StatTime
                    + "'," + stat.Longtitute
                    + "," + stat.Lattitute
                    + "," + (stat.Pn == null ? "NULL" : stat.Pn.ToString())
@@ -280,7 +280,7 @@ namespace Lte.Parameters.Entities.Dt
             return "INSERT INTO [" + tableName
                    + "] ( [rasterNum],[testTime],[lon],[lat],[refPN],[SINR],[rxAGC0],[rxAGC1],[txAGC],[totalC2I],[DRCValue],[RLPThrDL]) VALUES("
                    + stat.RasterNum
-                   + ",'" + stat.TestTimeString
+                   + ",'" + stat.StatTime
                    + "'," + stat.Longtitute
                    + "," + stat.Lattitute
                    + "," + (stat.Pn == null ? "NULL" : stat.Pn.ToString())
@@ -301,7 +301,7 @@ namespace Lte.Parameters.Entities.Dt
                    + "[PUSCHRbNum],[PDSCHRbNum],[PUSCHTBSizeAve],[PDSCHTBSizeAve],[n1PCI],[n1RSRP],[n2PCI],[n2RSRP],[n3PCI],[n3RSRP]) VALUES("
                    + index  //[ind]
                    + "," + stat.RasterNum  //[rasterNum]
-                   + ",'" + stat.TestTimeString //[testTime]
+                   + ",'" + stat.StatTime //[testTime]
                    + "'," + stat.Longtitute
                    + "," + stat.Lattitute
                    + "," + (stat.ENodebId == null ? "NULL" : stat.ENodebId.ToString())
@@ -341,7 +341,7 @@ namespace Lte.Parameters.Entities.Dt
                    + "[RTPPayloadSize],[PolqaMos],[PacketLossCount],[RxRTPPacketNum],[VoicePacketDelay],"
                    + "[VoicePacketLossRate],[VoiceRFC1889Jitter],[Rank2CQICode0],[Rank1CQI]) VALUES("
                    + stat.RasterNum
-                   + ",'" + stat.TestTimeString
+                   + ",'" + stat.StatTime
                    + "'," + stat.Longtitute
                    + "," + stat.Lattitute
                    + "," + (stat.ENodebId == null ? "NULL" : stat.ENodebId.ToString())

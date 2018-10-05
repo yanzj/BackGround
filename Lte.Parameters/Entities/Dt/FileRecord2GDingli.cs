@@ -16,9 +16,7 @@ namespace Lte.Parameters.Entities.Dt
             get { return ComputerTime.ConvertToDateTime(DateTime.Now); }
             set { ComputerTime = value.ToString(CultureInfo.InvariantCulture); }
         }
-
-        public string TestTimeString => StatTime.ToString("yyyy-M-d HH:mm:ss.fff");
-
+        
         [CsvColumn(Name = "Longitude")]
         public double? Longtitute { get; set; }
 

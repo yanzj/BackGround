@@ -2,7 +2,7 @@ namespace Lte.Parameters.Migrations
 {
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Lte.Parameters.Concrete.EFParametersContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Lte.Parameters.Concrete.MasterTestContext>
     {
         public Configuration()
         {
@@ -10,7 +10,7 @@ namespace Lte.Parameters.Migrations
             //AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(Lte.Parameters.Concrete.EFParametersContext context)
+        protected override void Seed(Lte.Parameters.Concrete.MasterTestContext context)
         {
             //  This method will be called after migrating to the latest version.
 

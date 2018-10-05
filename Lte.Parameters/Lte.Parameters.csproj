@@ -67,6 +67,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
     <Reference Include="JetBrains.Annotations, Version=11.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
       <HintPath>..\packages\JetBrains.Annotations.11.0.0\lib\net20\JetBrains.Annotations.dll</HintPath>
     </Reference>
@@ -109,6 +112,12 @@
     <Reference Include="Moq, Version=4.7.46.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.7.46\lib\net45\Moq.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data, Version=6.10.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.10.7\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.10.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.10.7\lib\net452\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -128,10 +137,14 @@
     <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Collections.Immutable.1.5.0\lib\netstandard1.3\System.Collections.Immutable.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
       <Private>True</Private>
@@ -139,6 +152,7 @@
     <Reference Include="System.Linq.Dynamic.Core, Version=0.0.0.0, Culture=neutral, PublicKeyToken=0f07ec44de6ac832, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Linq.Dynamic.Core.1.0.7.6\lib\net46\System.Linq.Dynamic.Core.dll</HintPath>
     </Reference>
+    <Reference Include="System.Management" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -148,6 +162,7 @@
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
     </Reference>
+    <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -165,12 +180,16 @@
     <Compile Include="Abstract\Basic\IPowerControlULZteRepository.cs" />
     <Compile Include="Abstract\Basic\IPrachFDDZteRepository.cs" />
     <Compile Include="Abstract\Basic\ICellHuaweiMongoRepository.cs" />
+    <Compile Include="Abstract\Dt\IFileRecord2GRepository.cs" />
+    <Compile Include="Abstract\Dt\IFileRecord3GRepository.cs" />
+    <Compile Include="Abstract\Dt\IFileRecord4GRepository.cs" />
+    <Compile Include="Abstract\Dt\IFileRecordVolteRepository.cs" />
     <Compile Include="Abstract\Infrastructure\IEutranInterFreqNCellRepository.cs" />
     <Compile Include="Abstract\Infrastructure\IEutranInterNFreqRepository.cs" />
     <Compile Include="Abstract\Infrastructure\IEutranIntraFreqNCellRepository.cs" />
     <Compile Include="Abstract\Infrastructure\IEUtranRelationZteRepository.cs" />
     <Compile Include="Abstract\Infrastructure\IExternalEUtranCellFDDZteRepository.cs" />
-    <Compile Include="Abstract\Infrastructure\IFileRecordRepository.cs" />
+    <Compile Include="Abstract\Dt\IFileRecordService.cs" />
     <Compile Include="Abstract\Kpi\IMrsRsrpRepository.cs" />
     <Compile Include="Abstract\Kpi\IMrsSinrUlRepository.cs" />
     <Compile Include="Abstract\Kpi\IPreciseMongoRepository.cs" />
@@ -188,9 +207,11 @@
     <Compile Include="Concrete\Channel\PDSCHCfgRepository.cs" />
     <Compile Include="Concrete\Channel\PowerControlDLZteRepository.cs" />
     <Compile Include="Concrete\Channel\PowerControlULZteRepository.cs" />
-    <Compile Include="Concrete\College\EFCollegeRepository.cs" />
+    <Compile Include="Concrete\Dt\FileRecord2GRepository.cs" />
+    <Compile Include="Concrete\Dt\FileRecord3GRepository.cs" />
+    <Compile Include="Concrete\Dt\FileRecord4GRepository.cs" />
+    <Compile Include="Concrete\Dt\FileRecordVolteRepository.cs" />
     <Compile Include="Concrete\Kpi\MrsRepositories.cs" />
-    <Compile Include="Concrete\EFParametersContext.cs" />
     <Compile Include="Concrete\Kpi\PreciseMongoRepository.cs" />
     <Compile Include="Concrete\MasterTestContext.cs" />
     <Compile Include="Concrete\Kpi\InterferenceMongoRepository.cs" />
@@ -260,13 +281,9 @@
     <Compile Include="Entities\Switch\IZteMeasGroup.cs" />
     <Compile Include="Entities\Switch\IntraRatHoComm.cs" />
     <Compile Include="Entities\Switch\UeEUtranMeasurementZte.cs" />
-    <Compile Include="Migrations\201708300231567_Change_ENodeb.cs" />
-    <Compile Include="Migrations\201708300231567_Change_ENodeb.Designer.cs">
-      <DependentUpon>201708300231567_Change_ENodeb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809090151007_Change_Town_Precise.cs" />
-    <Compile Include="Migrations\201809090151007_Change_Town_Precise.Designer.cs">
-      <DependentUpon>201809090151007_Change_Town_Precise.cs</DependentUpon>
+    <Compile Include="Migrations\201810051535544_Construct_Dt.cs" />
+    <Compile Include="Migrations\201810051535544_Construct_Dt.Designer.cs">
+      <DependentUpon>201810051535544_Construct_Dt.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MockOperations\DbHelper.cs" />
@@ -286,27 +303,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="ClassDiagram\AdministrativeRegion.cd" />
-    <None Include="ClassDiagram\CdmaKpi.cd" />
-    <None Include="ClassDiagram\CdmaTopKpi.cd" />
-    <None Include="ClassDiagram\CollegeEntities.cd" />
-    <None Include="ClassDiagram\NetworkEntities.cd" />
-    <None Include="ClassDiagram\Precise4GKpi.cd" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201708300231567_Change_ENodeb.resx">
-      <DependentUpon>201708300231567_Change_ENodeb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809090151007_Change_Town_Precise.resx">
-      <DependentUpon>201809090151007_Change_Town_Precise.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
     <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201810051535544_Construct_Dt.resx">
+      <DependentUpon>201810051535544_Construct_Dt.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

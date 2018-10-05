@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Lte.Parameters.Entities.Dt;
 
-namespace Lte.Parameters.Abstract.Infrastructure
+namespace Lte.Parameters.Abstract.Dt
 {
-    public interface IFileRecordRepository
+    public interface IFileRecordService
     {
         IEnumerable<FileRecord4G> GetFileRecord4Gs(string fileName);
 
@@ -21,14 +22,13 @@ namespace Lte.Parameters.Abstract.Infrastructure
 
         IEnumerable<FileRecord2G> GetFileRecord2Gs(string fileName, int rasterNum);
 
-        int InsertFileRecord2Gs(IEnumerable<FileRecord2G> stats, string tableName);
+        Task<int> InsertFileRecord2Gs(IEnumerable<FileRecord2G> stats, string tableName);
 
-        int InsertFileRecord3Gs(IEnumerable<FileRecord3G> stats, string tableName);
+        Task<int> InsertFileRecord3Gs(IEnumerable<FileRecord3G> stats, string tableName);
 
-        int InsertFileRecord4Gs(IEnumerable<FileRecord4G> stats, string tableName);
+        Task<int> InsertFileRecord4Gs(IEnumerable<FileRecord4G> stats, string tableName);
 
-        int InsertFileRecordVoltes(IEnumerable<FileRecordVolte> stats, string tableName);
-
-        IEnumerable<string> GetTables();
+        Task<int> InsertFileRecordVoltes(IEnumerable<FileRecordVolte> stats, string tableName);
+        
     }
 }

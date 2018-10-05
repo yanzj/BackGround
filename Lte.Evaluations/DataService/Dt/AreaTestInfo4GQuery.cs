@@ -1,27 +1,24 @@
 using System.Collections.Generic;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Test;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Region;
-using Lte.MySqlFramework.Entities;
 using Lte.MySqlFramework.Support;
-using Lte.Parameters.Abstract.Infrastructure;
+using Lte.Parameters.Abstract.Dt;
 
 namespace Lte.Evaluations.DataService.Dt
 {
     public class AreaTestInfo4GQuery : AreaTestInfoQuery
     {
-        private readonly IFileRecordRepository _repository;
+        private readonly IFileRecordService _service;
 
-        public AreaTestInfo4GQuery(IFileRecordRepository repository, ITownBoundaryRepository boundaryRepository) : base(boundaryRepository)
+        public AreaTestInfo4GQuery(IFileRecordService service, ITownBoundaryRepository boundaryRepository) : base(boundaryRepository)
         {
-            _repository = repository;
+            _service = service;
         }
 
         public override List<AreaTestInfo> QueryAreaTestInfos(List<int> townIds, string csvFileName, int fileId)
         {
             var results = new List<AreaTestInfo>();
-            var data4G = _repository.GetFileRecord4Gs(csvFileName);
+            var data4G = _service.GetFileRecord4Gs(csvFileName);
             UpdateTownRecords(townIds, fileId, data4G, results);
             return results;
         }
@@ -29,7 +26,7 @@ namespace Lte.Evaluations.DataService.Dt
         public override List<AreaTestInfo> QueryRoadTestInfos(List<int> townIds, string csvFileName, int fileId)
         {
             var results = new List<AreaTestInfo>();
-            var data4G = _repository.GetFileRecord4Gs(csvFileName);
+            var data4G = _service.GetFileRecord4Gs(csvFileName);
             UpdateRoadRecords(townIds, fileId, data4G, results);
             return results;
         }

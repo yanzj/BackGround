@@ -364,13 +364,13 @@
     <Compile Include="Entities\RegionKpi\TownHourCqiView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourPrbView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourUsersView.cs" />
-    <Compile Include="Migrations\201810050229539_Move_Precise.cs" />
-    <Compile Include="Migrations\201810050229539_Move_Precise.Designer.cs">
-      <DependentUpon>201810050229539_Move_Precise.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201810050252281_Move_Interference.cs" />
     <Compile Include="Migrations\201810050252281_Move_Interference.Designer.cs">
       <DependentUpon>201810050252281_Move_Interference.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810051551372_Remove_Redundant.cs" />
+    <Compile Include="Migrations\201810051551372_Remove_Redundant.Designer.cs">
+      <DependentUpon>201810051551372_Remove_Redundant.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -491,11 +491,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810050229539_Move_Precise.resx">
-      <DependentUpon>201810050229539_Move_Precise.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810050252281_Move_Interference.resx">
       <DependentUpon>201810050252281_Move_Interference.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810051551372_Remove_Redundant.resx">
+      <DependentUpon>201810051551372_Remove_Redundant.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

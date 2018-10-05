@@ -1,6 +1,5 @@
 ﻿using Abp.EntityFramework.Repositories;
 using Lte.Domain.LinqToExcel;
-using Lte.Parameters.Abstract.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,6 +12,7 @@ using Abp.EntityFramework.Entities.Infrastructure;
 using Abp.EntityFramework.Entities.Maintainence;
 using Abp.EntityFramework.Entities.Region;
 using Lte.Domain.Common.Geo;
+using Lte.Domain.Common.Types;
 using Lte.Domain.Excel;
 using Lte.Domain.LinqToCsv.Context;
 using Lte.Domain.LinqToCsv.Description;
@@ -24,6 +24,7 @@ using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Maintainence;
 using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Abstract.Test;
+using Lte.Parameters.Abstract.Dt;
 using Lte.Parameters.Entities.Dt;
 
 namespace Lte.Evaluations.DataService.Kpi
@@ -40,7 +41,7 @@ namespace Lte.Evaluations.DataService.Kpi
         private readonly IOnlineSustainRepository _onlineSustainRepository;
         private readonly IPlanningSiteRepository _planningSiteRepository;
         private readonly IComplainProcessRepository _processRepository;
-        private readonly IFileRecordRepository _fileRecordRepository;
+        private readonly IFileRecordService _fileRecordService;
         private readonly IDtFileInfoRepository _dtFileInfoRepository;
         private readonly IRasterTestInfoRepository _rasterTestInfoRepository;
         private readonly ILteProblemRepository _lteProblemRepository;
@@ -53,7 +54,7 @@ namespace Lte.Evaluations.DataService.Kpi
             IComplainItemRepository complainItemRepository, IBranchDemandRepository branchDemandRepository,
             IOnlineSustainRepository onlineSustainRepository, IPlanningSiteRepository planningSiteRepository, 
             IComplainProcessRepository processRepository, ITownRepository townRepository,
-            IFileRecordRepository fileRecordRepository, IDtFileInfoRepository dtFileInfoRepository,
+            IFileRecordService fileRecordService, IDtFileInfoRepository dtFileInfoRepository,
             IRasterTestInfoRepository rasterTestInfoRepository, ILteProblemRepository lteProblemRepository,
             IVipProcessRepository vipProcessRepository)
         {
@@ -67,7 +68,7 @@ namespace Lte.Evaluations.DataService.Kpi
             _onlineSustainRepository = onlineSustainRepository;
             _planningSiteRepository = planningSiteRepository;
             _processRepository = processRepository;
-            _fileRecordRepository = fileRecordRepository;
+            _fileRecordService = fileRecordService;
             _dtFileInfoRepository = dtFileInfoRepository;
             _rasterTestInfoRepository = rasterTestInfoRepository;
             _lteProblemRepository = lteProblemRepository;
@@ -214,9 +215,8 @@ namespace Lte.Evaluations.DataService.Kpi
 
         public string ImportDt2GFile(string path)
         {
-            bool fileExisted;
-            var tableName = _fileRecordRepository.GetFileNameExisted(path, out fileExisted);
-            if (fileExisted) return "数据文件已存在于数据库中。请确认是否正确。";
+            var fields = path.Replace(".csv", "").GetSplittedFields('\\');
+            var tableName = fields[fields.Length - 1].DtFileNameEncode();
             var reader = new StreamReader(path, Encoding.GetEncoding("GB2312"));
             var infos = CsvContext.Read<FileRecord2GCsv>(reader, CsvFileDescription.CommaDescription).ToList();
             if (infos.FirstOrDefault(x => x.EcIo != null) == null)
@@ -233,15 +233,14 @@ namespace Lte.Evaluations.DataService.Kpi
             _dtFileInfoRepository.UpdateCsvFileInfo(tableName, filterInfos[0].StatTime, "2G");
             var stats = filterInfos.MergeRecords();
             _rasterTestInfoRepository.UpdateRasterInfo(stats, tableName, "2G");
-            var count = _fileRecordRepository.InsertFileRecord2Gs(stats, tableName);
+            var count = _fileRecordService.InsertFileRecord2Gs(stats, tableName);
             return "完成2G路测文件导入：" + path + "(" + tableName + ")" + count + "条";
         }
 
         public string ImportDt3GFile(string path)
         {
-            bool fileExisted;
-            var tableName = _fileRecordRepository.GetFileNameExisted(path, out fileExisted);
-            if (fileExisted) return "数据文件已存在于数据库中。请确认是否正确。";
+            var fields = path.Replace(".csv", "").GetSplittedFields('\\');
+            var tableName = fields[fields.Length - 1].DtFileNameEncode();
             var reader = new StreamReader(path, Encoding.GetEncoding("GB2312"));
             var infos = CsvContext.Read<FileRecord3GCsv>(reader, CsvFileDescription.CommaDescription).ToList();
             reader.Close();
@@ -251,15 +250,14 @@ namespace Lte.Evaluations.DataService.Kpi
             _dtFileInfoRepository.UpdateCsvFileInfo(tableName, filterInfos[0].StatTime, "3G");
             var stats = filterInfos.MergeRecords();
             _rasterTestInfoRepository.UpdateRasterInfo(stats, tableName, "3G");
-            var count = _fileRecordRepository.InsertFileRecord3Gs(stats, tableName);
+            var count = _fileRecordService.InsertFileRecord3Gs(stats, tableName);
             return "完成3G路测文件导入：" + path + "(" + tableName + ")" + count + "条";
         }
 
         public string ImportDtVolteFile(string path)
         {
-            bool fileExisted;
-            var tableName = _fileRecordRepository.GetFileNameExisted(path, out fileExisted);
-            //if (fileExisted) return "数据文件已存在于数据库中。请确认是否正确。";
+            var fields = path.Replace(".csv", "").GetSplittedFields('\\');
+            var tableName = fields[fields.Length - 1].DtFileNameEncode();
             var reader = new StreamReader(path, Encoding.GetEncoding("GB2312"));
             var infos = CsvContext.Read<FileRecordVolteCsv>(reader, CsvFileDescription.CommaDescription).ToList();
             reader.Close();
@@ -270,7 +268,7 @@ namespace Lte.Evaluations.DataService.Kpi
             var stats = filterInfos.MergeRecords();
             if (!stats.Any()) throw new Exception("无数据或格式错误！");
             _rasterTestInfoRepository.UpdateRasterInfo(stats, tableName, "Volte");
-            var count = _fileRecordRepository.InsertFileRecordVoltes(stats, tableName);
+            var count = _fileRecordService.InsertFileRecordVoltes(stats, tableName);
             return "完成VoLTE路测文件导入：" + path + "(" + tableName + ")" + count + "条";
         }
 
@@ -294,33 +292,21 @@ namespace Lte.Evaluations.DataService.Kpi
         public string ImportDt4GFile(List<FileRecord4GCsv> filterInfos, List<string> paths, DateTime statDate)
         {
             if (!filterInfos.Any()) return "无数据或格式错误！";
-            var filePath = string.Empty;
-            var tableName = "";
-            foreach (var path in paths)
-            {
-                tableName = _fileRecordRepository.GetFileNameExisted(path, out var fileExisted);
-                if (!fileExisted)
-                {
-                    filePath = path;
-                    break;
-                }
-            }
-
-            if (string.IsNullOrEmpty(filePath)) return "所有表格均存在于数据库中";
+            var fields = paths[0].Replace(".csv", "").GetSplittedFields('\\');
+            var tableName = fields[fields.Length - 1].DtFileNameEncode();
             
             var statTime = filterInfos[0].StatTime.AddDays((statDate - DateTime.Today).Days);
             _dtFileInfoRepository.UpdateCsvFileInfo(tableName, statTime, "4G");
             var stats = filterInfos.MergeRecords();
             _rasterTestInfoRepository.UpdateRasterInfo(stats, tableName, "4G");
-            var count = _fileRecordRepository.InsertFileRecord4Gs(stats, tableName);
-            return "完成4G路测文件导入：" + filePath + "(" + tableName + ")" + count + "条";
+            var count = _fileRecordService.InsertFileRecord4Gs(stats, tableName);
+            return "完成4G路测文件导入：" + paths[0] + "(" + tableName + ")" + count + "条";
         }
 
         public string ImportDt4GDingli(string path)
         {
-            bool fileExisted;
-            var tableName = _fileRecordRepository.GetFileNameExisted(path, out fileExisted);
-            if (fileExisted) return "数据文件已存在于数据库中。请确认是否正确。";
+            var fields = path.Replace(".csv", "").GetSplittedFields('\\');
+            var tableName = fields[fields.Length - 1].DtFileNameEncode();
             var reader = new StreamReader(path, Encoding.GetEncoding("GB2312"));
             var infos = CsvContext.Read<FileRecord4GDingli>(reader, CsvFileDescription.CommaDescription).ToList();
             var filterInfos =
@@ -329,7 +315,7 @@ namespace Lte.Evaluations.DataService.Kpi
             _dtFileInfoRepository.UpdateCsvFileInfo(tableName, filterInfos[0].StatTime, "4G");
             var stats = filterInfos.MergeRecords();
             _rasterTestInfoRepository.UpdateRasterInfo(stats, tableName, "4G");
-            var count = _fileRecordRepository.InsertFileRecord4Gs(stats, tableName);
+            var count = _fileRecordService.InsertFileRecord4Gs(stats, tableName);
             return "完成4G路测文件导入：" + path + "(" + tableName + ")" + count + "条";
         }
 

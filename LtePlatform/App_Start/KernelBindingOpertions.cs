@@ -31,13 +31,14 @@ using Lte.MySqlFramework.Concrete.RegionKpi;
 using Lte.MySqlFramework.Concrete.Station;
 using Lte.MySqlFramework.Concrete.Test;
 using Lte.Parameters.Abstract.Basic;
+using Lte.Parameters.Abstract.Dt;
 using Lte.Parameters.Abstract.Infrastructure;
 using Lte.Parameters.Abstract.Kpi;
 using Lte.Parameters.Abstract.Switch;
 using Lte.Parameters.Concrete;
 using Lte.Parameters.Concrete.Basic;
 using Lte.Parameters.Concrete.Channel;
-using Lte.Parameters.Concrete.College;
+using Lte.Parameters.Concrete.Dt;
 using Lte.Parameters.Concrete.Kpi;
 using Lte.Parameters.Concrete.Neighbor;
 using Lte.Parameters.Concrete.Switch;
@@ -50,10 +51,10 @@ namespace LtePlatform
     {
         public static void AddBindings(this IKernel ninjectKernel)
         {
-            ninjectKernel.Bind<EFParametersContext>().ToSelf();
+            ninjectKernel.Bind<MasterTestContext>().ToSelf();
 
-            ninjectKernel.Bind<IDbContextProvider<EFParametersContext>>()
-                .To<SimpleDbContextProvider<EFParametersContext>>();
+            ninjectKernel.Bind<IDbContextProvider<MasterTestContext>>()
+                .To<SimpleDbContextProvider<MasterTestContext>>();
 
             ninjectKernel.Bind<MySqlContext>().ToSelf();
 
@@ -99,7 +100,15 @@ namespace LtePlatform
 
             ninjectKernel.Bind<IAreaTestDateRepository>().To<AreaTestDateDateRepository>();
 
-            ninjectKernel.Bind<IFileRecordRepository>().To<MasterFileRecordRepository>();
+            ninjectKernel.Bind<IFileRecordService>().To<FileRecordService>();
+
+            ninjectKernel.Bind<IFileRecord2GRepository>().To<FileRecord2GRepository>();
+            
+            ninjectKernel.Bind<IFileRecord3GRepository>().To<FileRecord3GRepository>();
+
+            ninjectKernel.Bind<IFileRecord4GRepository>().To<FileRecord4GRepository>();
+
+            ninjectKernel.Bind<IFileRecordVolteRepository>().To<FileRecordVolteRepository>();
 
             ninjectKernel.Bind<IRasterInfoRepository>().To<RasterInfoRepository>();
 

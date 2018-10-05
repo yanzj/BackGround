@@ -1,26 +1,23 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Test;
 using AutoMapper;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Test;
-using Lte.MySqlFramework.Entities;
 using Lte.MySqlFramework.Entities.Dt;
-using Lte.Parameters.Abstract.Infrastructure;
+using Lte.Parameters.Abstract.Dt;
 using Lte.Parameters.Entities.Dt;
 
 namespace Lte.Evaluations.DataService.Dt
 {
     public class CsvFileInfoService
     {
-        private readonly IFileRecordRepository _repository;
+        private readonly IFileRecordService _service;
         private readonly IDtFileInfoRepository _dtFileInfoRepository;
 
-        public CsvFileInfoService(IFileRecordRepository repository, IDtFileInfoRepository dtFileInfoRepository)
+        public CsvFileInfoService(IFileRecordService service, IDtFileInfoRepository dtFileInfoRepository)
         {
-            _repository = repository;
+            _service = service;
             _dtFileInfoRepository = dtFileInfoRepository;
         }
         
@@ -49,42 +46,42 @@ namespace Lte.Evaluations.DataService.Dt
 
         public IEnumerable<FileRecord4G> GetFileRecord4Gs(string fileName)
         {
-            return _repository.GetFileRecord4Gs(fileName);
+            return _service.GetFileRecord4Gs(fileName);
         }
 
         public IEnumerable<FileRecordVolte> GetFileRecordVoltes(string fileName)
         {
-            return _repository.GetFileRecordVoltes(fileName);
+            return _service.GetFileRecordVoltes(fileName);
         }
 
         public IEnumerable<FileRecord4G> GetFileRecord4Gs(string fileName, int rasterNum)
         {
-            return _repository.GetFileRecord4Gs(fileName, rasterNum);
+            return _service.GetFileRecord4Gs(fileName, rasterNum);
         }
 
         public IEnumerable<FileRecordVolte> GetFileRecordVoltes(string fileName, int rasterNum)
         {
-            return _repository.GetFileRecordVoltes(fileName, rasterNum);
+            return _service.GetFileRecordVoltes(fileName, rasterNum);
         }
 
         public IEnumerable<FileRecord3G> GetFileRecord3Gs(string fileName)
         {
-            return _repository.GetFileRecord3Gs(fileName);
+            return _service.GetFileRecord3Gs(fileName);
         }
 
         public IEnumerable<FileRecord3G> GetFileRecord3Gs(string fileName, int rasterNum)
         {
-            return _repository.GetFileRecord3Gs(fileName, rasterNum);
+            return _service.GetFileRecord3Gs(fileName, rasterNum);
         }
 
         public IEnumerable<FileRecord2G> GetFileRecord2Gs(string fileName)
         {
-            return _repository.GetFileRecord2Gs(fileName);
+            return _service.GetFileRecord2Gs(fileName);
         }
 
         public IEnumerable<FileRecord2G> GetFileRecord2Gs(string fileName, int rasterNum)
         {
-            return _repository.GetFileRecord2Gs(fileName, rasterNum);
+            return _service.GetFileRecord2Gs(fileName, rasterNum);
         }
 
         public IEnumerable<FileRecordCoverage2G> GetCoverage2Gs(FileRasterInfoView infoView)

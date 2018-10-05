@@ -6,14 +6,14 @@ namespace Lte.Parameters.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Change_ENodeb : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
+    public sealed partial class Construct_Dt : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Change_ENodeb));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Construct_Dt));
         
         string IMigrationMetadata.Id
         {
-            get { return "201708300231567_Change_ENodeb"; }
+            get { return "201810051535544_Construct_Dt"; }
         }
         
         string IMigrationMetadata.Source

@@ -5,7 +5,7 @@ using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities.Test;
 using Lte.Domain.Common.Types;
 using Lte.MySqlFramework.Abstract.Test;
-using Lte.Parameters.Abstract.Infrastructure;
+using Lte.Parameters.Abstract.Dt;
 
 namespace Lte.Evaluations.Policy
 {
@@ -53,16 +53,6 @@ namespace Lte.Evaluations.Policy
                 dtFileInfoRepository.SaveChanges();
             }
         }
-
-        public static string GetFileNameExisted(this IFileRecordRepository fileRecordRepository,
-            string path, out bool fileExisted)
-        {
-            var fields = path.Replace(".csv", "").GetSplittedFields('\\');
-            var tableName = fields[fields.Length - 1].DtFileNameEncode();
-            var tableNames = fileRecordRepository.GetTables();
-            fileExisted = tableNames.FirstOrDefault(x => x == tableName) != null;
-            return tableName;
-        }
-
+        
     }
 }
