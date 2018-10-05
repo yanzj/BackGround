@@ -1,5 +1,4 @@
 ﻿using Lte.Evaluations.Properties;
-using Lte.Parameters.Abstract.Kpi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +8,7 @@ using Abp.EntityFramework.Entities.Kpi;
 using Lte.Domain.Common.Wireless.Kpi;
 using Lte.Evaluations.ViewModels.Precise;
 using Lte.MySqlFramework.Abstract.Infrastructure;
+using Lte.MySqlFramework.Abstract.Mr;
 using Lte.MySqlFramework.Support;
 
 namespace Lte.Evaluations.DataService.Kpi

@@ -1,15 +1,14 @@
-﻿using Abp.EntityFramework;
-using Abp.EntityFramework.Repositories;
-using Lte.Parameters.Abstract.Kpi;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using Abp.EntityFramework.Entities;
+using Abp.EntityFramework;
 using Abp.EntityFramework.Entities.Kpi;
+using Abp.EntityFramework.Repositories;
 using Lte.Domain.Common.Wireless.Cell;
+using Lte.MySqlFramework.Abstract.Mr;
 
-namespace Lte.Parameters.Concrete.Kpi
+namespace Lte.MySqlFramework.Concrete.Mr
 {
-    public class PreciseCoverage4GRepository : EfRepositorySave<EFParametersContext, PreciseCoverage4G>,
+    public class PreciseCoverage4GRepository : EfRepositorySave<MySqlContext, PreciseCoverage4G>,
         IPreciseCoverage4GRepository
     {
         public List<PreciseCoverage4G> GetAllList(DateTime begin, DateTime end, FrequencyBandType frequency)
@@ -37,7 +36,7 @@ namespace Lte.Parameters.Concrete.Kpi
                 x.StatTime >= begin && x.StatTime < end && x.CellId == cellId && x.SectorId == sectorId);
         }
 
-        public PreciseCoverage4GRepository(IDbContextProvider<EFParametersContext> dbContextProvider) : base(dbContextProvider)
+        public PreciseCoverage4GRepository(IDbContextProvider<MySqlContext> dbContextProvider) : base(dbContextProvider)
         {
         }
     }

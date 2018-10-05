@@ -3,7 +3,7 @@ using LtePlatform.Models;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
-using Lte.Parameters.Entities.Kpi;
+using Lte.MySqlFramework.Entities.Maintainence;
 
 namespace LtePlatform.Controllers.Kpi
 {

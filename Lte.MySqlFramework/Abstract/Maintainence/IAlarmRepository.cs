@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Abp.Domain.Repositories;
-using Lte.Parameters.Entities.Kpi;
+using Abp.EntityFramework.Entities.Maintainence;
 
-namespace Lte.Parameters.Abstract.Kpi
+namespace Lte.MySqlFramework.Abstract.Maintainence
 {
     public interface IAlarmRepository : IRepository<AlarmStat>
     {

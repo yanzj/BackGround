@@ -1,9 +1,5 @@
 ﻿using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
-using Lte.MySqlFramework.Abstract;
-using Lte.Parameters.Abstract.Basic;
-using Lte.Parameters.Abstract.Infrastructure;
-using Lte.Parameters.Abstract.Kpi;
 using Moq;
 using System;
 using System.Linq;
@@ -13,6 +9,7 @@ using Lte.MySqlFramework.Abstract.Cdma;
 using Lte.MySqlFramework.Abstract.College;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Maintainence;
+using Lte.MySqlFramework.Abstract.Mr;
 using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Abstract.Test;
 

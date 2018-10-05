@@ -5,8 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Abp.EntityFramework.Entities.Mr;
 using Lte.Domain.Common.Wireless;
-using Lte.MySqlFramework.Entities;
 using Lte.MySqlFramework.Entities.Infrastructure;
 
 namespace LtePlatform.Controllers.Mr

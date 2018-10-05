@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Abp.EntityFramework.Entities.Maintainence;
 using Lte.Domain.Common.Wireless;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Infrastructure;
-using Lte.Parameters.Abstract.Kpi;
-using Lte.Parameters.Entities.Kpi;
+using Lte.MySqlFramework.Abstract.Maintainence;
 
 namespace Lte.Evaluations.DataService.College
 {

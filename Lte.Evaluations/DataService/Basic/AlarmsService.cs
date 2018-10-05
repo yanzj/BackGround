@@ -2,17 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Abp.EntityFramework.Entities.Maintainence;
 using AutoMapper;
-using Lte.Domain.Common;
-using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Alarm;
+using Lte.Domain.Common.Wireless.Work;
 using Lte.Domain.LinqToCsv.Context;
 using Lte.Domain.LinqToCsv.Description;
-using Lte.MySqlFramework.Abstract;
+using Lte.Domain.Regular;
+using Lte.MySqlFramework.Abstract.Maintainence;
 using Lte.MySqlFramework.Abstract.RegionKpi;
 using Lte.MySqlFramework.Abstract.Test;
-using Lte.Parameters.Abstract.Kpi;
-using Lte.Parameters.Entities.Kpi;
+using Lte.MySqlFramework.Entities.Maintainence;
 
 namespace Lte.Evaluations.DataService.Basic
 {

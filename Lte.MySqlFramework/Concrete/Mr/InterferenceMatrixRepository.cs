@@ -1,19 +1,19 @@
-﻿using Abp.EntityFramework;
-using Abp.EntityFramework.Repositories;
-using EntityFramework.Extensions;
-using Lte.Parameters.Abstract;
-using Lte.Parameters.Entities.Kpi;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Lte.Parameters.Abstract.Infrastructure;
+using Abp.EntityFramework;
+using Abp.EntityFramework.Entities.Mr;
+using Abp.EntityFramework.Repositories;
+using EntityFramework.Extensions;
+using Lte.MySqlFramework.Abstract.Mr;
 
-namespace Lte.Parameters.Concrete.Kpi
+namespace Lte.MySqlFramework.Concrete.Mr
 {
-    public class EFInterferenceMatrixRepository : EfRepositoryBase<EFParametersContext, InterferenceMatrixStat>, IInterferenceMatrixRepository
+    public class InterferenceMatrixRepository : EfRepositoryBase<MySqlContext, InterferenceMatrixStat>, 
+        IInterferenceMatrixRepository
     {
-        public EFInterferenceMatrixRepository(IDbContextProvider<EFParametersContext> dbContextProvider) : base(dbContextProvider)
+        public InterferenceMatrixRepository(IDbContextProvider<MySqlContext> dbContextProvider) : base(dbContextProvider)
         {
         }
 

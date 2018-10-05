@@ -1,10 +1,9 @@
-﻿using Lte.Evaluations.DataService;
-using Lte.Evaluations.ViewModels;
-using Lte.Parameters.Entities.Kpi;
-using LtePlatform.Models;
+﻿using LtePlatform.Models;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
+using Abp.EntityFramework.Entities.Maintainence;
+using Lte.Domain.Regular;
 using Lte.Evaluations.DataService.Basic;
 
 namespace LtePlatform.Controllers.Parameters

@@ -56,7 +56,7 @@ namespace Lte.Evaluations.DataService.Mr
             return CellMrsRsrpDto.ConstructView(_rsrpRepository.Get(eNodebId + "-" + sectorId, statDate),
                 _eNodebRepository);
         }
-
+        
         public IEnumerable<CellMrsRsrpDto> QueryRsrpStats(int eNodebId, byte sectorId, DateTime begin, DateTime end)
         {
             var eNodeb = _eNodebRepository.FirstOrDefault(x => x.ENodebId == eNodebId);

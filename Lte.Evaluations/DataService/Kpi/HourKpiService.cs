@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
-using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Entities.Kpi;
-using Abp.EntityFramework.Repositories;
-using Lte.Domain.Common.Wireless.Kpi;
+using Lte.Domain.Regular;
 using Lte.MySqlFramework.Abstract.Kpi;
 using Lte.MySqlFramework.Abstract.RegionKpi;
-using Lte.Parameters.Entities.Kpi;
 
 namespace Lte.Evaluations.DataService.Kpi
 {

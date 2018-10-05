@@ -3,6 +3,8 @@ using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities.Mr;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Cell;
+using Lte.Domain.Regular.Attributes;
 
 namespace Lte.Parameters.Entities.Kpi
 {
@@ -15,6 +17,11 @@ namespace Lte.Parameters.Entities.Kpi
         public string Town { get; set; }
 
         public string City { get; set; }
+        
+        [ArraySumProtection]
+        public FrequencyBandType FrequencyBandType { get; set; } = FrequencyBandType.All;
+
+        public string Frequency => FrequencyBandType.ToString();
 
         public DateTime StatDate { get; set; }
 

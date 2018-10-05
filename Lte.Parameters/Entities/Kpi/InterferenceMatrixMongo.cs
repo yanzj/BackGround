@@ -2,8 +2,8 @@ using System;
 using Abp.Domain.Entities;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Dependency;
+using Abp.EntityFramework.Entities.Mr;
 using AutoMapper;
-using Lte.Domain.Common;
 using Lte.Domain.Common.Types;
 using MongoDB.Bson;
 

@@ -7,13 +7,13 @@ namespace Lte.MySqlFramework.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Add_Rssi_Stat1 : IMigrationMetadata
+    public sealed partial class Move_Interference : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Add_Rssi_Stat1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Move_Interference));
         
         string IMigrationMetadata.Id
         {
-            get { return "201809290430507_Add_Rssi_Stat1"; }
+            get { return "201810050252281_Move_Interference"; }
         }
         
         string IMigrationMetadata.Source

@@ -4,12 +4,12 @@ using Lte.Domain.LinqToCsv.Context;
 using Lte.Domain.LinqToCsv.Description;
 using Lte.Domain.Regular;
 using Lte.Evaluations.Policy;
-using Lte.Parameters.Entities.Kpi;
 using NUnit.Framework;
 using System;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Lte.Domain.Common.Wireless.Work;
 using Lte.Evaluations.DataService.Basic;
 
 namespace Lte.Evaluations.DataService.Kpi

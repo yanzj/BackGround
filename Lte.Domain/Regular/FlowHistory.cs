@@ -1,4 +1,4 @@
-namespace Lte.Parameters.Entities.Kpi
+namespace Lte.Domain.Regular
 {
     public class FlowHistory
     {

@@ -1,10 +1,9 @@
 using System;
 using Abp.Domain.Entities;
-using Lte.Domain.Common;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Regular;
 
-namespace Lte.Parameters.Entities.Kpi
+namespace Abp.EntityFramework.Entities.Mr
 {
     public class InterferenceMatrixStat : Entity
     {

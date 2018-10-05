@@ -143,6 +143,8 @@
     <Compile Include="Common\Wireless\Region\RegionType.cs" />
     <Compile Include="Common\Wireless\Region\TestTypeTuples.cs" />
     <Compile Include="Common\Wireless\TownStat.cs" />
+    <Compile Include="Common\Wireless\Work\AlarmStatCsv.cs" />
+    <Compile Include="Common\Wireless\Work\AlarmStatHuawei.cs" />
     <Compile Include="Common\ZhangshangyouCoverageCsv.cs" />
     <Compile Include="Common\ZhangshangyouQualityCsv.cs" />
     <Compile Include="Excel\AlarmWorkItemExcel.cs" />
@@ -311,6 +313,7 @@
     <Compile Include="LinqToExcel\Service\ExcelAttributesService.cs" />
     <Compile Include="Lz4Net\Lz4CompressionStreamBase.cs" />
     <Compile Include="Lz4Net\Lz4DecompressionStreamBase.cs" />
+    <Compile Include="Regular\AlarmHistory.cs" />
     <Compile Include="Regular\AreaBoundaryView.cs" />
     <Compile Include="Regular\Attributes\ArrayAverageAttribute.cs" />
     <Compile Include="Regular\Attributes\ArrayMaxAttribute.cs" />
@@ -325,6 +328,8 @@
     <Compile Include="Regular\Attributes\NotNullAttribute.cs" />
     <Compile Include="Common\Transform\TransformEnum.cs" />
     <Compile Include="Regular\Attributes\UsedImplicitlyAttribute.cs" />
+    <Compile Include="Regular\FlowHistory.cs" />
+    <Compile Include="Regular\HourKpiHistory.cs" />
     <Compile Include="Regular\IIpAddress.cs" />
     <Compile Include="Regular\IOOperations.cs" />
     <Compile Include="Regular\IpAddressOperations.cs" />

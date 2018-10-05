@@ -1,11 +1,11 @@
 ﻿using System;
 using Abp.EntityFramework.AutoMapper;
+using Abp.EntityFramework.Entities.Maintainence;
 using Lte.Domain.Common.Types;
-using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Alarm;
 using Lte.Domain.Regular.Attributes;
 
-namespace Lte.Parameters.Entities.Kpi
+namespace Lte.MySqlFramework.Entities.Maintainence
 {
     [TypeDoc("告警信息视图")]
     [AutoMapFrom(typeof(AlarmStat))]

@@ -1,7 +1,7 @@
 ﻿using Abp.EntityFramework;
 using Lte.Parameters.Entities.Kpi;
 using System.Data.Entity;
-using Abp.EntityFramework.Entities.Kpi;
+using Abp.EntityFramework.Entities.Mr;
 
 namespace Lte.Parameters.Concrete
 {
@@ -11,12 +11,6 @@ namespace Lte.Parameters.Concrete
         {
         }
 
-        public DbSet<AlarmStat> AlarmStats { get; set; }
-
-        public DbSet<PreciseCoverage4G> PrecisCoverage4Gs { get; set; }
-
-        public DbSet<InterferenceMatrixStat> InterferenceMatrices { get; set; }
-        
 
     }
 }

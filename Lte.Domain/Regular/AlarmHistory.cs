@@ -1,6 +1,6 @@
 ﻿using Lte.Domain.Regular.Attributes;
 
-namespace Lte.Parameters.Entities.Kpi
+namespace Lte.Domain.Regular
 {
     [TypeDoc("告警历史记录")]
     public class AlarmHistory

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Abp.EntityFramework;
+using Abp.EntityFramework.Entities.Maintainence;
 using Abp.EntityFramework.Repositories;
-using Lte.Parameters.Abstract.Kpi;
-using Lte.Parameters.Entities.Kpi;
+using Lte.MySqlFramework.Abstract.Maintainence;
 
-namespace Lte.Parameters.Concrete.Kpi
+namespace Lte.MySqlFramework.Concrete.Maintainence
 {
-    public class EFAlarmRepository : EfRepositorySave<EFParametersContext, AlarmStat>, IAlarmRepository
+    public class AlarmRepository : EfRepositorySave<MySqlContext, AlarmStat>, IAlarmRepository
     {
         public List<AlarmStat> GetAllList(DateTime begin, DateTime end)
         {
@@ -30,8 +30,8 @@ namespace Lte.Parameters.Concrete.Kpi
         {
             return Count(x => x.HappenTime >= begin && x.HappenTime < end && x.ENodebId == eNodebId);
         }
-        
-        public EFAlarmRepository(IDbContextProvider<EFParametersContext> dbContextProvider) : base(dbContextProvider)
+
+        public AlarmRepository(IDbContextProvider<MySqlContext> dbContextProvider) : base(dbContextProvider)
         {
         }
     }

@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
+using Lte.Domain.Regular;
 using Lte.Evaluations.DataService.Kpi;
 using Lte.Evaluations.DataService.RegionKpi;
-using Lte.Parameters.Entities.Kpi;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.Kpi

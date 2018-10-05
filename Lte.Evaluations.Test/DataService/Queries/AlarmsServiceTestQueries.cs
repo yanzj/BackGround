@@ -1,8 +1,6 @@
-﻿using Lte.Domain.Common;
-using Lte.Domain.Common.Types;
-using Lte.Domain.Common.Wireless;
+﻿using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless.Alarm;
-using Lte.Parameters.Entities.Kpi;
+using Lte.MySqlFramework.Entities.Maintainence;
 using NUnit.Framework;
 
 namespace Lte.Evaluations.DataService.Queries

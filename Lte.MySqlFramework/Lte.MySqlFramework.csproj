@@ -64,6 +64,9 @@
     <Reference Include="EntityFramework.DynamicFilters, Version=2.10.0.0, Culture=neutral, PublicKeyToken=146423a1b8d60775, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.DynamicFilters.2.10.0\lib\net40\EntityFramework.DynamicFilters.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework.Extended, Version=6.0.0.0, Culture=neutral, PublicKeyToken=05b7e29bdd433584, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.Extended.6.1.0.168\lib\net45\EntityFramework.Extended.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
@@ -152,11 +155,14 @@
     <Compile Include="Abstract\Kpi\IHourUsersRepository.cs" />
     <Compile Include="Abstract\Kpi\IRssiHuaweiRepository.cs" />
     <Compile Include="Abstract\Kpi\IRssiZteRepository.cs" />
+    <Compile Include="Abstract\Maintainence\IAlarmRepository.cs" />
     <Compile Include="Abstract\Maintainence\ICheckingBasicRepository.cs" />
     <Compile Include="Abstract\Maintainence\ICheckingDetailsRepository.cs" />
     <Compile Include="Abstract\Maintainence\ICheckingProjectRepository.cs" />
     <Compile Include="Abstract\College\ICollegeRepository.cs" />
     <Compile Include="Abstract\Cdma\ICdmaRegionStatRepository.cs" />
+    <Compile Include="Abstract\Mr\IInterferenceMatrixRepository.cs" />
+    <Compile Include="Abstract\Mr\IPreciseCoverage4GRepository.cs" />
     <Compile Include="Abstract\RegionKpi\ITownHourCqiRepository.cs" />
     <Compile Include="Abstract\RegionKpi\ITownHourPrbRepository.cs" />
     <Compile Include="Abstract\RegionKpi\ITownHourUsersRepository.cs" />
@@ -259,6 +265,9 @@
     <Compile Include="Concrete\Kpi\RssiHuaweiRepository.cs" />
     <Compile Include="Concrete\Kpi\RssiZteRepository.cs" />
     <Compile Include="Concrete\Maintainence\AlarmWorkItemRepository.cs" />
+    <Compile Include="Concrete\Maintainence\AlarmRepository.cs" />
+    <Compile Include="Concrete\Mr\InterferenceMatrixRepository.cs" />
+    <Compile Include="Concrete\Mr\PreciseCoverage4GRepository.cs" />
     <Compile Include="Concrete\RegionKpi\TownHourCqiRepository.cs" />
     <Compile Include="Concrete\RegionKpi\TownHourPrbRepository.cs" />
     <Compile Include="Concrete\RegionKpi\TownHourUsersRepository.cs" />
@@ -341,6 +350,7 @@
     <Compile Include="Entities\Kpi\HourCqiView.cs" />
     <Compile Include="Entities\Kpi\HourPrbView.cs" />
     <Compile Include="Entities\Kpi\HourUsersView.cs" />
+    <Compile Include="Entities\Maintainence\AlarmView.cs" />
     <Compile Include="Entities\Maintainence\CheckingDetailsView.cs" />
     <Compile Include="Entities\Maintainence\CheckingResultView.cs" />
     <Compile Include="Entities\Mr\DistrictMrsSinrUlView.cs" />
@@ -354,13 +364,13 @@
     <Compile Include="Entities\RegionKpi\TownHourCqiView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourPrbView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourUsersView.cs" />
-    <Compile Include="Migrations\201809290312059_Add_Rssi_Stat.cs" />
-    <Compile Include="Migrations\201809290312059_Add_Rssi_Stat.Designer.cs">
-      <DependentUpon>201809290312059_Add_Rssi_Stat.cs</DependentUpon>
+    <Compile Include="Migrations\201810050229539_Move_Precise.cs" />
+    <Compile Include="Migrations\201810050229539_Move_Precise.Designer.cs">
+      <DependentUpon>201810050229539_Move_Precise.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809290430507_Add_Rssi_Stat1.cs" />
-    <Compile Include="Migrations\201809290430507_Add_Rssi_Stat1.Designer.cs">
-      <DependentUpon>201809290430507_Add_Rssi_Stat1.cs</DependentUpon>
+    <Compile Include="Migrations\201810050252281_Move_Interference.cs" />
+    <Compile Include="Migrations\201810050252281_Move_Interference.Designer.cs">
+      <DependentUpon>201810050252281_Move_Interference.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -481,11 +491,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809290312059_Add_Rssi_Stat.resx">
-      <DependentUpon>201809290312059_Add_Rssi_Stat.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810050229539_Move_Precise.resx">
+      <DependentUpon>201810050229539_Move_Precise.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809290430507_Add_Rssi_Stat1.resx">
-      <DependentUpon>201809290430507_Add_Rssi_Stat1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810050252281_Move_Interference.resx">
+      <DependentUpon>201810050252281_Move_Interference.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

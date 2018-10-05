@@ -4,7 +4,7 @@ using System.Linq;
 using Lte.Domain.Common.Wireless;
 using Lte.Evaluations.ViewModels.Precise;
 using Lte.MySqlFramework.Abstract.Infrastructure;
-using Lte.Parameters.Abstract.Kpi;
+using Lte.MySqlFramework.Abstract.Mr;
 
 namespace Lte.Evaluations.DataService.College
 {

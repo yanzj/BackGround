@@ -1,14 +1,12 @@
 using System;
 using System.Linq;
 using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Infrastructure;
 using AutoMapper;
 using Lte.Domain.Common.Transform;
 using Lte.Domain.Common.Types;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Infrastructure;
-using Lte.Parameters.Abstract.Kpi;
+using Lte.MySqlFramework.Abstract.Mr;
 
 namespace Lte.Evaluations.ViewModels.Precise
 {

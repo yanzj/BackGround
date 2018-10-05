@@ -219,6 +219,12 @@ namespace Lte.MySqlFramework.Concrete
         public DbSet<RssiHuawei> RssiHuaweis { get; set; }
 
         public DbSet<RssiZte> RssiZtes { get; set; }
+        
+        public DbSet<AlarmStat> AlarmStats { get; set; }
+        
+        public DbSet<PreciseCoverage4G> PrecisCoverage4Gs { get; set; }
+        
+        public DbSet<InterferenceMatrixStat> InterferenceMatrices { get; set; }
 
     }
 }

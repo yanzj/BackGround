@@ -1,18 +1,16 @@
 ﻿using Abp.EntityFramework.AutoMapper;
 using AutoMapper;
 using Lte.Domain.Regular;
-using Lte.Parameters.Abstract.Basic;
-using Lte.Parameters.Abstract.Infrastructure;
 using Lte.Parameters.Abstract.Kpi;
 using Lte.Parameters.Entities.Kpi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Abp.EntityFramework.Entities.Mr;
 using Lte.Domain.Common.Wireless;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Infrastructure;
-using Lte.MySqlFramework.Entities;
+using Lte.MySqlFramework.Abstract.Mr;
 using Lte.MySqlFramework.Entities.Infrastructure;
 
 namespace Lte.Evaluations.DataService.Mr

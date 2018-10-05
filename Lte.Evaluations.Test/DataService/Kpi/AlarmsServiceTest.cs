@@ -1,13 +1,9 @@
 ﻿using Abp.EntityFramework.AutoMapper;
 using Abp.Reflection;
 using AutoMapper;
-using Lte.Domain.Common.Wireless;
 using Lte.Evaluations.DataService.Queries;
 using Lte.Evaluations.MockItems;
 using Lte.Evaluations.Policy;
-using Lte.Evaluations.ViewModels;
-using Lte.Parameters.Abstract;
-using Lte.Parameters.Entities.Kpi;
 using Lte.Parameters.MockOperations;
 using Moq;
 using NUnit.Framework;
@@ -15,9 +11,11 @@ using Shouldly;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Abp.EntityFramework.Entities.Maintainence;
 using Lte.Domain.Common.Wireless.Alarm;
 using Lte.Evaluations.DataService.Basic;
-using Lte.Parameters.Abstract.Kpi;
+using Lte.MySqlFramework.Abstract.Maintainence;
+using Lte.MySqlFramework.Entities.Maintainence;
 
 namespace Lte.Evaluations.DataService.Kpi
 {

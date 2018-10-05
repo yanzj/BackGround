@@ -69,7 +69,7 @@ namespace LtePlatform
 
             ninjectKernel.Bind<IInfrastructureRepository>().To<InfrastructureRepository>();
 
-            ninjectKernel.Bind<IAlarmRepository>().To<EFAlarmRepository>();
+            ninjectKernel.Bind<IAlarmRepository>().To<AlarmRepository>();
 
             ninjectKernel.Bind<ICollege3GTestRepository>().To<EFCollege3GTestRepository>();
 
@@ -111,7 +111,7 @@ namespace LtePlatform
 
             ninjectKernel.Bind<IWorkItemRepository>().To<WorkItemRepository>();
 
-            ninjectKernel.Bind<IInterferenceMatrixRepository>().To<EFInterferenceMatrixRepository>();
+            ninjectKernel.Bind<IInterferenceMatrixRepository>().To<InterferenceMatrixRepository>();
 
             ninjectKernel.Bind<IInterferenceMongoRepository>().To<InterferenceMongoRepository>();
 
@@ -558,6 +558,8 @@ namespace LtePlatform
             ninjectKernel.Bind<HourCqiQueryService>().ToSelf();
 
             ninjectKernel.Bind<HourCqiRegionStatService>().ToSelf();
+
+            ninjectKernel.Bind<TownMrsRsrpService>().ToSelf();
 
         }
     }
