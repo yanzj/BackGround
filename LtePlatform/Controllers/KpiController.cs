@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Lte.Domain.Common.Types;
@@ -229,7 +230,7 @@ namespace LtePlatform.Controllers
         }
 
         [HttpPost]
-        public ViewResult DtVolteImport()
+        public async Task<ViewResult> DtVolteImport()
         {
             var httpPostedFileBase = Request.Files["dtVolte"];
             if (httpPostedFileBase == null || httpPostedFileBase.FileName == "")
@@ -241,7 +242,7 @@ namespace LtePlatform.Controllers
                 try
                 {
                     var path = httpPostedFileBase.UploadKpiFile();
-                    ViewBag.Message = _importService.ImportDtVolteFile(path);
+                    ViewBag.Message = await _importService.ImportDtVolteFile(path);
                 }
                 catch (Exception e)
                 {

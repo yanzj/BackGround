@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities.Cdma;
 using Abp.EntityFramework.Entities.Complain;
@@ -254,7 +255,7 @@ namespace Lte.Evaluations.DataService.Kpi
             return "完成3G路测文件导入：" + path + "(" + tableName + ")" + count + "条";
         }
 
-        public string ImportDtVolteFile(string path)
+        public async Task<string> ImportDtVolteFile(string path)
         {
             var fields = path.Replace(".csv", "").GetSplittedFields('\\');
             var tableName = fields[fields.Length - 1].DtFileNameEncode();
@@ -268,7 +269,7 @@ namespace Lte.Evaluations.DataService.Kpi
             var stats = filterInfos.MergeRecords();
             if (!stats.Any()) throw new Exception("无数据或格式错误！");
             _rasterTestInfoRepository.UpdateRasterInfo(stats, tableName, "Volte");
-            var count = _fileRecordService.InsertFileRecordVoltes(stats, tableName);
+            var count = await _fileRecordService.InsertFileRecordVoltes(stats, tableName);
             return "完成VoLTE路测文件导入：" + path + "(" + tableName + ")" + count + "条";
         }
 

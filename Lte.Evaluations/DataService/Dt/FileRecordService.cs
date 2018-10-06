@@ -94,7 +94,8 @@ namespace Lte.Parameters.Concrete.Dt
         
         public async Task<int> InsertFileRecord4Gs(IEnumerable<FileRecord4G> stats, string tableName)
         {
-            var file = _dtFileInfoRepository.FirstOrDefault(x => x.CsvFileName == tableName);
+            var file = _dtFileInfoRepository.FirstOrDefault(x =>
+                x.CsvFileName == tableName + ".csv" || x.CsvFileName == tableName + ".CSV");
             if (file == null) return 0;
             var statList = stats.ToList();
             statList.ForEach(stat => { stat.FileId = file.Id;});
@@ -103,7 +104,8 @@ namespace Lte.Parameters.Concrete.Dt
 
         public async Task<int> InsertFileRecord2Gs(IEnumerable<FileRecord2G> stats, string tableName)
         {
-            var file = _dtFileInfoRepository.FirstOrDefault(x => x.CsvFileName == tableName);
+            var file = _dtFileInfoRepository.FirstOrDefault(x =>
+                x.CsvFileName == tableName + ".csv" || x.CsvFileName == tableName + ".CSV");
             if (file == null) return 0;
             var statList = stats.ToList();
             statList.ForEach(stat => { stat.FileId = file.Id;});
@@ -112,7 +114,8 @@ namespace Lte.Parameters.Concrete.Dt
 
         public async Task<int> InsertFileRecord3Gs(IEnumerable<FileRecord3G> stats, string tableName)
         {
-            var file = _dtFileInfoRepository.FirstOrDefault(x => x.CsvFileName == tableName);
+            var file = _dtFileInfoRepository.FirstOrDefault(x =>
+                x.CsvFileName == tableName + ".csv" || x.CsvFileName == tableName + ".CSV");
             if (file == null) return 0;
             var statList = stats.ToList();
             statList.ForEach(stat => { stat.FileId = file.Id;});
@@ -121,7 +124,8 @@ namespace Lte.Parameters.Concrete.Dt
 
         public async Task<int> InsertFileRecordVoltes(IEnumerable<FileRecordVolte> stats, string tableName)
         {
-            var file = _dtFileInfoRepository.FirstOrDefault(x => x.CsvFileName == tableName);
+            var file = _dtFileInfoRepository.FirstOrDefault(x =>
+                x.CsvFileName == tableName + ".csv" || x.CsvFileName == tableName + ".CSV");
             if (file == null) return 0;
             var statList = stats.ToList();
             statList.ForEach(stat => { stat.FileId = file.Id;});
