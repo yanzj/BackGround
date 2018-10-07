@@ -1,31 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities.RegionKpi;
-using Lte.Domain.Common.Wireless;
-using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Regular.Attributes;
 
-namespace Lte.MySqlFramework.Entities.Mr
+namespace Abp.EntityFramework.Entities.Mr
 {
     [AutoMapFrom(typeof(TownCoverageStat))]
-    public class TownCoverageView : ICityDistrictTown, IStatDate, ITownId
+    [TypeDoc("聚合MRS覆盖统计视图")]
+    public class AggregateCoverageView : IStatDate
     {
-        public string District { get; set; }
-
-        public string Town { get; set; }
-
-        public string City { get; set; }
+        [MemberDoc("小区个数")]
+        public int CellCount { get; set; }
         
-        [ArraySumProtection]
-        public FrequencyBandType FrequencyBandType { get; set; } = FrequencyBandType.All;
-
-        public string Frequency => FrequencyBandType.ToString();
-
+        public string Name { get; set; }
+        
         public DateTime StatDate { get; set; }
-
-        ////////aaaa
-
+        
         public long CoverageMrs { get; set; }
 
         public double CoverageSum { get; set; }
@@ -39,7 +34,7 @@ namespace Lte.MySqlFramework.Entities.Mr
         public long CoverageAbove110 { get; set; }
 
         public long CoverageAbove115 { get; set; }
-
+        
         public double CoverageAbove95Rate => CoverageMrs == 0 ? 0 : (double)CoverageAbove95 * 100 / CoverageMrs;
 
         public double CoverageAbove100Rate => CoverageMrs == 0 ? 0 : (double)CoverageAbove100 * 100 / CoverageMrs;
@@ -55,10 +50,10 @@ namespace Lte.MySqlFramework.Entities.Mr
         public long CoverageWeak { get; set; }
 
         public long CoverageTotal { get; set; }
-
+        
         public double CoverageWeakRate => CoverageTotal == 0 ? 0 : CoverageWeak / CoverageTotal;
 
-        ////////aaaa
+        ////////////////////aaa
 
         public long TelecomMrs { get; set; }
 
@@ -73,7 +68,7 @@ namespace Lte.MySqlFramework.Entities.Mr
         public long TelecomAbove110 { get; set; }
 
         public long TelecomAbove115 { get; set; }
-
+        
         public double TelecomAbove95Rate => TelecomMrs == 0 ? 0 : (double)TelecomAbove95 * 100 / TelecomMrs;
 
         public double TelecomAbove100Rate => TelecomMrs == 0 ? 0 : (double)TelecomAbove100 * 100 / TelecomMrs;
@@ -89,10 +84,10 @@ namespace Lte.MySqlFramework.Entities.Mr
         public long TelecomWeak { get; set; }
 
         public long TelecomTotal { get; set; }
-
+        
         public double TelecomWeakRate => TelecomTotal == 0 ? 0 : TelecomWeak / TelecomTotal;
 
-        ////////aaaa
+        ////////////////////aaa
 
         public long AccessMrs { get; set; }
 
@@ -107,7 +102,7 @@ namespace Lte.MySqlFramework.Entities.Mr
         public long AccessAbove110 { get; set; }
 
         public long AccessAbove115 { get; set; }
-
+        
         public double AccessAbove95Rate => AccessMrs == 0 ? 0 : (double)AccessAbove95 * 100 / AccessMrs;
 
         public double AccessAbove100Rate => AccessMrs == 0 ? 0 : (double)AccessAbove100 * 100 / AccessMrs;
@@ -123,10 +118,10 @@ namespace Lte.MySqlFramework.Entities.Mr
         public long AccessWeak { get; set; }
 
         public long AccessTotal { get; set; }
-
+        
         public double AccessWeakRate => AccessTotal == 0 ? 0 : AccessWeak / AccessTotal;
 
-        ////////aaaa
+        //////////////////aaaaav
 
         public long AgpsCoverageMrs { get; set; }
 
@@ -141,7 +136,7 @@ namespace Lte.MySqlFramework.Entities.Mr
         public long AgpsCoverageAbove110 { get; set; }
 
         public long AgpsCoverageAbove115 { get; set; }
-
+        
         public double AgpsCoverageAbove95Rate => AgpsCoverageMrs == 0 ? 0 : (double)AgpsCoverageAbove95 * 100 / AgpsCoverageMrs;
 
         public double AgpsCoverageAbove100Rate => AgpsCoverageMrs == 0 ? 0 : (double)AgpsCoverageAbove100 * 100 / AgpsCoverageMrs;
@@ -157,10 +152,10 @@ namespace Lte.MySqlFramework.Entities.Mr
         public long AgpsCoverageWeak { get; set; }
 
         public long AgpsCoverageTotal { get; set; }
-
+        
         public double AgpsCoverageWeakRate => AgpsCoverageTotal == 0 ? 0 : AgpsCoverageWeak / AgpsCoverageTotal;
 
-        ////////aaaa
+        ////////////////////aaa
 
         public long AgpsTelecomMrs { get; set; }
 
@@ -175,7 +170,7 @@ namespace Lte.MySqlFramework.Entities.Mr
         public long AgpsTelecomAbove110 { get; set; }
 
         public long AgpsTelecomAbove115 { get; set; }
-
+        
         public double AgpsTelecomAbove95Rate => AgpsTelecomMrs == 0 ? 0 : (double)AgpsTelecomAbove95 * 100 / AgpsTelecomMrs;
 
         public double AgpsTelecomAbove100Rate => AgpsTelecomMrs == 0 ? 0 : (double)AgpsTelecomAbove100 * 100 / AgpsTelecomMrs;
@@ -191,10 +186,10 @@ namespace Lte.MySqlFramework.Entities.Mr
         public long AgpsTelecomWeak { get; set; }
 
         public long AgpsTelecomTotal { get; set; }
-
+        
         public double AgpsTelecomWeakRate => AgpsTelecomTotal == 0 ? 0 : AgpsTelecomWeak / AgpsTelecomTotal;
 
-        ////////aaaa
+        ////////////////////aaa
 
         public long AgpsAccessMrs { get; set; }
 
@@ -209,7 +204,7 @@ namespace Lte.MySqlFramework.Entities.Mr
         public long AgpsAccessAbove110 { get; set; }
 
         public long AgpsAccessAbove115 { get; set; }
-
+        
         public double AgpsAccessAbove95Rate => AgpsAccessMrs == 0 ? 0 : (double)AgpsAccessAbove95 * 100 / AgpsAccessMrs;
 
         public double AgpsAccessAbove100Rate => AgpsAccessMrs == 0 ? 0 : (double)AgpsAccessAbove100 * 100 / AgpsAccessMrs;
@@ -225,9 +220,8 @@ namespace Lte.MySqlFramework.Entities.Mr
         public long AgpsAccessWeak { get; set; }
 
         public long AgpsAccessTotal { get; set; }
-
+        
         public double AgpsAccessWeakRate => AgpsAccessTotal == 0 ? 0 : AgpsAccessWeak / AgpsAccessTotal;
 
-        public int TownId { get; set; }
     }
 }

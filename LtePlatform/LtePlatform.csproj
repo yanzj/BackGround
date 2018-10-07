@@ -351,6 +351,7 @@
     <Compile Include="Controllers\Mr\AgpsMobileController.cs" />
     <Compile Include="Controllers\Mr\AgpsTelecomController.cs" />
     <Compile Include="Controllers\Mr\AgpsUnicomController.cs" />
+    <Compile Include="Controllers\Mr\CollegeMroRsrpController.cs" />
     <Compile Include="Controllers\Mr\CollegeMrsRsrpController.cs" />
     <Compile Include="Controllers\Mr\DpiGridKpiController.cs" />
     <Compile Include="Controllers\Mr\DumpStationAntennaController.cs" />

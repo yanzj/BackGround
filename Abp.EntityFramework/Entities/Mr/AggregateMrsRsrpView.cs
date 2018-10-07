@@ -1,12 +1,13 @@
 ﻿using System;
 using Abp.EntityFramework.AutoMapper;
+using Abp.EntityFramework.Dependency;
 using Lte.Domain.Regular.Attributes;
 
 namespace Abp.EntityFramework.Entities.Mr
 {
     [AutoMapFrom(typeof(TownMrsRsrp))]
     [TypeDoc("聚合MRS覆盖统计视图")]
-    public class AggregateMrsRsrpView
+    public class AggregateMrsRsrpView : IStatDate
     {
         [MemberDoc("小区个数")]
         public int CellCount { get; set; }

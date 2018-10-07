@@ -193,6 +193,7 @@
     <Compile Include="Entities\Maintainence\AlarmWorkItem.cs" />
     <Compile Include="Entities\Maintainence\AlarmWorkItemGroup.cs" />
     <Compile Include="Entities\Maintainence\AlarmWorkItemView.cs" />
+    <Compile Include="Entities\Mr\AggregateCoverageView.cs" />
     <Compile Include="Entities\Mr\AggregateMrsRsrpView.cs" />
     <Compile Include="Entities\Mr\InterferenceMatrixStat.cs" />
     <Compile Include="Entities\Mr\MrsRsrpStat.cs" />

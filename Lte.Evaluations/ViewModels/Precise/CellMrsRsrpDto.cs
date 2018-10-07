@@ -10,7 +10,7 @@ namespace Lte.Evaluations.ViewModels.Precise
 {
     [AutoMapFrom(typeof(MrsRsrpStat))]
     [AutoMapTo(typeof(TopMrsRsrp))]
-    public class CellMrsRsrpDto : IStatDate, ILteCellQuery
+    public class CellMrsRsrpDto : IStatDate, ILteCellQuery, IENodebName
     {
         public DateTime StatDate { get; set; }
 
