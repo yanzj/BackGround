@@ -46,10 +46,10 @@ namespace LtePlatform.Controllers.Parameters
         }
 
         [HttpGet]
-        [ApiDoc("获取给定日期范围内的历史告警记录数")]
+        [ApiDoc("获取给定日期范围内的历史告警记录数（包含MRO覆盖率统计）")]
         [ApiParameterDoc("begin", "开始日期")]
         [ApiParameterDoc("end", "结束日期")]
-        [ApiResponse("历史告警记录数")]
+        [ApiResponse("历史告警记录数（包含MRO覆盖率统计）")]
         public IEnumerable<AlarmHistory> Get(DateTime begin, DateTime end)
         {
             return _service.GetAlarmHistories(begin, end);

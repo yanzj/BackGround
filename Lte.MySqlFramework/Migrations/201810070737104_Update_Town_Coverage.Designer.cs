@@ -7,13 +7,13 @@ namespace Lte.MySqlFramework.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Move_Interference : IMigrationMetadata
+    public sealed partial class Update_Town_Coverage : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Move_Interference));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Update_Town_Coverage));
         
         string IMigrationMetadata.Id
         {
-            get { return "201810050252281_Move_Interference"; }
+            get { return "201810070737104_Update_Town_Coverage"; }
         }
         
         string IMigrationMetadata.Source

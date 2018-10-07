@@ -4,6 +4,7 @@ using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities.Test;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Regular.Attributes;
 
 namespace Abp.EntityFramework.Entities.RegionKpi
@@ -16,6 +17,11 @@ namespace Abp.EntityFramework.Entities.RegionKpi
 
         [ArraySumProtection]
         public DateTime StatDate { get; set; }
+        
+        [ArraySumProtection]
+        public FrequencyBandType FrequencyBandType { get; set; } = FrequencyBandType.All;
+
+        public string Frequency => FrequencyBandType.ToString();
 
         public long CoverageMrs { get; set; }
 

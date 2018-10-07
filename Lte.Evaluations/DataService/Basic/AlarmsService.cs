@@ -5,6 +5,7 @@ using System.Linq;
 using Abp.EntityFramework.Entities.Maintainence;
 using AutoMapper;
 using Lte.Domain.Common.Wireless.Alarm;
+using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Common.Wireless.Work;
 using Lte.Domain.LinqToCsv.Context;
 using Lte.Domain.LinqToCsv.Description;
@@ -166,7 +167,25 @@ namespace Lte.Evaluations.DataService.Basic
                     Alarms = _repository.Count(x => x.HappenTime >= beginDate && x.HappenTime < endDate),
                     CoverageStats = _coverageStatRepository.Count(x => x.StatDate >= beginDate && x.StatDate < endDate),
                     TownCoverageStats =
-                        _townCoverageRepository.Count(x => x.StatDate >= beginDate && x.StatDate < endDate),
+                        _townCoverageRepository.Count(x =>
+                            x.StatDate >= beginDate && x.StatDate < endDate &&
+                            x.FrequencyBandType == FrequencyBandType.All),
+                    TownCoverage800 =
+                        _townCoverageRepository.Count(x =>
+                            x.StatDate >= beginDate && x.StatDate < endDate &&
+                            x.FrequencyBandType == FrequencyBandType.Band800VoLte),
+                    TownCoverage1800 =
+                        _townCoverageRepository.Count(x =>
+                            x.StatDate >= beginDate && x.StatDate < endDate &&
+                            x.FrequencyBandType == FrequencyBandType.Band1800),
+                    TownCoverage2100 =
+                        _townCoverageRepository.Count(x =>
+                            x.StatDate >= beginDate && x.StatDate < endDate &&
+                            x.FrequencyBandType == FrequencyBandType.Band2100),
+                    CollegeCoverageStats = 
+                        _townCoverageRepository.Count(x =>
+                            x.StatDate >= beginDate && x.StatDate < endDate &&
+                            x.FrequencyBandType == FrequencyBandType.College),
                     ZhangshangyouQualities =
                         _zhangshangyouQualityRepository.Count(x => x.StatTime >= beginDate && x.StatTime < endDate),
                     ZhangshangyouCoverages =

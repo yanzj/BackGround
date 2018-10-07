@@ -14,6 +14,14 @@ namespace Lte.Domain.Regular
         public int CoverageStats { get; set; }
 
         public int TownCoverageStats { get; set; }
+        
+        public int TownCoverage800 { get; set; }
+
+        public int TownCoverage1800 { get; set; }
+
+        public int TownCoverage2100 { get; set; }
+
+        public int CollegeCoverageStats { get; set; }
 
         public int ZhangshangyouQualities { get; set; }
 
