@@ -339,15 +339,6 @@
     .factory('alarmsService',
         function(generalHttpService) {
             return {
-                queryENodebAlarmsByDateSpanAndLevel: function(eNodebId, begin, end, level) {
-                    return generalHttpService.getApiData('Alarms',
-                    {
-                        eNodebId: eNodebId,
-                        begin: begin,
-                        end: end,
-                        level: level
-                    });
-                },
                 queryMicroItems: function() {
                     return generalHttpService.getApiData('MicroAmplifier', {});
                 },

@@ -214,7 +214,7 @@ namespace Lte.Evaluations.DataService.Kpi
             return "完成规则站点信息导入" + count + "条";
         }
 
-        public string ImportDt2GFile(string path)
+        public async Task<string> ImportDt2GFile(string path)
         {
             var fields = path.Replace(".csv", "").GetSplittedFields('\\');
             var tableName = fields[fields.Length - 1].DtFileNameEncode();
@@ -234,11 +234,11 @@ namespace Lte.Evaluations.DataService.Kpi
             _dtFileInfoRepository.UpdateCsvFileInfo(tableName, filterInfos[0].StatTime, "2G");
             var stats = filterInfos.MergeRecords();
             _rasterTestInfoRepository.UpdateRasterInfo(stats, tableName, "2G");
-            var count = _fileRecordService.InsertFileRecord2Gs(stats, tableName);
+            var count = await _fileRecordService.InsertFileRecord2Gs(stats, tableName);
             return "完成2G路测文件导入：" + path + "(" + tableName + ")" + count + "条";
         }
 
-        public string ImportDt3GFile(string path)
+        public async Task<string> ImportDt3GFile(string path)
         {
             var fields = path.Replace(".csv", "").GetSplittedFields('\\');
             var tableName = fields[fields.Length - 1].DtFileNameEncode();
@@ -251,7 +251,7 @@ namespace Lte.Evaluations.DataService.Kpi
             _dtFileInfoRepository.UpdateCsvFileInfo(tableName, filterInfos[0].StatTime, "3G");
             var stats = filterInfos.MergeRecords();
             _rasterTestInfoRepository.UpdateRasterInfo(stats, tableName, "3G");
-            var count = _fileRecordService.InsertFileRecord3Gs(stats, tableName);
+            var count = await _fileRecordService.InsertFileRecord3Gs(stats, tableName);
             return "完成3G路测文件导入：" + path + "(" + tableName + ")" + count + "条";
         }
 
@@ -290,7 +290,7 @@ namespace Lte.Evaluations.DataService.Kpi
             return infos != null ? infos.GetFoshanGeoPoints().ToList() : new List<FileRecord4GCsv>();
         }
 
-        public string ImportDt4GFile(List<FileRecord4GCsv> filterInfos, List<string> paths, DateTime statDate)
+        public async Task<string> ImportDt4GFile(List<FileRecord4GCsv> filterInfos, List<string> paths, DateTime statDate)
         {
             if (!filterInfos.Any()) return "无数据或格式错误！";
             var fields = paths[0].Replace(".csv", "").GetSplittedFields('\\');
@@ -300,11 +300,11 @@ namespace Lte.Evaluations.DataService.Kpi
             _dtFileInfoRepository.UpdateCsvFileInfo(tableName, statTime, "4G");
             var stats = filterInfos.MergeRecords();
             _rasterTestInfoRepository.UpdateRasterInfo(stats, tableName, "4G");
-            var count = _fileRecordService.InsertFileRecord4Gs(stats, tableName);
+            var count = await _fileRecordService.InsertFileRecord4Gs(stats, tableName);
             return "完成4G路测文件导入：" + paths[0] + "(" + tableName + ")" + count + "条";
         }
 
-        public string ImportDt4GDingli(string path)
+        public async Task<string> ImportDt4GDingli(string path)
         {
             var fields = path.Replace(".csv", "").GetSplittedFields('\\');
             var tableName = fields[fields.Length - 1].DtFileNameEncode();
@@ -316,7 +316,7 @@ namespace Lte.Evaluations.DataService.Kpi
             _dtFileInfoRepository.UpdateCsvFileInfo(tableName, filterInfos[0].StatTime, "4G");
             var stats = filterInfos.MergeRecords();
             _rasterTestInfoRepository.UpdateRasterInfo(stats, tableName, "4G");
-            var count = _fileRecordService.InsertFileRecord4Gs(stats, tableName);
+            var count = await _fileRecordService.InsertFileRecord4Gs(stats, tableName);
             return "完成4G路测文件导入：" + path + "(" + tableName + ")" + count + "条";
         }
 

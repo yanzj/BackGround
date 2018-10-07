@@ -931,10 +931,8 @@
     <Content Include="directives\parameters\cell\A4InterFreq.html" />
     <Content Include="directives\parameters\cell\A5InterFreq.html" />
     <Content Include="appViews\Parameters\Map\CdmaCellInfoBox.html" />
-    <Content Include="appViews\Parameters\Map\DistributionMapInfoBox.html" />
     <Content Include="appViews\Parameters\Region\CellInfo.html" />
     <Content Include="appViews\Rutrace\Coverage\Index.html" />
-    <Content Include="directives\parameters\kpi\AlarmTable.html" />
     <Content Include="directives\parameters\kpi\FeelingTable.html" />
     <Content Include="directives\parameters\kpi\FlowTable.html" />
     <Content Include="directives\parameters\parameters.module.js" />

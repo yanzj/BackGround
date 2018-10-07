@@ -184,7 +184,7 @@ namespace LtePlatform.Controllers
         }
 
         [HttpPost]
-        public ViewResult Dt2GImport()
+        public async Task<ViewResult> Dt2GImport()
         {
             var httpPostedFileBase = Request.Files["dt2G"];
             if (httpPostedFileBase == null || httpPostedFileBase.FileName == "")
@@ -196,7 +196,7 @@ namespace LtePlatform.Controllers
                 try
                 {
                     var path = httpPostedFileBase.UploadKpiFile();
-                    ViewBag.Message = _importService.ImportDt2GFile(path);
+                    ViewBag.Message = await _importService.ImportDt2GFile(path);
                 }
                 catch (Exception e)
                 {
@@ -207,7 +207,7 @@ namespace LtePlatform.Controllers
         }
 
         [HttpPost]
-        public ViewResult Dt3GImport()
+        public async Task<ViewResult> Dt3GImport()
         {
             var httpPostedFileBase = Request.Files["dt3G"];
             if (httpPostedFileBase == null || httpPostedFileBase.FileName == "")
@@ -219,7 +219,7 @@ namespace LtePlatform.Controllers
                 try
                 {
                     var path = httpPostedFileBase.UploadKpiFile();
-                    ViewBag.Message = _importService.ImportDt3GFile(path);
+                    ViewBag.Message = await _importService.ImportDt3GFile(path);
                 }
                 catch (Exception e)
                 {
@@ -253,7 +253,7 @@ namespace LtePlatform.Controllers
         }
 
         [HttpPost]
-        public ViewResult Dt4GImport(HttpPostedFileBase[] dt4G)
+        public async Task<ViewResult> Dt4GImport(HttpPostedFileBase[] dt4G)
         {
             if (dt4G == null || dt4G.Length <= 0 || string.IsNullOrEmpty(dt4G[0]?.FileName))
             {
@@ -278,12 +278,12 @@ namespace LtePlatform.Controllers
                     infos.AddRange(data);
             }
             
-            ViewBag.Message = _importService.ImportDt4GFile(infos, paths, date);
+            ViewBag.Message = await _importService.ImportDt4GFile(infos, paths, date);
             return View("DtImport");
         }
 
         [HttpPost]
-        public ViewResult Dt4GDingliImport()
+        public async Task<ViewResult> Dt4GDingliImport()
         {
             var httpPostedFileBase = Request.Files["dt4GDingli"];
             if (httpPostedFileBase == null || httpPostedFileBase.FileName == "")
@@ -295,7 +295,7 @@ namespace LtePlatform.Controllers
                 try
                 {
                     var path = httpPostedFileBase.UploadKpiFile();
-                    ViewBag.Message = _importService.ImportDt4GDingli(path);
+                    ViewBag.Message = await _importService.ImportDt4GDingli(path);
                 }
                 catch (Exception e)
                 {

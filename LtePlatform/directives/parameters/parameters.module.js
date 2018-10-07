@@ -6,17 +6,6 @@
 ]);
 
 angular.module('parameters.basic.module', ['ui.grid', 'myApp.region', 'myApp.url', 'myApp.kpi'])
-    .directive('alarmTable',
-        function() {
-            return {
-                restrict: 'ECMA',
-                replace: true,
-                scope: {
-                    alarms: '='
-                },
-                templateUrl: '/directives/parameters/kpi/AlarmTable.html'
-            }
-        })
     .directive('flowTable',
         function() {
             return {
