@@ -4,13 +4,12 @@ using System.Linq;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities.Mr;
 using Abp.EntityFramework.Repositories;
-using AutoMapper;
 using Lte.Domain.Common.Wireless.Cell;
 using Lte.Evaluations.ViewModels.Precise;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Mr;
 using Lte.Parameters.Abstract.Kpi;
-using Lte.Parameters.Entities.Kpi;
+using Lte.Evaluations.DataService.RegionKpi;
 
 namespace Lte.Evaluations.DataService.Mr
 {
@@ -33,40 +32,12 @@ namespace Lte.Evaluations.DataService.Mr
             if (TopStats == null) TopStats = new Stack<TopMrsRsrp>();
         }
 
-        private IEnumerable<TownMrsRsrpDto> GetTownMrsStats(List<MrsRsrpStat> stats, FrequencyBandType bandType)
-        {
-            var cells = _cellRepository.GetAllList(bandType);
-            var query = from stat in stats
-                join cell in cells on new
-                {
-                    stat.ENodebId,
-                    stat.SectorId
-                } equals new
-                {
-                    cell.ENodebId,
-                    cell.SectorId
-                }
-                join eNodeb in _eNodebRepository.GetAllList() on cell.ENodebId equals eNodeb.ENodebId
-                select
-                    new
-                    {
-                        Stat = stat,
-                        eNodeb.TownId
-                    };
-            var townStats = query.Select(x =>
-            {
-                var townStat = Mapper.Map<MrsRsrpStat, TownMrsRsrpDto>(x.Stat);
-                townStat.TownId = x.TownId;
-                return townStat;
-            });
-            return townStats;
-        }
-
         public IEnumerable<TownMrsRsrp> GetMergeMrsStats(DateTime statTime, FrequencyBandType bandType)
         {
             var end = statTime.AddDays(1);
             var stats = _mrsRsrpRepository.GetAllList(x => x.StatDate >= statTime && x.StatDate < end);
-            var townStats = GetTownMrsStats(stats, bandType);
+            var townStats =
+                stats.GetTownFrequencyStats<MrsRsrpStat, TownMrsRsrp>(bandType, _cellRepository, _eNodebRepository);
 
             var mergeStats = from stat in townStats
                 group stat by stat.TownId

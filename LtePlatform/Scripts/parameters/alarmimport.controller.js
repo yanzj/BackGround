@@ -15,11 +15,34 @@
             alarmImportService.queryDumpHistory($scope.beginDate.value, $scope.endDate.value).then(function(result) {
                 $scope.dumpHistory = result;
                 angular.forEach(result, function (stat) {
-                    if (stat.coverageStats > 12000 && stat.townCoverageStats === 0) {
-                        alarmImportService.updateTownCoverageStats(stat.dateString).then(function(count) {
-                            stat.townCoverageStats = count;
-                        });
+                    if (stat.coverageStats > 12000) {
+                        if (stat.townCoverageStats === 0) {
+                            alarmImportService.updateTownCoverageStats(stat.dateString, 'all').then(function(count) {
+                                stat.townCoverageStats = count;
+                            });
+                        }
+                        if (stat.townCoverage800 === 0) {
+                            alarmImportService.updateTownCoverageStats(stat.dateString, '800').then(function(count) {
+                                stat.townCoverage800 = count;
+                            });
+                        }
+                        if (stat.townCoverage1800 === 0) {
+                            alarmImportService.updateTownCoverageStats(stat.dateString, '1800').then(function(count) {
+                                stat.townCoverage1800 = count;
+                            });
+                        }
+                        if (stat.townCoverage2100 === 0) {
+                            alarmImportService.updateTownCoverageStats(stat.dateString, '2100').then(function(count) {
+                                stat.townCoverage2100 = count;
+                            });
+                        }
+                        if (stat.collegeCoverageStats === 0) {
+                            alarmImportService.updateCollegeCoverageStats(stat.dateString).then(function(count) {
+                                stat.collegeCoverageStats = count;
+                            });
+                        }
                     }
+                        
                 });
             });
             alarmImportService.queryDumpItems().then(function(result) {

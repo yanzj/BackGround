@@ -33,16 +33,17 @@ namespace LtePlatform.Controllers.Mongo
 
         [HttpGet]
         [ApiDoc("合并镇区指标")]
-        [ApiParameterDoc("statDate", "统计日期")]
+        [ApiParameterDoc("statTime", "统计日期")]
+        [ApiParameterDoc("frequency", "频点名称，如800、1800、2100")]
         [ApiResponse("合并结果")]
         public IEnumerable<TownMrsRsrp> GetMrs(DateTime statTime, string frequency)
         {
             return _service.GetMergeMrsStats(statTime, frequency.GetBandFromFcn());
         }
         
-        [ApiDoc("查询指定日期的精确覆盖率校园统计指标")]
-        [ApiParameterDoc("statTime", "查询指定日期")]
-        [ApiResponse("校园精确覆盖率统计指标")]
+        [ApiDoc("查询指定日期的MRS覆盖率校园统计指标")]
+        [ApiParameterDoc("statDate", "查询指定日期")]
+        [ApiResponse("校园MRS覆盖率统计指标")]
         [HttpGet]
         public IEnumerable<TownMrsRsrp> Get(DateTime statDate)
         {

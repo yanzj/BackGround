@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Test;
 using Abp.EntityFramework.Repositories;
 using Lte.Domain.Excel;
 using Lte.Domain.LinqToExcel;
 using Lte.Domain.Regular;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Test;
 
 namespace Lte.Evaluations.DataService.Kpi
@@ -37,6 +35,11 @@ namespace Lte.Evaluations.DataService.Kpi
                 stat.StatDate = date;
                 CoverageStats.Push(stat);
             }
+        }
+
+        public IEnumerable<CoverageStat> QueryStats(DateTime begin, DateTime end)
+        {
+            return _repository.GetAllList(x => x.StatDate >= begin && x.StatDate < end);
         }
 
         public bool DumpOneStat()

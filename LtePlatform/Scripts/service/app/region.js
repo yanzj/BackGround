@@ -1297,11 +1297,18 @@ angular.module('region.import', ['app.core'])
                         end: end
                     });
                 },
-                updateTownCoverageStats: function(statDate) {
+                updateTownCoverageStats: function(statDate, frequency) {
                     return generalHttpService.getApiData('DumpCoverage',
                     {
-                        statDate: statDate
+                        statDate: statDate,
+                        frequency: frequency
                     });
+                },
+                updateCollegeCoverageStats: function(statDate) {
+                    return generalHttpService.getApiData('DumpCoverage',
+                        {
+                            statTime: statDate
+                        });
                 },
                 queryDumpItems: function() {
                     return generalHttpService.getApiData('DumpAlarm', {});

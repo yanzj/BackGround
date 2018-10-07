@@ -2,12 +2,13 @@
 using Abp.Domain.Entities;
 using Abp.EntityFramework.Dependency;
 using Lte.Domain.Common.Types;
+using Lte.Domain.Common.Wireless;
 using Lte.Domain.Regular;
 using MongoDB.Bson;
 
 namespace Abp.EntityFramework.Entities.Mr
 {
-    public class MrsRsrpStat : IEntity<ObjectId>, IStatDateCell
+    public class MrsRsrpStat : IEntity<ObjectId>, IStatDateCell, ILteCellReadOnly
     {
         public bool IsTransient()
         {

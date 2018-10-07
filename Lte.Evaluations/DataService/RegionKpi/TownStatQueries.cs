@@ -8,9 +8,9 @@ using AutoMapper;
 using Lte.Domain.Common.Geo;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Regular;
 using Lte.MySqlFramework.Abstract.Infrastructure;
-using Lte.MySqlFramework.Entities;
 using Lte.MySqlFramework.Entities.Kpi;
 
 namespace Lte.Evaluations.DataService.RegionKpi
@@ -30,6 +30,72 @@ namespace Lte.Evaluations.DataService.RegionKpi
                     Stat = stat,
                     eNodeb.TownId
                 };
+            var townStats = query.Select(x =>
+            {
+                var townStat = Mapper.Map<TStat, TTownStat>(x.Stat);
+                townStat.TownId = x.TownId;
+                return townStat;
+            });
+            return townStats;
+        }
+
+        public static IEnumerable<TTownStat> GetTownFrequencyStats<TStat, TTownStat>(this List<TStat> stats,
+            FrequencyBandType bandType,
+            ICellRepository cellRepository, IENodebRepository eNodebRepository)
+            where TStat : ILteCellReadOnly
+            where TTownStat : ITownId
+        {
+            var cells = cellRepository.GetAllList(bandType);
+            var query = from stat in stats
+                join cell in cells on new
+                {
+                    stat.ENodebId,
+                    stat.SectorId
+                } equals new
+                {
+                    cell.ENodebId,
+                    cell.SectorId
+                }
+                join eNodeb in eNodebRepository.GetAllList() on cell.ENodebId equals eNodeb.ENodebId
+                select
+                    new
+                    {
+                        Stat = stat,
+                        eNodeb.TownId
+                    };
+            var townStats = query.Select(x =>
+            {
+                var townStat = Mapper.Map<TStat, TTownStat>(x.Stat);
+                townStat.TownId = x.TownId;
+                return townStat;
+            });
+            return townStats;
+        }
+        
+        public static IEnumerable<TTownStat> GetTownFrequencyQueryStats<TStat, TTownStat>(this List<TStat> stats,
+            FrequencyBandType bandType,
+            ICellRepository cellRepository, IENodebRepository eNodebRepository)
+            where TStat : ILteCellQuery
+            where TTownStat : ITownId
+        {
+            var cells = cellRepository.GetAllList(bandType);
+            var query = from stat in stats
+                join cell in cells on new
+                {
+                    stat.ENodebId,
+                    stat.SectorId
+                } equals new
+                {
+                    cell.ENodebId,
+                    cell.SectorId
+                }
+                join eNodeb in eNodebRepository.GetAllList() on cell.ENodebId equals eNodeb.ENodebId
+                select
+                    new
+                    {
+                        Stat = stat,
+                        eNodeb.TownId
+                    };
             var townStats = query.Select(x =>
             {
                 var townStat = Mapper.Map<TStat, TTownStat>(x.Stat);

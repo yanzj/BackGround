@@ -4,7 +4,7 @@ using Abp.EntityFramework.Repositories;
 
 namespace Lte.MySqlFramework.Abstract.RegionKpi
 {
-    public interface ITownCoverageRepository : IRepository<TownCoverageStat>, ISaveChanges
+    public interface ITownCoverageRepository : IRepository<TownCoverageStat>, ISaveChanges, IMatchRepository<TownCoverageStat>
     {
         
     }
