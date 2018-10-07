@@ -148,6 +148,7 @@
     <Compile Include="AutoMapper\ENodebExcelTransform.cs" />
     <Compile Include="Dependency\IFileId.cs" />
     <Compile Include="Dependency\IFrequencyBand.cs" />
+    <Compile Include="Dependency\IRegionFrequencyDateView.cs" />
     <Compile Include="Dependency\IRegionFrequencyView.cs" />
     <Compile Include="Dependency\PagingContainer.cs" />
     <Compile Include="Entities\Channel\AgpsMongo.cs" />
@@ -195,6 +196,7 @@
     <Compile Include="Entities\Mr\AggregateMrsRsrpView.cs" />
     <Compile Include="Entities\Mr\InterferenceMatrixStat.cs" />
     <Compile Include="Entities\Mr\MrsRsrpStat.cs" />
+    <Compile Include="Entities\RegionKpi\FrequencyCoverageView.cs" />
     <Compile Include="Entities\RegionKpi\FrequencyMrsRsrpView.cs" />
     <Compile Include="Entities\RegionKpi\FrequencyPreciseView.cs" />
     <Compile Include="Entities\RegionKpi\TownDoubleFlowView.cs" />

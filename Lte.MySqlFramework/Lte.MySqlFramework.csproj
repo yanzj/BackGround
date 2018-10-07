@@ -461,6 +461,7 @@
     <Compile Include="Support\OrderService.cs" />
     <Compile Include="Support\View\CollegeStat.cs" />
     <Compile Include="Support\View\CoverageRegionDateView.cs" />
+    <Compile Include="Support\View\CoverageRegionFrequencyView.cs" />
     <Compile Include="Support\View\CqiRegionDateView.cs" />
     <Compile Include="Support\View\DistrictComplainDateView.cs" />
     <Compile Include="Support\View\DistrictComplainView.cs" />

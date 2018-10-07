@@ -361,6 +361,7 @@
     <Compile Include="Controllers\Mr\DumpStationRruController.cs" />
     <Compile Include="Controllers\Mr\GridClusterController.cs" />
     <Compile Include="Controllers\Mr\MrGridKpiController.cs" />
+    <Compile Include="Controllers\Mr\MroRsrpFrequencyController.cs" />
     <Compile Include="Controllers\Mr\MrsRsrpFrequencyController.cs" />
     <Compile Include="Controllers\Mr\MrsSinrUlController.cs" />
     <Compile Include="Controllers\Mr\MrsTadvController.cs" />
