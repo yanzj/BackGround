@@ -5,15 +5,16 @@ using Abp.EntityFramework.Entities.Infrastructure;
 using AutoMapper;
 using Lte.Domain.Common.Transform;
 using Lte.Domain.Common.Types;
+using Lte.Domain.Common.Wireless;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Mr;
 
 namespace Lte.Evaluations.ViewModels.Precise
 {
     [AutoMapFrom(typeof(Cell))]
-    public class CellPreciseKpiView
+    public class CellPreciseKpiView: IENodebName, ILteCellQuery
     {
-        public string ENodebName { get; private set; }
+        public string ENodebName { get; set; }
 
         public int ENodebId { get; set; }
 

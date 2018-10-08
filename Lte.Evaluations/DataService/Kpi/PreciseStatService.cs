@@ -100,6 +100,12 @@ namespace Lte.Evaluations.DataService.Kpi
             return _repository.GetAllList(cellId, sectorId, begin, end).OrderBy(x => x.StatTime);
         }
         
+        public IEnumerable<Precise4GView> GetTimeSpanViews(int cellId, byte sectorId, DateTime begin, DateTime end)
+        {
+            return _repository.GetAllList(cellId, sectorId, begin, end).OrderBy(x => x.StatTime)
+                .Select(x => Precise4GView.ConstructView(x, _eNodebRepository));
+        }
+
         public IEnumerable<PreciseCoverage4G> GetTimeSpanStats(DateTime begin, DateTime end)
         {
             return _repository.GetAllList(x => x.StatTime >= begin && x.StatTime < end);

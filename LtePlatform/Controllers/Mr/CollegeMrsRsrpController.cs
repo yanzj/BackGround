@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Entities.Kpi;
 using Abp.EntityFramework.Entities.Mr;
-using Abp.EntityFramework.Entities.RegionKpi;
 using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Regular;
 using Lte.Evaluations.DataService.College;
@@ -136,7 +134,7 @@ namespace LtePlatform.Controllers.Mr
         [ApiParameterDoc("collegeName", "学校名称")]
         [ApiParameterDoc("statDate", "统计日期")]
         [ApiResponse("各个小区MRS覆盖情况统计")]
-        public IEnumerable<CellMrsRsrpDto> GetCollegeDateFlowView(string collegeName, DateTime statDate)
+        public IEnumerable<CellMrsRsrpDto> GetCollegeDateView(string collegeName, DateTime statDate)
         {
             var beginDate = statDate.Date;
             var endDate = beginDate.AddDays(1);
@@ -159,7 +157,7 @@ namespace LtePlatform.Controllers.Mr
         [ApiDoc("抽取查询单日所有校园网的MRS覆盖统计（导入采用，一般前端代码不要用这个接口）")]
         [ApiParameterDoc("statDate", "统计日期")]
         [ApiResponse("所有校园网的MRS覆盖统计")]
-        public IEnumerable<TownMrsRsrpDto> GetDateFlowView(DateTime statDate)
+        public IEnumerable<TownMrsRsrpDto> GetDateView(DateTime statDate)
         {
             var beginDate = statDate.Date;
             var endDate = beginDate.AddDays(1);
@@ -167,7 +165,8 @@ namespace LtePlatform.Controllers.Mr
             return colleges.Select(college =>
             {
                 var cells = _collegeCellViewService.GetCollegeCells(college.Name);
-                var viewListList = cells.Select(cell => _service.QueryRsrpStats(cell.ENodebId, cell.SectorId, beginDate, endDate))
+                var viewListList = cells.Select(cell =>
+                        _service.QueryMrsRsrpStats(cell.ENodebId, cell.SectorId, beginDate, endDate))
                     .Where(views => views != null && views.Any()).ToList();
                 if (!viewListList.Any()) return null;
                 var viewList = viewListList.Aggregate((x, y) => x.Concat(y).ToList()).ToList();

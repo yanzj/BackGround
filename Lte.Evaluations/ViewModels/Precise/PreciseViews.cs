@@ -1,9 +1,8 @@
 ﻿using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Kpi;
 using AutoMapper;
+using Lte.Domain.Common.Wireless;
 using Lte.Domain.Regular.Attributes;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 
 namespace Lte.Evaluations.ViewModels.Precise
@@ -11,7 +10,7 @@ namespace Lte.Evaluations.ViewModels.Precise
     [AutoMapFrom(typeof(PreciseCoverage4G))]
     [AutoMapTo(typeof(Precise4GSector))]
     [TypeDoc("4G精确覆盖率视图")]
-    public class Precise4GView
+    public class Precise4GView : IENodebName
     {
         [MemberDoc("小区编号")]
         public int CellId { get; set; }
@@ -61,25 +60,6 @@ namespace Lte.Evaluations.ViewModels.Precise
             var eNodeb = repository.FirstOrDefault(x => x.ENodebId == stat.CellId);
             view.ENodebName = eNodeb?.Name;
             return view;
-        }
-    }
-
-    public static class PreciseViewsQuery
-    {
-        public static Precise4GSector ConstructSector(this Precise4GView view, ICellRepository repository)
-        {
-            var sector = Mapper.Map<Precise4GView, Precise4GSector>(view);
-            var cell = repository.GetBySectorId(view.CellId, view.SectorId);
-            if (cell == null)
-            {
-                sector.Height = -1;
-            }
-            else
-            {
-                Mapper.Map(cell, sector);
-                sector.DownTilt = cell.MTilt + cell.ETilt;
-            }
-            return sector;
         }
     }
 }

@@ -134,7 +134,7 @@ namespace LtePlatform.Controllers.Mr
         [ApiParameterDoc("collegeName", "学校名称")]
         [ApiParameterDoc("statDate", "统计日期")]
         [ApiResponse("各个小区MRO覆盖情况统计")]
-        public IEnumerable<CoverageStatView> GetCollegeDateFlowView(string collegeName, DateTime statDate)
+        public IEnumerable<CoverageStatView> GetCollegeDateView(string collegeName, DateTime statDate)
         {
             var beginDate = statDate.Date;
             var endDate = beginDate.AddDays(1);
@@ -157,7 +157,7 @@ namespace LtePlatform.Controllers.Mr
         [ApiDoc("抽取查询单日所有校园网的MRO覆盖统计（导入采用，一般前端代码不要用这个接口）")]
         [ApiParameterDoc("statDate", "统计日期")]
         [ApiResponse("所有校园网的MRO覆盖统计")]
-        public IEnumerable<TownCoverageView> GetDateFlowView(DateTime statDate)
+        public IEnumerable<TownCoverageView> GetDateView(DateTime statDate)
         {
             var beginDate = statDate.Date;
             var endDate = beginDate.AddDays(1);

@@ -195,6 +195,7 @@
     <Compile Include="Entities\Maintainence\AlarmWorkItemView.cs" />
     <Compile Include="Entities\Mr\AggregateCoverageView.cs" />
     <Compile Include="Entities\Mr\AggregateMrsRsrpView.cs" />
+    <Compile Include="Entities\Mr\AggregatePreciseView.cs" />
     <Compile Include="Entities\Mr\InterferenceMatrixStat.cs" />
     <Compile Include="Entities\Mr\MrsRsrpStat.cs" />
     <Compile Include="Entities\RegionKpi\FrequencyCoverageView.cs" />

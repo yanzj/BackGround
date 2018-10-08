@@ -63,6 +63,11 @@ namespace Lte.Evaluations.DataService.Mr
             list.ForEach(stat => stat.ENodebName = eNodeb?.Name);
             return list;
         }
+        
+        public IEnumerable<MrsRsrpStat> QueryMrsRsrpStats(int eNodebId, byte sectorId, DateTime begin, DateTime end)
+        {
+            return _rsrpRepository.GetList(eNodebId + "-" + sectorId, begin, end);
+        }
 
         public IEnumerable<MrsRsrpStat> QueryDateSpanMrsRsrpStats(DateTime begin, DateTime end)
         {

@@ -135,7 +135,6 @@
     <Compile Include="DataService\College\CheckingService.cs" />
     <Compile Include="DataService\College\College3GTestService.cs" />
     <Compile Include="DataService\College\College4GTestService.cs" />
-    <Compile Include="DataService\College\CollegePreciseService.cs" />
     <Compile Include="DataService\College\ComplainService.cs" />
     <Compile Include="DataService\College\EmergencyCommunicationService.cs" />
     <Compile Include="DataService\College\EmergencyFiberService.cs" />
@@ -180,6 +179,7 @@
     <Compile Include="DataService\Kpi\HourPrbQueryService.cs" />
     <Compile Include="DataService\Kpi\HourUsersQueryService.cs" />
     <Compile Include="DataService\Mr\TownMrsRsrpService.cs" />
+    <Compile Include="DataService\Mr\TownPreciseService.cs" />
     <Compile Include="DataService\RegionKpi\CdmaRegionStatService.cs" />
     <Compile Include="DataService\Basic\CellService.cs" />
     <Compile Include="DataService\College\InfrastructureServices.cs" />
@@ -287,6 +287,7 @@
     <Compile Include="ViewModels\Precise\PreciseInterferenceNeighborsContainer.cs" />
     <Compile Include="ViewModels\Precise\PreciseInterferenceVictimsContainer.cs" />
     <Compile Include="ViewModels\Precise\PreciseViews.cs" />
+    <Compile Include="ViewModels\Precise\PreciseViewsQuery.cs" />
     <Compile Include="ViewModels\Precise\TopPreciseViewContainer.cs" />
   </ItemGroup>
   <ItemGroup>

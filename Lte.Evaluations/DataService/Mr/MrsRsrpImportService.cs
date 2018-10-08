@@ -10,6 +10,7 @@ using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Mr;
 using Lte.Parameters.Abstract.Kpi;
 using Lte.Evaluations.DataService.RegionKpi;
+using Lte.Parameters.Entities.Kpi;
 
 namespace Lte.Evaluations.DataService.Mr
 {
@@ -37,7 +38,8 @@ namespace Lte.Evaluations.DataService.Mr
             var end = statTime.AddDays(1);
             var stats = _mrsRsrpRepository.GetAllList(x => x.StatDate >= statTime && x.StatDate < end);
             var townStats =
-                stats.GetTownFrequencyStats<MrsRsrpStat, TownMrsRsrp>(bandType, _cellRepository, _eNodebRepository);
+                stats.GetTownFrequencyStats<MrsRsrpStat, TownMrsRsrpDto, TownMrsRsrp>(bandType, _cellRepository,
+                    _eNodebRepository);
 
             var mergeStats = from stat in townStats
                 group stat by stat.TownId
@@ -57,7 +59,8 @@ namespace Lte.Evaluations.DataService.Mr
                     Rsrp95To90 = g.Sum(x => x.Rsrp95To90),
                     RsrpAbove60 = g.Sum(x => x.RsrpAbove60),
                     RsrpBelow120 = g.Sum(x => x.RsrpBelow120),
-                    FrequencyBandType = bandType
+                    FrequencyBandType = bandType,
+                    Id = 0
                 };
             return mergeStats;
         }

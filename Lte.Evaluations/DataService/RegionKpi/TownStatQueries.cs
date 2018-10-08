@@ -72,6 +72,39 @@ namespace Lte.Evaluations.DataService.RegionKpi
             return townStats;
         }
         
+        public static IEnumerable<TTownStat> GetTownFrequencyStats<TStat, TTemp, TTownStat>(this List<TStat> stats,
+            FrequencyBandType bandType,
+            ICellRepository cellRepository, IENodebRepository eNodebRepository)
+            where TStat : ILteCellReadOnly
+            where TTownStat : ITownId
+        {
+            var cells = cellRepository.GetAllList(bandType);
+            var query = from stat in stats
+                join cell in cells on new
+                {
+                    stat.ENodebId,
+                    stat.SectorId
+                } equals new
+                {
+                    cell.ENodebId,
+                    cell.SectorId
+                }
+                join eNodeb in eNodebRepository.GetAllList() on cell.ENodebId equals eNodeb.ENodebId
+                select
+                    new
+                    {
+                        Stat = stat,
+                        eNodeb.TownId
+                    };
+            var townStats = query.Select(x =>
+            {
+                var townStat = x.Stat.MapTo<TTemp>().MapTo<TTownStat>();
+                townStat.TownId = x.TownId;
+                return townStat;
+            });
+            return townStats;
+        }
+
         public static IEnumerable<TTownStat> GetTownFrequencyQueryStats<TStat, TTownStat>(this List<TStat> stats,
             FrequencyBandType bandType,
             ICellRepository cellRepository, IENodebRepository eNodebRepository)

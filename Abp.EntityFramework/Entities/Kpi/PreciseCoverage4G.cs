@@ -1,10 +1,11 @@
 ﻿using System;
 using Abp.Domain.Entities;
+using Lte.Domain.Common.Types;
 using Lte.Domain.Regular.Attributes;
 
 namespace Abp.EntityFramework.Entities.Kpi
 {
-    public class PreciseCoverage4G : Entity
+    public class PreciseCoverage4G : Entity, IStatTime
     {
         [ArraySumProtection]
         public DateTime StatTime { get; set; }

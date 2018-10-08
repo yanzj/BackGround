@@ -1,27 +1,27 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Entities.Kpi;
+using Abp.EntityFramework.Entities.RegionKpi;
 using Lte.Domain.Common.Types;
-using Lte.Domain.Common.Wireless;
-using Lte.Domain.Common.Wireless.Cell;
+using Lte.Domain.Regular.Attributes;
 
-namespace Abp.EntityFramework.Entities.RegionKpi
+namespace Abp.EntityFramework.Entities.Mr
 {
-    [AutoMap(typeof(TownPreciseStat), typeof(PreciseCoverage4G))]
-    public class TownPreciseView : ICityDistrictTown, IStatTime
+    [AutoMapFrom(typeof(TownPreciseStat))]
+    [TypeDoc("聚合MRS覆盖统计视图")]
+    public class AggregatePreciseView : IStatTime
     {
+        [MemberDoc("小区个数")]
+        public int CellCount { get; set; }
+
+        public string Name { get; set; }
+        
+        [ArraySumProtection]
         public DateTime StatTime { get; set; }
-
-        public string City { get; set; } = "-";
-
-        public string District { get; set; } = "-";
-
-        public string Town { get; set; } = "-";
-
-        public int TownId { get; set; }
-
-        public FrequencyBandType FrequencyBandType { get; set; }
-
+        
         public long TotalMrs { get; set; }
 
         public long ThirdNeighbors { get; set; }
