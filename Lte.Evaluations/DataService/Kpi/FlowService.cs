@@ -301,16 +301,19 @@ namespace Lte.Evaluations.DataService.Kpi
                 var huaweiItems = await _huaweiRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
                 var huaweiCqis =
                     await _cqiHuaweiRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
+                var huaweiPrbs =
+                    await _prbHuaweiRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
                 var huaweiRssis =
                     await _rssiHuaweiRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
                 var zteItems = await _zteRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
                 var zteCqis = await _cqiZteRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
+                var ztePrbs = await _prbZteRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
                 var zteRssis = await _rssiZteRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
                 var townItems =
                     await _townFlowRepository.CountAsync(
                         x =>
                             x.StatTime >= beginDate && x.StatTime < endDate &&
-                            x.FrequencyBandType == FrequencyBandType.All); ;
+                            x.FrequencyBandType == FrequencyBandType.All); 
                 var townItems2100 =
                     await _townFlowRepository.CountAsync(
                         x =>
@@ -328,7 +331,23 @@ namespace Lte.Evaluations.DataService.Kpi
                             x.FrequencyBandType == FrequencyBandType.Band800VoLte);
                 var townRrcs = await _townRrcRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
                 var townQcis = await _townQciRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
-                var townCqis = await _townCqiRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
+                var townCqis = await _townCqiRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate 
+                    && x.FrequencyBandType == FrequencyBandType.All);
+                var townCqis2100 =
+                    await _townCqiRepository.CountAsync(
+                        x =>
+                            x.StatTime >= beginDate && x.StatTime < endDate &&
+                            x.FrequencyBandType == FrequencyBandType.Band2100);
+                var townCqis1800 =
+                    await _townCqiRepository.CountAsync(
+                        x =>
+                            x.StatTime >= beginDate && x.StatTime < endDate &&
+                            x.FrequencyBandType == FrequencyBandType.Band1800);
+                var townCqis800 =
+                    await _townCqiRepository.CountAsync(
+                        x =>
+                            x.StatTime >= beginDate && x.StatTime < endDate &&
+                            x.FrequencyBandType == FrequencyBandType.Band800VoLte);
                 var townPrbs = await _townPrbRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
                 var townDoubleFlows =
                     await _townDoubleFlowRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
@@ -337,9 +356,11 @@ namespace Lte.Evaluations.DataService.Kpi
                     DateString = begin.ToShortDateString(),
                     HuaweiItems = huaweiItems,
                     HuaweiCqis = huaweiCqis,
+                    HuaweiPrbs = huaweiPrbs,
                     HuaweiRssis = huaweiRssis,
                     ZteItems = zteItems,
                     ZteCqis = zteCqis,
+                    ZtePrbs = ztePrbs,
                     ZteRssis = zteRssis,
                     TownStats = townItems,
                     TownStats2100 = townItems2100,
@@ -348,6 +369,9 @@ namespace Lte.Evaluations.DataService.Kpi
                     TownRrcs = townRrcs,
                     TownQcis = townQcis,
                     TownCqis = townCqis,
+                    TownCqis2100 = townCqis2100,
+                    TownCqis1800 = townCqis1800,
+                    TownCqis800VoLte = townCqis800,
                     TownPrbs = townPrbs,
                     TownDoubleFlows = townDoubleFlows
                 });

@@ -8,11 +8,15 @@ namespace Lte.Domain.Regular
 
         public int HuaweiCqis { get; set; }
 
+        public int HuaweiPrbs { get; set; }
+
         public int HuaweiRssis { get; set; }
 
         public int ZteItems { get; set; }
 
         public int ZteCqis { get; set; }
+
+        public int ZtePrbs { get; set; }
 
         public int ZteRssis { get; set; }
 
@@ -29,6 +33,12 @@ namespace Lte.Domain.Regular
         public int TownQcis { get; set; }
 
         public int TownCqis { get; set; }
+
+        public int TownCqis2100 { get; set; }
+
+        public int TownCqis1800 { get; set; }
+
+        public int TownCqis800VoLte { get; set; }
 
         public int TownPrbs { get; set; }
 

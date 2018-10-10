@@ -4,15 +4,24 @@ using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities.Kpi;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Cell;
+using Lte.Domain.Regular.Attributes;
 
 namespace Abp.EntityFramework.Entities.RegionKpi
 {
     [AutoMapFrom(typeof(CqiHuawei), typeof(CqiZte))]
     public class TownCqiStat : Entity, ITownId, IStatTime
     {
+        [ArraySumProtection]
         public int TownId { get; set; }
 
+        [ArraySumProtection]
         public DateTime StatTime { get; set; }
+
+        [ArraySumProtection]
+        public FrequencyBandType FrequencyBandType { get; set; } = FrequencyBandType.All;
+
+        public string Frequency => FrequencyBandType.ToString();
 
         public long Cqi0Reports { get; set; }
 
