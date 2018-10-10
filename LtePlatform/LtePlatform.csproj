@@ -339,6 +339,7 @@
     <Compile Include="Controllers\Kpi\MonthPreciseTrendController.cs" />
     <Compile Include="Controllers\Kpi\MonthYuejiTrendController.cs" />
     <Compile Include="Controllers\Kpi\PreciseFrequencyController.cs" />
+    <Compile Include="Controllers\Kpi\RssiQueryController.cs" />
     <Compile Include="Controllers\Kpi\SinrUlRegionController.cs" />
     <Compile Include="Controllers\Kpi\TopDoubleFlowController.cs" />
     <Compile Include="Controllers\Kpi\TopFeelingRateController.cs" />

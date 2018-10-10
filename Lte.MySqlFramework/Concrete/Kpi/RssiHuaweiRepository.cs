@@ -16,6 +16,12 @@ namespace Lte.MySqlFramework.Concrete.Kpi
         {
         }
 
+        public List<RssiHuawei> FilterTopList(DateTime begin, DateTime end)
+        {
+            return GetAllList(x => x.StatTime >= begin
+                                   && x.StatTime < end);
+        }
+
         public RssiHuawei Match(RssiHuawei stat)
         {
             return FirstOrDefault(x =>

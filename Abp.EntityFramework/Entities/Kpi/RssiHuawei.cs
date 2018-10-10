@@ -178,15 +178,21 @@ namespace Abp.EntityFramework.Entities.Kpi
         [AutoMapPropertyResolve("MaxRssiRbString", typeof(RssiHuaweiCsv), typeof(StringToRssiTransform))]
         public double MaxRssiRb { get; set; }
 
+        public double MaxRssi => MaxRssiRb + 20;
+
         [MemberDoc("系统上行每个PRB上检测到的干扰噪声的最小值 (毫瓦分贝)")]
         [ArrayMin]
         [AutoMapPropertyResolve("MinRssiRbString", typeof(RssiHuaweiCsv), typeof(StringToRssiTransform))]
         public double MinRssiRb { get; set; }
 
+        public double MinRssi => MinRssiRb + 20;
+
         [MemberDoc("系统上行每个PRB上检测到的干扰噪声的平均值 (毫瓦分贝)")]
         [ArrayAverage]
         [AutoMapPropertyResolve("AverageRssiRbString", typeof(RssiHuaweiCsv), typeof(StringToRssiTransform))]
         public double AverageRssiRb { get; set; }
+
+        public double AverageRssi => AverageRssiRb + 20;
 
     }
 }

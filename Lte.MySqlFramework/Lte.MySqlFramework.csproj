@@ -350,6 +350,7 @@
     <Compile Include="Entities\Kpi\HourCqiView.cs" />
     <Compile Include="Entities\Kpi\HourPrbView.cs" />
     <Compile Include="Entities\Kpi\HourUsersView.cs" />
+    <Compile Include="Entities\Kpi\RssiView.cs" />
     <Compile Include="Entities\Maintainence\AlarmView.cs" />
     <Compile Include="Entities\Maintainence\CheckingDetailsView.cs" />
     <Compile Include="Entities\Maintainence\CheckingResultView.cs" />
@@ -387,6 +388,7 @@
     <Compile Include="Query\HuaweiPrbQuery.cs" />
     <Compile Include="Query\HuaweiQciQuery.cs" />
     <Compile Include="Query\HuaweiRrcQuery.cs" />
+    <Compile Include="Query\HuaweiRssiQuery.cs" />
     <Compile Include="Query\ZteCqiQuery.cs" />
     <Compile Include="Query\ZteDateSpanQuery.cs" />
     <Compile Include="Query\ZteDoubleFlowQuery.cs" />
@@ -394,6 +396,7 @@
     <Compile Include="Query\ZtePrbQuery.cs" />
     <Compile Include="Query\ZteQciQuery.cs" />
     <Compile Include="Query\ZteRrcQuery.cs" />
+    <Compile Include="Query\ZteRssiQuery.cs" />
     <Compile Include="Support\AreaTestInfoQuery.cs" />
     <Compile Include="Entities\Kpi\CellFlowView.cs" />
     <Compile Include="Entities\Infrastructure\CellRruView.cs" />

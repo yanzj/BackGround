@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 
 namespace Lte.MySqlFramework.Abstract.Kpi
 {
-    public interface IRssiZteRepository : IRepository<RssiZte>, ISaveChanges, IMatchRepository<RssiZte>
+    public interface IRssiZteRepository : IRepository<RssiZte>, ISaveChanges, IMatchRepository<RssiZte>,
+        IFilterTopRepository<RssiZte>
     {
     }
 }

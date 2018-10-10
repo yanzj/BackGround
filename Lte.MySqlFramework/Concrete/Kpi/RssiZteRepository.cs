@@ -16,6 +16,12 @@ namespace Lte.MySqlFramework.Concrete.Kpi
         {
         }
 
+        public List<RssiZte> FilterTopList(DateTime begin, DateTime end)
+        {
+            return GetAllList(x => x.StatTime >= begin
+                                   && x.StatTime < end);
+        }
+
         public RssiZte Match(RssiZte stat)
         {
             return FirstOrDefault(x =>
