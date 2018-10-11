@@ -180,6 +180,7 @@
     <Compile Include="Entities\College\CollegeView.cs" />
     <Compile Include="Entities\Complain\VipDemandDto.cs" />
     <Compile Include="Entities\Infrastructure\SectorView.cs" />
+    <Compile Include="Entities\Kpi\AggregateCqiView.cs" />
     <Compile Include="Entities\Kpi\AggregateFlowView.cs" />
     <Compile Include="Entities\Kpi\CqiView.cs" />
     <Compile Include="Entities\Kpi\DoubleFlowView.cs" />

@@ -5,6 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using Abp.EntityFramework.Entities.RegionKpi;
+using Lte.Evaluations.DataService.RegionKpi;
+using Lte.MySqlFramework.Entities.RegionKpi;
+using Lte.MySqlFramework.Support.View;
 
 namespace LtePlatform.Controllers.Kpi
 {

@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Entities.Kpi;
-using Abp.EntityFramework.Entities.RegionKpi;
 using Lte.Domain.Common.Wireless.Cell;
-using Lte.MySqlFramework.Abstract.Infrastructure;
-using Lte.MySqlFramework.Abstract.Kpi;
+using Lte.Evaluations.DataService.Dump;
 using Lte.MySqlFramework.Abstract.RegionKpi;
 
 namespace Lte.Evaluations.DataService.RegionKpi

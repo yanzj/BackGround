@@ -362,6 +362,7 @@
     <Compile Include="Entities\RegionKpi\DistrictHourCqiView.cs" />
     <Compile Include="Entities\RegionKpi\DistrictHourPrbView.cs" />
     <Compile Include="Entities\RegionKpi\DistrictHourUsersView.cs" />
+    <Compile Include="Entities\RegionKpi\TownCqiView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourCqiView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourPrbView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourUsersView.cs" />

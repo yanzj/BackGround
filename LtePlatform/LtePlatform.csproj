@@ -315,6 +315,7 @@
     <Compile Include="Controllers\Dt\ZhangshangyouQualityController.cs" />
     <Compile Include="Controllers\Kpi\AlarmWorkItemController.cs" />
     <Compile Include="Controllers\Kpi\CellAlarmWorkItemController.cs" />
+    <Compile Include="Controllers\Kpi\CollegeCqiController.cs" />
     <Compile Include="Controllers\Kpi\DoubleFlowQueryController.cs" />
     <Compile Include="Controllers\Kpi\DoubleFlowRegionController.cs" />
     <Compile Include="Controllers\Kpi\DumpHourController.cs" />

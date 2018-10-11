@@ -203,7 +203,8 @@
     <Compile Include="DataService\RegionKpi\HourUsersRegionStatService.cs" />
     <Compile Include="DataService\RegionKpi\RegionTownFlowService.cs" />
     <Compile Include="DataService\RegionKpi\SinrUlRegionStatService.cs" />
-    <Compile Include="DataService\Dump\TownCqiService.cs" />
+    <Compile Include="DataService\Dump\DumpCqiService.cs" />
+    <Compile Include="DataService\RegionKpi\TownCqiService.cs" />
     <Compile Include="DataService\RegionKpi\TownDoubleFlowService.cs" />
     <Compile Include="DataService\RegionKpi\TownHourCqiService.cs" />
     <Compile Include="DataService\RegionKpi\TownHourKpiService.cs" />
