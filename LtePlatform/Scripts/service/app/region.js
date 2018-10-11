@@ -1721,8 +1721,21 @@ angular.module('region.college', ['app.core'])
                     endDate: end
                 });
             },
+            queryCollegeDateCqis: function (collegeName, begin, end) {
+                return generalHttpService.getApiData('CollegeCqi', {
+                    collegeName: collegeName,
+                    beginDate: begin,
+                    endDate: end
+                });
+            },
             retrieveDateCollegeFlowStats: function (statDate) {
                 return generalHttpService.getApiData('CollegeFlow',
+                    {
+                        statDate: statDate
+                    });
+            },
+            retrieveDateCollegeCqiStats: function (statDate) {
+                return generalHttpService.getApiData('CollegeCqi',
                     {
                         statDate: statDate
                     });
@@ -2150,8 +2163,18 @@ angular.module('region.precise', ['app.core'])
                             frequency: frequency
                         });
                 },
+                getCurrentDateTownCqiStats: function (statDate, frequency) {
+                    return generalHttpService.getApiData('TownCqi',
+                        {
+                            currentDate: statDate,
+                            frequency: frequency
+                        });
+                },
                 updateTownFlowStat: function(stat) {
                     return generalHttpService.postApiData('TownFlow', stat);
+                },
+                updateTownCqiStat: function (stat) {
+                    return generalHttpService.postApiData('TownCqi', stat);
                 }
             };
         });

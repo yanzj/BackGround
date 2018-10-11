@@ -361,8 +361,18 @@
                             frequency: frequency
                         });
                 },
+                getCurrentDateTownCqiStats: function (statDate, frequency) {
+                    return generalHttpService.getApiData('TownCqi',
+                        {
+                            currentDate: statDate,
+                            frequency: frequency
+                        });
+                },
                 updateTownFlowStat: function(stat) {
                     return generalHttpService.postApiData('TownFlow', stat);
+                },
+                updateTownCqiStat: function (stat) {
+                    return generalHttpService.postApiData('TownCqi', stat);
                 }
             };
         });

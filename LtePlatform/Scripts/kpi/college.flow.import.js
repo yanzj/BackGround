@@ -23,14 +23,25 @@
                     function(stat) {
                         appRegionService.getCurrentDateTownFlowStats(stat.date, 'college').then(function(items) {
                             stat.items = items;
-                            if (!items.length) {
+                            if (items.length < 20) {
                                 collegeQueryService.retrieveDateCollegeFlowStats(stat.date).then(function(newItems) {
                                     stat.items = newItems;
                                     angular.forEach(newItems,
                                         function(item) {
                                             appRegionService.updateTownFlowStat(item).then(function(result) {});
                                         });
-                                    $scope.updateCollegeNames(newItems);
+                                });
+                            }
+                        });
+                        appRegionService.getCurrentDateTownCqiStats(stat.date, 'college').then(function (items) {
+                            stat.cqis = items;
+                            if (items.length < 20) {
+                                collegeQueryService.retrieveDateCollegeCqiStats(stat.date).then(function (newItems) {
+                                    stat.cqis = newItems;
+                                    angular.forEach(newItems,
+                                        function (item) {
+                                            appRegionService.updateTownCqiStat(item).then(function (result) { });
+                                        });
                                 });
                             }
                         });

@@ -9,7 +9,7 @@ using Lte.Domain.Regular.Attributes;
 
 namespace Abp.EntityFramework.Entities.RegionKpi
 {
-    [AutoMapFrom(typeof(CqiHuawei), typeof(CqiZte))]
+    [AutoMapFrom(typeof(CqiHuawei), typeof(CqiZte), typeof(CqiView))]
     public class TownCqiStat : Entity, ITownId, IStatTime
     {
         [ArraySumProtection]
