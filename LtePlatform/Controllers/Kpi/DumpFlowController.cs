@@ -40,12 +40,6 @@ namespace LtePlatform.Controllers.Kpi
         }
 
         [HttpGet]
-        public async Task<int> GetCqis(DateTime statTime)
-        {
-            return await _kpiService.GenerateTownCqis(statTime);
-        }
-
-        [HttpGet]
         public IEnumerable<CellIdPair> Get(DateTime statDate, int townId)
         {
             return _service.QueryUnmatchedHuaweis(townId, statDate);

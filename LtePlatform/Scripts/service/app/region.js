@@ -1194,9 +1194,9 @@ angular.module('region.import', ['app.core'])
                         });
                 },
                 dumpTownCqis: function(statDate) {
-                    return generalHttpService.getApiData('DumpFlow',
+                    return generalHttpService.getApiData('DumpTownCqi',
                         {
-                            statTime: statDate
+                            statDate: statDate
                         });
                 }
             };

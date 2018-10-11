@@ -120,8 +120,6 @@
                             function(record) {
                                 if (record.huaweiItems > 9000 &&
                                     record.zteItems > 18000 &&
-                                    record.huaweiCqis > 9000 &&
-                                    record.zteCqis > 18000 &&
                                     (record.townStats === 0 ||
                                         record.townRrcs === 0 ||
                                         record.townQcis === 0 ||
@@ -129,7 +127,6 @@
                                         record.townStats2100 === 0 ||
                                         record.townStats1800 === 0 ||
                                         record.townStats800VoLte === 0 ||
-                                        record.townCqis === 0 ||
                                         record.townDoubleFlows < 44)) {
                                     flowImportService.dumpTownStats(record.dateString).then(function(count) {
                                         record.townStats = count[0];
@@ -141,8 +138,19 @@
                                         record.townPrbs = count[6];
                                         record.townDoubleFlows = count[7];
                                     });
+                                }
+
+                                if (record.huaweiCqis > 9000 &&
+                                    record.zteCqis > 18000 &&
+                                    (record.townCqis < 44 ||
+                                        record.townCqis2100 < 44 ||
+                                        record.townCqis1800 < 44 ||
+                                        record.townCqis800VoLte < 44)) {
                                     flowImportService.dumpTownCqis(record.dateString).then(function(count) {
-                                        record.townCqis = count;
+                                        record.townCqis = count[0];
+                                        record.townCqis2100 = count[1];
+                                        record.townCqis1800 = count[2];
+                                        record.townCqis800VoLte = count[3];
                                     });
                                 }
                             });

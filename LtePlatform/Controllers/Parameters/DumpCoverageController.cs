@@ -1,25 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Dependency;
-using Abp.EntityFramework.Entities.Mr;
 using Abp.EntityFramework.Entities.RegionKpi;
 using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Regular;
 using Lte.Evaluations.DataService.College;
 using Lte.Evaluations.DataService.Kpi;
 using Lte.Evaluations.DataService.RegionKpi;
-using Lte.Parameters.Entities.Kpi;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.Parameters
 {
     [ApiControl("导入三网覆盖小区信息处理器")]
+    [ApiGroup("导入")]
     public class DumpCoverageController : ApiController
     {
         private readonly CoverageStatService _service;

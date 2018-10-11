@@ -532,7 +532,7 @@ namespace LtePlatform
 
             ninjectKernel.Bind<TownQciService>().ToSelf();
 
-            ninjectKernel.Bind<TownCqiService>().ToSelf();
+            ninjectKernel.Bind<DumpCqiService>().ToSelf();
 
             ninjectKernel.Bind<TownPrbService>().ToSelf();
 

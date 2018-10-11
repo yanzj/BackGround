@@ -22,7 +22,7 @@ namespace Lte.Evaluations.DataService.RegionKpi
         private readonly RegionTownFlowService _flowService;
         private readonly TownRrcService _rrcService;
         private readonly TownQciService _qciService;
-        private readonly TownCqiService _cqiService;
+        private readonly DumpCqiService _cqiService;
         private readonly TownPrbService _prbService;
         private readonly TownDoubleFlowService _doubleFlowService;
 
@@ -30,7 +30,7 @@ namespace Lte.Evaluations.DataService.RegionKpi
             ITownCqiRepository townCqiRepository, ITownDoubleFlowRepository townDoubleFlowRepository,
             ITownRrcRepository townRrcRepository, ITownQciRepository townQciRepository,
             RegionTownFlowService flowService, TownRrcService rrcService,
-            TownQciService qciService, TownCqiService cqiService, TownPrbService prbService,
+            TownQciService qciService, DumpCqiService cqiService, TownPrbService prbService,
             TownDoubleFlowService doubleFlowService)
         {
             _townFlowRepository = townFlowRepository;
@@ -47,20 +47,50 @@ namespace Lte.Evaluations.DataService.RegionKpi
             _doubleFlowService = doubleFlowService;
         }
 
-        public async Task<int> GenerateTownCqis(DateTime statTime)
+        public async Task<int[]> GenerateTownCqis(DateTime statTime)
         {
             var end = statTime.AddDays(1);
-            var count = _townCqiRepository.Count(x => x.StatTime >= statTime && x.StatTime < end);
-            if (count == 0)
+            var count0 = _townCqiRepository.Count(x => x.StatTime >= statTime && x.StatTime < end && x.FrequencyBandType == FrequencyBandType.All);
+            if (count0 == 0)
             {
                 var townCqiList = _cqiService.GetTownCqiStats(statTime);
                 foreach (var stat in townCqiList.GetPositionMergeStats(statTime))
                 {
                     await _townCqiRepository.InsertAsync(stat);
                 }
-                count = _townCqiRepository.SaveChanges();
+                count0 = _townCqiRepository.SaveChanges();
             }
-            return count;
+            var count1 = _townCqiRepository.Count(x => x.StatTime >= statTime && x.StatTime < end && x.FrequencyBandType == FrequencyBandType.Band2100);
+            if (count1 == 0)
+            {
+                var townCqiList = _cqiService.GetTownCqiStats(statTime);
+                foreach (var stat in townCqiList.GetPositionMergeStats(statTime))
+                {
+                    await _townCqiRepository.InsertAsync(stat);
+                }
+                count1 = _townCqiRepository.SaveChanges();
+            }
+            var count2 = _townCqiRepository.Count(x => x.StatTime >= statTime && x.StatTime < end && x.FrequencyBandType == FrequencyBandType.Band1800);
+            if (count2 == 0)
+            {
+                var townCqiList = _cqiService.GetTownCqiStats(statTime);
+                foreach (var stat in townCqiList.GetPositionMergeStats(statTime))
+                {
+                    await _townCqiRepository.InsertAsync(stat);
+                }
+                count2 = _townCqiRepository.SaveChanges();
+            }
+            var count3 = _townCqiRepository.Count(x => x.StatTime >= statTime && x.StatTime < end && x.FrequencyBandType == FrequencyBandType.Band800VoLte);
+            if (count3 == 0)
+            {
+                var townCqiList = _cqiService.GetTownCqiStats(statTime);
+                foreach (var stat in townCqiList.GetPositionMergeStats(statTime))
+                {
+                    await _townCqiRepository.InsertAsync(stat);
+                }
+                count3 = _townCqiRepository.SaveChanges();
+            }
+            return new[] { count0, count1, count2, count3 };
         }
 
         public async Task<int[]> GenerateTownStats(DateTime statDate)
