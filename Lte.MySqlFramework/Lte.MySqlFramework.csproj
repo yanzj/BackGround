@@ -362,6 +362,7 @@
     <Compile Include="Entities\RegionKpi\DistrictHourCqiView.cs" />
     <Compile Include="Entities\RegionKpi\DistrictHourPrbView.cs" />
     <Compile Include="Entities\RegionKpi\DistrictHourUsersView.cs" />
+    <Compile Include="Entities\RegionKpi\FrequencyCqiView.cs" />
     <Compile Include="Entities\RegionKpi\TownCqiView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourCqiView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourPrbView.cs" />
@@ -467,6 +468,7 @@
     <Compile Include="Support\View\CoverageRegionDateView.cs" />
     <Compile Include="Support\View\CoverageRegionFrequencyView.cs" />
     <Compile Include="Support\View\CqiRegionDateView.cs" />
+    <Compile Include="Support\View\CqiRegionFrequencyView.cs" />
     <Compile Include="Support\View\DistrictComplainDateView.cs" />
     <Compile Include="Support\View\DistrictComplainView.cs" />
     <Compile Include="Support\View\DoubleFlowRegionDateView.cs" />

@@ -308,6 +308,7 @@
     <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
     <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
     <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
+    <Compile Include="Controllers\AdminitrativeRegion\CqiFrequencyController.cs" />
     <Compile Include="Controllers\AdminitrativeRegion\DumpTownCqiController.cs" />
     <Compile Include="Controllers\Dt\DumpZhangshangyouCoverageController.cs" />
     <Compile Include="Controllers\Dt\DumpZhangshangyouQualityController.cs" />
