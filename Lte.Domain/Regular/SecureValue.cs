@@ -134,6 +134,7 @@ namespace Lte.Domain.Regular
         {
             var result = new T();
             IEnumerable<T> enumerable = sourceList as T[] ?? sourceList.ToArray();
+            if (!enumerable.Any()) return result;
             enumerable.ElementAt(0).CloneDateTimeValue(result);
             foreach (var item in enumerable)
             {

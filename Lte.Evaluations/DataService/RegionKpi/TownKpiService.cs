@@ -49,9 +49,10 @@ namespace Lte.Evaluations.DataService.RegionKpi
             var count0 = _townCqiRepository.Count(x => x.StatTime >= statTime && x.StatTime < end && x.FrequencyBandType == FrequencyBandType.All);
             if (count0 == 0)
             {
-                var townCqiList = _cqiService.GetTownCqiStats(statTime);
+                var townCqiList = _cqiService.GetTownCqiStats(statTime, FrequencyBandType.All);
                 foreach (var stat in townCqiList.GetPositionMergeStats(statTime))
                 {
+                    stat.FrequencyBandType = FrequencyBandType.All;
                     await _townCqiRepository.InsertAsync(stat);
                 }
                 count0 = _townCqiRepository.SaveChanges();
@@ -59,9 +60,10 @@ namespace Lte.Evaluations.DataService.RegionKpi
             var count1 = _townCqiRepository.Count(x => x.StatTime >= statTime && x.StatTime < end && x.FrequencyBandType == FrequencyBandType.Band2100);
             if (count1 == 0)
             {
-                var townCqiList = _cqiService.GetTownCqiStats(statTime);
+                var townCqiList = _cqiService.GetTownCqiStats(statTime, FrequencyBandType.Band2100);
                 foreach (var stat in townCqiList.GetPositionMergeStats(statTime))
                 {
+                    stat.FrequencyBandType = FrequencyBandType.Band2100;
                     await _townCqiRepository.InsertAsync(stat);
                 }
                 count1 = _townCqiRepository.SaveChanges();
@@ -69,9 +71,10 @@ namespace Lte.Evaluations.DataService.RegionKpi
             var count2 = _townCqiRepository.Count(x => x.StatTime >= statTime && x.StatTime < end && x.FrequencyBandType == FrequencyBandType.Band1800);
             if (count2 == 0)
             {
-                var townCqiList = _cqiService.GetTownCqiStats(statTime);
+                var townCqiList = _cqiService.GetTownCqiStats(statTime, FrequencyBandType.Band1800);
                 foreach (var stat in townCqiList.GetPositionMergeStats(statTime))
                 {
+                    stat.FrequencyBandType = FrequencyBandType.Band1800;
                     await _townCqiRepository.InsertAsync(stat);
                 }
                 count2 = _townCqiRepository.SaveChanges();
@@ -79,9 +82,10 @@ namespace Lte.Evaluations.DataService.RegionKpi
             var count3 = _townCqiRepository.Count(x => x.StatTime >= statTime && x.StatTime < end && x.FrequencyBandType == FrequencyBandType.Band800VoLte);
             if (count3 == 0)
             {
-                var townCqiList = _cqiService.GetTownCqiStats(statTime);
+                var townCqiList = _cqiService.GetTownCqiStats(statTime, FrequencyBandType.Band800VoLte);
                 foreach (var stat in townCqiList.GetPositionMergeStats(statTime))
                 {
+                    stat.FrequencyBandType = FrequencyBandType.Band800VoLte;
                     await _townCqiRepository.InsertAsync(stat);
                 }
                 count3 = _townCqiRepository.SaveChanges();
