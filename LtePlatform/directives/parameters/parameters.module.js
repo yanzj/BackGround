@@ -1,22 +1,11 @@
 ﻿angular.module('parameters.module',
 [
-    'parameters.basic.module', 'parameters.kpi.module', 'parameters.eNodeb.module', 'parameters.bts.module',
+    'parameters.kpi.module', 'parameters.eNodeb.module', 'parameters.bts.module',
     'parameters.cell.module', 'parameters.cell.rru.module', 'parameters.cdma.cell.module', 'parameters.mongo.module',
     'parameters.mongo.switch.basic.module', 'parameters.mongo.switch.inter.module', 'parameters.mongo.power.module'
 ]);
 
 angular.module('parameters.basic.module', ['ui.grid', 'myApp.region', 'myApp.url', 'myApp.kpi'])
-    .directive('flowTable',
-        function() {
-            return {
-                restrict: 'ECMA',
-                replace: true,
-                scope: {
-                    flowList: '='
-                },
-                templateUrl: '/directives/parameters/kpi/FlowTable.html'
-            }
-        })
     .directive('planSiteDetails',
         function() {
             return {

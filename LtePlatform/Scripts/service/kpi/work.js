@@ -34,32 +34,6 @@
 					}
 				}, callbackFunc);
 			},
-			showENodebFlow: function(eNodeb, beginDate, endDate) {
-			    menuItemService.showGeneralDialog({
-			        templateUrl: '/appViews/Parameters/Region/ENodebFlow.html',
-			        controller: 'eNodeb.flow',
-			        resolve: stationFormatService.dateSpanDateResolve({
-			                eNodeb: function() {
-			                    return eNodeb;
-			                }
-			            },
-			            beginDate,
-			            endDate)
-			    });
-			},
-			showHotSpotCellFlow: function(hotSpot, beginDate, endDate) {
-			    menuItemService.showGeneralDialog({
-			        templateUrl: '/appViews/Parameters/Region/ENodebFlow.html',
-			        controller: 'hotSpot.cell.flow',
-			        resolve: stationFormatService.dateSpanDateResolve({
-			                hotSpot: function() {
-			                    return hotSpot;
-			                }
-			            },
-			            beginDate,
-			            endDate)
-			    });
-			},
 			showHotSpotCells: function(name) {
 				menuItemService.showGeneralDialog({
 					templateUrl: '/appViews/Parameters/Region/TopicCells.html',

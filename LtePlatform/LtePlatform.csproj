@@ -703,7 +703,6 @@
     <Content Include="appViews\Parameters\Import\HotSpotCell.html" />
     <Content Include="appViews\Parameters\Map\CellsMapInfoBox.html" />
     <Content Include="appViews\Parameters\Region\ArrangeInfo.html" />
-    <Content Include="appViews\Parameters\Region\ENodebFlow.html" />
     <Content Include="appViews\Parameters\Region\FlowKpiInfo.html" />
     <Content Include="appViews\Parameters\Region\RrcKpiInfo.html" />
     <Content Include="appViews\Parameters\Region\TopicCells.html" />
@@ -942,7 +941,6 @@
     <Content Include="appViews\Parameters\Region\CellInfo.html" />
     <Content Include="appViews\Rutrace\Coverage\Index.html" />
     <Content Include="directives\parameters\kpi\FeelingTable.html" />
-    <Content Include="directives\parameters\kpi\FlowTable.html" />
     <Content Include="directives\parameters\parameters.module.js" />
     <Content Include="directives\rutrace\AnalyzeTable.Tpl.html" />
     <Content Include="directives\rutrace\coverage\InterferenceSourceList.html" />

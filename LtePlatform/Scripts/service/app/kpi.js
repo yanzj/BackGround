@@ -4789,80 +4789,6 @@ angular.module('kpi.work.dialog', ['myApp.url', 'myApp.region', "ui.bootstrap", 
             $scope.queryWorkItems();
         });
 angular.module('kpi.work.flow', ['myApp.url', 'myApp.region', "ui.bootstrap", "kpi.core"])
-    .controller("eNodeb.flow",
-        function($scope,
-            $uibModalInstance,
-            eNodeb,
-            beginDate,
-            endDate,
-            networkElementService,
-            appKpiService,
-            kpiChartService) {
-            $scope.eNodebName = eNodeb.name;
-            $scope.flowStats = [];
-            $scope.mergeStats = [];
-            $scope.queryFlow = function() {
-                appKpiService.calculateFlowStats($scope.cellList,
-                    $scope.flowStats,
-                    $scope.mergeStats,
-                    $scope.beginDate,
-                    $scope.endDate);
-            };
-
-            $scope.showCharts = function() {
-                kpiChartService.showFlowCharts($scope.flowStats, $scope.eNodebName, $scope.mergeStats);
-            };
-
-            $scope.ok = function() {
-                $uibModalInstance.close($scope.cellList);
-            };
-
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            };
-
-            networkElementService.queryCellViewsInOneENodeb(eNodeb.eNodebId).then(function(result) {
-                $scope.cellList = result;
-                $scope.queryFlow();
-            });
-        })
-    .controller("hotSpot.cell.flow",
-        function($scope,
-            $uibModalInstance,
-            hotSpot,
-            beginDate,
-            endDate,
-            complainService,
-            appKpiService,
-            kpiChartService) {
-            $scope.eNodebName = hotSpot.hotspotName;
-            $scope.flowStats = [];
-            $scope.mergeStats = [];
-            $scope.queryFlow = function() {
-                appKpiService.calculateFlowStats($scope.cellList,
-                    $scope.flowStats,
-                    $scope.mergeStats,
-                    $scope.beginDate,
-                    $scope.endDate);
-            };
-
-            $scope.showCharts = function() {
-                kpiChartService.showFlowCharts($scope.flowStats, $scope.eNodebName, $scope.mergeStats);
-            };
-
-            $scope.ok = function() {
-                $uibModalInstance.close($scope.cellList);
-            };
-
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            };
-
-            complainService.queryHotSpotCells(hotSpot.hotspotName).then(function(result) {
-                $scope.cellList = result;
-                $scope.queryFlow();
-            });
-        })
     .controller("topic.cells",
         function($scope, $uibModalInstance, dialogTitle, name, complainService) {
             $scope.dialogTitle = dialogTitle;
@@ -5327,32 +5253,6 @@ angular.module('kpi.work', ['app.menu', 'app.core', 'myApp.region'])
 						}
 					}
 				}, callbackFunc);
-			},
-			showENodebFlow: function(eNodeb, beginDate, endDate) {
-			    menuItemService.showGeneralDialog({
-			        templateUrl: '/appViews/Parameters/Region/ENodebFlow.html',
-			        controller: 'eNodeb.flow',
-			        resolve: stationFormatService.dateSpanDateResolve({
-			                eNodeb: function() {
-			                    return eNodeb;
-			                }
-			            },
-			            beginDate,
-			            endDate)
-			    });
-			},
-			showHotSpotCellFlow: function(hotSpot, beginDate, endDate) {
-			    menuItemService.showGeneralDialog({
-			        templateUrl: '/appViews/Parameters/Region/ENodebFlow.html',
-			        controller: 'hotSpot.cell.flow',
-			        resolve: stationFormatService.dateSpanDateResolve({
-			                hotSpot: function() {
-			                    return hotSpot;
-			                }
-			            },
-			            beginDate,
-			            endDate)
-			    });
 			},
 			showHotSpotCells: function(name) {
 				menuItemService.showGeneralDialog({
