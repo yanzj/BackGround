@@ -6,8 +6,11 @@ using Abp.EntityFramework.Entities.Infrastructure;
 using Abp.EntityFramework.Entities.Region;
 using Abp.EntityFramework.Entities.Station;
 using Abp.EntityFramework.Repositories;
+using Lte.Domain.Common.Types;
+using Lte.Domain.Common.Wireless.Antenna;
 using Lte.Domain.Excel;
 using Lte.Domain.LinqToExcel;
+using Lte.Domain.Regular;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Abstract.Station;
@@ -24,6 +27,7 @@ namespace Lte.Evaluations.DataService.Basic
         private readonly IStationDictionaryRepository _stationDictionary;
         private readonly IENodebRepository _eNodebRepository;
         private readonly ICellRepository _cellRepository;
+        private readonly ILteRruRepository _rruRepository;
         private readonly ITownRepository _townRepository;
         
         private static Stack<StationDictionaryExcel> Stations { get; set; }
@@ -56,7 +60,7 @@ namespace Lte.Evaluations.DataService.Basic
             IENodebBaseRepository eNodebBaseRepository, IENodebRepository eNodebRepository,
             IConstructionInformationRepository constructionInformation, IStationRruRepository stationRruRepository,
             IStationAntennaRepository stationAntennaRepository, IStationDictionaryRepository stationDictionary,
-            ITownRepository townRepository, ICellRepository cellRepository)
+            ITownRepository townRepository, ICellRepository cellRepository, ILteRruRepository rruRepository)
         {
             _distributionRepository = distributionRepository;
             _constructionInformation = constructionInformation;
@@ -67,6 +71,7 @@ namespace Lte.Evaluations.DataService.Basic
             _stationDictionary = stationDictionary;
             _townRepository = townRepository;
             _cellRepository = cellRepository;
+            _rruRepository = rruRepository;
            
             if (Stations == null) Stations = new Stack<StationDictionaryExcel>();
             if (ENodebBases == null) ENodebBases = new Stack<ENodebBaseExcel>();
@@ -119,15 +124,17 @@ namespace Lte.Evaluations.DataService.Basic
             await _eNodebRepository
                 .UpdateOneInUse<IENodebRepository, ENodeb, ENodebBaseExcel, Town>(stat, Towns, excel =>
                 {
-                    if (excel.StationTown != "城区") return excel.StationTown.Replace("金沙", "丹灶").Replace("小塘", "狮山");
+                    if (excel.StationDistrict == "南海") return excel.StationTown.Replace("金沙", "丹灶").Replace("小塘", "狮山");
+                    if (excel.StationDistrict != "禅城" || excel.StationTown == "南庄") return excel.StationTown;
                     var candidates = new[] {"石湾", "张槎", "祖庙"};
+                    if (candidates.FirstOrDefault(x => excel.StationTown == x) != null) return excel.StationTown;
                     var result = candidates.FirstOrDefault(x => excel.ENodebName.Contains(x));
                     if (result != null) return result;
                     var station = _stationDictionary.FirstOrDefault(x => x.StationNum == excel.StationNum);
-                    if (station == null) return "石湾";
+                    if (station == null) return excel.StationTown;
                     result = candidates.FirstOrDefault(x =>
                         station.ElementName.Contains(x) || station.Address.Contains(x));
-                    return result ?? "石湾";
+                    return result ?? excel.StationTown;
                 }, (info, excel) =>
                 {
                     var station = _stationDictionary.FirstOrDefault(x => x.StationNum == excel.StationNum);
@@ -176,19 +183,26 @@ namespace Lte.Evaluations.DataService.Basic
                             var distribution = _distributionRepository.FirstOrDefault(x =>
                                 x.IndoorSerialNum == excel.IndoorDistributionSerial);
                             if (distribution == null) return;
-                            info.Longtitute = distribution.Longtitute;
-                            info.Lattitute = distribution.Lattitute;
+                            if (distribution.Longtitute > 112 && distribution.Lattitute > 22)
+                            {
+                                info.Longtitute = distribution.Longtitute;
+                                info.Lattitute = distribution.Lattitute;
+                            }
                         }
                         var antenna =
                             _stationAntennaRepository.FirstOrDefault(x => x.AntennaNum == excel.AntennaSerial);
                         if (antenna == null) return;
-                        info.ETilt = antenna.ETilt;
-                        info.MTilt = antenna.MTilt;
-                        info.Height = antenna.Height;
-                        info.Azimuth = antenna.Azimuth;
-                        info.Longtitute = antenna.Longtitute;
-                        info.Lattitute = antenna.Lattitute;
-                        info.AntennaGain = excel.BandClass == 5 ? antenna.AntennaGainLow : antenna.AntennaGainHigh;
+                        if (antenna.Longtitute > 112 && antenna.Lattitute > 22)
+                        {
+                            info.Longtitute = antenna.Longtitute;
+                            info.Lattitute = antenna.Lattitute;
+                            info.ETilt = antenna.ETilt;
+                            info.MTilt = antenna.MTilt;
+                            info.Height = antenna.Height;
+                            info.Azimuth = antenna.Azimuth;
+                            info.AntennaGain = excel.BandClass == 5 ? antenna.AntennaGainLow : antenna.AntennaGainHigh;
+                        }
+                        
                     });
             return true;
         }
@@ -211,6 +225,45 @@ namespace Lte.Evaluations.DataService.Basic
             if (stat == null) throw new NullReferenceException("stat is null!");
             await _stationRruRepository
                 .UpdateOneInUse<IStationRruRepository, StationRru, StationRruExcel>(stat);
+            var cellSerials = stat.CellSerialNum.GetSplittedFields(',');
+            foreach (var cellSerial in cellSerials)
+            {
+                var stationCell = _constructionInformation.FirstOrDefault(x => x.CellSerialNum == cellSerial);
+                if (stationCell == null) continue;
+                {
+                    var cell = _cellRepository.FirstOrDefault(x =>
+                        x.ENodebId == stationCell.ENodebId && x.SectorId == stationCell.SectorId);
+                    if (cell != null)
+                    {
+                        if (cell.Longtitute < 112 && cell.Lattitute < 22 && stat.Longtitute > 112 && stat.Lattitute > 22)
+                        {
+                            cell.Longtitute = stat.Longtitute ?? 0;
+                            cell.Lattitute=stat.Lattitute ?? 0;
+                        }
+                    }
+
+                    _cellRepository.SaveChanges();
+                    var rru = _rruRepository.FirstOrDefault(x =>
+                        x.ENodebId == stationCell.ENodebId && x.LocalSectorId == stationCell.LocalCellId);
+                    if (rru == null)
+                    {
+                        rru = new LteRru
+                        {
+                            ENodebId = stationCell.ENodebId,
+                            LocalSectorId = stationCell.LocalCellId,
+                            RruName = stat.Address
+                        };
+                        _rruRepository.Insert(rru);
+                    }
+                    else
+                    {
+                        rru.RruName = stat.Address;
+                    }
+
+                }
+            }
+
+            _rruRepository.SaveChanges();
             return true;
         }
 
@@ -232,6 +285,62 @@ namespace Lte.Evaluations.DataService.Basic
             if (stat == null) throw new NullReferenceException("stat is null!");
             await _stationAntennaRepository
                 .UpdateOneInUse<IStationAntennaRepository, StationAntenna, StationAntennaExcel>(stat);
+            var stationCell = _constructionInformation.FirstOrDefault(x => x.CellSerialNum == stat.AntennaNum);
+            if (stationCell != null)
+            {
+                var cell = _cellRepository.FirstOrDefault(x =>
+                    x.ENodebId == stationCell.ENodebId && x.SectorId == stationCell.SectorId);
+                if (cell != null)
+                {
+                    if (cell.Longtitute < 112 && cell.Lattitute < 22 && stat.Longtitute > 112 && stat.Lattitute > 22)
+                    {
+                        cell.Longtitute = stat.Longtitute;
+                        cell.Lattitute = stat.Lattitute;
+                        cell.ETilt = stat.ETilt;
+                        cell.MTilt = stat.MTilt;
+                        cell.Height = stat.Height;
+                        cell.Azimuth = stat.Azimuth;
+                        var antennaGainArray = string.IsNullOrEmpty(stat.AntennaGain)
+                            ? new string[] { }
+                            : stat.AntennaGain.GetSplittedFields('/');
+
+                        cell.AntennaGain = cell.BandClass == 5
+                            ? (antennaGainArray.Length > 1
+                                ? antennaGainArray[1].ConvertToDouble(17.5)
+                                : (antennaGainArray.Length > 0 ? antennaGainArray[0].ConvertToDouble(17.5) : 17.5))
+                            : (antennaGainArray.Length > 0 ? antennaGainArray[0].ConvertToDouble(15) : 15);
+                        _cellRepository.SaveChanges();
+                    }
+                }
+                var rru = _rruRepository.FirstOrDefault(x =>
+                    x.ENodebId == stationCell.ENodebId && x.LocalSectorId == stationCell.LocalCellId);
+                if (rru == null)
+                {
+                    rru = new LteRru
+                    {
+                        ENodebId = stationCell.ENodebId,
+                        LocalSectorId = stationCell.LocalCellId,
+                        AntennaModel = stat.AntennaModel,
+                        AntennaFactory = stat.AntennaFactoryDescription.GetEnumType<AntennaFactory>(),
+                        AntennaInfo = stat.AntennaPorts + "端口天线;" +
+                                      (stat.CommonAntennaWithCdma == "是" ? "与C网共用天线" : "独立天线"),
+                        CanBeTilt = stat.ElectricAdjustable == "是",
+                        RruName = stat.AntennaAddress
+                    };
+                    _rruRepository.Insert(rru);
+                }
+                else
+                {
+                    rru.AntennaModel = stat.AntennaModel;
+                    rru.AntennaFactory = stat.AntennaFactoryDescription.GetEnumType<AntennaFactory>();
+                    rru.AntennaInfo = stat.AntennaPorts + "端口天线;" +
+                                      (stat.CommonAntennaWithCdma == "是" ? "与C网共用天线" : "独立天线");
+                    rru.CanBeTilt = stat.ElectricAdjustable == "是";
+                    rru.RruName = stat.AntennaAddress;
+                }
+            
+                _rruRepository.SaveChanges();
+            }
             return true;
         }
 
@@ -253,6 +362,40 @@ namespace Lte.Evaluations.DataService.Basic
             if (stat == null) throw new NullReferenceException("stat is null!");
             await _distributionRepository
                 .UpdateOneInUse<IDistributionRepository, IndoorDistribution, IndoorDistributionExcel>(stat);
+            var stationCell = _constructionInformation.FirstOrDefault(x => x.AntennaSerial == stat.IndoorSerialNum);
+            if (stationCell != null)
+            {
+                var cell = _cellRepository.FirstOrDefault(x =>
+                    x.ENodebId == stationCell.ENodebId && x.SectorId == stationCell.SectorId);
+                if (cell != null)
+                {
+                    if (cell.Longtitute < 112 && cell.Lattitute < 22 && stat.Longtitute > 112 && stat.Lattitute > 22)
+                    {
+                        cell.Longtitute = stat.Longtitute;
+                        cell.Lattitute = stat.Lattitute;
+                        _cellRepository.SaveChanges();
+                    }
+                }
+                var rru = _rruRepository.FirstOrDefault(x =>
+                    x.ENodebId == stationCell.ENodebId && x.LocalSectorId == stationCell.LocalCellId);
+                if (rru == null)
+                {
+                    rru = new LteRru
+                    {
+                        ENodebId = stationCell.ENodebId,
+                        LocalSectorId = stationCell.LocalCellId,
+                        RruName = stat.Address
+                    };
+                    _rruRepository.Insert(rru);
+                }
+                else
+                {
+                    rru.RruName = stat.Address;
+                }
+
+                _rruRepository.SaveChanges();
+            }
+
             return true;
         }
 

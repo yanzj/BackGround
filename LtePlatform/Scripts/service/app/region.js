@@ -1182,6 +1182,12 @@ angular.module('region.import', ['app.core'])
                         });
                 },
                 dumpTownStats: function(statDate) {
+                    return generalHttpService.getApiData('DumpStats',
+                        {
+                            statDate: statDate
+                        });
+                },
+                dumpTownFlows: function(statDate) {
                     return generalHttpService.getApiData('DumpFlow',
                         {
                             statDate: statDate

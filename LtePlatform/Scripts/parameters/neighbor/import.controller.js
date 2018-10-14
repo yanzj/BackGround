@@ -118,25 +118,31 @@
                         $scope.dumpHistory = result;
                         angular.forEach(result,
                             function(record) {
-                                if (record.huaweiItems > 9000 &&
-                                    record.zteItems > 18000 &&
-                                    (record.townStats === 0 ||
-                                        record.townRrcs === 0 ||
+                                if (record.huaweiPrbs > 9000 &&
+                                    record.ztePrbs > 18000 &&
+                                    (record.townRrcs === 0 ||
                                         record.townQcis === 0 ||
                                         record.townPrbs === 0 ||
-                                        record.townStats2100 === 0 ||
-                                        record.townStats1800 === 0 ||
-                                        record.townStats800VoLte === 0 ||
                                         record.townDoubleFlows < 44)) {
                                     flowImportService.dumpTownStats(record.dateString).then(function(count) {
+                                        record.townRrcs = count[0];
+                                        record.townQcis = count[1];
+                                        record.townPrbs = count[2];
+                                        record.townDoubleFlows = count[3];
+                                    });
+                                }
+
+                                if (record.huaweiItems > 9000 &&
+                                    record.zteItems > 18000 &&
+                                    (record.townStats < 44 ||
+                                        record.townStats2100 < 44 ||
+                                        record.townStats1800 < 44 ||
+                                        record.townStats800VoLte < 44)) {
+                                    flowImportService.dumpTownFlows(record.dateString).then(function(count) {
                                         record.townStats = count[0];
-                                        record.townRrcs = count[1];
-                                        record.townStats2100 = count[2];
-                                        record.townStats1800 = count[3];
-                                        record.townStats800VoLte = count[4];
-                                        record.townQcis = count[5];
-                                        record.townPrbs = count[6];
-                                        record.townDoubleFlows = count[7];
+                                        record.townStats2100 = count[1];
+                                        record.townStats1800 = count[2];
+                                        record.townStats800VoLte = count[3];
                                     });
                                 }
 

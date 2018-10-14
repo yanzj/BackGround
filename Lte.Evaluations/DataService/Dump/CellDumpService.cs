@@ -141,6 +141,11 @@ namespace Lte.Evaluations.DataService.Dump
             await _cellRepository.UpdateOnly<ICellRepository, Cell, CellExcel>(info,
                 (excel, stat) =>
                 {
+                    if (excel.Longtitute > 112 && excel.Lattitute > 22 && stat.Longtitute < 112 && stat.Lattitute < 22)
+                    {
+                        stat.Longtitute = excel.Longtitute;
+                        stat.Lattitute = excel.Lattitute;
+                    }
                     stat.AntennaPorts = excel.AntennaInfo.ToUpper().GetEnumType<AntennaPortsConfigure>();
                     stat.AntennaGain = excel.AntennaGain;
                     stat.Azimuth = excel.Azimuth;

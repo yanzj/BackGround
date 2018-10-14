@@ -92,8 +92,8 @@ namespace Lte.Evaluations.DataService.RegionKpi
             }
             return new[] { count0, count1, count2, count3 };
         }
-
-        public async Task<int[]> GenerateTownStats(DateTime statDate)
+        
+        public async Task<int[]> GenerateTownFlows(DateTime statDate)
         {
             var end = statDate.AddDays(1);
             var item1 =
@@ -118,25 +118,6 @@ namespace Lte.Evaluations.DataService.RegionKpi
                     }
                 }
                 item1 += _townFlowRepository.SaveChanges();
-            }
-            var item2 = _townRrcRepository.Count(x => x.StatTime >= statDate && x.StatTime < end);
-            if (item2 < 44)
-            {
-                var townRrcList = _rrcService.GetTownRrcStats(statDate);
-                foreach (var stat in townRrcList.GetPositionMergeStats(statDate))
-                {
-                    var subItem = _townRrcRepository.FirstOrDefault(
-                        x => x.StatTime >= statDate && x.StatTime < end && x.TownId == stat.TownId);
-                    if (subItem == null)
-                        await _townRrcRepository.InsertAsync(stat);
-                    else
-                    {
-                        var oldId = subItem.Id;
-                        stat.MapTo(subItem);
-                        subItem.Id = oldId;
-                    }
-                }
-                item2 += _townRrcRepository.SaveChanges();
             }
             var item3 =
                 _townFlowRepository.Count(
@@ -207,6 +188,31 @@ namespace Lte.Evaluations.DataService.RegionKpi
                 }
                 item5 += _townFlowRepository.SaveChanges();
             }
+            return new [] {item1, item3, item4, item5 };
+        }
+
+        public async Task<int[]> GenerateTownStats(DateTime statDate)
+        {
+            var end = statDate.AddDays(1);
+            var item2 = _townRrcRepository.Count(x => x.StatTime >= statDate && x.StatTime < end);
+            if (item2 < 44)
+            {
+                var townRrcList = _rrcService.GetTownRrcStats(statDate);
+                foreach (var stat in townRrcList.GetPositionMergeStats(statDate))
+                {
+                    var subItem = _townRrcRepository.FirstOrDefault(
+                        x => x.StatTime >= statDate && x.StatTime < end && x.TownId == stat.TownId);
+                    if (subItem == null)
+                        await _townRrcRepository.InsertAsync(stat);
+                    else
+                    {
+                        var oldId = subItem.Id;
+                        stat.MapTo(subItem);
+                        subItem.Id = oldId;
+                    }
+                }
+                item2 += _townRrcRepository.SaveChanges();
+            }
             var item6 = _townQciRepository.Count(x => x.StatTime >= statDate && x.StatTime < end);
             if (item6 < 44)
             {
@@ -265,7 +271,7 @@ namespace Lte.Evaluations.DataService.RegionKpi
                 }
                 item8 += _townDoubleFlowRepository.SaveChanges();
             }
-            return new [] {item1, item2, item3, item4, item5, item6, item7, item8};
+            return new [] {item2, item6, item7, item8};
         }
 
     }

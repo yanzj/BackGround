@@ -36,7 +36,7 @@ namespace LtePlatform.Controllers.Kpi
         [HttpGet]
         public async Task<int[]> Get(DateTime statDate)
         {
-            return await _kpiService.GenerateTownStats(statDate);
+            return await _kpiService.GenerateTownFlows(statDate);
         }
 
         [HttpGet]
