@@ -269,6 +269,12 @@
                     {
                         statDate: statDate
                     });
+            },
+            retrieveDateCollegeHourCqiStats: function (statDate) {
+                return generalHttpService.getApiData('CollegeHourCqi',
+                    {
+                        statDate: statDate
+                    });
             }
         };
     })

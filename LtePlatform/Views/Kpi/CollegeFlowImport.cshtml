@@ -10,7 +10,7 @@
         </h2>
     </div>
     <div class="panel-body row" ng-controller="college.flows">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <div date-span-row begin-date="beginDate" end-date="endDate">
                 <button class="btn btn-primary" ng-click="query()">更新</button>
             </div>
@@ -20,6 +20,7 @@
                         <th>日期</th>
                         <th>流量记录数</th>
                         <th>CQI记录数</th>
+                        <th>忙时CQI</th>
                         <th>详情</th>
                     </tr>
                 </thead>
@@ -28,6 +29,7 @@
                         <td>{{stat.date | date: 'yyyy-MM-dd'}}</td>
                         <td>{{stat.items.length}}</td>
                         <td>{{stat.cqis.length}}</td>
+                        <td>{{stat.hourCqis.length}}</td>
                         <td>
                             <button class="btn btn-default" ng-disabled="!stat.items.length"
                                     ng-click="showChart(stat.items)">
@@ -38,7 +40,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div id="collegeFlowChart" style="min-height: 600px"></div>
         </div>
     </div>

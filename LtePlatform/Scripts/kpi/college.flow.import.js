@@ -45,6 +45,18 @@
                                 });
                             }
                         });
+                        appRegionService.getCurrentDateTownHourCqiStats(stat.date, 'college').then(function (items) {
+                            stat.hourCqis = items;
+                            if (items.length < 20) {
+                                collegeQueryService.retrieveDateCollegeHourCqiStats(stat.date).then(function (newItems) {
+                                    stat.hourCqis = newItems;
+                                    angular.forEach(newItems,
+                                        function (item) {
+                                            appRegionService.updateTownHourCqiStat(item).then(function (result) { });
+                                        });
+                                });
+                            }
+                        });
                     });
             };
 

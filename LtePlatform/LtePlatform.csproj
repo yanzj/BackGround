@@ -311,13 +311,15 @@
     <Compile Include="Controllers\AdminitrativeRegion\CqiFrequencyController.cs" />
     <Compile Include="Controllers\AdminitrativeRegion\DumpStatsController.cs" />
     <Compile Include="Controllers\AdminitrativeRegion\DumpTownCqiController.cs" />
+    <Compile Include="Controllers\AdminitrativeRegion\TownHourCqiController.cs" />
+    <Compile Include="Controllers\College\CollegeHourCqiController.cs" />
     <Compile Include="Controllers\Dt\DumpZhangshangyouCoverageController.cs" />
     <Compile Include="Controllers\Dt\DumpZhangshangyouQualityController.cs" />
     <Compile Include="Controllers\Dt\ZhangshangyouCoverageController.cs" />
     <Compile Include="Controllers\Dt\ZhangshangyouQualityController.cs" />
     <Compile Include="Controllers\Kpi\AlarmWorkItemController.cs" />
     <Compile Include="Controllers\Kpi\CellAlarmWorkItemController.cs" />
-    <Compile Include="Controllers\Kpi\CollegeCqiController.cs" />
+    <Compile Include="Controllers\College\CollegeCqiController.cs" />
     <Compile Include="Controllers\Kpi\DoubleFlowQueryController.cs" />
     <Compile Include="Controllers\Kpi\DoubleFlowRegionController.cs" />
     <Compile Include="Controllers\Kpi\DumpHourController.cs" />
@@ -350,7 +352,7 @@
     <Compile Include="Controllers\Kpi\TopHourCqiController.cs" />
     <Compile Include="Controllers\Kpi\TopHourPrbController.cs" />
     <Compile Include="Controllers\Kpi\TopHourUsersController.cs" />
-    <Compile Include="Controllers\Kpi\TownCqiController.cs" />
+    <Compile Include="Controllers\AdminitrativeRegion\TownCqiController.cs" />
     <Compile Include="Controllers\Mongo\MrsRsrpImportController.cs" />
     <Compile Include="Controllers\Mongo\MrsSinrUlImportController.cs" />
     <Compile Include="Controllers\Mongo\UplinkOpenLoopPowerControlController.cs" />
