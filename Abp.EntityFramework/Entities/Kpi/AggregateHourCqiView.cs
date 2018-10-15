@@ -3,32 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Abp.Domain.Entities;
 using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Dependency;
-using Abp.EntityFramework.Entities.Kpi;
+using Abp.EntityFramework.Entities.RegionKpi;
 using Lte.Domain.Common.Types;
-using Lte.Domain.Common.Wireless;
-using Lte.Domain.Common.Wireless.Cell;
+using Lte.Domain.Regular;
 using Lte.Domain.Regular.Attributes;
 
-namespace Abp.EntityFramework.Entities.RegionKpi
+namespace Abp.EntityFramework.Entities.Kpi
 {
-    [AutoMapFrom(typeof(HourCqi))]
-    [TypeDoc("镇区忙时CQI优良率统计")]
-    public class TownHourCqi : Entity, ITownId, IStatDate, IFrequency
+    [AutoMapFrom(typeof(HourCqiView), typeof(TownHourCqi))]
+    [IncreaseNumberKpi(KpiPrefix = "Cqi", KpiAffix = "Times", IndexRange = 16)]
+    [TypeDoc("聚合忙时CQI优良比统计视图")]
+    public class AggregateHourCqiView : IStatTime
     {
-        [ArraySumProtection]
-        public int TownId { get; set; }
+        [MemberDoc("小区个数")]
+        public int CellCount { get; set; }
 
-        [ArraySumProtection]
-        public FrequencyBandType FrequencyBandType { get; set; } = FrequencyBandType.All;
+        public string Name { get; set; }
 
-        public string Frequency => FrequencyBandType.ToString();
-
-        [ArraySumProtection]
-        [AutoMapPropertyResolve("StatTime", typeof(HourCqi))]
-        public DateTime StatDate { get; set; }
+        [AutoMapPropertyResolve("StatDate", typeof(TownHourCqi))]
+        public DateTime StatTime { get; set; }
         
         [MemberDoc("12.2 CQI0上报数量(次)")]
         public long Cqi0Times { get; set; }
@@ -78,10 +72,16 @@ namespace Abp.EntityFramework.Entities.RegionKpi
         [MemberDoc("12.2 CQI15上报数量(次)")]
         public long Cqi15Times { get; set; }
         
+        public Tuple<int, int> CqiCounts => this.GetDivsionIntTuple(7);
+
+        public double CqiRate => (double)CqiCounts.Item2 * 100 / (CqiCounts.Item1 + CqiCounts.Item2);
+
         [MemberDoc("12.1 下行实际占用的PRB总数(个)")]
         public double TotalPrbs { get; set; }
 
         [MemberDoc("12.1 下行双流模式调度的PRB总数(个)")]
         public long DoubleFlowPrbs { get; set; }
+        
+        public double DoubleFlowRate => Math.Abs(TotalPrbs) < 1e-7 ? 0 : DoubleFlowPrbs / TotalPrbs * 100;
     }
 }

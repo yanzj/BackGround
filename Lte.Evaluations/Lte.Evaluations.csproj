@@ -133,7 +133,6 @@
     <Compile Include="DataService\Basic\StationRruService.cs" />
     <Compile Include="DataService\College\BranchDemandService.cs" />
     <Compile Include="DataService\College\CheckingService.cs" />
-    <Compile Include="DataService\College\College3GTestService.cs" />
     <Compile Include="DataService\College\College4GTestService.cs" />
     <Compile Include="DataService\College\ComplainService.cs" />
     <Compile Include="DataService\College\EmergencyCommunicationService.cs" />

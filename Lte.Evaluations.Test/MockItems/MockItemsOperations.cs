@@ -11,7 +11,6 @@ using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Maintainence;
 using Lte.MySqlFramework.Abstract.Mr;
 using Lte.MySqlFramework.Abstract.Region;
-using Lte.MySqlFramework.Abstract.Test;
 
 namespace Lte.Evaluations.MockItems
 {
@@ -88,13 +87,6 @@ namespace Lte.Evaluations.MockItems
             repository.Setup(x => x.GetByName(It.IsAny<string>())).Returns<string>(
                 name => repository.Object.GetAll().FirstOrDefault(
                     x => x.Name == name));
-        }
-
-        public static void MockOperations(this Mock<ICollege3GTestRepository> repository)
-        {
-            repository.Setup(x => x.GetAllList(It.IsAny<DateTime>(), It.IsAny<DateTime>()))
-                .Returns<DateTime, DateTime>(
-                    (begin, end) => repository.Object.GetAll().Where(x => x.TestTime > begin && x.TestTime <= end).ToList());
         }
         
         public static void MockOperations(this Mock<IENodebRepository> repository)

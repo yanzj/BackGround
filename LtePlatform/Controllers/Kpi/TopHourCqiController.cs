@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
+using Abp.EntityFramework.Entities.Kpi;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless.Kpi;
 using Lte.Evaluations.DataService.Basic;
 using Lte.Evaluations.DataService.Kpi;
-using Lte.MySqlFramework.Entities.Kpi;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.Kpi

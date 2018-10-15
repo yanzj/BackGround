@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities.RegionKpi;
+using Lte.Domain.Common.Types;
 using Lte.Domain.Regular;
 using Lte.Domain.Regular.Attributes;
 
@@ -13,7 +14,7 @@ namespace Abp.EntityFramework.Entities.Kpi
     [AutoMapFrom(typeof(CqiView), typeof(TownCqiStat))]
     [IncreaseNumberKpi(KpiPrefix = "Cqi", KpiAffix = "Reports", IndexRange = 16)]
     [TypeDoc("聚合CQI优良比统计视图")]
-    public class AggregateCqiView
+    public class AggregateCqiView : IStatTime
     {
         [MemberDoc("小区个数")]
         public int CellCount { get; set; }

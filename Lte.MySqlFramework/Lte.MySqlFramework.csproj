@@ -167,7 +167,6 @@
     <Compile Include="Abstract\RegionKpi\ITownHourPrbRepository.cs" />
     <Compile Include="Abstract\RegionKpi\ITownHourUsersRepository.cs" />
     <Compile Include="Abstract\RegionKpi\ITownPreciseCoverageRepository.cs" />
-    <Compile Include="Abstract\Test\ICollege3GTestRepository.cs" />
     <Compile Include="Abstract\Test\ICollege4GTestRepository.cs" />
     <Compile Include="Abstract\College\ICollegeYearRepository.cs" />
     <Compile Include="Abstract\Kpi\ICqiHuaweiRepository.cs" />
@@ -255,7 +254,6 @@
     <Compile Include="Abstract\Region\TownBoundaryQuery.cs" />
     <Compile Include="Abstract\Region\TownQueries.cs" />
     <Compile Include="Concrete\College\CollegeYearRepository.cs" />
-    <Compile Include="Concrete\College\EFCollege3GTestRepository.cs" />
     <Compile Include="Concrete\College\EFCollege4GTestRepository.cs" />
     <Compile Include="Concrete\College\ModuleUsageRecordRepository.cs" />
     <Compile Include="Concrete\College\UserLoginSessionInfoRepository.cs" />
@@ -347,7 +345,6 @@
     <Compile Include="Concrete\Maintainence\WorkItemRepository.cs" />
     <Compile Include="Concrete\Test\ZhangshangyouCoverageRepository.cs" />
     <Compile Include="Concrete\Test\ZhangshangyouQualityRepository.cs" />
-    <Compile Include="Entities\Kpi\HourCqiView.cs" />
     <Compile Include="Entities\Kpi\HourPrbView.cs" />
     <Compile Include="Entities\Kpi\HourUsersView.cs" />
     <Compile Include="Entities\Kpi\RssiView.cs" />

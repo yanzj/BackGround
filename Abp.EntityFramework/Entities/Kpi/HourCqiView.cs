@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Entities.Kpi;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Regular;
 using Lte.Domain.Regular.Attributes;
 
-namespace Lte.MySqlFramework.Entities.Kpi
+namespace Abp.EntityFramework.Entities.Kpi
 {
     [AutoMapFrom(typeof(HourCqi))]
     [IncreaseNumberKpi(KpiPrefix = "Cqi", KpiAffix = "Times", IndexRange = 16)]

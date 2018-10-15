@@ -157,7 +157,6 @@
     <Compile Include="DataService\Dump\BasicImportServiceTest.cs" />
     <Compile Include="DataService\College\CdmaRegionStatServiceTest.cs" />
     <Compile Include="DataService\Queries\CdmaRegionViewQueries.cs" />
-    <Compile Include="DataService\College\College3GTestQueries.cs" />
     <Compile Include="DataService\College\CollegeTestServiceTest.cs" />
     <Compile Include="DataService\College\CollegeDistributionServiceTest.cs" />
     <Compile Include="DataService\Dump\ENodebDumpServiceTest.cs" />

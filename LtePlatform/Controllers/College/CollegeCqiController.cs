@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Http;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities.Kpi;
@@ -13,7 +12,7 @@ using Lte.Evaluations.DataService.Kpi;
 using Lte.Evaluations.DataService.RegionKpi;
 using LtePlatform.Models;
 
-namespace LtePlatform.Controllers.AdminitrativeRegion
+namespace LtePlatform.Controllers.College
 {
     [ApiControl("校园网CQI优良比查询控制器")]
     [ApiGroup("专题优化")]

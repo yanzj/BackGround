@@ -182,9 +182,11 @@
     <Compile Include="Entities\Infrastructure\SectorView.cs" />
     <Compile Include="Entities\Kpi\AggregateCqiView.cs" />
     <Compile Include="Entities\Kpi\AggregateFlowView.cs" />
+    <Compile Include="Entities\Kpi\AggregateHourCqiView.cs" />
     <Compile Include="Entities\Kpi\CqiView.cs" />
     <Compile Include="Entities\Kpi\DoubleFlowView.cs" />
     <Compile Include="Entities\Kpi\HourCqi.cs" />
+    <Compile Include="Entities\Kpi\HourCqiView.cs" />
     <Compile Include="Entities\Kpi\HourPrb.cs" />
     <Compile Include="Entities\Kpi\HourUsers.cs" />
     <Compile Include="Entities\Kpi\RssiHuawei.cs" />
@@ -222,8 +224,6 @@
     <Compile Include="Entities\Maintainence\CheckingBasic.cs" />
     <Compile Include="Entities\Maintainence\CheckingDetails.cs" />
     <Compile Include="Entities\Maintainence\CheckingProject.cs" />
-    <Compile Include="Entities\Test\College3GTestResults.cs" />
-    <Compile Include="Entities\Test\College3GTestView.cs" />
     <Compile Include="Entities\Test\College4GTestResults.cs" />
     <Compile Include="Entities\Test\College4GTestView.cs" />
     <Compile Include="Entities\College\CollegeInfo.cs" />
