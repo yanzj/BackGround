@@ -10,4 +10,9 @@ namespace Abp.EntityFramework.Dependency
     {
         string FrequencyBand { get; }
     }
+
+    public interface IFrequency
+    {
+        string Frequency { get; }
+    }
 }

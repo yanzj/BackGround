@@ -1,6 +1,7 @@
 using System;
 using Abp.Domain.Entities;
 using Abp.EntityFramework.AutoMapper;
+using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities.Kpi;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
@@ -10,7 +11,7 @@ using Lte.Domain.Regular.Attributes;
 namespace Abp.EntityFramework.Entities.RegionKpi
 {
     [AutoMapFrom(typeof(CqiHuawei), typeof(CqiZte), typeof(CqiView))]
-    public class TownCqiStat : Entity, ITownId, IStatTime
+    public class TownCqiStat : Entity, ITownId, IStatTime, IFrequency
     {
         [ArraySumProtection]
         public int TownId { get; set; }

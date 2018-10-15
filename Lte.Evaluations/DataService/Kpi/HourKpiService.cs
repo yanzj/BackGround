@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Regular;
 using Lte.MySqlFramework.Abstract.Kpi;
 using Lte.MySqlFramework.Abstract.RegionKpi;
@@ -47,7 +48,13 @@ namespace Lte.Evaluations.DataService.Kpi
                 var cqiItems =
                     await _cqiRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
                 var townCqis =
-                    await _townCqiRepository.CountAsync(x => x.StatDate >= beginDate && x.StatDate < endDate);
+                    await _townCqiRepository.CountAsync(x => x.StatDate >= beginDate && x.StatDate < endDate && x.FrequencyBandType == FrequencyBandType.All);
+                var townCqi800s =
+                    await _townCqiRepository.CountAsync(x => x.StatDate >= beginDate && x.StatDate < endDate && x.FrequencyBandType == FrequencyBandType.Band800VoLte);
+                var townCqi1800s =
+                    await _townCqiRepository.CountAsync(x => x.StatDate >= beginDate && x.StatDate < endDate && x.FrequencyBandType == FrequencyBandType.Band1800);
+                var townCqi2100s =
+                    await _townCqiRepository.CountAsync(x => x.StatDate >= beginDate && x.StatDate < endDate && x.FrequencyBandType == FrequencyBandType.Band2100);
                 results.Add(new HourKpiHistory
                 {
                     DateString = begin.ToShortDateString(),

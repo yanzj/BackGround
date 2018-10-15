@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities.RegionKpi;
+using Lte.Domain.Common.Wireless.Cell;
 using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Abstract.RegionKpi;
 using Lte.MySqlFramework.Entities.RegionKpi;
@@ -28,7 +29,7 @@ namespace Lte.Evaluations.DataService.RegionKpi
             var stats = _statRepository.QueryDate(initialDate, (repository, beginDate, endDate) =>
             {
                 var query =
-                    _statRepository.GetAllList(x => x.StatDate >= beginDate & x.StatDate < endDate);
+                    _statRepository.GetAllList(x => x.StatDate >= beginDate & x.StatDate < endDate && x.FrequencyBandType == FrequencyBandType.All);
                 return query.FilterTownList(_townRepository.GetAllList().Where(x => x.CityName == city).ToList());
             });
             var townViews = stats.ConstructViews<TownHourCqi, TownHourCqiView>(_townRepository);
@@ -38,7 +39,7 @@ namespace Lte.Evaluations.DataService.RegionKpi
 
         public IEnumerable<HourCqiRegionDateView> QueryDateViews(DateTime begin, DateTime end, string city)
         {
-            var query = _statRepository.GetAllList(x => x.StatDate >= begin & x.StatDate < end);
+            var query = _statRepository.GetAllList(x => x.StatDate >= begin & x.StatDate < end && x.FrequencyBandType == FrequencyBandType.All);
             var townViews = query.QueryTownStat<TownHourCqi, TownHourCqiView>(_townRepository, city);
             return
                 townViews.QueryDateDateViews<HourCqiRegionDateView, DistrictHourCqiView, TownHourCqiView>(

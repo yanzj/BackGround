@@ -375,6 +375,10 @@
     <Compile Include="Migrations\201810101555029_Update_Town_Cqi.Designer.cs">
       <DependentUpon>201810101555029_Update_Town_Cqi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810150322592_Update_Town_Hour_Cqi.cs" />
+    <Compile Include="Migrations\201810150322592_Update_Town_Hour_Cqi.Designer.cs">
+      <DependentUpon>201810150322592_Update_Town_Hour_Cqi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -503,6 +507,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810101555029_Update_Town_Cqi.resx">
       <DependentUpon>201810101555029_Update_Town_Cqi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810150322592_Update_Town_Hour_Cqi.resx">
+      <DependentUpon>201810150322592_Update_Town_Hour_Cqi.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

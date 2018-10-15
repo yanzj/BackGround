@@ -16,5 +16,11 @@
 
         public int TownCqis { get; set; }
 
+        public int TownCqi800s { get; set; }
+
+        public int TownCqi1800s { get; set; }
+
+        public int TownCqi2100s { get; set; }
+
     }
 }
