@@ -1199,6 +1199,12 @@ angular.module('region.import', ['app.core'])
                             statDate: statDate
                         });
                 },
+                dumpTownHourCqis: function (statDate) {
+                    return generalHttpService.getApiData('DumpHourCqi',
+                        {
+                            statDate: statDate
+                        });
+                },
                 dumpTownCqis: function(statDate) {
                     return generalHttpService.getApiData('DumpTownCqi',
                         {

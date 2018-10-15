@@ -87,14 +87,21 @@
                     function(result) {
                         $scope.dumpHistory = result;
                         angular.forEach(result,
-                            function(record) {
+                            function (record) {
                                 if ((record.prbItems > 27000 && record.townPrbs < 44)
-                                    || (record.usersItems > 27000 && record.townUserses < 44)
-                                    || (record.cqiItems > 27000 && record.townCqis < 44)) {
+                                    || (record.usersItems > 27000 && record.townUserses < 44)) {
                                     flowImportService.dumpTownHourStats(record.dateString).then(function(count) {
                                         record.townPrbs = count[0];
                                         record.townUserses = count[1];
-                                        record.townCqis = count[2];
+                                    });
+                                }
+                                if (record.cqiItems > 27000 && (record.townCqis < 44
+                                    || record.townCqi2100s < 44 || record.townCqi1800s < 44 || record.townCqi800s < 44)) {
+                                    flowImportService.dumpTownHourCqis(record.dateString).then(function (count) {
+                                        record.townCqis = count[0];
+                                        record.townCqi2100s = count[1];
+                                        record.townCqi1800s = count[2];
+                                        record.townCqi800s = count[3];
                                     });
                                 }
                             });

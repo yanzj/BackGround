@@ -194,7 +194,10 @@ angular.module('workitem.module.feedback', ['ui.grid', 'myApp.kpi'])
                     { field: 'usersItems', name: '用户数' },
                     { field: 'townUserses', name: '镇-用户数' },
                     { field: 'cqiItems', name: 'CQI优良率' },
-                    { field: 'townCqis', name: '镇-CQI优良率' }
+                    { field: 'townCqis', name: '镇CQI-全部' },
+                    { field: 'townCqi2100s', name: '镇CQI-2.1G' },
+                    { field: 'townCqi1800s', name: '镇CQI-1.8G' },
+                    { field: 'townCqi800s', name: '镇CQI-800M' }
                 ],
                 data: []
             };
