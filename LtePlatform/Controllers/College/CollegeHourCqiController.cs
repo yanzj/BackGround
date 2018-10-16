@@ -158,7 +158,7 @@ namespace LtePlatform.Controllers.College
         [ApiDoc("抽取查询单日所有校园网的忙时CQI优良比统计（导入采用，一般前端代码不要用这个接口）")]
         [ApiParameterDoc("statDate", "统计日期")]
         [ApiResponse("所有校园网的CQI优良比统计")]
-        public IEnumerable<TownCqiStat> GetDateCqiView(DateTime statDate)
+        public IEnumerable<TownHourCqi> GetDateCqiView(DateTime statDate)
         {
             var beginDate = statDate.Date;
             var endDate = beginDate.AddDays(1);
@@ -171,7 +171,7 @@ namespace LtePlatform.Controllers.College
                 if (!viewListList.Any()) return null;
                 var viewList = viewListList.Aggregate((x, y) => x.Concat(y).ToList()).ToList();
                 if (!viewList.Any()) return null;
-                var stat = viewList.ArraySum().MapTo<TownCqiStat>();
+                var stat = viewList.ArraySum().MapTo<TownHourCqi>();
                 stat.FrequencyBandType = FrequencyBandType.College;
                 stat.TownId = college.Id;
                 return stat;

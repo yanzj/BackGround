@@ -364,10 +364,6 @@
     <Compile Include="Entities\RegionKpi\TownHourCqiView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourPrbView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourUsersView.cs" />
-    <Compile Include="Migrations\201810070737104_Update_Town_Coverage.cs" />
-    <Compile Include="Migrations\201810070737104_Update_Town_Coverage.Designer.cs">
-      <DependentUpon>201810070737104_Update_Town_Coverage.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201810101555029_Update_Town_Cqi.cs" />
     <Compile Include="Migrations\201810101555029_Update_Town_Cqi.Designer.cs">
       <DependentUpon>201810101555029_Update_Town_Cqi.cs</DependentUpon>
@@ -375,6 +371,10 @@
     <Compile Include="Migrations\201810150322592_Update_Town_Hour_Cqi.cs" />
     <Compile Include="Migrations\201810150322592_Update_Town_Hour_Cqi.Designer.cs">
       <DependentUpon>201810150322592_Update_Town_Hour_Cqi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810160102400_Delete_College3G_Test.cs" />
+    <Compile Include="Migrations\201810160102400_Delete_College3G_Test.Designer.cs">
+      <DependentUpon>201810160102400_Delete_College3G_Test.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -499,14 +499,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810070737104_Update_Town_Coverage.resx">
-      <DependentUpon>201810070737104_Update_Town_Coverage.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810101555029_Update_Town_Cqi.resx">
       <DependentUpon>201810101555029_Update_Town_Cqi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810150322592_Update_Town_Hour_Cqi.resx">
       <DependentUpon>201810150322592_Update_Town_Hour_Cqi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810160102400_Delete_College3G_Test.resx">
+      <DependentUpon>201810160102400_Delete_College3G_Test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

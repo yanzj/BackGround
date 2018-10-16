@@ -37,10 +37,12 @@
                             stat.cqis = items;
                             if (items.length < 20) {
                                 collegeQueryService.retrieveDateCollegeCqiStats(stat.date).then(function (newItems) {
-                                    stat.cqis = newItems;
+                                    
                                     angular.forEach(newItems,
                                         function (item) {
-                                            appRegionService.updateTownCqiStat(item).then(function (result) { });
+                                            appRegionService.updateTownCqiStat(item).then(function (result) {
+                                                stat.cqis = newItems;
+                                            });
                                         });
                                 });
                             }
@@ -49,10 +51,12 @@
                             stat.hourCqis = items;
                             if (items.length < 20) {
                                 collegeQueryService.retrieveDateCollegeHourCqiStats(stat.date).then(function (newItems) {
-                                    stat.hourCqis = newItems;
+                                    
                                     angular.forEach(newItems,
                                         function (item) {
-                                            appRegionService.updateTownHourCqiStat(item).then(function (result) { });
+                                            appRegionService.updateTownHourCqiStat(item).then(function (result) {
+                                                stat.hourCqis = newItems;
+                                            });
                                         });
                                 });
                             }

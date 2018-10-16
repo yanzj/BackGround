@@ -14,7 +14,7 @@ using Lte.Domain.Regular.Attributes;
 
 namespace Abp.EntityFramework.Entities.RegionKpi
 {
-    [AutoMapFrom(typeof(HourCqi))]
+    [AutoMapFrom(typeof(HourCqi), typeof(HourCqiView))]
     [TypeDoc("镇区忙时CQI优良率统计")]
     public class TownHourCqi : Entity, ITownId, IStatDate, IFrequency
     {
@@ -28,6 +28,7 @@ namespace Abp.EntityFramework.Entities.RegionKpi
 
         [ArraySumProtection]
         [AutoMapPropertyResolve("StatTime", typeof(HourCqi))]
+        [AutoMapPropertyResolve("StatTime", typeof(HourCqiView))]
         public DateTime StatDate { get; set; }
         
         [MemberDoc("12.2 CQI0上报数量(次)")]
