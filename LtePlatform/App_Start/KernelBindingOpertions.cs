@@ -332,6 +332,8 @@ namespace LtePlatform
 
             ninjectKernel.Bind<IRssiZteRepository>().To<RssiZteRepository>();
 
+            ninjectKernel.Bind<ISpecialAlarmWorkItemRepository>().To<SpecialAlarmWorkItemRepository>();
+
             ninjectKernel.Bind<CdmaRegionStatService>().ToSelf();
 
             ninjectKernel.Bind<CollegeStatService>().ToSelf();

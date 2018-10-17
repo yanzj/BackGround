@@ -161,6 +161,7 @@
     <Compile Include="Abstract\Maintainence\ICheckingProjectRepository.cs" />
     <Compile Include="Abstract\College\ICollegeRepository.cs" />
     <Compile Include="Abstract\Cdma\ICdmaRegionStatRepository.cs" />
+    <Compile Include="Abstract\Maintainence\ISpecialAlarmWorkItemRepository.cs" />
     <Compile Include="Abstract\Mr\IInterferenceMatrixRepository.cs" />
     <Compile Include="Abstract\Mr\IPreciseCoverage4GRepository.cs" />
     <Compile Include="Abstract\RegionKpi\ITownHourCqiRepository.cs" />
@@ -264,6 +265,7 @@
     <Compile Include="Concrete\Kpi\RssiZteRepository.cs" />
     <Compile Include="Concrete\Maintainence\AlarmWorkItemRepository.cs" />
     <Compile Include="Concrete\Maintainence\AlarmRepository.cs" />
+    <Compile Include="Concrete\Maintainence\SpecialAlarmWorkItemRepository.cs" />
     <Compile Include="Concrete\Mr\InterferenceMatrixRepository.cs" />
     <Compile Include="Concrete\Mr\PreciseCoverage4GRepository.cs" />
     <Compile Include="Concrete\RegionKpi\TownHourCqiRepository.cs" />
@@ -523,7 +525,6 @@
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
-    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

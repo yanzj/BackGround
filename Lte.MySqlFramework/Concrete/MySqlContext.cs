@@ -224,5 +224,7 @@ namespace Lte.MySqlFramework.Concrete
         
         public DbSet<InterferenceMatrixStat> InterferenceMatrices { get; set; }
 
+        public DbSet<SpecialAlarmWorkItem> SpecialAlarmWorkItems { get; set; }
+
     }
 }
