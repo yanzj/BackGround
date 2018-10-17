@@ -276,6 +276,7 @@ namespace Abp.EntityFramework.Repositories
             where TEntity : Entity, new()
         {
             var count = 0;
+            var total = 0;
             foreach (var stat in stats)
             {
                 var info = repository.Match(stat);
@@ -289,10 +290,10 @@ namespace Abp.EntityFramework.Repositories
                     await repository.UpdateAsync(info);
                 }
                 if (count++%1000 == 0)
-                    repository.SaveChanges();
+                    total += repository.SaveChanges();
             }
             
-            return repository.SaveChanges();
+            return total + repository.SaveChanges();
         }
 
         public static async Task<int> UpdateMany<TRepository, TEntity>(this TRepository repository, IEnumerable<TEntity> stats)
@@ -300,6 +301,7 @@ namespace Abp.EntityFramework.Repositories
             where TEntity : Entity, new()
         {
             var count = 0;
+            var total = 0;
             foreach (var stat in stats)
             {
                 var info = repository.Match(stat);
@@ -313,10 +315,10 @@ namespace Abp.EntityFramework.Repositories
                     await repository.UpdateAsync(info);
                 }
                 if (count++ % 1000 == 0)
-                    repository.SaveChanges();
+                    total += repository.SaveChanges();
             }
 
-            return repository.SaveChanges();
+            return total + repository.SaveChanges();
         }
 
         public static async Task<TProcessDto> ConstructProcess
