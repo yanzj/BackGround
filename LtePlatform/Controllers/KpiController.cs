@@ -397,6 +397,22 @@ namespace LtePlatform.Controllers
             }
             return View("WorkItemImport");
         }
+        
+        [HttpPost]
+        public ActionResult SpecialWorkItemPost()
+        {
+            var httpPostedFileBase = Request.Files["specialWorkItem"];
+            if (httpPostedFileBase == null || httpPostedFileBase.FileName == "")
+            {
+                ViewBag.ErrorMessage = "上传文件为空！请先上传文件。";
+            }
+            else
+            {
+                var path = httpPostedFileBase.UploadKpiFile();
+                ViewBag.Message = _workItemService.ImportSpecialAlarmExcelFiles(path);
+            }
+            return View("WorkItemImport");
+        }
 
         [HttpPost]
         public ActionResult CheckingProjectPost()

@@ -328,6 +328,7 @@
     <Compile Include="Controllers\Kpi\DumpHourPrbController.cs" />
     <Compile Include="Controllers\Kpi\DumpHourUsersController.cs" />
     <Compile Include="Controllers\Kpi\DumpHuaweiRssiController.cs" />
+    <Compile Include="Controllers\Kpi\DumpSpecialWorkItemController.cs" />
     <Compile Include="Controllers\Kpi\ENodebAlarmWorkItemController.cs" />
     <Compile Include="Controllers\Kpi\HourCqiQueryController.cs" />
     <Compile Include="Controllers\Kpi\HourCqiRegionController.cs" />

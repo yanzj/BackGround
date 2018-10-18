@@ -4,12 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.Domain.Entities;
+using Abp.EntityFramework.AutoMapper;
 using Lte.Domain.Common.Types;
+using Lte.Domain.Excel;
 using Lte.Domain.Regular.Attributes;
 
 namespace Abp.EntityFramework.Entities.Maintainence
 {
     [TypeDoc("专业网管告警工单信息")]
+    [AutoMapFrom(typeof(SpecialAlarmWorkItemExcel))]
     public class SpecialAlarmWorkItem: Entity, IBeginDate
     {
         [MemberDoc("告警标识")]

@@ -30,6 +30,7 @@ namespace Lte.Evaluations.DataService.Dump
         private readonly IBtsRepository _btsRepository;
         private readonly ITownRepository _townRepository;
         private readonly IAlarmWorkItemRepository _alarmWorkItemRepository;
+        private readonly ISpecialAlarmWorkItemRepository _specialWorkItemRepository;
         private readonly ICheckingProjectRepository _checkingProjectRepository;
         private readonly ICheckingBasicRepository _checkingBasicRepository;
         private readonly ICheckingDetailsRepository _checkingDetailsRepository;
@@ -37,7 +38,7 @@ namespace Lte.Evaluations.DataService.Dump
         public WorkItemService(IWorkItemRepository repository, IENodebRepository eNodebRepository,
             IBtsRepository btsRepository, ITownRepository townRepository, IAlarmWorkItemRepository alarmWorkItemRepository,
             ICheckingProjectRepository checkingProjectRepository, ICheckingBasicRepository checkingBasicRepository,
-            ICheckingDetailsRepository checkingDetailsRepository)
+            ICheckingDetailsRepository checkingDetailsRepository, ISpecialAlarmWorkItemRepository specialWorkItemRepository)
         {
             _repository = repository;
             _eNodebRepository = eNodebRepository;
@@ -47,6 +48,7 @@ namespace Lte.Evaluations.DataService.Dump
             _checkingProjectRepository = checkingProjectRepository;
             _checkingBasicRepository = checkingBasicRepository;
             _checkingDetailsRepository = checkingDetailsRepository;
+            _specialWorkItemRepository = specialWorkItemRepository;
         }
 
         public WorkItemView Query(string serialNumber)
@@ -62,7 +64,8 @@ namespace Lte.Evaluations.DataService.Dump
             return 0;
         }
 
-        private static Stack<WorkItemExcel> WorkItemInfos { get; }=new Stack<WorkItemExcel>();
+        private static Stack<WorkItemExcel> WorkItemInfos { get; } = new Stack<WorkItemExcel>();
+        private static Stack<SpecialAlarmWorkItemExcel> SpecialInfos { get; } = new Stack<SpecialAlarmWorkItemExcel>();
 
         public string ImportExcelFiles(string path)
         {
@@ -90,6 +93,22 @@ namespace Lte.Evaluations.DataService.Dump
                 _alarmWorkItemRepository.Import<IAlarmWorkItemRepository, AlarmWorkItem, AlarmWorkItemExcel>(infos);
 
             return "完成故障工单读取：" + count + "条";
+        }
+        
+        public string ImportSpecialAlarmExcelFiles(string path)
+        {
+            var factory = new ExcelQueryFactory { FileName = path };
+            const string sheetName = "数据页1";
+            var infos = (from c in factory.Worksheet<SpecialAlarmWorkItemExcel>(sheetName)
+                select c).ToList();
+            SpecialInfos.Clear();
+            foreach (var info in infos)
+            {
+                SpecialInfos.Push(info);
+               
+            }
+            
+            return "完成专业故障工单读取：" + SpecialInfos.Count + "条";
         }
 
         public string ImportCheckingProjectExcelFiles(string path)
@@ -182,9 +201,23 @@ namespace Lte.Evaluations.DataService.Dump
             return true;
         }
 
+        public bool DumpOneSpecial()
+        {
+            var info = SpecialInfos.Pop();
+            if (info == null) return false;
+            _specialWorkItemRepository
+                .ImportOne<ISpecialAlarmWorkItemRepository, SpecialAlarmWorkItem, SpecialAlarmWorkItemExcel>(info);
+            return true;
+        }
+
         public void ClearDumpItems()
         {
             WorkItemInfos.Clear();
+        }
+        
+        public void ClearDumpSpecials()
+        {
+            SpecialInfos.Clear();
         }
 
         public int QueryDumpItems()
@@ -192,6 +225,11 @@ namespace Lte.Evaluations.DataService.Dump
             return WorkItemInfos.Count;
         }
         
+        public int QueryDumpSpecials()
+        {
+            return SpecialInfos.Count;
+        }
+
         public async Task<Tuple<int, int, int>> QueryTotalItemsThisMonth()
         {
             var lastMonthDate = DateTime.Today.Day < 26 ? DateTime.Today.AddMonths(-1) : DateTime.Today;
