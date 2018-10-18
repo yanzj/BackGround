@@ -1909,6 +1909,15 @@ angular.module('region.precise', ['app.core'])
                 },
                 queryTotalDumpItems: function() {
                     return generalHttpService.getApiData('DumpWorkItem', {});
+                },
+                dumpSingleSpecialItem: function () {
+                    return generalHttpService.putApiData('DumpSpecialWorkItem', {});
+                },
+                clearImportSpecialItems: function () {
+                    return generalHttpService.deleteApiData('DumpSpecialWorkItem');
+                },
+                queryTotalSpecialDumpItems: function () {
+                    return generalHttpService.getApiData('DumpSpecialWorkItem', {});
                 }
             };
         })
