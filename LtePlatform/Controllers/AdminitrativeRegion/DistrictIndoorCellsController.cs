@@ -7,6 +7,7 @@ using LtePlatform.Models;
 namespace LtePlatform.Controllers.AdminitrativeRegion
 {
     [ApiControl("区域室内小区查询控制器")]
+    [ApiGroup("基础信息")]
     public class DistrictIndoorCellsController : ApiController
     {
         private readonly TownQueryService _service;

@@ -4,20 +4,20 @@
             $locationProvider.hashPrefix('');
             var viewDir = "/appViews/Test/Help/";
             $routeProvider
-                .when('/', {
+                .when('/group/:theme', {
                     templateUrl: viewDir + "ApiGroup.html",
                     controller: "api.group"
                 })
-                .when('/method/:name', {
+                .when('/method/:name/:theme', {
                     templateUrl: viewDir + "ApiMethod.html",
                     controller: "api.method"
                 })
-                .when('/api/:apiId/:method', {
+                .when('/api/:apiId/:method/:theme', {
                     templateUrl: viewDir + "Api.html",
                     controller: "api.details"
                 })
                 .otherwise({
-                    redirectTo: '/'
+                    redirectTo: '/group/KPI'
                 });
         }
     ])
@@ -33,6 +33,7 @@
         $scope.page.title = $routeParams.apiId;
         $scope.page.introduction = "Provide the details of this API method.";
         $scope.method = $routeParams.method;
+        $scope.theme = $routeParams.theme;
         generalHttpService.getMvcData('/Help/ApiActionDoc', {
             apiId: $routeParams.apiId
         }).then(function(result) {
@@ -41,15 +42,20 @@
             $scope.responseModel = result.ResponseModel;
         });
     })
-    .controller("api.group", function ($scope, generalHttpService) {
+    .controller("api.group", function ($scope, generalHttpService, $routeParams) {
         $scope.page.title = "Introduction";
         $scope.page.introduction = "Provide a general description of your APIs here.";
-        generalHttpService.getMvcData('/Help/ApiDescriptions', {}).then(function(result) {
+        $scope.theme = $routeParams.theme;
+        generalHttpService.getMvcData('/Help/ApiDescriptions',
+            {
+                theme: $routeParams.theme
+            }).then(function(result) {
             $scope.apiDescription = result;
         });
     })
     .controller("api.method", function ($scope, generalHttpService, $routeParams) {
         $scope.page.title = $routeParams.name;
+        $scope.theme = $routeParams.theme;
         $scope.page.introduction = "Provide the description of this API controller here.";
         generalHttpService.getMvcData('/Help/ApiMethod', {
             controllerName: $routeParams.name

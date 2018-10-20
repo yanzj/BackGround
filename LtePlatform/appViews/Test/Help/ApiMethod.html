@@ -1,4 +1,4 @@
-﻿<a class="btn btn-default" ng-href="{{rootPath}}">返回总表</a>
+﻿<a class="btn btn-default" ng-href="{{rootPath}}group/{{theme}}">返回{{theme}}总表</a>
 <table class="help-page-table">
     <thead class="thead-orange">
         <tr>
@@ -18,7 +18,7 @@
             <td class="parameter-type">{{method.ResponseName}}</td>
             <td class="parameter-type">{{method.ResponseDocumentation}}</td>
             <td>
-                <a ng-href="{{rootPath}}api/{{method.FriendlyId}}/{{page.title}}">Details</a>
+                <a ng-href="{{rootPath}}api/{{method.FriendlyId}}/{{page.title}}/{{theme}}">Details</a>
             </td>
         </tr>
     </tbody>

@@ -1,5 +1,4 @@
 ﻿using Lte.Evaluations.DataService.Basic;
-using Lte.Parameters.Entities;
 using LtePlatform.Models;
 using System.Collections.Generic;
 using System.Web.Http;
@@ -7,6 +6,7 @@ using System.Web.Http;
 namespace LtePlatform.Controllers.AdminitrativeRegion
 {
     [ApiControl("获取行政区域信息的控制器")]
+    [ApiGroup("基础信息")]
     public class CityListController : ApiController
     {
         private readonly TownQueryService _service;

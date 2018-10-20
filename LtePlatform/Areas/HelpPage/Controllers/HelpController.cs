@@ -24,7 +24,7 @@ namespace LtePlatform.Areas.HelpPage.Controllers
 
         public HttpConfiguration Configuration { get; }
 
-        public JsonResult ApiDescriptions()
+        public JsonResult ApiDescriptions(string theme)
         {
             var provider = Configuration.Services.GetDocumentationProvider();
             return Json(Configuration.Services.GetApiExplorer().ApiDescriptions.Select(api =>
@@ -33,12 +33,12 @@ namespace LtePlatform.Areas.HelpPage.Controllers
                 var groupAttribute = descriptor.GetCustomAttributes<ApiGroupAttribute>().FirstOrDefault();
                 return new
                 {
-                    ControllerName = descriptor.ControllerName,
+                    descriptor.ControllerName,
                     ControllerType = descriptor.ControllerType.ToString(),
                     Documentation = provider.GetDocumentation(descriptor),
                     GroupDoc = groupAttribute != null ? groupAttribute.Documentation : ""
                 };
-            }).Distinct(),
+            }).Where(api => api.GroupDoc == theme).Distinct(),
                 JsonRequestBehavior.AllowGet);
         }
 

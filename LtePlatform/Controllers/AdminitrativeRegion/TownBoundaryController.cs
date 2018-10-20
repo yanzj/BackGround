@@ -9,6 +9,7 @@ using LtePlatform.Models;
 namespace LtePlatform.Controllers.AdminitrativeRegion
 {
     [ApiControl("镇区边界计算控制器")]
+    [ApiGroup("基础信息")]
     public class TownBoundaryController : ApiController
     {
         private readonly TownBoundaryService _service;

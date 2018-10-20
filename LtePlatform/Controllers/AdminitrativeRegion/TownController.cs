@@ -8,6 +8,7 @@ using LtePlatform.Models;
 namespace LtePlatform.Controllers.AdminitrativeRegion
 {
     [ApiControl("镇区信息查询控制器")]
+    [ApiGroup("基础信息")]
     public class TownController : ApiController
     {
         private readonly TownQueryService _service;

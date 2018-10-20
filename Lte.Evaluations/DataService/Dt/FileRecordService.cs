@@ -129,7 +129,7 @@ namespace Lte.Parameters.Concrete.Dt
             if (file == null) return 0;
             var statList = stats.ToList();
             statList.ForEach(stat => { stat.FileId = file.Id;});
-            return await _fileRecordVolteRepository.UpdateMany(statList);
+            return await _fileRecordVolteRepository.UpdateManyWithFirstCheck(statList);
         }
     }
 }
