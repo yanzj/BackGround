@@ -222,6 +222,8 @@
     <Compile Include="Concrete\Neighbor\ExternalEUtranCellFDDZteRepository.cs" />
     <Compile Include="Concrete\Switch\EUtranCellMeasurementZteRepository.cs" />
     <Compile Include="Entities\Basic\CellPower.cs" />
+    <Compile Include="Entities\Basic\EUtranCellFDDZte.cs" />
+    <Compile Include="Entities\Basic\PrachFDDZte.cs" />
     <Compile Include="Entities\Channel\AgpsCoverageView.cs" />
     <Compile Include="Entities\Channel\AgpsTownView.cs" />
     <Compile Include="Entities\Channel\CellOpenLoopPcView.cs" />

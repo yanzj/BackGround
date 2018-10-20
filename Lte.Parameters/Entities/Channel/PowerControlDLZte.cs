@@ -129,5 +129,9 @@ namespace Lte.Parameters.Entities.Channel
         public int? crsPwrCtlSwch { get; set; }
 
         public int? uenumThr4CrsCtrl { get; set; }
+
+        public int? magicRadioCssPwrCtrl { get; set; }
+
+        public int? pwrWaterFillSwchDL { get; set; }
     }
 }

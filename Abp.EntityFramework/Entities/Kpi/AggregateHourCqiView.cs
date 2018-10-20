@@ -72,7 +72,7 @@ namespace Abp.EntityFramework.Entities.Kpi
         [MemberDoc("12.2 CQI15上报数量(次)")]
         public long Cqi15Times { get; set; }
         
-        public Tuple<int, int> CqiCounts => this.GetDivsionIntTuple(7);
+        public Tuple<long, long> CqiCounts => this.GetDivsionLongTuple(7);
 
         public double CqiRate => (double)CqiCounts.Item2 * 100 / (CqiCounts.Item1 + CqiCounts.Item2);
 
