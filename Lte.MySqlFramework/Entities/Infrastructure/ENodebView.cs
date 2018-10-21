@@ -1,11 +1,11 @@
 using System;
-using System.Collections.Generic;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities.Infrastructure;
 using Abp.EntityFramework.Entities.Region;
 using Lte.Domain.Common.Geo;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Regular;
+using Lte.MySqlFramework.Abstract.Region;
 
 namespace Lte.MySqlFramework.Entities.Infrastructure
 {
@@ -43,18 +43,13 @@ namespace Lte.MySqlFramework.Entities.Infrastructure
         public string DistrictName { get; set; }
 
         public string TownName { get; set; }
-    }
 
-    public class ENodebCluster
-    {
-        public int LongtituteGrid { get; set; }
-
-        public double Longtitute => (double) LongtituteGrid / 100000;
-
-        public int LattituteGrid { get; set; }
-
-        public double Lattitute => (double) LattituteGrid / 100000;
-
-        public IEnumerable<ENodebView> ENodebViews { get; set; }
+        public static ENodebView ConstructView(ENodeb item, ITownRepository townRepository)
+        {
+            var town = townRepository.FirstOrDefault(x => x.Id == item.TownId);
+            var view = item.MapTo<ENodebView>();
+            if (town != null) town.MapTo(view);
+            return view;
+        }
     }
 }

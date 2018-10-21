@@ -347,6 +347,7 @@
     <Compile Include="Concrete\Maintainence\WorkItemRepository.cs" />
     <Compile Include="Concrete\Test\ZhangshangyouCoverageRepository.cs" />
     <Compile Include="Concrete\Test\ZhangshangyouQualityRepository.cs" />
+    <Compile Include="Entities\Infrastructure\ENodebCluster.cs" />
     <Compile Include="Entities\Kpi\HourPrbView.cs" />
     <Compile Include="Entities\Kpi\HourUsersView.cs" />
     <Compile Include="Entities\Kpi\RssiView.cs" />

@@ -1,15 +1,14 @@
 using System.Collections.Generic;
 using System.Web.Http;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Infrastructure;
 using Lte.Evaluations.DataService.Basic;
-using Lte.MySqlFramework.Entities;
 using Lte.MySqlFramework.Entities.Infrastructure;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.Parameters
 {
     [ApiControl("LTE基站查询控制器")]
+    [ApiGroup("基础信息")]
     public class ENodebQueryController : ApiController
     {
         private readonly ENodebQueryService _service;
@@ -37,6 +36,14 @@ namespace LtePlatform.Controllers.Parameters
         public IEnumerable<ENodebView> Get(string city, string district, string town)
         {
             return _service.GetByTownArea(city, district, town);
+        }
+        
+        [HttpGet]
+        [ApiDoc("根据行政区域条件查询基站列表")]
+        [ApiParameterDoc("city", "城市")]
+        public IEnumerable<string> GetByCityName(string city)
+        {
+            return _service.GetENodebNames(city);
         }
 
         [HttpGet]

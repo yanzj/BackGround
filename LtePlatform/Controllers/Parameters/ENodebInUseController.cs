@@ -2,13 +2,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using Lte.Evaluations.DataService.Basic;
-using Lte.MySqlFramework.Entities;
 using Lte.MySqlFramework.Entities.Infrastructure;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.Parameters
 {
     [ApiControl("在用基站查询控制器")]
+    [ApiGroup("基础信息")]
     public class ENodebInUseController : ApiController
     {
         private readonly ENodebQueryService _service;

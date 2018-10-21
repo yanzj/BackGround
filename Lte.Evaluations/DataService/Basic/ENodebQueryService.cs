@@ -1,16 +1,13 @@
 ﻿using Abp.EntityFramework.AutoMapper;
 using Lte.Domain.Regular;
-using Lte.MySqlFramework.Abstract;
 using System.Collections.Generic;
 using System.Linq;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Infrastructure;
 using Abp.EntityFramework.Entities.Station;
 using Lte.Domain.Common.Geo;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Abstract.Station;
-using Lte.MySqlFramework.Entities;
 using Lte.MySqlFramework.Entities.Infrastructure;
 
 namespace Lte.Evaluations.DataService.Basic
@@ -88,7 +85,7 @@ namespace Lte.Evaluations.DataService.Basic
                 join eNodeb in _eNodebRepository.GetAllList() on town.Id equals eNodeb.TownId
                 select eNodeb).ToList();
         }
-
+        
         public IEnumerable<ENodebView> GetByDistrictNames(string city, string district)
         {
             var list = GetENodebsByDistrict(city, district).ToList().MapTo<List<ENodebView>>();
@@ -99,17 +96,26 @@ namespace Lte.Evaluations.DataService.Basic
             });
             return list;
         } 
+        
+        public IEnumerable<string> GetENodebNames(string city)
+        {
+            var towns = _townRepository.GetAllList().Where(x => x.CityName == city);
+            var list = (from town in towns
+                join eNodeb in _eNodebRepository.GetAllList().MapTo<List<ENodebView>>() on town.Id equals eNodeb.TownId
+                select eNodeb.Name).Distinct().ToList();
+            return list;
+        } 
 
         public IEnumerable<ENodebView> GetByGeneralName(string name)
         {
             var items =
                 _eNodebRepository.GetAllList().Where(x => x.Name.Contains(name.Trim())).ToArray();
-            if (items.Any()) return items.MapTo<IEnumerable<ENodebView>>();
+            if (items.Any()) return items.Select(item => ENodebView.ConstructView(item, _townRepository));
             var eNodebId = name.Trim().ConvertToInt(0);
             if (eNodebId > 0)
             {
                 items = _eNodebRepository.GetAllList(x => x.ENodebId == eNodebId).ToArray();
-                if (items.Any()) return items.MapTo<IEnumerable<ENodebView>>();
+                if (items.Any()) return items.Select(item => ENodebView.ConstructView(item, _townRepository));
             }
             items =
                 _eNodebRepository.GetAllList()
@@ -118,7 +124,9 @@ namespace Lte.Evaluations.DataService.Basic
                             (!string.IsNullOrEmpty(x.Address) && x.Address.Contains(name.Trim()))  
                             || (!string.IsNullOrEmpty(x.PlanNum) && x.PlanNum.Contains(name.Trim())))
                     .ToArray();
-            return items.Any() ? items.MapTo<IEnumerable<ENodebView>>() : new List<ENodebView>();
+            return items.Any()
+                ? items.Select(item => ENodebView.ConstructView(item, _townRepository))
+                : new List<ENodebView>();
         }
 
         public IEnumerable<ENodebView> GetByGeneralNameInUse(string name)
@@ -129,33 +137,22 @@ namespace Lte.Evaluations.DataService.Basic
         public ENodebView GetByENodebId(int eNodebId)
         {
             var item = _eNodebRepository.FirstOrDefault(x => x.ENodebId == eNodebId);
-            return GenerateENodebView(item);
+            return ENodebView.ConstructView(item, _townRepository);
         }
-
-        private ENodebView GenerateENodebView(ENodeb item)
-        {
-            if (item == null) return null;
-            var town = _townRepository.FirstOrDefault(x => x.Id == item.TownId);
-            if (town != null)
-            {
-                var result = town.MapTo<ENodebView>();
-                return item.MapTo(result);
-            }
-            else
-                return item.MapTo<ENodebView>();
-        }
-
+        
         public ENodebView GetByPlanNum(string planNum)
         {
             var item = _eNodebRepository.FirstOrDefault(x => x.PlanNum == planNum);
-            return GenerateENodebView(item);
+            return ENodebView.ConstructView(item, _townRepository);
         }
         
         public IEnumerable<ENodebView> QueryENodebViews(double west, double east, double south, double north)
         {
             var eNodebs = _eNodebRepository.GetAllList(x => x.Longtitute >= west && x.Longtitute <= east
                 && x.Lattitute >= south && x.Lattitute <= north);
-            return eNodebs.Any() ? eNodebs.MapTo<IEnumerable<ENodebView>>() : new List<ENodebView>();
+            return eNodebs.Any()
+                ? eNodebs.Select(e => ENodebView.ConstructView(e, _townRepository))
+                : new List<ENodebView>();
         }
 
         public IEnumerable<IndoorDistribution> QueryDistributionSystems(double west, double east, double south,
@@ -177,7 +174,9 @@ namespace Lte.Evaluations.DataService.Basic
                 join id in container.ExcludedIds on eNodeb.ENodebId equals id
                 select eNodeb;
             eNodebs = eNodebs.Except(excludedENodebs).ToList();
-            return eNodebs.Any() ? eNodebs.MapTo<IEnumerable<ENodebView>>() : new List<ENodebView>();
+            return eNodebs.Any()
+                ? eNodebs.Select(e => ENodebView.ConstructView(e, _townRepository))
+                : new List<ENodebView>();
         }
 
         public IEnumerable<IndoorDistribution> QueryDistributionSystems(string district)

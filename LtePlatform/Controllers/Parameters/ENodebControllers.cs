@@ -3,12 +3,12 @@ using LtePlatform.Models;
 using System.Collections.Generic;
 using System.Web.Http;
 using Lte.Domain.Common.Geo;
-using Lte.MySqlFramework.Entities;
 using Lte.MySqlFramework.Entities.Infrastructure;
 
 namespace LtePlatform.Controllers.Parameters
 {
     [ApiControl("查询LTE基站的控制器")]
+    [ApiGroup("基础信息")]
     public class ENodebController : ApiController
     {
         private readonly ENodebQueryService _service;
@@ -30,11 +30,14 @@ namespace LtePlatform.Controllers.Parameters
         }
 
         [HttpGet]
+        [ApiDoc("根据行政区域条件查询基站列表")]
+        [ApiParameterDoc("city", "城市")]
+        [ApiParameterDoc("district", "区域")]
         public IEnumerable<ENodebView> Get(string city, string district)
         {
             return _service.GetByDistrictNames(city, district);
         }
-
+        
         [HttpGet]
         [ApiDoc("使用名称模糊查询，可以先后匹配基站名称、基站编号、规划编号和地址")]
         [ApiParameterDoc("name", "模糊查询的名称")]

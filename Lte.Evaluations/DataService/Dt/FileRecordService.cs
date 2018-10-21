@@ -30,7 +30,7 @@ namespace Lte.Parameters.Concrete.Dt
         
         public IEnumerable<FileRecord4G> GetFileRecord4Gs(string fileName)
         {
-            var file = _dtFileInfoRepository.FirstOrDefault(x => x.CsvFileName == fileName);
+            var file = _dtFileInfoRepository.FirstOrDefault(x => x.CsvFileName == fileName + ".csv");
             return file == null
                 ? new List<FileRecord4G>()
                 : _fileRecord4GRepository.GetAllList(x => x.FileId == file.Id);
@@ -38,7 +38,7 @@ namespace Lte.Parameters.Concrete.Dt
 
         public IEnumerable<FileRecordVolte> GetFileRecordVoltes(string fileName)
         {
-            var file = _dtFileInfoRepository.FirstOrDefault(x => x.CsvFileName == fileName);
+            var file = _dtFileInfoRepository.FirstOrDefault(x => x.CsvFileName == fileName + ".csv");
             return file == null
                 ? new List<FileRecordVolte>()
                 : _fileRecordVolteRepository.GetAllList(x => x.FileId == file.Id);
@@ -46,7 +46,7 @@ namespace Lte.Parameters.Concrete.Dt
 
         public IEnumerable<FileRecord4G> GetFileRecord4Gs(string fileName, int rasterNum)
         {
-            var file = _dtFileInfoRepository.FirstOrDefault(x => x.CsvFileName == fileName);
+            var file = _dtFileInfoRepository.FirstOrDefault(x => x.CsvFileName == fileName + ".csv");
             return file == null
                 ? new List<FileRecord4G>()
                 : _fileRecord4GRepository.GetAllList(x => x.FileId == file.Id && x.RasterNum == rasterNum);
@@ -54,7 +54,7 @@ namespace Lte.Parameters.Concrete.Dt
 
         public IEnumerable<FileRecordVolte> GetFileRecordVoltes(string fileName, int rasterNum)
         {
-            var file = _dtFileInfoRepository.FirstOrDefault(x => x.CsvFileName == fileName);
+            var file = _dtFileInfoRepository.FirstOrDefault(x => x.CsvFileName == fileName + ".csv");
             return file == null
                 ? new List<FileRecordVolte>()
                 : _fileRecordVolteRepository.GetAllList(x => x.FileId == file.Id && x.RasterNum == rasterNum);
@@ -62,7 +62,7 @@ namespace Lte.Parameters.Concrete.Dt
 
         public IEnumerable<FileRecord3G> GetFileRecord3Gs(string fileName)
         {
-            var file = _dtFileInfoRepository.FirstOrDefault(x => x.CsvFileName == fileName);
+            var file = _dtFileInfoRepository.FirstOrDefault(x => x.CsvFileName == fileName + ".csv");
             return file == null
                 ? new List<FileRecord3G>()
                 : _fileRecord3GRepository.GetAllList(x => x.FileId == file.Id);
@@ -70,7 +70,7 @@ namespace Lte.Parameters.Concrete.Dt
 
         public IEnumerable<FileRecord3G> GetFileRecord3Gs(string fileName, int rasterNum)
         {
-            var file = _dtFileInfoRepository.FirstOrDefault(x => x.CsvFileName == fileName);
+            var file = _dtFileInfoRepository.FirstOrDefault(x => x.CsvFileName == fileName + ".csv");
             return file == null
                 ? new List<FileRecord3G>()
                 : _fileRecord3GRepository.GetAllList(x => x.FileId == file.Id && x.RasterNum == rasterNum);
@@ -78,7 +78,7 @@ namespace Lte.Parameters.Concrete.Dt
 
         public IEnumerable<FileRecord2G> GetFileRecord2Gs(string fileName)
         {
-            var file = _dtFileInfoRepository.FirstOrDefault(x => x.CsvFileName == fileName);
+            var file = _dtFileInfoRepository.FirstOrDefault(x => x.CsvFileName == fileName + ".csv");
             return file == null
                 ? new List<FileRecord2G>()
                 : _fileRecord2GRepository.GetAllList(x => x.FileId == file.Id);
@@ -86,7 +86,7 @@ namespace Lte.Parameters.Concrete.Dt
 
         public IEnumerable<FileRecord2G> GetFileRecord2Gs(string fileName, int rasterNum)
         {
-            var file = _dtFileInfoRepository.FirstOrDefault(x => x.CsvFileName == fileName);
+            var file = _dtFileInfoRepository.FirstOrDefault(x => x.CsvFileName == fileName + ".csv");
             return file == null
                 ? new List<FileRecord2G>()
                 : _fileRecord2GRepository.GetAllList(x => x.FileId == file.Id && x.RasterNum == rasterNum);
