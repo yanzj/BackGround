@@ -501,7 +501,7 @@ angular.module('mr.grid.module', ['ui.grid', 'myApp.region', 'myApp.url'])
         function($scope, collegeService, generalMapService) {
             $scope.gridOptions = {
                 columnDefs: [
-                    { field: 'csvFileName', name: '测试文件名称', width: 200 },
+                    { field: 'csvFileName', name: '测试文件名称', width: 500 },
                     { field: 'rasterNums.length', name: '涉及网格数' },
                     { field: 'distance', name: '测试里程' },
                     { field: 'testDate', name: '测试日期', cellFilter: 'date: "yyyy-MM-dd"' },

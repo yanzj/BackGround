@@ -5,7 +5,7 @@
     'parameters.mongo.switch.basic.module', 'parameters.mongo.switch.inter.module', 'parameters.mongo.power.module'
 ]);
 
-angular.module('parameters.basic.module', ['ui.grid', 'myApp.region', 'myApp.url', 'myApp.kpi'])
+angular.module('parameters.kpi.module', ['ui.grid', 'myApp.region', 'myApp.url', 'myApp.kpi'])
     .directive('planSiteDetails',
         function() {
             return {
@@ -14,20 +14,7 @@ angular.module('parameters.basic.module', ['ui.grid', 'myApp.region', 'myApp.url
                     itemGroups: '='
                 },
                 templateUrl: '/appViews/Home/GeneralTableDetails.html'
-            }
-        });
-
-angular.module('parameters.kpi.module', ['ui.grid', 'myApp.region', 'myApp.url', 'myApp.kpi'])
-    .directive('feelingTable',
-        function() {
-            return {
-                restrict: 'ECMA',
-                replace: true,
-                scope: {
-                    feelingList: '='
-                },
-                templateUrl: '/directives/parameters/kpi/FeelingTable.html'
-            }
+            };
         })
     .controller('TopDropController',
         function($scope) {

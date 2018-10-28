@@ -180,8 +180,10 @@ angular.module('app.directives.district', ["ui.bootstrap", 'myApp.region'])
                 scope.$watch("district.selected", function (district, oldDistrict) {
                     if (district && district !== oldDistrict) {
                         appRegionService.queryTowns(scope.city.selected, district).then(function(towns) {
-                            scope.town.options = towns;
-                            scope.town.selected = towns[0];
+                            scope.town = {
+                                options: towns,
+                                selected: towns[0]
+                            };
                         });
                     }
                 });

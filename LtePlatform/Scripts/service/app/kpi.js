@@ -3231,39 +3231,7 @@ angular.module('kpi.customer', ['myApp.url', 'myApp.region'])
                             });
                         });
                 },
-                constructFiberItem: function(id, num, callback, messages) {
-                    menuItemService.showGeneralDialogWithAction({
-                            templateUrl: '/appViews/Customer/Dialog/Fiber.html',
-                            controller: 'fiber.new.dialog',
-                            resolve: {
-                                dialogTitle: function() {
-                                    return "新增光纤工单信息";
-                                },
-                                id: function() {
-                                    return id;
-                                },
-                                num: function() {
-                                    return num;
-                                }
-                            }
-                        },
-                        function(item) {
-                            emergencyService.createFiberItem(item).then(function(result) {
-                                if (result) {
-                                    messages.push({
-                                        type: 'success',
-                                        contents: '完成光纤工单：' + item.workItemNumber + '的导入'
-                                    });
-                                    callback(result);
-                                } else {
-                                    messages.push({
-                                        type: 'warning',
-                                        contents: '最近已经有该工单，请不要重复导入'
-                                    });
-                                }
-                            });
-                        });
-                },
+
                 supplementComplainInfo: function(item, callback) {
                     menuItemService.showGeneralDialogWithAction({
                             templateUrl: '/appViews/Customer/Dialog/Complain.html',
@@ -3482,37 +3450,7 @@ angular.module('kpi.customer.complain', ['myApp.url', 'myApp.region', "ui.bootst
                 $uibModalInstance.close($scope.view);
             };
         })
-    .controller('fiber.new.dialog',
-        function($scope,
-            $uibModalInstance,
-            dialogTitle,
-            id,
-            num) {
-            $scope.dialogTitle = dialogTitle;
 
-            $scope.item = {
-                id: 0,
-                emergencyId: id,
-                workItemNumber: "FS-Fiber-" +
-                    new Date().getYear() +
-                    "-" +
-                    new Date().getMonth() +
-                    "-" +
-                    new Date().getDate() +
-                    "-" +
-                    num,
-                person: "",
-                beginDate: new Date(),
-                finishDate: null
-            };
-
-            $scope.ok = function() {
-                $uibModalInstance.close($scope.item);
-            };
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            };
-        })
     .controller('complain.supplement.dialog',
         function($scope,
             $uibModalInstance,
@@ -3524,13 +3462,71 @@ angular.module('kpi.customer.complain', ['myApp.url', 'myApp.region', "ui.bootst
             item) {
             $scope.dialogTitle = item.serialNumber + "工单信息补充";
 
-            $scope.itemGroups = appFormatService.generateComplainPositionGroups(item);
+            $scope.itemGroups = [
+                {
+                    items: [
+                        {
+                            key: '工单编号',
+                            value: item.serialNumber
+                        }, {
+                            key: '经度',
+                            value: item.longtitute
+                        }, {
+                            key: '纬度',
+                            value: item.lattitute
+                        }
+                    ]
+                }, {
+                    items: [
+                        {
+                            key: '城市',
+                            value: item.city
+                        }, {
+                            key: '区域',
+                            value: item.district
+                        }, {
+                            key: '镇区',
+                            value: item.town
+                        }
+                    ]
+                }, {
+                    items: [
+                        {
+                            key: '楼宇名称',
+                            value: item.buildingName
+                        }, {
+                            key: '道路名称',
+                            value: item.roadName
+                        }, {
+                            key: '匹配站点',
+                            value: item.sitePosition
+                        }
+                    ]
+                }, {
+                    items: [
+                        {
+                            key: '联系地址',
+                            value: item.contactAddress,
+                            span: 2
+                        }, {
+                            key: '投诉内容',
+                            value: item.complainContents,
+                            span: 2
+                        }
+                    ]
+                }
+            ];
             appRegionService.initializeCities().then(function(cities) {
-                $scope.city.options = cities;
-                $scope.city.selected = cities[0];
+                $scope.city = {
+                    options: cities,
+                    selected: cities[0]
+                };
                 appRegionService.queryDistricts($scope.city.selected).then(function(districts) {
-                    $scope.district.options = districts;
-                    $scope.district.selected = (item.district) ? item.district.replace('区', '') : districts[0];
+                    $scope.district = {
+                        options: districts,
+                        selected: (item.district) ? item.district.replace('区', '') : districts[0]
+                    };
+
                     baiduMapService.initializeMap("map", 11);
                     baiduMapService.addCityBoundary("佛山");
                     if (item.longtitute && item.lattitute) {

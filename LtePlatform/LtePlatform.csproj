@@ -659,7 +659,6 @@
     <Content Include="appViews\Customer\Complain\Stat.html" />
     <Content Include="appViews\Customer\Dialog\CollegeSupplement.html" />
     <Content Include="appViews\Customer\Dialog\Complain.html" />
-    <Content Include="appViews\Customer\Dialog\Fiber.html" />
     <Content Include="appViews\Customer\Dialog\Micro.html" />
     <Content Include="appViews\Customer\Dialog\VipSupplement.html" />
     <Content Include="appViews\Customer\Dialog\Yesterday.html" />
@@ -943,7 +942,6 @@
     <Content Include="appViews\Parameters\Map\CdmaCellInfoBox.html" />
     <Content Include="appViews\Parameters\Region\CellInfo.html" />
     <Content Include="appViews\Rutrace\Coverage\Index.html" />
-    <Content Include="directives\parameters\kpi\FeelingTable.html" />
     <Content Include="directives\parameters\parameters.module.js" />
     <Content Include="directives\rutrace\AnalyzeTable.Tpl.html" />
     <Content Include="directives\rutrace\coverage\InterferenceSourceList.html" />

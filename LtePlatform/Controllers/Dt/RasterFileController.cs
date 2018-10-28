@@ -37,7 +37,7 @@ namespace LtePlatform.Controllers.Dt
 
         [HttpGet]
         [ApiDoc("查询包含指定数据类型和坐标范围的所有网格的测试文件信息")]
-        [ApiParameterDoc("dataType", "指定数据类型（2G、3G、4G）")]
+        [ApiParameterDoc("dataType", "指定数据类型（2G、3G、4G、Volte）")]
         [ApiParameterDoc("west", "坐标西界")]
         [ApiParameterDoc("east", "坐标东界")]
         [ApiParameterDoc("south", "坐标南界")]
@@ -53,7 +53,7 @@ namespace LtePlatform.Controllers.Dt
 
         [HttpGet]
         [ApiDoc("查询包含指定数据类型和镇区的日期范围内的测试文件信息")]
-        [ApiParameterDoc("dataType", "指定数据类型（2G、3G、4G）")]
+        [ApiParameterDoc("dataType", "指定数据类型（2G、3G、4G、Volte）")]
         [ApiParameterDoc("townName", "镇区名称")]
         [ApiParameterDoc("begin", "开始日期")]
         [ApiParameterDoc("end", "结束日期")]
@@ -65,7 +65,7 @@ namespace LtePlatform.Controllers.Dt
 
         [HttpGet]
         [ApiDoc("查询包含指定数据类型的日期范围内的测试文件信息")]
-        [ApiParameterDoc("dataType", "指定数据类型（2G、3G、4G）")]
+        [ApiParameterDoc("dataType", "指定数据类型（2G、3G、4G、Volte）")]
         [ApiParameterDoc("begin", "开始日期")]
         [ApiParameterDoc("end", "结束日期")]
         [ApiResponse("包含指定数据类型的日期范围内的测试文件信息视图，包括测试文件编号和包含的网格编号列表")]
@@ -76,7 +76,7 @@ namespace LtePlatform.Controllers.Dt
 
         [HttpGet]
         [ApiDoc("查询包含指定数据类型和镇区的所有网格的测试文件信息")]
-        [ApiParameterDoc("dataType", "指定数据类型（2G、3G、4G）")]
+        [ApiParameterDoc("dataType", "指定数据类型（2G、3G、4G、Volte）")]
         [ApiParameterDoc("townName", "镇区名称")]
         [ApiResponse("包含指定数据类型的所有网格的测试文件信息视图，包括测试文件编号和包含的网格编号列表")]
         public IEnumerable<FileRasterInfoView> Get(string dataType, string townName)

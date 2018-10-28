@@ -170,39 +170,7 @@
                             });
                         });
                 },
-                constructFiberItem: function(id, num, callback, messages) {
-                    menuItemService.showGeneralDialogWithAction({
-                            templateUrl: '/appViews/Customer/Dialog/Fiber.html',
-                            controller: 'fiber.new.dialog',
-                            resolve: {
-                                dialogTitle: function() {
-                                    return "新增光纤工单信息";
-                                },
-                                id: function() {
-                                    return id;
-                                },
-                                num: function() {
-                                    return num;
-                                }
-                            }
-                        },
-                        function(item) {
-                            emergencyService.createFiberItem(item).then(function(result) {
-                                if (result) {
-                                    messages.push({
-                                        type: 'success',
-                                        contents: '完成光纤工单：' + item.workItemNumber + '的导入'
-                                    });
-                                    callback(result);
-                                } else {
-                                    messages.push({
-                                        type: 'warning',
-                                        contents: '最近已经有该工单，请不要重复导入'
-                                    });
-                                }
-                            });
-                        });
-                },
+
                 supplementComplainInfo: function(item, callback) {
                     menuItemService.showGeneralDialogWithAction({
                             templateUrl: '/appViews/Customer/Dialog/Complain.html',
