@@ -41,7 +41,10 @@ namespace Lte.Evaluations.DataService.Switch
             }
 
             var ztePara = _zteMeasurementRepository.GetRecent(_eNodebId, configId);
-            return ztePara == null ? null : Mapper.Map<UeEUtranMeasurementZte, CellIntraFreqHoView>(ztePara);
+            if (ztePara == null) return null;
+            var result = Mapper.Map<UeEUtranMeasurementZte, CellIntraFreqHoView>(ztePara);
+            result.SectorId = _sectorId;
+            return result;
         }
     }
 }

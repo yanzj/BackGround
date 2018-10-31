@@ -398,5 +398,51 @@ namespace Lte.Parameters.Entities.Switch
         public int? intraRATUnkPCIRedSwch { get; set; }
 
         public int? crsRsrp6RBSwch { get; set; }
+
+        public string hlMigrtRATPriority { get; set; }
+
+        public int? handover4AtmosductCell { get; set; }
+
+        public int? eutranMeasParas_hlMigrtEutranFreqPrio { get; set; }
+
+        public int? wcdmaEcNoThr4VT { get; set; }
+
+        public int? wcdmaEcNoThr4DT { get; set; }
+
+        public int? csfbVagueUserLocation { get; set; }
+
+        public int? psInterFMeasStrategy { get; set; }
+
+        public int? measType4CASelfCfg { get; set; }
+
+        public int? pingPongTmr { get;set; }
+
+        public int? lastTimerExpMeaRecfg { get; set; }
+
+        public int? uENumThr4HOBaseService { get; set; }
+
+        public int? wcdmaHOBasedRscpandEcNoSwch { get; set; }
+
+        public int? IntraRATPinPonCIOStep { get; set; }
+
+        public int? diffA1Swch { get; set; }
+
+        public int? qAdjBasedBfGainSwch { get; set; }
+
+        public int? emtcCovHOSwch{get; set; }
+
+        public int? interFreqSupportCellType { get; set; }
+
+        public string interFreqSupCellType{get; set; }
+
+        public int? atmosphericDataSINR { get; set; }
+
+        public int? csfbCEUUserMcsThrd { get; set; }
+
+        public int? atmosphericVoiceSINR { get; set; }
+
+        public int? CDMA2000MeasParas_hlMigrtCdmaFreqPrio { get; set; }
+
+        public int? hSpeedSRPriSchdSwch { get; set; }
     }
 }
