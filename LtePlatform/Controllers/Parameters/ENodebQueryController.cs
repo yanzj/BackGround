@@ -39,11 +39,22 @@ namespace LtePlatform.Controllers.Parameters
         }
         
         [HttpGet]
-        [ApiDoc("根据行政区域条件查询基站列表")]
+        [ApiDoc("根据行政区域条件查询基站名称列表")]
         [ApiParameterDoc("city", "城市")]
+        [ApiResponse("基站名称列表")]
         public IEnumerable<string> GetByCityName(string city)
         {
             return _service.GetENodebNames(city);
+        }
+        
+        [HttpGet]
+        [ApiDoc("根据行政区域条件查询基站列表")]
+        [ApiParameterDoc("city", "城市")]
+        [ApiParameterDoc("district", "区域")]
+        [ApiResponse("基站名称列表")]
+        public IEnumerable<string> GetByDistrictName(string city, string district)
+        {
+            return _service.GetENodebNames(city, district);
         }
 
         [HttpGet]

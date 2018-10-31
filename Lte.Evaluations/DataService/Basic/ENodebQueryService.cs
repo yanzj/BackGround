@@ -16,17 +16,14 @@ namespace Lte.Evaluations.DataService.Basic
     {
         private readonly ITownRepository _townRepository;
         private readonly IENodebRepository _eNodebRepository;
-        private readonly IStationDictionaryRepository _stationDictionaryRepository;
         private readonly IDistributionRepository _distributionRepository;
         private readonly ITownBoundaryRepository _boundaryRepository;
 
         public ENodebQueryService(ITownRepository townRepository, IENodebRepository eNodebRepository,
-            IStationDictionaryRepository stationDictionaryRepository,
             IDistributionRepository distributionRepository, ITownBoundaryRepository boundaryRepository)
         {
             _townRepository = townRepository;
             _eNodebRepository = eNodebRepository;
-            _stationDictionaryRepository = stationDictionaryRepository;
             _distributionRepository = distributionRepository;
             _boundaryRepository = boundaryRepository;
         }
@@ -100,6 +97,15 @@ namespace Lte.Evaluations.DataService.Basic
         public IEnumerable<string> GetENodebNames(string city)
         {
             var towns = _townRepository.GetAllList().Where(x => x.CityName == city);
+            var list = (from town in towns
+                join eNodeb in _eNodebRepository.GetAllList().MapTo<List<ENodebView>>() on town.Id equals eNodeb.TownId
+                select eNodeb.Name).Distinct().ToList();
+            return list;
+        } 
+        
+        public IEnumerable<string> GetENodebNames(string city, string district)
+        {
+            var towns = _townRepository.GetAllList().Where(x => x.CityName == city && x.DistrictName == district);
             var list = (from town in towns
                 join eNodeb in _eNodebRepository.GetAllList().MapTo<List<ENodebView>>() on town.Id equals eNodeb.TownId
                 select eNodeb.Name).Distinct().ToList();
