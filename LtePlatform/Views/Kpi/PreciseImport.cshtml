@@ -1,23 +1,34 @@
 ﻿
 <div ng-controller="precise.import">
-    <button class="btn btn-info"
-            ng-disabled="townPreciseViews.length === 0 && collegePreciseStats.length === 0 && townPrecise800Views.length === 0
+    <p>
+        <button class="btn btn-info"
+                ng-disabled="townPreciseViews.length === 0 && collegePreciseStats.length === 0 && townPrecise800Views.length === 0
              && townPrecise1800Views.length === 0 && townPrecise2100Views.length === 0
-            && townMrsStats.length === 0 && townSinrUlStats.length === 0"
-            ng-click="dumpTownItems()">
-        导入镇区指标
-        <div class="badge">精确({{townPreciseViews.length}})</div>
-        <div class="badge">精确校园({{collegePreciseStats.length}})</div>
-        <div class="badge">精确800({{townPrecise800Views.length}})</div>
-        <div class="badge">精确1800({{townPrecise1800Views.length}})</div>
-        <div class="badge">精确2100({{townPrecise2100Views.length}})</div>
-        <div class="badge">RSRP覆盖({{townMrsStats.length}})</div>
-        <div class="badge">RSRP校园({{collegeMrsStats.length}})</div>
-        <div class="badge">RSRP800({{townMrsStats800.length}})</div>
-        <div class="badge">RSRP1800({{townMrsStats1800.length}})</div>
-        <div class="badge">RSRP2100({{townMrsStats2100.length}})</div>
-        <div class="badge">上行SINR({{townSinrUlStats.length}})</div>
-    </button>
+            && townMrsStats.length === 0 && collegeMrsStats.length === 0 && townMrsStats800.length === 0
+            && townMrsStats1800.length === 0 && townMrsStats2100.length === 0"
+                ng-click="dumpTownItems()">
+            导入镇区指标1
+            <div class="badge">精确({{townPreciseViews.length}})</div>
+            <div class="badge">精确校园({{collegePreciseStats.length}})</div>
+            <div class="badge">精确800({{townPrecise800Views.length}})</div>
+            <div class="badge">精确1800({{townPrecise1800Views.length}})</div>
+            <div class="badge">精确2100({{townPrecise2100Views.length}})</div>
+            <div class="badge">RSRP覆盖({{townMrsStats.length}})</div>
+            <div class="badge">RSRP校园({{collegeMrsStats.length}})</div>
+            <div class="badge">RSRP800({{townMrsStats800.length}})</div>
+            <div class="badge">RSRP1800({{townMrsStats1800.length}})</div>
+            <div class="badge">RSRP2100({{townMrsStats2100.length}})</div>
+        </button>
+    </p>
+    <p>
+        <button class="btn btn-info"
+                ng-disabled="townSinrUlStats.length === 0"
+                ng-class="dumpTownSinrItems()">
+            导入镇区指标2
+            <div class="badge">上行SINR({{townSinrUlStats.length}})</div>
+        </button>
+    </p>
+    
     <div class="row">
         <div class="col-md-4">
             <h4>精确覆盖率小区导入</h4>
@@ -120,9 +131,6 @@
             <th colspan="7">
                 MRS覆盖
             </th>
-            <th colspan="3">
-                SinrUL覆盖
-            </th>
         </tr>
         <tr>
             <th>日期</th>
@@ -139,9 +147,6 @@
             <th>镇-800</th>
             <th>镇-1800</th>
             <th>镇-2100</th>
-            <th style="width: 140px">操作</th>
-            <th>TOP</th>
-            <th>镇</th>
             <th style="width: 140px">操作</th>
         </tr>
         </thead>
@@ -180,6 +185,25 @@
                         </button>
                     </div>
                 </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>-</th>
+                <th colspan="3">
+                    SinrUL覆盖
+                </th>
+            </tr>
+            <tr>
+                <th>TOP</th>
+                <th>镇</th>
+                <th style="width: 140px">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="stat in dumpSinrHistory">
                 <td>{{stat.topSinrUlStats}}</td>
                 <td>{{stat.townSinrUlStats}}</td>
                 <td>

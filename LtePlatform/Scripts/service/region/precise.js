@@ -158,6 +158,14 @@
                         end: endDate
                     });
                 },
+                queryDumpSinrHistroy: function (beginDate, endDate) {
+                    return generalHttpService.getApiData('MrsSinrUlImport',
+                    {
+                        begin: beginDate,
+                        end: endDate
+                    });
+                },
+
                 queryTotalDumpItems: function() {
                     return generalHttpService.getApiData('PreciseImport', {});
                 },
@@ -220,9 +228,10 @@
                 clearMrsSinrUlItems: function () {
                     return generalHttpService.deleteApiData('MrsSinrUlImport', {});
                 },
+
                 dumpTownItems: function(
                     views, collegeStats, views800, views1800, views2100, 
-                    mrsStats, collegeMrsStats, mrsStats800, mrsStats1800, mrsStats2100, mrsSinrUls
+                    mrsStats, collegeMrsStats, mrsStats800, mrsStats1800, mrsStats2100
                 ) {
                     return generalHttpService.postApiData('TownPreciseImport',
                     {
@@ -235,10 +244,18 @@
                         collegeMrsRsrps: collegeMrsStats,
                         mrsRsrps800: mrsStats800,
                         mrsRsrps1800: mrsStats1800,
-                        mrsRsrps2100: mrsStats2100,
+                        mrsRsrps2100: mrsStats2100
+                    });
+                },
+                dumpTownSinrItems: function (
+                    mrsSinrUls
+                ) {
+                    return generalHttpService.postApiData('TownSinrImport',
+                    {
                         mrsSinrUls: mrsSinrUls
                     });
                 },
+
                 dumpTownAgpsItems: function(views) {
                     return generalHttpService.postApiData('MrGrid',
                     {

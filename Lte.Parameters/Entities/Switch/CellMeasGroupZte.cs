@@ -176,5 +176,23 @@ namespace Lte.Parameters.Entities.Switch
         public string clsInterFVoiceMeasCfg { get; set; }
 
         public int? geranPRBUsageRatioMeasCfg { get; set; }
+
+        public int? enPcellAnchHighPrioHOMeas { get; set; }
+
+        public string clsRatVoiceMeasCfg { get; set; }
+
+        public string emtcIntraFHOMeasCfg { get; set; }
+
+        public int? openEnPcellAnchInterFMeas { get; set; }
+
+        public string clsRatMeasCfg { get; set; }
+
+        public int? caOvelaInFEveMeasCfg { get; set; }
+
+        public int? closeEnPcellAnchInterFMeas { get; set; }
+
+        public int? enPcellAnchLowPrioHOMeas { get; set; }
+
+        public string geranSRVCCBaVoLTEQuMeCfg { get; set; }
     }
 }
