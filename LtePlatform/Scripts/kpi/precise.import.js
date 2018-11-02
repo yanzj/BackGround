@@ -85,7 +85,7 @@
             });
         };
 
-        $scope.dumpTownItems = function() {
+        $scope.dumpTownItems = function () {
             preciseImportService.dumpTownItems(
                 $scope.townPreciseViews, $scope.collegePreciseStats, 
                 $scope.townPrecise800Views, $scope.townPrecise1800Views, $scope.townPrecise2100Views, 
@@ -102,7 +102,7 @@
                 $scope.townMrsStats800 = [];
                 $scope.townMrsStats1800 = [];
                 $scope.townMrsStats2100 = [];
-                $scope.updateHistory();
+                $scope.updatePreciseHistory();
             });            
         };
         $scope.dumpTownSinrItems = function () {
@@ -114,7 +114,7 @@
             });
         };
 
-        $scope.updateHistory = function() {
+        $scope.updatePreciseHistory = function() {
             preciseImportService.queryDumpHistroy(
                 $scope.beginDate.value, $scope.endDate.value
             ).then(function(result) {
@@ -128,6 +128,11 @@
             ).then(function (result) {
                 $scope.dumpSinrHistory = result;
             });
+        };
+
+        $scope.updateHistory = function () {
+            $scope.updatePreciseHistory();
+            $scope.updateSinrHistory();
         };
 
         $scope.updateTownItems = function(date) {
@@ -186,7 +191,6 @@
         };
 
         $scope.updateHistory();
-        $scope.updateSinrHistory();
 
         preciseImportService.queryTotalDumpItems().then(function(result) {
             $scope.progressInfo.totalDumpItems = result;

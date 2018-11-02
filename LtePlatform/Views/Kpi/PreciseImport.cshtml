@@ -23,7 +23,7 @@
     <p>
         <button class="btn btn-info"
                 ng-disabled="townSinrUlStats.length === 0"
-                ng-class="dumpTownSinrItems()">
+                ng-click="dumpTownSinrItems()">
             导入镇区指标2
             <div class="badge">上行SINR({{townSinrUlStats.length}})</div>
         </button>
@@ -197,6 +197,7 @@
                 </th>
             </tr>
             <tr>
+                <th>日期</th>
                 <th>TOP</th>
                 <th>镇</th>
                 <th style="width: 140px">操作</th>
@@ -204,6 +205,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="stat in dumpSinrHistory">
+                <td>{{stat.dateString}}</td>
                 <td>{{stat.topSinrUlStats}}</td>
                 <td>{{stat.townSinrUlStats}}</td>
                 <td>

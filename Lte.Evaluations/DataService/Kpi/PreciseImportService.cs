@@ -27,8 +27,6 @@ namespace Lte.Evaluations.DataService.Kpi
         private readonly IPreciseMongoRepository _mongoRepository;
         private readonly ITownMrsRsrpRepository _townMrsRsrpRepository;
         private readonly ITopMrsRsrpRepository _topMrsRsrpRepository;
-        private readonly ITownMrsSinrUlRepository _townMrsSinrUlRepository;
-        private readonly ITopMrsSinrUlRepository _topMrsSinrUlRepository;
 
         public static Stack<PreciseCoverage4G> PreciseCoverage4Gs { get; set; } 
         
@@ -36,8 +34,7 @@ namespace Lte.Evaluations.DataService.Kpi
             ITownPreciseCoverageRepository regionRepository,
             IENodebRepository eNodebRepository, ITownRepository townRepository,
             IPreciseMongoRepository mongoRepository,
-            ITownMrsRsrpRepository townMrsRsrpRepository, ITopMrsRsrpRepository topMrsRsrpRepository,
-            ITownMrsSinrUlRepository townMrsSinrUlRepository, ITopMrsSinrUlRepository topMrsSinrUlRepository)
+            ITownMrsRsrpRepository townMrsRsrpRepository, ITopMrsRsrpRepository topMrsRsrpRepository)
         {
             _repository = repository;
             _regionRepository = regionRepository;
@@ -46,8 +43,6 @@ namespace Lte.Evaluations.DataService.Kpi
             _mongoRepository = mongoRepository;
             _townMrsRsrpRepository = townMrsRsrpRepository;
             _topMrsRsrpRepository = topMrsRsrpRepository;
-            _townMrsSinrUlRepository = townMrsSinrUlRepository;
-            _topMrsSinrUlRepository = topMrsSinrUlRepository;
             if (PreciseCoverage4Gs == null)
                 PreciseCoverage4Gs = new Stack<PreciseCoverage4G>();
         }
@@ -129,10 +124,7 @@ namespace Lte.Evaluations.DataService.Kpi
             await _townMrsRsrpRepository.UpdateMany(mrsStats);
             if (container.CollegeMrsRsrps.Any())
                 await _townMrsRsrpRepository.UpdateMany(container.CollegeMrsRsrps);
-
-            var mrsSinrUlStats = container.MrsSinrUls;
-            await _townMrsSinrUlRepository.UpdateMany(mrsSinrUlStats);
-
+            
         }
 
         public bool DumpOneStat()
@@ -213,9 +205,6 @@ namespace Lte.Evaluations.DataService.Kpi
                         x.StatDate >= beginDate && x.StatDate < endDate &&
                         x.FrequencyBandType == FrequencyBandType.Band2100);
                 var topMrsItems = _topMrsRsrpRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
-                var townSinrUlItems =
-                    _townMrsSinrUlRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
-                var topSinrUlItems = _topMrsSinrUlRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
                 results.Add(new PreciseHistory
                 {
                     DateString = begin.ToShortDateString(),
@@ -231,9 +220,7 @@ namespace Lte.Evaluations.DataService.Kpi
                     TownMrsStats800 = townMrsItems800.Count,
                     TownMrsStats1800 = townMrsItems1800.Count,
                     TownMrsStats2100 = townMrsItems2100.Count,
-                    TopMrsStats = topMrsItems.Count,
-                    TownSinrUlStats = townSinrUlItems.Count,
-                    TopSinrUlStats = topSinrUlItems.Count
+                    TopMrsStats = topMrsItems.Count
                 });
                 begin = begin.AddDays(1);
             }

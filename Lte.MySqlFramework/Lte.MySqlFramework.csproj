@@ -463,6 +463,7 @@
     <Compile Include="Entities\Dt\ZhangshangyouQualityView.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Support\Container\TownSinrViewContainer.cs" />
     <Compile Include="Support\DateSpanQuery.cs" />
     <Compile Include="Support\FilterDateSpanQuery.cs" />
     <Compile Include="Support\FilterLocalDateSpanQuery.cs" />

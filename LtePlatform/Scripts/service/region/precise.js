@@ -250,7 +250,7 @@
                 dumpTownSinrItems: function (
                     mrsSinrUls
                 ) {
-                    return generalHttpService.postApiData('TownSinrImport',
+                    return generalHttpService.postApiData('MrsSinrUlImport',
                     {
                         mrsSinrUls: mrsSinrUls
                     });

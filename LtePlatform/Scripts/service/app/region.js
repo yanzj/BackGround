@@ -2070,7 +2070,7 @@ angular.module('region.precise', ['app.core'])
                 dumpTownSinrItems: function (
                     mrsSinrUls
                 ) {
-                    return generalHttpService.postApiData('TownSinrImport',
+                    return generalHttpService.postApiData('MrsSinrUlImport',
                     {
                         mrsSinrUls: mrsSinrUls
                     });

@@ -32,8 +32,5 @@ namespace Lte.Evaluations.ViewModels.Precise
 
         public int TopMrsStats { get; set; }
 
-        public int TownSinrUlStats { get; set; }
-
-        public int TopSinrUlStats { get; set; }
     }
 }

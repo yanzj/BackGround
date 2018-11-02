@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Mr;
 using Abp.EntityFramework.Repositories;
 using AutoMapper;
+using Lte.Evaluations.ViewModels.Mr;
 using Lte.Evaluations.ViewModels.Precise;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Mr;
+using Lte.MySqlFramework.Support.Container;
 using Lte.Parameters.Abstract.Kpi;
 using Lte.Parameters.Entities.Kpi;
 
@@ -22,15 +22,17 @@ namespace Lte.Evaluations.DataService.Mr
         private readonly IMrsSinrUlRepository _mrsSinrUlRepository;
         private readonly IENodebRepository _eNodebRepository;
         private readonly ITopMrsSinrUlRepository _topMrsSinrULRepository;
+        private readonly ITownMrsSinrUlRepository _townMrsSinrUlRepository;
 
         private static Stack<TopMrsSinrUl> TopStats { get; set; }
 
         public MrsSinrUlImportService(IMrsSinrUlRepository mrsSinrUlRepository,
-            IENodebRepository eNodebRepository, ITopMrsSinrUlRepository topRepository)
+            IENodebRepository eNodebRepository, ITownMrsSinrUlRepository townMrsSinrUlRepository, ITopMrsSinrUlRepository topRepository)
         {
             _mrsSinrUlRepository = mrsSinrUlRepository;
             _eNodebRepository = eNodebRepository;
             _topMrsSinrULRepository = topRepository;
+            _townMrsSinrUlRepository = townMrsSinrUlRepository;
             if (TopStats == null) TopStats = new Stack<TopMrsSinrUl>();
         }
 
@@ -83,6 +85,28 @@ namespace Lte.Evaluations.DataService.Mr
             return mergeStats;
         }
 
+        public IEnumerable<SinrHistory> GetSinrHistories(DateTime begin, DateTime end)
+        {
+            var results = new List<SinrHistory>();
+            while (begin < end.AddDays(1))
+            {
+                var beginDate = begin.Date;
+                var endDate = beginDate.AddDays(1);
+                var townSinrUlItems =
+                    _townMrsSinrUlRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
+                var topSinrUlItems = _topMrsSinrULRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
+                results.Add(new SinrHistory
+                {
+                    DateString = begin.ToShortDateString(),
+                    StatDate = begin.Date,
+                    TownSinrUlStats = townSinrUlItems.Count,
+                    TopSinrUlStats = topSinrUlItems.Count
+                });
+                begin = begin.AddDays(1);
+            }
+            return results;
+        }
+
         public int GetTopMrsSinrUls(DateTime statTime)
         {
             var end = statTime.AddDays(1);
@@ -107,6 +131,13 @@ namespace Lte.Evaluations.DataService.Mr
         public void ClearStats()
         {
             TopStats.Clear();
+        }
+
+        public async Task DumpTownStats(TownSinrViewContainer container)
+        {
+            var mrsSinrUlStats = container.MrsSinrUls;
+            await _townMrsSinrUlRepository.UpdateMany(mrsSinrUlStats);
+
         }
 
         public bool DumpOneStat()

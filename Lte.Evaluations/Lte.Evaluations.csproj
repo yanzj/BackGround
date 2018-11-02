@@ -273,8 +273,9 @@
     <Compile Include="DataService\Dump\WorkItemService.cs" />
     <Compile Include="MapperSerive\EvalutaionMapperProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\Precise\CellMrsRsrpDto.cs" />
-    <Compile Include="ViewModels\Precise\CellMrsSinrUlDto.cs" />
+    <Compile Include="ViewModels\Mr\CellMrsRsrpDto.cs" />
+    <Compile Include="ViewModels\Mr\CellMrsSinrUlDto.cs" />
+    <Compile Include="ViewModels\Mr\SinrHistory.cs" />
     <Compile Include="ViewModels\Precise\CellPreciseKpiView.cs" />
     <Compile Include="ViewModels\Precise\CellView.cs" />
     <Compile Include="ViewModels\Precise\IPreciseWorkItemDto.cs" />

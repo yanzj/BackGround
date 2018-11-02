@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Mr;
 using Lte.Evaluations.DataService.Mr;
+using Lte.Evaluations.ViewModels.Mr;
+using Lte.MySqlFramework.Support.Container;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.Mongo
@@ -28,6 +30,16 @@ namespace LtePlatform.Controllers.Mongo
         public IEnumerable<TownMrsSinrUl> GetMrs(DateTime statDate)
         {
             return _service.GetMergeMrsStats(statDate);
+        }
+
+        [HttpGet]
+        [ApiDoc("获得指定日期范围内的已导入历史记录统计")]
+        [ApiParameterDoc("begin", "开始日期")]
+        [ApiParameterDoc("end", "结束日期")]
+        [ApiResponse("指定日期范围内的已导入历史记录统计")]
+        public IEnumerable<SinrHistory> Get(DateTime begin, DateTime end)
+        {
+            return _service.GetSinrHistories(begin, end);
         }
 
         [HttpGet]
@@ -60,6 +72,14 @@ namespace LtePlatform.Controllers.Mongo
         public void Delete()
         {
             _service.ClearStats();
+        }
+
+        [HttpPost]
+        [ApiDoc("导入镇区指标")]
+        [ApiParameterDoc("container", "等待导入数据库的记录")]
+        public async Task Post(TownSinrViewContainer container)
+        {
+            await _service.DumpTownStats(container);
         }
     }
 }

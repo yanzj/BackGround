@@ -26,6 +26,5 @@ namespace Lte.MySqlFramework.Support.Container
 
         public IEnumerable<TownMrsRsrp> MrsRsrps2100 { get; set; }
 
-        public IEnumerable<TownMrsSinrUl> MrsSinrUls { get; set; }
     }
 }
