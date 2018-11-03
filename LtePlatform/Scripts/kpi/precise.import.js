@@ -40,6 +40,10 @@
         $scope.townMrsStats1800 = [];
         $scope.townMrsStats2100 = [];
         $scope.townSinrUlStats = [];
+        $scope.collegeSinrUlStats = [];
+        $scope.townSinrUlStats800 = [];
+        $scope.townSinrUlStats1800 = [];
+        $scope.townSinrUlStats2100 = [];
 
         $scope.clearItems = function() {
             preciseImportService.clearImportItems().then(function() {
@@ -107,9 +111,14 @@
         };
         $scope.dumpTownSinrItems = function () {
             preciseImportService.dumpTownSinrItems(
-                $scope.townSinrUlStats
+                $scope.townSinrUlStats, $scope.collegeSinrUlStats, $scope.townSinrUlStats800,
+                $scope.townSinrUlStats1800, $scope.townSinrUlStats2100
             ).then(function () {
                 $scope.townSinrUlStats = [];
+                $scope.collegeSinrUlStats = [];
+                $scope.townSinrUlStats800 = [];
+                $scope.townSinrUlStats1800 = [];
+                $scope.townSinrUlStats2100 = [];
                 $scope.updateSinrHistory();
             });
         };
@@ -170,8 +179,20 @@
             });
         };
         $scope.updateTownSinrUlItems = function(date) {
-            preciseImportService.queryTownSinrUlStats(date).then(function (result) {
+            preciseImportService.queryTownSinrUlStats(date, 'all').then(function (result) {
                 $scope.townSinrUlStats = result;
+            });
+            preciseImportService.queryCollegeSinrUlStats(date).then(function (result) {
+                $scope.collegeSinrUlStats = result;
+            });
+            preciseImportService.queryTownSinrUlStats(date, '800').then(function (result) {
+                $scope.townSinrUlStats800 = result;
+            });
+            preciseImportService.queryTownSinrUlStats(date, '1800').then(function (result) {
+                $scope.townSinrUlStats1800 = result;
+            });
+            preciseImportService.queryTownSinrUlStats(date, '2100').then(function (result) {
+                $scope.townSinrUlStats2100 = result;
             });
         };
         $scope.updateTopMrsItems = function(date) {

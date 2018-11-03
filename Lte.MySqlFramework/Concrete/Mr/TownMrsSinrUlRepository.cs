@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Abp.EntityFramework;
-using Abp.EntityFramework.Entities;
+﻿using Abp.EntityFramework;
 using Abp.EntityFramework.Entities.Mr;
 using Abp.EntityFramework.Repositories;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Mr;
 
-namespace Lte.MySqlFramework.Concrete
+namespace Lte.MySqlFramework.Concrete.Mr
 {
     public class TownMrsSinrUlRepository : EfRepositorySave<MySqlContext, TownMrsSinrUl>, ITownMrsSinrUlRepository
     {
@@ -21,7 +14,8 @@ namespace Lte.MySqlFramework.Concrete
         public TownMrsSinrUl Match(TownMrsSinrUl stat)
         {
             var end = stat.StatDate.AddDays(1).Date;
-            return FirstOrDefault(x => x.TownId == stat.TownId && x.StatDate >= stat.StatDate.Date && x.StatDate < end);
+            return FirstOrDefault(x => x.TownId == stat.TownId && x.StatDate >= stat.StatDate.Date && x.StatDate < end
+                                       && x.FrequencyBandType == stat.FrequencyBandType);
         }
     }
 }

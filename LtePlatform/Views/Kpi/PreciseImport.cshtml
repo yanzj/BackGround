@@ -20,14 +20,6 @@
             <div class="badge">RSRP2100({{townMrsStats2100.length}})</div>
         </button>
     </p>
-    <p>
-        <button class="btn btn-info"
-                ng-disabled="townSinrUlStats.length === 0"
-                ng-click="dumpTownSinrItems()">
-            导入镇区指标2
-            <div class="badge">上行SINR({{townSinrUlStats.length}})</div>
-        </button>
-    </p>
     
     <div class="row">
         <div class="col-md-4">
@@ -121,73 +113,87 @@
             <button class="btn btn-primary" ng-click="updateHistory()">更新</button>
         </div>
     </div>
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th>-</th>
-            <th colspan="7">
-                精确覆盖
-            </th>
-            <th colspan="7">
-                MRS覆盖
-            </th>
-        </tr>
-        <tr>
-            <th>日期</th>
-            <th>小区数量</th>
-            <th>镇</th>
-            <th>校园</th>
-            <th>镇-800</th>
-            <th>镇-1800</th>
-            <th>镇-2100</th>
-            <th style="width: 150px">操作</th>
-            <th>TOP</th>
-            <th>镇</th>
-            <th>校园</th>
-            <th>镇-800</th>
-            <th>镇-1800</th>
-            <th>镇-2100</th>
-            <th style="width: 140px">操作</th>
-        </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="stat in dumpHistory">
-                <td>{{stat.dateString}}</td>
-                <td>{{stat.preciseStats}}</td>
-                <td>{{stat.townPreciseStats}}</td>
-                <td>{{stat.collegePreciseStats}}</td>
-                <td>{{stat.townPrecise800Stats}}</td>
-                <td>{{stat.townPrecise1800Stats}}</td>
-                <td>{{stat.townPrecise2100Stats}}</td>
-                <td>
-                    <div class="btn-group-sm">
-                        <button type="button" class="btn btn-sm btn-success" ng-click="updateMongoItems(stat.statDate)">
-                            Mongo
-                        </button>
-                        <button class="btn btn-sm btn-default" ng-click="updateTownItems(stat.statDate)">
-                            镇区
-                        </button>
-                    </div>
-                </td>
-                <td>{{stat.topMrsStats}}</td>
-                <td>{{stat.townMrsStats}}</td>
-                <td>{{stat.collegeMrsStats}}</td>
-                <td>{{stat.townMrsStats800}}</td>
-                <td>{{stat.townMrsStats1800}}</td>
-                <td>{{stat.townMrsStats2100}}</td>
-                <td>
-                    <div class="btn-group-sm">
-                        <button class="btn btn-sm btn-success" ng-click="updateTopMrsItems(stat.statDate)">
-                            TOP
-                        </button>
-                        <button class="btn btn-sm btn-default" ng-click="updateTownMrsItems(stat.statDate)">
-                            镇区
-                        </button>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>-</th>
+        <th colspan="7">
+            精确覆盖
+        </th>
+        <th colspan="7">
+            MRS覆盖
+        </th>
+    </tr>
+    <tr>
+        <th>日期</th>
+        <th>小区数量</th>
+        <th>镇</th>
+        <th>校园</th>
+        <th>镇-800</th>
+        <th>镇-1800</th>
+        <th>镇-2100</th>
+        <th style="width: 150px">操作</th>
+        <th>TOP</th>
+        <th>镇</th>
+        <th>校园</th>
+        <th>镇-800</th>
+        <th>镇-1800</th>
+        <th>镇-2100</th>
+        <th style="width: 140px">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="stat in dumpHistory">
+        <td>{{stat.dateString}}</td>
+        <td>{{stat.preciseStats}}</td>
+        <td>{{stat.townPreciseStats}}</td>
+        <td>{{stat.collegePreciseStats}}</td>
+        <td>{{stat.townPrecise800Stats}}</td>
+        <td>{{stat.townPrecise1800Stats}}</td>
+        <td>{{stat.townPrecise2100Stats}}</td>
+        <td>
+            <div class="btn-group-sm">
+                <button type="button" class="btn btn-sm btn-success" ng-click="updateMongoItems(stat.statDate)">
+                    Mongo
+                </button>
+                <button class="btn btn-sm btn-default" ng-click="updateTownItems(stat.statDate)">
+                    镇区
+                </button>
+            </div>
+        </td>
+        <td>{{stat.topMrsStats}}</td>
+        <td>{{stat.townMrsStats}}</td>
+        <td>{{stat.collegeMrsStats}}</td>
+        <td>{{stat.townMrsStats800}}</td>
+        <td>{{stat.townMrsStats1800}}</td>
+        <td>{{stat.townMrsStats2100}}</td>
+        <td>
+            <div class="btn-group-sm">
+                <button class="btn btn-sm btn-success" ng-click="updateTopMrsItems(stat.statDate)">
+                    TOP
+                </button>
+                <button class="btn btn-sm btn-default" ng-click="updateTownMrsItems(stat.statDate)">
+                    镇区
+                </button>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<p>
+    <button class="btn btn-info"
+            ng-disabled="townSinrUlStats.length === 0 && collegeSinrUlStats.length === 0 && townSinrUlStats800.length === 0
+            && townSinrUlStats1800.length === 0 && townSinrUlStats2100.length === 0"
+            ng-click="dumpTownSinrItems()">
+        导入镇区指标2
+        <div class="badge">上行SINR({{townSinrUlStats.length}})</div>
+        <div class="badge">校园SINR({{collegeSinrUlStats.length}})</div>
+        <div class="badge">SINR-800({{townSinrUlStats800.length}})</div>
+        <div class="badge">SINR-1800({{townSinrUlStats1800.length}})</div>
+        <div class="badge">SINR-2100({{townSinrUlStats2100.length}})</div>
+    </button>
+</p>
     <table class="table table-hover">
         <thead>
             <tr>

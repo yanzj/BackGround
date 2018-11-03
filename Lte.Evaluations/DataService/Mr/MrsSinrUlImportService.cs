@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities.Mr;
 using Abp.EntityFramework.Repositories;
-using AutoMapper;
 using Lte.Domain.Common.Wireless.Cell;
+using Lte.Evaluations.DataService.RegionKpi;
 using Lte.Evaluations.ViewModels.Mr;
-using Lte.Evaluations.ViewModels.Precise;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Mr;
 using Lte.MySqlFramework.Support.Container;
@@ -24,44 +23,28 @@ namespace Lte.Evaluations.DataService.Mr
         private readonly IENodebRepository _eNodebRepository;
         private readonly ITopMrsSinrUlRepository _topMrsSinrUlRepository;
         private readonly ITownMrsSinrUlRepository _townMrsSinrUlRepository;
+        private readonly ICellRepository _cellRepository;
 
         private static Stack<TopMrsSinrUl> TopStats { get; set; }
 
         public MrsSinrUlImportService(IMrsSinrUlRepository mrsSinrUlRepository,
             IENodebRepository eNodebRepository, ITownMrsSinrUlRepository townMrsSinrUlRepository,
-            ITopMrsSinrUlRepository topRepository)
+            ICellRepository cellRepository, ITopMrsSinrUlRepository topRepository)
         {
             _mrsSinrUlRepository = mrsSinrUlRepository;
             _eNodebRepository = eNodebRepository;
             _topMrsSinrUlRepository = topRepository;
             _townMrsSinrUlRepository = townMrsSinrUlRepository;
+            _cellRepository = cellRepository;
             if (TopStats == null) TopStats = new Stack<TopMrsSinrUl>();
         }
 
-        private IEnumerable<TownMrsSinrUlDto> GetTownMrsStats(List<MrsSinrUlStat> stats)
-        {
-            var query = from stat in stats
-                        join eNodeb in _eNodebRepository.GetAllList() on stat.ENodebId equals eNodeb.ENodebId
-                        select
-                            new
-                            {
-                                Stat = stat,
-                                eNodeb.TownId
-                            };
-            var townStats = query.Select(x =>
-            {
-                var townStat = Mapper.Map<MrsSinrUlStat, TownMrsSinrUlDto>(x.Stat);
-                townStat.TownId = x.TownId;
-                return townStat;
-            });
-            return townStats;
-        }
-
-        public IEnumerable<TownMrsSinrUl> GetMergeMrsStats(DateTime statTime)
+        public IEnumerable<TownMrsSinrUl> GetMergeMrsStats(DateTime statTime, FrequencyBandType bandType)
         {
             var end = statTime.AddDays(1);
             var stats = _mrsSinrUlRepository.GetAllList(x => x.StatDate >= statTime && x.StatDate < end);
-            var townStats = GetTownMrsStats(stats);
+            var townStats = stats.GetTownFrequencyStats<MrsSinrUlStat, TownMrsSinrUlDto, TownMrsSinrUl>(bandType,
+                _cellRepository, _eNodebRepository);
 
             var mergeStats = from stat in townStats
                              group stat by stat.TownId
@@ -82,7 +65,8 @@ namespace Lte.Evaluations.DataService.Mr
                                  SinrUl15To18 = g.Sum(x => x.SinrUl15To18),
                                  SinrUl18To21 = g.Sum(x => x.SinrUl18To21),
                                  SinrUl21To24 = g.Sum(x => x.SinrUl21To24),
-                                 SinrUlAbove24 = g.Sum(x => x.SinrUlAbove24)
+                                 SinrUlAbove24 = g.Sum(x => x.SinrUlAbove24),
+                                 FrequencyBandType = bandType
                              };
             return mergeStats;
         }
@@ -159,9 +143,11 @@ namespace Lte.Evaluations.DataService.Mr
 
         public async Task DumpTownStats(TownSinrViewContainer container)
         {
-            var mrsSinrUlStats = container.MrsSinrUls;
+            var mrsSinrUlStats = container.MrsSinrUls
+                .Concat(container.MrsSinrUls800).Concat(container.MrsSinrUls1800).Concat(container.MrsSinrUls2100);
             await _townMrsSinrUlRepository.UpdateMany(mrsSinrUlStats);
-
+            if (container.CollegeMrsSinrUls.Any())
+                await _townMrsSinrUlRepository.UpdateMany(container.CollegeMrsSinrUls);
         }
 
         public bool DumpOneStat()

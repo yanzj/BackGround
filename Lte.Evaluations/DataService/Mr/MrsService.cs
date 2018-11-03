@@ -84,6 +84,11 @@ namespace Lte.Evaluations.DataService.Mr
         {
             return _sinrUlRepository.GetList(eNodebId + "-" + sectorId, begin, end);
         }
+        
+        public IEnumerable<MrsSinrUlStat> QueryDateSpanMrsSinrUlStats(DateTime begin, DateTime end)
+        {
+            return _sinrUlRepository.GetAllList(x => x.StatDate >= begin && x.StatDate < end);
+        }
 
         public MrsTadvStat QueryTadvStat(int eNodebId, byte sectorId, DateTime statDate)
         {

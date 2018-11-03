@@ -201,7 +201,14 @@
                             statDate: statTime
                         });
                 },
-                queryTownSinrUlStats: function (statTime) {
+                queryTownSinrUlStats: function (statTime, frequency) {
+                    return generalHttpService.getApiData('MrsSinrUlImport',
+                        {
+                            statTime: statTime,
+                            frequency: frequency
+                        });
+                },
+                queryCollegeSinrUlStats: function(statTime) {
                     return generalHttpService.getApiData('MrsSinrUlImport',
                         {
                             statDate: statTime
@@ -248,11 +255,15 @@
                     });
                 },
                 dumpTownSinrItems: function (
-                    mrsSinrUls
+                    mrsSinrUls, collegeSinrUls, mrsSinrUls800, mrsSinrUls1800, mrsSinrUls2100
                 ) {
                     return generalHttpService.postApiData('MrsSinrUlImport',
                     {
-                        mrsSinrUls: mrsSinrUls
+                        mrsSinrUls: mrsSinrUls,
+                        collegeMrsSinrUls: collegeSinrUls,
+                        mrsSinrUls800: mrsSinrUls800,
+                        mrsSinrUls1800: mrsSinrUls1800,
+                        mrsSinrUls2100: mrsSinrUls2100
                     });
                 },
 
