@@ -1,19 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Dependency;
-using Abp.EntityFramework.Entities;
 using Abp.EntityFramework.Entities.Mr;
 using AutoMapper;
 using Lte.Domain.Common.Wireless;
-using Lte.MySqlFramework.Abstract;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.Parameters.Entities.Kpi;
 
-namespace Lte.Evaluations.ViewModels.Precise
+namespace Lte.Evaluations.ViewModels.Mr
 {
     [AutoMapFrom(typeof(MrsSinrUlStat))]
     [AutoMapTo(typeof(TopMrsSinrUl))]

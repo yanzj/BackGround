@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web.Http;
 using Lte.Evaluations.DataService.Mr;
+using Lte.Evaluations.ViewModels.Mr;
 using Lte.Evaluations.ViewModels.Precise;
 using LtePlatform.Models;
 

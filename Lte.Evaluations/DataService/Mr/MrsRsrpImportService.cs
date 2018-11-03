@@ -10,6 +10,7 @@ using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Mr;
 using Lte.Parameters.Abstract.Kpi;
 using Lte.Evaluations.DataService.RegionKpi;
+using Lte.Evaluations.ViewModels.Mr;
 using Lte.Parameters.Entities.Kpi;
 
 namespace Lte.Evaluations.DataService.Mr

@@ -7,6 +7,7 @@ using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities.Mr;
 using Abp.EntityFramework.Repositories;
 using AutoMapper;
+using Lte.Domain.Common.Wireless.Cell;
 using Lte.Evaluations.ViewModels.Mr;
 using Lte.Evaluations.ViewModels.Precise;
 using Lte.MySqlFramework.Abstract.Infrastructure;
@@ -21,17 +22,18 @@ namespace Lte.Evaluations.DataService.Mr
     {
         private readonly IMrsSinrUlRepository _mrsSinrUlRepository;
         private readonly IENodebRepository _eNodebRepository;
-        private readonly ITopMrsSinrUlRepository _topMrsSinrULRepository;
+        private readonly ITopMrsSinrUlRepository _topMrsSinrUlRepository;
         private readonly ITownMrsSinrUlRepository _townMrsSinrUlRepository;
 
         private static Stack<TopMrsSinrUl> TopStats { get; set; }
 
         public MrsSinrUlImportService(IMrsSinrUlRepository mrsSinrUlRepository,
-            IENodebRepository eNodebRepository, ITownMrsSinrUlRepository townMrsSinrUlRepository, ITopMrsSinrUlRepository topRepository)
+            IENodebRepository eNodebRepository, ITownMrsSinrUlRepository townMrsSinrUlRepository,
+            ITopMrsSinrUlRepository topRepository)
         {
             _mrsSinrUlRepository = mrsSinrUlRepository;
             _eNodebRepository = eNodebRepository;
-            _topMrsSinrULRepository = topRepository;
+            _topMrsSinrUlRepository = topRepository;
             _townMrsSinrUlRepository = townMrsSinrUlRepository;
             if (TopStats == null) TopStats = new Stack<TopMrsSinrUl>();
         }
@@ -93,13 +95,35 @@ namespace Lte.Evaluations.DataService.Mr
                 var beginDate = begin.Date;
                 var endDate = beginDate.AddDays(1);
                 var townSinrUlItems =
-                    _townMrsSinrUlRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
-                var topSinrUlItems = _topMrsSinrULRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
+                    _townMrsSinrUlRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.All);
+                var collegeSinrUlItems =
+                    _townMrsSinrUlRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.College);
+                var townSinrUlItems800 =
+                    _townMrsSinrUlRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.Band800VoLte);
+                var townSinrUlItems1800 =
+                    _townMrsSinrUlRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.Band1800);
+                var townSinrUlItems2100 =
+                    _townMrsSinrUlRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.Band2100);
+                var topSinrUlItems = _topMrsSinrUlRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
                 results.Add(new SinrHistory
                 {
                     DateString = begin.ToShortDateString(),
                     StatDate = begin.Date,
                     TownSinrUlStats = townSinrUlItems.Count,
+                    CollegeSinrUlStats = collegeSinrUlItems.Count,
+                    TownSinrUlStats800 = townSinrUlItems800.Count,
+                    TownSinrUlStats1800 = townSinrUlItems1800.Count,
+                    TownSinrUlStats2100 = townSinrUlItems2100.Count,
                     TopSinrUlStats = topSinrUlItems.Count
                 });
                 begin = begin.AddDays(1);
@@ -144,7 +168,7 @@ namespace Lte.Evaluations.DataService.Mr
         {
             var stat = TopStats.Pop();
             if (stat == null) return false;
-            _topMrsSinrULRepository.ImportOne(stat);
+            _topMrsSinrUlRepository.ImportOne(stat);
             return true;
         }
     }

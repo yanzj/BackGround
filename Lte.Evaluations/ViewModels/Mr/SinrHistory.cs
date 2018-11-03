@@ -13,6 +13,14 @@ namespace Lte.Evaluations.ViewModels.Mr
         public DateTime StatDate { get; set; }
 
         public int TownSinrUlStats { get; set; }
+        
+        public int CollegeSinrUlStats { get; set; }
+
+        public int TownSinrUlStats800 { get; set; }
+
+        public int TownSinrUlStats1800 { get; set; }
+
+        public int TownSinrUlStats2100 { get; set; }
 
         public int TopSinrUlStats { get; set; }
     }

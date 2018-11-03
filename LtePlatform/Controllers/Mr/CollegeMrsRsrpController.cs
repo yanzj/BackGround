@@ -8,6 +8,7 @@ using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Regular;
 using Lte.Evaluations.DataService.College;
 using Lte.Evaluations.DataService.Mr;
+using Lte.Evaluations.ViewModels.Mr;
 using Lte.Evaluations.ViewModels.Precise;
 using Lte.Parameters.Entities.Kpi;
 using LtePlatform.Models;

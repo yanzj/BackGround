@@ -6,7 +6,7 @@ using AutoMapper;
 using Lte.Domain.Common.Wireless;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 
-namespace Lte.Evaluations.ViewModels.Precise
+namespace Lte.Evaluations.ViewModels.Mr
 {
     [AutoMapFrom(typeof(MrsRsrpStat))]
     [AutoMapTo(typeof(TopMrsRsrp))]
