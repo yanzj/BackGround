@@ -1,6 +1,5 @@
 ﻿using System;
 using Abp.Domain.Entities;
-using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Dependency;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Cell;

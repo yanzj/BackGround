@@ -3,16 +3,16 @@ namespace Lte.MySqlFramework.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Update_Town_Hour_Cqi : DbMigration
+    public partial class Update_SinrUl : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.TownHourCqis", "FrequencyBandType", c => c.Int(nullable: false));
+            AddColumn("dbo.TownMrsSinrUls", "FrequencyBandType", c => c.Int(nullable: false));
         }
         
         public override void Down()
         {
-            DropColumn("dbo.TownHourCqis", "FrequencyBandType");
+            DropColumn("dbo.TownMrsSinrUls", "FrequencyBandType");
         }
     }
 }

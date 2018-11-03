@@ -2,12 +2,20 @@
 using Abp.Domain.Entities;
 using Abp.EntityFramework.Dependency;
 using Lte.Domain.Common.Wireless;
+using Lte.Domain.Common.Wireless.Cell;
+using Lte.Domain.Regular.Attributes;
 
 namespace Abp.EntityFramework.Entities.Mr
 {
     public class TownMrsSinrUl : Entity, IStatDate, ITownId
     {
+        [ArraySumProtection]
         public DateTime StatDate { get; set; }
+
+        [ArraySumProtection]
+        public FrequencyBandType FrequencyBandType { get; set; } = FrequencyBandType.All;
+
+        public string Frequency => FrequencyBandType.ToString();
 
         public long SinrUlBelowM9 { get; set; }
 
