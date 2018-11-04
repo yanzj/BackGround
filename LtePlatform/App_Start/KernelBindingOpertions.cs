@@ -570,6 +570,8 @@ namespace LtePlatform
 
             ninjectKernel.Bind<TownCqiService>().ToSelf();
 
+            ninjectKernel.Bind<TownMrsSinrUlService>().ToSelf();
+
         }
     }
 }

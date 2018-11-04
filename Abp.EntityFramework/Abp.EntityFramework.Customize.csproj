@@ -199,11 +199,13 @@
     <Compile Include="Entities\Maintainence\SpecialAlarmWorkItem.cs" />
     <Compile Include="Entities\Mr\AggregateCoverageView.cs" />
     <Compile Include="Entities\Mr\AggregateMrsRsrpView.cs" />
+    <Compile Include="Entities\Mr\AggregateMrsSinrUlView.cs" />
     <Compile Include="Entities\Mr\AggregatePreciseView.cs" />
     <Compile Include="Entities\Mr\InterferenceMatrixStat.cs" />
     <Compile Include="Entities\Mr\MrsRsrpStat.cs" />
     <Compile Include="Entities\RegionKpi\FrequencyCoverageView.cs" />
     <Compile Include="Entities\RegionKpi\FrequencyMrsRsrpView.cs" />
+    <Compile Include="Entities\RegionKpi\FrequencyMrsSinrUlView.cs" />
     <Compile Include="Entities\RegionKpi\FrequencyPreciseView.cs" />
     <Compile Include="Entities\RegionKpi\TownDoubleFlowView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourCqi.cs" />

@@ -79,6 +79,14 @@ namespace Lte.Evaluations.DataService.Mr
         {
             return _sinrUlRepository.Get(eNodebId + "-" + sectorId, statDate);
         }
+        
+        public IEnumerable<CellMrsSinrUlDto> QueryMrsSinrUlStats(int eNodebId, byte sectorId, DateTime begin, DateTime end)
+        {
+            var eNodeb = _eNodebRepository.FirstOrDefault(x => x.ENodebId == eNodebId);
+            var list = _sinrUlRepository.GetList(eNodebId + "-" + sectorId, begin, end).MapTo<List<CellMrsSinrUlDto>>();
+            list.ForEach(stat => stat.ENodebName = eNodeb?.Name);
+            return list;
+        }
 
         public IEnumerable<MrsSinrUlStat> QuerySinrUlStats(int eNodebId, byte sectorId, DateTime begin, DateTime end)
         {
