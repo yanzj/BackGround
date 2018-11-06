@@ -7,13 +7,13 @@ namespace Lte.MySqlFramework.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Add_Special_Alarm : IMigrationMetadata
+    public sealed partial class Create_Tadv_Top_Town : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Add_Special_Alarm));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Create_Tadv_Top_Town));
         
         string IMigrationMetadata.Id
         {
-            get { return "201810180034491_Add_Special_Alarm"; }
+            get { return "201811061438253_Create_Tadv_Top_Town"; }
         }
         
         string IMigrationMetadata.Source

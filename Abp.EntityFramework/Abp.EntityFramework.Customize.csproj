@@ -203,6 +203,8 @@
     <Compile Include="Entities\Mr\AggregatePreciseView.cs" />
     <Compile Include="Entities\Mr\InterferenceMatrixStat.cs" />
     <Compile Include="Entities\Mr\MrsRsrpStat.cs" />
+    <Compile Include="Entities\Mr\TopMrsTadv.cs" />
+    <Compile Include="Entities\Mr\TownMrsTadv.cs" />
     <Compile Include="Entities\RegionKpi\FrequencyCoverageView.cs" />
     <Compile Include="Entities\RegionKpi\FrequencyMrsRsrpView.cs" />
     <Compile Include="Entities\RegionKpi\FrequencyMrsSinrUlView.cs" />

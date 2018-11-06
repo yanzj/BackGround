@@ -269,6 +269,7 @@
     <Compile Include="Entities\Kpi\PreciseMongo.cs" />
     <Compile Include="Entities\Kpi\TownMrsRsrpDto.cs" />
     <Compile Include="Entities\Kpi\TownMrsSinrUlDto.cs" />
+    <Compile Include="Entities\Kpi\TownMrsTadvDto.cs" />
     <Compile Include="Entities\Neighbor\EutranInterFreqNCell.cs" />
     <Compile Include="Entities\Neighbor\EutranInterNFreq.cs" />
     <Compile Include="Entities\Neighbor\NearestPciCell.cs" />

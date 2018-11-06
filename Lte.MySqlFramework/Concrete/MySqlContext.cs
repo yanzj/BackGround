@@ -168,6 +168,10 @@ namespace Lte.MySqlFramework.Concrete
 
         public DbSet<TopMrsSinrUl> TopMrsSinrUls { get; set; }
 
+        public DbSet<TownMrsTadv> TownMrsTadvs { get; set; }
+
+        public DbSet<TopMrsTadv> TopMrsTadvs { get; set; }
+
         public DbSet<LteProblem> LteProblems { get; set; }
 
         public DbSet<CoverageStat> CoverageStats { get; set; }
