@@ -208,6 +208,7 @@
     <Compile Include="Entities\RegionKpi\FrequencyCoverageView.cs" />
     <Compile Include="Entities\RegionKpi\FrequencyMrsRsrpView.cs" />
     <Compile Include="Entities\RegionKpi\FrequencyMrsSinrUlView.cs" />
+    <Compile Include="Entities\RegionKpi\FrequencyMrsTadvView.cs" />
     <Compile Include="Entities\RegionKpi\FrequencyPreciseView.cs" />
     <Compile Include="Entities\RegionKpi\TownDoubleFlowView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourCqi.cs" />

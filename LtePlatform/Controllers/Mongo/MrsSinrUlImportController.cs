@@ -18,7 +18,7 @@ using LtePlatform.Models;
 namespace LtePlatform.Controllers.Mongo
 {
     [ApiControl("导入MRS-SINRUL的控制器")]
-    [ApiGroup("KPI")]
+    [ApiGroup("导入")]
     public class MrsSinrUlImportController : ApiController
     {
         private readonly MrsSinrUlImportService _service;

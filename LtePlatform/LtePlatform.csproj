@@ -348,7 +348,7 @@
     <Compile Include="Controllers\Kpi\MonthYuejiTrendController.cs" />
     <Compile Include="Controllers\Kpi\PreciseFrequencyController.cs" />
     <Compile Include="Controllers\Kpi\RssiQueryController.cs" />
-    <Compile Include="Controllers\Kpi\SinrUlRegionController.cs" />
+    <Compile Include="Controllers\Mr\SinrUlRegionController.cs" />
     <Compile Include="Controllers\Kpi\TopDoubleFlowController.cs" />
     <Compile Include="Controllers\Kpi\TopFeelingRateController.cs" />
     <Compile Include="Controllers\Kpi\TopHourCqiController.cs" />
@@ -357,6 +357,7 @@
     <Compile Include="Controllers\AdminitrativeRegion\TownCqiController.cs" />
     <Compile Include="Controllers\Mongo\MrsRsrpImportController.cs" />
     <Compile Include="Controllers\Mongo\MrsSinrUlImportController.cs" />
+    <Compile Include="Controllers\Mongo\MrsTadvImportController.cs" />
     <Compile Include="Controllers\Mongo\UplinkOpenLoopPowerControlController.cs" />
     <Compile Include="Controllers\Mr\AgpsMobileController.cs" />
     <Compile Include="Controllers\Mr\AgpsTelecomController.cs" />
@@ -378,7 +379,9 @@
     <Compile Include="Controllers\Mr\MrsSinrUlController.cs" />
     <Compile Include="Controllers\Mr\MrsSinrUlFrequencyController.cs" />
     <Compile Include="Controllers\Mr\MrsTadvController.cs" />
+    <Compile Include="Controllers\Mr\MrsTadvFrequencyController.cs" />
     <Compile Include="Controllers\Mr\MrsTadvRsrpController.cs" />
+    <Compile Include="Controllers\Mr\TadvRegionController.cs" />
     <Compile Include="Controllers\Mr\TownMrGridController.cs" />
     <Compile Include="Controllers\Parameters\CheckingResultController.cs" />
     <Compile Include="Controllers\Parameters\StationAntennaQueryController.cs" />

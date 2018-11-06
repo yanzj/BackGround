@@ -107,6 +107,11 @@ namespace Lte.Evaluations.DataService.Mr
         {
             return _tadvRepository.GetList(eNodebId + "-" + sectorId, begin, end);
         }
+        
+        public IEnumerable<MrsTadvStat> QueryDateSpanMrsTadvStats(DateTime begin, DateTime end)
+        {
+            return _tadvRepository.GetAllList(x => x.StatDate >= begin && x.StatDate < end);
+        }
 
     }
 }

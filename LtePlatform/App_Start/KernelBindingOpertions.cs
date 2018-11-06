@@ -334,6 +334,10 @@ namespace LtePlatform
 
             ninjectKernel.Bind<ISpecialAlarmWorkItemRepository>().To<SpecialAlarmWorkItemRepository>();
 
+            ninjectKernel.Bind<ITopMrsTadvRepository>().To<TopMrsTadvRepository>();
+
+            ninjectKernel.Bind<ITownMrsTadvRepository>().To<TownMrsTadvRepository>();
+
             ninjectKernel.Bind<CdmaRegionStatService>().ToSelf();
 
             ninjectKernel.Bind<CollegeStatService>().ToSelf();
@@ -571,6 +575,12 @@ namespace LtePlatform
             ninjectKernel.Bind<TownCqiService>().ToSelf();
 
             ninjectKernel.Bind<TownMrsSinrUlService>().ToSelf();
+
+            ninjectKernel.Bind<MrsTadvImportService>().ToSelf();
+
+            ninjectKernel.Bind<TownMrsTadvService>().ToSelf();
+
+            ninjectKernel.Bind<TadvRegionStatService>().ToSelf();
 
         }
     }

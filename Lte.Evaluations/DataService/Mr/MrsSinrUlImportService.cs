@@ -24,17 +24,22 @@ namespace Lte.Evaluations.DataService.Mr
         private readonly ITopMrsSinrUlRepository _topMrsSinrUlRepository;
         private readonly ITownMrsSinrUlRepository _townMrsSinrUlRepository;
         private readonly ICellRepository _cellRepository;
+        private readonly ITopMrsTadvRepository _topMrsTadvRepository;
+        private readonly ITownMrsTadvRepository _townMrsTadvRepository;
 
         private static Stack<TopMrsSinrUl> TopStats { get; set; }
 
         public MrsSinrUlImportService(IMrsSinrUlRepository mrsSinrUlRepository,
             IENodebRepository eNodebRepository, ITownMrsSinrUlRepository townMrsSinrUlRepository,
-            ICellRepository cellRepository, ITopMrsSinrUlRepository topRepository)
+            ICellRepository cellRepository, ITopMrsSinrUlRepository topRepository,
+            ITopMrsTadvRepository topMrsTadvRepository, ITownMrsTadvRepository townMrsTadvRepository)
         {
             _mrsSinrUlRepository = mrsSinrUlRepository;
             _eNodebRepository = eNodebRepository;
             _topMrsSinrUlRepository = topRepository;
             _townMrsSinrUlRepository = townMrsSinrUlRepository;
+            _topMrsTadvRepository = topMrsTadvRepository;
+            _townMrsTadvRepository = townMrsTadvRepository;
             _cellRepository = cellRepository;
             if (TopStats == null) TopStats = new Stack<TopMrsSinrUl>();
         }
@@ -98,7 +103,30 @@ namespace Lte.Evaluations.DataService.Mr
                     _townMrsSinrUlRepository.GetAllList(x =>
                         x.StatDate >= beginDate && x.StatDate < endDate &&
                         x.FrequencyBandType == FrequencyBandType.Band2100);
-                var topSinrUlItems = _topMrsSinrUlRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
+                var topSinrUlItems =
+                    _topMrsSinrUlRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
+                var townTadvItems =
+                    _townMrsTadvRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.All);
+                var collegeTadvItems =
+                    _townMrsTadvRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.College);
+                var townTadvItems800 =
+                    _townMrsTadvRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.Band800VoLte);
+                var townTadvItems1800 =
+                    _townMrsTadvRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.Band1800);
+                var townTadvItems2100 =
+                    _townMrsTadvRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.Band2100);
+                var topTadvItems =
+                    _topMrsTadvRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
                 results.Add(new SinrHistory
                 {
                     DateString = begin.ToShortDateString(),
@@ -108,7 +136,13 @@ namespace Lte.Evaluations.DataService.Mr
                     TownSinrUlStats800 = townSinrUlItems800.Count,
                     TownSinrUlStats1800 = townSinrUlItems1800.Count,
                     TownSinrUlStats2100 = townSinrUlItems2100.Count,
-                    TopSinrUlStats = topSinrUlItems.Count
+                    TopSinrUlStats = topSinrUlItems.Count,
+                    TownTadvStats = townTadvItems.Count,
+                    CollegeTadvStats = collegeTadvItems.Count,
+                    TownTadvStats800 = townTadvItems800.Count,
+                    TownTadvStats1800 = townTadvItems1800.Count,
+                    TownTadvStats2100 = townTadvItems2100.Count,
+                    TopTadvStats = topTadvItems.Count
                 });
                 begin = begin.AddDays(1);
             }

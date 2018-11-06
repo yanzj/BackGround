@@ -175,8 +175,10 @@
     <Compile Include="DataService\Kpi\HourPrbQueryService.cs" />
     <Compile Include="DataService\Kpi\HourUsersQueryService.cs" />
     <Compile Include="DataService\Kpi\RssiQureyService.cs" />
+    <Compile Include="DataService\Mr\MrsTadvImportService.cs" />
     <Compile Include="DataService\Mr\TownMrsRsrpService.cs" />
     <Compile Include="DataService\Mr\TownMrsSinrUlService.cs" />
+    <Compile Include="DataService\Mr\TownMrsTadvService.cs" />
     <Compile Include="DataService\Mr\TownPreciseService.cs" />
     <Compile Include="DataService\RegionKpi\CdmaRegionStatService.cs" />
     <Compile Include="DataService\Basic\CellService.cs" />
@@ -201,6 +203,7 @@
     <Compile Include="DataService\RegionKpi\RegionTownFlowService.cs" />
     <Compile Include="DataService\RegionKpi\SinrUlRegionStatService.cs" />
     <Compile Include="DataService\Dump\DumpCqiService.cs" />
+    <Compile Include="DataService\RegionKpi\TadvRegionStatService.cs" />
     <Compile Include="DataService\RegionKpi\TownCqiService.cs" />
     <Compile Include="DataService\RegionKpi\TownDoubleFlowService.cs" />
     <Compile Include="DataService\RegionKpi\TownHourCqiService.cs" />

@@ -1,11 +1,14 @@
 using System;
 using Abp.Domain.Entities;
 using Abp.EntityFramework.Dependency;
+using Lte.Domain.Common.Types;
+using Lte.Domain.Common.Wireless;
+using Lte.Domain.Regular;
 using MongoDB.Bson;
 
 namespace Lte.Parameters.Entities.Kpi
 {
-    public class MrsTadvStat : IEntity<ObjectId>, IStatDateCell
+    public class MrsTadvStat : IEntity<ObjectId>, IStatDateCell, ILteCellReadOnly
     {
         public bool IsTransient()
         {
@@ -15,6 +18,10 @@ namespace Lte.Parameters.Entities.Kpi
         public ObjectId Id { get; set; }
 
         public string CellId { get; set; }
+        
+        public int ENodebId => CellId.GetSplittedFields('-')[0].ConvertToInt(0);
+
+        public byte SectorId => CellId.GetSplittedFields('-')[1].ConvertToByte(0);
 
         public DateTime StatDate { get; set; }
 

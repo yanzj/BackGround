@@ -23,15 +23,12 @@ namespace LtePlatform.Controllers
     {
         private readonly TownQueryService _townService;
         private readonly KpiImportService _importService;
-        private readonly PreciseImportService _preciseImportService;
         private readonly WorkItemService _workItemService;
 
-        public KpiController(TownQueryService townService, KpiImportService importService,
-            PreciseImportService preciseImportService, WorkItemService workItemService)
+        public KpiController(TownQueryService townService, KpiImportService importService, WorkItemService workItemService)
         {
             _townService = townService;
             _importService = importService;
-            _preciseImportService = preciseImportService;
             _workItemService = workItemService;
         }
         

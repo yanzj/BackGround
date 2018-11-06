@@ -164,6 +164,8 @@
     <Compile Include="Abstract\Maintainence\ISpecialAlarmWorkItemRepository.cs" />
     <Compile Include="Abstract\Mr\IInterferenceMatrixRepository.cs" />
     <Compile Include="Abstract\Mr\IPreciseCoverage4GRepository.cs" />
+    <Compile Include="Abstract\Mr\ITopMrsTadvRepository.cs" />
+    <Compile Include="Abstract\Mr\ITownMrsTadvRepository.cs" />
     <Compile Include="Abstract\RegionKpi\ITownHourCqiRepository.cs" />
     <Compile Include="Abstract\RegionKpi\ITownHourPrbRepository.cs" />
     <Compile Include="Abstract\RegionKpi\ITownHourUsersRepository.cs" />
@@ -268,6 +270,8 @@
     <Compile Include="Concrete\Maintainence\SpecialAlarmWorkItemRepository.cs" />
     <Compile Include="Concrete\Mr\InterferenceMatrixRepository.cs" />
     <Compile Include="Concrete\Mr\PreciseCoverage4GRepository.cs" />
+    <Compile Include="Concrete\Mr\TopMrsTadvRepository.cs" />
+    <Compile Include="Concrete\Mr\TownMrsTadvRepository.cs" />
     <Compile Include="Concrete\RegionKpi\TownHourCqiRepository.cs" />
     <Compile Include="Concrete\RegionKpi\TownHourPrbRepository.cs" />
     <Compile Include="Concrete\RegionKpi\TownHourUsersRepository.cs" />
@@ -355,7 +359,9 @@
     <Compile Include="Entities\Maintainence\CheckingDetailsView.cs" />
     <Compile Include="Entities\Maintainence\CheckingResultView.cs" />
     <Compile Include="Entities\Mr\DistrictMrsSinrUlView.cs" />
+    <Compile Include="Entities\Mr\DistrictMrsTadvView.cs" />
     <Compile Include="Entities\Mr\TownMrsSinrUlView.cs" />
+    <Compile Include="Entities\Mr\TownMrsTadvView.cs" />
     <Compile Include="Entities\RegionKpi\DistrictDoubleFlowView.cs" />
     <Compile Include="Entities\Infrastructure\ENodebView.cs" />
     <Compile Include="Entities\Maintainence\WorkItemView.cs" />
@@ -483,6 +489,7 @@
     <Compile Include="Support\View\MrsRegionDateView.cs" />
     <Compile Include="Support\View\MrsRsrpRegionFrequencyView.cs" />
     <Compile Include="Support\View\MrsSinrUlRegionFrequencyView.cs" />
+    <Compile Include="Support\View\MrsTadvRegionFrequencyView.cs" />
     <Compile Include="Support\View\PrbRegionDateView.cs" />
     <Compile Include="Support\View\PreciseRegionDateView.cs" />
     <Compile Include="Support\View\PreciseRegionFrequencyView.cs" />
@@ -490,6 +497,7 @@
     <Compile Include="Support\View\RrcRegionDateView.cs" />
     <Compile Include="Support\Container\TownPreciseViewContainer.cs" />
     <Compile Include="Support\View\SinrUlRegionDateView.cs" />
+    <Compile Include="Support\View\TadvRegionDateView.cs" />
     <Compile Include="Support\View\WorkItemChartView.cs" />
   </ItemGroup>
   <ItemGroup>

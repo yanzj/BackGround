@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Http;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities.Mr;
@@ -13,16 +14,16 @@ using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.Mongo
 {
-    [ApiControl("导入MRS-RSRP的控制器")]
+    [ApiControl("导入MRS-TA的控制器")]
     [ApiGroup("导入")]
-    public class MrsRsrpImportController : ApiController
+    public class MrsTadvImportController : ApiController
     {
-        private readonly MrsRsrpImportService _service;
+        private readonly MrsTadvImportService _service;
         private readonly CollegeCellViewService _collegeCellViewService;
         private readonly CollegeStatService _collegeService;
         private readonly MrsService _statService;
 
-        public MrsRsrpImportController(MrsRsrpImportService service, CollegeCellViewService collegeCellViewService,
+        public MrsTadvImportController(MrsTadvImportService service, CollegeCellViewService collegeCellViewService,
             CollegeStatService collegeService, MrsService statService)
         {
             _service = service;
@@ -36,21 +37,21 @@ namespace LtePlatform.Controllers.Mongo
         [ApiParameterDoc("statTime", "统计日期")]
         [ApiParameterDoc("frequency", "频点名称，如800、1800、2100")]
         [ApiResponse("合并结果")]
-        public IEnumerable<TownMrsRsrp> GetMrs(DateTime statTime, string frequency)
+        public IEnumerable<TownMrsTadv> GetMrs(DateTime statTime, string frequency)
         {
             return _service.GetMergeMrsStats(statTime, frequency.GetBandFromFcn());
         }
         
-        [ApiDoc("查询指定日期的MRS覆盖率校园统计指标")]
+        [ApiDoc("查询指定日期的MRS-TA校园统计指标")]
         [ApiParameterDoc("statDate", "查询指定日期")]
         [ApiResponse("校园MRS覆盖率统计指标")]
         [HttpGet]
-        public IEnumerable<TownMrsRsrp> Get(DateTime statDate)
+        public IEnumerable<TownMrsTadv> Get(DateTime statDate)
         {
             var beginDate = statDate.Date;
             var endDate = beginDate.AddDays(1);
             var colleges = _collegeService.QueryInfos();
-            var stats = _statService.QueryDateSpanMrsRsrpStats(beginDate, endDate);
+            var stats = _statService.QueryDateSpanMrsTadvStats(beginDate, endDate);
             return colleges.Select(college =>
             {
                 var cells = _collegeCellViewService.GetCollegeCells(college.Name);
@@ -59,7 +60,7 @@ namespace LtePlatform.Controllers.Mongo
                         join s in stats on new {c.ENodebId, c.SectorId} equals new { s.ENodebId, s.SectorId}
                         select s).ToList();
                 if (!viewListList.Any()) return null;
-                var stat = viewListList.MapTo<List<TownMrsRsrpDto>>().MapTo<List<TownMrsRsrp>>().ArraySum();
+                var stat = viewListList.MapTo<List<TownMrsTadvDto>>().MapTo<List<TownMrsTadv>>().ArraySum();
                 stat.FrequencyBandType = FrequencyBandType.College;
                 stat.TownId = college.Id;
                 return stat;
@@ -72,7 +73,7 @@ namespace LtePlatform.Controllers.Mongo
         [ApiResponse("TOP指标条数")]
         public int GetTopMrs(DateTime topDate)
         {
-            return _service.GetTopMrsRsrps(topDate);
+            return _service.GetTopMrsTadvs(topDate);
         }
 
         [HttpGet]
