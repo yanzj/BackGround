@@ -643,10 +643,6 @@
     <Content Include="appViews\College\Coverage\TownMap.html" />
     <Content Include="appViews\College\Infrastructure\BtsSupplementDialog.html" />
     <Content Include="appViews\College\Infrastructure\ENodebSupplementDialog.html" />
-    <Content Include="appViews\College\CollegeMap.html" />
-    <Content Include="appViews\College\Coverage\CollegeSupport.html" />
-    <Content Include="appViews\College\Coverage\Support.html" />
-    <Content Include="appViews\College\Coverage\SupportMenu.html" />
     <Content Include="appViews\College\Infrastructure\BtsDialog.html" />
     <Content Include="appViews\College\Infrastructure\CdmaCellDialog.html" />
     <Content Include="appViews\College\Infrastructure\CellSupplementDialog.html" />
@@ -1954,7 +1950,6 @@
     <Content Include="Scripts\kpi\college.infos.js" />
     <Content Include="Scripts\kpi\manage.dt.js" />
     <Content Include="Scripts\kpi\workitem.import.js" />
-    <Content Include="Scripts\college\route.controller.js" />
     <Content Include="Scripts\kpi\precise.import.js" />
     <Content Include="Scripts\laydate\laydate.js" />
     <Content Include="Scripts\laydate\need\laydate.css" />
@@ -2269,11 +2264,8 @@
     <Content Include="Views\Jasmine\SpecRunner.cshtml" />
     <Content Include="Views\Kpi\Import.cshtml" />
     <Content Include="appViews\BasicKpi\Index.html" />
-    <Content Include="appViews\College\CollegeMenu.html" />
     <Content Include="appViews\College\Table\CollegeMapInfoBox.html" />
     <Content Include="appViews\College\Table\DistributionMapInfoBox.html" />
-    <Content Include="appViews\College\Coverage\All.html" />
-    <Content Include="appViews\College\Coverage\CollegeMap.html" />
     <Content Include="Scripts\service\region\app.region.js" />
     <Content Include="Scripts\service\package.json" />
     <Content Include="Scripts\version.json" />
