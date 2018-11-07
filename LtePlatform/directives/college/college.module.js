@@ -105,35 +105,6 @@ angular.module('college.info.module', ['ui.grid', 'myApp.region', 'myApp.url'])
         });
 
 angular.module('college.stat.module', ['ui.grid', 'myApp.region', 'myApp.url'])
-    .controller('CollegeFlowController',
-        function($scope) {
-            $scope.gridOptions = {
-                columnDefs: [
-                    { field: 'name', name: '校园名称', width: 200, enableColumnResizing: false },
-                    { field: 'totalStudents', name: '在校学生数' },
-                    { field: 'expectedSubscribers', name: '预计到达用户数' },
-                    { field: 'oldOpenDate', name: '老生开学日期', cellFilter: 'date: "yyyy-MM-dd"' },
-                    { field: 'newOpenDate', name: '新生开学日期', cellFilter: 'date: "yyyy-MM-dd"' },
-                    { field: 'cellCount', name: '小区数' },
-                    { field: 'pdcpDownlinkFlow', name: '平均下行流量(MB)', cellFilter: 'number: 1' },
-                    { field: 'pdcpUplinkFlow', name: '平均上行流量(MB)', cellFilter: 'number: 1' },
-                    { field: 'averageUsers', name: '平均用户数', cellFilter: 'number: 1' },
-                    { field: 'maxActiveUsers', name: '最大激活用户数', cellFilter: 'number: 1' }
-                ],
-                data: []
-            };
-        })
-    .directive('collegeFlowList',
-        function($compile, calculateService) {
-            return calculateService.generateGridDirective({
-                    controllerName: 'CollegeFlowController',
-                    scope: {
-                        colleges: '='
-                    },
-                    argumentName: 'colleges'
-                },
-                $compile);
-        })
     .controller('HotSpotFlowController',
         function($scope) {
             $scope.gridOptions = {
@@ -160,7 +131,7 @@ angular.module('college.stat.module', ['ui.grid', 'myApp.region', 'myApp.url'])
                 $compile);
         })
     .controller('CollegeStatController',
-        function($scope, collegeDialogService) {
+        function($scope) {
             $scope.gridOptions = {
                 columnDefs: [
                     { field: 'name', name: '校园名称', width: 170, enableColumnResizing: false },

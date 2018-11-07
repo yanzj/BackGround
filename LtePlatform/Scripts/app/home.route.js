@@ -73,20 +73,6 @@
                     },
                     url: "/common-indoor"
                 })
-            .state('flow',
-                {
-                    views: {
-                        'menu': {
-                            templateUrl: "/appViews/DropDownMenu.html",
-                            controller: "menu.root"
-                        },
-                        "contents": {
-                            templateUrl: "/appViews/Home/Flow.html",
-                            controller: "home.flow"
-                        }
-                    },
-                    url: "/flow"
-                })
             .state('plan',
                 {
                     views: {
