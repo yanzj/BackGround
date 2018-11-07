@@ -182,6 +182,12 @@ namespace Lte.Evaluations.DataService.Mr
             await _townMrsSinrUlRepository.UpdateMany(mrsSinrUlStats);
             if (container.CollegeMrsSinrUls.Any())
                 await _townMrsSinrUlRepository.UpdateMany(container.CollegeMrsSinrUls);
+            
+            var mrsTadvStats = container.MrsTadvs
+                .Concat(container.MrsTadvs800).Concat(container.MrsTadvs1800).Concat(container.MrsTadvs2100);
+            await _townMrsTadvRepository.UpdateMany(mrsTadvStats);
+            if (container.CollegeMrsTadvs.Any())
+                await _townMrsTadvRepository.UpdateMany(container.CollegeMrsTadvs);
         }
 
         public bool DumpOneStat()

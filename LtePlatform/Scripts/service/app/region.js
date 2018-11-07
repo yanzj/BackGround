@@ -1995,6 +1995,10 @@ angular.module('region.precise', ['app.core'])
                 queryTotalMrsSinrUlItems: function () {
                     return generalHttpService.getApiData('MrsSinrUlImport', {});
                 },
+                queryTotalMrsTadvItems: function () {
+                    return generalHttpService.getApiData('MrsTadvImport', {});
+                },
+
                 queryTownPreciseViews: function(statTime, frequency) {
                     return generalHttpService.getApiData('TownPreciseImport',
                     {
@@ -2034,6 +2038,20 @@ angular.module('region.precise', ['app.core'])
                             statDate: statTime
                         });
                 },
+                queryTownTaStats: function (statTime, frequency) {
+                    return generalHttpService.getApiData('MrsTadvImport',
+                        {
+                            statTime: statTime,
+                            frequency: frequency
+                        });
+                },
+                queryCollegeTaStats: function(statTime) {
+                    return generalHttpService.getApiData('MrsTadvImport',
+                        {
+                            statDate: statTime
+                        });
+                },
+
                 queryTopMrsStats: function (statTime) {
                     return generalHttpService.getApiData('MrsRsrpImport',
                         {
@@ -2046,6 +2064,13 @@ angular.module('region.precise', ['app.core'])
                             topDate: statTime
                         });
                 },
+                queryTopMrsTadvStats: function (statTime) {
+                    return generalHttpService.getApiData('MrsTadvImport',
+                        {
+                            topDate: statTime
+                        });
+                },
+
                 clearImportItems: function() {
                     return generalHttpService.deleteApiData('PreciseImport', {});
                 },
@@ -2054,6 +2079,9 @@ angular.module('region.precise', ['app.core'])
                 },
                 clearMrsSinrUlItems: function () {
                     return generalHttpService.deleteApiData('MrsSinrUlImport', {});
+                },
+                clearMrsTadvItems: function () {
+                    return generalHttpService.deleteApiData('MrsTadvImport', {});
                 },
 
                 dumpTownItems: function(
@@ -2075,7 +2103,8 @@ angular.module('region.precise', ['app.core'])
                     });
                 },
                 dumpTownSinrItems: function (
-                    mrsSinrUls, collegeSinrUls, mrsSinrUls800, mrsSinrUls1800, mrsSinrUls2100
+                    mrsSinrUls, collegeSinrUls, mrsSinrUls800, mrsSinrUls1800, mrsSinrUls2100,
+                    mrsTadvs, collegeTadvs, mrsTadvs800, mrsTadvs1800, mrsTadvs2100
                 ) {
                     return generalHttpService.postApiData('MrsSinrUlImport',
                     {
@@ -2083,7 +2112,12 @@ angular.module('region.precise', ['app.core'])
                         collegeMrsSinrUls: collegeSinrUls,
                         mrsSinrUls800: mrsSinrUls800,
                         mrsSinrUls1800: mrsSinrUls1800,
-                        mrsSinrUls2100: mrsSinrUls2100
+                        mrsSinrUls2100: mrsSinrUls2100,
+                        mrsTadvs: mrsTadvs,
+                        collegeMrsTadvs: collegeTadvs,
+                        mrsTadvs800: mrsTadvs800,
+                        mrsTadvs1800: mrsTadvs1800,
+                        mrsTadvs2100: mrsTadvs2100
                     });
                 },
 
@@ -2101,6 +2135,9 @@ angular.module('region.precise', ['app.core'])
                 },
                 dumpSingleMrsSinrUlItem: function () {
                     return generalHttpService.putApiData('MrsSinrUlImport', {});
+                },
+                dumpSingleMrsTadvItem: function () {
+                    return generalHttpService.putApiData('MrsTadvImport', {});
                 },
                 updateMongoItems: function(statDate) {
                     return generalHttpService.getApiData('PreciseMongo',

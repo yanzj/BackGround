@@ -1,5 +1,126 @@
 ﻿
 <div ng-controller="precise.import">
+<div class="row">
+    <div class="col-md-4">
+        <h4>精确覆盖率小区导入</h4>
+        <p>
+            总数：{{progressInfo.totalDumpItems}}&nbsp;
+            成功数：{{progressInfo.totalSuccessItems}}&nbsp;
+            失败数：{{progressInfo.totalFailItems}}
+            <div class="btn-group">
+                <button class="btn btn-primary" ng-disabled="progressInfo.totalDumpItems === 0" ng-click="dumpItems()">
+                    一键导入
+                </button>
+                <button class="btn btn-danger" ng-disabled="progressInfo.totalDumpItems === 0" ng-click="clearItems()">
+                    清除导入
+                </button>
+            </div>
+        </p>
+        <div uib-progress>
+            <div uib-bar value="100*progressInfo.totalSuccessItems / progressInfo.totalDumpItems" type="success">
+                <span ng-show="100*progressInfo.totalSuccessItems / progressInfo.totalDumpItems > 5">
+                    {{100*progressInfo.totalSuccessItems / progressInfo.totalDumpItems | number: 2}}%
+                </span>
+            </div>
+            <div uib-bar value="100*progressInfo.totalFailItems / progressInfo.totalDumpItems" type="erroe">
+                <span ng-show="100*progressInfo.totalFailItems / progressInfo.totalDumpItems > 5">
+                    {{100*progressInfo.totalFailItems / progressInfo.totalDumpItems | number: 2}}%
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h4>MRS-RSRP小区导入</h4>
+        <p>
+            总数：{{rsrpInfo.totalDumpItems}}&nbsp;
+            成功数：{{rsrpInfo.totalSuccessItems}}&nbsp;
+            失败数：{{rsrpInfo.totalFailItems}}
+            <div class="btn-group">
+                <button class="btn btn-primary" ng-disabled="rsrpInfo.totalDumpItems === 0" ng-click="dumpRsrpItems()">
+                    一键导入
+                </button>
+                <button class="btn btn-danger" ng-disabled="rsrpInfo.totalDumpItems === 0" ng-click="clearRsrpItems()">
+                    清除导入
+                </button>
+            </div>
+        </p>
+        <div uib-progress>
+            <div uib-bar value="100*rsrpInfo.totalSuccessItems / rsrpInfo.totalDumpItems" type="success">
+                <span ng-show="100*rsrpInfo.totalSuccessItems / rsrpInfo.totalDumpItems > 5">
+                    {{100*rsrpInfo.totalSuccessItems / rsrpInfo.totalDumpItems | number: 2}}%
+                </span>
+            </div>
+            <div uib-bar value="100*rsrpInfo.totalFailItems / rsrpInfo.totalDumpItems" type="erroe">
+                <span ng-show="100*rsrpInfo.totalFailItems / rsrpInfo.totalDumpItems > 5">
+                    {{100*rsrpInfo.totalFailItems / rsrpInfo.totalDumpItems | number: 2}}%
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h4>MRS-SinrUL小区导入</h4>
+        <p>
+            总数：{{sinrUlInfo.totalDumpItems}}&nbsp;
+            成功数：{{sinrUlInfo.totalSuccessItems}}&nbsp;
+            失败数：{{sinrUlInfo.totalFailItems}}
+            <div class="btn-group">
+                <button class="btn btn-primary" ng-disabled="sinrUlInfo.totalDumpItems === 0" ng-click="dumpSinrUlItems()">
+                    一键导入
+                </button>
+                <button class="btn btn-danger" ng-disabled="sinrUlInfo.totalDumpItems === 0" ng-click="clearSinrUlItems()">
+                    清除导入
+                </button>
+            </div>
+        </p>
+        <div uib-progress>
+            <div uib-bar value="100*sinrUlInfo.totalSuccessItems / sinrUlInfo.totalDumpItems" type="success">
+                <span ng-show="100*sinrUlInfo.totalSuccessItems / sinrUlInfo.totalDumpItems > 5">
+                    {{100*sinrUlInfo.totalSuccessItems / sinrUlInfo.totalDumpItems | number: 2}}%
+                </span>
+            </div>
+            <div uib-bar value="100*sinrUlInfo.totalFailItems / sinrUlInfo.totalDumpItems" type="erroe">
+                <span ng-show="100*sinrUlInfo.totalFailItems / sinrUlInfo.totalDumpItems > 5">
+                    {{100*sinrUlInfo.totalFailItems / sinrUlInfo.totalDumpItems | number: 2}}%
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h4>MRS-TA小区导入</h4>
+        <p>
+            总数：{{taInfo.totalDumpItems}}&nbsp;
+            成功数：{{taInfo.totalSuccessItems}}&nbsp;
+            失败数：{{taInfo.totalFailItems}}
+            <div class="btn-group">
+                <button class="btn btn-primary" ng-disabled="taInfo.totalDumpItems === 0" ng-click="dumpTaItems()">
+                    一键导入
+                </button>
+                <button class="btn btn-danger" ng-disabled="taInfo.totalDumpItems === 0" ng-click="clearTaItems()">
+                    清除导入
+                </button>
+            </div>
+        </p>
+        <div uib-progress>
+            <div uib-bar value="100*taInfo.totalSuccessItems / taInfo.totalDumpItems" type="success">
+                <span ng-show="100*taInfo.totalSuccessItems / taInfo.totalDumpItems > 5">
+                    {{100*taInfo.totalSuccessItems / taInfo.totalDumpItems | number: 2}}%
+                </span>
+            </div>
+            <div uib-bar value="100*taInfo.totalFailItems / taInfo.totalDumpItems" type="erroe">
+                <span ng-show="100*taInfo.totalFailItems / taInfo.totalDumpItems > 5">
+                    {{100*taInfo.totalFailItems / taInfo.totalDumpItems | number: 2}}%
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div date-span-row begin-date="beginDate" end-date="endDate">
+    <div class="btn-group">
+        <button class="btn btn-primary" ng-click="updateHistory()">更新</button>
+    </div>
+</div>
+
     <p>
         <button class="btn btn-info"
                 ng-disabled="townPreciseViews.length === 0 && collegePreciseStats.length === 0 && townPrecise800Views.length === 0
@@ -20,190 +141,115 @@
             <div class="badge">RSRP2100({{townMrsStats2100.length}})</div>
         </button>
     </p>
-    
-    <div class="row">
-        <div class="col-md-4">
-            <h4>精确覆盖率小区导入</h4>
-            <p>
-                总数：{{progressInfo.totalDumpItems}}&nbsp;
-                成功数：{{progressInfo.totalSuccessItems}}&nbsp;
-                失败数：{{progressInfo.totalFailItems}}
-                <div class="btn-group">
-                    <button class="btn btn-primary" ng-disabled="progressInfo.totalDumpItems === 0" ng-click="dumpItems()">
-                        一键导入
-                    </button>
-                    <button class="btn btn-danger" ng-disabled="progressInfo.totalDumpItems === 0" ng-click="clearItems()">
-                        清除导入
-                    </button>
-                </div>
-            </p>
-            <div uib-progress>
-                <div uib-bar value="100*progressInfo.totalSuccessItems / progressInfo.totalDumpItems" type="success">
-                    <span ng-show="100*progressInfo.totalSuccessItems / progressInfo.totalDumpItems > 5">
-                        {{100*progressInfo.totalSuccessItems / progressInfo.totalDumpItems | number: 2}}%
-                    </span>
-                </div>
-                <div uib-bar value="100*progressInfo.totalFailItems / progressInfo.totalDumpItems" type="erroe">
-                    <span ng-show="100*progressInfo.totalFailItems / progressInfo.totalDumpItems > 5">
-                        {{100*progressInfo.totalFailItems / progressInfo.totalDumpItems | number: 2}}%
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <h4>MRS-RSRP小区导入</h4>
-            <p>
-                总数：{{rsrpInfo.totalDumpItems}}&nbsp;
-                成功数：{{rsrpInfo.totalSuccessItems}}&nbsp;
-                失败数：{{rsrpInfo.totalFailItems}}
-                <div class="btn-group">
-                    <button class="btn btn-primary" ng-disabled="rsrpInfo.totalDumpItems === 0" ng-click="dumpRsrpItems()">
-                        一键导入
-                    </button>
-                    <button class="btn btn-danger" ng-disabled="rsrpInfo.totalDumpItems === 0" ng-click="clearRsrpItems()">
-                        清除导入
-                    </button>
-                </div>
-            </p>
-            <div uib-progress>
-                <div uib-bar value="100*rsrpInfo.totalSuccessItems / rsrpInfo.totalDumpItems" type="success">
-                    <span ng-show="100*rsrpInfo.totalSuccessItems / rsrpInfo.totalDumpItems > 5">
-                        {{100*rsrpInfo.totalSuccessItems / rsrpInfo.totalDumpItems | number: 2}}%
-                    </span>
-                </div>
-                <div uib-bar value="100*rsrpInfo.totalFailItems / rsrpInfo.totalDumpItems" type="erroe">
-                    <span ng-show="100*rsrpInfo.totalFailItems / rsrpInfo.totalDumpItems > 5">
-                        {{100*rsrpInfo.totalFailItems / rsrpInfo.totalDumpItems | number: 2}}%
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <h4>MRS-SinrUL小区导入</h4>
-            <p>
-                总数：{{sinrUlInfo.totalDumpItems}}&nbsp;
-                成功数：{{sinrUlInfo.totalSuccessItems}}&nbsp;
-                失败数：{{sinrUlInfo.totalFailItems}}
-                <div class="btn-group">
-                    <button class="btn btn-primary" ng-disabled="sinrUlInfo.totalDumpItems === 0" ng-click="dumpSinrUlItems()">
-                        一键导入
-                    </button>
-                    <button class="btn btn-danger" ng-disabled="sinrUlInfo.totalDumpItems === 0" ng-click="clearSinrUlItems()">
-                        清除导入
-                    </button>
-                </div>
-            </p>
-            <div uib-progress>
-                <div uib-bar value="100*sinrUlInfo.totalSuccessItems / sinrUlInfo.totalDumpItems" type="success">
-                    <span ng-show="100*sinrUlInfo.totalSuccessItems / sinrUlInfo.totalDumpItems > 5">
-                        {{100*sinrUlInfo.totalSuccessItems / sinrUlInfo.totalDumpItems | number: 2}}%
-                    </span>
-                </div>
-                <div uib-bar value="100*sinrUlInfo.totalFailItems / sinrUlInfo.totalDumpItems" type="erroe">
-                    <span ng-show="100*sinrUlInfo.totalFailItems / sinrUlInfo.totalDumpItems > 5">
-                        {{100*sinrUlInfo.totalFailItems / sinrUlInfo.totalDumpItems | number: 2}}%
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div date-span-row begin-date="beginDate" end-date="endDate">
-        <div class="btn-group">
-            <button class="btn btn-primary" ng-click="updateHistory()">更新</button>
-        </div>
-    </div>
-<table class="table table-hover">
-    <thead>
-    <tr>
-        <th>-</th>
-        <th colspan="7">
-            精确覆盖
-        </th>
-        <th colspan="7">
-            MRS覆盖
-        </th>
-    </tr>
-    <tr>
-        <th>日期</th>
-        <th>小区数量</th>
-        <th>镇</th>
-        <th>校园</th>
-        <th>镇-800</th>
-        <th>镇-1800</th>
-        <th>镇-2100</th>
-        <th style="width: 150px">操作</th>
-        <th>TOP</th>
-        <th>镇</th>
-        <th>校园</th>
-        <th>镇-800</th>
-        <th>镇-1800</th>
-        <th>镇-2100</th>
-        <th style="width: 140px">操作</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="stat in dumpHistory">
-        <td>{{stat.dateString}}</td>
-        <td>{{stat.preciseStats}}</td>
-        <td>{{stat.townPreciseStats}}</td>
-        <td>{{stat.collegePreciseStats}}</td>
-        <td>{{stat.townPrecise800Stats}}</td>
-        <td>{{stat.townPrecise1800Stats}}</td>
-        <td>{{stat.townPrecise2100Stats}}</td>
-        <td>
-            <div class="btn-group-sm">
-                <button type="button" class="btn btn-sm btn-success" ng-click="updateMongoItems(stat.statDate)">
-                    Mongo
-                </button>
-                <button class="btn btn-sm btn-default" ng-click="updateTownItems(stat.statDate)">
-                    镇区
-                </button>
-            </div>
-        </td>
-        <td>{{stat.topMrsStats}}</td>
-        <td>{{stat.townMrsStats}}</td>
-        <td>{{stat.collegeMrsStats}}</td>
-        <td>{{stat.townMrsStats800}}</td>
-        <td>{{stat.townMrsStats1800}}</td>
-        <td>{{stat.townMrsStats2100}}</td>
-        <td>
-            <div class="btn-group-sm">
-                <button class="btn btn-sm btn-success" ng-click="updateTopMrsItems(stat.statDate)">
-                    TOP
-                </button>
-                <button class="btn btn-sm btn-default" ng-click="updateTownMrsItems(stat.statDate)">
-                    镇区
-                </button>
-            </div>
-        </td>
-    </tr>
-    </tbody>
-</table>
-
-<p>
-    <button class="btn btn-info"
-            ng-disabled="townSinrUlStats.length === 0 && collegeSinrUlStats.length === 0 && townSinrUlStats800.length === 0
-            && townSinrUlStats1800.length === 0 && townSinrUlStats2100.length === 0"
-            ng-click="dumpTownSinrItems()">
-        导入镇区指标2
-        <div class="badge">上行SINR({{townSinrUlStats.length}})</div>
-        <div class="badge">校园SINR({{collegeSinrUlStats.length}})</div>
-        <div class="badge">SINR-800({{townSinrUlStats800.length}})</div>
-        <div class="badge">SINR-1800({{townSinrUlStats1800.length}})</div>
-        <div class="badge">SINR-2100({{townSinrUlStats2100.length}})</div>
-    </button>
-</p>
     <table class="table table-hover">
         <thead>
             <tr>
                 <th>-</th>
-                <th colspan="3">
-                    SinrUL覆盖
+                <th colspan="7">
+                    精确覆盖
+                </th>
+                <th colspan="7">
+                    MRS覆盖
                 </th>
             </tr>
             <tr>
                 <th>日期</th>
+                <th>小区数量</th>
+                <th>镇</th>
+                <th>校园</th>
+                <th>镇-800</th>
+                <th>镇-1800</th>
+                <th>镇-2100</th>
+                <th style="width: 150px">操作</th>
+                <th>TOP</th>
+                <th>镇</th>
+                <th>校园</th>
+                <th>镇-800</th>
+                <th>镇-1800</th>
+                <th>镇-2100</th>
+                <th style="width: 140px">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="stat in dumpHistory">
+                <td>{{stat.dateString}}</td>
+                <td>{{stat.preciseStats}}</td>
+                <td>{{stat.townPreciseStats}}</td>
+                <td>{{stat.collegePreciseStats}}</td>
+                <td>{{stat.townPrecise800Stats}}</td>
+                <td>{{stat.townPrecise1800Stats}}</td>
+                <td>{{stat.townPrecise2100Stats}}</td>
+                <td>
+                    <div class="btn-group-sm">
+                        <button type="button" class="btn btn-sm btn-success" ng-click="updateMongoItems(stat.statDate)">
+                            Mongo
+                        </button>
+                        <button class="btn btn-sm btn-default" ng-click="updateTownItems(stat.statDate)">
+                            镇区
+                        </button>
+                    </div>
+                </td>
+                <td>{{stat.topMrsStats}}</td>
+                <td>{{stat.townMrsStats}}</td>
+                <td>{{stat.collegeMrsStats}}</td>
+                <td>{{stat.townMrsStats800}}</td>
+                <td>{{stat.townMrsStats1800}}</td>
+                <td>{{stat.townMrsStats2100}}</td>
+                <td>
+                    <div class="btn-group-sm">
+                        <button class="btn btn-sm btn-success" ng-click="updateTopMrsItems(stat.statDate)">
+                            TOP
+                        </button>
+                        <button class="btn btn-sm btn-default" ng-click="updateTownMrsItems(stat.statDate)">
+                            镇区
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>
+        <button class="btn btn-info"
+                ng-disabled="townSinrUlStats.length === 0 && collegeSinrUlStats.length === 0 && townSinrUlStats800.length === 0
+            && townSinrUlStats1800.length === 0 && townSinrUlStats2100.length === 0
+                && townTaStats.length === 0 && collegeTaStats.length === 0 && townTaStats800.length === 0
+            && townTaStats1800.length === 0 && townTaStats2100.length === 0"
+                ng-click="dumpTownSinrItems()">
+            导入镇区指标2
+            <div class="badge">上行SINR({{townSinrUlStats.length}})</div>
+            <div class="badge">校园SINR({{collegeSinrUlStats.length}})</div>
+            <div class="badge">SINR-800({{townSinrUlStats800.length}})</div>
+            <div class="badge">SINR-1800({{townSinrUlStats1800.length}})</div>
+            <div class="badge">SINR-2100({{townSinrUlStats2100.length}})</div>
+            <div class="badge">TA({{townTaStats.length}})</div>
+            <div class="badge">校园TA({{collegeTaStats.length}})</div>
+            <div class="badge">TA-800({{townTaStats800.length}})</div>
+            <div class="badge">TA-1800({{townTaStats1800.length}})</div>
+            <div class="badge">TA-2100({{townTaStats2100.length}})</div>
+        </button>
+    </p>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>-</th>
+                <th colspan="7">
+                    SinrUL覆盖
+                </th>
+                <th colspan="7">
+                    TA分布
+                </th>
+            </tr>
+            <tr>
+                <th>日期</th>
+                <th>TOP</th>
+                <th>镇</th>
+                <th>校园</th>
+                <th>镇-800</th>
+                <th>镇-1800</th>
+                <th>镇-2100</th>
+                <th style="width: 140px">操作</th>
                 <th>TOP</th>
                 <th>镇</th>
                 <th>校园</th>
@@ -232,9 +278,26 @@
                         </button>
                     </div>
                 </td>
+                <td>{{stat.topTadvStats}}</td>
+                <td>{{stat.townTadvStats}}</td>
+                <td>{{stat.collegeTadvStats}}</td>
+                <td>{{stat.townTadvStats800}}</td>
+                <td>{{stat.townTadvStats1800}}</td>
+                <td>{{stat.townTadvStats2100}}</td>
+                <td>
+                    <div class="btn-group-sm">
+                        <button class="btn btn-sm btn-success" ng-click="updateTopTaItems(stat.statDate)">
+                            TOP
+                        </button>
+                        <button class="btn btn-sm btn-default" ng-click="updateTownTaItems(stat.statDate)">
+                            镇区
+                        </button>
+                    </div>
+                </td>
             </tr>
         </tbody>
     </table>
+
 </div>
 
 @section Scripts{

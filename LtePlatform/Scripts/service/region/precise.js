@@ -175,6 +175,10 @@
                 queryTotalMrsSinrUlItems: function () {
                     return generalHttpService.getApiData('MrsSinrUlImport', {});
                 },
+                queryTotalMrsTadvItems: function () {
+                    return generalHttpService.getApiData('MrsTadvImport', {});
+                },
+
                 queryTownPreciseViews: function(statTime, frequency) {
                     return generalHttpService.getApiData('TownPreciseImport',
                     {
@@ -214,6 +218,20 @@
                             statDate: statTime
                         });
                 },
+                queryTownTaStats: function (statTime, frequency) {
+                    return generalHttpService.getApiData('MrsTadvImport',
+                        {
+                            statTime: statTime,
+                            frequency: frequency
+                        });
+                },
+                queryCollegeTaStats: function(statTime) {
+                    return generalHttpService.getApiData('MrsTadvImport',
+                        {
+                            statDate: statTime
+                        });
+                },
+
                 queryTopMrsStats: function (statTime) {
                     return generalHttpService.getApiData('MrsRsrpImport',
                         {
@@ -226,6 +244,13 @@
                             topDate: statTime
                         });
                 },
+                queryTopMrsTadvStats: function (statTime) {
+                    return generalHttpService.getApiData('MrsTadvImport',
+                        {
+                            topDate: statTime
+                        });
+                },
+
                 clearImportItems: function() {
                     return generalHttpService.deleteApiData('PreciseImport', {});
                 },
@@ -234,6 +259,9 @@
                 },
                 clearMrsSinrUlItems: function () {
                     return generalHttpService.deleteApiData('MrsSinrUlImport', {});
+                },
+                clearMrsTadvItems: function () {
+                    return generalHttpService.deleteApiData('MrsTadvImport', {});
                 },
 
                 dumpTownItems: function(
@@ -255,7 +283,8 @@
                     });
                 },
                 dumpTownSinrItems: function (
-                    mrsSinrUls, collegeSinrUls, mrsSinrUls800, mrsSinrUls1800, mrsSinrUls2100
+                    mrsSinrUls, collegeSinrUls, mrsSinrUls800, mrsSinrUls1800, mrsSinrUls2100,
+                    mrsTadvs, collegeTadvs, mrsTadvs800, mrsTadvs1800, mrsTadvs2100
                 ) {
                     return generalHttpService.postApiData('MrsSinrUlImport',
                     {
@@ -263,7 +292,12 @@
                         collegeMrsSinrUls: collegeSinrUls,
                         mrsSinrUls800: mrsSinrUls800,
                         mrsSinrUls1800: mrsSinrUls1800,
-                        mrsSinrUls2100: mrsSinrUls2100
+                        mrsSinrUls2100: mrsSinrUls2100,
+                        mrsTadvs: mrsTadvs,
+                        collegeMrsTadvs: collegeTadvs,
+                        mrsTadvs800: mrsTadvs800,
+                        mrsTadvs1800: mrsTadvs1800,
+                        mrsTadvs2100: mrsTadvs2100
                     });
                 },
 
@@ -281,6 +315,9 @@
                 },
                 dumpSingleMrsSinrUlItem: function () {
                     return generalHttpService.putApiData('MrsSinrUlImport', {});
+                },
+                dumpSingleMrsTadvItem: function () {
+                    return generalHttpService.putApiData('MrsTadvImport', {});
                 },
                 updateMongoItems: function(statDate) {
                     return generalHttpService.getApiData('PreciseMongo',
