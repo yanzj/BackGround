@@ -200,6 +200,7 @@
     <Compile Include="Entities\Mr\AggregateCoverageView.cs" />
     <Compile Include="Entities\Mr\AggregateMrsRsrpView.cs" />
     <Compile Include="Entities\Mr\AggregateMrsSinrUlView.cs" />
+    <Compile Include="Entities\Mr\AggregateMrsTadvView.cs" />
     <Compile Include="Entities\Mr\AggregatePreciseView.cs" />
     <Compile Include="Entities\Mr\InterferenceMatrixStat.cs" />
     <Compile Include="Entities\Mr\MrsRsrpStat.cs" />

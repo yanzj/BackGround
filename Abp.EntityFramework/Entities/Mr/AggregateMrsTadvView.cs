@@ -1,28 +1,25 @@
-﻿using System;
+﻿using Abp.EntityFramework.AutoMapper;
+using Abp.EntityFramework.Dependency;
+using Lte.Domain.Regular.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Dependency;
-using Abp.EntityFramework.Entities.Mr;
-using Lte.Domain.Common.Types;
-using Lte.Domain.Common.Wireless.Cell;
-using Lte.Domain.Regular.Attributes;
 
-namespace Abp.EntityFramework.Entities.RegionKpi
+namespace Abp.EntityFramework.Entities.Mr
 {
-    [AutoMap(typeof(TownMrsTadv))]
-    public class FrequencyMrsTadvView : IStatTime, IFrequencyBand
+    [AutoMapFrom(typeof(TownMrsTadv))]
+    [TypeDoc("聚合MRS-TA覆盖统计视图")]
+    public class AggregateMrsTadvView : IStatDate
     {
-        [ArraySumProtection]
-        public DateTime StatTime { get; set; }
-        
-        [ArraySumProtection]
-        public FrequencyBandType FrequencyBandType { get; set; }
-        
-        public string FrequencyBand => FrequencyBandType.GetBandDescription();
-        
+        [MemberDoc("小区个数")]
+        public int CellCount { get; set; }
+
+        public string Name { get; set; }
+
+        public DateTime StatDate { get; set; }
+
         public long TadvBelow1 { get; set; }
 
         public long Tadv1To2 { get; set; }
