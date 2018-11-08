@@ -68,6 +68,36 @@ namespace Abp.EntityFramework.Entities.Mr
         public int Tadv112To192 { get; set; }
 
         public int TadvAbove192 { get; set; }
+        
+        public int TadvAbove112 => Tadv112To192 + TadvAbove192;
+
+        public int TadvAbove60 => TadvAbove112 + Tadv60To80 + Tadv80To112;
+
+        public int TadvAbove42 => TadvAbove60 + Tadv42To48 + Tadv48To54 + Tadv54To60;
+
+        public int TadvAbove24 => TadvAbove42 + Tadv24To28 + Tadv28To32 + Tadv32To36 + Tadv36To42;
+
+        public int TadvAbove16 => TadvAbove24 + Tadv16To18 + Tadv18To20 + Tadv20To24;
+
+        public int TadvAbove10 => TadvAbove16 + Tadv10To12 + Tadv12To14 + Tadv14To16;
+
+        public int TadvAbove6 => TadvAbove10 + Tadv6To8 + Tadv8To10;
+
+        public int TotalMrs => TadvAbove6 + TadvBelow1 + Tadv1To2 + Tadv2To3 + Tadv3To4 + Tadv4To6;
+        
+        public double CoverageAbove112 => TotalMrs == 0 ? 0 : (double) TadvAbove112 / TotalMrs;
+        
+        public double CoverageAbove60 => TotalMrs == 0 ? 0 : (double) TadvAbove60 / TotalMrs;
+
+        public double CoverageAbove42 => TotalMrs == 0 ? 0 : (double) TadvAbove42 / TotalMrs;
+
+        public double CoverageAbove24 => TotalMrs == 0 ? 0 : (double) TadvAbove24 / TotalMrs;
+
+        public double CoverageAbove16 => TotalMrs == 0 ? 0 : (double) TadvAbove16 / TotalMrs;
+        
+        public double CoverageAbove10 => TotalMrs == 0 ? 0 : (double) TadvAbove10 / TotalMrs;
+        
+        public double CoverageAbove6 => TotalMrs == 0 ? 0 : (double) TadvAbove6 / TotalMrs;
 
     }
 }
