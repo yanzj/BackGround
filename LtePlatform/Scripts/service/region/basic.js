@@ -316,43 +316,6 @@
                 ]
             }
         })
-    .factory('preciseInterferenceService',
-        function(generalHttpService) {
-            return {
-                updateInterferenceNeighbor: function(cellId, sectorId) {
-                    return generalHttpService.getApiData('InterferenceNeighbor',
-                    {
-                        'cellId': cellId,
-                        'sectorId': sectorId
-                    });
-                },
-                queryInterferenceNeighbor: function(begin, end, cellId, sectorId) {
-                    return generalHttpService.getApiData('InterferenceNeighbor',
-                    {
-                        'begin': begin,
-                        'end': end,
-                        'cellId': cellId,
-                        'sectorId': sectorId
-                    });
-                },
-                updateInterferenceVictim: function(cellId, sectorId) {
-                    return generalHttpService.getApiData('InterferenceNeighbor',
-                    {
-                        neighborCellId: cellId,
-                        neighborSectorId: sectorId
-                    });
-                },
-                queryInterferenceVictim: function(begin, end, cellId, sectorId) {
-                    return generalHttpService.getApiData('InterferenceVictim',
-                    {
-                        'begin': begin,
-                        'end': end,
-                        'cellId': cellId,
-                        'sectorId': sectorId
-                    });
-                }
-            };
-        })
     .factory('topPreciseService',
         function(generalHttpService) {
             return {
