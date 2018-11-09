@@ -137,6 +137,7 @@
     <Compile Include="Common\Wireless\Kpi\HourUsersCsv.cs" />
     <Compile Include="Common\Wireless\Kpi\OrderDoubleFlowPolicy.cs" />
     <Compile Include="Common\Wireless\Kpi\OrderFeelingRatePolicy.cs" />
+    <Compile Include="Common\Wireless\Kpi\OrderMrsSinrUlPolicy.cs" />
     <Compile Include="Common\Wireless\Kpi\OrderUsersStatPolicy.cs" />
     <Compile Include="Common\Wireless\LteCellStat.cs" />
     <Compile Include="Common\Wireless\Region\RectangleRange.cs" />

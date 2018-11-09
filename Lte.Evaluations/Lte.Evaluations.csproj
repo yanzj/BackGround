@@ -175,6 +175,7 @@
     <Compile Include="DataService\Kpi\HourPrbQueryService.cs" />
     <Compile Include="DataService\Kpi\HourUsersQueryService.cs" />
     <Compile Include="DataService\Kpi\RssiQureyService.cs" />
+    <Compile Include="DataService\Kpi\TopMrsSinrUlService.cs" />
     <Compile Include="DataService\Mr\MrsTadvImportService.cs" />
     <Compile Include="DataService\Mr\TownMrsRsrpService.cs" />
     <Compile Include="DataService\Mr\TownMrsSinrUlService.cs" />

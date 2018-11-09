@@ -128,6 +128,53 @@ namespace Lte.MySqlFramework.Support
             }
         }
 
+        public static IEnumerable<TopMrsSinrUl> Order(this IEnumerable<TopMrsSinrUl> stats, OrderMrsSinrUlPolicy policy,
+            int topCount)
+        {
+            switch (policy)
+            {
+                case OrderMrsSinrUlPolicy.OrderByM3Rate:
+                    return
+                        stats.OrderByDescending(x => (double)(x.SinrUlBelowM9 + x.SinrUlM9ToM6 + x.SinrUlM6ToM3)
+                                                     /
+                                                     (x.SinrUlBelowM9 + x.SinrUlM9ToM6 + x.SinrUlM6ToM3 + x.SinrUlM3To0 +
+                                                      x.SinrUl0To3 + x.SinrUl3To6 + x.SinrUl6To9 + x.SinrUl9To12
+                                                      + x.SinrUl12To15 + x.SinrUl15To18 + x.SinrUl18To21
+                                                      + x.SinrUl21To24 + x.SinrUlAbove24)).Take(topCount).ToList();
+                case OrderMrsSinrUlPolicy.OrderByM3TimesDescending:
+                    return
+                        stats.OrderByDescending(x => x.SinrUlBelowM9 + x.SinrUlM9ToM6 + x.SinrUlM6ToM3)
+                            .Take(topCount)
+                            .ToList();
+                case OrderMrsSinrUlPolicy.OrderBy0Rate:
+                    return
+                        stats.OrderByDescending(x => (double)(x.SinrUlBelowM9 + x.SinrUlM9ToM6 + x.SinrUlM6ToM3 + x.SinrUlM3To0)
+                                                     /
+                                                     (x.SinrUlBelowM9 + x.SinrUlM9ToM6 + x.SinrUlM6ToM3 + x.SinrUlM3To0 +
+                                                      x.SinrUl0To3 + x.SinrUl3To6 + x.SinrUl6To9 + x.SinrUl9To12
+                                                      + x.SinrUl12To15 + x.SinrUl15To18 + x.SinrUl18To21
+                                                      + x.SinrUl21To24 + x.SinrUlAbove24)).Take(topCount).ToList();
+                case OrderMrsSinrUlPolicy.OrderBy0TimesDescending:
+                    return
+                        stats.OrderByDescending(x => x.SinrUlBelowM9 + x.SinrUlM9ToM6 + x.SinrUlM6ToM3 + x.SinrUlM3To0)
+                            .Take(topCount)
+                            .ToList();
+                case OrderMrsSinrUlPolicy.OrderBy3Rate:
+                    return
+                        stats.OrderByDescending(x => (double)(x.SinrUlBelowM9 + x.SinrUlM9ToM6 + x.SinrUlM6ToM3 + x.SinrUlM3To0 + x.SinrUl0To3)
+                                                     /
+                                                     (x.SinrUlBelowM9 + x.SinrUlM9ToM6 + x.SinrUlM6ToM3 + x.SinrUlM3To0 +
+                                                      x.SinrUl0To3 + x.SinrUl3To6 + x.SinrUl6To9 + x.SinrUl9To12
+                                                      + x.SinrUl12To15 + x.SinrUl15To18 + x.SinrUl18To21
+                                                      + x.SinrUl21To24 + x.SinrUlAbove24)).Take(topCount).ToList();
+                default:
+                    return
+                        stats.OrderByDescending(x => x.SinrUlBelowM9 + x.SinrUlM9ToM6 + x.SinrUlM6ToM3 + x.SinrUlM3To0 + x.SinrUl0To3)
+                            .Take(topCount)
+                            .ToList();
+            }
+        }
+
         public static IEnumerable<CoverageStat> Order(this IEnumerable<CoverageStat> stats, OrderMrsRsrpPolicy policy,
             int topCount)
         {

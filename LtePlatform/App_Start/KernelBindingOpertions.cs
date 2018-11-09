@@ -582,6 +582,8 @@ namespace LtePlatform
 
             ninjectKernel.Bind<TadvRegionStatService>().ToSelf();
 
+            ninjectKernel.Bind<TopMrsSinrUlService>().ToSelf();
+
         }
     }
 }

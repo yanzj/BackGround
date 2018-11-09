@@ -360,6 +360,7 @@
     <Compile Include="Entities\Maintainence\CheckingResultView.cs" />
     <Compile Include="Entities\Mr\DistrictMrsSinrUlView.cs" />
     <Compile Include="Entities\Mr\DistrictMrsTadvView.cs" />
+    <Compile Include="Entities\Mr\TopMrsSinrUlView.cs" />
     <Compile Include="Entities\Mr\TownMrsSinrUlView.cs" />
     <Compile Include="Entities\Mr\TownMrsTadvView.cs" />
     <Compile Include="Entities\RegionKpi\DistrictDoubleFlowView.cs" />
@@ -465,6 +466,7 @@
     <Compile Include="Entities\Dt\ZhangshangyouQualityView.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Support\Container\TopMrsSinrUlContainer.cs" />
     <Compile Include="Support\Container\TownSinrViewContainer.cs" />
     <Compile Include="Support\DateSpanQuery.cs" />
     <Compile Include="Support\FilterDateSpanQuery.cs" />
