@@ -34,20 +34,6 @@
 					}
 				}, callbackFunc);
 			},
-			showHotSpotCells: function(name) {
-				menuItemService.showGeneralDialog({
-					templateUrl: '/appViews/Parameters/Region/TopicCells.html',
-					controller: 'topic.cells',
-					resolve: {
-						dialogTitle: function() {
-							return name + "热点小区信息";
-						},
-						name: function() {
-							return name;
-						}
-					}
-				});
-			},
 			showPreciseChart: function(overallStat) {
 				menuItemService.showGeneralDialog({
 					templateUrl: '/appViews/Home/DoubleChartDialog.html',

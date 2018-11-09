@@ -709,7 +709,6 @@
     <Content Include="appViews\Parameters\Region\ArrangeInfo.html" />
     <Content Include="appViews\Parameters\Region\FlowKpiInfo.html" />
     <Content Include="appViews\Parameters\Region\RrcKpiInfo.html" />
-    <Content Include="appViews\Parameters\Region\TopicCells.html" />
     <Content Include="appViews\Parameters\Region\TownENodebInfo.html" />
     <Content Include="appViews\Rutrace\Coverage\DetailsChartDialog.html" />
     <Content Include="appViews\Rutrace\Coverage\General.html" />
@@ -2047,9 +2046,7 @@
     <Content Include="Scripts\service\kpi\parameter.rutrace.js" />
     <Content Include="Scripts\service\kpi\work.chart.js" />
     <Content Include="Scripts\service\kpi\work.dialog.js" />
-    <Content Include="Scripts\service\kpi\work.flow.js" />
     <Content Include="Scripts\service\kpi\work.js" />
-    <Content Include="Scripts\service\kpi\work.trend.js" />
     <Content Include="Scripts\service\region\authorize.js" />
     <Content Include="Scripts\service\region\basic.js" />
     <Content Include="Scripts\service\region\college.js" />
