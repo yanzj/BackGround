@@ -1,4 +1,4 @@
-﻿angular.module('kpi.work.dialog', ['myApp.url', 'myApp.region', "ui.bootstrap", "kpi.core"])
+﻿angular.module('kpi.work.dialog', ['myApp.url', 'myApp.region', "ui.bootstrap"])
     .controller('workitem.feedback.dialog',
         function($scope, $uibModalInstance, input, dialogTitle) {
             $scope.item = input;

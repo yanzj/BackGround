@@ -1,4 +1,4 @@
-﻿angular.module('kpi.work.trend', ['myApp.url', 'myApp.region', "ui.bootstrap", "kpi.core"])
+﻿angular.module('kpi.work.trend', ['myApp.url', 'myApp.region', "ui.bootstrap"])
     .run(function($rootScope) {
         $rootScope.trendStat = {
             stats: [],

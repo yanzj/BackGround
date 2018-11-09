@@ -1998,7 +1998,6 @@
     <Content Include="Scripts\locales\zh-TW.js" />
     <Content Include="Scripts\locales\zh.js" />
     <Content Include="Scripts\MarkerClusterer.js" />
-    <Content Include="Scripts\mycharts\combo-examples.js" />
     <Content Include="Scripts\parameters\complain.adjust.js" />
     <Content Include="Scripts\parameters\import\hour.controller.js" />
     <Content Include="Scripts\parameters\import\index.controller.js" />
@@ -2034,7 +2033,6 @@
     <Content Include="Scripts\service\kpi\college.js" />
     <Content Include="Scripts\service\kpi\college.maintain.js" />
     <Content Include="Scripts\service\kpi\college.work.js" />
-    <Content Include="Scripts\service\kpi\core.js" />
     <Content Include="Scripts\service\kpi\coverage.flow.js" />
     <Content Include="Scripts\service\kpi\coverage.interference.js" />
     <Content Include="Scripts\service\kpi\coverage.js" />
@@ -2165,8 +2163,6 @@
     <Content Include="Scripts\kpi\workitem\index.controller.js" />
     <Content Include="Scripts\manage\index.viewmodel.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\mycharts\comboChart.js" />
-    <Content Include="Scripts\mycharts\drilldown.chart.js" />
     <Content Include="Scripts\numeric\documentation.html" />
     <Content Include="Scripts\numeric\numeric.js" />
     <Content Include="Scripts\numeric\quadprog.js" />

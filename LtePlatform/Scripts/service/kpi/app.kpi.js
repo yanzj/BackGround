@@ -1,4 +1,4 @@
-﻿angular.module('myApp.kpi', ['kpi.core',
+﻿angular.module('myApp.kpi', [
     'kpi.college.infrastructure', 'kpi.college.basic', 'kpi.college.maintain',
     'kpi.college.work', 'kpi.college.flow', 'kpi.college', 
     'kpi.coverage.interference', 'kpi.coverage.mr', 'kpi.coverage.stats', 'kpi.coverage.flow',

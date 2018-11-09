@@ -1,4 +1,4 @@
-﻿angular.module('kpi.work.chart', ['myApp.url', 'myApp.region', "ui.bootstrap", "kpi.core"])
+﻿angular.module('kpi.work.chart', ['myApp.url', 'myApp.region', "ui.bootstrap"])
     .controller("rutrace.chart",
         function($scope,
             $uibModalInstance,
