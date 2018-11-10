@@ -2044,7 +2044,6 @@
     <Content Include="Scripts\service\kpi\parameter.js" />
     <Content Include="Scripts\service\kpi\parameter.query.js" />
     <Content Include="Scripts\service\kpi\parameter.rutrace.js" />
-    <Content Include="Scripts\service\kpi\work.chart.js" />
     <Content Include="Scripts\service\kpi\work.dialog.js" />
     <Content Include="Scripts\service\kpi\work.js" />
     <Content Include="Scripts\service\region\authorize.js" />

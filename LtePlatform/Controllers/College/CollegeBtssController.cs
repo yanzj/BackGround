@@ -10,7 +10,7 @@ using LtePlatform.Models;
 namespace LtePlatform.Controllers.College
 {
     [ApiControl("校园网CDMA基站查询控制器")]
-    [Cors("http://132.110.60.94:2018", "http://218.13.12.242:2018")]
+    [ApiGroup("专题优化")]
     public class CollegeBtssController : ApiController
     {
         private readonly CollegeBtssService _service;

@@ -10,6 +10,7 @@ using LtePlatform.Models;
 namespace LtePlatform.Controllers.College
 {
     [ApiControl("校园网LTE基站查询控制器")]
+    [ApiGroup("专题优化")]
     public class CollegeENodebController : ApiController
     {
         private readonly CollegeENodebService _service;

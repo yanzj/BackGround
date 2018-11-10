@@ -3,8 +3,7 @@
         function($scope,
             basicCalculationService,
             appRegionService,
-            collegeQueryService,
-            kpiDisplayService) {
+            collegeQueryService) {
             var lastWeek = new Date();
             lastWeek.setDate(lastWeek.getDate() - 21);
             $scope.beginDate = {
@@ -63,11 +62,7 @@
                         });
                     });
             };
-
-            $scope.showChart = function (items) {
-                $("#collegeFlowChart").highcharts(kpiDisplayService.generateCollegeFlowBarOptions(items));
-            };
-
+            
             $scope.query();
 
         });

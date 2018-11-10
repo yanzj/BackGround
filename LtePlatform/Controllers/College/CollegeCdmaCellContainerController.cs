@@ -9,6 +9,7 @@ using LtePlatform.Models;
 namespace LtePlatform.Controllers.College
 {
     [ApiControl("校园网/热点小区批量更新控制器")]
+    [ApiGroup("专题优化")]
     public class CollegeCdmaCellContainerController : ApiController
     {
         private readonly CollegeCdmaCellViewService _service;

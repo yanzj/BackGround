@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 using Lte.Evaluations.DataService.College;
-using Lte.MySqlFramework.Entities;
 using Lte.MySqlFramework.Entities.Infrastructure;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.College
 {
     [ApiControl("查询校园网LTE小区的控制器")]
-    [Cors("http://132.110.60.94:2018", "http://218.13.12.242:2018")]
+    [ApiGroup("专题优化")]
     public class CollegeCellsController : ApiController
     {
         private readonly CollegeCellViewService _viewService;

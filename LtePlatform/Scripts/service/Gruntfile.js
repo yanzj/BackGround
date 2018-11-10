@@ -20,8 +20,7 @@
                         'kpi/coverage.interference.js', 'kpi/coverage.mr.js', 'kpi/coverage.stats.js', 'kpi/coverage.flow.js',
                         'kpi/coverage.js', 'kpi/customer.js', 'kpi/customer.complain.js', 'kpi/customer.sustain.js',
                         'kpi/parameter.dump.js', 'kpi/parameter.rutrace.js', 'kpi/parameter.query.js', 'kpi/parameter.js',
-                        'kpi/work.dialog.js', 'kpi/work.chart.js',
-                        'kpi/work.js', 'kpi/app.kpi.js'
+                        'kpi/work.dialog.js', 'kpi/work.js', 'kpi/app.kpi.js'
                     ],
                     'app/topic.js': [
                         'topic/basic.js', 'topic/college.js',
