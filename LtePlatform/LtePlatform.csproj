@@ -777,8 +777,6 @@
     <Content Include="Content\Images\icon_down.png" />
     <Content Include="Content\Images\icon_right.jpg" />
     <Content Include="Content\Images\icon_right.png" />
-    <Content Include="Content\jasmine\jasmine.css" />
-    <Content Include="Content\jasmine\jasmine_favicon.png" />
     <Content Include="Content\Site.css">
       <DependentUpon>Site.scss</DependentUpon>
     </Content>
@@ -842,25 +840,6 @@
     <Content Include="Content\themes\base\button.css">
       <DependentUpon>button.scss</DependentUpon>
     </Content>
-    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
-    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
-    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
     <None Include="Content\themes\base\menu.scss" />
     <None Include="Content\themes\base\progressbar.scss" />
     <None Include="Content\themes\base\resizable.scss" />
@@ -1028,26 +1007,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
-    <Content Include="Scripts\angular-aria.js" />
-    <Content Include="Scripts\angular-aria.min.js" />
-    <Content Include="Scripts\angular-cookies.js" />
-    <Content Include="Scripts\angular-cookies.min.js" />
-    <Content Include="Scripts\angular-loader.js" />
-    <Content Include="Scripts\angular-loader.min.js" />
-    <Content Include="Scripts\angular-message-format.js" />
-    <Content Include="Scripts\angular-message-format.min.js" />
-    <Content Include="Scripts\angular-messages.js" />
-    <Content Include="Scripts\angular-messages.min.js" />
-    <Content Include="Scripts\angular-mocks.js" />
-    <Content Include="Scripts\angular-parse-ext.js" />
-    <Content Include="Scripts\angular-parse-ext.min.js" />
-    <Content Include="Scripts\angular-resource.js" />
-    <Content Include="Scripts\angular-resource.min.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular-route.min.js" />
-    <Content Include="Scripts\angular-sanitize.js" />
-    <Content Include="Scripts\angular-sanitize.min.js" />
-    <Content Include="Scripts\angular-scenario.js" />
     <Content Include="Areas\TestPage\Scripts\angular\chap10.viewmodel.js" />
     <Content Include="Areas\TestPage\Scripts\angular\root.js" />
     <Content Include="Areas\TestPage\Scripts\autostart.js" />
@@ -1913,11 +1874,7 @@
     <Content Include="Scripts\i18n\ui-grid.language.zh-cn.min.js" />
     <Content Include="Scripts\i18n\ui-grid.language.zh-tw.js" />
     <Content Include="Scripts\i18n\ui-grid.language.zh-tw.min.js" />
-    <Content Include="Scripts\jasmine\boot.js" />
-    <Content Include="Scripts\jasmine\console.js" />
-    <Content Include="Scripts\jasmine\jasmine-html.js" />
     <Content Include="Scripts\jasmine\jasmine-jquery.js" />
-    <Content Include="Scripts\jasmine\jasmine.js" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -1944,8 +1901,6 @@
     <Content Include="Scripts\jquery-3.1.0.min.js" />
     <Content Include="Scripts\jquery-3.1.0.slim.js" />
     <Content Include="Scripts\jquery-3.1.0.slim.min.js" />
-    <Content Include="Scripts\jquery-ui-1.12.0.js" />
-    <Content Include="Scripts\jquery-ui-1.12.0.min.js" />
     <Content Include="Scripts\kpi\college.flow.import.js" />
     <Content Include="Scripts\kpi\college.infos.js" />
     <Content Include="Scripts\kpi\manage.dt.js" />
@@ -2010,8 +1965,6 @@
     <Content Include="Scripts\plugins\purify.min.js" />
     <Content Include="Scripts\plugins\sortable.js" />
     <Content Include="Scripts\plugins\sortable.min.js" />
-    <Content Include="Scripts\r.js" />
-    <Content Include="Scripts\require.js" />
     <Content Include="Scripts\rutrace\index.controller.js" />
     <Content Include="Scripts\service\app\filters.js" />
     <Content Include="Scripts\service\app\kpi.js" />
@@ -2084,8 +2037,6 @@
     <Content Include="Scripts\service\url\kpi.chart.js" />
     <Content Include="Scripts\service\url\menu.js" />
     <Content Include="Scripts\sitemap.xml" />
-    <Content Include="Scripts\spin.js" />
-    <Content Include="Scripts\spin.min.js" />
     <Content Include="Scripts\angular-ui\ui-utils-ieshiv.js" />
     <Content Include="Scripts\angular-ui\ui-utils-ieshiv.min.js" />
     <Content Include="Scripts\angular-ui\ui-utils.js" />
@@ -2158,7 +2109,6 @@
     <Content Include="Scripts\kpi\interference.import.controller.js" />
     <Content Include="Scripts\kpi\workitem\index.controller.js" />
     <Content Include="Scripts\manage\index.viewmodel.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\numeric\documentation.html" />
     <Content Include="Scripts\numeric\numeric.js" />
     <Content Include="Scripts\numeric\quadprog.js" />
@@ -2166,52 +2116,8 @@
     <Content Include="Scripts\numeric\sparse2.js" />
     <Content Include="Scripts\numeric\svd.js" />
     <Content Include="Scripts\parameters\alarmimport.controller.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\ui-grid.auto-resize.js" />
-    <Content Include="Scripts\ui-grid.auto-resize.min.js" />
-    <Content Include="Scripts\ui-grid.base.js" />
-    <Content Include="Scripts\ui-grid.base.min.js" />
-    <Content Include="Scripts\ui-grid.cellnav.js" />
-    <Content Include="Scripts\ui-grid.cellnav.min.js" />
-    <Content Include="Scripts\ui-grid.core.js" />
-    <Content Include="Scripts\ui-grid.core.min.js" />
-    <Content Include="Scripts\ui-grid.edit.js" />
-    <Content Include="Scripts\ui-grid.edit.min.js" />
-    <Content Include="Scripts\ui-grid.empty-base-layer.js" />
-    <Content Include="Scripts\ui-grid.empty-base-layer.min.js" />
-    <Content Include="Scripts\ui-grid.expandable.js" />
-    <Content Include="Scripts\ui-grid.expandable.min.js" />
-    <Content Include="Scripts\ui-grid.exporter.js" />
-    <Content Include="Scripts\ui-grid.exporter.min.js" />
-    <Content Include="Scripts\ui-grid.grouping.js" />
-    <Content Include="Scripts\ui-grid.grouping.min.js" />
-    <Content Include="Scripts\ui-grid.importer.js" />
-    <Content Include="Scripts\ui-grid.importer.min.js" />
-    <Content Include="Scripts\ui-grid.infinite-scroll.js" />
-    <Content Include="Scripts\ui-grid.infinite-scroll.min.js" />
     <Content Include="Scripts\ui-grid.js" />
     <Content Include="Scripts\ui-grid.min.js" />
-    <Content Include="Scripts\ui-grid.move-columns.js" />
-    <Content Include="Scripts\ui-grid.move-columns.min.js" />
-    <Content Include="Scripts\ui-grid.pagination.js" />
-    <Content Include="Scripts\ui-grid.pagination.min.js" />
-    <Content Include="Scripts\ui-grid.pinning.js" />
-    <Content Include="Scripts\ui-grid.pinning.min.js" />
-    <Content Include="Scripts\ui-grid.resize-columns.js" />
-    <Content Include="Scripts\ui-grid.resize-columns.min.js" />
-    <Content Include="Scripts\ui-grid.row-edit.js" />
-    <Content Include="Scripts\ui-grid.row-edit.min.js" />
-    <Content Include="Scripts\ui-grid.saveState.js" />
-    <Content Include="Scripts\ui-grid.saveState.min.js" />
-    <Content Include="Scripts\ui-grid.selection.js" />
-    <Content Include="Scripts\ui-grid.selection.min.js" />
-    <Content Include="Scripts\ui-grid.tree-base.js" />
-    <Content Include="Scripts\ui-grid.tree-base.min.js" />
-    <Content Include="Scripts\ui-grid.tree-view.js" />
-    <Content Include="Scripts\ui-grid.tree-view.min.js" />
-    <Content Include="Scripts\ui-grid.validate.js" />
-    <Content Include="Scripts\ui-grid.validate.min.js" />
     <Content Include="Scripts\underscore.js" />
     <Content Include="Scripts\underscore.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -2254,7 +2160,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Scripts\service\topic\baidu.map.js" />
-    <Content Include="Views\Jasmine\SpecRunner.cshtml" />
     <Content Include="Views\Kpi\Import.cshtml" />
     <Content Include="appViews\BasicKpi\Index.html" />
     <Content Include="appViews\College\Table\CollegeMapInfoBox.html" />
