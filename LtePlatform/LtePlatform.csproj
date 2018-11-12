@@ -709,14 +709,8 @@
     <Content Include="appViews\Parameters\Region\FlowKpiInfo.html" />
     <Content Include="appViews\Parameters\Region\RrcKpiInfo.html" />
     <Content Include="appViews\Parameters\Region\TownENodebInfo.html" />
-    <Content Include="appViews\Rutrace\Coverage\DetailsChartDialog.html" />
-    <Content Include="appViews\Rutrace\Coverage\General.html" />
-    <Content Include="appViews\Rutrace\Coverage\Trend.html" />
     <Content Include="appViews\Rutrace\Map\SourceMapInfoBox.html" />
-    <Content Include="appViews\Rutrace\Interference\VictimDialog.html" />
     <Content Include="appViews\Rutrace\Map\VictimMapInfoBox.html" />
-    <Content Include="appViews\Rutrace\WorkItem\CellTrend.html" />
-    <Content Include="appViews\Rutrace\WorkItem\ForCell.html" />
     <Content Include="appViews\Test\Simple\CellClass.html" />
     <Content Include="appViews\Test\Simple\GridBinding.html" />
     <Content Include="appViews\Test\Simple\GridFilter.html" />
@@ -920,32 +914,9 @@
     <Content Include="directives\parameters\cell\A5InterFreq.html" />
     <Content Include="appViews\Parameters\Map\CdmaCellInfoBox.html" />
     <Content Include="appViews\Parameters\Region\CellInfo.html" />
-    <Content Include="appViews\Rutrace\Coverage\Index.html" />
     <Content Include="directives\parameters\parameters.module.js" />
-    <Content Include="directives\rutrace\AnalyzeTable.Tpl.html" />
-    <Content Include="directives\rutrace\coverage\InterferenceSourceList.html" />
-    <Content Include="directives\rutrace\coverage\InterferenceVictimList.html" />
-    <Content Include="directives\rutrace\import\BackwardNeighbors.html" />
-    <Content Include="directives\rutrace\import\ForwardNeighbors.html" />
-    <Content Include="appViews\Rutrace\Interference\Index.html" />
-    <Content Include="appViews\Rutrace\Interference\CoverageDialog.html" />
-    <Content Include="directives\rutrace\interference\MongoNeighbors.html" />
-    <Content Include="directives\rutrace\interference\MroInterferenceList.html" />
-    <Content Include="directives\rutrace\interference\MroRsrpList.html" />
-    <Content Include="directives\rutrace\interference\MroTaList.html" />
-    <Content Include="directives\rutrace\interference\MrsRsrpList.html" />
-    <Content Include="directives\rutrace\interference\MrsTaList.html" />
-    <Content Include="directives\rutrace\interference\SourceDialogList.html" />
-    <Content Include="directives\rutrace\interference\SourceList.html" />
-    <Content Include="appViews\Rutrace\Interference\SourceDbChartDialog.html" />
-    <Content Include="appViews\Rutrace\Interference\SourceDialog.html" />
     <Content Include="appViews\Home\DoubleChartDialog.html" />
-    <Content Include="appViews\Rutrace\Interference\SourceStrengthChartDialog.html" />
-    <Content Include="directives\rutrace\interference\VictimDialogList.html" />
-    <Content Include="directives\rutrace\interference\VictimList.html" />
     <Content Include="appViews\Rutrace\Map\Index.html" />
-    <Content Include="appViews\Rutrace\WorkItem\AnalyticDetails.html" />
-    <Content Include="appViews\Rutrace\WorkItem\ForCity.html" />
     <Content Include="directives\workitem\PlatformAndFeedbackInfo.html" />
     <Content Include="appViews\Test\Chapter10\demo.accordion.html" />
     <Content Include="appViews\Test\Chapter10\demo.alert.html" />
@@ -1000,7 +971,6 @@
     <Content Include="Areas\TestPage\Scripts\5ch5\Player.js">
       <DependentUpon>Player.coffee</DependentUpon>
     </Content>
-    <Content Include="directives\rutrace\rutrace.module.js" />
     <Content Include="directives\workitem\workitem.module.js" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -1059,7 +1029,6 @@
     <Content Include="Scripts\app\home.complain.js" />
     <Content Include="Scripts\app\home.kpi.js" />
     <Content Include="Scripts\app\home.menu.js" />
-    <Content Include="Scripts\app\home.mr.js" />
     <Content Include="Scripts\app\home.network.js" />
     <Content Include="Scripts\app\home.root.js" />
     <Content Include="Scripts\app\home.route.js" />
@@ -1985,10 +1954,6 @@
     <Content Include="Scripts\service\kpi\college.maintain.js" />
     <Content Include="Scripts\service\kpi\college.work.js" />
     <Content Include="Scripts\service\kpi\coverage.flow.js" />
-    <Content Include="Scripts\service\kpi\coverage.interference.js" />
-    <Content Include="Scripts\service\kpi\coverage.js" />
-    <Content Include="Scripts\service\kpi\coverage.mr.js" />
-    <Content Include="Scripts\service\kpi\coverage.stats.js" />
     <Content Include="Scripts\service\kpi\customer.complain.js" />
     <Content Include="Scripts\service\kpi\customer.js" />
     <Content Include="Scripts\service\kpi\customer.sustain.js" />
@@ -2195,7 +2160,6 @@
     <Content Include="appViews\Parameters\Map\BtsMapInfoBox.html" />
     <Content Include="appViews\Parameters\QueryMap.html" />
     <Content Include="appViews\GeneralMenu.html" />
-    <Content Include="appViews\Rutrace\Interference\MatchCellDialog.html" />
     <Content Include="Views\Parameters\StationImport.cshtml" />
   </ItemGroup>
   <ItemGroup>

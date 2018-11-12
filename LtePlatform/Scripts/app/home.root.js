@@ -1,5 +1,5 @@
 ﻿angular.module('home.root', ['app.common'])
-    .run(function ($rootScope, appUrlService, stationFactory, appRegionService, geometryService, kpiDisplayService) {
+    .run(function ($rootScope, appUrlService, stationFactory, appRegionService, geometryService) {
         $rootScope.sideBarShown = true;
         $rootScope.rootPath = "/#/";
 
@@ -27,13 +27,6 @@
             $rootScope.legend.title = $rootScope.city.selected;
             $rootScope.legend.intervals = [];
             $rootScope.legend.criteria = [];
-        };
-        $rootScope.initializeRsrpLegend = function() {
-            var legend = kpiDisplayService.queryCoverageLegend('RSRP');
-            $rootScope.legend.title = 'RSRP';
-            $rootScope.legend.criteria = legend.criteria;
-            $rootScope.legend.intervals = [];
-            $rootScope.legend.sign = legend.sign;
         };
         $rootScope.initializeFaultLegend = function(colors) {
             $rootScope.legend.title = "故障状态";

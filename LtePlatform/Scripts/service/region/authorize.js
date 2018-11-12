@@ -1,4 +1,4 @@
-﻿angular.module('region.authorize', ['app.core'])
+﻿angular.module('region.authorize', ['app.core', 'app.menu'])
     .constant('roleDistrictDictionary', [
         {
             role: "顺德管理",
@@ -17,7 +17,45 @@
             district: "高明"
         }
     ])
-    .factory('authorizeService', function(generalHttpService, roleDistrictDictionary) {
+    .controller("user.roles.dialog",
+        function ($scope, $uibModalInstance, dialogTitle, userName, authorizeService) {
+            $scope.dialogTitle = dialogTitle;
+            $scope.ok = function () {
+                $uibModalInstance.close($scope.city);
+            };
+
+            $scope.cancel = function () {
+                $uibModalInstance.dismiss('cancel');
+            };
+
+            $scope.query = function () {
+                authorizeService.queryRolesInUser(userName).then(function (roles) {
+                    $scope.existedRoles = roles;
+                });
+                authorizeService.queryCandidateRolesInUser(userName).then(function (roles) {
+                    $scope.candidateRoles = roles;
+                });
+            };
+
+            $scope.addRole = function (role) {
+                authorizeService.assignRoleInUser(userName, role).then(function (result) {
+                    if (result) {
+                        $scope.query();
+                    }
+                });
+            };
+
+            $scope.removeRole = function (role) {
+                authorizeService.releaseRoleInUser(userName, role).then(function (result) {
+                    if (result) {
+                        $scope.query();
+                    }
+                });
+            };
+
+            $scope.query();
+        })
+    .factory('authorizeService', function (generalHttpService, roleDistrictDictionary, menuItemService) {
         return {
             queryCurrentUserInfo: function() {
                 return generalHttpService.getApiData('CurrentUser', {});
@@ -98,6 +136,21 @@
                     }
                 });
                 return districts;
+            },
+
+            showUserRoles: function (userName) {
+                menuItemService.showGeneralDialog({
+                    templateUrl: '/appViews/Manage/UserRolesDialog.html',
+                    controller: 'user.roles.dialog',
+                    resolve: {
+                        dialogTitle: function () {
+                            return userName + "角色管理";
+                        },
+                        userName: function () {
+                            return userName;
+                        }
+                    }
+                });
             }
         };
     });

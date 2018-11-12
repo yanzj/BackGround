@@ -11,7 +11,6 @@
         'ngAnimate',
         'ngRoute',
         'parameters.module',
-        'rutrace.module',
         "ui.bootstrap",
         'ui.grid',
         'ui.grid.edit',

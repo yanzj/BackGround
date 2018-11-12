@@ -4,7 +4,6 @@
             appRegionService,
             networkElementService,
             baiduMapService,
-            coverageDialogService,
             dumpPreciseService,
             collegeMapService) {
             baiduMapService.initializeMap("map", 11);
@@ -118,14 +117,6 @@
                     });
             };
 
-            $scope.showLteTownStats = function() {
-                var city = $scope.city.selected;
-                coverageDialogService.showTownStats(city);
-            };
-            $scope.showCdmaTownStats = function() {
-                var city = $scope.city.selected;
-                coverageDialogService.showCdmaTownStats(city);
-            };
             $scope.districts = [];
 
             $scope.$watch('city.selected',

@@ -157,20 +157,6 @@
                     },
                     url: "/college-coverage"
                 })
-            .state('mr',
-                {
-                    views: {
-                        'menu': {
-                            templateUrl: "/appViews/DropDownMenu.html",
-                            controller: "menu.mr"
-                        },
-                        "contents": {
-                            templateUrl: "/appViews/Home/Mr.html",
-                            controller: "home.mr"
-                        }
-                    },
-                    url: "/mr"
-                })
             .state('grid',
                 {
                     views: {
