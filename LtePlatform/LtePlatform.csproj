@@ -706,11 +706,7 @@
     <Content Include="appViews\Parameters\Import\HotSpotCell.html" />
     <Content Include="appViews\Parameters\Map\CellsMapInfoBox.html" />
     <Content Include="appViews\Parameters\Region\ArrangeInfo.html" />
-    <Content Include="appViews\Parameters\Region\FlowKpiInfo.html" />
-    <Content Include="appViews\Parameters\Region\RrcKpiInfo.html" />
     <Content Include="appViews\Parameters\Region\TownENodebInfo.html" />
-    <Content Include="appViews\Rutrace\Map\SourceMapInfoBox.html" />
-    <Content Include="appViews\Rutrace\Map\VictimMapInfoBox.html" />
     <Content Include="appViews\Test\Simple\CellClass.html" />
     <Content Include="appViews\Test\Simple\GridBinding.html" />
     <Content Include="appViews\Test\Simple\GridFilter.html" />
@@ -719,18 +715,6 @@
     <Content Include="appViews\Test\Simple\GridTooltip.html" />
     <Content Include="Areas\TestPage\Scripts\angular\route.js" />
     <Content Include="Areas\TestPage\Scripts\qunit.route.js" />
-    <Content Include="appViews\bootstrap-fileinput\css\fileinput.css" />
-    <Content Include="appViews\bootstrap-fileinput\css\fileinput.min.css" />
-    <Content Include="appViews\bootstrap-fileinput\img\loading-sm.gif" />
-    <Content Include="appViews\bootstrap-fileinput\img\loading.gif" />
-    <Content Include="appViews\bootstrap-fileinput\themes\explorer\theme.css" />
-    <Content Include="appViews\bootstrap-fileinput\themes\explorer\theme.js" />
-    <Content Include="appViews\bootstrap-fileinput\themes\explorer\theme.min.css" />
-    <Content Include="appViews\bootstrap-fileinput\themes\explorer\theme.min.js" />
-    <Content Include="appViews\bootstrap-fileinput\themes\fa\theme.js" />
-    <Content Include="appViews\bootstrap-fileinput\themes\fa\theme.min.js" />
-    <Content Include="appViews\bootstrap-fileinput\themes\gly\theme.js" />
-    <Content Include="appViews\bootstrap-fileinput\themes\gly\theme.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -780,7 +764,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="appViews\bootstrap-fileinput\sass\fileinput.scss" />
     <Content Include="Content\less\variables.less" />
     <Content Include="Content\less\validate\less\validate.less" />
     <Content Include="Content\less\tree-view\less\tree-view.less" />
@@ -913,10 +896,8 @@
     <Content Include="directives\parameters\cell\A4InterFreq.html" />
     <Content Include="directives\parameters\cell\A5InterFreq.html" />
     <Content Include="appViews\Parameters\Map\CdmaCellInfoBox.html" />
-    <Content Include="appViews\Parameters\Region\CellInfo.html" />
     <Content Include="directives\parameters\parameters.module.js" />
     <Content Include="appViews\Home\DoubleChartDialog.html" />
-    <Content Include="appViews\Rutrace\Map\Index.html" />
     <Content Include="directives\workitem\PlatformAndFeedbackInfo.html" />
     <Content Include="appViews\Test\Chapter10\demo.accordion.html" />
     <Content Include="appViews\Test\Chapter10\demo.alert.html" />
@@ -1933,7 +1914,6 @@
     <Content Include="Scripts\plugins\purify.min.js" />
     <Content Include="Scripts\plugins\sortable.js" />
     <Content Include="Scripts\plugins\sortable.min.js" />
-    <Content Include="Scripts\rutrace\index.controller.js" />
     <Content Include="Scripts\service\app\filters.js" />
     <Content Include="Scripts\service\app\kpi.js" />
     <Content Include="Scripts\service\app\topic.js" />
@@ -1958,9 +1938,6 @@
     <Content Include="Scripts\service\kpi\customer.js" />
     <Content Include="Scripts\service\kpi\customer.sustain.js" />
     <Content Include="Scripts\service\kpi\parameter.dump.js" />
-    <Content Include="Scripts\service\kpi\parameter.js" />
-    <Content Include="Scripts\service\kpi\parameter.query.js" />
-    <Content Include="Scripts\service\kpi\parameter.rutrace.js" />
     <Content Include="Scripts\service\kpi\work.dialog.js" />
     <Content Include="Scripts\service\kpi\work.js" />
     <Content Include="Scripts\service\region\authorize.js" />
@@ -2087,7 +2064,6 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="Scripts\app\common.js" />
     <Content Include="Scripts\app\home.viewmodel.js" />
-    <Content Include="appViews\Rutrace\FromMongo.html" />
     <Content Include="appViews\DropDownMenu.html" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -2158,7 +2134,6 @@
     <Content Include="appViews\Parameters\Import\EditCdmaCellDialog.html" />
     <Content Include="appViews\Parameters\Map\ENodebMapInfoBox.html" />
     <Content Include="appViews\Parameters\Map\BtsMapInfoBox.html" />
-    <Content Include="appViews\Parameters\QueryMap.html" />
     <Content Include="appViews\GeneralMenu.html" />
     <Content Include="Views\Parameters\StationImport.cshtml" />
   </ItemGroup>

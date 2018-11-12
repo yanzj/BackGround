@@ -809,7 +809,6 @@ angular.module('home.network', ['app.common'])
     .controller("home.query",
         function($scope,
             baiduMapService,
-            neighborDialogService,
             dumpPreciseService,
             appRegionService,
             mapDialogService,
@@ -817,16 +816,6 @@ angular.module('home.network', ['app.common'])
             baiduMapService.initializeMap("map", 11);
             baiduMapService.addCityBoundary("佛山");
             $scope.currentView = "镇区站点";
-            $scope.queryConditions = function() {
-                baiduMapService.clearOverlays();
-                neighborDialogService.setQueryConditions($scope.city, $scope.beginDate, $scope.endDate);
-            };
-            $scope.queryByTowns = function() {
-                neighborDialogService.queryList($scope.city);
-            };
-            $scope.queryType = function() {
-                neighborDialogService.queryCellTypeChart($scope.city);
-            };
             $scope.showDistrictTownStat = function(district, color) {
                 baiduMapService.addDistrictBoundary($scope.city.selected + '市' + district + '区', color);
                 appRegionService.queryTownInfrastructures($scope.city.selected, district).then(function(result) {

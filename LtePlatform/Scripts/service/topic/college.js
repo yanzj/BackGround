@@ -144,8 +144,7 @@
             geometryService,
             networkElementService,
             mapDialogService,
-            parametersDialogService,
-            neighborDialogService) {
+            parametersDialogService) {
             return {
                 showCollegeInfos: function(showCollegeDialogs, year) {
                     collegeService.queryStats(year).then(function(colleges) {
@@ -262,18 +261,6 @@
                                     mapDialogService.showOnlineSustainInfos(items);
                                 }
                             });
-                        });
-                },
-                showRrcCellSector: function(cell, item, beginDate, endDate) {
-                    generalMapService.showGeneralSector(cell,
-                        item,
-                        "blue",
-                        5,
-                        neighborDialogService.showRrcCell,
-                        {
-                            item: item,
-                            beginDate: beginDate,
-                            endDate: endDate
                         });
                 }
             };
