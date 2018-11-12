@@ -86,6 +86,8 @@ LTE信令数据的解析库，采用C#语言对16进制信令内容进行解码�
 
 #### TraceParser.Test
 
+`TraceParser`对应的测试项目，采用NUnit。
+
 ## 后端模块
 
 ### 数据库接口模块
@@ -128,4 +130,5 @@ LTE信令数据的解析库，采用C#语言对16进制信令内容进行解码�
 
 ### Javascript脚本
 
-AngularJS架构的Javascript脚本
+AngularJS架构的Javascript脚本。
+由于本项目已经退化为后端项目，这部分内容将会逐步缩减，仅保留数据导入前端等必要的内容。

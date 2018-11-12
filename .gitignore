@@ -54,7 +54,7 @@ App_Data/
 
 TestResult.xml
 
-
+node_modules/
 packages/
 
 uploads/
