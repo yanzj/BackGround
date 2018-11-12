@@ -497,7 +497,6 @@
     <Compile Include="Controllers\Dt\TownTestInfoController.cs" />
     <Compile Include="Controllers\Dt\TownTypeTestInfoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\JasmineController.cs" />
     <Compile Include="Controllers\KpiController.cs" />
     <Compile Include="Controllers\Kpi\AlarmCountController.cs" />
     <Compile Include="Controllers\Kpi\AlarmsController.cs" />
