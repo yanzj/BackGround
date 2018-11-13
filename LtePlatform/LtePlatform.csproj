@@ -671,7 +671,6 @@
     <Content Include="appViews\Customer\Process\Vip.html" />
     <Content Include="appViews\Customer\VipList.html" />
     <Content Include="appViews\Evaluation\Dialog\AgpsSearchCondition.html" />
-    <Content Include="appViews\Evaluation\Dialog\AlarmHistoryListDialog.html" />
     <Content Include="appViews\Evaluation\Dialog\BtsSearchCondition.html" />
     <Content Include="appViews\Evaluation\Dialog\BuildingInfoBox.html" />
     <Content Include="appViews\Evaluation\HighValue.html" />
@@ -924,15 +923,7 @@
     <Content Include="appViews\Test\Simple\Interpolate.html" />
     <Content Include="appViews\Test\Simple\Parse.html" />
     <Content Include="appViews\Test\Simple\SimpleType.html" />
-    <Content Include="appViews\WorkItem\BtsInfo.html" />
-    <Content Include="appViews\WorkItem\CdmaCellInfo.html" />
-    <Content Include="appViews\WorkItem\CellInfo.html" />
-    <Content Include="appViews\WorkItem\Charts.html" />
-    <Content Include="appViews\WorkItem\Details.html" />
-    <Content Include="appViews\WorkItem\DetailsDialog.html" />
     <Content Include="directives\workitem\precise\DetailsTable.html" />
-    <Content Include="appViews\WorkItem\ENodebInfo.html" />
-    <Content Include="appViews\WorkItem\FeedbackDialog.html" />
     <Content Include="directives\workitem\precise\Cell.html" />
     <Content Include="directives\workitem\precise\CoverageCell.html" />
     <Content Include="directives\workitem\WorkItem.Details.html" />
@@ -1228,7 +1219,6 @@
     <None Include="Properties\PublishProfiles\Lte-ftp-219.pubxml" />
     <None Include="Properties\PublishProfiles\Lte2.pubxml" />
     <Content Include="Scripts\kpi\interference.import.controller.js" />
-    <Content Include="Scripts\kpi\workitem\index.controller.js" />
     <Content Include="Scripts\manage\index.viewmodel.js" />
     <Content Include="Scripts\parameters\alarmimport.controller.js" />
     <Content Include="Scripts\ui-grid.js" />
@@ -1289,7 +1279,6 @@
     <None Include="Views\Kpi\PreciseImport.cshtml" />
     <Content Include="Views\Kpi\WorkItemImport.cshtml" />
     <Content Include="appViews\BasicKpi\TopDrop2G.html" />
-    <Content Include="appViews\WorkItem\List.html" />
     <None Include="Views\Parameters\AlarmImport.cshtml" />
     <Content Include="Views\Shared\_AlertPanel.cshtml" />
     <Content Include="appViews\College\Infrastructure\DistributionDialog.html" />
