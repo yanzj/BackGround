@@ -13,7 +13,7 @@
             queryRegion: function(id) {
                 return generalHttpService.getApiData('CollegeRegion/' + id, {});
             },
-            queryENodebs: function(name) {
+            queryENodebs: function(name) { /////////////////////////////////////////////
                 return generalHttpService.getApiData('CollegeENodeb',
                     {
                         collegeName: name
@@ -25,7 +25,7 @@
                         collegeName: name
                     });
             },
-            queryCells: function(name) {
+            queryCells: function(name) { //////////////////////////////////////////////
                 return generalHttpService.getApiData('CollegeCells',
                     {
                         collegeName: name
@@ -157,10 +157,10 @@
     })
     .factory('collegeQueryService', function(generalHttpService) {
         return {
-            queryAll: function() {
+            queryAll: function() { //////////////////////////////////////////////////////////
                 return generalHttpService.getApiData('CollegeQuery', {});
             },
-            queryByName: function(name) {
+            queryByName: function(name) { //////////////////////////////////////////////////
                 return generalHttpService.getApiData('CollegeNames', {
                     name: name
                 });

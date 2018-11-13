@@ -1511,7 +1511,7 @@ angular.module('region.college', ['app.core'])
             queryRegion: function(id) {
                 return generalHttpService.getApiData('CollegeRegion/' + id, {});
             },
-            queryENodebs: function(name) {
+            queryENodebs: function(name) { /////////////////////////////////////////////
                 return generalHttpService.getApiData('CollegeENodeb',
                     {
                         collegeName: name
@@ -1523,7 +1523,7 @@ angular.module('region.college', ['app.core'])
                         collegeName: name
                     });
             },
-            queryCells: function(name) {
+            queryCells: function(name) { //////////////////////////////////////////////
                 return generalHttpService.getApiData('CollegeCells',
                     {
                         collegeName: name
@@ -1655,10 +1655,10 @@ angular.module('region.college', ['app.core'])
     })
     .factory('collegeQueryService', function(generalHttpService) {
         return {
-            queryAll: function() {
+            queryAll: function() { //////////////////////////////////////////////////////////
                 return generalHttpService.getApiData('CollegeQuery', {});
             },
-            queryByName: function(name) {
+            queryByName: function(name) { //////////////////////////////////////////////////
                 return generalHttpService.getApiData('CollegeNames', {
                     name: name
                 });
@@ -1984,7 +1984,7 @@ angular.module('region.precise', ['app.core'])
                 }
             };
         })
-    .factory('preciseImportService',
+    .factory('preciseImportService', //////////////////////////////////////////////////////////
         function(generalHttpService) {
             return {
                 queryDumpHistroy: function(beginDate, endDate) {
@@ -2257,41 +2257,41 @@ angular.module('region.precise', ['app.core'])
                         });
                     stats.push(cityStat);
                 },
-                getTownFlowStats: function(statDate, frequency) {
+                getTownFlowStats: function(statDate, frequency) { ///////////////////////////////////////////////////////////
                     return generalHttpService.getApiData('TownFlow',
                     {
                         statDate: statDate,
                         frequency: frequency
                     });
                 },
-                getCurrentDateTownFlowStats: function (statDate, frequency) {
+                getCurrentDateTownFlowStats: function (statDate, frequency) { //////////////////////////////////////////
                     return generalHttpService.getApiData('TownFlow',
                         {
                             currentDate: statDate,
                             frequency: frequency
                         });
                 },
-                getCurrentDateTownCqiStats: function (statDate, frequency) {
+                getCurrentDateTownCqiStats: function (statDate, frequency) { ////////////////////////////////////////////////
                     return generalHttpService.getApiData('TownCqi',
                         {
                             currentDate: statDate,
                             frequency: frequency
                         });
                 },
-                getCurrentDateTownHourCqiStats: function (statDate, frequency) {
+                getCurrentDateTownHourCqiStats: function (statDate, frequency) { ////////////////////////////////////////////
                     return generalHttpService.getApiData('TownHourCqi',
                         {
                             currentDate: statDate,
                             frequency: frequency
                         });
                 },
-                updateTownFlowStat: function(stat) {
+                updateTownFlowStat: function(stat) { ///////////////////////////////////////////////////////////////////
                     return generalHttpService.postApiData('TownFlow', stat);
                 },
-                updateTownCqiStat: function (stat) {
+                updateTownCqiStat: function (stat) { //////////////////////////////////////////////////////////////////////
                     return generalHttpService.postApiData('TownCqi', stat);
                 },
-                updateTownHourCqiStat: function (stat) {
+                updateTownHourCqiStat: function (stat) { /////////////////////////////////////////////////////////////////////////
                     return generalHttpService.postApiData('TownHourCqi', stat);
                 }
             };
@@ -2612,7 +2612,7 @@ angular.module('region.network', ['app.core'])
     })
     .factory('neighborImportService', function (geometryService, networkElementService) {
         return {
-            updateSuccessProgress: function (result, progressInfo, callback) {
+            updateSuccessProgress: function (result, progressInfo, callback) { //////////////////////////////////////
                 if (result) {
                     progressInfo.totalSuccessItems += 1;
                 } else {
@@ -2626,7 +2626,7 @@ angular.module('region.network', ['app.core'])
                     progressInfo.totalFailItems = 0;
                 }
             },
-            updateFailProgress: function (progressInfo, callback) {
+            updateFailProgress: function (progressInfo, callback) { ///////////////////////////////////////////////
                 progressInfo.totalFailItems += 1;
                 if (progressInfo.totalSuccessItems + progressInfo.totalFailItems < progressInfo.totalDumpItems) {
                     callback();
@@ -2636,7 +2636,7 @@ angular.module('region.network', ['app.core'])
                     progressInfo.totalFailItems = 0;
                 }
             },
-            updateCellRruInfo: function (supplementCells, settings) {
+            updateCellRruInfo: function (supplementCells, settings) { /////////////////////////////////////////////////////
                 angular.forEach(settings.dstCells, function (dstCell) {
                     var i;
                     for (i = 0; i < settings.cells.length; i++) {
@@ -2653,7 +2653,7 @@ angular.module('region.network', ['app.core'])
                     }
                 });
             },
-            updateENodebRruInfo: function (supplementCells, settings) {
+            updateENodebRruInfo: function (supplementCells, settings) { ///////////////////////////////////////////
                 angular.forEach(settings.dstCells, function (item) {
                     var i;
                     for (i = 0; i < settings.cells.length; i++) {

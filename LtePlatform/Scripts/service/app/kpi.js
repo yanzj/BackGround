@@ -215,7 +215,7 @@ angular.module('kpi.college.basic', ['myApp.url', 'myApp.region', "ui.bootstrap"
             };
         });
 angular.module('kpi.college.maintain', ['myApp.url', 'myApp.region', "ui.bootstrap", 'topic.basic'])
-    .controller('cell.supplement.dialog',
+    .controller('cell.supplement.dialog', ////////////////////////////////////////////////////////
         function($scope,
             $uibModalInstance,
             networkElementService,
@@ -248,7 +248,7 @@ angular.module('kpi.college.maintain', ['myApp.url', 'myApp.region', "ui.bootstr
                 $uibModalInstance.dismiss('cancel');
             };
         })
-    .controller('cell.position.supplement.dialog',
+    .controller('cell.position.supplement.dialog', ///////////////////////////////////////////////////
         function($scope,
             $uibModalInstance,
             collegeMapService,
@@ -291,7 +291,7 @@ angular.module('kpi.college.maintain', ['myApp.url', 'myApp.region', "ui.bootstr
                 $uibModalInstance.dismiss('cancel');
             };
         })
-    .controller('eNodeb.supplement.dialog',
+    .controller('eNodeb.supplement.dialog', ////////////////////////////////////////////
         function($scope,
             $uibModalInstance,
             networkElementService,
@@ -841,7 +841,7 @@ angular.module('kpi.college', ['app.menu', 'region.college'])
 					});
 				});
 			},
-			supplementENodebCells: function(eNodebs, cells, collegeName, callback) {
+			supplementENodebCells: function(eNodebs, cells, collegeName, callback) { ////////////////////////////////////
 				menuItemService.showGeneralDialogWithAction({
 					templateUrl: '/appViews/College/Infrastructure/CellSupplementDialog.html',
 					controller: 'cell.supplement.dialog',
@@ -869,8 +869,8 @@ angular.module('kpi.college', ['app.menu', 'region.college'])
 					});
 
 				});
-			},
-			supplementPositionCells: function(collegeName, callback) {
+			}, ////////////////////////////////////////////
+			supplementPositionCells: function(collegeName, callback) { ////////////////////////////////////////////////////
 				menuItemService.showGeneralDialogWithAction({
 					templateUrl: '/appViews/College/Infrastructure/CellSupplementDialog.html',
 					controller: 'cell.position.supplement.dialog',
@@ -892,7 +892,7 @@ angular.module('kpi.college', ['app.menu', 'region.college'])
 					});
 
 				});
-			},
+			}, /////////////////////////////////////////////////////////
 			construct3GTest: function(collegeName) {
 				menuItemService.showGeneralDialogWithAction({
 					templateUrl: '/appViews/College/Test/Construct3GTest.html',
@@ -966,7 +966,7 @@ angular.module('kpi.college', ['app.menu', 'region.college'])
 					}
 				});
 			},
-			addENodeb: function(collegeName, center, callback) {
+			addENodeb: function(collegeName, center, callback) { /////////////////////////////////////////////////////
 				menuItemService.showGeneralDialogWithAction({
 					templateUrl: '/appViews/College/Infrastructure/ENodebSupplementDialog.html',
 					controller: 'eNodeb.supplement.dialog',
@@ -990,7 +990,7 @@ angular.module('kpi.college', ['app.menu', 'region.college'])
 						callback(count);
 					});
 				});
-			},
+			}, ///////////////////////////////////////////////////////////
 			addBts: function(collegeName, center, callback) {
 				menuItemService.showGeneralDialogWithAction({
 					templateUrl: '/appViews/College/Infrastructure/BtsSupplementDialog.html',
@@ -1015,7 +1015,7 @@ angular.module('kpi.college', ['app.menu', 'region.college'])
 						callback(count);
 					});
 				});
-			},
+			}, //////////////////////////////////////////////////////////
 			showCollegeFlow: function(year) {
 				menuItemService.showGeneralDialog({
 					templateUrl: '/appViews/College/Test/Flow.html',

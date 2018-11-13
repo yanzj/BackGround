@@ -314,7 +314,7 @@
     })
     .factory('neighborImportService', function (geometryService, networkElementService) {
         return {
-            updateSuccessProgress: function (result, progressInfo, callback) {
+            updateSuccessProgress: function (result, progressInfo, callback) { //////////////////////////////////////
                 if (result) {
                     progressInfo.totalSuccessItems += 1;
                 } else {
@@ -328,7 +328,7 @@
                     progressInfo.totalFailItems = 0;
                 }
             },
-            updateFailProgress: function (progressInfo, callback) {
+            updateFailProgress: function (progressInfo, callback) { ///////////////////////////////////////////////
                 progressInfo.totalFailItems += 1;
                 if (progressInfo.totalSuccessItems + progressInfo.totalFailItems < progressInfo.totalDumpItems) {
                     callback();
@@ -338,7 +338,7 @@
                     progressInfo.totalFailItems = 0;
                 }
             },
-            updateCellRruInfo: function (supplementCells, settings) {
+            updateCellRruInfo: function (supplementCells, settings) { /////////////////////////////////////////////////////
                 angular.forEach(settings.dstCells, function (dstCell) {
                     var i;
                     for (i = 0; i < settings.cells.length; i++) {
@@ -355,7 +355,7 @@
                     }
                 });
             },
-            updateENodebRruInfo: function (supplementCells, settings) {
+            updateENodebRruInfo: function (supplementCells, settings) { ///////////////////////////////////////////
                 angular.forEach(settings.dstCells, function (item) {
                     var i;
                     for (i = 0; i < settings.cells.length; i++) {

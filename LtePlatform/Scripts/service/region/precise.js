@@ -148,7 +148,7 @@
                 }
             };
         })
-    .factory('preciseImportService',
+    .factory('preciseImportService', //////////////////////////////////////////////////////////
         function(generalHttpService) {
             return {
                 queryDumpHistroy: function(beginDate, endDate) {
@@ -421,41 +421,41 @@
                         });
                     stats.push(cityStat);
                 },
-                getTownFlowStats: function(statDate, frequency) {
+                getTownFlowStats: function(statDate, frequency) { ///////////////////////////////////////////////////////////
                     return generalHttpService.getApiData('TownFlow',
                     {
                         statDate: statDate,
                         frequency: frequency
                     });
                 },
-                getCurrentDateTownFlowStats: function (statDate, frequency) {
+                getCurrentDateTownFlowStats: function (statDate, frequency) { //////////////////////////////////////////
                     return generalHttpService.getApiData('TownFlow',
                         {
                             currentDate: statDate,
                             frequency: frequency
                         });
                 },
-                getCurrentDateTownCqiStats: function (statDate, frequency) {
+                getCurrentDateTownCqiStats: function (statDate, frequency) { ////////////////////////////////////////////////
                     return generalHttpService.getApiData('TownCqi',
                         {
                             currentDate: statDate,
                             frequency: frequency
                         });
                 },
-                getCurrentDateTownHourCqiStats: function (statDate, frequency) {
+                getCurrentDateTownHourCqiStats: function (statDate, frequency) { ////////////////////////////////////////////
                     return generalHttpService.getApiData('TownHourCqi',
                         {
                             currentDate: statDate,
                             frequency: frequency
                         });
                 },
-                updateTownFlowStat: function(stat) {
+                updateTownFlowStat: function(stat) { ///////////////////////////////////////////////////////////////////
                     return generalHttpService.postApiData('TownFlow', stat);
                 },
-                updateTownCqiStat: function (stat) {
+                updateTownCqiStat: function (stat) { //////////////////////////////////////////////////////////////////////
                     return generalHttpService.postApiData('TownCqi', stat);
                 },
-                updateTownHourCqiStat: function (stat) {
+                updateTownHourCqiStat: function (stat) { /////////////////////////////////////////////////////////////////////////
                     return generalHttpService.postApiData('TownHourCqi', stat);
                 }
             };

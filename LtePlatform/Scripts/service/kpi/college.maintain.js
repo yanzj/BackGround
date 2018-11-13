@@ -1,5 +1,5 @@
 ﻿angular.module('kpi.college.maintain', ['myApp.url', 'myApp.region', "ui.bootstrap", 'topic.basic'])
-    .controller('cell.supplement.dialog',
+    .controller('cell.supplement.dialog', ////////////////////////////////////////////////////////
         function($scope,
             $uibModalInstance,
             networkElementService,
@@ -32,7 +32,7 @@
                 $uibModalInstance.dismiss('cancel');
             };
         })
-    .controller('cell.position.supplement.dialog',
+    .controller('cell.position.supplement.dialog', ///////////////////////////////////////////////////
         function($scope,
             $uibModalInstance,
             collegeMapService,
@@ -75,7 +75,7 @@
                 $uibModalInstance.dismiss('cancel');
             };
         })
-    .controller('eNodeb.supplement.dialog',
+    .controller('eNodeb.supplement.dialog', ////////////////////////////////////////////
         function($scope,
             $uibModalInstance,
             networkElementService,

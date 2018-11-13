@@ -86,7 +86,7 @@
 					});
 				});
 			},
-			supplementENodebCells: function(eNodebs, cells, collegeName, callback) {
+			supplementENodebCells: function(eNodebs, cells, collegeName, callback) { ////////////////////////////////////
 				menuItemService.showGeneralDialogWithAction({
 					templateUrl: '/appViews/College/Infrastructure/CellSupplementDialog.html',
 					controller: 'cell.supplement.dialog',
@@ -114,8 +114,8 @@
 					});
 
 				});
-			},
-			supplementPositionCells: function(collegeName, callback) {
+			}, ////////////////////////////////////////////
+			supplementPositionCells: function(collegeName, callback) { ////////////////////////////////////////////////////
 				menuItemService.showGeneralDialogWithAction({
 					templateUrl: '/appViews/College/Infrastructure/CellSupplementDialog.html',
 					controller: 'cell.position.supplement.dialog',
@@ -137,7 +137,7 @@
 					});
 
 				});
-			},
+			}, /////////////////////////////////////////////////////////
 			construct3GTest: function(collegeName) {
 				menuItemService.showGeneralDialogWithAction({
 					templateUrl: '/appViews/College/Test/Construct3GTest.html',
@@ -211,7 +211,7 @@
 					}
 				});
 			},
-			addENodeb: function(collegeName, center, callback) {
+			addENodeb: function(collegeName, center, callback) { /////////////////////////////////////////////////////
 				menuItemService.showGeneralDialogWithAction({
 					templateUrl: '/appViews/College/Infrastructure/ENodebSupplementDialog.html',
 					controller: 'eNodeb.supplement.dialog',
@@ -235,7 +235,7 @@
 						callback(count);
 					});
 				});
-			},
+			}, ///////////////////////////////////////////////////////////
 			addBts: function(collegeName, center, callback) {
 				menuItemService.showGeneralDialogWithAction({
 					templateUrl: '/appViews/College/Infrastructure/BtsSupplementDialog.html',
@@ -260,7 +260,7 @@
 						callback(count);
 					});
 				});
-			},
+			}, //////////////////////////////////////////////////////////
 			showCollegeFlow: function(year) {
 				menuItemService.showGeneralDialog({
 					templateUrl: '/appViews/College/Test/Flow.html',

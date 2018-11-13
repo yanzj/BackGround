@@ -1218,7 +1218,6 @@
     <None Include="Areas\TestPage\Views\AngularTest\Index.cshtml" />
     <None Include="Properties\PublishProfiles\Lte-ftp-219.pubxml" />
     <None Include="Properties\PublishProfiles\Lte2.pubxml" />
-    <Content Include="Scripts\kpi\interference.import.controller.js" />
     <Content Include="Scripts\manage\index.viewmodel.js" />
     <Content Include="Scripts\parameters\alarmimport.controller.js" />
     <Content Include="Scripts\ui-grid.js" />

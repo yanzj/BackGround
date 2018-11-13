@@ -2223,7 +2223,7 @@ angular.module('app.calculation', ['app.format'])
                 source.longtitute = destination.longtitute;
                 source.lattitute = destination.lattitute;
             },
-            generateDateSpanSeries: function(begin, end) {
+            generateDateSpanSeries: function(begin, end) { ////////////////////////// Reserved
                 var result = [];
                 var beginDate = new Date(begin.getYear() + 1900, begin.getMonth(), begin.getDate());
                 while (beginDate < end) {
