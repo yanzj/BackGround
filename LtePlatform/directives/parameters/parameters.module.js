@@ -1,7 +1,7 @@
 ﻿angular.module('parameters.module',
 [
     'parameters.kpi.module', 'parameters.eNodeb.module', 'parameters.bts.module',
-    'parameters.cell.module', 'parameters.cell.rru.module', 'parameters.cdma.cell.module', 'parameters.mongo.module',
+    'parameters.cell.module', 'parameters.cell.rru.module', 'parameters.cdma.cell.module',
     'parameters.mongo.switch.basic.module', 'parameters.mongo.switch.inter.module', 'parameters.mongo.power.module'
 ]);
 
@@ -490,25 +490,6 @@ angular.module('parameters.cell.module', ['ui.grid', 'myApp.region', 'myApp.url'
                     argumentName: 'items'
                 },
                 $compile);
-        })
-    .controller('CellDetailsController',
-        function($scope, networkElementService, calculateService) {
-            networkElementService.queryCellInfo($scope.eNodebId, $scope.sectorId).then(function(result) {
-                $scope.itemGroups = calculateService.generateCellDetailsGroups(result);
-            });
-        })
-    .directive('cellDetails',
-        function() {
-            return {
-                controller: 'CellDetailsController',
-                restrict: 'EA',
-                replace: true,
-                scope: {
-                    eNodebId: '=',
-                    sectorId: '='
-                },
-                templateUrl: '/appViews/Home/GeneralTableDetails.html'
-            }
         });
 
 angular.module('parameters.cell.rru.module', ['ui.grid', 'myApp.region', 'myApp.url', 'myApp.kpi'])
@@ -729,27 +710,6 @@ angular.module('parameters.cdma.cell.module', ['ui.grid', 'myApp.region', 'myApp
                 templateUrl: '/appViews/Home/GeneralTableDetails.html'
             }
         });
-
-angular.module('parameters.mongo.module', ['ui.grid', 'myApp.region', 'myApp.url', 'myApp.kpi'])
-    .controller('CellMongoController',
-        function($scope, cellHuaweiMongoService, calculateService) {
-            cellHuaweiMongoService.queryCellParameters($scope.eNodebId, $scope.sectorId).then(function(info) {
-                $scope.itemGroups = calculateService.generateCellMongoGroups(info);
-            });
-        })
-    .directive('cellMongoInfo',
-        function() {
-            return {
-                controller: 'CellMongoController',
-                restrict: 'EA',
-                replace: true,
-                scope: {
-                    eNodebId: '=',
-                    sectorId: '='
-                },
-                templateUrl: '/appViews/Home/GeneralTableDetails.html'
-            }
-    });
 
 angular.module('parameters.mongo.switch.basic.module', ['ui.grid', 'myApp.region', 'myApp.url', 'myApp.kpi'])
     .directive('eNodebIntraFreq',

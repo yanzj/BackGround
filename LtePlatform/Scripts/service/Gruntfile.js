@@ -16,9 +16,9 @@
                     ],
                     'app/kpi.js': [
                         'kpi/college.infrastructure.js', 'kpi/college.basic.js', 'kpi/college.maintain.js',
-                        'kpi/college.flow.js', 'kpi/college.js', 
+                        'kpi/college.js', 
                         'kpi/customer.js', 'kpi/customer.complain.js', 'kpi/customer.sustain.js',
-                        'kpi/parameter.dump.js', 'kpi/parameter.rutrace.js', 'kpi/work.dialog.js', 'kpi/work.js', 'kpi/app.kpi.js'
+                        'kpi/parameter.dump.js', 'kpi/work.dialog.js', 'kpi/work.js', 'kpi/app.kpi.js'
                     ],
                     'app/topic.js': [
                         'topic/basic.js', 'topic/college.js',

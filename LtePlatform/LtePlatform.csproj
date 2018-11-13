@@ -1100,7 +1100,6 @@
     <Content Include="Scripts\service\app\region.js" />
     <Content Include="Scripts\service\app\url.js" />
     <Content Include="Scripts\service\kpi\college.basic.js" />
-    <Content Include="Scripts\service\kpi\college.flow.js" />
     <Content Include="Scripts\service\kpi\college.infrastructure.js" />
     <Content Include="Scripts\service\kpi\college.js" />
     <Content Include="Scripts\service\kpi\college.maintain.js" />
