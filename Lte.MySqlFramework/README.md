@@ -22,7 +22,11 @@
     }
 ```
 
+## MySQL数据库表实体定义
+
 ## MySQL仓储接口定义例子
+
+以下是校园网年度信息对应的仓储
 
 ```C#
     public interface ICollegeYearRepository : IRepository<CollegeYearInfo>, ISaveChanges

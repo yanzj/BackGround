@@ -10,26 +10,9 @@
 这个上下文运用SQLServer引擎，运用了基于ABP的EntityFramework。
 2018年10月5日开始，除了账号权限验证数据与基础库密切相关而暂时无法迁移外，其余数据表均迁移到MySQL引擎。
 
-## MasterTestContext
+## MasterTestContext（已迁移到MySQL）
 
-这个上下文也运用SQLServer引擎，但没有用EntityFramework，代码如下：
-
-```C#
-    [Database(Name = "masterTest")]
-    public class MasterTestContext : DataContext
-    {
-        private static readonly MappingSource _mappingSource = new AttributeMappingSource();
-
-        public MasterTestContext()
-            : base(
-                ConfigurationManager.ConnectionStrings["MasterTest"].ConnectionString,
-                _mappingSource)
-        {
-
-        }
-        ...
-    }
-```
+2018年10月5日开始，除了账号权限验证数据与基础库密切相关而暂时无法迁移外，其余数据表均迁移到MySQL引擎。
 
 ## MyMongoProvider
 
