@@ -584,6 +584,8 @@ namespace LtePlatform
 
             ninjectKernel.Bind<TopMrsSinrUlService>().ToSelf();
 
+            ninjectKernel.Bind<TopMrsTadvService>().ToSelf();
+
         }
     }
 }

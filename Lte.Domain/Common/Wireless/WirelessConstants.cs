@@ -52,6 +52,9 @@ namespace Lte.Domain.Common.Wireless
                     "OrderMrsSinrUlPolicy", OrderMrsSinrUlPolicyTuples.GetTuples()
                 },
                 {
+                    "OrderMrsTadvPolicy", OrderMrsTadvPolicyTuples.GetTuples()
+                },
+                {
                     "OrderTopConnection3GPolicy", OrderTopConnection3GPolicyTuples.GetTuples()
                 },
                 {

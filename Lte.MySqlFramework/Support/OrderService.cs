@@ -175,6 +175,58 @@ namespace Lte.MySqlFramework.Support
             }
         }
 
+        public static IEnumerable<TopMrsTadv> Order(this IEnumerable<TopMrsTadv> stats, OrderMrsTadvPolicy policy,
+            int topCount)
+        {
+            switch (policy)
+            {
+                case OrderMrsTadvPolicy.OrderBy112RateDescending:
+                    return
+                        stats.OrderByDescending(x => (double)(x.TadvAbove192 + x.Tadv112To192)
+                                                     /
+                                                     (x.TadvBelow1 + x.Tadv1To2 + x.Tadv2To3 + x.Tadv3To4 + x.Tadv4To6 + x.Tadv6To8 +
+                                                      x.Tadv8To10 + x.Tadv10To12 + x.Tadv12To14 + x.Tadv14To16 + x.Tadv16To18
+                                                      + x.Tadv18To20 + x.Tadv20To24 + x.Tadv24To28 + x.Tadv28To32 + x.Tadv32To36
+                                                      + x.Tadv36To42 + x.Tadv42To48 + x.Tadv48To54 + x.Tadv54To60 + x.Tadv60To80
+                                                      + x.Tadv80To112 + x.Tadv112To192)).Take(topCount).ToList();
+                case OrderMrsTadvPolicy.OrderBy112TimesDescending:
+                    return
+                        stats.OrderByDescending(x => x.TadvAbove192 + x.Tadv112To192)
+                            .Take(topCount)
+                            .ToList();
+                case OrderMrsTadvPolicy.OrderBy60RateDescending:
+                    return
+                        stats.OrderByDescending(x => (double)(x.TadvAbove192 + x.Tadv112To192 + x.Tadv80To112 + x.Tadv60To80)
+                                                     /
+                                                     (x.TadvBelow1 + x.Tadv1To2 + x.Tadv2To3 + x.Tadv3To4 + x.Tadv4To6 + x.Tadv6To8 +
+                                                      x.Tadv8To10 + x.Tadv10To12 + x.Tadv12To14 + x.Tadv14To16 + x.Tadv16To18
+                                                      + x.Tadv18To20 + x.Tadv20To24 + x.Tadv24To28 + x.Tadv28To32 + x.Tadv32To36
+                                                      + x.Tadv36To42 + x.Tadv42To48 + x.Tadv48To54 + x.Tadv54To60 + x.Tadv60To80
+                                                      + x.Tadv80To112 + x.Tadv112To192)).Take(topCount).ToList();
+                case OrderMrsTadvPolicy.OrderBy60TimesDescending:
+                    return
+                        stats.OrderByDescending(x => x.TadvAbove192 + x.Tadv112To192 + x.Tadv80To112 + x.Tadv60To80)
+                            .Take(topCount)
+                            .ToList();
+                case OrderMrsTadvPolicy.OrderBy42RateDescending:
+                    return
+                        stats.OrderByDescending(x => (double)(x.TadvAbove192 + x.Tadv112To192 + x.Tadv80To112 + x.Tadv60To80
+                                                        + x.Tadv54To60 + x.Tadv48To54 + x.Tadv42To48)
+                                                     /
+                                                     (x.TadvBelow1 + x.Tadv1To2 + x.Tadv2To3 + x.Tadv3To4 + x.Tadv4To6 + x.Tadv6To8 +
+                                                      x.Tadv8To10 + x.Tadv10To12 + x.Tadv12To14 + x.Tadv14To16 + x.Tadv16To18
+                                                      + x.Tadv18To20 + x.Tadv20To24 + x.Tadv24To28 + x.Tadv28To32 + x.Tadv32To36
+                                                      + x.Tadv36To42 + x.Tadv42To48 + x.Tadv48To54 + x.Tadv54To60 + x.Tadv60To80
+                                                      + x.Tadv80To112 + x.Tadv112To192)).Take(topCount).ToList();
+                default:
+                    return
+                        stats.OrderByDescending(x => x.TadvAbove192 + x.Tadv112To192 + x.Tadv80To112 + x.Tadv60To80
+                                                        + x.Tadv54To60 + x.Tadv48To54 + x.Tadv42To48)
+                            .Take(topCount)
+                            .ToList();
+            }
+        }
+
         public static IEnumerable<CoverageStat> Order(this IEnumerable<CoverageStat> stats, OrderMrsRsrpPolicy policy,
             int topCount)
         {
