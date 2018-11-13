@@ -651,7 +651,6 @@
     <Content Include="appViews\College\Infrastructure\NewCollegeDialog.html" />
     <Content Include="appViews\College\Infrastructure\YearInfoDialog.html" />
     <Content Include="appViews\College\Table\CollegeCellBasicInfo.html" />
-    <Content Include="appViews\College\Test\Process.html" />
     <Content Include="appViews\Customer\Complain\Branch.html" />
     <Content Include="appViews\Customer\Complain\Details.html" />
     <Content Include="appViews\Customer\Complain\List.html" />

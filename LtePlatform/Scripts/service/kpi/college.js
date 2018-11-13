@@ -138,49 +138,7 @@
 
 				});
 			}, /////////////////////////////////////////////////////////
-			construct3GTest: function(collegeName) {
-				menuItemService.showGeneralDialogWithAction({
-					templateUrl: '/appViews/College/Test/Construct3GTest.html',
-					controller: 'college.test3G.dialog',
-					resolve: {
-						collegeName: function() {
-							return collegeName;
-						}
-					}
-				}, function(info) {
-					collegeQueryService.saveCollege3GTest(info).then(function() {
-						console.log(info);
-					});
-				});
-			},
-			construct4GTest: function(collegeName) {
-				menuItemService.showGeneralDialogWithAction({
-					templateUrl: '/appViews/College/Test/Construct4GTest.html',
-					controller: 'college.test4G.dialog',
-					resolve: {
-						collegeName: function() {
-							return collegeName;
-						}
-					}
-				}, function(info) {
-					collegeQueryService.saveCollege4GTest(info).then(function() {
-						console.log(info);
-					});
-				});
-			},
-			processTest: function(collegeName, callback) {
-				menuItemService.showGeneralDialogWithAction({
-					templateUrl: '/appViews/College/Test/Process.html',
-					controller: 'test.process.dialog',
-					resolve: {
-						collegeName: function() {
-							return collegeName;
-						}
-					}
-				}, function(info) {
-					callback(info);
-				});
-			},
+
 			tracePlanning: function(collegeName, callback) {
 				menuItemService.showGeneralDialogWithAction({
 					templateUrl: '/appViews/College/Test/Planning.html',
