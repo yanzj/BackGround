@@ -1709,19 +1709,6 @@ angular.module('kpi.work', ['app.menu', 'app.core', 'myApp.region'])
                     }
                 });
             },
-			showPreciseTrend: function(city, beginDate, endDate) {
-			    menuItemService.showGeneralDialog({
-			        templateUrl: '/appViews/Rutrace/Coverage/Trend.html',
-			        controller: 'rutrace.trend.dialog',
-			        resolve: stationFormatService.dateSpanDateResolve({
-			                city: function() {
-			                    return city;
-			                }
-			            },
-			            beginDate,
-			            endDate)
-			    });
-			},
             showDownSwitchTrend: function (city, beginDate, endDate) {
                 menuItemService.showGeneralDialog({
                     templateUrl: '/appViews/WorkItem/RrcTrend.html',
