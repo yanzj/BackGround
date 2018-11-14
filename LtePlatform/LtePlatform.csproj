@@ -631,7 +631,6 @@
     <Content Include="appViews\BasicKpi\ClusterPoint.html" />
     <Content Include="appViews\BasicKpi\Construction.html" />
     <Content Include="appViews\BasicKpi\HotspotDtDialog.html" />
-    <Content Include="appViews\Customer\Dialog\Recent.html" />
     <Content Include="appViews\BasicKpi\GridApp.html" />
     <Content Include="appViews\BasicKpi\GridClusterDialog.html" />
     <Content Include="appViews\BasicKpi\Resource.html" />
@@ -650,19 +649,15 @@
     <Content Include="appViews\College\Infrastructure\YearInfoDialog.html" />
     <Content Include="appViews\College\Table\CollegeCellBasicInfo.html" />
     <Content Include="appViews\Customer\Complain\Branch.html" />
-    <Content Include="appViews\Customer\Complain\Details.html" />
     <Content Include="appViews\Customer\Complain\List.html" />
-    <Content Include="appViews\Customer\Complain\Online.html" />
     <Content Include="appViews\Customer\Complain\OnlineList.html" />
     <Content Include="appViews\Customer\Complain\Stat.html" />
     <Content Include="appViews\Customer\Dialog\CollegeSupplement.html" />
     <Content Include="appViews\Customer\Dialog\Complain.html" />
     <Content Include="appViews\Customer\Dialog\Micro.html" />
     <Content Include="appViews\Customer\Dialog\VipSupplement.html" />
-    <Content Include="appViews\Customer\Dialog\Yesterday.html" />
     <Content Include="appViews\Customer\EmergencyList.html" />
     <Content Include="appViews\Customer\Dialog\Emergency.html" />
-    <Content Include="appViews\Customer\Index.html" />
     <Content Include="appViews\Customer\Process\Complain.html" />
     <Content Include="appViews\Customer\Process\Emergency.html" />
     <Content Include="appViews\Customer\Process\Vip.html" />
@@ -690,8 +685,6 @@
     <Content Include="appViews\Manage\UserRolesDialog.html" />
     <Content Include="appViews\Parameters\Import\HotSpot.html" />
     <Content Include="appViews\Parameters\Import\HotSpotCell.html" />
-    <Content Include="appViews\Parameters\Map\CellsMapInfoBox.html" />
-    <Content Include="appViews\Parameters\Region\ArrangeInfo.html" />
     <Content Include="appViews\Test\Simple\CellClass.html" />
     <Content Include="appViews\Test\Simple\GridBinding.html" />
     <Content Include="appViews\Test\Simple\GridFilter.html" />
@@ -1106,7 +1099,6 @@
     <Content Include="Scripts\service\topic\dialog.college.js" />
     <Content Include="Scripts\service\topic\dialog.customer.js" />
     <Content Include="Scripts\service\topic\dialog.js" />
-    <Content Include="Scripts\service\topic\dialog.parameters.js" />
     <Content Include="Scripts\service\topic\parameters.basic.js" />
     <Content Include="Scripts\service\topic\parameters.coverage.js" />
     <Content Include="Scripts\service\topic\parameters.js" />
@@ -1243,7 +1235,6 @@
     </Content>
     <Content Include="Scripts\service\topic\baidu.map.js" />
     <Content Include="Views\Kpi\Import.cshtml" />
-    <Content Include="appViews\BasicKpi\Index.html" />
     <Content Include="appViews\College\Table\CollegeMapInfoBox.html" />
     <Content Include="appViews\College\Table\DistributionMapInfoBox.html" />
     <Content Include="Scripts\service\region\app.region.js" />
@@ -1256,7 +1247,6 @@
     <Content Include="Views\Kpi\ComplainAdjust.cshtml" />
     <None Include="Views\Kpi\PreciseImport.cshtml" />
     <Content Include="Views\Kpi\WorkItemImport.cshtml" />
-    <Content Include="appViews\BasicKpi\TopDrop2G.html" />
     <None Include="Views\Parameters\AlarmImport.cshtml" />
     <Content Include="Views\Shared\_AlertPanel.cshtml" />
     <Content Include="appViews\College\Infrastructure\DistributionDialog.html" />
