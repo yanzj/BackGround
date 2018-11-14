@@ -1980,48 +1980,6 @@ angular.module('topic.dialog.customer', ['myApp.url', 'myApp.region', 'myApp.kpi
             };
         });
 angular.module('topic.dialog.parameters', ['myApp.url', 'myApp.region', 'myApp.kpi', 'topic.basic', 'topic.dialog', "ui.bootstrap"])
-    .controller('town.eNodeb.dialog',
-        function($scope,
-            $uibModalInstance,
-            dialogTitle,
-            city,
-            district,
-            town,
-            networkElementService,
-            appRegionService,
-            parametersChartService,
-            mapDialogService) {
-            $scope.dialogTitle = dialogTitle;
-            networkElementService.queryENodebsInOneTown(city, district, town).then(function(eNodebs) {
-                $scope.eNodebList = eNodebs;
-            });
-            networkElementService.queryBtssInOneTown(city, district, town).then(function(btss) {
-                $scope.btsList = btss;
-            });
-            appRegionService.queryTownLteCount(city, district, town, true).then(function(stat) {
-                $("#indoorChart").highcharts(parametersChartService
-                    .getLteCellCountOptions(city + district + town + '室内', stat));
-            });
-            appRegionService.queryTownLteCount(city, district, town, false).then(function(stat) {
-                $("#outdoorChart").highcharts(parametersChartService
-                    .getLteCellCountOptions(city + district + town + '室外', stat));
-            });
-
-            $scope.arrangeENodebs = function() {
-                mapDialogService.arrangeTownENodebInfo(city, district, town);
-            };
-            $scope.arrangeBtss = function() {
-                mapDialogService.arrangeTownBtsInfo(city, district, town);
-            };
-
-            $scope.ok = function() {
-                $uibModalInstance.close($scope.eNodeb);
-            };
-
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            };
-    })
     .controller('arrange.eNodeb.dialog',
         function($scope,
             $uibModalInstance,
@@ -2277,26 +2235,6 @@ angular.module('topic.dialog',[ 'app.menu', 'app.core' ])
     .factory('mapDialogService',
         function (menuItemService, stationFormatService) {
             return {
-                showTownENodebInfo: function(item, city, district) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/Parameters/Region/TownENodebInfo.html',
-                        controller: 'town.eNodeb.dialog',
-                        resolve: {
-                            dialogTitle: function() {
-                                return city + district + item.town + "-" + "基站基本信息";
-                            },
-                            city: function() {
-                                return city;
-                            },
-                            district: function() {
-                                return district;
-                            },
-                            town: function() {
-                                return item.town;
-                            }
-                        }
-                    });
-                },
                 arrangeTownENodebInfo: function (city, district, town) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/Parameters/Region/ArrangeInfo.html',

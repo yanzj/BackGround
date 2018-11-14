@@ -2,26 +2,6 @@
     .factory('mapDialogService',
         function (menuItemService, stationFormatService) {
             return {
-                showTownENodebInfo: function(item, city, district) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/Parameters/Region/TownENodebInfo.html',
-                        controller: 'town.eNodeb.dialog',
-                        resolve: {
-                            dialogTitle: function() {
-                                return city + district + item.town + "-" + "基站基本信息";
-                            },
-                            city: function() {
-                                return city;
-                            },
-                            district: function() {
-                                return district;
-                            },
-                            town: function() {
-                                return item.town;
-                            }
-                        }
-                    });
-                },
                 arrangeTownENodebInfo: function (city, district, town) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/Parameters/Region/ArrangeInfo.html',

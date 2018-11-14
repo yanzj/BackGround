@@ -632,9 +632,6 @@
     <Content Include="appViews\BasicKpi\Construction.html" />
     <Content Include="appViews\BasicKpi\HotspotDtDialog.html" />
     <Content Include="appViews\Customer\Dialog\Recent.html" />
-    <Content Include="appViews\Home\Assessment.html" />
-    <Content Include="appViews\Home\Common.html" />
-    <Content Include="appViews\Home\DT.html" />
     <Content Include="appViews\BasicKpi\GridApp.html" />
     <Content Include="appViews\BasicKpi\GridClusterDialog.html" />
     <Content Include="appViews\BasicKpi\Resource.html" />
@@ -677,21 +674,11 @@
     <Content Include="appViews\Evaluation\Highway.html" />
     <Content Include="appViews\Evaluation\Subway.html" />
     <Content Include="appViews\HeaderMenu.html" />
-    <Content Include="appViews\Home\Analysis.html" />
-    <Content Include="appViews\Home\ButtonMenu.html" />
-    <Content Include="appViews\Home\Complain.html" />
     <Content Include="appViews\Home\DatePopoverInput.html" />
-    <Content Include="appViews\Home\Flow.html" />
     <Content Include="appViews\Home\FourChartDialog.html" />
     <Content Include="appViews\Home\GeneralTableDetails.html" />
-    <Content Include="appViews\Home\Menu\Cdma.html" />
     <Content Include="appViews\Home\Micro.html" />
-    <Content Include="appViews\Home\Mr.html" />
-    <Content Include="appViews\Home\MrGrid.html" />
     <Content Include="appViews\Home\Network.html" />
-    <Content Include="appViews\Home\Menu\Plan.html" />
-    <Content Include="appViews\Home\PlanningDetails.html" />
-    <Content Include="appViews\Home\Query.html" />
     <Content Include="appViews\Home\SingleChartDialog.html" />
     <Content Include="appViews\Import\ImportProgress.html" />
     <Content Include="appViews\Manage\AllUsers.html" />
@@ -705,7 +692,6 @@
     <Content Include="appViews\Parameters\Import\HotSpotCell.html" />
     <Content Include="appViews\Parameters\Map\CellsMapInfoBox.html" />
     <Content Include="appViews\Parameters\Region\ArrangeInfo.html" />
-    <Content Include="appViews\Parameters\Region\TownENodebInfo.html" />
     <Content Include="appViews\Test\Simple\CellClass.html" />
     <Content Include="appViews\Test\Simple\GridBinding.html" />
     <Content Include="appViews\Test\Simple\GridFilter.html" />
@@ -1103,7 +1089,6 @@
     <Content Include="Scripts\service\kpi\college.infrastructure.js" />
     <Content Include="Scripts\service\kpi\college.js" />
     <Content Include="Scripts\service\kpi\college.maintain.js" />
-    <Content Include="Scripts\service\kpi\college.work.js" />
     <Content Include="Scripts\service\kpi\coverage.flow.js" />
     <Content Include="Scripts\service\kpi\customer.complain.js" />
     <Content Include="Scripts\service\kpi\customer.js" />
