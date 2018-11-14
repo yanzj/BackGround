@@ -982,15 +982,12 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app\Gruntfile.js" />
-    <Content Include="Scripts\app\home.college.js" />
     <Content Include="Scripts\app\home.combined.js" />
     <Content Include="Scripts\app\home.complain.js" />
-    <Content Include="Scripts\app\home.kpi.js" />
     <Content Include="Scripts\app\home.menu.js" />
     <Content Include="Scripts\app\home.network.js" />
     <Content Include="Scripts\app\home.root.js" />
     <Content Include="Scripts\app\home.route.js" />
-    <Content Include="Scripts\app\network.theme.js" />
     <Content Include="Scripts\baidu\plugins\ComplexCustomOverlay.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
