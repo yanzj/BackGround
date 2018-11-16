@@ -123,9 +123,27 @@ namespace Lte.Evaluations.ViewModels.Mr
 
         public long SinrUlAbove24 => SinrUL_35 + SinrUL_36;
 
-        public long TotalMrs => SinrUlBelowM9 + SinrUlM9ToM6 + SinrUlM6ToM3 +
-                                SinrUlM3To0 + SinrUl0To3 + SinrUl3To6 + SinrUl6To9 + SinrUl9To12 + SinrUl12To15 +
-                                SinrUl15To18 + SinrUl18To21 + SinrUl21To24 + SinrUlAbove24;
+        public long SinrUlAbove15 => SinrUlAbove24 + SinrUl21To24 + SinrUl18To21 + SinrUl15To18;
+
+        public long SinrUlAbove9 => SinrUlAbove15 + SinrUl12To15 + SinrUl9To12;
+
+        public long SinrUlAbove3 => SinrUlAbove9 + SinrUl6To9 + SinrUl3To6;
+
+        public long SinrUlAbove0 => SinrUlAbove3 + SinrUl0To3;
+
+        public long SinrUlAboveM3 => SinrUlAbove0 + SinrUlM3To0;
+
+        public long TotalMrs => SinrUlAboveM3 + SinrUlM6ToM3 + SinrUlM9ToM6 + SinrUlBelowM9;
+
+        public double CoverageAbove15 => TotalMrs == 0 ? 0 : (double)SinrUlAbove15 / TotalMrs;
+
+        public double CoverageAbove9 => TotalMrs == 0 ? 0 : (double)SinrUlAbove9 / TotalMrs;
+
+        public double CoverageAbove3 => TotalMrs == 0 ? 0 : (double)SinrUlAbove3 / TotalMrs;
+
+        public double CoverageAbove0 => TotalMrs == 0 ? 0 : (double)SinrUlAbove0 / TotalMrs;
+
+        public double CoverageAboveM3 => TotalMrs == 0 ? 0 : (double)SinrUlAboveM3 / TotalMrs;
 
         public int TopDates { get; set; }
 

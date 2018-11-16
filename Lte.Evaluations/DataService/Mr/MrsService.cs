@@ -75,9 +75,10 @@ namespace Lte.Evaluations.DataService.Mr
             return _rsrpRepository.GetAllList(x => x.StatDate >= begin && x.StatDate < end);
         }
 
-        public MrsSinrUlStat QuerySinrUlStat(int eNodebId, byte sectorId, DateTime statDate)
+        public CellMrsSinrUlDto QuerySinrUlStat(int eNodebId, byte sectorId, DateTime statDate)
         {
-            return _sinrUlRepository.Get(eNodebId + "-" + sectorId, statDate);
+            return CellMrsSinrUlDto.ConstructView(_sinrUlRepository.Get(eNodebId + "-" + sectorId, statDate),
+                _eNodebRepository);
         }
         
         public IEnumerable<CellMrsSinrUlDto> QueryMrsSinrUlStats(int eNodebId, byte sectorId, DateTime begin, DateTime end)
