@@ -99,15 +99,16 @@ namespace Lte.Evaluations.DataService.Mr
             return _sinrUlRepository.GetAllList(x => x.StatDate >= begin && x.StatDate < end);
         }
 
-        public MrsTadvStat QueryTadvStat(int eNodebId, byte sectorId, DateTime statDate)
+        public CellMrsTadvDto QueryTadvStat(int eNodebId, byte sectorId, DateTime statDate)
         {
-            return _tadvRepository.Get(eNodebId + "-" + sectorId, statDate);
+            return CellMrsTadvDto.ConstructView(_tadvRepository.Get(eNodebId + "-" + sectorId, statDate),
+                _eNodebRepository);
         }
-
+        
         public IEnumerable<CellMrsTadvDto> QueryMrsTadvStats(int eNodebId, byte sectorId, DateTime begin, DateTime end)
         {
             var eNodeb = _eNodebRepository.FirstOrDefault(x => x.ENodebId == eNodebId);
-            var list = _sinrUlRepository.GetList(eNodebId + "-" + sectorId, begin, end).MapTo<List<CellMrsTadvDto>>();
+            var list = _tadvRepository.GetList(eNodebId + "-" + sectorId, begin, end).MapTo<List<CellMrsTadvDto>>();
             list.ForEach(stat => stat.ENodebName = eNodeb?.Name);
             return list;
         }
