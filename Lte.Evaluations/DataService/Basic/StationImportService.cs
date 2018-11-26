@@ -126,15 +126,7 @@ namespace Lte.Evaluations.DataService.Basic
                 {
                     if (excel.StationDistrict == "南海") return excel.StationTown.Replace("金沙", "丹灶").Replace("小塘", "狮山");
                     if (excel.StationDistrict != "禅城" || excel.StationTown == "南庄") return excel.StationTown;
-                    var candidates = new[] {"石湾", "张槎", "祖庙"};
-                    if (candidates.FirstOrDefault(x => excel.StationTown == x) != null) return excel.StationTown;
-                    var result = candidates.FirstOrDefault(x => excel.ENodebName.Contains(x));
-                    if (result != null) return result;
-                    var station = _stationDictionary.FirstOrDefault(x => x.StationNum == excel.StationNum);
-                    if (station == null) return excel.StationTown;
-                    result = candidates.FirstOrDefault(x =>
-                        station.ElementName.Contains(x) || station.Address.Contains(x));
-                    return result ?? excel.StationTown;
+                    return _stationDictionary.CalculateStationTown(excel);
                 }, (info, excel) =>
                 {
                     var station = _stationDictionary.FirstOrDefault(x => x.StationNum == excel.StationNum);

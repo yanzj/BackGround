@@ -2,7 +2,9 @@
 
 主要包括基本数据类型定义、外部数据访问API、Excel和CSV数据格式定义等。
 
-## 枚举类型定义
+## 公共参数定义和变换
+
+### 枚举类型定义
 
 由于ORM的出现，数据库支持枚举类型。
 我们根据无线通信的业务规则定义了大量的枚举类型。
@@ -54,7 +56,7 @@ public object DefaultValue { get; }//默认的枚举取值
 public Tuple<object, string>[] TupleList { get; }//生成枚举值和描述的对应关系，从WirelessConstants.EnumDictionary中查询
 ```
 
-## CSV数据定义
+### CSV数据定义
 
 定义了部分CSV数据格式，另外部分CSV格式，如DT数据放在其他项目中
 
@@ -69,3 +71,7 @@ CSV格式文件数据导入程序，来自网上略作修改。
 ## LinqToExcel
 
 EXCEL格式文件数据导入程序，来自网上略作修改。
+
+## Lz4Net
+
+## 其他公共数据类型和变换

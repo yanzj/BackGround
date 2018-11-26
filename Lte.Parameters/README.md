@@ -14,31 +14,18 @@
 
 2018年10月5日开始，除了账号权限验证数据与基础库密切相关而暂时无法迁移外，其余数据表均迁移到MySQL引擎。
 
-## MyMongoProvider
-
-这个上下文运用MySQL引擎，运用了基于ABP的EntityFramework
+## DT(MySQL)仓储接口定义例子
 
 ```C#
-    public class MyMongoProvider : IMongoDatabaseProvider
-    {
-        private static readonly MongoClient Client = new MongoClient("mongodb://root:Abcdef9*@132.110.71.123:27017");
-
-        public MyMongoProvider(string databaseString)
-        {
-#pragma warning disable 618
-            var server = Client.GetServer();
-#pragma warning restore 618
-            Database = server.GetDatabase(databaseString);
-        }
-
-        public MongoDatabase Database { get; }
-    }
-```
-
-## SQLServer仓储接口定义例子
-
-```C#
-    public interface ITownPreciseCoverage4GStatRepository : IRepository<TownPreciseCoverage4GStat>, ISaveChanges
+    public interface IFileRecord2GRepository : IRepository<FileRecord2G>, ISaveChanges, IMatchRepository<FileRecord2G>
     {
     }
 ```
+
+## 项目总体结构
+
+### 数据实体和视图定义
+
+### 仓储接口定义
+
+### 仓储实现
