@@ -63,7 +63,10 @@ namespace Lte.Evaluations.DataService.Kpi
                     UsersItems = usersItems,
                     TownUserses = townUserses,
                     CqiItems = cqiItems,
-                    TownCqis = townCqis
+                    TownCqis = townCqis,
+                    TownCqi1800s = townCqi1800s,
+                    TownCqi2100s = townCqi2100s,
+                    TownCqi800s = townCqi800s
                 });
                 begin = begin.AddDays(1);
             }
