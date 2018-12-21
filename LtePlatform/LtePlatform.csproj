@@ -311,6 +311,7 @@
     <Compile Include="Controllers\AdminitrativeRegion\CqiFrequencyController.cs" />
     <Compile Include="Controllers\AdminitrativeRegion\DumpStatsController.cs" />
     <Compile Include="Controllers\AdminitrativeRegion\DumpTownCqiController.cs" />
+    <Compile Include="Controllers\AdminitrativeRegion\DumpTownPrbController.cs" />
     <Compile Include="Controllers\AdminitrativeRegion\HourCqiFrequencyController.cs" />
     <Compile Include="Controllers\AdminitrativeRegion\TownHourCqiController.cs" />
     <Compile Include="Controllers\College\CollegeHourCqiController.cs" />

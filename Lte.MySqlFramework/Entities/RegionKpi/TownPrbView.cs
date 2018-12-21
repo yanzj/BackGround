@@ -18,6 +18,8 @@ namespace Lte.MySqlFramework.Entities.RegionKpi
 
         [AutoMapPropertyResolve("StatTime", typeof(TownPrbStat))]
         public DateTime StatDate { get; set; }
+        
+        public string Frequency { get; set; }
 
         public double PdschPrbs { get; set; }
 

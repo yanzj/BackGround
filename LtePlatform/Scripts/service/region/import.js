@@ -296,6 +296,12 @@
                         {
                             statDate: statDate
                         });
+                },
+                dumpTownPrbs: function(statDate) {
+                    return generalHttpService.getApiData('DumpTownPrb',
+                        {
+                            statDate: statDate
+                        });
                 }
             };
         })

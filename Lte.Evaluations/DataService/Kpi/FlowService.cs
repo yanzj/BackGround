@@ -348,7 +348,23 @@ namespace Lte.Evaluations.DataService.Kpi
                         x =>
                             x.StatTime >= beginDate && x.StatTime < endDate &&
                             x.FrequencyBandType == FrequencyBandType.Band800VoLte);
-                var townPrbs = await _townPrbRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
+                var townPrbs = await _townPrbRepository.CountAsync(x =>
+                    x.StatTime >= beginDate && x.StatTime < endDate && x.FrequencyBandType == FrequencyBandType.All);
+                var townPrbs2100 =
+                    await _townPrbRepository.CountAsync(
+                        x =>
+                            x.StatTime >= beginDate && x.StatTime < endDate &&
+                            x.FrequencyBandType == FrequencyBandType.Band2100);
+                var townPrbs1800 =
+                    await _townPrbRepository.CountAsync(
+                        x =>
+                            x.StatTime >= beginDate && x.StatTime < endDate &&
+                            x.FrequencyBandType == FrequencyBandType.Band1800);
+                var townPrbs800 =
+                    await _townPrbRepository.CountAsync(
+                        x =>
+                            x.StatTime >= beginDate && x.StatTime < endDate &&
+                            x.FrequencyBandType == FrequencyBandType.Band800VoLte);
                 var townDoubleFlows =
                     await _townDoubleFlowRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
                 results.Add(new FlowHistory
@@ -373,6 +389,9 @@ namespace Lte.Evaluations.DataService.Kpi
                     TownCqis1800 = townCqis1800,
                     TownCqis800VoLte = townCqis800,
                     TownPrbs = townPrbs,
+                    TownPrbs2100 = townPrbs2100,
+                    TownPrbs1800 = townPrbs1800,
+                    TownPrbs800VoLte = townPrbs800,
                     TownDoubleFlows = townDoubleFlows
                 });
                 begin = begin.AddDays(1);

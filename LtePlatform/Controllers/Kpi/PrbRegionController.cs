@@ -1,5 +1,4 @@
-﻿using Lte.Evaluations.DataService.Kpi;
-using LtePlatform.Models;
+﻿using LtePlatform.Models;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities.RegionKpi;
+using Lte.Domain.Common.Wireless.Cell;
 using Lte.MySqlFramework.Abstract.Region;
 using Lte.MySqlFramework.Abstract.RegionKpi;
 using Lte.MySqlFramework.Entities.RegionKpi;
@@ -26,7 +27,8 @@ namespace Lte.Evaluations.DataService.RegionKpi
             var stats = _statRepository.QueryLastDate(initialDate, (repository, beginDate, endDate) =>
             {
                 var query =
-                    _statRepository.GetAllList(x => x.StatTime >= beginDate & x.StatTime < endDate);
+                    _statRepository.GetAllList(x =>
+                        x.StatTime >= beginDate & x.StatTime < endDate && x.FrequencyBandType == FrequencyBandType.All);
                 return query.FilterTownList(_townRepository.GetAllList().Where(x => x.CityName == city).ToList());
             });
             var townViews = stats.ConstructViews<TownPrbStat, TownPrbView>(_townRepository);
@@ -36,7 +38,8 @@ namespace Lte.Evaluations.DataService.RegionKpi
 
         public IEnumerable<PrbRegionDateView> QueryDateViews(DateTime begin, DateTime end, string city)
         {
-            var query = _statRepository.GetAllList(x => x.StatTime >= begin & x.StatTime < end);
+            var query = _statRepository.GetAllList(x =>
+                x.StatTime >= begin & x.StatTime < end && x.FrequencyBandType == FrequencyBandType.All);
             var townViews = query.QueryTownStat<TownPrbStat, TownPrbView>(_townRepository, city);
             return
                 townViews.QueryDateDateViews<PrbRegionDateView, DistrictPrbView, TownPrbView>(

@@ -118,17 +118,15 @@
                         $scope.dumpHistory = result;
                         angular.forEach(result,
                             function(record) {
-                                if (record.huaweiPrbs > 9000 &&
-                                    record.ztePrbs > 18000 &&
+                                if (record.huaweiItems > 9000 &&
+                                    record.zteItems > 18000 &&
                                     (record.townRrcs === 0 ||
                                         record.townQcis === 0 ||
-                                        record.townPrbs === 0 ||
                                         record.townDoubleFlows < 44)) {
                                     flowImportService.dumpTownStats(record.dateString).then(function(count) {
                                         record.townRrcs = count[0];
                                         record.townQcis = count[1];
-                                        record.townPrbs = count[2];
-                                        record.townDoubleFlows = count[3];
+                                        record.townDoubleFlows = count[2];
                                     });
                                 }
 
@@ -157,6 +155,20 @@
                                         record.townCqis2100 = count[1];
                                         record.townCqis1800 = count[2];
                                         record.townCqis800VoLte = count[3];
+                                    });
+                                }
+                                
+                                if (record.huaweiPrbs > 9000 &&
+                                    record.ztePrbs > 18000 &&
+                                    (record.townPrbs < 44 ||
+                                        record.townPrbs2100 < 44 ||
+                                        record.townPrbs1800 < 44 ||
+                                        record.townPrbs800VoLte < 44)) {
+                                    flowImportService.dumpTownPrbs(record.dateString).then(function(count) {
+                                        record.townPrbs = count[0];
+                                        record.townPrbs2100 = count[1];
+                                        record.townPrbs1800 = count[2];
+                                        record.townPrbs800VoLte = count[3];
                                     });
                                 }
                             });

@@ -1173,6 +1173,12 @@ angular.module('region.import', ['app.core'])
                         {
                             statDate: statDate
                         });
+                },
+                dumpTownPrbs: function(statDate) {
+                    return generalHttpService.getApiData('DumpTownPrb',
+                        {
+                            statDate: statDate
+                        });
                 }
             };
         })
