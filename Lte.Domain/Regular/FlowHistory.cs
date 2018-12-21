@@ -41,6 +41,12 @@ namespace Lte.Domain.Regular
         public int TownCqis800VoLte { get; set; }
 
         public int TownPrbs { get; set; }
+        
+        public int TownPrbs2100 { get; set; }
+
+        public int TownPrbs1800 { get; set; }
+
+        public int TownPrbs800VoLte { get; set; }
 
         public int TownDoubleFlows { get; set; }
     }

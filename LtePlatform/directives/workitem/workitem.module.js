@@ -90,13 +90,11 @@ angular.module('workitem.module.feedback', ['ui.grid', 'myApp.kpi'])
                 columnDefs: [
                     { field: 'dateString', name: '日期' },
                     { field: 'huaweiPrbs', name: '华为PRB' },
-                    { field: 'huaweiRssis', name: '华为RSSI' },
                     { field: 'ztePrbs', name: '中兴PRB' },
-                    { field: 'zteRssis', name: '中兴RSSI' },
-                    { field: 'townRrcs', name: '镇RRC统计' },
-                    { field: 'townQcis', name: '镇CQI1统计' },
-                    { field: 'townPrbs', name: '镇PRB统计' },
-                    { field: 'townDoubleFlows', name: '镇双流统计' }
+                    { field: 'townPrbs', name: '镇PRB-全部' },
+                    { field: 'townPrbs2100', name: '镇-2.1G' },
+                    { field: 'townPrbs1800', name: '镇-1.8G' },
+                    { field: 'townPrbs800VoLte', name: '镇-800M' }
                 ],
                 data: []
             };
@@ -110,6 +108,31 @@ angular.module('workitem.module.feedback', ['ui.grid', 'myApp.kpi'])
                 },
                 argumentName: 'items'
             },
+                $compile);
+        })
+    .controller('ItemsDumpHistoryController',
+        function ($scope) {
+            $scope.gridOptions = {
+                columnDefs: [
+                    { field: 'dateString', name: '日期' },
+                    { field: 'huaweiRssis', name: '华为RSSI' },
+                    { field: 'zteRssis', name: '中兴RSSI' },
+                    { field: 'townRrcs', name: '镇RRC统计' },
+                    { field: 'townQcis', name: '镇CQI1统计' },
+                    { field: 'townDoubleFlows', name: '镇双流统计' }
+                ],
+                data: []
+            };
+        })
+    .directive('itemsDumpHistoryTable',
+        function ($compile, calculateService) {
+            return calculateService.generateGridDirective({
+                    controllerName: 'ItemsDumpHistoryController',
+                    scope: {
+                        items: '='
+                    },
+                    argumentName: 'items'
+                },
                 $compile);
         })
 
