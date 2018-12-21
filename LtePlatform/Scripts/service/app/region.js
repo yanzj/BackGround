@@ -1774,6 +1774,12 @@ angular.module('region.college', ['app.core'])
                         statDate: statDate
                     });
             },
+            retrieveDateCollegePrbStats: function (statDate) {
+                return generalHttpService.getApiData('CollegePrb',
+                    {
+                        statDate: statDate
+                    });
+            },
             retrieveDateCollegeHourCqiStats: function (statDate) {
                 return generalHttpService.getApiData('CollegeHourCqi',
                     {
@@ -2284,6 +2290,13 @@ angular.module('region.precise', ['app.core'])
                             frequency: frequency
                         });
                 },
+                getCurrentDateTownPrbStats: function (statDate, frequency) { ////////////////////////////////////////////////
+                    return generalHttpService.getApiData('TownPrb',
+                        {
+                            currentDate: statDate,
+                            frequency: frequency
+                        });
+                },
                 getCurrentDateTownHourCqiStats: function (statDate, frequency) { ////////////////////////////////////////////
                     return generalHttpService.getApiData('TownHourCqi',
                         {
@@ -2296,6 +2309,9 @@ angular.module('region.precise', ['app.core'])
                 },
                 updateTownCqiStat: function (stat) { //////////////////////////////////////////////////////////////////////
                     return generalHttpService.postApiData('TownCqi', stat);
+                },
+                updateTownPrbStat: function (stat) { //////////////////////////////////////////////////////////////////////
+                    return generalHttpService.postApiData('TownPrb', stat);
                 },
                 updateTownHourCqiStat: function (stat) { /////////////////////////////////////////////////////////////////////////
                     return generalHttpService.postApiData('TownHourCqi', stat);

@@ -313,8 +313,11 @@
     <Compile Include="Controllers\AdminitrativeRegion\DumpTownCqiController.cs" />
     <Compile Include="Controllers\AdminitrativeRegion\DumpTownPrbController.cs" />
     <Compile Include="Controllers\AdminitrativeRegion\HourCqiFrequencyController.cs" />
+    <Compile Include="Controllers\AdminitrativeRegion\PrbFrequencyController.cs" />
     <Compile Include="Controllers\AdminitrativeRegion\TownHourCqiController.cs" />
+    <Compile Include="Controllers\AdminitrativeRegion\TownPrbController.cs" />
     <Compile Include="Controllers\College\CollegeHourCqiController.cs" />
+    <Compile Include="Controllers\College\CollegePrbController.cs" />
     <Compile Include="Controllers\Dt\DumpZhangshangyouCoverageController.cs" />
     <Compile Include="Controllers\Dt\DumpZhangshangyouQualityController.cs" />
     <Compile Include="Controllers\Dt\ZhangshangyouCoverageController.cs" />

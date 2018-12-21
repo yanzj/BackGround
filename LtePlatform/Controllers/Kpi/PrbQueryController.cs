@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Http;
+using Abp.EntityFramework.Entities.Kpi;
 using Lte.Evaluations.DataService.Kpi;
-using Lte.MySqlFramework.Entities.Kpi;
 using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.Kpi

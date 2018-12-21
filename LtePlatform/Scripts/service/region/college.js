@@ -270,6 +270,12 @@
                         statDate: statDate
                     });
             },
+            retrieveDateCollegePrbStats: function (statDate) {
+                return generalHttpService.getApiData('CollegePrb',
+                    {
+                        statDate: statDate
+                    });
+            },
             retrieveDateCollegeHourCqiStats: function (statDate) {
                 return generalHttpService.getApiData('CollegeHourCqi',
                     {

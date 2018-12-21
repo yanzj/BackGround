@@ -1,36 +1,47 @@
-using System;
-using Abp.Domain.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Dependency;
 using Abp.EntityFramework.Entities.Kpi;
+using Abp.EntityFramework.Entities.RegionKpi;
 using Lte.Domain.Common.Types;
-using Lte.Domain.Common.Wireless;
 using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Regular.Attributes;
 
-namespace Abp.EntityFramework.Entities.RegionKpi
+namespace Lte.MySqlFramework.Entities.RegionKpi
 {
-    [AutoMapFrom(typeof(PrbHuawei), typeof(PrbZte), typeof(PrbView))]
-    public class TownPrbStat : Entity, ITownId, IStatTime, IFrequency
+    [AutoMapFrom(typeof(TownPrbStat))]
+    [TypeDoc("频段忙时CQI优良率统计")]
+    public class FrequencyPrbView : IStatDate, IFrequencyBand
     {
-        public int TownId { get; set; }
-
-        public DateTime StatTime { get; set; }
+        [AutoMapPropertyResolve("StatTime", typeof(TownPrbStat))]
+        public DateTime StatDate { get; set; }
 
         [ArraySumProtection]
-        public FrequencyBandType FrequencyBandType { get; set; } = FrequencyBandType.All;
+        public FrequencyBandType FrequencyBandType { get; set; }
 
-        public string Frequency => FrequencyBandType.ToString();
+        public string FrequencyBand => FrequencyBandType.GetBandDescription();
+        
+        public string Frequency { get; set; }
 
         public double PdschPrbs { get; set; }
 
-        [AutoMapPropertyResolve("DownlinkDtchPrbs", typeof(PrbZte))]
+        public double PdschPrbRate => PdschPrbs / DownlinkPrbSubframe * 100;
+
         public double DownlinkDtchPrbNumber { get; set; }
+
+        public double PdschDtchPrbRate => DownlinkDtchPrbNumber / DownlinkPrbSubframe * 100;
 
         public double PuschPrbs { get; set; }
 
-        [AutoMapPropertyResolve("UplinkDtchPrbs", typeof(PrbZte))]
+        public double PuschPrbRate => PuschPrbs / UplinkPrbSubframe * 100;
+
         public double UplinkDtchPrbNumber { get; set; }
+
+        public double PuschDtchPrbRate => UplinkDtchPrbNumber / UplinkPrbSubframe * 100;
 
         public int DownlinkPrbSubframe { get; set; }
 

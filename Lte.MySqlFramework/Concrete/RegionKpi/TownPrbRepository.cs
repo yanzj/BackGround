@@ -10,5 +10,12 @@ namespace Lte.MySqlFramework.Concrete.RegionKpi
         public TownPrbRepository(IDbContextProvider<MySqlContext> dbContextProvider) : base(dbContextProvider)
         {
         }
+
+        public TownPrbStat Match(TownPrbStat stat)
+        {
+            return FirstOrDefault(x =>
+                x.TownId == stat.TownId && x.FrequencyBandType == stat.FrequencyBandType &&
+                x.StatTime == stat.StatTime);
+        }
     }
 }

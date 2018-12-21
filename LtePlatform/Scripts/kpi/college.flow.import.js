@@ -46,6 +46,20 @@
                                 });
                             }
                         });
+                        appRegionService.getCurrentDateTownPrbStats(stat.date, 'college').then(function (items) {
+                            stat.prbs = items;
+                            if (items.length < 20) {
+                                collegeQueryService.retrieveDateCollegePrbStats(stat.date).then(function (newItems) {
+                                    
+                                    angular.forEach(newItems,
+                                        function (item) {
+                                            appRegionService.updateTownPrbStat(item).then(function (result) {
+                                                stat.prbs = newItems;
+                                            });
+                                        });
+                                });
+                            }
+                        });
                         appRegionService.getCurrentDateTownHourCqiStats(stat.date, 'college').then(function (items) {
                             stat.hourCqis = items;
                             if (items.length < 20) {

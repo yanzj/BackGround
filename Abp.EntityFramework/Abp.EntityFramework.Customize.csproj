@@ -189,6 +189,7 @@
     <Compile Include="Entities\Kpi\HourCqiView.cs" />
     <Compile Include="Entities\Kpi\HourPrb.cs" />
     <Compile Include="Entities\Kpi\HourUsers.cs" />
+    <Compile Include="Entities\Kpi\PrbView.cs" />
     <Compile Include="Entities\Kpi\RssiHuawei.cs" />
     <Compile Include="Entities\Kpi\RssiZte.cs" />
     <Compile Include="Entities\Kpi\SectorFlowView.cs" />

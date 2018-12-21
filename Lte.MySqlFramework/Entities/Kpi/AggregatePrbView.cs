@@ -1,28 +1,23 @@
 ﻿using System;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities.Kpi;
+using Abp.EntityFramework.Entities.RegionKpi;
 using Lte.Domain.Common.Types;
-using Lte.Domain.Common.Wireless;
+using Lte.Domain.Regular.Attributes;
 
 namespace Lte.MySqlFramework.Entities.Kpi
 {
-    [AutoMapFrom(typeof(PrbHuawei), typeof(PrbZte))]
-    public class PrbView : IStatTime, ILteCellQuery, IENodebName, ICityDistrictTown
+    [AutoMapFrom(typeof(PrbView), typeof(TownPrbStat))]
+    [TypeDoc("聚合PRB利用率统计视图")]
+    public class AggregatePrbView : IStatTime
     {
+        [MemberDoc("小区个数")]
+        public int CellCount { get; set; }
+
+        public string Name { get; set; }
+
         public DateTime StatTime { get; set; }
-
-        public int ENodebId { get; set; }
-
-        public byte SectorId { get; set; }
-
-        public string ENodebName { get; set; }
-
-        public string District { get; set; }
-
-        public string Town { get; set; }
-
-        public string City { get; set; }
-
+        
         public double PdschPrbs { get; set; }
 
         public double PdschPrbRate => PdschPrbs / DownlinkPrbSubframe * 100;
@@ -63,11 +58,6 @@ namespace Lte.MySqlFramework.Entities.Kpi
 
         public double PdschUsageInterval90Seconds { get; set; }
 
-        public double PdschHighUsageSeconds
-            =>
-                PdschUsageInterval60Seconds + PdschUsageInterval70Seconds + PdschUsageInterval80Seconds +
-                PdschUsageInterval90Seconds;
-
         public double PuschUsageInterval0Seconds { get; set; }
 
         public double PuschUsageInterval10Seconds { get; set; }
@@ -87,10 +77,5 @@ namespace Lte.MySqlFramework.Entities.Kpi
         public double PuschUsageInterval80Seconds { get; set; }
 
         public double PuschUsageInterval90Seconds { get; set; }
-
-        public double PuschHighUsageSeconds
-            =>
-                PuschUsageInterval60Seconds + PuschUsageInterval70Seconds + PuschUsageInterval80Seconds +
-                PuschUsageInterval90Seconds;
     }
 }

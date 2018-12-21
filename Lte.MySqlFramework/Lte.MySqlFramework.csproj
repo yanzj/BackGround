@@ -352,6 +352,7 @@
     <Compile Include="Concrete\Test\ZhangshangyouCoverageRepository.cs" />
     <Compile Include="Concrete\Test\ZhangshangyouQualityRepository.cs" />
     <Compile Include="Entities\Infrastructure\ENodebCluster.cs" />
+    <Compile Include="Entities\Kpi\AggregatePrbView.cs" />
     <Compile Include="Entities\Kpi\HourPrbView.cs" />
     <Compile Include="Entities\Kpi\HourUsersView.cs" />
     <Compile Include="Entities\Kpi\RssiView.cs" />
@@ -372,6 +373,7 @@
     <Compile Include="Entities\RegionKpi\DistrictHourUsersView.cs" />
     <Compile Include="Entities\RegionKpi\FrequencyCqiView.cs" />
     <Compile Include="Entities\RegionKpi\FrequencyHourCqiView.cs" />
+    <Compile Include="Entities\RegionKpi\FrequencyPrbView.cs" />
     <Compile Include="Entities\RegionKpi\TownCqiView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourCqiView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourPrbView.cs" />
@@ -431,7 +433,6 @@
     <Compile Include="Entities\Kpi\ENodebFlowView.cs" />
     <Compile Include="Entities\Dt\FileRasterInfoView.cs" />
     <Compile Include="Entities\Infrastructure\PciCellPairComparer.cs" />
-    <Compile Include="Entities\Kpi\PrbView.cs" />
     <Compile Include="Entities\Kpi\QciView.cs" />
     <Compile Include="Entities\Region\RoadRectangle.cs" />
     <Compile Include="Entities\Kpi\RrcView.cs" />
@@ -495,6 +496,7 @@
     <Compile Include="Support\View\MrsSinrUlRegionFrequencyView.cs" />
     <Compile Include="Support\View\MrsTadvRegionFrequencyView.cs" />
     <Compile Include="Support\View\PrbRegionDateView.cs" />
+    <Compile Include="Support\View\PrbRegionFrequencyView.cs" />
     <Compile Include="Support\View\PreciseRegionDateView.cs" />
     <Compile Include="Support\View\PreciseRegionFrequencyView.cs" />
     <Compile Include="Support\View\QciRegionDateView.cs" />

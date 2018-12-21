@@ -1,36 +1,42 @@
-using System;
-using Abp.Domain.Entities;
+﻿using System;
 using Abp.EntityFramework.AutoMapper;
-using Abp.EntityFramework.Dependency;
-using Abp.EntityFramework.Entities.Kpi;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless;
-using Lte.Domain.Common.Wireless.Cell;
-using Lte.Domain.Regular.Attributes;
 
-namespace Abp.EntityFramework.Entities.RegionKpi
+namespace Abp.EntityFramework.Entities.Kpi
 {
-    [AutoMapFrom(typeof(PrbHuawei), typeof(PrbZte), typeof(PrbView))]
-    public class TownPrbStat : Entity, ITownId, IStatTime, IFrequency
+    [AutoMapFrom(typeof(PrbHuawei), typeof(PrbZte))]
+    public class PrbView : IStatTime, ILteCellQuery, IENodebName, ICityDistrictTown
     {
-        public int TownId { get; set; }
-
         public DateTime StatTime { get; set; }
 
-        [ArraySumProtection]
-        public FrequencyBandType FrequencyBandType { get; set; } = FrequencyBandType.All;
+        public int ENodebId { get; set; }
 
-        public string Frequency => FrequencyBandType.ToString();
+        public byte SectorId { get; set; }
+
+        public string ENodebName { get; set; }
+
+        public string District { get; set; }
+
+        public string Town { get; set; }
+
+        public string City { get; set; }
 
         public double PdschPrbs { get; set; }
 
-        [AutoMapPropertyResolve("DownlinkDtchPrbs", typeof(PrbZte))]
+        public double PdschPrbRate => PdschPrbs / DownlinkPrbSubframe * 100;
+
         public double DownlinkDtchPrbNumber { get; set; }
+
+        public double PdschDtchPrbRate => DownlinkDtchPrbNumber / DownlinkPrbSubframe * 100;
 
         public double PuschPrbs { get; set; }
 
-        [AutoMapPropertyResolve("UplinkDtchPrbs", typeof(PrbZte))]
+        public double PuschPrbRate => PuschPrbs / UplinkPrbSubframe * 100;
+
         public double UplinkDtchPrbNumber { get; set; }
+
+        public double PuschDtchPrbRate => UplinkDtchPrbNumber / UplinkPrbSubframe * 100;
 
         public int DownlinkPrbSubframe { get; set; }
 
@@ -56,6 +62,11 @@ namespace Abp.EntityFramework.Entities.RegionKpi
 
         public double PdschUsageInterval90Seconds { get; set; }
 
+        public double PdschHighUsageSeconds
+            =>
+                PdschUsageInterval60Seconds + PdschUsageInterval70Seconds + PdschUsageInterval80Seconds +
+                PdschUsageInterval90Seconds;
+
         public double PuschUsageInterval0Seconds { get; set; }
 
         public double PuschUsageInterval10Seconds { get; set; }
@@ -75,5 +86,10 @@ namespace Abp.EntityFramework.Entities.RegionKpi
         public double PuschUsageInterval80Seconds { get; set; }
 
         public double PuschUsageInterval90Seconds { get; set; }
+
+        public double PuschHighUsageSeconds
+            =>
+                PuschUsageInterval60Seconds + PuschUsageInterval70Seconds + PuschUsageInterval80Seconds +
+                PuschUsageInterval90Seconds;
     }
 }
