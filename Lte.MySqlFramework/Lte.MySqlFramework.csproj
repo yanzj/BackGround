@@ -376,13 +376,13 @@
     <Compile Include="Entities\RegionKpi\TownHourCqiView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourPrbView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourUsersView.cs" />
-    <Compile Include="Migrations\201811031346362_Update_SinrUl.cs" />
-    <Compile Include="Migrations\201811031346362_Update_SinrUl.Designer.cs">
-      <DependentUpon>201811031346362_Update_SinrUl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201811061438253_Create_Tadv_Top_Town.cs" />
     <Compile Include="Migrations\201811061438253_Create_Tadv_Top_Town.Designer.cs">
       <DependentUpon>201811061438253_Create_Tadv_Top_Town.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812211023410_Change_Town_Prb_Frequency.cs" />
+    <Compile Include="Migrations\201812211023410_Change_Town_Prb_Frequency.Designer.cs">
+      <DependentUpon>201812211023410_Change_Town_Prb_Frequency.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -514,11 +514,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811031346362_Update_SinrUl.resx">
-      <DependentUpon>201811031346362_Update_SinrUl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811061438253_Create_Tadv_Top_Town.resx">
       <DependentUpon>201811061438253_Create_Tadv_Top_Town.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812211023410_Change_Town_Prb_Frequency.resx">
+      <DependentUpon>201812211023410_Change_Town_Prb_Frequency.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
