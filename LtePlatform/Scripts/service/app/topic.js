@@ -1347,20 +1347,6 @@ angular.module('topic.parameters', ['app.menu', 'app.core', 'topic.basic'])
                         }
                     });
                 },
-                showConstructionInfo: function(site) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/BasicKpi/Construction.html',
-                        controller: 'map.construction.dialog',
-                        resolve: {
-                            dialogTitle: function() {
-                                return site.eNodebName + "站点信息";
-                            },
-                            site: function() {
-                                return site;
-                            }
-                        }
-                    });
-                },
                 showClusterPointInfo: function(site, currentClusterList) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/BasicKpi/ClusterPoint.html',

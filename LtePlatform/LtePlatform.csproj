@@ -633,13 +633,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="appViews\BasicKpi\ClusterPoint.html" />
-    <Content Include="appViews\BasicKpi\Construction.html" />
     <Content Include="appViews\BasicKpi\HotspotDtDialog.html" />
     <Content Include="appViews\BasicKpi\GridApp.html" />
     <Content Include="appViews\BasicKpi\GridClusterDialog.html" />
     <Content Include="appViews\BasicKpi\Resource.html" />
-    <Content Include="appViews\BasicKpi\TopConnection3GTrend.html" />
-    <Content Include="appViews\BasicKpi\TopDrop2GTrend.html" />
     <Content Include="appViews\BasicKpi\Trend.html" />
     <Content Include="appViews\College\Coverage\Index.html" />
     <Content Include="appViews\College\Coverage\TownMap.html" />

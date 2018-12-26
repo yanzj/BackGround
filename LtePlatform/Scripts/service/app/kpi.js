@@ -1646,38 +1646,6 @@ angular.module('kpi.work', ['app.menu', 'app.core', 'myApp.region'])
 			            endDate)
 			    });
 			},
-			showTopDropTrend: function(city, beginDate, endDate, topCount) {
-			    menuItemService.showGeneralDialog({
-			        templateUrl: '/appViews/BasicKpi/TopDrop2GTrend.html',
-			        controller: 'kpi.topDrop2G.trend',
-			        resolve: stationFormatService.dateSpanDateResolve({
-			                city: function() {
-			                    return city;
-			                },
-			                topCount: function() {
-			                    return topCount;
-			                }
-			            },
-			            beginDate,
-			            endDate)
-			    });
-			},
-			showTopConnectionTrend: function(city, beginDate, endDate, topCount) {
-			    menuItemService.showGeneralDialog({
-			        templateUrl: '/appViews/BasicKpi/TopConnection3GTrend.html',
-			        controller: 'kpi.topConnection3G.trend',
-			        resolve: stationFormatService.dateSpanDateResolve({
-			                city: function() {
-			                    return city;
-			                },
-			                topCount: function() {
-			                    return topCount;
-			                }
-			            },
-			            beginDate,
-			            endDate)
-			    });
-			},
 			showDistributionInfo: function(distribution) {
 				menuItemService.showGeneralDialog({
 					templateUrl: '/appViews/Parameters/Map/DistributionMapInfoBox.html',
