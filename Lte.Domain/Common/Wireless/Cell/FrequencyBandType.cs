@@ -13,6 +13,7 @@
         Band1800,
         Band800VoLte,
         Band800NbIot,
-        College
+        College,
+        Market
     }
 }

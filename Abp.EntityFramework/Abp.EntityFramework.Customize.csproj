@@ -178,6 +178,7 @@
     <Compile Include="Entities\Cdma\CdmaRegionStatView.cs" />
     <Compile Include="Entities\Cdma\CdmaSectorView.cs" />
     <Compile Include="Entities\College\CollegeView.cs" />
+    <Compile Include="Entities\College\HighwayView.cs" />
     <Compile Include="Entities\Complain\VipDemandDto.cs" />
     <Compile Include="Entities\Infrastructure\SectorView.cs" />
     <Compile Include="Entities\Kpi\AggregateCqiView.cs" />

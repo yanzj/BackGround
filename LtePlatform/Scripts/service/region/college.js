@@ -216,48 +216,6 @@
             saveCollege4GTest: function(view) {
                 return generalHttpService.postApiData('College4GTest', view);
             },
-            queryCollege3GTestList: function(begin, end, name) {
-                return generalHttpService.getApiData('College3GTest', {
-                    begin: begin,
-                    end: end,
-                    name: name
-                });
-            },
-            queryCollege4GTestList: function(begin, end, name) {
-                return generalHttpService.getApiData('College4GTest', {
-                    begin: begin,
-                    end: end,
-                    name: name
-                });
-            },
-            queryCollegeFlow: function(collegeName, begin, end) {
-                return generalHttpService.getApiData('CollegeFlow', {
-                    collegeName: collegeName,
-                    begin: begin,
-                    end: end
-                });
-            },
-            queryHotSpotFlow: function (name, begin, end) {
-                return generalHttpService.getApiData('HotSpotFlow', {
-                    name: name,
-                    begin: begin,
-                    end: end
-                });
-            },
-            queryCollegeDateFlows: function(collegeName, begin, end) {
-                return generalHttpService.getApiData('CollegeFlow', {
-                    collegeName: collegeName,
-                    beginDate: begin,
-                    endDate: end
-                });
-            },
-            queryCollegeDateCqis: function (collegeName, begin, end) {
-                return generalHttpService.getApiData('CollegeCqi', {
-                    collegeName: collegeName,
-                    beginDate: begin,
-                    endDate: end
-                });
-            },
             retrieveDateCollegeFlowStats: function (statDate) {
                 return generalHttpService.getApiData('CollegeFlow',
                     {
@@ -278,6 +236,30 @@
             },
             retrieveDateCollegeHourCqiStats: function (statDate) {
                 return generalHttpService.getApiData('CollegeHourCqi',
+                    {
+                        statDate: statDate
+                    });
+            },
+            retrieveDateMarketFlowStats: function (statDate) {
+                return generalHttpService.getApiData('MarketFlow',
+                    {
+                        statDate: statDate
+                    });
+            },
+            retrieveDateMarketCqiStats: function (statDate) {
+                return generalHttpService.getApiData('MarketCqi',
+                    {
+                        statDate: statDate
+                    });
+            },
+            retrieveDateMarketPrbStats: function (statDate) {
+                return generalHttpService.getApiData('MarketPrb',
+                    {
+                        statDate: statDate
+                    });
+            },
+            retrieveDateMarketHourCqiStats: function (statDate) {
+                return generalHttpService.getApiData('MarketHourCqi',
                     {
                         statDate: statDate
                     });

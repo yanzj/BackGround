@@ -1,16 +1,14 @@
+using System.Collections.Generic;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities.Infrastructure;
-using Lte.Domain.Common.Types;
-using Lte.Domain.Common.Wireless.Distribution;
+using Abp.EntityFramework.Entities.Region;
+using Lte.Domain.Common.Geo;
 
 namespace Abp.EntityFramework.Entities.College
 {
-    [AutoMapFrom(typeof(InfrastructureInfo))]
-    public class HotSpotView
+    [AutoMapFrom(typeof(InfrastructureInfo), typeof(TownBoundary))]
+    public class HighwayView
     {
-        [AutoMapPropertyResolve("HotspotType", typeof(InfrastructureInfo), typeof(HotspotTypeDescriptionTransform))]
-        public string TypeDescription { get; set; }
-
         public string HotspotName { get; set; }
 
         public string Address { get; set; }
@@ -21,6 +19,8 @@ namespace Abp.EntityFramework.Entities.College
 
         public double Lattitute { get; set; }
 
-        public int Id { get; set; }
+        public int TownId { get; set; }
+
+        public List<GeoPoint> CoorList { get; set; }
     }
 }

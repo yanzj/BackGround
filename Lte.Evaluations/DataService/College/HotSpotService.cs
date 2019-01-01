@@ -63,6 +63,14 @@ namespace Lte.Evaluations.DataService.College
                         x.HotspotType == type).MapTo<IEnumerable<HotSpotView>>();
         }
 
+        public HotSpotView QueryMarketView(string name)
+        {
+            var item = _repository.FirstOrDefault(x =>
+                x.InfrastructureType == InfrastructureType.HotSpot && x.HotspotType == HotspotType.Marketing &&
+                x.HotspotName == name);
+            return item == null ? null : item.MapTo<HotSpotView>();
+        }
+
         public IEnumerable<HighwayView> QueryAllHighwayViews()
         {
             var highways = _repository.GetAllList(x => x.HotspotType == HotspotType.Highway);

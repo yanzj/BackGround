@@ -131,6 +131,11 @@
     <Compile Include="DataService\College\BranchDemandService.cs" />
     <Compile Include="DataService\College\CheckingService.cs" />
     <Compile Include="DataService\College\College4GTestService.cs" />
+    <Compile Include="DataService\College\CollegeBtssService.cs" />
+    <Compile Include="DataService\College\CollegeCdmaCellViewService.cs" />
+    <Compile Include="DataService\College\CollegeCdmaDistributionService.cs" />
+    <Compile Include="DataService\College\CollegeCellViewService.cs" />
+    <Compile Include="DataService\College\CollegeLteDistributionService.cs" />
     <Compile Include="DataService\College\ComplainService.cs" />
     <Compile Include="DataService\College\EmergencyCommunicationService.cs" />
     <Compile Include="DataService\College\EmergencyFiberService.cs" />
@@ -184,7 +189,7 @@
     <Compile Include="DataService\Mr\TownPreciseService.cs" />
     <Compile Include="DataService\RegionKpi\CdmaRegionStatService.cs" />
     <Compile Include="DataService\Basic\CellService.cs" />
-    <Compile Include="DataService\College\InfrastructureServices.cs" />
+    <Compile Include="DataService\College\CollegeENodebService.cs" />
     <Compile Include="DataService\College\CollegeStatService.cs" />
     <Compile Include="DataService\Dump\CellDumpService.cs" />
     <Compile Include="DataService\Dump\ENodebDumpService.cs" />

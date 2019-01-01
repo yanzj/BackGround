@@ -318,6 +318,9 @@
     <Compile Include="Controllers\AdminitrativeRegion\TownPrbController.cs" />
     <Compile Include="Controllers\College\CollegeHourCqiController.cs" />
     <Compile Include="Controllers\College\CollegePrbController.cs" />
+    <Compile Include="Controllers\College\MarketCqiController.cs" />
+    <Compile Include="Controllers\College\MarketHourCqiController.cs" />
+    <Compile Include="Controllers\College\MarketPrbController.cs" />
     <Compile Include="Controllers\Dt\DumpZhangshangyouCoverageController.cs" />
     <Compile Include="Controllers\Dt\DumpZhangshangyouQualityController.cs" />
     <Compile Include="Controllers\Dt\ZhangshangyouCoverageController.cs" />
@@ -340,6 +343,7 @@
     <Compile Include="Controllers\Kpi\HourPrbRegionController.cs" />
     <Compile Include="Controllers\Kpi\HourUsersQueryController.cs" />
     <Compile Include="Controllers\Kpi\HourUsersRegionController.cs" />
+    <Compile Include="Controllers\Kpi\MarketFlowController.cs" />
     <Compile Include="Controllers\Kpi\MonthAlarmProcessTrendController.cs" />
     <Compile Include="Controllers\Kpi\MonthAlarmWorkTrendController.cs" />
     <Compile Include="Controllers\Kpi\MonthAverageAlarmsTrendController.cs" />
@@ -1016,6 +1020,7 @@
     <Content Include="Scripts\kpi\college.flow.import.js" />
     <Content Include="Scripts\kpi\college.infos.js" />
     <Content Include="Scripts\kpi\manage.dt.js" />
+    <Content Include="Scripts\kpi\market.flow.import.js" />
     <Content Include="Scripts\kpi\workitem.import.js" />
     <Content Include="Scripts\kpi\precise.import.js" />
     <Content Include="Scripts\locales\ar.js" />
@@ -1246,6 +1251,7 @@
     <Content Include="Views\Kpi\CollegeFlowImport.cshtml" />
     <Content Include="Views\Kpi\ManageDt.cshtml" />
     <Content Include="Views\Kpi\ComplainAdjust.cshtml" />
+    <Content Include="Views\Kpi\MarketFlowImport.cshtml" />
     <None Include="Views\Kpi\PreciseImport.cshtml" />
     <Content Include="Views\Kpi\WorkItemImport.cshtml" />
     <None Include="Views\Parameters\AlarmImport.cshtml" />
