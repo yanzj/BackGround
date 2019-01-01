@@ -40,32 +40,28 @@
                 });
             $scope.addOneCollegeMarkerInfo = function() {
                 collegeQueryService.queryByNameAndYear($scope.collegeName, $scope.year - 1).then(function(item) {
-                    if (!item) {
+                    collegeQueryService.queryByName($scope.collegeName).then(function(college) {
                         var begin = new Date();
                         begin.setDate(begin.getDate() - 365 - 7);
                         var end = new Date();
                         end.setDate(end.getDate() - 365);
-                        collegeQueryService.queryByName($scope.collegeName).then(function(college) {
+                        if (!item) {
                             item = {
                                 oldOpenDate: appFormatService.getDateString(begin, 'yyyy-MM-dd'),
                                 newOpenDate: appFormatService.getDateString(end, 'yyyy-MM-dd'),
                                 collegeId: college.id
                             };
-                            collegeDialogService.addYearInfo(item,
-                                $scope.collegeName,
-                                $scope.year,
-                                function() {
-                                    $scope.updateInfos();
-                                });
-                        });
-                    } else {
+                        } else {
+                            item.collegeId = college.id;
+                        }
+                        
                         collegeDialogService.addYearInfo(item,
                             $scope.collegeName,
                             $scope.year,
                             function() {
                                 $scope.updateInfos();
                             });
-                    }
+                    });
                 });
             };
             $scope.createNewCollege = function() {

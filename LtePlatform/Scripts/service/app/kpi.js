@@ -145,7 +145,6 @@ angular.module('kpi.college.basic', ['myApp.url', 'myApp.region', "ui.bootstrap"
             year,
             dialogTitle,
             collegeQueryService,
-            generalChartService,
             kpiChartCalculateService,
             emergencyService) {
             $scope.college = college;

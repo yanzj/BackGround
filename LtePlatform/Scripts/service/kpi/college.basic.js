@@ -37,7 +37,6 @@
             year,
             dialogTitle,
             collegeQueryService,
-            generalChartService,
             kpiChartCalculateService,
             emergencyService) {
             $scope.college = college;

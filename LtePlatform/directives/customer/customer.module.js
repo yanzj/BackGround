@@ -98,7 +98,7 @@ angular.module('customer.emergency.module', ['myApp.region', 'myApp.kpi'])
         })
     .directive('hotSpotList',
         function($compile, calculateService) {
-            return calculateService.generateGridDirective({
+            return calculateService.generatePagingGridDirective({
                     controllerName: 'HotSpotController',
                     scope: {
                         items: '='
