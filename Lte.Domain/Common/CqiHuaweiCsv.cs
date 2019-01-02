@@ -348,10 +348,14 @@ namespace Lte.Domain.Common
         public long CloseLoopRank2Prbs { get; set; }
 
         [CsvColumn(Name = "下行开环MIMO RANK为1的PRB累加个数 (无)")]
-        public long OpenLoopRank1Prbs { get; set; }
+        public string OpenLoopRank1PrbsStr { get; set; }
+
+        public long OpenLoopRank1Prbs => OpenLoopRank1PrbsStr == "正向溢出" ? 1971848970L : OpenLoopRank1PrbsStr.ConvertToLong(0);
 
         [CsvColumn(Name = "下行开环MIMO RANK为2的PRB累加个数 (无)")]
-        public long OpenLoopRank2Prbs { get; set; }
+        public string OpenLoopRank2PrbsStr { get; set; }
+
+        public long OpenLoopRank2Prbs => OpenLoopRank2PrbsStr == "正向溢出" ? 1971848970L : OpenLoopRank1PrbsStr.ConvertToLong(0);
 
         public static List<CqiHuaweiCsv> ReadFlowHuaweiCsvs(StreamReader reader)
         {
