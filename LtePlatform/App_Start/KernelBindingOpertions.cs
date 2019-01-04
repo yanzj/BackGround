@@ -312,6 +312,8 @@ namespace LtePlatform
 
             ninjectKernel.Bind<ICheckingProjectRepository>().To<CheckingProjectRepository>();
 
+            ninjectKernel.Bind<ICheckingProjectProvinceRepository>().To<CheckingProjectProvinceRepository>();
+
             ninjectKernel.Bind<ICheckingBasicRepository>().To<CheckingBasicRepository>();
 
             ninjectKernel.Bind<ICheckingDetailsRepository>().To<CheckingDetailsRepository>();

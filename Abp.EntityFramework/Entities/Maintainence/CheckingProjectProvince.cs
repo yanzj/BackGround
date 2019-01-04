@@ -26,7 +26,7 @@ namespace Abp.EntityFramework.Entities.Maintainence
         public string WorkItemName { get; set; }
 
         [MemberDoc("任务状态")]
-        [AutoMapPropertyResolve("WorkItemStateDescription", typeof(CheckingProjectExcel), typeof(WorkItemStateTransform))]
+        [AutoMapPropertyResolve("WorkItemStateDescription", typeof(CheckingProjectProvinceExcel), typeof(WorkItemStateTransform))]
         public WorkItemState WorkItemState { get; set; }
 
         [MemberDoc("计划名称")]

@@ -34,11 +34,13 @@ namespace Lte.Evaluations.DataService.Dump
         private readonly ICheckingProjectRepository _checkingProjectRepository;
         private readonly ICheckingBasicRepository _checkingBasicRepository;
         private readonly ICheckingDetailsRepository _checkingDetailsRepository;
+        private readonly ICheckingProjectProvinceRepository _checkingProjectProvinceRepository;
 
         public WorkItemService(IWorkItemRepository repository, IENodebRepository eNodebRepository,
             IBtsRepository btsRepository, ITownRepository townRepository, IAlarmWorkItemRepository alarmWorkItemRepository,
             ICheckingProjectRepository checkingProjectRepository, ICheckingBasicRepository checkingBasicRepository,
-            ICheckingDetailsRepository checkingDetailsRepository, ISpecialAlarmWorkItemRepository specialWorkItemRepository)
+            ICheckingDetailsRepository checkingDetailsRepository, ISpecialAlarmWorkItemRepository specialWorkItemRepository,
+            ICheckingProjectProvinceRepository checkingProjectPovinceRepository)
         {
             _repository = repository;
             _eNodebRepository = eNodebRepository;
@@ -49,6 +51,7 @@ namespace Lte.Evaluations.DataService.Dump
             _checkingBasicRepository = checkingBasicRepository;
             _checkingDetailsRepository = checkingDetailsRepository;
             _specialWorkItemRepository = specialWorkItemRepository;
+            _checkingProjectProvinceRepository = checkingProjectPovinceRepository;
         }
 
         public WorkItemView Query(string serialNumber)
@@ -119,6 +122,20 @@ namespace Lte.Evaluations.DataService.Dump
                          select c).ToList();
             var count =
                 _checkingProjectRepository.Import<ICheckingProjectRepository, CheckingProject, CheckingProjectExcel>(infos);
+
+            return "完成巡检计划读取：" + count + "条";
+        }
+        
+        public string ImportCheckingProjectProvinceExcelFiles(string path)
+        {
+            var factory = new ExcelQueryFactory { FileName = path };
+            const string sheetName = "数据页1";
+            var infos = (from c in factory.Worksheet<CheckingProjectProvinceExcel>(sheetName)
+                select c).ToList();
+            var count =
+                _checkingProjectProvinceRepository
+                    .Import<ICheckingProjectProvinceRepository, CheckingProjectProvince, CheckingProjectProvinceExcel>(
+                        infos);
 
             return "完成巡检计划读取：" + count + "条";
         }

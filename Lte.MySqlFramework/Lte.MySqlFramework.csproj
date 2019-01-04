@@ -158,6 +158,7 @@
     <Compile Include="Abstract\Maintainence\IAlarmRepository.cs" />
     <Compile Include="Abstract\Maintainence\ICheckingBasicRepository.cs" />
     <Compile Include="Abstract\Maintainence\ICheckingDetailsRepository.cs" />
+    <Compile Include="Abstract\Maintainence\ICheckingProjectProvinceRepository.cs" />
     <Compile Include="Abstract\Maintainence\ICheckingProjectRepository.cs" />
     <Compile Include="Abstract\College\ICollegeRepository.cs" />
     <Compile Include="Abstract\Cdma\ICdmaRegionStatRepository.cs" />
@@ -267,6 +268,7 @@
     <Compile Include="Concrete\Kpi\RssiZteRepository.cs" />
     <Compile Include="Concrete\Maintainence\AlarmWorkItemRepository.cs" />
     <Compile Include="Concrete\Maintainence\AlarmRepository.cs" />
+    <Compile Include="Concrete\Maintainence\CheckingProjectProvinceRepository.cs" />
     <Compile Include="Concrete\Maintainence\SpecialAlarmWorkItemRepository.cs" />
     <Compile Include="Concrete\Mr\InterferenceMatrixRepository.cs" />
     <Compile Include="Concrete\Mr\PreciseCoverage4GRepository.cs" />
@@ -378,10 +380,6 @@
     <Compile Include="Entities\RegionKpi\TownHourCqiView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourPrbView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourUsersView.cs" />
-    <Compile Include="Migrations\201811061438253_Create_Tadv_Top_Town.cs" />
-    <Compile Include="Migrations\201811061438253_Create_Tadv_Top_Town.Designer.cs">
-      <DependentUpon>201811061438253_Create_Tadv_Top_Town.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201812211023410_Change_Town_Prb_Frequency.cs" />
     <Compile Include="Migrations\201812211023410_Change_Town_Prb_Frequency.Designer.cs">
       <DependentUpon>201812211023410_Change_Town_Prb_Frequency.cs</DependentUpon>
@@ -520,9 +518,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811061438253_Create_Tadv_Top_Town.resx">
-      <DependentUpon>201811061438253_Create_Tadv_Top_Town.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812211023410_Change_Town_Prb_Frequency.resx">
       <DependentUpon>201812211023410_Change_Town_Prb_Frequency.cs</DependentUpon>
     </EmbeddedResource>
