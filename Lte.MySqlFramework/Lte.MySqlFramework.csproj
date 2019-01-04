@@ -386,6 +386,10 @@
     <Compile Include="Migrations\201812211023410_Change_Town_Prb_Frequency.Designer.cs">
       <DependentUpon>201812211023410_Change_Town_Prb_Frequency.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901041041504_CheckingProjectProvinces_Add.cs" />
+    <Compile Include="Migrations\201901041041504_CheckingProjectProvinces_Add.Designer.cs">
+      <DependentUpon>201901041041504_CheckingProjectProvinces_Add.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -521,6 +525,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812211023410_Change_Town_Prb_Frequency.resx">
       <DependentUpon>201812211023410_Change_Town_Prb_Frequency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901041041504_CheckingProjectProvinces_Add.resx">
+      <DependentUpon>201901041041504_CheckingProjectProvinces_Add.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
