@@ -39,7 +39,9 @@ namespace Lte.Domain.Common.Wireless.Work
                 new Tuple<object, string>(WorkItemState.Finished, "归档"),
                 new Tuple<object, string>(WorkItemState.Finished, "已归档"),
                 new Tuple<object, string>(WorkItemState.Finished, "已撤销"),
+                new Tuple<object, string>(WorkItemState.ToBeSigned, "待签收"),
                 new Tuple<object, string>(WorkItemState.ToBeSigned, "待签单"),
+                new Tuple<object, string>(WorkItemState.Processing, "待实施"),
                 new Tuple<object, string>(WorkItemState.Processing, "处理"),
                 new Tuple<object, string>(WorkItemState.Processing, "待回单"),
                 new Tuple<object, string>(WorkItemState.Processing, "任务处理"),
@@ -48,6 +50,7 @@ namespace Lte.Domain.Common.Wireless.Work
                 new Tuple<object, string>(WorkItemState.Auditing, "回单审核"),
                 new Tuple<object, string>(WorkItemState.Received, "接单"), 
                 new Tuple<object, string>(WorkItemState.Feedback, "回单"), 
+                new Tuple<object, string>(WorkItemState.Feedback, "正常回单"), 
             };
         }
     }

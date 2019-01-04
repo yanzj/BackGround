@@ -160,6 +160,7 @@
     <Compile Include="Excel\CheckingBasicExcel.cs" />
     <Compile Include="Excel\CheckingDetailsExcel.cs" />
     <Compile Include="Excel\CheckingProjectExcel.cs" />
+    <Compile Include="Excel\CheckingProjectProvinceExcel.cs" />
     <Compile Include="Excel\ChoiceProblemExcel.cs" />
     <Compile Include="Excel\ComplainExcel.cs" />
     <Compile Include="Excel\ComplainSupplyExcel.cs" />

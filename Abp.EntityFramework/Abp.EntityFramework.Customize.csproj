@@ -198,6 +198,7 @@
     <Compile Include="Entities\Maintainence\AlarmWorkItem.cs" />
     <Compile Include="Entities\Maintainence\AlarmWorkItemGroup.cs" />
     <Compile Include="Entities\Maintainence\AlarmWorkItemView.cs" />
+    <Compile Include="Entities\Maintainence\CheckingProjectProvince.cs" />
     <Compile Include="Entities\Maintainence\SpecialAlarmWorkItem.cs" />
     <Compile Include="Entities\Mr\AggregateCoverageView.cs" />
     <Compile Include="Entities\Mr\AggregateMrsRsrpView.cs" />

@@ -200,6 +200,8 @@ namespace Lte.MySqlFramework.Concrete
 
         public DbSet<CheckingProject> CheckingProjects { get; set; }
 
+        public DbSet<CheckingProjectProvince> CheckingProjectProvinces { get; set; }
+
         public DbSet<CheckingBasic> CheckingBasics { get; set; }
 
         public DbSet<CheckingDetails> CheckingDetailses { get; set; }
