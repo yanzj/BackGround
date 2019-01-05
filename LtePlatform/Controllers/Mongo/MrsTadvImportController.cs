@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using Abp.EntityFramework.AutoMapper;
@@ -9,6 +10,8 @@ using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Regular;
 using Lte.Evaluations.DataService.College;
 using Lte.Evaluations.DataService.Mr;
+using Lte.Evaluations.ViewModels.Mr;
+using Lte.MySqlFramework.Support.Container;
 using Lte.Parameters.Entities.Kpi;
 using LtePlatform.Models;
 
@@ -66,6 +69,16 @@ namespace LtePlatform.Controllers.Mongo
                 return stat;
             }).Where(x => x != null);
         }
+        
+        [HttpGet]
+        [ApiDoc("获得指定日期范围内的已导入历史记录统计")]
+        [ApiParameterDoc("begin", "开始日期")]
+        [ApiParameterDoc("end", "结束日期")]
+        [ApiResponse("指定日期范围内的已导入历史记录统计")]
+        public IEnumerable<TadvHistory> Get(DateTime begin, DateTime end)
+        {
+            return _service.GetTadvHistories(begin, end);
+        }
 
         [HttpGet]
         [ApiDoc("获取TOP指标")]
@@ -97,6 +110,14 @@ namespace LtePlatform.Controllers.Mongo
         public void Delete()
         {
             _service.ClearStats();
+        }
+        
+        [HttpPost]
+        [ApiDoc("导入镇区指标")]
+        [ApiParameterDoc("container", "等待导入数据库的记录")]
+        public async Task Post(TownTadvViewContainer container)
+        {
+            await _service.DumpTownStats(container);
         }
     }
 }

@@ -1,8 +1,9 @@
 using System;
+using Abp.EntityFramework.Dependency;
 
 namespace Lte.Evaluations.ViewModels.Precise
 {
-    public class PreciseHistory
+    public class PreciseHistory : IStatDate
     {
         public string DateString { get; set; }
 
@@ -19,18 +20,6 @@ namespace Lte.Evaluations.ViewModels.Precise
         public int TownPrecise1800Stats { get; set; }
         
         public int TownPrecise2100Stats { get; set; }
-
-        public int TownMrsStats { get; set; }
-
-        public int CollegeMrsStats { get; set; }
-        
-        public int TownMrsStats800 { get; set; }
-
-        public int TownMrsStats1800 { get; set; }
-
-        public int TownMrsStats2100 { get; set; }
-
-        public int TopMrsStats { get; set; }
 
     }
 }

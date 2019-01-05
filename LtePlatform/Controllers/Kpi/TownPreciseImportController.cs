@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Dynamic;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities.RegionKpi;
-using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 using Lte.Domain.Common.Wireless.Cell;
 using Lte.Domain.Regular;
 using Lte.Evaluations.DataService.College;

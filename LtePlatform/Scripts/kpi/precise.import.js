@@ -32,7 +32,9 @@
         };
 
         $scope.dumpHistory = [];
+        $scope.dumpRsrpHistory = [];
         $scope.dumpSinrHistory = [];
+        $scope.dumpTaHistory = [];
 
         $scope.townPreciseViews = [];
         $scope.collegePreciseStats = [];
@@ -119,41 +121,53 @@
         $scope.dumpTownItems = function () {
             preciseImportService.dumpTownItems(
                 $scope.townPreciseViews, $scope.collegePreciseStats, 
-                $scope.townPrecise800Views, $scope.townPrecise1800Views, $scope.townPrecise2100Views, 
-                $scope.townMrsStats, $scope.collegeMrsStats, $scope.townMrsStats800,
-                $scope.townMrsStats1800, $scope.townMrsStats2100
+                $scope.townPrecise800Views, $scope.townPrecise1800Views, $scope.townPrecise2100Views
             ).then(function () {
                 $scope.townPreciseViews = [];
                 $scope.collegePreciseStats = [];
                 $scope.townPrecise800Views = [];
                 $scope.townPrecise1800Views = [];
                 $scope.townPrecise2100Views = [];
+                $scope.updatePreciseHistory();
+            });            
+        };
+        $scope.dumpTownRsrpItems = function () {
+            preciseImportService.dumpTownRsrpItems( 
+                $scope.townMrsStats, $scope.collegeMrsStats, $scope.townMrsStats800,
+                $scope.townMrsStats1800, $scope.townMrsStats2100
+            ).then(function () {
                 $scope.townMrsStats = [];
                 $scope.collegeMrsStats = [];
                 $scope.townMrsStats800 = [];
                 $scope.townMrsStats1800 = [];
                 $scope.townMrsStats2100 = [];
-                $scope.updatePreciseHistory();
+                $scope.updateRsrpHistory();
             });            
         };
         $scope.dumpTownSinrItems = function () {
             preciseImportService.dumpTownSinrItems(
                 $scope.townSinrUlStats, $scope.collegeSinrUlStats, $scope.townSinrUlStats800,
-                $scope.townSinrUlStats1800, $scope.townSinrUlStats2100,
-                $scope.townTaStats, $scope.collegeTaStats, $scope.townTaStats800,
-                $scope.townTaStats1800, $scope.townTaStats2100
+                $scope.townSinrUlStats1800, $scope.townSinrUlStats2100
             ).then(function () {
                 $scope.townSinrUlStats = [];
                 $scope.collegeSinrUlStats = [];
                 $scope.townSinrUlStats800 = [];
                 $scope.townSinrUlStats1800 = [];
                 $scope.townSinrUlStats2100 = [];
+                $scope.updateSinrHistory();
+            });
+        };
+        $scope.dumpTownTaItems = function () {
+            preciseImportService.dumpTownSinrItems(
+                $scope.townTaStats, $scope.collegeTaStats, $scope.townTaStats800,
+                $scope.townTaStats1800, $scope.townTaStats2100
+            ).then(function () {
                 $scope.townTaStats = [];
                 $scope.collegeTaStats = [];
                 $scope.townTaStats800 = [];
                 $scope.townTaStats1800 = [];
                 $scope.townTaStats2100 = [];
-                $scope.updateSinrHistory();
+                $scope.updateTaHistory();
             });
         };
 
@@ -164,6 +178,14 @@
                 $scope.dumpHistory = result;
             });
         };
+        
+        $scope.updateRsrpHistory = function() {
+            preciseImportService.queryDumpRsrpHistroy(
+                $scope.beginDate.value, $scope.endDate.value
+            ).then(function(result) {
+                $scope.dumpRsrpHistory = result;
+            });
+        };
 
         $scope.updateSinrHistory = function () {
             preciseImportService.queryDumpSinrHistroy(
@@ -172,10 +194,20 @@
                 $scope.dumpSinrHistory = result;
             });
         };
+        
+        $scope.updateTaHistory = function () {
+            preciseImportService.queryDumpTaHistroy(
+                $scope.beginDate.value, $scope.endDate.value
+            ).then(function (result) {
+                $scope.dumpTaHistory = result;
+            });
+        };
 
         $scope.updateHistory = function () {
             $scope.updatePreciseHistory();
+            $scope.updateRsrpHistory();
             $scope.updateSinrHistory();
+            $scope.updateTaHistory();
         };
 
         $scope.updateTownItems = function(date) {

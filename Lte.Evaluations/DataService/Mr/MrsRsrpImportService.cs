@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities.Mr;
 using Abp.EntityFramework.Repositories;
 using Lte.Domain.Common.Wireless.Cell;
-using Lte.Evaluations.ViewModels.Precise;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Mr;
 using Lte.Parameters.Abstract.Kpi;
 using Lte.Evaluations.DataService.RegionKpi;
 using Lte.Evaluations.ViewModels.Mr;
+using Lte.MySqlFramework.Support.Container;
 using Lte.Parameters.Entities.Kpi;
 
 namespace Lte.Evaluations.DataService.Mr
@@ -21,16 +22,19 @@ namespace Lte.Evaluations.DataService.Mr
         private readonly IENodebRepository _eNodebRepository;
         private readonly ITopMrsRsrpRepository _topMrsRsrpRepository;
         private readonly ICellRepository _cellRepository;
+        private readonly ITownMrsRsrpRepository _townMrsRsrpRepository;
 
         private static Stack<TopMrsRsrp> TopStats { get; set; }
 
         public MrsRsrpImportService(IMrsRsrpRepository mrsRsrpRepository, IENodebRepository eNodebRepository,
-            ICellRepository cellRepository, ITopMrsRsrpRepository topRepository)
+            ICellRepository cellRepository, ITopMrsRsrpRepository topRepository,
+            ITownMrsRsrpRepository townMrsRsrpRepository)
         {
             _mrsRsrpRepository = mrsRsrpRepository;
             _eNodebRepository = eNodebRepository;
             _topMrsRsrpRepository = topRepository;
             _cellRepository = cellRepository;
+            _townMrsRsrpRepository = townMrsRsrpRepository;
             if (TopStats == null) TopStats = new Stack<TopMrsRsrp>();
         }
 
@@ -88,6 +92,60 @@ namespace Lte.Evaluations.DataService.Mr
         public void ClearStats()
         {
             TopStats.Clear();
+        }
+        
+        public IEnumerable<RsrpHistory> GetRsrpHistories(DateTime begin, DateTime end)
+        {
+            var results = new List<RsrpHistory>();
+            while (begin < end.AddDays(1))
+            {
+                var beginDate = begin.Date;
+                var endDate = beginDate.AddDays(1);
+                var townMrsItems =
+                    _townMrsRsrpRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.All);
+                var collegeMrsItems =
+                    _townMrsRsrpRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.College);
+                var townMrsItems800 =
+                    _townMrsRsrpRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.Band800VoLte);
+                var townMrsItems1800 =
+                    _townMrsRsrpRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.Band1800);
+                var townMrsItems2100 =
+                    _townMrsRsrpRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.Band2100);
+                var topMrsItems = _topMrsRsrpRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
+                results.Add(new RsrpHistory
+                {
+                    DateString = begin.ToShortDateString(),
+                    StatDate = begin.Date,
+                    TownMrsStats = townMrsItems.Count,
+                    CollegeMrsStats = collegeMrsItems.Count,
+                    TownMrsStats800 = townMrsItems800.Count,
+                    TownMrsStats1800 = townMrsItems1800.Count,
+                    TownMrsStats2100 = townMrsItems2100.Count,
+                    TopMrsStats = topMrsItems.Count
+                });
+                begin = begin.AddDays(1);
+            }
+            return results;
+        }
+        
+        public async Task DumpTownStats(TownRsrpViewContainer container)
+        {
+            var mrsStats = container.MrsRsrps.Concat(container.MrsRsrps800).Concat(container.MrsRsrps1800)
+                .Concat(container.MrsRsrps2100);
+            await _townMrsRsrpRepository.UpdateMany(mrsStats);
+            if (container.CollegeMrsRsrps.Any())
+                await _townMrsRsrpRepository.UpdateMany(container.CollegeMrsRsrps);
+            
         }
 
         public bool DumpOneStat()

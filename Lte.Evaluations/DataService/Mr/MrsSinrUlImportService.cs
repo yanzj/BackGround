@@ -24,7 +24,6 @@ namespace Lte.Evaluations.DataService.Mr
         private readonly ITopMrsSinrUlRepository _topMrsSinrUlRepository;
         private readonly ITownMrsSinrUlRepository _townMrsSinrUlRepository;
         private readonly ICellRepository _cellRepository;
-        private readonly ITopMrsTadvRepository _topMrsTadvRepository;
         private readonly ITownMrsTadvRepository _townMrsTadvRepository;
 
         private static Stack<TopMrsSinrUl> TopStats { get; set; }
@@ -32,13 +31,12 @@ namespace Lte.Evaluations.DataService.Mr
         public MrsSinrUlImportService(IMrsSinrUlRepository mrsSinrUlRepository,
             IENodebRepository eNodebRepository, ITownMrsSinrUlRepository townMrsSinrUlRepository,
             ICellRepository cellRepository, ITopMrsSinrUlRepository topRepository,
-            ITopMrsTadvRepository topMrsTadvRepository, ITownMrsTadvRepository townMrsTadvRepository)
+            ITownMrsTadvRepository townMrsTadvRepository)
         {
             _mrsSinrUlRepository = mrsSinrUlRepository;
             _eNodebRepository = eNodebRepository;
             _topMrsSinrUlRepository = topRepository;
             _townMrsSinrUlRepository = townMrsSinrUlRepository;
-            _topMrsTadvRepository = topMrsTadvRepository;
             _townMrsTadvRepository = townMrsTadvRepository;
             _cellRepository = cellRepository;
             if (TopStats == null) TopStats = new Stack<TopMrsSinrUl>();
@@ -105,28 +103,6 @@ namespace Lte.Evaluations.DataService.Mr
                         x.FrequencyBandType == FrequencyBandType.Band2100);
                 var topSinrUlItems =
                     _topMrsSinrUlRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
-                var townTadvItems =
-                    _townMrsTadvRepository.GetAllList(x =>
-                        x.StatDate >= beginDate && x.StatDate < endDate &&
-                        x.FrequencyBandType == FrequencyBandType.All);
-                var collegeTadvItems =
-                    _townMrsTadvRepository.GetAllList(x =>
-                        x.StatDate >= beginDate && x.StatDate < endDate &&
-                        x.FrequencyBandType == FrequencyBandType.College);
-                var townTadvItems800 =
-                    _townMrsTadvRepository.GetAllList(x =>
-                        x.StatDate >= beginDate && x.StatDate < endDate &&
-                        x.FrequencyBandType == FrequencyBandType.Band800VoLte);
-                var townTadvItems1800 =
-                    _townMrsTadvRepository.GetAllList(x =>
-                        x.StatDate >= beginDate && x.StatDate < endDate &&
-                        x.FrequencyBandType == FrequencyBandType.Band1800);
-                var townTadvItems2100 =
-                    _townMrsTadvRepository.GetAllList(x =>
-                        x.StatDate >= beginDate && x.StatDate < endDate &&
-                        x.FrequencyBandType == FrequencyBandType.Band2100);
-                var topTadvItems =
-                    _topMrsTadvRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
                 results.Add(new SinrHistory
                 {
                     DateString = begin.ToShortDateString(),
@@ -136,13 +112,7 @@ namespace Lte.Evaluations.DataService.Mr
                     TownSinrUlStats800 = townSinrUlItems800.Count,
                     TownSinrUlStats1800 = townSinrUlItems1800.Count,
                     TownSinrUlStats2100 = townSinrUlItems2100.Count,
-                    TopSinrUlStats = topSinrUlItems.Count,
-                    TownTadvStats = townTadvItems.Count,
-                    CollegeTadvStats = collegeTadvItems.Count,
-                    TownTadvStats800 = townTadvItems800.Count,
-                    TownTadvStats1800 = townTadvItems1800.Count,
-                    TownTadvStats2100 = townTadvItems2100.Count,
-                    TopTadvStats = topTadvItems.Count
+                    TopSinrUlStats = topSinrUlItems.Count
                 });
                 begin = begin.AddDays(1);
             }
@@ -183,11 +153,6 @@ namespace Lte.Evaluations.DataService.Mr
             if (container.CollegeMrsSinrUls.Any())
                 await _townMrsSinrUlRepository.UpdateMany(container.CollegeMrsSinrUls);
             
-            var mrsTadvStats = container.MrsTadvs
-                .Concat(container.MrsTadvs800).Concat(container.MrsTadvs1800).Concat(container.MrsTadvs2100);
-            await _townMrsTadvRepository.UpdateMany(mrsTadvStats);
-            if (container.CollegeMrsTadvs.Any())
-                await _townMrsTadvRepository.UpdateMany(container.CollegeMrsTadvs);
         }
 
         public bool DumpOneStat()

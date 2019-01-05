@@ -11,6 +11,7 @@ using Lte.Evaluations.DataService.RegionKpi;
 using Lte.Evaluations.ViewModels.Mr;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Mr;
+using Lte.MySqlFramework.Support.Container;
 using Lte.Parameters.Abstract.Kpi;
 using Lte.Parameters.Entities.Kpi;
 
@@ -22,15 +23,18 @@ namespace Lte.Evaluations.DataService.Mr
         private readonly IENodebRepository _eNodebRepository;
         private readonly ITopMrsTadvRepository _topMrsTadvRepository;
         private readonly ICellRepository _cellRepository;
+        private readonly ITownMrsTadvRepository _townMrsTadvRepository;
 
         private static Stack<TopMrsTadv> TopStats { get; set; }
 
         public MrsTadvImportService(IMrsTadvRepository mrsTadvRepository, IENodebRepository eNodebRepository,
-            ICellRepository cellRepository, ITopMrsTadvRepository topRepository)
+            ICellRepository cellRepository, ITopMrsTadvRepository topRepository,
+            ITownMrsTadvRepository townMrsTadvRepository)
         {
             _mrsTadvRepository = mrsTadvRepository;
             _eNodebRepository = eNodebRepository;
             _topMrsTadvRepository = topRepository;
+            _townMrsTadvRepository = townMrsTadvRepository;
             _cellRepository = cellRepository;
             if (TopStats == null) TopStats = new Stack<TopMrsTadv>();
         }
@@ -79,6 +83,51 @@ namespace Lte.Evaluations.DataService.Mr
                 };
             return mergeStats;
         }
+        
+        public IEnumerable<TadvHistory> GetTadvHistories(DateTime begin, DateTime end)
+        {
+            var results = new List<TadvHistory>();
+            while (begin < end.AddDays(1))
+            {
+                var beginDate = begin.Date;
+                var endDate = beginDate.AddDays(1);
+                var townTadvItems =
+                    _townMrsTadvRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.All);
+                var collegeTadvItems =
+                    _townMrsTadvRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.College);
+                var townTadvItems800 =
+                    _townMrsTadvRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.Band800VoLte);
+                var townTadvItems1800 =
+                    _townMrsTadvRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.Band1800);
+                var townTadvItems2100 =
+                    _townMrsTadvRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.Band2100);
+                var topTadvItems =
+                    _topMrsTadvRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
+                results.Add(new TadvHistory
+                {
+                    DateString = begin.ToShortDateString(),
+                    StatDate = begin.Date,
+                    TownTadvStats = townTadvItems.Count,
+                    CollegeTadvStats = collegeTadvItems.Count,
+                    TownTadvStats800 = townTadvItems800.Count,
+                    TownTadvStats1800 = townTadvItems1800.Count,
+                    TownTadvStats2100 = townTadvItems2100.Count,
+                    TopTadvStats = topTadvItems.Count
+                });
+                begin = begin.AddDays(1);
+            }
+            return results;
+        }
 
         public int GetTopMrsTadvs(DateTime statTime)
         {
@@ -104,6 +153,15 @@ namespace Lte.Evaluations.DataService.Mr
         public void ClearStats()
         {
             TopStats.Clear();
+        }
+        
+        public async Task DumpTownStats(TownTadvViewContainer container)
+        {
+            var mrsTadvStats = container.MrsTadvs
+                .Concat(container.MrsTadvs800).Concat(container.MrsTadvs1800).Concat(container.MrsTadvs2100);
+            await _townMrsTadvRepository.UpdateMany(mrsTadvStats);
+            if (container.CollegeMrsTadvs.Any())
+                await _townMrsTadvRepository.UpdateMany(container.CollegeMrsTadvs);
         }
 
         public bool DumpOneStat()

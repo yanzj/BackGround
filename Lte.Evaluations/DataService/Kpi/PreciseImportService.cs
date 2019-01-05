@@ -25,24 +25,19 @@ namespace Lte.Evaluations.DataService.Kpi
         private readonly IENodebRepository _eNodebRepository;
         private readonly ITownRepository _townRepository;
         private readonly IPreciseMongoRepository _mongoRepository;
-        private readonly ITownMrsRsrpRepository _townMrsRsrpRepository;
-        private readonly ITopMrsRsrpRepository _topMrsRsrpRepository;
 
         public static Stack<PreciseCoverage4G> PreciseCoverage4Gs { get; set; } 
         
         public PreciseImportService(IPreciseCoverage4GRepository repository,
             ITownPreciseCoverageRepository regionRepository,
             IENodebRepository eNodebRepository, ITownRepository townRepository,
-            IPreciseMongoRepository mongoRepository,
-            ITownMrsRsrpRepository townMrsRsrpRepository, ITopMrsRsrpRepository topMrsRsrpRepository)
+            IPreciseMongoRepository mongoRepository)
         {
             _repository = repository;
             _regionRepository = regionRepository;
             _eNodebRepository = eNodebRepository;
             _townRepository = townRepository;
             _mongoRepository = mongoRepository;
-            _townMrsRsrpRepository = townMrsRsrpRepository;
-            _topMrsRsrpRepository = topMrsRsrpRepository;
             if (PreciseCoverage4Gs == null)
                 PreciseCoverage4Gs = new Stack<PreciseCoverage4G>();
         }
@@ -118,12 +113,6 @@ namespace Lte.Evaluations.DataService.Kpi
             await _regionRepository.UpdateMany(stats);
             if (container.CollegeStats.Any())
                 await _regionRepository.UpdateMany(container.CollegeStats);
-
-            var mrsStats = container.MrsRsrps.Concat(container.MrsRsrps800).Concat(container.MrsRsrps1800)
-                .Concat(container.MrsRsrps2100);
-            await _townMrsRsrpRepository.UpdateMany(mrsStats);
-            if (container.CollegeMrsRsrps.Any())
-                await _townMrsRsrpRepository.UpdateMany(container.CollegeMrsRsrps);
             
         }
 
@@ -184,27 +173,6 @@ namespace Lte.Evaluations.DataService.Kpi
                     x.StatTime >= beginDate && x.StatTime < endDate && x.FrequencyBandType == FrequencyBandType.Band1800);
                 var townItems2100 = _regionRepository.GetAllList(x =>
                     x.StatTime >= beginDate && x.StatTime < endDate && x.FrequencyBandType == FrequencyBandType.Band2100);
-                var townMrsItems =
-                    _townMrsRsrpRepository.GetAllList(x =>
-                        x.StatDate >= beginDate && x.StatDate < endDate &&
-                        x.FrequencyBandType == FrequencyBandType.All);
-                var collegeMrsItems =
-                    _townMrsRsrpRepository.GetAllList(x =>
-                        x.StatDate >= beginDate && x.StatDate < endDate &&
-                        x.FrequencyBandType == FrequencyBandType.College);
-                var townMrsItems800 =
-                    _townMrsRsrpRepository.GetAllList(x =>
-                        x.StatDate >= beginDate && x.StatDate < endDate &&
-                        x.FrequencyBandType == FrequencyBandType.Band800VoLte);
-                var townMrsItems1800 =
-                    _townMrsRsrpRepository.GetAllList(x =>
-                        x.StatDate >= beginDate && x.StatDate < endDate &&
-                        x.FrequencyBandType == FrequencyBandType.Band1800);
-                var townMrsItems2100 =
-                    _townMrsRsrpRepository.GetAllList(x =>
-                        x.StatDate >= beginDate && x.StatDate < endDate &&
-                        x.FrequencyBandType == FrequencyBandType.Band2100);
-                var topMrsItems = _topMrsRsrpRepository.GetAllList(x => x.StatDate >= beginDate && x.StatDate < endDate);
                 results.Add(new PreciseHistory
                 {
                     DateString = begin.ToShortDateString(),
@@ -214,13 +182,7 @@ namespace Lte.Evaluations.DataService.Kpi
                     CollegePreciseStats = collegeItems.Count,
                     TownPrecise800Stats = townItems800.Count,
                     TownPrecise1800Stats = townItems1800.Count,
-                    TownPrecise2100Stats = townItems2100.Count,
-                    TownMrsStats = townMrsItems.Count,
-                    CollegeMrsStats = collegeMrsItems.Count,
-                    TownMrsStats800 = townMrsItems800.Count,
-                    TownMrsStats1800 = townMrsItems1800.Count,
-                    TownMrsStats2100 = townMrsItems2100.Count,
-                    TopMrsStats = topMrsItems.Count
+                    TownPrecise2100Stats = townItems2100.Count
                 });
                 begin = begin.AddDays(1);
             }

@@ -796,57 +796,6 @@ angular.module('region.kpi', ['app.core'])
                 }
             };
         })
-    .factory('kpi2GService',
-        function(generalHttpService) {
-            return {
-                queryDayStats: function(city, initialDate) {
-                    return generalHttpService.getApiData('KpiDataList',
-                    {
-                        city: city,
-                        statDate: initialDate
-                    });
-                },
-                queryKpiOptions: function() {
-                    return generalHttpService.getApiData('KpiDataList', {});
-                },
-                queryKpiTrend: function(city, begin, end) {
-                    return generalHttpService.getApiData('KpiDataList',
-                    {
-                        city: city,
-                        beginDate: begin,
-                        endDate: end
-                    });
-                }
-            };
-        })
-    .factory('drop2GService',
-        function(generalHttpService) {
-            return {
-                queryDayStats: function(city, initialDate) {
-                    return generalHttpService.getApiData('TopDrop2G',
-                    {
-                        city: city,
-                        statDate: initialDate
-                    });
-                },
-                queryOrderPolicy: function() {
-                    return generalHttpService.getApiData('KpiOptions',
-                    {
-                        key: "OrderTopDrop2GPolicy"
-                    });
-                },
-                queryCellTrend: function(begin, end, city, policy, topCount) {
-                    return generalHttpService.getApiData('TopDrop2G',
-                    {
-                        begin: begin,
-                        end: end,
-                        city: city,
-                        policy: policy,
-                        topCount: topCount
-                    });
-                }
-            }
-        })
     .factory('connection3GService',
         function(generalHttpService) {
             return {
@@ -1988,12 +1937,26 @@ angular.module('region.precise', ['app.core'])
                         end: endDate
                     });
                 },
-                queryDumpSinrHistroy: function (beginDate, endDate) {
-                    return generalHttpService.getApiData('MrsSinrUlImport',
+                queryDumpRsrpHistroy: function (beginDate, endDate) {
+                    return generalHttpService.getApiData('MrsRsrpImport',
                     {
                         begin: beginDate,
                         end: endDate
                     });
+                },
+                queryDumpSinrHistroy: function (beginDate, endDate) {
+                    return generalHttpService.getApiData('MrsSinrUlImport',
+                        {
+                            begin: beginDate,
+                            end: endDate
+                        });
+                },
+                queryDumpTaHistroy: function (beginDate, endDate) {
+                    return generalHttpService.getApiData('MrsTadvImport',
+                        {
+                            begin: beginDate,
+                            end: endDate
+                        });
                 },
 
                 queryTotalDumpItems: function() {
@@ -2095,8 +2058,7 @@ angular.module('region.precise', ['app.core'])
                 },
 
                 dumpTownItems: function(
-                    views, collegeStats, views800, views1800, views2100, 
-                    mrsStats, collegeMrsStats, mrsStats800, mrsStats1800, mrsStats2100
+                    views, collegeStats, views800, views1800, views2100
                 ) {
                     return generalHttpService.postApiData('TownPreciseImport',
                     {
@@ -2104,17 +2066,23 @@ angular.module('region.precise', ['app.core'])
                         collegeStats: collegeStats,
                         views800: views800,
                         views1800: views1800,
-                        views2100: views2100,
-                        mrsRsrps: mrsStats,
-                        collegeMrsRsrps: collegeMrsStats,
-                        mrsRsrps800: mrsStats800,
-                        mrsRsrps1800: mrsStats1800,
-                        mrsRsrps2100: mrsStats2100
+                        views2100: views2100
                     });
                 },
+                dumpTownRsrpItems: function( 
+                    mrsStats, collegeMrsStats, mrsStats800, mrsStats1800, mrsStats2100
+                ) {
+                    return generalHttpService.postApiData('MrsRsrpImport',
+                        {
+                            mrsRsrps: mrsStats,
+                            collegeMrsRsrps: collegeMrsStats,
+                            mrsRsrps800: mrsStats800,
+                            mrsRsrps1800: mrsStats1800,
+                            mrsRsrps2100: mrsStats2100
+                        });
+                },
                 dumpTownSinrItems: function (
-                    mrsSinrUls, collegeSinrUls, mrsSinrUls800, mrsSinrUls1800, mrsSinrUls2100,
-                    mrsTadvs, collegeTadvs, mrsTadvs800, mrsTadvs1800, mrsTadvs2100
+                    mrsSinrUls, collegeSinrUls, mrsSinrUls800, mrsSinrUls1800, mrsSinrUls2100
                 ) {
                     return generalHttpService.postApiData('MrsSinrUlImport',
                     {
@@ -2122,13 +2090,20 @@ angular.module('region.precise', ['app.core'])
                         collegeMrsSinrUls: collegeSinrUls,
                         mrsSinrUls800: mrsSinrUls800,
                         mrsSinrUls1800: mrsSinrUls1800,
-                        mrsSinrUls2100: mrsSinrUls2100,
-                        mrsTadvs: mrsTadvs,
-                        collegeMrsTadvs: collegeTadvs,
-                        mrsTadvs800: mrsTadvs800,
-                        mrsTadvs1800: mrsTadvs1800,
-                        mrsTadvs2100: mrsTadvs2100
+                        mrsSinrUls2100: mrsSinrUls2100
                     });
+                },
+                dumpTownTaItems: function (
+                    mrsTadvs, collegeTadvs, mrsTadvs800, mrsTadvs1800, mrsTadvs2100
+                ) {
+                    return generalHttpService.postApiData('MrsTadvImport',
+                        {
+                            mrsTadvs: mrsTadvs,
+                            collegeMrsTadvs: collegeTadvs,
+                            mrsTadvs800: mrsTadvs800,
+                            mrsTadvs1800: mrsTadvs1800,
+                            mrsTadvs2100: mrsTadvs2100
+                        });
                 },
 
                 dumpTownAgpsItems: function(views) {
