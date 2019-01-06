@@ -1985,6 +1985,12 @@ angular.module('region.precise', ['app.core'])
                             statDate: statTime
                         });
                 },
+                queryMarketPreciseViews: function(statTime) {
+                    return generalHttpService.getApiData('MarketPrecise',
+                        {
+                            statDate: statTime
+                        });
+                },
                 queryTownMrsStats: function (statTime, frequency) {
                     return generalHttpService.getApiData('MrsRsrpImport',
                         {
@@ -2058,12 +2064,13 @@ angular.module('region.precise', ['app.core'])
                 },
 
                 dumpTownItems: function(
-                    views, collegeStats, views800, views1800, views2100
+                    views, collegeStats, marketStats, views800, views1800, views2100
                 ) {
                     return generalHttpService.postApiData('TownPreciseImport',
                     {
                         views: views,
                         collegeStats: collegeStats,
+                        marketStats: marketStats,
                         views800: views800,
                         views1800: views1800,
                         views2100: views2100

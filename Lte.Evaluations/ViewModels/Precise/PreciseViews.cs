@@ -1,5 +1,6 @@
 ﻿using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities.Kpi;
+using Abp.EntityFramework.Entities.RegionKpi;
 using AutoMapper;
 using Lte.Domain.Common.Wireless;
 using Lte.Domain.Regular.Attributes;
@@ -8,7 +9,7 @@ using Lte.MySqlFramework.Abstract.Infrastructure;
 namespace Lte.Evaluations.ViewModels.Precise
 {
     [AutoMapFrom(typeof(PreciseCoverage4G))]
-    [AutoMapTo(typeof(Precise4GSector))]
+    [AutoMapTo(typeof(Precise4GSector), typeof(TownPreciseStat))]
     [TypeDoc("4G精确覆盖率视图")]
     public class Precise4GView : IENodebName
     {

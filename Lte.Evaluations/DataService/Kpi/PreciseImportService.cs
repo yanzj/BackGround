@@ -113,7 +113,9 @@ namespace Lte.Evaluations.DataService.Kpi
             await _regionRepository.UpdateMany(stats);
             if (container.CollegeStats.Any())
                 await _regionRepository.UpdateMany(container.CollegeStats);
-            
+            if (container.MarketStats.Any())
+                await _regionRepository.UpdateMany(container.MarketStats);
+
         }
 
         public bool DumpOneStat()
@@ -167,6 +169,8 @@ namespace Lte.Evaluations.DataService.Kpi
                     x.StatTime >= beginDate && x.StatTime < endDate && x.FrequencyBandType == FrequencyBandType.All);
                 var collegeItems = _regionRepository.GetAllList(x =>
                     x.StatTime >= beginDate && x.StatTime < endDate && x.FrequencyBandType == FrequencyBandType.College);
+                var marketItems = _regionRepository.GetAllList(x =>
+                    x.StatTime >= beginDate && x.StatTime < endDate && x.FrequencyBandType == FrequencyBandType.Market);
                 var townItems800 = _regionRepository.GetAllList(x =>
                     x.StatTime >= beginDate && x.StatTime < endDate && x.FrequencyBandType == FrequencyBandType.Band800VoLte);
                 var townItems1800 = _regionRepository.GetAllList(x =>
@@ -180,6 +184,7 @@ namespace Lte.Evaluations.DataService.Kpi
                     PreciseStats = items.Count,
                     TownPreciseStats = townItems.Count,
                     CollegePreciseStats = collegeItems.Count,
+                    MarketPreciseStats = marketItems.Count,
                     TownPrecise800Stats = townItems800.Count,
                     TownPrecise1800Stats = townItems1800.Count,
                     TownPrecise2100Stats = townItems2100.Count

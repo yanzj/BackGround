@@ -321,6 +321,7 @@
     <Compile Include="Controllers\College\MarketCqiController.cs" />
     <Compile Include="Controllers\College\MarketHourCqiController.cs" />
     <Compile Include="Controllers\College\MarketPrbController.cs" />
+    <Compile Include="Controllers\College\MarketPreciseController.cs" />
     <Compile Include="Controllers\Dt\DumpZhangshangyouCoverageController.cs" />
     <Compile Include="Controllers\Dt\DumpZhangshangyouQualityController.cs" />
     <Compile Include="Controllers\Dt\ZhangshangyouCoverageController.cs" />

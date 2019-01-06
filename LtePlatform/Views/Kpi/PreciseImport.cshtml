@@ -123,15 +123,17 @@
 
     <p>
         <button class="btn btn-info"
-                ng-disabled="townPreciseViews.length === 0 && collegePreciseStats.length === 0 && townPrecise800Views.length === 0
-             && townPrecise1800Views.length === 0 && townPrecise2100Views.length === 0"
+                ng-disabled="townPreciseViews.length === 0 && collegePreciseStats.length === 0 
+                && marketPreciseStats.length === 0 && townPrecise800Views.length === 0
+                && townPrecise1800Views.length === 0 && townPrecise2100Views.length === 0"
                 ng-click="dumpTownItems()">
             导入镇区指标1
-            <div class="badge">精确({{townPreciseViews.length}})</div>
-            <div class="badge">精确校园({{collegePreciseStats.length}})</div>
-            <div class="badge">精确800({{townPrecise800Views.length}})</div>
-            <div class="badge">精确1800({{townPrecise1800Views.length}})</div>
-            <div class="badge">精确2100({{townPrecise2100Views.length}})</div>
+            <div class="badge">镇({{townPreciseViews.length}})</div>
+            <div class="badge">校园({{collegePreciseStats.length}})</div>
+            <div class="badge">专业市场({{marketPreciseStats.length}})</div>
+            <div class="badge">镇-800({{townPrecise800Views.length}})</div>
+            <div class="badge">镇-1800({{townPrecise1800Views.length}})</div>
+            <div class="badge">镇-2100({{townPrecise2100Views.length}})</div>
         </button>
     </p>
     <table class="table table-hover">
@@ -147,6 +149,7 @@
                 <th>小区数量</th>
                 <th>镇</th>
                 <th>校园</th>
+                <th>专业市场</th>
                 <th>镇-800</th>
                 <th>镇-1800</th>
                 <th>镇-2100</th>
@@ -159,6 +162,7 @@
                 <td>{{stat.preciseStats}}</td>
                 <td>{{stat.townPreciseStats}}</td>
                 <td>{{stat.collegePreciseStats}}</td>
+                <td>{{stat.marketPreciseStats}}</td>
                 <td>{{stat.townPrecise800Stats}}</td>
                 <td>{{stat.townPrecise1800Stats}}</td>
                 <td>{{stat.townPrecise2100Stats}}</td>
