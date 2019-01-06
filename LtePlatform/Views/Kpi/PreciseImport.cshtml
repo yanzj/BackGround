@@ -245,11 +245,12 @@
             && townSinrUlStats1800.length === 0 && townSinrUlStats2100.length === 0"
                 ng-click="dumpTownSinrItems()">
             导入镇区指标3
-            <div class="badge">上行SINR({{townSinrUlStats.length}})</div>
-            <div class="badge">校园SINR({{collegeSinrUlStats.length}})</div>
-            <div class="badge">SINR-800({{townSinrUlStats800.length}})</div>
-            <div class="badge">SINR-1800({{townSinrUlStats1800.length}})</div>
-            <div class="badge">SINR-2100({{townSinrUlStats2100.length}})</div>
+            <div class="badge">镇({{townSinrUlStats.length}})</div>
+            <div class="badge">校园({{collegeSinrUlStats.length}})</div>
+            <div class="badge">专业市场({{marketSinrUlStats.length}})</div>
+            <div class="badge">镇-800({{townSinrUlStats800.length}})</div>
+            <div class="badge">镇-1800({{townSinrUlStats1800.length}})</div>
+            <div class="badge">镇-2100({{townSinrUlStats2100.length}})</div>
         </button>
     </p>
     <table class="table table-hover">
@@ -265,6 +266,7 @@
                 <th>TOP</th>
                 <th>镇</th>
                 <th>校园</th>
+                <th>专业市场</th>
                 <th>镇-800</th>
                 <th>镇-1800</th>
                 <th>镇-2100</th>
@@ -277,6 +279,7 @@
                 <td>{{stat.topSinrUlStats}}</td>
                 <td>{{stat.townSinrUlStats}}</td>
                 <td>{{stat.collegeSinrUlStats}}</td>
+                <td>{{stat.marketSinrUlStats}}</td>
                 <td>{{stat.townSinrUlStats800}}</td>
                 <td>{{stat.townSinrUlStats1800}}</td>
                 <td>{{stat.townSinrUlStats2100}}</td>

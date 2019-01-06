@@ -24,20 +24,17 @@ namespace Lte.Evaluations.DataService.Mr
         private readonly ITopMrsSinrUlRepository _topMrsSinrUlRepository;
         private readonly ITownMrsSinrUlRepository _townMrsSinrUlRepository;
         private readonly ICellRepository _cellRepository;
-        private readonly ITownMrsTadvRepository _townMrsTadvRepository;
 
         private static Stack<TopMrsSinrUl> TopStats { get; set; }
 
         public MrsSinrUlImportService(IMrsSinrUlRepository mrsSinrUlRepository,
             IENodebRepository eNodebRepository, ITownMrsSinrUlRepository townMrsSinrUlRepository,
-            ICellRepository cellRepository, ITopMrsSinrUlRepository topRepository,
-            ITownMrsTadvRepository townMrsTadvRepository)
+            ICellRepository cellRepository, ITopMrsSinrUlRepository topRepository)
         {
             _mrsSinrUlRepository = mrsSinrUlRepository;
             _eNodebRepository = eNodebRepository;
             _topMrsSinrUlRepository = topRepository;
             _townMrsSinrUlRepository = townMrsSinrUlRepository;
-            _townMrsTadvRepository = townMrsTadvRepository;
             _cellRepository = cellRepository;
             if (TopStats == null) TopStats = new Stack<TopMrsSinrUl>();
         }
@@ -89,6 +86,10 @@ namespace Lte.Evaluations.DataService.Mr
                     _townMrsSinrUlRepository.GetAllList(x =>
                         x.StatDate >= beginDate && x.StatDate < endDate &&
                         x.FrequencyBandType == FrequencyBandType.College);
+                var marketSinrUlItems =
+                    _townMrsSinrUlRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.Market);
                 var townSinrUlItems800 =
                     _townMrsSinrUlRepository.GetAllList(x =>
                         x.StatDate >= beginDate && x.StatDate < endDate &&
@@ -109,6 +110,7 @@ namespace Lte.Evaluations.DataService.Mr
                     StatDate = begin.Date,
                     TownSinrUlStats = townSinrUlItems.Count,
                     CollegeSinrUlStats = collegeSinrUlItems.Count,
+                    MarketSinrUlStats = marketSinrUlItems.Count,
                     TownSinrUlStats800 = townSinrUlItems800.Count,
                     TownSinrUlStats1800 = townSinrUlItems1800.Count,
                     TownSinrUlStats2100 = townSinrUlItems2100.Count,
@@ -152,6 +154,8 @@ namespace Lte.Evaluations.DataService.Mr
             await _townMrsSinrUlRepository.UpdateMany(mrsSinrUlStats);
             if (container.CollegeMrsSinrUls.Any())
                 await _townMrsSinrUlRepository.UpdateMany(container.CollegeMrsSinrUls);
+            if (container.MarketMrsSinrUls.Any())
+                await _townMrsSinrUlRepository.UpdateMany(container.MarketMrsSinrUls);
             
         }
 

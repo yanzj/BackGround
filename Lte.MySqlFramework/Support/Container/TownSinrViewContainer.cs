@@ -13,6 +13,8 @@ namespace Lte.MySqlFramework.Support.Container
         
         public IEnumerable<TownMrsSinrUl> CollegeMrsSinrUls { get; set; }
         
+        public IEnumerable<TownMrsSinrUl> MarketMrsSinrUls { get; set; }
+
         public IEnumerable<TownMrsSinrUl> MrsSinrUls800 { get; set; }
         
         public IEnumerable<TownMrsSinrUl> MrsSinrUls1800 { get; set; }

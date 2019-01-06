@@ -244,6 +244,12 @@
                             statDate: statTime
                         });
                 },
+                queryMarketSinrUlStats: function(statTime) {
+                    return generalHttpService.getApiData('MarketMrsSinrUl',
+                        {
+                            statDate: statTime
+                        });
+                },
                 queryTownTaStats: function (statTime, frequency) {
                     return generalHttpService.getApiData('MrsTadvImport',
                         {
@@ -317,12 +323,13 @@
                         });
                 },
                 dumpTownSinrItems: function (
-                    mrsSinrUls, collegeSinrUls, mrsSinrUls800, mrsSinrUls1800, mrsSinrUls2100
+                    mrsSinrUls, collegeSinrUls, marketSinrUls, mrsSinrUls800, mrsSinrUls1800, mrsSinrUls2100
                 ) {
                     return generalHttpService.postApiData('MrsSinrUlImport',
                     {
                         mrsSinrUls: mrsSinrUls,
                         collegeMrsSinrUls: collegeSinrUls,
+                        marketMrsSinrUls: marketSinrUls,
                         mrsSinrUls800: mrsSinrUls800,
                         mrsSinrUls1800: mrsSinrUls1800,
                         mrsSinrUls2100: mrsSinrUls2100
