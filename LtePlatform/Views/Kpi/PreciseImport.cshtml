@@ -182,15 +182,17 @@
 
     <p>
         <button class="btn btn-info"
-                ng-disabled="townMrsStats.length === 0 && collegeMrsStats.length === 0 && townMrsStats800.length === 0
+                ng-disabled="townMrsStats.length === 0 && collegeMrsStats.length === 0 
+                && marketMrsStats.length === 0 && townMrsStats800.length === 0
             && townMrsStats1800.length === 0 && townMrsStats2100.length === 0"
                 ng-click="dumpTownRsrpItems()">
             导入镇区指标2
-            <div class="badge">RSRP覆盖({{townMrsStats.length}})</div>
-            <div class="badge">RSRP校园({{collegeMrsStats.length}})</div>
-            <div class="badge">RSRP800({{townMrsStats800.length}})</div>
-            <div class="badge">RSRP1800({{townMrsStats1800.length}})</div>
-            <div class="badge">RSRP2100({{townMrsStats2100.length}})</div>
+            <div class="badge">镇({{townMrsStats.length}})</div>
+            <div class="badge">校园({{collegeMrsStats.length}})</div>
+            <div class="badge">专业市场({{marketMrsStats.length}})</div>
+            <div class="badge">镇-800({{townMrsStats800.length}})</div>
+            <div class="badge">镇-1800({{townMrsStats1800.length}})</div>
+            <div class="badge">镇-2100({{townMrsStats2100.length}})</div>
         </button>
     </p>
     <table class="table table-hover">
@@ -206,6 +208,7 @@
                 <th>TOP</th>
                 <th>镇</th>
                 <th>校园</th>
+                <th>专业市场</th>
                 <th>镇-800</th>
                 <th>镇-1800</th>
                 <th>镇-2100</th>
@@ -218,6 +221,7 @@
                 <td>{{stat.topMrsStats}}</td>
                 <td>{{stat.townMrsStats}}</td>
                 <td>{{stat.collegeMrsStats}}</td>
+                <td>{{stat.marketMrsStats}}</td>
                 <td>{{stat.townMrsStats800}}</td>
                 <td>{{stat.townMrsStats1800}}</td>
                 <td>{{stat.townMrsStats2100}}</td>

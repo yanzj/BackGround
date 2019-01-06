@@ -109,6 +109,10 @@ namespace Lte.Evaluations.DataService.Mr
                     _townMrsRsrpRepository.GetAllList(x =>
                         x.StatDate >= beginDate && x.StatDate < endDate &&
                         x.FrequencyBandType == FrequencyBandType.College);
+                var marketMrsItems =
+                    _townMrsRsrpRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.Market);
                 var townMrsItems800 =
                     _townMrsRsrpRepository.GetAllList(x =>
                         x.StatDate >= beginDate && x.StatDate < endDate &&
@@ -128,6 +132,7 @@ namespace Lte.Evaluations.DataService.Mr
                     StatDate = begin.Date,
                     TownMrsStats = townMrsItems.Count,
                     CollegeMrsStats = collegeMrsItems.Count,
+                    MarketMrsStats = marketMrsItems.Count,
                     TownMrsStats800 = townMrsItems800.Count,
                     TownMrsStats1800 = townMrsItems1800.Count,
                     TownMrsStats2100 = townMrsItems2100.Count,
@@ -145,6 +150,8 @@ namespace Lte.Evaluations.DataService.Mr
             await _townMrsRsrpRepository.UpdateMany(mrsStats);
             if (container.CollegeMrsRsrps.Any())
                 await _townMrsRsrpRepository.UpdateMany(container.CollegeMrsRsrps);
+            if (container.MarketMrsRsrps.Any())
+                await _townMrsRsrpRepository.UpdateMany(container.MarketMrsRsrps);
             
         }
 

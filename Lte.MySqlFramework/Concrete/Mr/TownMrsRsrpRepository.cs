@@ -13,9 +13,10 @@ namespace Lte.MySqlFramework.Concrete.Mr
 
         public TownMrsRsrp Match(TownMrsRsrp stat)
         {
-            var endTime = stat.StatDate.AddDays(1);
+            var beginTime = stat.StatDate.Date;
+            var endTime = stat.StatDate.Date.AddDays(1);
             return FirstOrDefault(
-                x => x.TownId == stat.TownId && x.StatDate >= stat.StatDate && x.StatDate < endTime &&
+                x => x.TownId == stat.TownId && x.StatDate >= beginTime && x.StatDate < endTime &&
                      x.FrequencyBandType == stat.FrequencyBandType);
         }
     }

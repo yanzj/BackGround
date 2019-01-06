@@ -2004,6 +2004,12 @@ angular.module('region.precise', ['app.core'])
                             statDate: statTime
                         });
                 },
+                queryMarketMrsStats: function(statTime) {
+                    return generalHttpService.getApiData('MarketMrsRsrp',
+                        {
+                            statDate: statTime
+                        });
+                },
                 queryTownSinrUlStats: function (statTime, frequency) {
                     return generalHttpService.getApiData('MrsSinrUlImport',
                         {
@@ -2077,12 +2083,13 @@ angular.module('region.precise', ['app.core'])
                     });
                 },
                 dumpTownRsrpItems: function( 
-                    mrsStats, collegeMrsStats, mrsStats800, mrsStats1800, mrsStats2100
+                    mrsStats, collegeMrsStats, marketMrsStats, mrsStats800, mrsStats1800, mrsStats2100
                 ) {
                     return generalHttpService.postApiData('MrsRsrpImport',
                         {
                             mrsRsrps: mrsStats,
                             collegeMrsRsrps: collegeMrsStats,
+                            marketMrsRsrps: marketMrsStats,
                             mrsRsrps800: mrsStats800,
                             mrsRsrps1800: mrsStats1800,
                             mrsRsrps2100: mrsStats2100

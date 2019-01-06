@@ -16,7 +16,7 @@ using LtePlatform.Models;
 
 namespace LtePlatform.Controllers.College
 {
-    [ApiControl("专业市场PRB利用率查询控制器")]
+    [ApiControl("专业市场精确覆盖率查询控制器")]
     [ApiGroup("专题优化")]
     public class MarketPreciseController : ApiController
     {
@@ -35,10 +35,10 @@ namespace LtePlatform.Controllers.College
         }
         
         [HttpGet]
-        [ApiDoc("查询指定日期范围内所有专业市场PRB利用率情况")]
+        [ApiDoc("查询指定日期范围内所有专业市场精确覆盖率情况")]
         [ApiParameterDoc("startDate", "开始日期")]
         [ApiParameterDoc("lastDate", "结束日期")]
-        [ApiResponse("所有专业市场天平均PRB利用率统计")]
+        [ApiResponse("所有专业市场天平均精确覆盖率统计")]
         public IEnumerable<AggregatePreciseView> Get(DateTime startDate, DateTime lastDate)
         {
             var colleges = _marketService.QueryHotSpotViews("专业市场");
@@ -54,10 +54,10 @@ namespace LtePlatform.Controllers.College
         }
         
         [HttpGet]
-        [ApiDoc("查询所有专业市场指定日期范围内PRB利用率情况，按照日期排列")]
+        [ApiDoc("查询所有专业市场指定日期范围内精确覆盖率情况，按照日期排列")]
         [ApiParameterDoc("firstDate", "开始日期")]
         [ApiParameterDoc("secondDate", "结束日期")]
-        [ApiResponse("PRB利用率情况，按照日期排列，每天一条记录")]
+        [ApiResponse("精确覆盖率情况，按照日期排列，每天一条记录")]
         public IEnumerable<AggregatePreciseView> GetAllDateViews(DateTime firstDate, DateTime secondDate)
         {
             var results = new List<AggregatePreciseView>();
@@ -76,9 +76,9 @@ namespace LtePlatform.Controllers.College
         }
 
         [HttpGet]
-        [ApiDoc("查询指定日期内所有专业市场PRB利用率情况")]
+        [ApiDoc("查询指定日期内所有专业市场精确覆盖率情况")]
         [ApiParameterDoc("currentDate", "指定日期")]
-        [ApiResponse("所有专业市场天PRB利用率统计")]
+        [ApiResponse("所有专业市场天精确覆盖率统计")]
         public IEnumerable<AggregatePreciseView> Get(DateTime currentDate)
         {
             var colleges = _marketService.QueryHotSpotViews("专业市场");
@@ -95,11 +95,11 @@ namespace LtePlatform.Controllers.College
         }
 
         [HttpGet]
-        [ApiDoc("查询指定专业市场指定日期范围内PRB利用率情况")]
+        [ApiDoc("查询指定专业市场指定日期范围内精确覆盖率情况")]
         [ApiParameterDoc("collegeName", "专业市场名称")]
         [ApiParameterDoc("begin", "开始日期")]
         [ApiParameterDoc("end", "结束日期")]
-        [ApiResponse("天平均PRB利用率统计")]
+        [ApiResponse("天平均精确覆盖率统计")]
         public AggregatePreciseView Get(string marketName, DateTime begin, DateTime end)
         {
             var college = _marketService.QueryMarketView(marketName);
@@ -113,11 +113,11 @@ namespace LtePlatform.Controllers.College
         }
 
         [HttpGet]
-        [ApiDoc("查询指定专业市场指定日期范围内PRB利用率情况，按照日期排列")]
+        [ApiDoc("查询指定专业市场指定日期范围内精确覆盖率情况，按照日期排列")]
         [ApiParameterDoc("collegeName", "专业市场名称")]
         [ApiParameterDoc("beginDate", "开始日期")]
         [ApiParameterDoc("endDate", "结束日期")]
-        [ApiResponse("PRB利用率情况，按照日期排列，每天一条记录")]
+        [ApiResponse("精确覆盖率情况，按照日期排列，每天一条记录")]
         public IEnumerable<AggregatePreciseView> GetDateViews(string marketName, DateTime beginDate, DateTime endDate)
         {
             var college = _marketService.QueryMarketView(marketName);
@@ -132,10 +132,10 @@ namespace LtePlatform.Controllers.College
         }
         
         [HttpGet]
-        [ApiDoc("查询指定专业市场指定日期各个小区PRB利用率情况")]
+        [ApiDoc("查询指定专业市场指定日期各个小区精确覆盖率情况")]
         [ApiParameterDoc("collegeName", "专业市场名称")]
         [ApiParameterDoc("statDate", "统计日期")]
-        [ApiResponse("各个小区PRB利用率情况统计")]
+        [ApiResponse("各个小区精确覆盖率情况统计")]
         public IEnumerable<Precise4GView> GetMarketDatePreciseView(string marketName, DateTime statDate)
         {
             var beginDate = statDate.Date;
@@ -156,9 +156,9 @@ namespace LtePlatform.Controllers.College
         }
 
         [HttpGet]
-        [ApiDoc("抽取查询单日所有专业市场的PRB利用率统计（导入采用，一般前端代码不要用这个接口）")]
+        [ApiDoc("抽取查询单日所有专业市场的精确覆盖率统计（导入采用，一般前端代码不要用这个接口）")]
         [ApiParameterDoc("statDate", "统计日期")]
-        [ApiResponse("所有专业市场的PRB利用率统计")]
+        [ApiResponse("所有专业市场的精确覆盖率统计")]
         public IEnumerable<TownPreciseStat> GetDatePreciseView(DateTime statDate)
         {
             var beginDate = statDate.Date;

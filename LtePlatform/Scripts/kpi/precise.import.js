@@ -45,6 +45,7 @@
 
         $scope.townMrsStats = [];
         $scope.collegeMrsStats = [];
+        $scope.marketMrsStats = [];
         $scope.townMrsStats800 = [];
         $scope.townMrsStats1800 = [];
         $scope.townMrsStats2100 = [];
@@ -135,11 +136,12 @@
         };
         $scope.dumpTownRsrpItems = function () {
             preciseImportService.dumpTownRsrpItems( 
-                $scope.townMrsStats, $scope.collegeMrsStats, $scope.townMrsStats800,
-                $scope.townMrsStats1800, $scope.townMrsStats2100
+                $scope.townMrsStats, $scope.collegeMrsStats, $scope.marketMrsStats,
+                $scope.townMrsStats800, $scope.townMrsStats1800, $scope.townMrsStats2100
             ).then(function () {
                 $scope.townMrsStats = [];
                 $scope.collegeMrsStats = [];
+                $scope.marketMrsStats = [];
                 $scope.townMrsStats800 = [];
                 $scope.townMrsStats1800 = [];
                 $scope.townMrsStats2100 = [];
@@ -238,6 +240,9 @@
             });
             preciseImportService.queryCollegeMrsStats(date).then(function (result) {
                 $scope.collegeMrsStats = result;
+            });
+            preciseImportService.queryMarketMrsStats(date).then(function (result) {
+                $scope.marketMrsStats = result;
             });
             preciseImportService.queryTownMrsStats(date, '800').then(function (result) {
                 $scope.townMrsStats800 = result;
