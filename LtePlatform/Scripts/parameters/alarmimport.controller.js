@@ -14,6 +14,9 @@
         $scope.updateDumpHistory = function() {
             alarmImportService.queryDumpHistory($scope.beginDate.value, $scope.endDate.value).then(function(result) {
                 $scope.dumpHistory = result;
+            });
+            alarmImportService.queryCoverageHistory($scope.beginDate.value, $scope.endDate.value).then(function(result) {
+                $scope.coverageHistory = result;
                 angular.forEach(result, function (stat) {
                     if (stat.coverageStats > 12000) {
                         if (stat.townCoverageStats === 0) {

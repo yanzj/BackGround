@@ -218,12 +218,6 @@
                 <tr>
                     <th>日期</th>
                     <th>告警数量</th>
-                    <th>MR覆盖-小区</th>
-                    <th>MR覆盖-镇</th>
-                    <th>MR覆盖-镇800</th>
-                    <th>MR覆盖-镇1800</th>
-                    <th>MR覆盖-镇2100</th>
-                    <th>MR覆盖-校园</th>
                     <th>掌上优测试记录数</th>
                     <th>掌上优信号记录数</th>
                 </tr>
@@ -232,17 +226,36 @@
                 <tr ng-repeat="stat in dumpHistory">
                     <td>{{stat.dateString}}</td>
                     <td>{{stat.alarms}}</td>
-                    <td>{{stat.coverageStats}}</td>
-                    <td>{{stat.townCoverageStats}}</td>
-                    <td>{{stat.townCoverage800}}</td>
-                    <td>{{stat.townCoverage1800}}</td>
-                    <td>{{stat.townCoverage2100}}</td>
-                    <td>{{stat.collegeCoverageStats}}</td>
                     <td>{{stat.zhangshangyouQualities}}</td>
                     <td>{{stat.zhangshangyouCoverages}}</td>
                 </tr>
             </tbody>
         </table>
+        
+    <table class="table table-hover col-md-12">
+        <thead>
+        <tr>
+            <th>日期</th>
+            <th>MR覆盖-小区</th>
+            <th>MR覆盖-镇</th>
+            <th>MR覆盖-镇800</th>
+            <th>MR覆盖-镇1800</th>
+            <th>MR覆盖-镇2100</th>
+            <th>MR覆盖-校园</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="stat in coverageHistory">
+            <td>{{stat.dateString}}</td>
+            <td>{{stat.coverageStats}}</td>
+            <td>{{stat.townCoverageStats}}</td>
+            <td>{{stat.townCoverage800}}</td>
+            <td>{{stat.townCoverage1800}}</td>
+            <td>{{stat.townCoverage2100}}</td>
+            <td>{{stat.collegeCoverageStats}}</td>
+        </tr>
+        </tbody>
+    </table>
 
     </div>
 

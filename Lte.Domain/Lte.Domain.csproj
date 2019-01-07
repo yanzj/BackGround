@@ -332,6 +332,7 @@
     <Compile Include="Regular\Attributes\NotNullAttribute.cs" />
     <Compile Include="Common\Transform\TransformEnum.cs" />
     <Compile Include="Regular\Attributes\UsedImplicitlyAttribute.cs" />
+    <Compile Include="Regular\CoverageHistory.cs" />
     <Compile Include="Regular\FlowHistory.cs" />
     <Compile Include="Regular\HourKpiHistory.cs" />
     <Compile Include="Regular\IIpAddress.cs" />

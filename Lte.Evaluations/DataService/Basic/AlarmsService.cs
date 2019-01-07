@@ -165,6 +165,26 @@ namespace Lte.Evaluations.DataService.Basic
                 {
                     DateString = beginDate.ToShortDateString(),
                     Alarms = _repository.Count(x => x.HappenTime >= beginDate && x.HappenTime < endDate),
+                    ZhangshangyouQualities =
+                        _zhangshangyouQualityRepository.Count(x => x.StatTime >= beginDate && x.StatTime < endDate),
+                    ZhangshangyouCoverages =
+                        _zhangshangyouCoverageRepository.Count(x => x.StatTime >= beginDate && x.StatTime < endDate)
+                });
+                begin = begin.AddDays(1);
+            }
+            return results;
+        }
+        
+        public IEnumerable<CoverageHistory> GetCoverageHistories(DateTime begin, DateTime end)
+        {
+            var results = new List<CoverageHistory>();
+            while (begin < end.AddDays(1))
+            {
+                var beginDate = begin.Date;
+                var endDate = begin.Date.AddDays(1);
+                results.Add(new CoverageHistory
+                {
+                    DateString = beginDate.ToShortDateString(),
                     CoverageStats = _coverageStatRepository.Count(x => x.StatDate >= beginDate && x.StatDate < endDate),
                     TownCoverageStats =
                         _townCoverageRepository.Count(x =>
@@ -185,11 +205,7 @@ namespace Lte.Evaluations.DataService.Basic
                     CollegeCoverageStats = 
                         _townCoverageRepository.Count(x =>
                             x.StatDate >= beginDate && x.StatDate < endDate &&
-                            x.FrequencyBandType == FrequencyBandType.College),
-                    ZhangshangyouQualities =
-                        _zhangshangyouQualityRepository.Count(x => x.StatTime >= beginDate && x.StatTime < endDate),
-                    ZhangshangyouCoverages =
-                        _zhangshangyouCoverageRepository.Count(x => x.StatTime >= beginDate && x.StatTime < endDate)
+                            x.FrequencyBandType == FrequencyBandType.College)
                 });
                 begin = begin.AddDays(1);
             }

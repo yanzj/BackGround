@@ -9,6 +9,7 @@ using Abp.EntityFramework.Entities.College;
 namespace LtePlatform.Controllers.College
 {
     [ApiControl("热点查询控制器")]
+    [ApiGroup("专题优化")]
     public class HotSpotController : ApiController
     {
         private readonly HotSpotService _service;
@@ -41,23 +42,6 @@ namespace LtePlatform.Controllers.College
         public IEnumerable<HotSpotView> Get(string type)
         {
             return _service.QueryHotSpotViews(type);
-        }
-    }
-
-    [ApiControl("高速查询控制器")]
-    public class HighwayController : ApiController
-    {
-        private readonly HotSpotService _service;
-
-        public HighwayController(HotSpotService service)
-        {
-            _service = service;
-        }
-
-        [HttpGet]
-        public IEnumerable<HighwayView> Get()
-        {
-            return _service.QueryAllHighwayViews();
         }
     }
 }

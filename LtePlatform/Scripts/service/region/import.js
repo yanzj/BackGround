@@ -401,6 +401,13 @@
                         end: end
                     });
                 },
+                queryCoverageHistory: function(begin, end) {
+                    return generalHttpService.getApiData('DumpAlarm',
+                        {
+                            beginDate: begin,
+                            endDate: end
+                        });
+                },
                 updateTownCoverageStats: function(statDate, frequency) {
                     return generalHttpService.getApiData('DumpCoverage',
                     {
