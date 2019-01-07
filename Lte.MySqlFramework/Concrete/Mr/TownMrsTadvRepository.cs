@@ -18,8 +18,9 @@ namespace Lte.MySqlFramework.Concrete.Mr
 
         public TownMrsTadv Match(TownMrsTadv stat)
         {
+            var begin = stat.StatDate.Date;
             var end = stat.StatDate.AddDays(1).Date;
-            return FirstOrDefault(x => x.TownId == stat.TownId && x.StatDate >= stat.StatDate.Date && x.StatDate < end
+            return FirstOrDefault(x => x.TownId == stat.TownId && x.StatDate >= begin && x.StatDate < end
                                        && x.FrequencyBandType == stat.FrequencyBandType);
         }
     }

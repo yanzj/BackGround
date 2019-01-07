@@ -2042,6 +2042,12 @@ angular.module('region.precise', ['app.core'])
                             statDate: statTime
                         });
                 },
+                queryMarketTaStats: function(statTime) {
+                    return generalHttpService.getApiData('MarketMrsTadv',
+                        {
+                            statDate: statTime
+                        });
+                },
 
                 queryTopMrsStats: function (statTime) {
                     return generalHttpService.getApiData('MrsRsrpImport',
@@ -2115,12 +2121,13 @@ angular.module('region.precise', ['app.core'])
                     });
                 },
                 dumpTownTaItems: function (
-                    mrsTadvs, collegeTadvs, mrsTadvs800, mrsTadvs1800, mrsTadvs2100
+                    mrsTadvs, collegeTadvs, marketTadvs, mrsTadvs800, mrsTadvs1800, mrsTadvs2100
                 ) {
                     return generalHttpService.postApiData('MrsTadvImport',
                         {
                             mrsTadvs: mrsTadvs,
                             collegeMrsTadvs: collegeTadvs,
+                            marketMrsTadvs: marketTadvs,
                             mrsTadvs800: mrsTadvs800,
                             mrsTadvs1800: mrsTadvs1800,
                             mrsTadvs2100: mrsTadvs2100

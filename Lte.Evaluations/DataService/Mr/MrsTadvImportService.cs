@@ -99,6 +99,10 @@ namespace Lte.Evaluations.DataService.Mr
                     _townMrsTadvRepository.GetAllList(x =>
                         x.StatDate >= beginDate && x.StatDate < endDate &&
                         x.FrequencyBandType == FrequencyBandType.College);
+                var marketTadvItems =
+                    _townMrsTadvRepository.GetAllList(x =>
+                        x.StatDate >= beginDate && x.StatDate < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.Market);
                 var townTadvItems800 =
                     _townMrsTadvRepository.GetAllList(x =>
                         x.StatDate >= beginDate && x.StatDate < endDate &&
@@ -119,6 +123,7 @@ namespace Lte.Evaluations.DataService.Mr
                     StatDate = begin.Date,
                     TownTadvStats = townTadvItems.Count,
                     CollegeTadvStats = collegeTadvItems.Count,
+                    MarketTadvStats = marketTadvItems.Count,
                     TownTadvStats800 = townTadvItems800.Count,
                     TownTadvStats1800 = townTadvItems1800.Count,
                     TownTadvStats2100 = townTadvItems2100.Count,
@@ -162,6 +167,8 @@ namespace Lte.Evaluations.DataService.Mr
             await _townMrsTadvRepository.UpdateMany(mrsTadvStats);
             if (container.CollegeMrsTadvs.Any())
                 await _townMrsTadvRepository.UpdateMany(container.CollegeMrsTadvs);
+            if (container.MarketMrsTadvs.Any())
+                await _townMrsTadvRepository.UpdateMany(container.MarketMrsTadvs);
         }
 
         public bool DumpOneStat()

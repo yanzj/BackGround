@@ -361,6 +361,7 @@
     <Compile Include="Controllers\Kpi\TopMrsTadvController.cs" />
     <Compile Include="Controllers\Mongo\MarketMrsRsrpController.cs" />
     <Compile Include="Controllers\Mongo\MarketMrsSinrUlController.cs" />
+    <Compile Include="Controllers\Mongo\MarketMrsTadvController.cs" />
     <Compile Include="Controllers\Mr\CollegeMrsTadvController.cs" />
     <Compile Include="Controllers\Mr\SinrUlRegionController.cs" />
     <Compile Include="Controllers\Kpi\TopDoubleFlowController.cs" />

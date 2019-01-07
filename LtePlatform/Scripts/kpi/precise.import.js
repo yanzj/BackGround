@@ -59,6 +59,7 @@
         
         $scope.townTaStats = [];
         $scope.collegeTaStats = [];
+        $scope.marketTaStats = [];
         $scope.townTaStats800 = [];
         $scope.townTaStats1800 = [];
         $scope.townTaStats2100 = [];
@@ -164,12 +165,13 @@
             });
         };
         $scope.dumpTownTaItems = function () {
-            preciseImportService.dumpTownSinrItems(
-                $scope.townTaStats, $scope.collegeTaStats, $scope.townTaStats800,
-                $scope.townTaStats1800, $scope.townTaStats2100
+            preciseImportService.dumpTownTaItems(
+                $scope.townTaStats, $scope.collegeTaStats, $scope.marketTaStats,
+                $scope.townTaStats800, $scope.townTaStats1800, $scope.townTaStats2100
             ).then(function () {
                 $scope.townTaStats = [];
                 $scope.collegeTaStats = [];
+                $scope.marketTaStats = [];
                 $scope.townTaStats800 = [];
                 $scope.townTaStats1800 = [];
                 $scope.townTaStats2100 = [];
@@ -282,6 +284,9 @@
             });
             preciseImportService.queryCollegeTaStats(date).then(function (result) {
                 $scope.collegeTaStats = result;
+            });
+            preciseImportService.queryMarketTaStats(date).then(function (result) {
+                $scope.marketTaStats = result;
             });
             preciseImportService.queryTownTaStats(date, '800').then(function (result) {
                 $scope.townTaStats800 = result;

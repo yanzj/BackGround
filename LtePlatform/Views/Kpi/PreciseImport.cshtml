@@ -241,7 +241,8 @@
 
     <p>
         <button class="btn btn-info"
-                ng-disabled="townSinrUlStats.length === 0 && collegeSinrUlStats.length === 0 && townSinrUlStats800.length === 0
+                ng-disabled="townSinrUlStats.length === 0 && collegeSinrUlStats.length === 0 
+                && marketSinrUlStats.length === 0 && townSinrUlStats800.length === 0
             && townSinrUlStats1800.length === 0 && townSinrUlStats2100.length === 0"
                 ng-click="dumpTownSinrItems()">
             导入镇区指标3
@@ -299,15 +300,17 @@
 
     <p>
         <button class="btn btn-info"
-                ng-disabled="townTaStats.length === 0 && collegeTaStats.length === 0 && townTaStats800.length === 0
+                ng-disabled="townTaStats.length === 0 && collegeTaStats.length === 0 
+                && marketTaStats.length === 0 && townTaStats800.length === 0
             && townTaStats1800.length === 0 && townTaStats2100.length === 0"
                 ng-click="dumpTownTaItems()">
             导入镇区指标4
-            <div class="badge">TA({{townTaStats.length}})</div>
-            <div class="badge">校园TA({{collegeTaStats.length}})</div>
-            <div class="badge">TA-800({{townTaStats800.length}})</div>
-            <div class="badge">TA-1800({{townTaStats1800.length}})</div>
-            <div class="badge">TA-2100({{townTaStats2100.length}})</div>
+            <div class="badge">镇({{townTaStats.length}})</div>
+            <div class="badge">校园({{collegeTaStats.length}})</div>
+            <div class="badge">专业市场({{marketTaStats.length}})</div>
+            <div class="badge">镇-800({{townTaStats800.length}})</div>
+            <div class="badge">镇-1800({{townTaStats1800.length}})</div>
+            <div class="badge">镇-2100({{townTaStats2100.length}})</div>
         </button>
     </p>
     <table class="table table-hover">
@@ -323,6 +326,7 @@
                 <th>TOP</th>
                 <th>镇</th>
                 <th>校园</th>
+                <th>专业市场</th>
                 <th>镇-800</th>
                 <th>镇-1800</th>
                 <th>镇-2100</th>
@@ -335,6 +339,7 @@
                 <td>{{stat.topTadvStats}}</td>
                 <td>{{stat.townTadvStats}}</td>
                 <td>{{stat.collegeTadvStats}}</td>
+                <td>{{stat.marketTadvStats}}</td>
                 <td>{{stat.townTadvStats800}}</td>
                 <td>{{stat.townTadvStats1800}}</td>
                 <td>{{stat.townTadvStats2100}}</td>
