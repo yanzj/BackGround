@@ -44,6 +44,11 @@
                                 stat.collegeCoverageStats = count;
                             });
                         }
+                        if (stat.marketCoverageStats === 0) {
+                            alarmImportService.updateMarketCoverageStats(stat.dateString).then(function(count) {
+                                stat.marketCoverageStats = count;
+                            });
+                        }
                     }
                         
                 });

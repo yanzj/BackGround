@@ -95,7 +95,7 @@ namespace LtePlatform.Controllers.College
 
         [HttpGet]
         [ApiDoc("查询指定专业市场指定日期范围内CQI优良比情况")]
-        [ApiParameterDoc("collegeName", "专业市场名称")]
+        [ApiParameterDoc("marketName", "专业市场名称")]
         [ApiParameterDoc("begin", "开始日期")]
         [ApiParameterDoc("end", "结束日期")]
         [ApiResponse("天平均CQI优良比统计")]
@@ -113,7 +113,7 @@ namespace LtePlatform.Controllers.College
 
         [HttpGet]
         [ApiDoc("查询指定专业市场指定日期范围内CQI优良比情况，按照日期排列")]
-        [ApiParameterDoc("collegeName", "专业市场名称")]
+        [ApiParameterDoc("marketName", "专业市场名称")]
         [ApiParameterDoc("beginDate", "开始日期")]
         [ApiParameterDoc("endDate", "结束日期")]
         [ApiResponse("CQI优良比情况，按照日期排列，每天一条记录")]
@@ -132,7 +132,7 @@ namespace LtePlatform.Controllers.College
         
         [HttpGet]
         [ApiDoc("查询指定专业市场指定日期各个小区CQI优良比情况")]
-        [ApiParameterDoc("collegeName", "专业市场名称")]
+        [ApiParameterDoc("marketName", "专业市场名称")]
         [ApiParameterDoc("statDate", "统计日期")]
         [ApiResponse("各个小区CQI优良比情况统计")]
         public IEnumerable<CqiView> GetMarketDateCqiView(string marketName, DateTime statDate)

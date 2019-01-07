@@ -24,6 +24,8 @@ namespace Lte.Domain.Regular
         public int TownCoverage2100 { get; set; }
 
         public int CollegeCoverageStats { get; set; }
+        
+        public int MarketCoverageStats { get; set; }
 
     }
 }

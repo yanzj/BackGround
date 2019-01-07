@@ -43,7 +43,8 @@ namespace LtePlatform.Controllers.Mongo
             var colleges = _marketService.QueryHotSpotViews("专业市场");
             return colleges.Select(college =>
             {
-                var stats = _townMrsRsrpService.QueryTownViews(startDate, lastDate, college.Id, FrequencyBandType.Market);
+                var stats = _townMrsRsrpService.QueryTownViews(startDate, lastDate, college.Id,
+                    FrequencyBandType.Market);
                 var result = stats.Any()
                     ? stats.ArraySum().MapTo<AggregateMrsRsrpView>()
                     : new AggregateMrsRsrpView();
@@ -84,7 +85,8 @@ namespace LtePlatform.Controllers.Mongo
             var lastDate = currentDate.AddDays(1);
             return colleges.Select(college =>
             {
-                var stats = _townMrsRsrpService.QueryTownViews(currentDate, lastDate, college.Id, FrequencyBandType.Market);
+                var stats = _townMrsRsrpService.QueryTownViews(currentDate, lastDate, college.Id,
+                    FrequencyBandType.Market);
                 var result = stats.Any()
                     ? stats.ArraySum().MapTo<AggregateMrsRsrpView>()
                     : new AggregateMrsRsrpView();
@@ -95,7 +97,7 @@ namespace LtePlatform.Controllers.Mongo
 
         [HttpGet]
         [ApiDoc("查询指定专业市场指定日期范围内MRS覆盖情况")]
-        [ApiParameterDoc("collegeName", "专业市场名称")]
+        [ApiParameterDoc("marketName", "专业市场名称")]
         [ApiParameterDoc("begin", "开始日期")]
         [ApiParameterDoc("end", "结束日期")]
         [ApiResponse("天平均MRS覆盖统计")]
@@ -113,7 +115,7 @@ namespace LtePlatform.Controllers.Mongo
 
         [HttpGet]
         [ApiDoc("查询指定专业市场指定日期范围内MRS覆盖情况，按照日期排列")]
-        [ApiParameterDoc("collegeName", "专业市场名称")]
+        [ApiParameterDoc("marketName", "专业市场名称")]
         [ApiParameterDoc("beginDate", "开始日期")]
         [ApiParameterDoc("endDate", "结束日期")]
         [ApiResponse("MRS覆盖情况，按照日期排列，每天一条记录")]
@@ -132,7 +134,7 @@ namespace LtePlatform.Controllers.Mongo
         
         [HttpGet]
         [ApiDoc("查询指定专业市场指定日期各个小区MRS覆盖情况")]
-        [ApiParameterDoc("collegeName", "专业市场名称")]
+        [ApiParameterDoc("marketName", "专业市场名称")]
         [ApiParameterDoc("statDate", "统计日期")]
         [ApiResponse("各个小区MRS覆盖情况统计")]
         public IEnumerable<CellMrsRsrpDto> GetMarketDateView(string marketName, DateTime statDate)

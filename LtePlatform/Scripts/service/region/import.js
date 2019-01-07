@@ -416,7 +416,13 @@
                     });
                 },
                 updateCollegeCoverageStats: function(statDate) {
-                    return generalHttpService.getApiData('DumpCoverage',
+                    return generalHttpService.getApiData('CollegeMroRsrp',
+                        {
+                            statTime: statDate
+                        });
+                },
+                updateMarketCoverageStats: function(statDate) {
+                    return generalHttpService.getApiData('MarketMroRsrp',
                         {
                             statTime: statDate
                         });

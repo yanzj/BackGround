@@ -205,7 +205,11 @@ namespace Lte.Evaluations.DataService.Basic
                     CollegeCoverageStats = 
                         _townCoverageRepository.Count(x =>
                             x.StatDate >= beginDate && x.StatDate < endDate &&
-                            x.FrequencyBandType == FrequencyBandType.College)
+                            x.FrequencyBandType == FrequencyBandType.College),
+                    MarketCoverageStats = 
+                        _townCoverageRepository.Count(x =>
+                            x.StatDate >= beginDate && x.StatDate < endDate &&
+                            x.FrequencyBandType == FrequencyBandType.Market)
                 });
                 begin = begin.AddDays(1);
             }
