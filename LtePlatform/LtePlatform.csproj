@@ -360,6 +360,8 @@
     <Compile Include="Controllers\Kpi\RssiQueryController.cs" />
     <Compile Include="Controllers\Kpi\TopMrsSinrUlController.cs" />
     <Compile Include="Controllers\Kpi\TopMrsTadvController.cs" />
+    <Compile Include="Controllers\Maintainance\CheckingProjectController.cs" />
+    <Compile Include="Controllers\Maintainance\CheckingProjectProvinceController.cs" />
     <Compile Include="Controllers\Mongo\MarketMroRsrpController.cs" />
     <Compile Include="Controllers\Mongo\MarketMrsRsrpController.cs" />
     <Compile Include="Controllers\Mongo\MarketMrsSinrUlController.cs" />
@@ -513,8 +515,8 @@
     <Compile Include="Controllers\Dt\TownTypeTestInfoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KpiController.cs" />
-    <Compile Include="Controllers\Kpi\AlarmCountController.cs" />
-    <Compile Include="Controllers\Kpi\AlarmsController.cs" />
+    <Compile Include="Controllers\Maintainance\AlarmCountController.cs" />
+    <Compile Include="Controllers\Maintainance\AlarmsController.cs" />
     <Compile Include="Controllers\Kpi\CellFlowController.cs" />
     <Compile Include="Controllers\Kpi\CollegeFlowController.cs" />
     <Compile Include="Controllers\Kpi\CoverageRegionController.cs" />

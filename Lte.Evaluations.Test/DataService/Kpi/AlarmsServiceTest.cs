@@ -14,6 +14,7 @@ using System.Linq;
 using Abp.EntityFramework.Entities.Maintainence;
 using Lte.Domain.Common.Wireless.Alarm;
 using Lte.Evaluations.DataService.Basic;
+using Lte.Evaluations.DataService.Maintainance;
 using Lte.MySqlFramework.Abstract.Maintainence;
 using Lte.MySqlFramework.Entities.Maintainence;
 

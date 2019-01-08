@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using Lte.Domain.Common.Wireless.Work;
 using Lte.Evaluations.DataService.Basic;
+using Lte.Evaluations.DataService.Maintainance;
 
 namespace Lte.Evaluations.DataService.Kpi
 {

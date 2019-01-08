@@ -128,6 +128,8 @@
     <Compile Include="DataService\Basic\StationImportService.cs" />
     <Compile Include="DataService\Basic\StationInfoService.cs" />
     <Compile Include="DataService\Basic\StationRruService.cs" />
+    <Compile Include="DataService\Maintainance\CheckingProjectProvinceService.cs" />
+    <Compile Include="DataService\Maintainance\CheckingProjectService.cs" />
     <Compile Include="DataService\College\BranchDemandService.cs" />
     <Compile Include="DataService\College\CheckingService.cs" />
     <Compile Include="DataService\College\College4GTestService.cs" />
@@ -144,7 +146,7 @@
     <Compile Include="DataService\College\OnlineSustainService.cs" />
     <Compile Include="DataService\College\VipDemandService.cs" />
     <Compile Include="DataService\Dt\AreaTestDateService.cs" />
-    <Compile Include="DataService\Basic\AlarmsService.cs" />
+    <Compile Include="DataService\Maintainance\AlarmsService.cs" />
     <Compile Include="DataService\Basic\BandCellService.cs" />
     <Compile Include="DataService\Basic\BasicImportService.cs" />
     <Compile Include="DataService\Basic\TownBoundaryService.cs" />

@@ -4,6 +4,7 @@ using Lte.Evaluations.DataService.College;
 using Lte.Evaluations.DataService.Dt;
 using Lte.Evaluations.DataService.Dump;
 using Lte.Evaluations.DataService.Kpi;
+using Lte.Evaluations.DataService.Maintainance;
 using Lte.Evaluations.DataService.Mr;
 using Lte.Evaluations.DataService.RegionKpi;
 using Lte.Evaluations.DataService.Switch;
@@ -587,6 +588,10 @@ namespace LtePlatform
             ninjectKernel.Bind<TopMrsSinrUlService>().ToSelf();
 
             ninjectKernel.Bind<TopMrsTadvService>().ToSelf();
+
+            ninjectKernel.Bind<CheckingProjectService>().ToSelf();
+
+            ninjectKernel.Bind<CheckingProjectProvinceService>().ToSelf();
 
         }
     }

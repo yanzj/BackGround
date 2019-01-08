@@ -10,12 +10,13 @@ using Lte.Domain.Common.Wireless.Work;
 using Lte.Domain.LinqToCsv.Context;
 using Lte.Domain.LinqToCsv.Description;
 using Lte.Domain.Regular;
+using Lte.Evaluations.DataService.Basic;
 using Lte.MySqlFramework.Abstract.Maintainence;
 using Lte.MySqlFramework.Abstract.RegionKpi;
 using Lte.MySqlFramework.Abstract.Test;
 using Lte.MySqlFramework.Entities.Maintainence;
 
-namespace Lte.Evaluations.DataService.Basic
+namespace Lte.Evaluations.DataService.Maintainance
 {
     public class AlarmsService
     {
