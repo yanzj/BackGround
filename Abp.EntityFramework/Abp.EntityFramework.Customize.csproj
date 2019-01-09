@@ -182,6 +182,7 @@
     <Compile Include="Entities\Complain\VipDemandDto.cs" />
     <Compile Include="Entities\Infrastructure\SectorView.cs" />
     <Compile Include="Entities\Kpi\AggregateCqiView.cs" />
+    <Compile Include="Entities\Kpi\AggregateDoubleFlowView.cs" />
     <Compile Include="Entities\Kpi\AggregateFlowView.cs" />
     <Compile Include="Entities\Kpi\AggregateHourCqiView.cs" />
     <Compile Include="Entities\Kpi\CqiView.cs" />

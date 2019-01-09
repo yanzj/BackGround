@@ -388,6 +388,10 @@
     <Compile Include="Migrations\201901041041504_CheckingProjectProvinces_Add.Designer.cs">
       <DependentUpon>201901041041504_CheckingProjectProvinces_Add.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901090652091_Update_Town_DoubleFlow.cs" />
+    <Compile Include="Migrations\201901090652091_Update_Town_DoubleFlow.Designer.cs">
+      <DependentUpon>201901090652091_Update_Town_DoubleFlow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -525,6 +529,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901041041504_CheckingProjectProvinces_Add.resx">
       <DependentUpon>201901041041504_CheckingProjectProvinces_Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901090652091_Update_Town_DoubleFlow.resx">
+      <DependentUpon>201901090652091_Update_Town_DoubleFlow.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

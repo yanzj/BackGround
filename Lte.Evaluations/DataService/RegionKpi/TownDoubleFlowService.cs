@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Abp.EntityFramework.Entities.Kpi;
 using Abp.EntityFramework.Entities.RegionKpi;
+using Lte.Domain.Common.Wireless.Cell;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Kpi;
+using Lte.MySqlFramework.Support;
 
 namespace Lte.Evaluations.DataService.RegionKpi
 {
@@ -24,14 +26,15 @@ namespace Lte.Evaluations.DataService.RegionKpi
             _doubleFlowZteRepository = doubleFlowZteRepository;
         }
 
-        public List<TownDoubleFlow> GetTownDoubleFlowStats(DateTime statDate)
+        public List<TownDoubleFlow> GetTownDoubleFlowStats(DateTime statDate,
+            FrequencyBandType frequency = FrequencyBandType.All)
         {
             var end = statDate.AddDays(1);
             var townStatList = new List<TownDoubleFlow>();
-            var huaweiDoubleFlows = _doubleFlowHuaweiRepository.GetAllList(x => x.StatTime >= statDate && x.StatTime < end);
-            townStatList.AddRange(huaweiDoubleFlows.GetTownStats<DoubleFlowHuawei, TownDoubleFlow>(_eNodebRepository));
-            var zteDoubleFlows = _doubleFlowZteRepository.GetAllList(x => x.StatTime >= statDate && x.StatTime < end);
-            townStatList.AddRange(zteDoubleFlows.GetTownStats<DoubleFlowZte, TownDoubleFlow>(_eNodebRepository));
+            var huaweiStats = _doubleFlowHuaweiRepository.QueryZteFlows<DoubleFlowHuawei, IDoubleFlowHuaweiRepository>(frequency, statDate, end);
+            townStatList.AddRange(huaweiStats.GetTownStats<DoubleFlowHuawei, TownDoubleFlow>(_eNodebRepository));
+            var zteStats = _doubleFlowZteRepository.QueryZteFlows<DoubleFlowZte, IDoubleFlowZteRepository>(frequency, statDate, end);
+            townStatList.AddRange(zteStats.GetTownStats<DoubleFlowZte, TownDoubleFlow>(_eNodebRepository));
             return townStatList;
         }
 

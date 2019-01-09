@@ -150,7 +150,60 @@ namespace Lte.Evaluations.DataService.RegionKpi
             }
             return new[] { count0, count1, count2, count3 };
         }
-        
+
+        public async Task<int[]> GenerateTownDoubleFlows(DateTime statTime)
+        {
+            var end = statTime.AddDays(1);
+            var count0 = _townDoubleFlowRepository.Count(x =>
+                x.StatTime >= statTime && x.StatTime < end && x.FrequencyBandType == FrequencyBandType.All);
+            if (count0 == 0)
+            {
+                var townDoubleFlowList = _doubleFlowService.GetTownDoubleFlowStats(statTime);
+                foreach (var stat in townDoubleFlowList.GetPositionMergeStats(statTime))
+                {
+                    stat.FrequencyBandType = FrequencyBandType.All;
+                    await _townDoubleFlowRepository.InsertAsync(stat);
+                }
+                count0 = _townDoubleFlowRepository.SaveChanges();
+            }
+
+            var count1 = _townDoubleFlowRepository.Count(x =>
+                x.StatTime >= statTime && x.StatTime < end && x.FrequencyBandType == FrequencyBandType.Band2100);
+            if (count1 == 0)
+            {
+                var townDoubleFlowList = _doubleFlowService.GetTownDoubleFlowStats(statTime, FrequencyBandType.Band2100);
+                foreach (var stat in townDoubleFlowList.GetPositionMergeStats(statTime))
+                {
+                    stat.FrequencyBandType = FrequencyBandType.Band2100;
+                    await _townDoubleFlowRepository.InsertAsync(stat);
+                }
+                count1 = _townDoubleFlowRepository.SaveChanges();
+            }
+            var count2 = _townDoubleFlowRepository.Count(x => x.StatTime >= statTime && x.StatTime < end && x.FrequencyBandType == FrequencyBandType.Band1800);
+            if (count2 == 0)
+            {
+                var townDoubleFlowList = _doubleFlowService.GetTownDoubleFlowStats(statTime, FrequencyBandType.Band1800);
+                foreach (var stat in townDoubleFlowList.GetPositionMergeStats(statTime))
+                {
+                    stat.FrequencyBandType = FrequencyBandType.Band1800;
+                    await _townDoubleFlowRepository.InsertAsync(stat);
+                }
+                count2 = _townDoubleFlowRepository.SaveChanges();
+            }
+            var count3 = _townDoubleFlowRepository.Count(x => x.StatTime >= statTime && x.StatTime < end && x.FrequencyBandType == FrequencyBandType.Band800VoLte);
+            if (count3 == 0)
+            {
+                var townDoubleFlowList = _doubleFlowService.GetTownDoubleFlowStats(statTime, FrequencyBandType.Band800VoLte);
+                foreach (var stat in townDoubleFlowList.GetPositionMergeStats(statTime))
+                {
+                    stat.FrequencyBandType = FrequencyBandType.Band800VoLte;
+                    await _townDoubleFlowRepository.InsertAsync(stat);
+                }
+                count3 = _townDoubleFlowRepository.SaveChanges();
+            }
+            return new[] { count0, count1, count2, count3 };
+        }
+
         public async Task<int[]> GenerateTownFlows(DateTime statDate)
         {
             var end = statDate.AddDays(1);
