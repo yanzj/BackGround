@@ -60,6 +60,20 @@
                                 });
                             }
                         });
+                        appRegionService.getCurrentDateTownDoubleFlowStats(stat.date, 'market').then(function (items) {
+                            stat.doubleFlows = items;
+                            if (items.length < 50) {
+                                collegeQueryService.retrieveDateMarketDoubleFlowStats(stat.date).then(function (newItems) {
+                                    
+                                    angular.forEach(newItems,
+                                        function (item) {
+                                            appRegionService.updateTownDoubleFlowStat(item).then(function (result) {
+                                                stat.doubleFlows = newItems;
+                                            });
+                                        });
+                                });
+                            }
+                        });
                         appRegionService.getCurrentDateTownHourCqiStats(stat.date, 'market').then(function (items) {
                             stat.hourCqis = items;
                             if (items.length < 50) {

@@ -324,6 +324,7 @@
     <Compile Include="Controllers\College\CollegePrbController.cs" />
     <Compile Include="Controllers\College\HighwayController.cs" />
     <Compile Include="Controllers\College\MarketCqiController.cs" />
+    <Compile Include="Controllers\College\MarketDoubleFlowController.cs" />
     <Compile Include="Controllers\College\MarketHourCqiController.cs" />
     <Compile Include="Controllers\College\MarketPrbController.cs" />
     <Compile Include="Controllers\College\MarketPreciseController.cs" />

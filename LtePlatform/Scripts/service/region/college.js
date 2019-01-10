@@ -264,6 +264,12 @@
                         statDate: statDate
                     });
             },
+            retrieveDateMarketDoubleFlowStats: function (statDate) {
+                return generalHttpService.getApiData('MarketDoubleFlow',
+                    {
+                        statDate: statDate
+                    });
+            },
             retrieveDateMarketHourCqiStats: function (statDate) {
                 return generalHttpService.getApiData('MarketHourCqi',
                     {
