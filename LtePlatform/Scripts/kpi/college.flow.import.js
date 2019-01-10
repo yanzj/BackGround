@@ -60,6 +60,20 @@
                                 });
                             }
                         });
+                        appRegionService.getCurrentDateTownDoubleFlowStats(stat.date, 'college').then(function (items) {
+                            stat.doubleFlows = items;
+                            if (items.length < 20) {
+                                collegeQueryService.retrieveDateCollegeDoubleFlowStats(stat.date).then(function (newItems) {
+                                    
+                                    angular.forEach(newItems,
+                                        function (item) {
+                                            appRegionService.updateTownDoubleFlowStat(item).then(function (result) {
+                                                stat.doubleFlows = newItems;
+                                            });
+                                        });
+                                });
+                            }
+                        });
                         appRegionService.getCurrentDateTownHourCqiStats(stat.date, 'college').then(function (items) {
                             stat.hourCqis = items;
                             if (items.length < 20) {

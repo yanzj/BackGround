@@ -234,6 +234,12 @@
                         statDate: statDate
                     });
             },
+            retrieveDateCollegeDoubleFlowStats: function (statDate) {
+                return generalHttpService.getApiData('CollegeDoubleFlow',
+                    {
+                        statDate: statDate
+                    });
+            },
             retrieveDateCollegeHourCqiStats: function (statDate) {
                 return generalHttpService.getApiData('CollegeHourCqi',
                     {

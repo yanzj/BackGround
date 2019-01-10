@@ -4,7 +4,7 @@ using Abp.EntityFramework.Repositories;
 
 namespace Lte.MySqlFramework.Abstract.RegionKpi
 {
-    public interface ITownDoubleFlowRepository : IRepository<TownDoubleFlow>, ISaveChanges
+    public interface ITownDoubleFlowRepository : IRepository<TownDoubleFlow>, IMatchRepository<TownDoubleFlow>, ISaveChanges
     {
         
     }

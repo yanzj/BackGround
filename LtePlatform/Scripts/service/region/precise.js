@@ -503,6 +503,13 @@
                             frequency: frequency
                         });
                 },
+                getCurrentDateTownDoubleFlowStats: function (statDate, frequency) { ////////////////////////////////////////////////
+                    return generalHttpService.getApiData('TownDoubleFlow',
+                        {
+                            currentDate: statDate,
+                            frequency: frequency
+                        });
+                },
                 getCurrentDateTownHourCqiStats: function (statDate, frequency) { ////////////////////////////////////////////
                     return generalHttpService.getApiData('TownHourCqi',
                         {
@@ -518,6 +525,9 @@
                 },
                 updateTownPrbStat: function (stat) { //////////////////////////////////////////////////////////////////////
                     return generalHttpService.postApiData('TownPrb', stat);
+                },
+                updateTownDoubleFlowStat: function (stat) { //////////////////////////////////////////////////////////////////////
+                    return generalHttpService.postApiData('TownDoubleFlow', stat);
                 },
                 updateTownHourCqiStat: function (stat) { /////////////////////////////////////////////////////////////////////////
                     return generalHttpService.postApiData('TownHourCqi', stat);

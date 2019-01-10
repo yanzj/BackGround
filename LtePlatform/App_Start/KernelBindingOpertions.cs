@@ -541,7 +541,7 @@ namespace LtePlatform
 
             ninjectKernel.Bind<DumpPrbService>().ToSelf();
 
-            ninjectKernel.Bind<TownDoubleFlowService>().ToSelf();
+            ninjectKernel.Bind<DumpDoubleFlowService>().ToSelf();
 
             ninjectKernel.Bind<TownHourKpiService>().ToSelf();
 

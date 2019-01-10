@@ -1706,6 +1706,12 @@ angular.module('region.college', ['app.core'])
                         statDate: statDate
                     });
             },
+            retrieveDateCollegeDoubleFlowStats: function (statDate) {
+                return generalHttpService.getApiData('CollegeDoubleFlow',
+                    {
+                        statDate: statDate
+                    });
+            },
             retrieveDateCollegeHourCqiStats: function (statDate) {
                 return generalHttpService.getApiData('CollegeHourCqi',
                     {
@@ -2301,6 +2307,13 @@ angular.module('region.precise', ['app.core'])
                             frequency: frequency
                         });
                 },
+                getCurrentDateTownDoubleFlowStats: function (statDate, frequency) { ////////////////////////////////////////////////
+                    return generalHttpService.getApiData('TownDoubleFlow',
+                        {
+                            currentDate: statDate,
+                            frequency: frequency
+                        });
+                },
                 getCurrentDateTownHourCqiStats: function (statDate, frequency) { ////////////////////////////////////////////
                     return generalHttpService.getApiData('TownHourCqi',
                         {
@@ -2316,6 +2329,9 @@ angular.module('region.precise', ['app.core'])
                 },
                 updateTownPrbStat: function (stat) { //////////////////////////////////////////////////////////////////////
                     return generalHttpService.postApiData('TownPrb', stat);
+                },
+                updateTownDoubleFlowStat: function (stat) { //////////////////////////////////////////////////////////////////////
+                    return generalHttpService.postApiData('TownDoubleFlow', stat);
                 },
                 updateTownHourCqiStat: function (stat) { /////////////////////////////////////////////////////////////////////////
                     return generalHttpService.postApiData('TownHourCqi', stat);

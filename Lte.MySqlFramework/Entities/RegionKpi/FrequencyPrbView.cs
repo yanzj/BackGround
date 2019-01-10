@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Dependency;
-using Abp.EntityFramework.Entities.Kpi;
 using Abp.EntityFramework.Entities.RegionKpi;
 using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless.Cell;
@@ -14,7 +13,7 @@ using Lte.Domain.Regular.Attributes;
 namespace Lte.MySqlFramework.Entities.RegionKpi
 {
     [AutoMapFrom(typeof(TownPrbStat))]
-    [TypeDoc("频段忙时CQI优良率统计")]
+    [TypeDoc("频段PRB利用率统计")]
     public class FrequencyPrbView : IStatDate, IFrequencyBand
     {
         [AutoMapPropertyResolve("StatTime", typeof(TownPrbStat))]

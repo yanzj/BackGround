@@ -20,14 +20,14 @@ namespace Lte.Evaluations.DataService.RegionKpi
         private readonly TownQciService _qciService;
         private readonly DumpCqiService _cqiService;
         private readonly DumpPrbService _prbService;
-        private readonly TownDoubleFlowService _doubleFlowService;
+        private readonly DumpDoubleFlowService _doubleFlowService;
 
         public TownKpiService(ITownFlowRepository townFlowRepository, ITownPrbRepository townPrbRepository,
             ITownCqiRepository townCqiRepository, ITownDoubleFlowRepository townDoubleFlowRepository,
             ITownRrcRepository townRrcRepository, ITownQciRepository townQciRepository,
             RegionTownFlowService flowService, TownRrcService rrcService,
             TownQciService qciService, DumpCqiService cqiService, DumpPrbService prbService,
-            TownDoubleFlowService doubleFlowService)
+            DumpDoubleFlowService doubleFlowService)
         {
             _townFlowRepository = townFlowRepository;
             _townRrcRepository = townRrcRepository;
