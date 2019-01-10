@@ -9,6 +9,8 @@ namespace Lte.Domain.Regular
         public int HuaweiCqis { get; set; }
 
         public int HuaweiPrbs { get; set; }
+        
+        public int HuaweiDoubleFlows { get; set; }
 
         public int HuaweiRssis { get; set; }
 
@@ -17,6 +19,8 @@ namespace Lte.Domain.Regular
         public int ZteCqis { get; set; }
 
         public int ZtePrbs { get; set; }
+        
+        public int ZteDoubleFlows { get; set; }
 
         public int ZteRssis { get; set; }
 
@@ -49,5 +53,12 @@ namespace Lte.Domain.Regular
         public int TownPrbs800VoLte { get; set; }
 
         public int TownDoubleFlows { get; set; }
+        
+        public int TownDoubleFlows2100 { get; set; }
+
+        public int TownDoubleFlows1800 { get; set; }
+
+        public int TownDoubleFlows800VoLte { get; set; }
+
     }
 }

@@ -343,27 +343,7 @@ namespace Lte.Evaluations.DataService.RegionKpi
                 }
                 item6 += _townQciRepository.SaveChanges();
             }
-            var item8 = _townDoubleFlowRepository.Count(x => x.StatTime >= statDate && x.StatTime < end);
-            if (item8 < 44)
-            {
-                var townDoubleFlowList = _doubleFlowService.GetTownDoubleFlowStats(statDate);
-                foreach (var stat in townDoubleFlowList.GetPositionMergeStats(statDate))
-                {
-                    var subItem =
-                        _townDoubleFlowRepository.FirstOrDefault(
-                            x => x.StatTime >= statDate && x.StatTime < end && x.TownId == stat.TownId);
-                    if (subItem == null)
-                        await _townDoubleFlowRepository.InsertAsync(stat);
-                    else
-                    {
-                        var oldId = subItem.Id;
-                        stat.MapTo(subItem);
-                        subItem.Id = oldId;
-                    }
-                }
-                item8 += _townDoubleFlowRepository.SaveChanges();
-            }
-            return new [] {item2, item6, item8};
+            return new [] {item2, item6};
         }
 
     }

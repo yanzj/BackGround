@@ -1128,6 +1128,12 @@ angular.module('region.import', ['app.core'])
                         {
                             statDate: statDate
                         });
+                },
+                dumpTownDoubleFlows: function(statDate) {
+                    return generalHttpService.getApiData('DumpTownDoubleFlow',
+                        {
+                            statDate: statDate
+                        });
                 }
             };
         })

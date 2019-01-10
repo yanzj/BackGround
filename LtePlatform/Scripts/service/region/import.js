@@ -302,6 +302,12 @@
                         {
                             statDate: statDate
                         });
+                },
+                dumpTownDoubleFlows: function(statDate) {
+                    return generalHttpService.getApiData('DumpTownDoubleFlow',
+                        {
+                            statDate: statDate
+                        });
                 }
             };
         })

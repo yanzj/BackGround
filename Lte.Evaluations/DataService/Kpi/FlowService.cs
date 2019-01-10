@@ -303,11 +303,14 @@ namespace Lte.Evaluations.DataService.Kpi
                     await _cqiHuaweiRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
                 var huaweiPrbs =
                     await _prbHuaweiRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
+                var huaweiDoubleFlows =
+                    await _doubleFlowHuaweiRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
                 var huaweiRssis =
                     await _rssiHuaweiRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
                 var zteItems = await _zteRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
                 var zteCqis = await _cqiZteRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
                 var ztePrbs = await _prbZteRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
+                var zteDoubleFlows = await _prbZteRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
                 var zteRssis = await _rssiZteRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
                 var townItems =
                     await _townFlowRepository.CountAsync(
@@ -366,17 +369,36 @@ namespace Lte.Evaluations.DataService.Kpi
                             x.StatTime >= beginDate && x.StatTime < endDate &&
                             x.FrequencyBandType == FrequencyBandType.Band800VoLte);
                 var townDoubleFlows =
-                    await _townDoubleFlowRepository.CountAsync(x => x.StatTime >= beginDate && x.StatTime < endDate);
+                    await _townDoubleFlowRepository.CountAsync(x =>
+                        x.StatTime >= beginDate && x.StatTime < endDate &&
+                        x.FrequencyBandType == FrequencyBandType.All);
+                var townDoubleFlows2100 =
+                    await _townDoubleFlowRepository.CountAsync(
+                        x =>
+                            x.StatTime >= beginDate && x.StatTime < endDate &&
+                            x.FrequencyBandType == FrequencyBandType.Band2100);
+                var townDoubleFlows1800 =
+                    await _townDoubleFlowRepository.CountAsync(
+                        x =>
+                            x.StatTime >= beginDate && x.StatTime < endDate &&
+                            x.FrequencyBandType == FrequencyBandType.Band1800);
+                var townDoubleFlows800 =
+                    await _townDoubleFlowRepository.CountAsync(
+                        x =>
+                            x.StatTime >= beginDate && x.StatTime < endDate &&
+                            x.FrequencyBandType == FrequencyBandType.Band800VoLte);
                 results.Add(new FlowHistory
                 {
                     DateString = begin.ToShortDateString(),
                     HuaweiItems = huaweiItems,
                     HuaweiCqis = huaweiCqis,
                     HuaweiPrbs = huaweiPrbs,
+                    HuaweiDoubleFlows = huaweiDoubleFlows,
                     HuaweiRssis = huaweiRssis,
                     ZteItems = zteItems,
                     ZteCqis = zteCqis,
                     ZtePrbs = ztePrbs,
+                    ZteDoubleFlows = zteDoubleFlows,
                     ZteRssis = zteRssis,
                     TownStats = townItems,
                     TownStats2100 = townItems2100,
@@ -392,7 +414,10 @@ namespace Lte.Evaluations.DataService.Kpi
                     TownPrbs2100 = townPrbs2100,
                     TownPrbs1800 = townPrbs1800,
                     TownPrbs800VoLte = townPrbs800,
-                    TownDoubleFlows = townDoubleFlows
+                    TownDoubleFlows = townDoubleFlows,
+                    TownDoubleFlows2100 = townDoubleFlows2100,
+                    TownDoubleFlows1800 = townDoubleFlows1800,
+                    TownDoubleFlows800VoLte = townDoubleFlows800
                 });
                 begin = begin.AddDays(1);
             }

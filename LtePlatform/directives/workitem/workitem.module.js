@@ -110,6 +110,32 @@ angular.module('workitem.module.feedback', ['ui.grid', 'myApp.kpi'])
             },
                 $compile);
         })
+    .controller('DoubleFlowDumpHistoryController',
+        function ($scope) {
+            $scope.gridOptions = {
+                columnDefs: [
+                    { field: 'dateString', name: '日期' },
+                    { field: 'huaweiDoubleFlows', name: '华为双流比' },
+                    { field: 'zteDoubleFlows', name: '中兴双流比' },
+                    { field: 'townDoubleFlows', name: '镇双流比-全部' },
+                    { field: 'townDoubleFlows2100', name: '镇-2.1G' },
+                    { field: 'townDoubleFlows1800', name: '镇-1.8G' },
+                    { field: 'townDoubleFlows800VoLte', name: '镇-800M' }
+                ],
+                data: []
+            };
+        })
+    .directive('doubleFlowDumpHistoryTable',
+        function ($compile, calculateService) {
+            return calculateService.generateGridDirective({
+                    controllerName: 'DoubleFlowDumpHistoryController',
+                    scope: {
+                        items: '='
+                    },
+                    argumentName: 'items'
+                },
+                $compile);
+        })
     .controller('ItemsDumpHistoryController',
         function ($scope) {
             $scope.gridOptions = {
@@ -118,8 +144,7 @@ angular.module('workitem.module.feedback', ['ui.grid', 'myApp.kpi'])
                     { field: 'huaweiRssis', name: '华为RSSI' },
                     { field: 'zteRssis', name: '中兴RSSI' },
                     { field: 'townRrcs', name: '镇RRC统计' },
-                    { field: 'townQcis', name: '镇CQI1统计' },
-                    { field: 'townDoubleFlows', name: '镇双流统计' }
+                    { field: 'townQcis', name: '镇CQI1统计' }
                 ],
                 data: []
             };

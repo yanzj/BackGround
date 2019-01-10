@@ -119,7 +119,7 @@
                         angular.forEach(result,
                             function(record) {
                                 if (record.huaweiItems > 9000 &&
-                                    record.zteItems > 18000 &&
+                                    record.zteItems > 19000 &&
                                     (record.townRrcs === 0 ||
                                         record.townQcis === 0 ||
                                         record.townDoubleFlows < 44)) {
@@ -131,7 +131,7 @@
                                 }
 
                                 if (record.huaweiItems > 9000 &&
-                                    record.zteItems > 18000 &&
+                                    record.zteItems > 19000 &&
                                     (record.townStats < 44 ||
                                         record.townStats2100 < 44 ||
                                         record.townStats1800 < 44 ||
@@ -145,7 +145,7 @@
                                 }
 
                                 if (record.huaweiCqis > 9000 &&
-                                    record.zteCqis > 18000 &&
+                                    record.zteCqis > 19000 &&
                                     (record.townCqis < 44 ||
                                         record.townCqis2100 < 44 ||
                                         record.townCqis1800 < 44 ||
@@ -159,7 +159,7 @@
                                 }
                                 
                                 if (record.huaweiPrbs > 9000 &&
-                                    record.ztePrbs > 18000 &&
+                                    record.ztePrbs > 19000 &&
                                     (record.townPrbs < 44 ||
                                         record.townPrbs2100 < 44 ||
                                         record.townPrbs1800 < 44 ||
@@ -169,6 +169,20 @@
                                         record.townPrbs2100 = count[1];
                                         record.townPrbs1800 = count[2];
                                         record.townPrbs800VoLte = count[3];
+                                    });
+                                }
+                                
+                                if (record.huaweiDoubleFlows > 9000 &&
+                                    record.zteDoubleFlows > 19000 &&
+                                    (record.townDoubleFlows < 44 ||
+                                        record.townDoubleFlows2100 < 44 ||
+                                        record.townDoubleFlows1800 < 44 ||
+                                        record.townDoubleFlows800VoLte < 44)) {
+                                    flowImportService.dumpTownDoubleFlows(record.dateString).then(function(count) {
+                                        record.townDoubleFlows = count[0];
+                                        record.townDoubleFlows2100 = count[1];
+                                        record.townDoubleFlows1800 = count[2];
+                                        record.townDoubleFlows800VoLte = count[3];
                                     });
                                 }
                             });
