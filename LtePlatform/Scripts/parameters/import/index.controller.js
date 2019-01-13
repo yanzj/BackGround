@@ -129,12 +129,12 @@
                     });
                     $scope.importData.newENodebs = [];
                     basicImportService.queryVanishedENodebs().then(function(data) {
-                        $rootScope.importData.vanishedENodebIds = data;
+                        $scope.importData.vanishedENodebIds = data;
                     });
                 });
             } else {
                 basicImportService.queryVanishedENodebs().then(function (data) {
-                    $rootScope.importData.vanishedENodebIds = data;
+                    $scope.importData.vanishedENodebIds = data;
                 });
             }
         };
@@ -160,12 +160,12 @@
                     });
                     $scope.importData.newCells = [];
                     basicImportService.queryVanishedCells().then(function(data) {
-                        $rootScope.importData.vanishedCellIds = data;
+                        $scope.importData.vanishedCellIds = data;
                     });
                 });
             } else {
                 basicImportService.queryVanishedCells().then(function (data) {
-                    $rootScope.importData.vanishedCellIds = data;
+                    $scope.importData.vanishedCellIds = data;
                 });
             }
         };

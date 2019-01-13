@@ -19,32 +19,32 @@
                 $scope.coverageHistory = result;
                 angular.forEach(result, function (stat) {
                     if (stat.coverageStats > 12000) {
-                        if (stat.townCoverageStats === 0) {
+                        if (stat.townCoverageStats < 44) {
                             alarmImportService.updateTownCoverageStats(stat.dateString, 'all').then(function(count) {
                                 stat.townCoverageStats = count;
                             });
                         }
-                        if (stat.townCoverage800 === 0) {
+                        if (stat.townCoverage800 < 44) {
                             alarmImportService.updateTownCoverageStats(stat.dateString, '800').then(function(count) {
                                 stat.townCoverage800 = count;
                             });
                         }
-                        if (stat.townCoverage1800 === 0) {
+                        if (stat.townCoverage1800 < 44) {
                             alarmImportService.updateTownCoverageStats(stat.dateString, '1800').then(function(count) {
                                 stat.townCoverage1800 = count;
                             });
                         }
-                        if (stat.townCoverage2100 === 0) {
+                        if (stat.townCoverage2100 < 44) {
                             alarmImportService.updateTownCoverageStats(stat.dateString, '2100').then(function(count) {
                                 stat.townCoverage2100 = count;
                             });
                         }
-                        if (stat.collegeCoverageStats === 0) {
+                        if (stat.collegeCoverageStats < 20) {
                             alarmImportService.updateCollegeCoverageStats(stat.dateString).then(function(count) {
                                 stat.collegeCoverageStats = count;
                             });
                         }
-                        if (stat.marketCoverageStats === 0) {
+                        if (stat.marketCoverageStats < 64) {
                             alarmImportService.updateMarketCoverageStats(stat.dateString).then(function(count) {
                                 stat.marketCoverageStats = count;
                             });
