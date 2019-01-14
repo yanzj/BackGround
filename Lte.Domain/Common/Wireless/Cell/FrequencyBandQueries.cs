@@ -60,6 +60,8 @@ namespace Lte.Domain.Common.Wireless.Cell
                     return FrequencyBandType.College;
                 case "market":
                     return FrequencyBandType.Market;
+                case "transportation":
+                    return FrequencyBandType.Transportation;
                 default:
                     return FrequencyBandType.Band800VoLte;
             }

@@ -14,6 +14,7 @@
         Band800VoLte,
         Band800NbIot,
         College,
-        Market
+        Market,
+        Transportation
     }
 }

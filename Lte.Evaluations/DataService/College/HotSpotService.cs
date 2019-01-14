@@ -12,6 +12,7 @@ using Lte.Domain.Common.Types;
 using Lte.Domain.Common.Wireless.Distribution;
 using Lte.MySqlFramework.Abstract.Infrastructure;
 using Lte.MySqlFramework.Abstract.Region;
+using System;
 
 namespace Lte.Evaluations.DataService.College
 {
@@ -71,6 +72,14 @@ namespace Lte.Evaluations.DataService.College
             return item == null ? null : item.MapTo<HotSpotView>();
         }
 
+        public HotSpotView QueryTransportationView(string name)
+        {
+            var item = _repository.FirstOrDefault(x =>
+                x.InfrastructureType == InfrastructureType.HotSpot && x.HotspotType == HotspotType.Transportation &&
+                x.HotspotName == name);
+            return item == null ? null : item.MapTo<HotSpotView>();
+        }
+
         public IEnumerable<HighwayView> QueryAllHighwayViews()
         {
             var highways = _repository.GetAllList(x => x.HotspotType == HotspotType.Highway);
@@ -92,5 +101,6 @@ namespace Lte.Evaluations.DataService.College
                         x.InfrastructureType == InfrastructureType.HotSpot && x.HotspotName == name &&
                         x.HotspotType == type);
         }
+
     }
 }

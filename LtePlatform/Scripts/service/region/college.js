@@ -275,6 +275,36 @@
                     {
                         statDate: statDate
                     });
+            },
+            retrieveDateTransportationFlowStats: function (statDate) {
+                return generalHttpService.getApiData('TransportationFlow',
+                    {
+                        statDate: statDate
+                    });
+            },
+            retrieveDateTransportationCqiStats: function (statDate) {
+                return generalHttpService.getApiData('TransportationCqi',
+                    {
+                        statDate: statDate
+                    });
+            },
+            retrieveDateTransportationPrbStats: function (statDate) {
+                return generalHttpService.getApiData('TransportationPrb',
+                    {
+                        statDate: statDate
+                    });
+            },
+            retrieveDateTransportationDoubleFlowStats: function (statDate) {
+                return generalHttpService.getApiData('TransportationDoubleFlow',
+                    {
+                        statDate: statDate
+                    });
+            },
+            retrieveDateTransportationHourCqiStats: function (statDate) {
+                return generalHttpService.getApiData('TransportationHourCqi',
+                    {
+                        statDate: statDate
+                    });
             }
         };
     })

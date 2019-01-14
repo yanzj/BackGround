@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "交通枢纽流量指标导入";
+}
+
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            <strong>@ViewBag.Title</strong>
+        </h2>
+    </div>
+    <div class="panel-body" ng-controller="transportation.flows">
+        <div date-span-row begin-date="beginDate" end-date="endDate">
+            <button class="btn btn-primary" ng-click="query()">更新</button>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>日期</th>
+                    <th>流量记录数</th>
+                    <th>CQI记录数</th>
+                    <th>PRB记录数</th>
+                    <th>双流比记录数</th>
+                    <th>忙时CQI</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="stat in stats">
+                    <td>{{stat.date | date: 'yyyy-MM-dd'}}</td>
+                    <td>{{stat.items.length}}</td>
+                    <td>{{stat.cqis.length}}</td>
+                    <td>{{stat.prbs.length}}</td>
+                    <td>{{stat.doubleFlows.length}}</td>
+                    <td>{{stat.hourCqis.length}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/kpi/transportation.flow.import.js"></script>
+}

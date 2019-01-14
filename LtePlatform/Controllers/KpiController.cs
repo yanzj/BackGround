@@ -52,6 +52,11 @@ namespace LtePlatform.Controllers
             return View();
         }
 
+        public ActionResult TransportationFlowImport()
+        {
+            return View();
+        }
+
         public ActionResult ManageDt()
         {
             return View();

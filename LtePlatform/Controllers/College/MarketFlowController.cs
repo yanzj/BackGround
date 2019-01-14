@@ -13,7 +13,7 @@ using Lte.Evaluations.DataService.Kpi;
 using Lte.Evaluations.DataService.RegionKpi;
 using LtePlatform.Models;
 
-namespace LtePlatform.Controllers.Kpi
+namespace LtePlatform.Controllers.College
 {
     [ApiControl("专业市场流量查询控制器")]
     [ApiGroup("专题优化")]

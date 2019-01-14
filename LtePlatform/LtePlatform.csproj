@@ -328,6 +328,11 @@
     <Compile Include="Controllers\College\MarketHourCqiController.cs" />
     <Compile Include="Controllers\College\MarketPrbController.cs" />
     <Compile Include="Controllers\College\MarketPreciseController.cs" />
+    <Compile Include="Controllers\College\TransportationCqiController.cs" />
+    <Compile Include="Controllers\College\TransportationDoubleFlowController.cs" />
+    <Compile Include="Controllers\College\TransportationFlowController.cs" />
+    <Compile Include="Controllers\College\TransportationHourCqiController.cs" />
+    <Compile Include="Controllers\College\TransportationPrbController.cs" />
     <Compile Include="Controllers\Dt\DumpZhangshangyouCoverageController.cs" />
     <Compile Include="Controllers\Dt\DumpZhangshangyouQualityController.cs" />
     <Compile Include="Controllers\Dt\ZhangshangyouCoverageController.cs" />
@@ -350,7 +355,7 @@
     <Compile Include="Controllers\Kpi\HourPrbRegionController.cs" />
     <Compile Include="Controllers\Kpi\HourUsersQueryController.cs" />
     <Compile Include="Controllers\Kpi\HourUsersRegionController.cs" />
-    <Compile Include="Controllers\Kpi\MarketFlowController.cs" />
+    <Compile Include="Controllers\College\MarketFlowController.cs" />
     <Compile Include="Controllers\Kpi\MonthAlarmProcessTrendController.cs" />
     <Compile Include="Controllers\Kpi\MonthAlarmWorkTrendController.cs" />
     <Compile Include="Controllers\Kpi\MonthAverageAlarmsTrendController.cs" />
@@ -522,7 +527,7 @@
     <Compile Include="Controllers\KpiController.cs" />
     <Compile Include="Controllers\Maintainance\AlarmCountController.cs" />
     <Compile Include="Controllers\Maintainance\AlarmsController.cs" />
-    <Compile Include="Controllers\Kpi\CellFlowController.cs" />
+    <Compile Include="Controllers\College\CellFlowController.cs" />
     <Compile Include="Controllers\Kpi\CollegeFlowController.cs" />
     <Compile Include="Controllers\Kpi\CoverageRegionController.cs" />
     <Compile Include="Controllers\Kpi\CqiQueryController.cs" />
@@ -1034,6 +1039,7 @@
     <Content Include="Scripts\kpi\college.infos.js" />
     <Content Include="Scripts\kpi\manage.dt.js" />
     <Content Include="Scripts\kpi\market.flow.import.js" />
+    <Content Include="Scripts\kpi\transportation.flow.import.js" />
     <Content Include="Scripts\kpi\workitem.import.js" />
     <Content Include="Scripts\kpi\precise.import.js" />
     <Content Include="Scripts\locales\ar.js" />
@@ -1267,6 +1273,7 @@
     <Content Include="Views\Kpi\MarketFlowImport.cshtml" />
     <None Include="Views\Kpi\PreciseImport.cshtml" />
     <Content Include="Views\Kpi\WorkItemImport.cshtml" />
+    <Content Include="Views\Kpi\TransportationFlowImport.cshtml" />
     <None Include="Views\Parameters\AlarmImport.cshtml" />
     <Content Include="Views\Shared\_AlertPanel.cshtml" />
     <Content Include="appViews\College\Infrastructure\DistributionDialog.html" />
