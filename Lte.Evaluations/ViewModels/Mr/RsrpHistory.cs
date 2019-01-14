@@ -18,6 +18,8 @@ namespace Lte.Evaluations.ViewModels.Mr
         public int CollegeMrsStats { get; set; }
         
         public int MarketMrsStats { get; set; }
+        
+        public int TransportationMrsStats { get; set; }
 
         public int TownMrsStats800 { get; set; }
 

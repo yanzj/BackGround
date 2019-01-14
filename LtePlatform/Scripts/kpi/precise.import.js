@@ -39,6 +39,7 @@
         $scope.townPreciseViews = [];
         $scope.collegePreciseStats = [];
         $scope.marketPreciseStats = [];
+        $scope.transportationPreciseStats = [];
         $scope.townPrecise800Views = [];
         $scope.townPrecise1800Views = [];
         $scope.townPrecise2100Views = [];
@@ -46,6 +47,7 @@
         $scope.townMrsStats = [];
         $scope.collegeMrsStats = [];
         $scope.marketMrsStats = [];
+        $scope.transportationMrsStats = [];
         $scope.townMrsStats800 = [];
         $scope.townMrsStats1800 = [];
         $scope.townMrsStats2100 = [];
@@ -53,6 +55,7 @@
         $scope.townSinrUlStats = [];
         $scope.collegeSinrUlStats = [];
         $scope.marketSinrUlStats = [];
+        $scope.transportationSinrUlStats = [];
         $scope.townSinrUlStats800 = [];
         $scope.townSinrUlStats1800 = [];
         $scope.townSinrUlStats2100 = [];
@@ -60,6 +63,7 @@
         $scope.townTaStats = [];
         $scope.collegeTaStats = [];
         $scope.marketTaStats = [];
+        $scope.transportationTaStats = [];
         $scope.townTaStats800 = [];
         $scope.townTaStats1800 = [];
         $scope.townTaStats2100 = [];
@@ -124,12 +128,13 @@
 
         $scope.dumpTownItems = function () {
             preciseImportService.dumpTownItems(
-                $scope.townPreciseViews, $scope.collegePreciseStats, $scope.marketPreciseStats,
+                $scope.townPreciseViews, $scope.collegePreciseStats, $scope.marketPreciseStats, $scope.transportationPreciseStats,
                 $scope.townPrecise800Views, $scope.townPrecise1800Views, $scope.townPrecise2100Views
             ).then(function () {
                 $scope.townPreciseViews = [];
                 $scope.collegePreciseStats = [];
                 $scope.marketPreciseStats = [];
+                $scope.transportationPreciseStats = [];
                 $scope.townPrecise800Views = [];
                 $scope.townPrecise1800Views = [];
                 $scope.townPrecise2100Views = [];
@@ -138,12 +143,13 @@
         };
         $scope.dumpTownRsrpItems = function () {
             preciseImportService.dumpTownRsrpItems( 
-                $scope.townMrsStats, $scope.collegeMrsStats, $scope.marketMrsStats,
+                $scope.townMrsStats, $scope.collegeMrsStats, $scope.marketMrsStats, $scope.transportationMrsStats,
                 $scope.townMrsStats800, $scope.townMrsStats1800, $scope.townMrsStats2100
             ).then(function () {
                 $scope.townMrsStats = [];
                 $scope.collegeMrsStats = [];
                 $scope.marketMrsStats = [];
+                $scope.transportationMrsStats = [];
                 $scope.townMrsStats800 = [];
                 $scope.townMrsStats1800 = [];
                 $scope.townMrsStats2100 = [];
@@ -152,12 +158,13 @@
         };
         $scope.dumpTownSinrItems = function () {
             preciseImportService.dumpTownSinrItems(
-                $scope.townSinrUlStats, $scope.collegeSinrUlStats, $scope.marketSinrUlStats,
+                $scope.townSinrUlStats, $scope.collegeSinrUlStats, $scope.marketSinrUlStats, $scope.transportationSinrUlStats,
                 $scope.townSinrUlStats800, $scope.townSinrUlStats1800, $scope.townSinrUlStats2100
             ).then(function () {
                 $scope.townSinrUlStats = [];
                 $scope.collegeSinrUlStats = [];
                 $scope.marketSinrUlStats = [];
+                $scope.transportationSinrUlStats = [];
                 $scope.townSinrUlStats800 = [];
                 $scope.townSinrUlStats1800 = [];
                 $scope.townSinrUlStats2100 = [];
@@ -166,12 +173,13 @@
         };
         $scope.dumpTownTaItems = function () {
             preciseImportService.dumpTownTaItems(
-                $scope.townTaStats, $scope.collegeTaStats, $scope.marketTaStats,
+                $scope.townTaStats, $scope.collegeTaStats, $scope.marketTaStats, $scope.transportationTaStats,
                 $scope.townTaStats800, $scope.townTaStats1800, $scope.townTaStats2100
             ).then(function () {
                 $scope.townTaStats = [];
                 $scope.collegeTaStats = [];
                 $scope.marketTaStats = [];
+                $scope.transportationTaStats = [];
                 $scope.townTaStats800 = [];
                 $scope.townTaStats1800 = [];
                 $scope.townTaStats2100 = [];
@@ -228,6 +236,9 @@
             preciseImportService.queryMarketPreciseViews(date).then(function(result) {
                 $scope.marketPreciseStats = result;
             });
+            preciseImportService.queryTransportationPreciseViews(date).then(function(result) {
+                $scope.transportationPreciseStats = result;
+            });
             preciseImportService.queryTownPreciseViews(date, '800').then(function(result) {
                 $scope.townPrecise800Views = result;
             });
@@ -247,6 +258,9 @@
             });
             preciseImportService.queryMarketMrsStats(date).then(function (result) {
                 $scope.marketMrsStats = result;
+            });
+            preciseImportService.queryTransportationMrsStats(date).then(function (result) {
+                $scope.transportationMrsStats = result;
             });
             preciseImportService.queryTownMrsStats(date, '800').then(function (result) {
                 $scope.townMrsStats800 = result;
@@ -268,6 +282,9 @@
             preciseImportService.queryMarketSinrUlStats(date).then(function (result) {
                 $scope.marketSinrUlStats = result;
             });
+            preciseImportService.queryTransportationSinrUlStats(date).then(function (result) {
+                $scope.transportationSinrUlStats = result;
+            });
             preciseImportService.queryTownSinrUlStats(date, '800').then(function (result) {
                 $scope.townSinrUlStats800 = result;
             });
@@ -287,6 +304,9 @@
             });
             preciseImportService.queryMarketTaStats(date).then(function (result) {
                 $scope.marketTaStats = result;
+            });
+            preciseImportService.queryTransportationTaStats(date).then(function (result) {
+                $scope.transportationTaStats = result;
             });
             preciseImportService.queryTownTaStats(date, '800').then(function (result) {
                 $scope.townTaStats800 = result;

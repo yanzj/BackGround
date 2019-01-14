@@ -123,14 +123,15 @@
 
     <p>
         <button class="btn btn-info"
-                ng-disabled="townPreciseViews.length === 0 && collegePreciseStats.length === 0 
-                && marketPreciseStats.length === 0 && townPrecise800Views.length === 0
+                ng-disabled="townPreciseViews.length === 0 && collegePreciseStats.length === 0
+                && marketPreciseStats.length === 0 && transportationPreciseStats.length === 0 && townPrecise800Views.length === 0
                 && townPrecise1800Views.length === 0 && townPrecise2100Views.length === 0"
                 ng-click="dumpTownItems()">
             导入镇区指标1
             <div class="badge">镇({{townPreciseViews.length}})</div>
             <div class="badge">校园({{collegePreciseStats.length}})</div>
             <div class="badge">专业市场({{marketPreciseStats.length}})</div>
+            <div class="badge">交通枢纽({{transportationPreciseStats.length}})</div>
             <div class="badge">镇-800({{townPrecise800Views.length}})</div>
             <div class="badge">镇-1800({{townPrecise1800Views.length}})</div>
             <div class="badge">镇-2100({{townPrecise2100Views.length}})</div>
@@ -150,6 +151,7 @@
                 <th>镇</th>
                 <th>校园</th>
                 <th>专业市场</th>
+                <th>交通枢纽</th>
                 <th>镇-800</th>
                 <th>镇-1800</th>
                 <th>镇-2100</th>
@@ -163,6 +165,7 @@
                 <td>{{stat.townPreciseStats}}</td>
                 <td>{{stat.collegePreciseStats}}</td>
                 <td>{{stat.marketPreciseStats}}</td>
+                <td>{{stat.transportationPreciseStats}}</td>
                 <td>{{stat.townPrecise800Stats}}</td>
                 <td>{{stat.townPrecise1800Stats}}</td>
                 <td>{{stat.townPrecise2100Stats}}</td>
@@ -182,14 +185,15 @@
 
     <p>
         <button class="btn btn-info"
-                ng-disabled="townMrsStats.length === 0 && collegeMrsStats.length === 0 
-                && marketMrsStats.length === 0 && townMrsStats800.length === 0
+                ng-disabled="townMrsStats.length === 0 && collegeMrsStats.length === 0
+                && marketMrsStats.length === 0 && transportationMrsStats.length === 0 && townMrsStats800.length === 0
             && townMrsStats1800.length === 0 && townMrsStats2100.length === 0"
                 ng-click="dumpTownRsrpItems()">
             导入镇区指标2
             <div class="badge">镇({{townMrsStats.length}})</div>
             <div class="badge">校园({{collegeMrsStats.length}})</div>
             <div class="badge">专业市场({{marketMrsStats.length}})</div>
+            <div class="badge">交通枢纽({{transportationMrsStats.length}})</div>
             <div class="badge">镇-800({{townMrsStats800.length}})</div>
             <div class="badge">镇-1800({{townMrsStats1800.length}})</div>
             <div class="badge">镇-2100({{townMrsStats2100.length}})</div>
@@ -209,6 +213,7 @@
                 <th>镇</th>
                 <th>校园</th>
                 <th>专业市场</th>
+                <th>交通枢纽</th>
                 <th>镇-800</th>
                 <th>镇-1800</th>
                 <th>镇-2100</th>
@@ -222,6 +227,7 @@
                 <td>{{stat.townMrsStats}}</td>
                 <td>{{stat.collegeMrsStats}}</td>
                 <td>{{stat.marketMrsStats}}</td>
+                <td>{{stat.transportationMrsStats}}</td>
                 <td>{{stat.townMrsStats800}}</td>
                 <td>{{stat.townMrsStats1800}}</td>
                 <td>{{stat.townMrsStats2100}}</td>
@@ -241,14 +247,15 @@
 
     <p>
         <button class="btn btn-info"
-                ng-disabled="townSinrUlStats.length === 0 && collegeSinrUlStats.length === 0 
-                && marketSinrUlStats.length === 0 && townSinrUlStats800.length === 0
+                ng-disabled="townSinrUlStats.length === 0 && collegeSinrUlStats.length === 0
+                && marketSinrUlStats.length === 0 && transportationSinrUlStats.length === 0 && townSinrUlStats800.length === 0
             && townSinrUlStats1800.length === 0 && townSinrUlStats2100.length === 0"
                 ng-click="dumpTownSinrItems()">
             导入镇区指标3
             <div class="badge">镇({{townSinrUlStats.length}})</div>
             <div class="badge">校园({{collegeSinrUlStats.length}})</div>
             <div class="badge">专业市场({{marketSinrUlStats.length}})</div>
+            <div class="badge">交通枢纽({{transportationSinrUlStats.length}})</div>
             <div class="badge">镇-800({{townSinrUlStats800.length}})</div>
             <div class="badge">镇-1800({{townSinrUlStats1800.length}})</div>
             <div class="badge">镇-2100({{townSinrUlStats2100.length}})</div>
@@ -268,6 +275,7 @@
                 <th>镇</th>
                 <th>校园</th>
                 <th>专业市场</th>
+                <th>交通枢纽</th>
                 <th>镇-800</th>
                 <th>镇-1800</th>
                 <th>镇-2100</th>
@@ -281,6 +289,7 @@
                 <td>{{stat.townSinrUlStats}}</td>
                 <td>{{stat.collegeSinrUlStats}}</td>
                 <td>{{stat.marketSinrUlStats}}</td>
+                <td>{{stat.transportationSinrUlStats}}</td>
                 <td>{{stat.townSinrUlStats800}}</td>
                 <td>{{stat.townSinrUlStats1800}}</td>
                 <td>{{stat.townSinrUlStats2100}}</td>
@@ -300,14 +309,15 @@
 
     <p>
         <button class="btn btn-info"
-                ng-disabled="townTaStats.length === 0 && collegeTaStats.length === 0 
-                && marketTaStats.length === 0 && townTaStats800.length === 0
+                ng-disabled="townTaStats.length === 0 && collegeTaStats.length === 0
+                && marketTaStats.length === 0 && transportationTaStats.length === 0 && townTaStats800.length === 0
             && townTaStats1800.length === 0 && townTaStats2100.length === 0"
                 ng-click="dumpTownTaItems()">
             导入镇区指标4
             <div class="badge">镇({{townTaStats.length}})</div>
             <div class="badge">校园({{collegeTaStats.length}})</div>
             <div class="badge">专业市场({{marketTaStats.length}})</div>
+            <div class="badge">交通枢纽({{transportationTaStats.length}})</div>
             <div class="badge">镇-800({{townTaStats800.length}})</div>
             <div class="badge">镇-1800({{townTaStats1800.length}})</div>
             <div class="badge">镇-2100({{townTaStats2100.length}})</div>
@@ -327,6 +337,7 @@
                 <th>镇</th>
                 <th>校园</th>
                 <th>专业市场</th>
+                <th>交通枢纽</th>
                 <th>镇-800</th>
                 <th>镇-1800</th>
                 <th>镇-2100</th>
@@ -340,6 +351,7 @@
                 <td>{{stat.townTadvStats}}</td>
                 <td>{{stat.collegeTadvStats}}</td>
                 <td>{{stat.marketTadvStats}}</td>
+                <td>{{stat.transportationTadvStats}}</td>
                 <td>{{stat.townTadvStats800}}</td>
                 <td>{{stat.townTadvStats1800}}</td>
                 <td>{{stat.townTadvStats2100}}</td>

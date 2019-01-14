@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Http;
 using Abp.EntityFramework.AutoMapper;
 using Abp.EntityFramework.Entities.Mr;
@@ -14,7 +13,7 @@ using Lte.Evaluations.DataService.Mr;
 using Lte.Evaluations.ViewModels.Precise;
 using LtePlatform.Models;
 
-namespace LtePlatform.Controllers.College
+namespace LtePlatform.Controllers.Mongo
 {
     [ApiControl("专业市场精确覆盖率查询控制器")]
     [ApiGroup("专题优化")]

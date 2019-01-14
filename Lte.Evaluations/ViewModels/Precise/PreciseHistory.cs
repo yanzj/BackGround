@@ -16,6 +16,8 @@ namespace Lte.Evaluations.ViewModels.Precise
         public int CollegePreciseStats { get; set; }
         
         public int MarketPreciseStats { get; set; }
+        
+        public int TransportationPreciseStats { get; set; }
 
         public int TownPrecise800Stats { get; set; }
 

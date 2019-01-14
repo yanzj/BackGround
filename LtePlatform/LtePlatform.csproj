@@ -327,7 +327,7 @@
     <Compile Include="Controllers\College\MarketDoubleFlowController.cs" />
     <Compile Include="Controllers\College\MarketHourCqiController.cs" />
     <Compile Include="Controllers\College\MarketPrbController.cs" />
-    <Compile Include="Controllers\College\MarketPreciseController.cs" />
+    <Compile Include="Controllers\Mongo\MarketPreciseController.cs" />
     <Compile Include="Controllers\College\TransportationCqiController.cs" />
     <Compile Include="Controllers\College\TransportationDoubleFlowController.cs" />
     <Compile Include="Controllers\College\TransportationFlowController.cs" />
@@ -376,6 +376,10 @@
     <Compile Include="Controllers\Mongo\MarketMrsRsrpController.cs" />
     <Compile Include="Controllers\Mongo\MarketMrsSinrUlController.cs" />
     <Compile Include="Controllers\Mongo\MarketMrsTadvController.cs" />
+    <Compile Include="Controllers\Mongo\TransportationMrsRsrpController.cs" />
+    <Compile Include="Controllers\Mongo\TransportationMrsSinrUlController.cs" />
+    <Compile Include="Controllers\Mongo\TransportationMrsTadvController.cs" />
+    <Compile Include="Controllers\Mongo\TransportationPreciseController.cs" />
     <Compile Include="Controllers\Mr\CollegeMrsTadvController.cs" />
     <Compile Include="Controllers\Mr\SinrUlRegionController.cs" />
     <Compile Include="Controllers\Kpi\TopDoubleFlowController.cs" />
@@ -551,7 +555,7 @@
     <Compile Include="Controllers\Kpi\HotSpotFlowController.cs" />
     <Compile Include="Controllers\Kpi\KpiDataListController.cs" />
     <Compile Include="Controllers\Kpi\KpiOptionsController.cs" />
-    <Compile Include="Controllers\Kpi\PreciseImportController.cs" />
+    <Compile Include="Controllers\Mongo\PreciseImportController.cs" />
     <Compile Include="Controllers\Kpi\PreciseStatController.cs" />
     <Compile Include="Controllers\Kpi\RrcRegionController.cs" />
     <Compile Include="Controllers\Kpi\TopConnection3GController.cs" />
@@ -565,7 +569,7 @@
     <Compile Include="Controllers\Kpi\TopRank2Controller.cs" />
     <Compile Include="Controllers\Kpi\TopRrcFailController.cs" />
     <Compile Include="Controllers\Kpi\TownFlowController.cs" />
-    <Compile Include="Controllers\Kpi\TownPreciseImportController.cs" />
+    <Compile Include="Controllers\Mongo\TownPreciseImportController.cs" />
     <Compile Include="Controllers\Kpi\WorkItemController.cs" />
     <Compile Include="Controllers\Kpi\WorkItemCurrentMonthController.cs" />
     <Compile Include="Controllers\ManageController.cs" />

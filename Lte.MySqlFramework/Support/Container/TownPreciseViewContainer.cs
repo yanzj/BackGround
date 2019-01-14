@@ -10,6 +10,8 @@ namespace Lte.MySqlFramework.Support.Container
         public IEnumerable<TownPreciseStat> CollegeStats { get; set; }
         
         public IEnumerable<TownPreciseStat> MarketStats { get; set; }
+        
+        public IEnumerable<TownPreciseStat> TransportationStats { get; set; }
 
         public IEnumerable<TownPreciseView> Views800 { get; set; }
 

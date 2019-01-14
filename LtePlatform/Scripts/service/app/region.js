@@ -2052,6 +2052,12 @@ angular.module('region.precise', ['app.core'])
                             statDate: statTime
                         });
                 },
+                queryTransportationPreciseViews: function(statTime) {
+                    return generalHttpService.getApiData('TransportationPrecise',
+                        {
+                            statDate: statTime
+                        });
+                },
                 queryTownMrsStats: function (statTime, frequency) {
                     return generalHttpService.getApiData('MrsRsrpImport',
                         {
@@ -2067,6 +2073,12 @@ angular.module('region.precise', ['app.core'])
                 },
                 queryMarketMrsStats: function(statTime) {
                     return generalHttpService.getApiData('MarketMrsRsrp',
+                        {
+                            statDate: statTime
+                        });
+                },
+                queryTransportationMrsStats: function(statTime) {
+                    return generalHttpService.getApiData('TransportationMrsRsrp',
                         {
                             statDate: statTime
                         });
@@ -2090,6 +2102,12 @@ angular.module('region.precise', ['app.core'])
                             statDate: statTime
                         });
                 },
+                queryTransportationSinrUlStats: function(statTime) {
+                    return generalHttpService.getApiData('TransportationMrsSinrUl',
+                        {
+                            statDate: statTime
+                        });
+                },
                 queryTownTaStats: function (statTime, frequency) {
                     return generalHttpService.getApiData('MrsTadvImport',
                         {
@@ -2105,6 +2123,12 @@ angular.module('region.precise', ['app.core'])
                 },
                 queryMarketTaStats: function(statTime) {
                     return generalHttpService.getApiData('MarketMrsTadv',
+                        {
+                            statDate: statTime
+                        });
+                },
+                queryTransportationTaStats: function(statTime) {
+                    return generalHttpService.getApiData('TransportationMrsTadv',
                         {
                             statDate: statTime
                         });
@@ -2143,52 +2167,57 @@ angular.module('region.precise', ['app.core'])
                 },
 
                 dumpTownItems: function(
-                    views, collegeStats, marketStats, views800, views1800, views2100
+                    views, collegeStats, marketStats, transportationStats, views800, views1800, views2100
                 ) {
                     return generalHttpService.postApiData('TownPreciseImport',
                     {
                         views: views,
                         collegeStats: collegeStats,
                         marketStats: marketStats,
+                        transportationStats: transportationStats,
                         views800: views800,
                         views1800: views1800,
                         views2100: views2100
                     });
                 },
                 dumpTownRsrpItems: function( 
-                    mrsStats, collegeMrsStats, marketMrsStats, mrsStats800, mrsStats1800, mrsStats2100
+                    mrsStats, collegeMrsStats, marketMrsStats, transportationMrsStats, mrsStats800, mrsStats1800, mrsStats2100
                 ) {
                     return generalHttpService.postApiData('MrsRsrpImport',
                         {
                             mrsRsrps: mrsStats,
                             collegeMrsRsrps: collegeMrsStats,
                             marketMrsRsrps: marketMrsStats,
+                            transportationMrsRsrps: transportationMrsStats,
                             mrsRsrps800: mrsStats800,
                             mrsRsrps1800: mrsStats1800,
                             mrsRsrps2100: mrsStats2100
                         });
                 },
                 dumpTownSinrItems: function (
-                    mrsSinrUls, collegeSinrUls, marketSinrUls, mrsSinrUls800, mrsSinrUls1800, mrsSinrUls2100
+                    mrsSinrUls, collegeSinrUls, marketSinrUls, transportationSinrUls, mrsSinrUls800,
+                    mrsSinrUls1800, mrsSinrUls2100
                 ) {
                     return generalHttpService.postApiData('MrsSinrUlImport',
                     {
                         mrsSinrUls: mrsSinrUls,
                         collegeMrsSinrUls: collegeSinrUls,
                         marketMrsSinrUls: marketSinrUls,
+                        transportationMrsSinrUls: transportationSinrUls,
                         mrsSinrUls800: mrsSinrUls800,
                         mrsSinrUls1800: mrsSinrUls1800,
                         mrsSinrUls2100: mrsSinrUls2100
                     });
                 },
                 dumpTownTaItems: function (
-                    mrsTadvs, collegeTadvs, marketTadvs, mrsTadvs800, mrsTadvs1800, mrsTadvs2100
+                    mrsTadvs, collegeTadvs, marketTadvs, transportationTadvs, mrsTadvs800, mrsTadvs1800, mrsTadvs2100
                 ) {
                     return generalHttpService.postApiData('MrsTadvImport',
                         {
                             mrsTadvs: mrsTadvs,
                             collegeMrsTadvs: collegeTadvs,
                             marketMrsTadvs: marketTadvs,
+                            transportationMrsTadvs: transportationTadvs,
                             mrsTadvs800: mrsTadvs800,
                             mrsTadvs1800: mrsTadvs1800,
                             mrsTadvs2100: mrsTadvs2100

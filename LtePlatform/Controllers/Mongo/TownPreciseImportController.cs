@@ -12,7 +12,7 @@ using Lte.Evaluations.DataService.Kpi;
 using Lte.MySqlFramework.Support.Container;
 using LtePlatform.Models;
 
-namespace LtePlatform.Controllers.Kpi
+namespace LtePlatform.Controllers.Mongo
 {
     [ApiControl("导入镇区精确覆盖率的控制器")]
     [ApiGroup("KPI")]
