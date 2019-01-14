@@ -433,6 +433,12 @@
                             statTime: statDate
                         });
                 },
+                updateTransportationCoverageStats: function(statDate) {
+                    return generalHttpService.getApiData('TransportationMroRsrp',
+                        {
+                            statTime: statDate
+                        });
+                },
                 queryDumpItems: function() {
                     return generalHttpService.getApiData('DumpAlarm', {});
                 },

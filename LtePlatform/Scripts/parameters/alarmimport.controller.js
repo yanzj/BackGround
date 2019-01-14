@@ -49,6 +49,11 @@
                                 stat.marketCoverageStats = count;
                             });
                         }
+                        if (stat.transportationCoverageStats < 20) {
+                            alarmImportService.updateTransportationCoverageStats(stat.dateString).then(function(count) {
+                                stat.transportationCoverageStats = count;
+                            });
+                        }
                     }
                         
                 });

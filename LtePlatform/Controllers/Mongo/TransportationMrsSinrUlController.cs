@@ -95,51 +95,51 @@ namespace LtePlatform.Controllers.Mongo
 
         [HttpGet]
         [ApiDoc("查询指定交通枢纽指定日期范围内MRS-SINRUL覆盖情况")]
-        [ApiParameterDoc("marketName", "交通枢纽名称")]
+        [ApiParameterDoc("transportationName", "交通枢纽名称")]
         [ApiParameterDoc("begin", "开始日期")]
         [ApiParameterDoc("end", "结束日期")]
         [ApiResponse("天平均MRS-SINRUL覆盖统计")]
-        public AggregateMrsSinrUlView Get(string marketName, DateTime begin, DateTime end)
+        public AggregateMrsSinrUlView Get(string transportationName, DateTime begin, DateTime end)
         {
-            var college = _marketService.QueryTransportationView(marketName);
+            var college = _marketService.QueryTransportationView(transportationName);
             if (college == null) return null;
             var stats = _townMrsSinrUlService.QueryTownViews(begin, end, college.Id, FrequencyBandType.Transportation);
             var result = stats.Any()
                 ? stats.ArraySum().MapTo<AggregateMrsSinrUlView>()
                 : new AggregateMrsSinrUlView();
-            result.Name = marketName;
+            result.Name = transportationName;
             return result;
         }
 
         [HttpGet]
         [ApiDoc("查询指定交通枢纽指定日期范围内MRS-SINRUL覆盖情况，按照日期排列")]
-        [ApiParameterDoc("marketName", "交通枢纽名称")]
+        [ApiParameterDoc("transportationName", "交通枢纽名称")]
         [ApiParameterDoc("beginDate", "开始日期")]
         [ApiParameterDoc("endDate", "结束日期")]
         [ApiResponse("MRS-SINRUL覆盖情况，按照日期排列，每天一条记录")]
-        public IEnumerable<AggregateMrsSinrUlView> GetDateViews(string marketName, DateTime beginDate, DateTime endDate)
+        public IEnumerable<AggregateMrsSinrUlView> GetDateViews(string transportationName, DateTime beginDate, DateTime endDate)
         {
-            var college = _marketService.QueryTransportationView(marketName);
+            var college = _marketService.QueryTransportationView(transportationName);
             if (college == null) return null;
             var stats = _townMrsSinrUlService.QueryTownViews(beginDate, endDate, college.Id, FrequencyBandType.Transportation);
             var results = stats.MapTo<List<AggregateMrsSinrUlView>>();
             results.ForEach(view =>
             {
-                view.Name = marketName;
+                view.Name = transportationName;
             });
             return results;
         }
         
         [HttpGet]
         [ApiDoc("查询指定交通枢纽指定日期各个小区MRS-SINRUL覆盖情况")]
-        [ApiParameterDoc("marketName", "交通枢纽名称")]
+        [ApiParameterDoc("transportationName", "交通枢纽名称")]
         [ApiParameterDoc("statDate", "统计日期")]
         [ApiResponse("各个小区MRS-SINRUL覆盖情况统计")]
-        public IEnumerable<CellMrsSinrUlDto> GetTransportationDateView(string marketName, DateTime statDate)
+        public IEnumerable<CellMrsSinrUlDto> GetTransportationDateView(string transportationName, DateTime statDate)
         {
             var beginDate = statDate.Date;
             var endDate = beginDate.AddDays(1);
-            var college = _marketService.QueryTransportationView(marketName);
+            var college = _marketService.QueryTransportationView(transportationName);
             if (college == null) return new List<CellMrsSinrUlDto>();
             var cells = _collegeCellViewService.QueryCollegeSectors(college.HotspotName);
             var viewListList = cells.Select(cell =>

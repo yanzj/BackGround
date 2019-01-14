@@ -210,7 +210,11 @@ namespace Lte.Evaluations.DataService.Maintainance
                     MarketCoverageStats = 
                         _townCoverageRepository.Count(x =>
                             x.StatDate >= beginDate && x.StatDate < endDate &&
-                            x.FrequencyBandType == FrequencyBandType.Market)
+                            x.FrequencyBandType == FrequencyBandType.Market),
+                    TransportationCoverageStats = 
+                        _townCoverageRepository.Count(x =>
+                            x.StatDate >= beginDate && x.StatDate < endDate &&
+                            x.FrequencyBandType == FrequencyBandType.Transportation)
                 });
                 begin = begin.AddDays(1);
             }
