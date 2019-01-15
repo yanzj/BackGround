@@ -138,53 +138,6 @@ angular.module('kpi.college.basic', ['myApp.url', 'myApp.region', "ui.bootstrap"
                 $uibModalInstance.dismiss('cancel');
             };
         })
-    .controller('map.college.dialog',
-        function($scope,
-            $uibModalInstance,
-            college,
-            year,
-            dialogTitle,
-            collegeQueryService,
-            kpiChartCalculateService,
-            emergencyService) {
-            $scope.college = college;
-            $scope.dialogTitle = dialogTitle;
-            $scope.query = function() {
-                collegeQueryService.queryCollegeDateFlows(college.name, $scope.beginDate.value, $scope.endDate.value)
-                    .then(function (stats) {
-                        angular.forEach(stats,
-                            function (stat) {
-                                stat.pdcpDownlinkFlow /= 8;
-                                stat.pdcpUplinkFlow /= 8;
-                            });
-                        $("#flowConfig").highcharts(kpiChartCalculateService.generateMergeFeelingOptions(stats, college.name));
-                        $("#usersConfig").highcharts(kpiChartCalculateService.generateMergeUsersOptions(stats, college.name));
-                        $("#downSwitchConfig").highcharts(kpiChartCalculateService.generateMergeDownSwitchOptions(stats, college.name));
-                    });
-            };
-            $scope.query();
-            collegeQueryService.queryByNameAndYear(college.name, year).then(function(info) {
-                if (info) {
-                    $scope.college.expectedSubscribers = info.expectedSubscribers;
-                    $scope.college.oldOpenDate = info.oldOpenDate;
-                    $scope.college.newOpenDate = info.newOpenDate;
-                }
-            });
-            emergencyService.queryCollegeVipDemand(year, college.name).then(function(item) {
-                if (item) {
-                    $scope.college.serialNumber = item.serialNumber;
-                    $scope.college.currentStateDescription = item.currentStateDescription;
-                }
-            });
-
-            $scope.ok = function() {
-                $uibModalInstance.close($scope.college);
-            };
-
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            };
-        })
     .controller("college.query.name",
         function($scope, $uibModalInstance, dialogTitle, name, collegeService) {
             $scope.collegeName = name;
@@ -625,23 +578,6 @@ angular.module('kpi.college', ['app.menu', 'region.college'])
 					callback(info);
 				});
 			},
-			showCollegDialog: function(college, year) {
-				menuItemService.showGeneralDialog({
-					templateUrl: '/appViews/College/Table/CollegeMapInfoBox.html',
-					controller: 'map.college.dialog',
-					resolve: {
-						dialogTitle: function() {
-							return college.name + "-" + "基本信息";
-						},
-						college: function() {
-							return college;
-						},
-						year: function() {
-							return year;
-						}
-					}
-				});
-			},
 			addENodeb: function(collegeName, center, callback) { /////////////////////////////////////////////////////
 				menuItemService.showGeneralDialogWithAction({
 					templateUrl: '/appViews/College/Infrastructure/ENodebSupplementDialog.html',
@@ -727,63 +663,8 @@ angular.module('kpi.college', ['app.menu', 'region.college'])
 	});
 angular.module('kpi.customer', ['myApp.url', 'myApp.region'])
     .factory('customerDialogService',
-        function(menuItemService, customerQueryService, emergencyService, complainService, basicImportService) {
+        function(menuItemService, customerQueryService, complainService, basicImportService) {
             return {
-                constructEmergencyCommunication: function(city, district, type, messages, callback) {
-                    menuItemService.showGeneralDialogWithAction({
-                            templateUrl: '/appViews/Customer/Dialog/Emergency.html',
-                            controller: 'emergency.new.dialog',
-                            resolve: {
-                                dialogTitle: function() {
-                                    return "新增应急通信需求";
-                                },
-                                city: function() {
-                                    return city;
-                                },
-                                district: function() {
-                                    return district;
-                                },
-                                vehicularType: function() {
-                                    return type;
-                                }
-                            }
-                        },
-                        function(dto) {
-                            customerQueryService.postDto(dto).then(function(result) {
-                                if (result > 0) {
-                                    messages.push({
-                                        type: 'success',
-                                        contents: '完成应急通信需求：' + dto.projectName + '的导入'
-                                    });
-                                    callback();
-                                } else {
-                                    messages.push({
-                                        type: 'warning',
-                                        contents: '最近已经有该需求，请不要重复导入'
-                                    });
-                                }
-                            });
-                        });
-                },
-                constructEmergencyCollege: function(serialNumber, collegeName, callback) {
-                    menuItemService.showGeneralDialogWithAction({
-                            templateUrl: '/appViews/Customer/Dialog/Emergency.html',
-                            controller: 'emergency.college.dialog',
-                            resolve: {
-                                serialNumber: function() {
-                                    return serialNumber;
-                                },
-                                collegeName: function() {
-                                    return collegeName;
-                                }
-                            }
-                        },
-                        function(dto) {
-                            customerQueryService.postDto(dto).then(function(result) {
-                                callback();
-                            });
-                        });
-                },
                 constructHotSpot: function(callback, callback2) {
                     menuItemService.showGeneralDialogWithDoubleAction({
                             templateUrl: '/appViews/Parameters/Import/HotSpot.html',

@@ -666,7 +666,6 @@
     <Content Include="appViews\BasicKpi\Resource.html" />
     <Content Include="appViews\BasicKpi\Trend.html" />
     <Content Include="appViews\College\Coverage\Index.html" />
-    <Content Include="appViews\College\Coverage\TownMap.html" />
     <Content Include="appViews\College\Infrastructure\BtsSupplementDialog.html" />
     <Content Include="appViews\College\Infrastructure\ENodebSupplementDialog.html" />
     <Content Include="appViews\College\Infrastructure\BtsDialog.html" />
@@ -687,7 +686,6 @@
     <Content Include="appViews\Customer\EmergencyList.html" />
     <Content Include="appViews\Customer\Dialog\Emergency.html" />
     <Content Include="appViews\Customer\Process\Complain.html" />
-    <Content Include="appViews\Customer\Process\Emergency.html" />
     <Content Include="appViews\Customer\Process\Vip.html" />
     <Content Include="appViews\Customer\VipList.html" />
     <Content Include="appViews\Evaluation\Dialog\AgpsSearchCondition.html" />
@@ -1265,7 +1263,6 @@
     </Content>
     <Content Include="Scripts\service\topic\baidu.map.js" />
     <Content Include="Views\Kpi\Import.cshtml" />
-    <Content Include="appViews\College\Table\CollegeMapInfoBox.html" />
     <Content Include="appViews\College\Table\DistributionMapInfoBox.html" />
     <Content Include="Scripts\service\region\app.region.js" />
     <Content Include="Scripts\service\package.json" />

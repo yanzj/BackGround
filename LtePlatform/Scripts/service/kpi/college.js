@@ -152,23 +152,6 @@
 					callback(info);
 				});
 			},
-			showCollegDialog: function(college, year) {
-				menuItemService.showGeneralDialog({
-					templateUrl: '/appViews/College/Table/CollegeMapInfoBox.html',
-					controller: 'map.college.dialog',
-					resolve: {
-						dialogTitle: function() {
-							return college.name + "-" + "基本信息";
-						},
-						college: function() {
-							return college;
-						},
-						year: function() {
-							return year;
-						}
-					}
-				});
-			},
 			addENodeb: function(collegeName, center, callback) { /////////////////////////////////////////////////////
 				menuItemService.showGeneralDialogWithAction({
 					templateUrl: '/appViews/College/Infrastructure/ENodebSupplementDialog.html',

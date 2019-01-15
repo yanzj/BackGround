@@ -30,53 +30,6 @@
                 $uibModalInstance.dismiss('cancel');
             };
         })
-    .controller('map.college.dialog',
-        function($scope,
-            $uibModalInstance,
-            college,
-            year,
-            dialogTitle,
-            collegeQueryService,
-            kpiChartCalculateService,
-            emergencyService) {
-            $scope.college = college;
-            $scope.dialogTitle = dialogTitle;
-            $scope.query = function() {
-                collegeQueryService.queryCollegeDateFlows(college.name, $scope.beginDate.value, $scope.endDate.value)
-                    .then(function (stats) {
-                        angular.forEach(stats,
-                            function (stat) {
-                                stat.pdcpDownlinkFlow /= 8;
-                                stat.pdcpUplinkFlow /= 8;
-                            });
-                        $("#flowConfig").highcharts(kpiChartCalculateService.generateMergeFeelingOptions(stats, college.name));
-                        $("#usersConfig").highcharts(kpiChartCalculateService.generateMergeUsersOptions(stats, college.name));
-                        $("#downSwitchConfig").highcharts(kpiChartCalculateService.generateMergeDownSwitchOptions(stats, college.name));
-                    });
-            };
-            $scope.query();
-            collegeQueryService.queryByNameAndYear(college.name, year).then(function(info) {
-                if (info) {
-                    $scope.college.expectedSubscribers = info.expectedSubscribers;
-                    $scope.college.oldOpenDate = info.oldOpenDate;
-                    $scope.college.newOpenDate = info.newOpenDate;
-                }
-            });
-            emergencyService.queryCollegeVipDemand(year, college.name).then(function(item) {
-                if (item) {
-                    $scope.college.serialNumber = item.serialNumber;
-                    $scope.college.currentStateDescription = item.currentStateDescription;
-                }
-            });
-
-            $scope.ok = function() {
-                $uibModalInstance.close($scope.college);
-            };
-
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            };
-        })
     .controller("college.query.name",
         function($scope, $uibModalInstance, dialogTitle, name, collegeService) {
             $scope.collegeName = name;

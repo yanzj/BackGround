@@ -46,23 +46,6 @@
                         }
                     });
                 },
-                showTownDtInfo: function(item) {
-                    menuItemService.showGeneralDialogWithAction({
-                            templateUrl: '/appViews/College/Coverage/TownMap.html',
-                            controller: 'town.dt.dialog',
-                            resolve: {
-                                dialogTitle: function() {
-                                    return item.cityName + item.districtName + item.townName + "-" + "路测数据文件信息";
-                                },
-                                item: function() {
-                                    return item;
-                                }
-                            }
-                        },
-                        function(info) {
-                            baiduMapService.switchMainMap();
-                        });
-                },
                 showCheckPlanList: function (type) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/Evaluation/Dialog/CheckPlanListDialog.html',
@@ -124,23 +107,6 @@
                             }
                         }
                     });
-                },
-                showCollegeCoverage: function(name, beginDate, endDate, coverageOverlays, callback) {
-                    menuItemService.showGeneralDialogWithAction({
-                            templateUrl: '/appViews/College/Coverage/CollegeMap.html',
-                            controller: 'college.coverage.name',
-                            resolve: stationFormatService.dateSpanDateResolve({
-                                    name: function() {
-                                        return name;
-                                    },
-                                    coverageOverlays: function() {
-                                        return coverageOverlays;
-                                    }
-                                },
-                                beginDate,
-                                endDate)
-                        },
-                        callback);
                 },
                 manageCsvDtInfos: function(beginDate, endDate) {
                     menuItemService.showGeneralDialog({

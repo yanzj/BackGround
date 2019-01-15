@@ -1,62 +1,7 @@
 ﻿angular.module('kpi.customer', ['myApp.url', 'myApp.region'])
     .factory('customerDialogService',
-        function(menuItemService, customerQueryService, emergencyService, complainService, basicImportService) {
+        function(menuItemService, customerQueryService, complainService, basicImportService) {
             return {
-                constructEmergencyCommunication: function(city, district, type, messages, callback) {
-                    menuItemService.showGeneralDialogWithAction({
-                            templateUrl: '/appViews/Customer/Dialog/Emergency.html',
-                            controller: 'emergency.new.dialog',
-                            resolve: {
-                                dialogTitle: function() {
-                                    return "新增应急通信需求";
-                                },
-                                city: function() {
-                                    return city;
-                                },
-                                district: function() {
-                                    return district;
-                                },
-                                vehicularType: function() {
-                                    return type;
-                                }
-                            }
-                        },
-                        function(dto) {
-                            customerQueryService.postDto(dto).then(function(result) {
-                                if (result > 0) {
-                                    messages.push({
-                                        type: 'success',
-                                        contents: '完成应急通信需求：' + dto.projectName + '的导入'
-                                    });
-                                    callback();
-                                } else {
-                                    messages.push({
-                                        type: 'warning',
-                                        contents: '最近已经有该需求，请不要重复导入'
-                                    });
-                                }
-                            });
-                        });
-                },
-                constructEmergencyCollege: function(serialNumber, collegeName, callback) {
-                    menuItemService.showGeneralDialogWithAction({
-                            templateUrl: '/appViews/Customer/Dialog/Emergency.html',
-                            controller: 'emergency.college.dialog',
-                            resolve: {
-                                serialNumber: function() {
-                                    return serialNumber;
-                                },
-                                collegeName: function() {
-                                    return collegeName;
-                                }
-                            }
-                        },
-                        function(dto) {
-                            customerQueryService.postDto(dto).then(function(result) {
-                                callback();
-                            });
-                        });
-                },
                 constructHotSpot: function(callback, callback2) {
                     menuItemService.showGeneralDialogWithDoubleAction({
                             templateUrl: '/appViews/Parameters/Import/HotSpot.html',
