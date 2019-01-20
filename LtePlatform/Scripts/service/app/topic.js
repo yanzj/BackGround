@@ -951,47 +951,6 @@ angular.module('topic.parameters.basic', ['myApp.url', 'myApp.region', 'myApp.kp
             };
         });
 angular.module('topic.parameters.coverage', ['myApp.url', 'myApp.region', 'myApp.kpi', 'topic.basic', "ui.bootstrap"])
-    .controller('highway.dt.dialog',
-        function($scope,
-            dialogTitle,
-            beginDate,
-            endDate,
-            name,
-            collegeService,
-            parametersChartService,
-            $uibModalInstance) {
-            $scope.dialogTitle = dialogTitle;
-            $scope.beginDate = beginDate;
-            $scope.endDate = endDate;
-
-            $scope.query = function() {
-                collegeService.queryRoadDtFileInfos(name, $scope.beginDate.value, $scope.endDate.value)
-                    .then(function(infos) {
-                        $scope.fileInfos = infos;
-                        angular.forEach(infos,
-                            function(info) {
-                                collegeService.queryCsvFileType(info.csvFileName.replace('.csv', ''))
-                                    .then(function(type) {
-                                        info.networkType = type;
-                                    });
-                            });
-                        $("#distanceDistribution").highcharts(parametersChartService
-                            .getHotSpotDtDistancePieOptions(name, infos));
-                        $("#coverageRate").highcharts(parametersChartService
-                            .getHotSpotDtCoverageRateOptions(name, infos));
-                    });
-            };
-
-            $scope.ok = function() {
-                $uibModalInstance.close($scope.bts);
-            };
-
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            };
-
-            $scope.query();
-        })
     .controller('cluster.point.dialog',
         function($scope,
             $uibModalInstance,
@@ -1065,46 +1024,46 @@ angular.module('topic.parameters', ['app.menu', 'app.core', 'topic.basic'])
                         }
                     });
                 },
-                showCheckPlanList: function (type) {
+                showCheckPlanList: function(type) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/Evaluation/Dialog/CheckPlanListDialog.html',
                         controller: 'map.checkPlanList.dialog',
                         resolve: {
-                            dialogTitle: function () {
+                            dialogTitle: function() {
                                 return "巡检计划列表";
                             },
-                            type: function () {
+                            type: function() {
                                 return type;
                             }
                         }
                     });
                 },
-                addCheckPlanDialog: function (stationId,name) {
+                addCheckPlanDialog: function(stationId, name) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/Home/AddCheckPlanDialog.html',
                         controller: 'map.addCheckPlan.dialog',
                         resolve: {
-                            dialogTitle: function () {
+                            dialogTitle: function() {
                                 return "添加巡检计划";
                             },
-                            stationId: function () {
+                            stationId: function() {
                                 return stationId;
                             },
-                            name: function () {
+                            name: function() {
                                 return name;
                             },
                         }
                     });
                 },
-                showCheckingResultsStationAdd: function (station) {
+                showCheckingResultsStationAdd: function(station) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/Evaluation/Dialog/CheckResultsStationAdd.html',
                         controller: 'map.checkingResultsStationAdd.dialog',
                         resolve: {
-                            dialogTitle: function () {
-                                return "巡检结果录入:" + station.StationName + ' '+ station.id;
+                            dialogTitle: function() {
+                                return "巡检结果录入:" + station.StationName + ' ' + station.id;
                             },
-                            station: function () {
+                            station: function() {
                                 return station;
                             }
                         }
@@ -1139,24 +1098,8 @@ angular.module('topic.parameters', ['app.menu', 'app.core', 'topic.basic'])
                             beginDate,
                             endDate)
                     });
-                },
-                showHighwayDtInfos: function(beginDate, endDate, name) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/BasicKpi/HotspotDtDialog.html',
-                        controller: 'highway.dt.dialog',
-                        resolve: stationFormatService.dateSpanDateResolve({
-                                dialogTitle: function() {
-                                    return name + "路测数据信息查询";
-                                },
-                                name: function() {
-                                    return name;
-                                }
-                            },
-                            beginDate,
-                            endDate)
-                    });
                 }
-            }
+            };
         })
     .factory('parametersDisplayMapService',
         function(baiduMapService, parametersDialogService, baiduQueryService, networkElementService) {

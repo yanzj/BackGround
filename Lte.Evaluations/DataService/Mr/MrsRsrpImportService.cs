@@ -74,7 +74,7 @@ namespace Lte.Evaluations.DataService.Mr
         {
             var end = statTime.AddDays(1);
             var stats = _mrsRsrpRepository.GetAllList(x => x.StatDate >= statTime && x.StatDate < end);
-            var dtos = stats.Where(x => x.RSRP_00 + x.RSRP_01 > 5000).MapTo<List<CellMrsRsrpDto>>();
+            var dtos = stats.Where(x => x.RSRP_00 + x.RSRP_01 + x.RSRP_02 > 5000).MapTo<List<CellMrsRsrpDto>>();
             var items = dtos.MapTo<IEnumerable<TopMrsRsrp>>();
             foreach (var topMrsRsrp in items)
             {

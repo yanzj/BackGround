@@ -46,46 +46,46 @@
                         }
                     });
                 },
-                showCheckPlanList: function (type) {
+                showCheckPlanList: function(type) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/Evaluation/Dialog/CheckPlanListDialog.html',
                         controller: 'map.checkPlanList.dialog',
                         resolve: {
-                            dialogTitle: function () {
+                            dialogTitle: function() {
                                 return "巡检计划列表";
                             },
-                            type: function () {
+                            type: function() {
                                 return type;
                             }
                         }
                     });
                 },
-                addCheckPlanDialog: function (stationId,name) {
+                addCheckPlanDialog: function(stationId, name) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/Home/AddCheckPlanDialog.html',
                         controller: 'map.addCheckPlan.dialog',
                         resolve: {
-                            dialogTitle: function () {
+                            dialogTitle: function() {
                                 return "添加巡检计划";
                             },
-                            stationId: function () {
+                            stationId: function() {
                                 return stationId;
                             },
-                            name: function () {
+                            name: function() {
                                 return name;
                             },
                         }
                     });
                 },
-                showCheckingResultsStationAdd: function (station) {
+                showCheckingResultsStationAdd: function(station) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/Evaluation/Dialog/CheckResultsStationAdd.html',
                         controller: 'map.checkingResultsStationAdd.dialog',
                         resolve: {
-                            dialogTitle: function () {
-                                return "巡检结果录入:" + station.StationName + ' '+ station.id;
+                            dialogTitle: function() {
+                                return "巡检结果录入:" + station.StationName + ' ' + station.id;
                             },
-                            station: function () {
+                            station: function() {
                                 return station;
                             }
                         }
@@ -120,24 +120,8 @@
                             beginDate,
                             endDate)
                     });
-                },
-                showHighwayDtInfos: function(beginDate, endDate, name) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/BasicKpi/HotspotDtDialog.html',
-                        controller: 'highway.dt.dialog',
-                        resolve: stationFormatService.dateSpanDateResolve({
-                                dialogTitle: function() {
-                                    return name + "路测数据信息查询";
-                                },
-                                name: function() {
-                                    return name;
-                                }
-                            },
-                            beginDate,
-                            endDate)
-                    });
                 }
-            }
+            };
         })
     .factory('parametersDisplayMapService',
         function(baiduMapService, parametersDialogService, baiduQueryService, networkElementService) {

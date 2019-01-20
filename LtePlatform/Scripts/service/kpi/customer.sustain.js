@@ -11,8 +11,7 @@
                 var options =_.filter(result,
                     function(stat) {
                         return stat !== '高速公路' && stat !== '其他' &&
-                            stat !== '高速铁路' && stat !== '区域定义' &&
-                            stat !== '地铁' && stat !== 'TOP小区' && stat !== '校园网';
+                            stat !== '高速铁路' && stat !== '区域定义' && stat !== '校园网';
                     });
                 $scope.spotType = {
                     options: options,
@@ -58,8 +57,13 @@
             $scope.modify = true;
 
             kpiPreciseService.getHotSpotTypeSelection().then(function(result) {
+                var options =_.filter(result,
+                    function(stat) {
+                        return stat !== '高速公路' && stat !== '其他' &&
+                            stat !== '高速铁路' && stat !== '区域定义' && stat !== '校园网';
+                    });
                 $scope.spotType = {
-                    options: result,
+                    options: options,
                     selected: $scope.dto.typeDescription
                 };
             });
@@ -179,13 +183,16 @@
                     function(cell) {
                         cellNames.push(cell.cellName);
                     });
+                if (cellNames.length === 0) {
+                    return;
+                }
                 collegeQueryService.saveCollegeCells({
                     collegeName: name,
                     cellNames: cellNames
                 }).then(function() {
                     $scope.query();
                 });
-            }
+            };
             $scope.query();
         })
     .controller('college.supplement.dialog',

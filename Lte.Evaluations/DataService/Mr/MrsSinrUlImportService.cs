@@ -131,7 +131,7 @@ namespace Lte.Evaluations.DataService.Mr
             var end = statTime.AddDays(1);
             var stats = _mrsSinrUlRepository.GetAllList(x => x.StatDate >= statTime && x.StatDate < end);
             var dtos = stats
-                .Where(x => x.SinrUL_00 + x.SinrUL_01 + x.SinrUL_02 > 2000)
+                .Where(x => x.SinrUL_00 + x.SinrUL_01 + x.SinrUL_02 + x.SinrUL_03 + x.SinrUL_04 > 2000)
                 .MapTo<List<CellMrsSinrUlDto>>();
             var items = dtos.MapTo<IEnumerable<TopMrsSinrUl>>();
             foreach (var topMrsRsrp in items)

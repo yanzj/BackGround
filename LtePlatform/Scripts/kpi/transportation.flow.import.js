@@ -22,7 +22,7 @@
                     function (stat) {
                         appRegionService.getCurrentDateTownFlowStats(stat.date, 'transportation').then(function (items) {
                             stat.items = items;
-                            if (items.length < 20) {
+                            if (items.length < 40) {
                                 collegeQueryService.retrieveDateTransportationFlowStats(stat.date).then(function (newItems) {
                                     stat.items = newItems;
                                     angular.forEach(newItems,
@@ -34,7 +34,7 @@
                         });
                         appRegionService.getCurrentDateTownCqiStats(stat.date, 'transportation').then(function (items) {
                             stat.cqis = items;
-                            if (items.length < 20) {
+                            if (items.length < 40) {
                                 collegeQueryService.retrieveDateTransportationCqiStats(stat.date).then(function (newItems) {
 
                                     angular.forEach(newItems,
@@ -48,7 +48,7 @@
                         });
                         appRegionService.getCurrentDateTownPrbStats(stat.date, 'transportation').then(function (items) {
                             stat.prbs = items;
-                            if (items.length < 20) {
+                            if (items.length < 40) {
                                 collegeQueryService.retrieveDateTransportationPrbStats(stat.date).then(function (newItems) {
 
                                     angular.forEach(newItems,
@@ -62,7 +62,7 @@
                         });
                         appRegionService.getCurrentDateTownDoubleFlowStats(stat.date, 'transportation').then(function (items) {
                             stat.doubleFlows = items;
-                            if (items.length < 20) {
+                            if (items.length < 40) {
                                 collegeQueryService.retrieveDateTransportationDoubleFlowStats(stat.date).then(function (newItems) {
 
                                     angular.forEach(newItems,
@@ -76,7 +76,7 @@
                         });
                         appRegionService.getCurrentDateTownHourCqiStats(stat.date, 'transportation').then(function (items) {
                             stat.hourCqis = items;
-                            if (items.length < 20) {
+                            if (items.length < 40) {
                                 collegeQueryService.retrieveDateTransportationHourCqiStats(stat.date).then(function (newItems) {
 
                                     angular.forEach(newItems,

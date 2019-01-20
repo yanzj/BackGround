@@ -33,7 +33,11 @@ namespace Lte.Evaluations.DataService.Basic
 
         public IEnumerable<SectorView> GetCells(double west, double east, double south, double north)
         {
-            var cells = _repository.GetAllList(west, east, south, north);
+            var cells = _repository.GetAllList(x =>
+                x.Longtitute >= west
+                && x.Longtitute <= east
+                && x.Lattitute >= south
+                && x.Lattitute <= north && x.IsInUse);
             return cells.Any()
                 ? Mapper.Map<IEnumerable<CellView>, IEnumerable<SectorView>>(
                     cells.Select(x => CellView.ConstructView(x, _eNodebRepository)))

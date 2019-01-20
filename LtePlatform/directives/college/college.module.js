@@ -31,31 +31,6 @@ angular.module('college.info.module', ['ui.grid', 'myApp.region', 'myApp.url'])
         });
 
 angular.module('college.stat.module', ['ui.grid', 'myApp.region', 'myApp.url'])
-    .controller('HotSpotFlowController',
-        function($scope) {
-            $scope.gridOptions = {
-                columnDefs: [
-                    { field: 'hotspotName', name: '热点名称', width: 200, enableColumnResizing: false },
-                    { field: 'cellCount', name: '小区数' },
-                    { field: 'pdcpDownlinkFlow', name: '平均下行流量(MB)', cellFilter: 'number: 1' },
-                    { field: 'pdcpUplinkFlow', name: '平均上行流量(MB)', cellFilter: 'number: 1' },
-                    { field: 'averageUsers', name: '平均用户数', cellFilter: 'number: 1' },
-                    { field: 'maxActiveUsers', name: '最大激活用户数', cellFilter: 'number: 1' }
-                ],
-                data: []
-            };
-        })
-    .directive('hotSpotFlowList',
-        function($compile, calculateService) {
-            return calculateService.generateGridDirective({
-                    controllerName: 'HotSpotFlowController',
-                    scope: {
-                        hotSpots: '='
-                    },
-                    argumentName: 'hotSpots'
-                },
-                $compile);
-        })
     .controller('CollegeStatController',
         function($scope) {
             $scope.gridOptions = {
@@ -420,28 +395,6 @@ angular.module('general.test.module', ['ui.grid', 'myApp.region', 'myApp.url'])
     .directive('dtInfoList', function ($compile, calculateService) {
         return calculateService.generatePagingGridDirective({
             controllerName: 'DtInfoListController',
-            scope: {
-                items: '='
-            },
-            argumentName: 'items'
-        }, $compile);
-    })
-    .controller('HotspotDtInfoController', function ($scope) {
-        $scope.gridOptions = {
-            columnDefs: [
-                { field: 'csvFileName', name: '测试文件名称', width: 200 },
-                { field: 'networkType', name: '网络类型' },
-                { field: 'distanceInMeter', name: '测试里程（米）', cellFilter: 'number: 2' },
-                { field: 'testDate', name: '测试日期', cellFilter: 'date: "yyyy-MM-dd"' },
-                { field: 'count', name: '测试点数' },
-                { field: 'coverageRate', name: '覆盖率（%）' }
-            ],
-            data: []
-        };
-    })
-    .directive('hotspotDtInfoList', function ($compile, calculateService) {
-        return calculateService.generateGridDirective({
-            controllerName: 'HotspotDtInfoController',
             scope: {
                 items: '='
             },
