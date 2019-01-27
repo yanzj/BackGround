@@ -147,15 +147,6 @@ namespace Abp.EntityFramework.Repositories
                 info.TownId = town?.Id ?? searchTownFunc(stat);
                 await repository.InsertAsync(info);
             }
-            else
-            {
-                stat.MapTo(info);
-                updateAction(info, stat);
-                var town = towns.FirstOrDefault(x =>
-                    x.DistrictName == stat.StationDistrict && x.TownName == queryTownFunc(stat));
-                info.TownId = town?.Id ?? searchTownFunc(stat);
-                info.IsInUse = true;
-            }
 
             return repository.SaveChanges();
         }
@@ -246,12 +237,6 @@ namespace Abp.EntityFramework.Repositories
                 info.IsInUse = true;
                 updateAction(info, stat);
                 await repository.InsertAsync(info);
-            }
-            else
-            {
-                stat.MapTo(info);
-                updateAction(info, stat);
-                info.IsInUse = true;
             }
             return repository.SaveChanges();
         }

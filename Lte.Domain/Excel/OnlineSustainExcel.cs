@@ -31,8 +31,11 @@ namespace Lte.Domain.Excel
         [ExcelColumn("故障内容（投诉内容）")]
         public string Phenomenon { get; set; }
 
-        [ExcelColumn("结单信息")]
+        [ExcelColumn("前工单回单反馈内容")]
         public string FeedbackInfo { get; set; }
+
+        [ExcelColumn("是否重复地标")]
+        public string GroundInfo { get; set; }
 
         [ExcelColumn("投诉地点")]
         public string Site { get; set; }

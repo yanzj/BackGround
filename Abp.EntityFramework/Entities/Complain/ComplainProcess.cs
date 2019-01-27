@@ -11,7 +11,9 @@ namespace Abp.EntityFramework.Entities.Complain
     public class ComplainProcess : Entity
     {
         public string SerialNumber { get; set; }
-        
+
+        public string GroundInfo { get; set; }
+
         [AutoMapPropertyResolve("AreaTypeDescription", typeof(OnlineSustainExcel), typeof(ComplainSceneTransform))]
         public ComplainScene ComplainScene { get; set; }
 

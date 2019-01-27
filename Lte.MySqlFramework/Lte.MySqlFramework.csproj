@@ -381,10 +381,6 @@
     <Compile Include="Entities\RegionKpi\TownHourCqiView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourPrbView.cs" />
     <Compile Include="Entities\RegionKpi\TownHourUsersView.cs" />
-    <Compile Include="Migrations\201812211023410_Change_Town_Prb_Frequency.cs" />
-    <Compile Include="Migrations\201812211023410_Change_Town_Prb_Frequency.Designer.cs">
-      <DependentUpon>201812211023410_Change_Town_Prb_Frequency.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201901041041504_CheckingProjectProvinces_Add.cs" />
     <Compile Include="Migrations\201901041041504_CheckingProjectProvinces_Add.Designer.cs">
       <DependentUpon>201901041041504_CheckingProjectProvinces_Add.cs</DependentUpon>
@@ -392,6 +388,10 @@
     <Compile Include="Migrations\201901090652091_Update_Town_DoubleFlow.cs" />
     <Compile Include="Migrations\201901090652091_Update_Town_DoubleFlow.Designer.cs">
       <DependentUpon>201901090652091_Update_Town_DoubleFlow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901271304270_Change_Complain_Process.cs" />
+    <Compile Include="Migrations\201901271304270_Change_Complain_Process.Designer.cs">
+      <DependentUpon>201901271304270_Change_Complain_Process.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -526,14 +526,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812211023410_Change_Town_Prb_Frequency.resx">
-      <DependentUpon>201812211023410_Change_Town_Prb_Frequency.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901041041504_CheckingProjectProvinces_Add.resx">
       <DependentUpon>201901041041504_CheckingProjectProvinces_Add.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901090652091_Update_Town_DoubleFlow.resx">
       <DependentUpon>201901090652091_Update_Town_DoubleFlow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901271304270_Change_Complain_Process.resx">
+      <DependentUpon>201901271304270_Change_Complain_Process.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
