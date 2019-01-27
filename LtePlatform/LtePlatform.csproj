@@ -674,19 +674,12 @@
     <Content Include="appViews\College\Infrastructure\NewCollegeDialog.html" />
     <Content Include="appViews\College\Infrastructure\YearInfoDialog.html" />
     <Content Include="appViews\College\Table\CollegeCellBasicInfo.html" />
-    <Content Include="appViews\Customer\Complain\Branch.html" />
-    <Content Include="appViews\Customer\Complain\List.html" />
-    <Content Include="appViews\Customer\Complain\OnlineList.html" />
     <Content Include="appViews\Customer\Complain\Stat.html" />
     <Content Include="appViews\Customer\Dialog\CollegeSupplement.html" />
     <Content Include="appViews\Customer\Dialog\Complain.html" />
     <Content Include="appViews\Customer\Dialog\Micro.html" />
     <Content Include="appViews\Customer\Dialog\VipSupplement.html" />
-    <Content Include="appViews\Customer\EmergencyList.html" />
     <Content Include="appViews\Customer\Dialog\Emergency.html" />
-    <Content Include="appViews\Customer\Process\Complain.html" />
-    <Content Include="appViews\Customer\Process\Vip.html" />
-    <Content Include="appViews\Customer\VipList.html" />
     <Content Include="appViews\Evaluation\Dialog\AgpsSearchCondition.html" />
     <Content Include="appViews\Evaluation\Dialog\BtsSearchCondition.html" />
     <Content Include="appViews\Evaluation\Dialog\BuildingInfoBox.html" />
@@ -870,7 +863,6 @@
     <Content Include="directives\app\dump\FileSelector.html" />
     <Content Include="directives\app\dump\MultipleSelector.html" />
     <Content Include="directives\college\college.module.js" />
-    <Content Include="directives\customer\Complain.Tpl.html" />
     <Content Include="directives\customer\customer.module.js" />
     <Content Include="directives\customer\vip\DemandList.html" />
     <Content Include="directives\customer\vip\VipInfo.html" />
