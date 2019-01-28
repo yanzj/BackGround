@@ -7,13 +7,13 @@ namespace Lte.MySqlFramework.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Change_Town_Prb_Frequency : IMigrationMetadata
+    public sealed partial class Change_Complain_Process : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Change_Town_Prb_Frequency));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Change_Complain_Process));
         
         string IMigrationMetadata.Id
         {
-            get { return "201812211023410_Change_Town_Prb_Frequency"; }
+            get { return "201901271304270_Change_Complain_Process"; }
         }
         
         string IMigrationMetadata.Source
