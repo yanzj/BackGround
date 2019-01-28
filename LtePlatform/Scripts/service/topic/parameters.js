@@ -91,23 +91,6 @@
                         }
                     });
                 },
-                showClusterPointInfo: function(site, currentClusterList) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/BasicKpi/ClusterPoint.html',
-                        controller: 'cluster.point.dialog',
-                        resolve: {
-                            dialogTitle: function() {
-                                return site.theme + "主题" + site.clusterNumber + "编号簇规划选点信息";
-                            },
-                            site: function() {
-                                return site;
-                            },
-                            currentClusterList: function() {
-                                return currentClusterList;
-                            }
-                        }
-                    });
-                },
                 manageCsvDtInfos: function(beginDate, endDate) {
                     menuItemService.showGeneralDialog({
                         templateUrl: '/appViews/BasicKpi/CsvDtDialog.html',

@@ -950,32 +950,6 @@ angular.module('topic.parameters.basic', ['myApp.url', 'myApp.region', 'myApp.kp
                 $uibModalInstance.dismiss('cancel');
             };
         });
-angular.module('topic.parameters.coverage', ['myApp.url', 'myApp.region', 'myApp.kpi', 'topic.basic', "ui.bootstrap"])
-    .controller('cluster.point.dialog',
-        function($scope,
-            $uibModalInstance,
-            dialogTitle,
-            site,
-            currentClusterList,
-            alarmsService) {
-            $scope.dialogTitle = dialogTitle;
-            $scope.currentClusterList = currentClusterList;
-            angular.forEach(currentClusterList,
-                function(stat) {
-                    alarmsService.queryDpiGridKpi(stat.x, stat.y).then(function(result) {
-                        stat.firstPacketDelay = result.firstPacketDelay;
-                        stat.pageOpenDelay = result.pageOpenDelay;
-                        stat.firstPacketDelayClass = result.firstPacketDelayClass;
-                        stat.pageOpenDelayClass = result.pageOpenDelayClass;
-                    });
-                });
-            $scope.ok = function() {
-                $uibModalInstance.close($scope.site);
-            };
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
-            };
-        });
 angular.module('topic.parameters', ['app.menu', 'app.core', 'topic.basic'])
     .factory('parametersDialogService',
         function(menuItemService, baiduMapService, stationFormatService) {
@@ -1065,23 +1039,6 @@ angular.module('topic.parameters', ['app.menu', 'app.core', 'topic.basic'])
                             },
                             station: function() {
                                 return station;
-                            }
-                        }
-                    });
-                },
-                showClusterPointInfo: function(site, currentClusterList) {
-                    menuItemService.showGeneralDialog({
-                        templateUrl: '/appViews/BasicKpi/ClusterPoint.html',
-                        controller: 'cluster.point.dialog',
-                        resolve: {
-                            dialogTitle: function() {
-                                return site.theme + "主题" + site.clusterNumber + "编号簇规划选点信息";
-                            },
-                            site: function() {
-                                return site;
-                            },
-                            currentClusterList: function() {
-                                return currentClusterList;
                             }
                         }
                     });
@@ -1629,6 +1586,6 @@ angular.module('topic.dialog',[ 'app.menu', 'app.core' ])
 angular.module('baidu.map',
 [
     'topic.basic', 'topic.college',
-    'topic.parameters.basic', 'topic.parameters.coverage', "topic.parameters",
+    'topic.parameters.basic', "topic.parameters",
     'topic.dialog', 'topic.dialog.college', 'topic.dialog.customer'
 ]);

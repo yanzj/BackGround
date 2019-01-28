@@ -360,45 +360,8 @@
                 }
             };
         })
-    .factory('alarmsService',
-        function(generalHttpService) {
-            return {
-                queryMicroItems: function() {
-                    return generalHttpService.getApiData('MicroAmplifier', {});
-                },
-                queryGridClusters: function(theme) {
-                    return generalHttpService.getApiData('GridCluster',
-                    {
-                        theme: theme
-                    });
-                },
-                queryGridClusterRange: function(theme, west, east, south, north) {
-                    return generalHttpService.getApiData('GridCluster',
-                    {
-                        theme: theme,
-                        west: west,
-                        east: east,
-                        south: south,
-                        north: north
-                    });
-                },
-                queryClusterGridKpis: function(points) {
-                    return generalHttpService.postApiData('GridCluster', points);
-                },
-                queryClusterKpi: function(points) {
-                    return generalHttpService.putApiData('GridCluster', points);
-                },
-                queryDpiGridKpi: function(x, y) {
-                    return generalHttpService.getApiData('DpiGridKpi',
-                    {
-                        x: x,
-                        y: y
-                    });
-                }
-            };
-        })
     .factory('alarmImportService',
-        function(generalHttpService, alarmsService) {
+        function(generalHttpService) {
             return {
                 queryDumpHistory: function(begin, end) {
                     return generalHttpService.getApiData('DumpAlarm',
@@ -477,20 +440,6 @@
                 },
                 updateHuaweiAlarmInfos: function(cellDef) {
                     return generalHttpService.postApiData('Alarms', cellDef);
-                },
-                updateClusterKpi: function(stat, callback) {
-                    alarmsService.queryClusterKpi(stat.gridPoints).then(function(result) {
-                        stat.rsrp = result.rsrp;
-                        stat.weakRate = result.weakCoverageRate;
-                        stat.bestLongtitute = result.longtitute;
-                        stat.bestLattitute = result.lattitute;
-                        stat.x = result.x;
-                        stat.y = result.y;
-                        if (callback) {
-                            callback(stat);
-                        }
-
-                    });
                 }
             };
         });

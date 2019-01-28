@@ -659,9 +659,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="appViews\BasicKpi\ClusterPoint.html" />
     <Content Include="appViews\BasicKpi\GridApp.html" />
-    <Content Include="appViews\BasicKpi\GridClusterDialog.html" />
     <Content Include="appViews\BasicKpi\Resource.html" />
     <Content Include="appViews\BasicKpi\Trend.html" />
     <Content Include="appViews\College\Coverage\Index.html" />
@@ -1119,7 +1117,6 @@
     <Content Include="Scripts\service\topic\dialog.customer.js" />
     <Content Include="Scripts\service\topic\dialog.js" />
     <Content Include="Scripts\service\topic\parameters.basic.js" />
-    <Content Include="Scripts\service\topic\parameters.coverage.js" />
     <Content Include="Scripts\service\topic\parameters.js" />
     <Content Include="Scripts\service\url\app.url.es5.js">
       <DependentUpon>app.url.js</DependentUpon>
