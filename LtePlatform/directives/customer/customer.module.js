@@ -109,35 +109,5 @@ angular.module('customer.complain.module', ['myApp.region'])
                         });
                 }
             };
-        })
-    .controller('ComplainListController',
-        function($scope, mapDialogService) {
-            $scope.gridOptions = {
-                paginationPageSizes: [20, 40, 60],
-                paginationPageSize: 20,
-                columnDefs: [
-                    { field: 'serialNumber', name: '序列号' },
-                    { field: 'beginTime', name: '受理时间', cellFilter: 'date: "yyyy-MM-dd"' },
-                    { field: 'buildingName', name: '楼宇名称' },
-                    { field: 'roadName', name: '道路名称' },
-                    { field: 'complainSourceDescription', name: '投诉来源' },
-                    { field: 'networkTypeDescription', name: '网络类型' },
-                    {
-                        name: '详细信息',
-                        cellTemplate:
-                            '<a href="" ng-click="grid.appScope.showDetails(row.entity)" class="btn btn-sm btn-success">详细信息</a>'
-                    },
-                    {
-                        name: '工单处理',
-                        cellTemplate:
-                            '<a href="" ng-click="grid.appScope.complainProcess(row.entity.serialNumber)" class="btn btn-sm btn-success">\
-                        {{row.entity.currentStateDescription}}</a>'
-                    }
-                ],
-                data: []
-            };
-            $scope.showDetails = function(item) {
-                mapDialogService.showComplainDetails(item);
-            };
         });
     

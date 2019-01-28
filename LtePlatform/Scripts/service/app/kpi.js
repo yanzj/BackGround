@@ -777,6 +777,23 @@ angular.module('kpi.customer', ['myApp.url', 'myApp.region'])
                                 });
                             });
                         });
+                },
+
+                supplementComplainInfo: function(item, callback) {
+                    menuItemService.showGeneralDialogWithAction({
+                            templateUrl: '/appViews/Customer/Dialog/Complain.html',
+                            controller: 'complain.supplement.dialog',
+                            resolve: {
+                                item: function() {
+                                    return item;
+                                }
+                            }
+                        },
+                        function(info) {
+                            complainService.postPosition(info).then(function() {
+                                callback();
+                            });
+                        });
                 }
             };
         });
